@@ -142,7 +142,7 @@ namespace Sourcemod
 		public const string AUTHMETHOD_IP = "ip";           /**< IP based authentication */
 		public const string AUTHMETHOD_NAME = "name";       /**< Name based authentication */
 		#endregion
-		class AdminId
+		public class AdminId
 		{
 			int _value;
 			public static implicit operator AdminId(int value) => new AdminId(value);
