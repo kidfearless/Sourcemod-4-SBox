@@ -29,60 +29,61 @@
  *
  * Version: $Id$
  */
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
-#if defined _commandline_included_
- #endinput
-#endif
-public const int _commandline_included_
+		/**
+		 * Gets the full command line the server was launched with.
+		 *
+		 * @param commandLine   Buffer to store the command line in.
+		 * @param maxlen        Maximum length of the command line buffer.
+		 * @return              True if the command line is valid; otherwise, false.
+		 * @error               No command line available, or no mod support.
+		 */
+		public static bool GetCommandLine(string commandLine, int maxlen) { throw new NotImplementedException(); }
 
-/**
- * Gets the full command line the server was launched with.
- *
- * @param commandLine   Buffer to store the command line in.
- * @param maxlen        Maximum length of the command line buffer.
- * @return              True if the command line is valid; otherwise, false.
- * @error               No command line available, or no mod support.
- */
-public static bool GetCommandLine(string commandLine, int maxlen) { throw new NotImplementedException(); }
+		/**
+		 * Gets the value of a command line parameter the server was launched with.
+		 *
+		 * @param param         The command line parameter to get the value of.
+		 * @param value         Buffer to store the parameter value in.
+		 * @param maxlen        Maximum length of the value buffer.
+		 * @param defValue      The default value to return if the parameter wasn't specified.
+		 * @error               No command line available, or no mod support.
+		 */
+		public static void GetCommandLineParam(string param, string value, int maxlen, string defValue = "") { throw new NotImplementedException(); }
 
-/**
- * Gets the value of a command line parameter the server was launched with.
- *
- * @param param         The command line parameter to get the value of.
- * @param value         Buffer to store the parameter value in.
- * @param maxlen        Maximum length of the value buffer.
- * @param defValue      The default value to return if the parameter wasn't specified.
- * @error               No command line available, or no mod support.
- */
-public static void GetCommandLineParam(string param, string value, int maxlen, string defValue="") { throw new NotImplementedException(); }
+		/**
+		 * Gets the value of a command line parameter the server was launched with.
+		 *
+		 * @param param         The command line parameter to get the value of.
+		 * @param defValue      The default value to return if the parameter wasn't specified.
+		 * @return              The integer value of the command line parameter value.
+		 * @error               No command line available, or no mod support.
+		 */
+		public static int GetCommandLineParamInt(string param, int defValue = 0) { throw new NotImplementedException(); }
 
-/**
- * Gets the value of a command line parameter the server was launched with.
- *
- * @param param         The command line parameter to get the value of.
- * @param defValue      The default value to return if the parameter wasn't specified.
- * @return              The integer value of the command line parameter value.
- * @error               No command line available, or no mod support.
- */
-public static int GetCommandLineParamInt(string param, int defValue=0) { throw new NotImplementedException(); }
+		/**
+		 * Gets the value of a command line parameter the server was launched with.
+		 *
+		 * @param param         The command line parameter to get the value of.
+		 * @param defValue      The default value to return if the parameter wasn't specified.
+		 * @return              The floating point value of the command line parameter value.
+		 * @error               No command line available, or no mod support.
+		 */
+		public static float GetCommandLineParamFloat(string param, float defValue = 0.0f) { throw new NotImplementedException(); }
 
-/**
- * Gets the value of a command line parameter the server was launched with.
- *
- * @param param         The command line parameter to get the value of.
- * @param defValue      The default value to return if the parameter wasn't specified.
- * @return              The floating point value of the command line parameter value.
- * @error               No command line available, or no mod support.
- */
-public static float GetCommandLineParamFloat(string param, float defValue=0.0) { throw new NotImplementedException(); }
-
-/**
- * Determines if a specific command line parameter is present.
- *
- * @param param         The command line parameter to test.
- * @return              True if the command line parameter is specified; otherwise, false.
- * @error               No command line available, or no mod support.
- */
-public static bool FindCommandLineParam(string param) { throw new NotImplementedException(); }
+		/**
+		 * Determines if a specific command line parameter is present.
+		 *
+		 * @param param         The command line parameter to test.
+		 * @return              True if the command line parameter is specified; otherwise, false.
+		 * @error               No command line available, or no mod support.
+		 */
+		public static bool FindCommandLineParam(string param) { throw new NotImplementedException(); }
 	}
 }
