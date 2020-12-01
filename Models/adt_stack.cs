@@ -37,7 +37,7 @@ namespace Sourcemod
 {
 	public partial class SourceMod
 	{
-		public class ArrayStack
+		public class ArrayStack : Handle
 		{
 			// Creates a stack structure.  A stack is a LIFO (last in, first out) 
 			// vector (array) of items.  It has O(1) insertion and O(1) removal.
