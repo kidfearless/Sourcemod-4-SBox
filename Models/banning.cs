@@ -53,7 +53,7 @@ namespace Sourcemod
 		 * @return              Plugin_Handled to block the actual server banning.
 		 *                      Kicking will still occur.
 		 */
-public static override Action OnBanClient(int client, int time, int flags, string reason, string kick_message, string command, any source) { throw new NotImplementedException(); }
+public static virtual Action OnBanClient(int client, int time, int flags, string reason, string kick_message, string command, any source) { throw new NotImplementedException(); }
 
 	/**
 	 * Called for calls to BanIdentity() with a non-empty command.
@@ -66,7 +66,7 @@ public static override Action OnBanClient(int client, int time, int flags, strin
 	 * @param source        Source value passed via BanIdentity().
 	 * @return              Plugin_Handled to block the actual server banning.
 	 */
-	public static override Action OnBanIdentity(string identity, int time, int flags, string reason, string command, any source)
+	public static virtual Action OnBanIdentity(string identity, int time, int flags, string reason, string command, any source)
 	{ throw new NotImplementedException(); }
 
 	/**
@@ -78,7 +78,7 @@ public static override Action OnBanClient(int client, int time, int flags, strin
 	 * @param source        Source value passed via BanIdentity().
 	 * @return              Plugin_Handled to block the actual unbanning.
 	 */
-	public static override Action OnRemoveBan(string identity, int flags, string command, any source)
+	public static virtual Action OnRemoveBan(string identity, int flags, string command, any source)
 	{ throw new NotImplementedException(); }
 
 	/**
@@ -92,7 +92,7 @@ public static override Action OnBanClient(int client, int time, int flags, strin
 	 * @param reason        Reason to ban the client for.
 	 * @param kick_message  Message to display to the user when kicking.
 	 * @param command       Command string to identify the source.  If this is left 
-	 *                      empty, then the OnBanClient public static override will not be called.
+	 *                      empty, then the OnBanClient public static virtual will not be called.
 	 * @param source        A source value that could be interpreted as a player 
 	 *                      index of any sort (not actually checked by Core).
 	 * @return              True on success, false on failure.
@@ -109,7 +109,7 @@ public static override Action OnBanClient(int client, int time, int flags, strin
 	 * @param flags         Flags (only IP and AUTHID are valid flags here).
 	 * @param reason        Ban reason string.
 	 * @param command       Command string to identify the source.  If this is left 
-	 *                      empty, then the OnBanIdentity public static override will not be called.
+	 *                      empty, then the OnBanIdentity public static virtual will not be called.
 	 * @param source        A source value that could be interpreted as a player
 	 *                      index of any sort (not actually checked by Core).
 	 * @return              True on success, false on failure.

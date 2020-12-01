@@ -57,7 +57,7 @@ namespace Sourcemod
 /**
  * File inode types.
  */
-enum FileType
+public enum FileType
 {
 	FileType_Unknown = 0,   /* Unknown file type (device/socket) */
 	FileType_Directory = 1, /* File is a directory */
@@ -67,7 +67,7 @@ enum FileType
 /**
  * File time modes.
  */
-enum FileTimeMode
+public enum FileTimeMode
 {
 	FileTime_LastAccess = 0,    /* Last access (does not work on FAT) */
 	FileTime_Created = 1,       /* Creation (does not work on FAT) */
@@ -83,7 +83,7 @@ public const object SEEK_END 2              /**< Seek from end position. */
 /**
  * Path types.
  */
-enum PathType
+public enum PathType
 {
 	Path_SM,                    /**< SourceMod root folder */
 };
@@ -263,7 +263,7 @@ public class File : Handle
 public static int BuildPath(PathType type, string buffer, int maxlength, string fmt, any ...) { throw new NotImplementedException(); }
 
 /**
- * Opens a directory/folder for contents enumeration.
+ * Opens a directory/folder for contents public enumeration.
  *
  * @note Directories are closed with CloseHandle() or delete.
  * @note Directories Handles can be cloned.

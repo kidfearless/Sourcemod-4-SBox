@@ -57,7 +57,7 @@ public const object FEATURECAP_PLAYERRUNCMD_11PARAMS    "SDKTools PlayerRunCmd 1
  *
  * @note To see if all 11 params are available, use FeatureType_Capability and FEATURECAP_PLAYERRUNCMD_11PARAMS.
  */
-public static override Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon, int &subtype, int &cmdnum, int &tickcount, int &seed, int mouse[2]) { throw new NotImplementedException(); }
+public static virtual Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon, int &subtype, int &cmdnum, int &tickcount, int &seed, int mouse[2]) { throw new NotImplementedException(); }
 
 /**
  * Called after a clients movement buttons were processed.
@@ -74,7 +74,7 @@ public static override Action OnPlayerRunCmd(int client, int &buttons, int &impu
  * @param seed          Random seed. Used to determine weapon recoil, spread, and other predicted elements.
  * @param mouse         Mouse direction (x, y).
  */
-public static override void OnPlayerRunCmdPost(int client, int buttons, int impulse, ReadOnlyCollection<float> vel[3], ReadOnlyCollection<float> angles[3], int weapon, int subtype, int cmdnum, int tickcount, int seed, const int mouse[2]) { throw new NotImplementedException(); }
+public static virtual void OnPlayerRunCmdPost(int client, int buttons, int impulse, ReadOnlyCollection<float> vel[3], ReadOnlyCollection<float> angles[3], int weapon, int subtype, int cmdnum, int tickcount, int seed, const int mouse[2]) { throw new NotImplementedException(); }
 
 /**
  * Called when a client requests a file from the server.
@@ -84,7 +84,7 @@ public static override void OnPlayerRunCmdPost(int client, int buttons, int impu
  *
  * @return              Plugin_Handled to block the transfer, Plugin_Continue to let it proceed.
  */
-public static override Action OnFileSend(int client, string sFile) { throw new NotImplementedException(); }
+public static virtual Action OnFileSend(int client, string sFile) { throw new NotImplementedException(); }
 
 /**
  * Called when a client sends a file to the server.
@@ -94,6 +94,6 @@ public static override Action OnFileSend(int client, string sFile) { throw new N
  *
  * @return              Plugin_Handled to block the transfer, Plugin_Continue to let it proceed.
  */
-public static override Action OnFileReceive(int client, string sFile) { throw new NotImplementedException(); }
+public static virtual Action OnFileReceive(int client, string sFile) { throw new NotImplementedException(); }
 	}
 }

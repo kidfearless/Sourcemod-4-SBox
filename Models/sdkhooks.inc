@@ -103,7 +103,7 @@ public const object DMG_BUCKSHOT                (1 << 29)   /**< not quite a bul
 	#define DMG_USE_HITLOCATIONS    DMG_AIRBOAT     /**< Do hit location damage (Like the sniperrifle and ambassador) */
 #endif
 
-enum SDKHookType
+public enum SDKHookType
 {
 	SDKHook_EndTouch,
 	SDKHook_FireBulletsPost,
@@ -224,7 +224,7 @@ enum SDKHookType
 	SDKHook_WeaponSwitchPost
 */
 
-enum UseType
+public enum UseType
 {
 	Use_Off,
 	Use_On,
@@ -347,7 +347,7 @@ typeset SDKHookCB
  * @param entity        Entity index
  * @param classname     Class name
  */
-public static override void OnEntityCreated(int entity, string classname) { throw new NotImplementedException(); }
+public static virtual void OnEntityCreated(int entity, string classname) { throw new NotImplementedException(); }
 
 /**
  * When an entity is spawned
@@ -357,14 +357,14 @@ public static override void OnEntityCreated(int entity, string classname) { thro
  *
  * @note Check for support at runtime using GetFeatureStatus on SDKHook_OnEntitySpawned capability.
  */
-public static override void OnEntitySpawned(int entity, string classname) { throw new NotImplementedException(); }
+public static virtual void OnEntitySpawned(int entity, string classname) { throw new NotImplementedException(); }
 
 /**
  * When an entity is destroyed
  *
  * @param entity        Entity index or edict reference.
  */
-public static override void OnEntityDestroyed(int entity) { throw new NotImplementedException(); }
+public static virtual void OnEntityDestroyed(int entity) { throw new NotImplementedException(); }
 
 /**
  * When the game description is retrieved
@@ -374,7 +374,7 @@ public static override void OnEntityDestroyed(int entity) { throw new NotImpleme
  * @param gameDesc      Game description
  * @return              Plugin_Changed if gameDesc has been edited, else no change.
  */
-public static override Action OnGetGameDescription(char gameDesc[64]) { throw new NotImplementedException(); }
+public static virtual Action OnGetGameDescription(char gameDesc[64]) { throw new NotImplementedException(); }
 
 /**
  * When the level is initialized
@@ -383,7 +383,7 @@ public static override Action OnGetGameDescription(char gameDesc[64]) { throw ne
  * @param mapEntities   Entities of the map
  * @return              Plugin_Changed if mapEntities has been edited, else no change.
  */
-public static override Action OnLevelInit(string mapName, char mapEntities[2097152]) { throw new NotImplementedException(); }
+public static virtual Action OnLevelInit(string mapName, char mapEntities[2097152]) { throw new NotImplementedException(); }
 
 /**
  * Hooks an entity

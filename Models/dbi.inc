@@ -40,7 +40,7 @@ namespace Sourcemod
 /**
  * Describes a database field fetch status.
  */
-enum DBResult
+public enum DBResult
 {
 	DBVal_Error = 0,        /**< Column number/field is invalid. */
 	DBVal_TypeMismatch = 1, /**< You cannot retrieve this data with this type. */
@@ -51,7 +51,7 @@ enum DBResult
 /**
  * Describes binding types.
  */
-enum DBBindType
+public enum DBBindType
 {
 	DBBind_Int = 0,         /**< Bind an integer. */
 	DBBind_Float = 1,       /**< Bind a float. */
@@ -61,7 +61,7 @@ enum DBBindType
 /**
  * Threading priority level.
  */
-enum DBPriority
+public enum DBPriority
 {
 	DBPrio_High = 0,        /**< High priority. */
 	DBPrio_Normal = 1,      /**< Normal priority. */

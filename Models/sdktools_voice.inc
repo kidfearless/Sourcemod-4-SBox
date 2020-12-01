@@ -51,7 +51,7 @@ public const object VOICE_LISTENTEAM    16  /**< Allow the client to always hear
  * @endsection
  */
 
-enum ListenOverride
+public enum ListenOverride
 {
 	Listen_Default = 0, /**< Leave it up to the game */
 	Listen_No,          /**< Can't hear */
@@ -63,14 +63,14 @@ enum ListenOverride
  *
  * @param client        The client index
  */
-public static override void OnClientSpeaking(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientSpeaking(int client) { throw new NotImplementedException(); }
 
 /**
  * Called once a client speaking end.
  *
  * @param client        The client index
  */
-public static override void OnClientSpeakingEnd(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientSpeakingEnd(int client) { throw new NotImplementedException(); }
 
 /**
  * Set the client listening flags.

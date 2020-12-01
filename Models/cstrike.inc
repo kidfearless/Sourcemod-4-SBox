@@ -52,7 +52,7 @@ public const object CS_SLOT_UTILITY     12  /**< Slot for tablet. */
 
 public const object CS_DMG_HEADSHOT     (1 << 30)    /**< Headshot */
 
-enum CSRoundEndReason
+public enum CSRoundEndReason
 {
 	CSRoundEnd_TargetBombed = 0,           /**< Target Successfully Bombed! */
 	CSRoundEnd_VIPEscaped,                 /**< The VIP has escaped! - Doesn't exist on CS:GO */
@@ -78,7 +78,7 @@ enum CSRoundEndReason
 	CSRoundEnd_CTsReachedHostage           /**< CTs Reached the hostage */
 };
 
-enum CSWeaponID
+public enum CSWeaponID
 {
 	CSWeapon_NONE = 0,
 	CSWeapon_P228,
@@ -189,7 +189,7 @@ enum CSWeaponID
  * @param client        Client index
  * @param weapon        User input for weapon name
  */
-public static override Action CS_OnBuyCommand(int client, string weapon) { throw new NotImplementedException(); }
+public static virtual Action CS_OnBuyCommand(int client, string weapon) { throw new NotImplementedException(); }
 
 /**
  * Called when CSWeaponDrop is called
@@ -199,7 +199,7 @@ public static override Action CS_OnBuyCommand(int client, string weapon) { throw
  * @param client        Client index
  * @param weaponIndex   Weapon index
  */
-public static override Action CS_OnCSWeaponDrop(int client, int weaponIndex) { throw new NotImplementedException(); }
+public static virtual Action CS_OnCSWeaponDrop(int client, int weaponIndex) { throw new NotImplementedException(); }
 
 /**
  * Called when game retrieves a weapon's price for a player.
@@ -214,7 +214,7 @@ public static override Action CS_OnCSWeaponDrop(int client, int weaponIndex) { t
  *
  * @note Not all "weapons" call GetWeaponPrice. Example: c4, knife, vest, vest helmet, night vision.
  */
-public static override Action CS_OnGetWeaponPrice(int client, string weapon, int &price) { throw new NotImplementedException(); }
+public static virtual Action CS_OnGetWeaponPrice(int client, string weapon, int &price) { throw new NotImplementedException(); }
 
 /**
  * Called when TerminateRound is called.
@@ -225,7 +225,7 @@ public static override Action CS_OnGetWeaponPrice(int client, string weapon, int
  * @param delay         Time (in seconds) until new round starts
  * @param reason        Reason for round end
  */
-public static override Action CS_OnTerminateRound(float &delay, CSRoundEndReason &reason) { throw new NotImplementedException(); }
+public static virtual Action CS_OnTerminateRound(float &delay, CSRoundEndReason &reason) { throw new NotImplementedException(); }
 
 /**
  * Respawns a player.
@@ -261,7 +261,7 @@ public static void CS_DropWeapon(int client, int weaponIndex, bool toss, bool bl
  * @param delay         Time (in seconds) to delay before new round starts
  * @param reason        Reason for the round ending
  * @param blockhook     Set to true to stop the corresponding CS_OnTerminateRound
- *                      public static override from being called.
+ *                      public static virtual from being called.
  */
 public static void CS_TerminateRound(float delay, CSRoundEndReason reason, bool blockhook = false) { throw new NotImplementedException(); }
  

@@ -40,7 +40,7 @@ namespace Sourcemod
 /**
  * Console variable bound values used with Get/SetConVarBounds()
  */
-enum ConVarBounds
+public enum ConVarBounds
 {
 	ConVarBound_Upper = 0,
 	ConVarBound_Lower
@@ -49,7 +49,7 @@ enum ConVarBounds
 /**
  * Console variable query result values.
  */
-enum ConVarQueryResult
+public enum ConVarQueryResult
 {
 	ConVarQuery_Okay = 0,               //< Retrieval of client convar value was successful. */
 	ConVarQuery_NotFound,               //< Client convar was not found. */
@@ -465,7 +465,7 @@ typeset ConVarQueryFinished
 	// @param cookie        Unique identifier of query.
 	// @param client        Player index.
 	// @param result        Result of query that tells one whether or not query was successful.
-	//                      See ConVarQueryResult enum for more details.
+	//                      See ConVarQueryResult public enum for more details.
 	// @param convarName    Name of client convar that was queried.
 	// @param convarValue   Value of client convar that was queried if successful. This will be "" if it was not.
 	// @param value         Value that was passed when query was started.
@@ -476,7 +476,7 @@ typeset ConVarQueryFinished
 	// @param cookie        Unique identifier of query.
 	// @param client        Player index.
 	// @param result        Result of query that tells one whether or not query was successful.
-	//                      See ConVarQueryResult enum for more details.
+	//                      See ConVarQueryResult public enum for more details.
 	// @param convarName    Name of client convar that was queried.
 	// @param convarValue   Value of client convar that was queried if successful. This will be "" if it was not.
 	function void (QueryCookie cookie, int client, ConVarQueryResult result, string cvarName, string cvarValue) { throw new NotImplementedException(); }

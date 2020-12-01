@@ -40,7 +40,7 @@ namespace Sourcemod
 /**
  * public types for entities.
  */
-enum PropType
+public enum PropType
 {
 	Prop_Send = 0,  /**< This public is networked. */
 	Prop_Data = 1   /**< This public is for save game data fields. */
@@ -61,7 +61,7 @@ public const object FL_EDICT_PENDING_DORMANT_CHECK  (1<<6)
 public const object FL_EDICT_DIRTY_PVS_INFORMATION  (1<<7)
 public const object FL_FULL_EDICT_CHANGED           (1<<8)
 
-enum PropFieldType
+public enum PropFieldType
 {
 	PropField_Unsupported,      /**< The type is unsupported. */
 	PropField_Integer,          /**< Valid for SendProp and Data fields */

@@ -66,14 +66,14 @@ public const object ADMINMENU_VOTINGCOMMANDS        "VotingCommands"
  * 
  * @param topmenu       Handle to the admin menu's TopMenu.
  */
-public static override void OnAdminMenuCreated(Handle topmenu) { throw new NotImplementedException(); }
+public static virtual void OnAdminMenuCreated(Handle topmenu) { throw new NotImplementedException(); }
 
 /**
  * Called when the admin menu is ready to have items added.
  * 
  * @param topmenu       Handle to the admin menu's TopMenu.
  */
-public static override void OnAdminMenuReady(Handle topmenu) { throw new NotImplementedException(); }
+public static virtual void OnAdminMenuReady(Handle topmenu) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the Handle to the admin top menu.

@@ -178,7 +178,7 @@ public static float GetTickInterval() { throw new NotImplementedException(); }
  * the map yet), then this will be called once the server begins ticking, even
  * if there is no time limit set.
  */
-public static override void OnMapTimeLeftChanged() { throw new NotImplementedException(); }
+public static virtual void OnMapTimeLeftChanged() { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not the server is processing frames or not.

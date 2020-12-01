@@ -37,7 +37,7 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-enum MoveType
+public enum MoveType
 {
 	MOVETYPE_NONE = 0,          /**< never moves */
 	MOVETYPE_ISOMETRIC,         /**< For players */
@@ -53,7 +53,7 @@ enum MoveType
 	MOVETYPE_CUSTOM             /**< Allows the entity to describe its own physics */
 };
 
-enum RenderMode
+public enum RenderMode
 {
 	RENDER_NORMAL,              /**< src */
 	RENDER_TRANSCOLOR,          /**< c*a+dest*(1-a) */
@@ -68,7 +68,7 @@ enum RenderMode
 	RENDER_NONE                 /**< Don't render. */
 };
 
-enum RenderFx
+public enum RenderFx
 {
 	RENDERFX_NONE = 0,
 	RENDERFX_PULSE_SLOW,
@@ -102,7 +102,7 @@ enum RenderFx
 public const object IN_ATTACK                (1 << 0)
 public const object IN_JUMP                  (1 << 1)
 public const object IN_DUCK                  (1 << 2)
-public const object IN_public static override               (1 << 3)
+public const object IN_public static virtual               (1 << 3)
 public const object IN_BACK                  (1 << 4)
 public const object IN_USE                   (1 << 5)
 public const object IN_CANCEL                (1 << 6)
@@ -198,7 +198,7 @@ public static void SetEntityFlags(int entity, int flags);
  * Gets an entity's movetype.
  *
  * @param entity        Entity index.
- * @return              Movetype, see enum above.
+ * @return              Movetype, see public enum above.
  * @error               Invalid entity index, or lack of mod compliance.
  */
 public static MoveType GetEntityMoveType(int entity)
@@ -227,7 +227,7 @@ public static MoveType GetEntityMoveType(int entity)
  * Sets an entity's movetype.
  *
  * @param entity        Entity index.
- * @param mt            Movetype, see enum above.
+ * @param mt            Movetype, see public enum above.
  * @error               Invalid entity index, or lack of mod compliance.
  */
 public static void SetEntityMoveType(int entity, MoveType mt)

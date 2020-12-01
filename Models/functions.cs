@@ -42,7 +42,7 @@ public const object SP_PARAMFLAG_BYREF  (1<<0)  /**< Internal use only. */
 /**
  * Describes the various ways to pass parameters to functions or forwards.
  */
-enum ParamType
+public enum ParamType
 {
 	Param_Any           = 0,                            /**< Any data type can be pushed */
 	Param_Cell          = (1<<1),                       /**< Only basic cells can be pushed */
@@ -55,9 +55,9 @@ enum ParamType
 };
 
 /**
- * Defines how a public static override iterates through plugin functions.
+ * Defines how a public static virtual iterates through plugin functions.
  */
-enum ExecType
+public enum ExecType
 {
 	ET_Ignore   = 0,    /**< Ignore all return values, return 0 */
 	ET_Single   = 1,    /**< Only return the last exec, ignore all others */
@@ -113,10 +113,10 @@ public const object SP_ERROR_ABORTED                25  /**< Function call was a
  * @endsection
  */
 
-public class Globalpublic static override : Handle {
+public class Globalpublic static virtual : Handle {
 	// Creates a global forward.
 	//
-	// @note The name used to create the public static override is used as its public function in all target plugins.
+	// @note The name used to create the public static virtual is used as its public function in all target plugins.
 	// @note This is ideal for global, static forwards that are never changed.
 	// @note Global forwards cannot be cloned.
 	// @note Use CloseHandle() to destroy these.
@@ -134,7 +134,7 @@ public class Globalpublic static override : Handle {
 	}
 };
 
-public class Privatepublic static override < Globalpublic static override {
+public class Privatepublic static virtual < Globalpublic static virtual {
 	// Creates a private forward.
 	//
 	// @note No functions are automatically added. Use AddToForward() to do this.
@@ -155,7 +155,7 @@ public class Privatepublic static override < Globalpublic static override {
 	//                      Pass INVALID_HANDLE to specify the calling plugin.
 	// @param func          Function to add to forward.
 	// @return              True on success, false otherwise.
-	// @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
+	// @error               Invalid or corrupt private public static virtual handle, invalid or corrupt plugin handle, or invalid function.
 	public bool AddFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
 
 	// Removes a function from a private forward's call list.
@@ -167,7 +167,7 @@ public class Privatepublic static override < Globalpublic static override {
 	//                      Pass INVALID_HANDLE to specify the calling plugin.
 	// @param func          Function to remove from forward.
 	// @return              True on success, false otherwise.
-	// @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
+	// @error               Invalid or corrupt private public static virtual handle, invalid or corrupt plugin handle, or invalid function.
 	public bool RemoveFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
 
 	// Removes all instances of a plugin from a private forward's call list.
@@ -177,7 +177,7 @@ public class Privatepublic static override < Globalpublic static override {
 	// @param plugin        Handle of the plugin to remove instances of.
 	//                      Pass INVALID_HANDLE to specify the calling plugin.
 	// @return              Number of functions removed from forward.
-	// @error               Invalid or corrupt private public static override handle or invalid or corrupt plugin handle.
+	// @error               Invalid or corrupt private public static virtual handle or invalid or corrupt plugin handle.
 	public int RemoveAllFunctions(Handle plugin) { throw new NotImplementedException(); }
 };
 
@@ -195,7 +195,7 @@ public static Function GetFunctionByName(Handle plugin, string name) { throw new
 /**
  * Creates a global forward.
  *
- * @note The name used to create the public static override is used as its public function in all target plugins.
+ * @note The name used to create the public static virtual is used as its public function in all target plugins.
  * @note This is ideal for global, static forwards that are never changed.
  * @note Global forwards cannot be cloned.
  * @note Use CloseHandle() to destroy these.
@@ -206,7 +206,7 @@ public static Function GetFunctionByName(Handle plugin, string name) { throw new
  * @return              Handle to new global forward.
  * @error               More than 32 parameter types passed.
  */
-public static Globalpublic static override CreateGlobalForward(string name, ExecType type, ParamType ...) { throw new NotImplementedException(); }
+public static Globalpublic static virtual CreateGlobalForward(string name, ExecType type, ParamType ...) { throw new NotImplementedException(); }
 
 /**
  * Creates a private forward.
@@ -220,14 +220,14 @@ public static Globalpublic static override CreateGlobalForward(string name, Exec
  * @return              Handle to new private forward.
  * @error               More than 32 parameter types passed.
  */
-public static Privatepublic static override CreateForward(ExecType type, ParamType ...) { throw new NotImplementedException(); }
+public static Privatepublic static virtual CreateForward(ExecType type, ParamType ...) { throw new NotImplementedException(); }
 
 /**
  * Returns the number of functions in a global or private forward's call list.
  *
  * @param fwd           Handle to global or private forward.
  * @return              Number of functions in forward.
- * @error               Invalid or corrupt public static override handle.
+ * @error               Invalid or corrupt public static virtual handle.
  */
 public static int GetForwardFunctionCount(Handle fwd) { throw new NotImplementedException(); }
 
@@ -241,7 +241,7 @@ public static int GetForwardFunctionCount(Handle fwd) { throw new NotImplemented
  *                      Pass INVALID_HANDLE to specify the calling plugin.
  * @param func          Function to add to forward.
  * @return              True on success, false otherwise.
- * @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
+ * @error               Invalid or corrupt private public static virtual handle, invalid or corrupt plugin handle, or invalid function.
  */
 public static bool AddToForward(Handle fwd, Handle plugin, Function func) { throw new NotImplementedException(); }
 
@@ -256,7 +256,7 @@ public static bool AddToForward(Handle fwd, Handle plugin, Function func) { thro
  *                      Pass INVALID_HANDLE to specify the calling plugin.
  * @param func          Function to remove from forward.
  * @return              True on success, false otherwise.
- * @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
+ * @error               Invalid or corrupt private public static virtual handle, invalid or corrupt plugin handle, or invalid function.
  */
 public static bool RemoveFromForward(Handle fwd, Handle plugin, Function func) { throw new NotImplementedException(); }
 
@@ -269,7 +269,7 @@ public static bool RemoveFromForward(Handle fwd, Handle plugin, Function func) {
  * @param plugin        Handle of the plugin to remove instances of.
  *                      Pass INVALID_HANDLE to specify the calling plugin.
  * @return              Number of functions removed from forward.
- * @error               Invalid or corrupt private public static override handle or invalid or corrupt plugin handle.
+ * @error               Invalid or corrupt private public static virtual handle or invalid or corrupt plugin handle.
  */
 public static int RemoveAllFromForward(Handle fwd, Handle plugin) { throw new NotImplementedException(); }
 
@@ -279,7 +279,7 @@ public static int RemoveAllFromForward(Handle fwd, Handle plugin) { throw new No
  * @note Cannot be used during an incomplete call.
  *
  * @param fwd           Handle to global or private forward.
- * @error               Invalid or corrupt public static override handle or called before another call has completed.
+ * @error               Invalid or corrupt public static virtual handle or called before another call has completed.
  */
 public static void Call_StartForward(Handle fwd) { throw new NotImplementedException(); }
 

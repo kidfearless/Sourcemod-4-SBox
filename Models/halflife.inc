@@ -57,7 +57,7 @@ public const object MOTDPANEL_TYPE_INDEX         1      /**< Msg is auto determi
 public const object MOTDPANEL_TYPE_URL           2      /**< Treat msg as an URL link */
 public const object MOTDPANEL_TYPE_FILE          3      /**< Treat msg as a filename to be opened */
 
-enum DialogType
+public enum DialogType
 {
 	DialogType_Msg = 0,     /**< just an on screen message */
 	DialogType_Menu,        /**< an options menu */
@@ -66,7 +66,7 @@ enum DialogType
 	DialogType_AskConnect   /**< ask the client to connect to a specified IP */
 };
 
-enum EngineVersion
+public enum EngineVersion
 {
 	Engine_Unknown,             /**< Could not determine the engine version */
 	Engine_Original,            /**< Original Source Engine (used by The Ship) */
@@ -94,7 +94,7 @@ enum EngineVersion
 	Engine_DOI                  /**< Day of Infamy */
 };
 
-enum FindMapResult
+public enum FindMapResult
 {
 	// A direct match for this name was found
 	FindMap_Found,
@@ -671,7 +671,7 @@ public static int EntRefToEntIndex(int ref) { throw new NotImplementedException(
  */
 public static int MakeCompatEntRef(int ref) { throw new NotImplementedException(); }
 
-enum ClientRangeType
+public enum ClientRangeType
 {
 	RangeType_Visibility = 0,
 	RangeType_Audibility

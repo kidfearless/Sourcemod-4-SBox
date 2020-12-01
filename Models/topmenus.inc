@@ -42,7 +42,7 @@ namespace Sourcemod
 /**
  * Actions a top menu will take on an topobj.
  */
-enum TopMenuAction
+public enum TopMenuAction
 {
 	/**
 	 * An option is being drawn for a menu (or for sorting purposes).
@@ -94,7 +94,7 @@ enum TopMenuAction
 /**
  * Top menu topobj types.
  */
-enum TopMenuObjectType
+public enum TopMenuObjectType
 {
 	TopMenuObject_Category = 0,         /**< Category (sub-menu branching from root) */
 	TopMenuObject_Item = 1              /**< Item on a sub-menu */
@@ -103,7 +103,7 @@ enum TopMenuObjectType
 /**
  * Top menu starting positions for display.
  */
-enum TopMenuPosition
+public enum TopMenuPosition
 {
 	TopMenuPosition_Start = 0,          /**< Start/root of the menu */
 	TopMenuPosition_LastRoot = 1,       /**< Last position in the root menu */
@@ -113,7 +113,7 @@ enum TopMenuPosition
 /**
  * Top menu topobj tag for type checking.
  */
-enum TopMenuObject
+public enum TopMenuObject
 {
 	INVALID_TOPMENUOBJECT = 0
 };

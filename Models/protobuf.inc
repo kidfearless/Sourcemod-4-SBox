@@ -41,7 +41,7 @@ public const object PB_FIELD_NOT_REPEATED -1
 
 public class Protobuf : Handle
 {
-	// Reads an int32, uint32, sint32, fixed32, sfixed32, or enum value from a protobuf message.
+	// Reads an int32, uint32, sint32, fixed32, sfixed32, or public enum value from a protobuf message.
 	//
 	// @param field      Field name.
 	// @param index      Index into repeated field.
@@ -129,7 +129,7 @@ public class Protobuf : Handle
 	// @error            Non-existent field, or repeated field.
 	public bool HasField(string field) { throw new NotImplementedException(); }
 
-	// Sets an int32, uint32, sint32, fixed32, sfixed32, or enum value on a protobuf message.
+	// Sets an int32, uint32, sint32, fixed32, sfixed32, or public enum value on a protobuf message.
 	//
 	// @param field      Field name.
 	// @param value      Integer value to set.
@@ -201,7 +201,7 @@ public class Protobuf : Handle
 	// @error            Non-existent field, or incorrect field type.
 	public void SetVector2D(string field, ReadOnlyCollection<float> vec[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Add an int32, uint32, sint32, fixed32, sfixed32, or enum value to a protobuf message repeated field.
+	// Add an int32, uint32, sint32, fixed32, sfixed32, or public enum value to a protobuf message repeated field.
 	//
 	// @param field      Field name.
 	// @param value      Integer value to add.
@@ -296,7 +296,7 @@ public class Protobuf : Handle
 };
 
 /**
- * Reads an int32, uint32, sint32, fixed32, sfixed32, or enum value from a protobuf message.
+ * Reads an int32, uint32, sint32, fixed32, sfixed32, or public enum value from a protobuf message.
  *
  * @param pb            protobuf handle.
  * @param field         Field name.
@@ -395,7 +395,7 @@ public static void PbReadVector2D(Handle pb, string field, float buffer[2], int 
 public static int PbGetRepeatedFieldCount(Handle pb, string field) { throw new NotImplementedException(); }
 
 /**
- * Sets an int32, uint32, sint32, fixed32, sfixed32, or enum value on a protobuf message.
+ * Sets an int32, uint32, sint32, fixed32, sfixed32, or public enum value on a protobuf message.
  *
  * @param pb            protobuf handle.
  * @param field         Field name.
@@ -483,7 +483,7 @@ public static void PbSetVector(Handle pb, string field, ReadOnlyCollection<float
 public static void PbSetVector2D(Handle pb, string field, ReadOnlyCollection<float> vec[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
- * Add an int32, uint32, sint32, fixed32, sfixed32, or enum value to a protobuf message repeated field.
+ * Add an int32, uint32, sint32, fixed32, sfixed32, or public enum value to a protobuf message repeated field.
  *
  * @param pb            protobuf handle.
  * @param field         Field name.

@@ -40,7 +40,7 @@ namespace Sourcemod
 /**
  * Event hook modes determining how hooking should be handled
  */
-enum EventHookMode
+public enum EventHookMode
 {
 	EventHookMode_Pre,                  //< Hook callback fired before event is fired */
 	EventHookMode_Post,                 //< Hook callback fired after event is fired */

@@ -40,7 +40,7 @@ namespace Sourcemod
 /**
  * UserMsg helper values.
  */
-enum UserMsg
+public enum UserMsg
 {
 	INVALID_MESSAGE_ID = -1
 };
@@ -48,7 +48,7 @@ enum UserMsg
 /**
  * UserMsg message serialization formats
  */
-enum UserMessageType
+public enum UserMessageType
 {
 	UM_BitBuf = 0,
 	UM_Protobuf

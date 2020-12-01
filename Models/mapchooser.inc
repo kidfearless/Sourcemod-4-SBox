@@ -34,7 +34,7 @@
 #endif
 public const object _mapchooser_included_
 
-enum NominateResult
+public enum NominateResult
 {
 	Nominate_Added,         /** The map was added to the nominate list */
 	Nominate_Replaced,      /** A clients existing nomination was replaced */
@@ -43,7 +43,7 @@ enum NominateResult
 	Nominate_VoteFull       /** This will only occur if force was set to false */
 };
 
-enum MapChange
+public enum MapChange
 {
 	MapChange_Instant,      /** Change map as soon as the voting results have come in */
 	MapChange_RoundEnd,     /** Change map at the end of the round */
@@ -128,12 +128,12 @@ public static bool EndOfMapVoteEnabled() { throw new NotImplementedException(); 
  * Called when mapchooser removes a nomination from its list.
  * Nominations cleared on map start will not trigger this forward
  */
-public static override void OnNominationRemoved(string map, int owner) { throw new NotImplementedException(); }
+public static virtual void OnNominationRemoved(string map, int owner) { throw new NotImplementedException(); }
 
 /**
  * Called when mapchooser starts a Map Vote.
  */
-public static override void OnMapVoteStarted() { throw new NotImplementedException(); }
+public static virtual void OnMapVoteStarted() { throw new NotImplementedException(); }
 
 public SharedPlugin __pl_mapchooser =
 {

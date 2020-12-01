@@ -57,7 +57,7 @@ public const object PCRE_UCP                0x20000000 /* Use Unicode properties
 /**
  * Regex expression error codes.
  */
-enum RegexError
+public enum RegexError
 {
 	REGEX_ERROR_NONE = 0,               /* No error */
 

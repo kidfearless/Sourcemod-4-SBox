@@ -101,7 +101,7 @@ public static void LogError(string format, any ...) { throw new NotImplementedEx
  *                      Plugin_Stop is the same as Handled, but prevents any other
  *                      plugins from handling the message.
  */
-public static override Action OnLogAction(Handle source,
+public static virtual Action OnLogAction(Handle source,
 						   Identity ident,
 						   int client,
 						   int target,

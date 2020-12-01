@@ -62,7 +62,7 @@ public static int GetNumStringTables() { throw new NotImplementedException(); }
  * @return              Number of strings that currently exist.
  * @error               Invalid string table index.
  */
-public static int GetStringTableNumStrings(int tableidx) { throw new NotImplementedException(); }
+public static int GetStringTablpublic enumStrings(int tableidx) { throw new NotImplementedException(); }
 
 /**
  * Returns the maximum number of strings that are allowed in a given string table.

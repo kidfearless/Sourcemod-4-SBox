@@ -79,7 +79,7 @@ struct Plugin
 #include <nextmap>
 #include <commandline>
 
-enum APLRes
+public enum APLRes
 {
 	APLRes_Success = 0,     /**< Plugin should load */
 	APLRes_Failure,         /**< Plugin shouldn't load and should display an error */
@@ -131,7 +131,7 @@ public class GameData : Handle
  * If any run-time error is thrown during this callback, the plugin will be marked
  * as failed.
  */
-public static override void OnPluginStart() { throw new NotImplementedException(); }
+public static virtual void OnPluginStart() { throw new NotImplementedException(); }
 
 /**
  * @deprecated Use AskPluginLoad2() instead.
@@ -139,12 +139,12 @@ public static override void OnPluginStart() { throw new NotImplementedException(
  * not be called, but old plugins with only AskPluginLoad() will work.
  */
 #pragma deprecated Use AskPluginLoad2() instead
-public static override bool AskPluginLoad(Handle myself, bool late, string error, int err_max) { throw new NotImplementedException(); }
+public static virtual bool AskPluginLoad(Handle myself, bool late, string error, int err_max) { throw new NotImplementedException(); }
 
 /**
  * Called before OnPluginStart, in case the plugin wants to check for load failure.
  * This is called even if the plugin type is "private."  Any natives from modules are
- * not available at this point.  Thus, this public static override should only be used for explicit
+ * not available at this point.  Thus, this public static virtual should only be used for explicit
  * pre-emptive things, such as adding dynamic natives, setting certain types of load
  * filters (such as not loading the plugin for certain games).
  *
@@ -159,7 +159,7 @@ public static override bool AskPluginLoad(Handle myself, bool late, string error
  * @param err_max       Maximum number of characters for error message buffer.
  * @return              APLRes_Success for load success, APLRes_Failure or APLRes_SilentFailure otherwise
  */
-public static override APLRes AskPluginLoad2(Handle myself, bool late, string error, int err_max) { throw new NotImplementedException(); }
+public static virtual APLRes AskPluginLoad2(Handle myself, bool late, string error, int err_max) { throw new NotImplementedException(); }
 
 /**
  * Called when the plugin is about to be unloaded.
@@ -168,33 +168,33 @@ public static override APLRes AskPluginLoad2(Handle myself, bool late, string er
  * SourceMod guarantees that plugin shutdown automatically and correctly releases
  * all resources.
  */
-public static override void OnPluginEnd() { throw new NotImplementedException(); }
+public static virtual void OnPluginEnd() { throw new NotImplementedException(); }
 
 /**
  * Called when the plugin's pause status is changing.
  *
  * @param pause         True if the plugin is being paused, false otherwise.
  */
-public static override void OnPluginPauseChange(bool pause) { throw new NotImplementedException(); }
+public static virtual void OnPluginPauseChange(bool pause) { throw new NotImplementedException(); }
 
 /**
  * Called before every server frame.  Note that you should avoid
  * doing expensive computations or declaring large local arrays.
  */
-public static override void OnGameFrame() { throw new NotImplementedException(); }
+public static virtual void OnGameFrame() { throw new NotImplementedException(); }
 
 /**
  * Called when the map is loaded.
  *
  * @note This used to be OnServerLoad(), which is now deprecated.
- *       Plugins still using the old public static override will work.
+ *       Plugins still using the old public static virtual will work.
  */
-public static override void OnMapStart() { throw new NotImplementedException(); }
+public static virtual void OnMapStart() { throw new NotImplementedException(); }
 
 /**
  * Called right before a map ends.
  */
-public static override void OnMapEnd() { throw new NotImplementedException(); }
+public static virtual void OnMapEnd() { throw new NotImplementedException(); }
 
 /**
  * Called when the map has loaded, servercfgfile (server.cfg) has been
@@ -204,7 +204,7 @@ public static override void OnMapEnd() { throw new NotImplementedException(); }
  * @note This will always be called once and only once per map.  It will be
  *       called after OnMapStart().
  */
-public static override void OnConfigsExecuted() { throw new NotImplementedException(); }
+public static virtual void OnConfigsExecuted() { throw new NotImplementedException(); }
 
 /**
  * This is called once, right after OnMapStart() but any time before
@@ -219,20 +219,20 @@ public static override void OnConfigsExecuted() { throw new NotImplementedExcept
  * Unlike OnMapStart() and OnConfigsExecuted(), this is not called on
  * late loads that occur after OnMapStart().
  */
-public static override void OnAutoConfigsBuffered() { throw new NotImplementedException(); }
+public static virtual void OnAutoConfigsBuffered() { throw new NotImplementedException(); }
 
 /**
  * @deprecated          Use OnConfigsExecuted() instead.
  */
 #pragma deprecated Use OnConfigsExecuted() instead
-public static override void OnServerCfg() { throw new NotImplementedException(); }
+public static virtual void OnServerCfg() { throw new NotImplementedException(); }
 
 /**
  * Called after all plugins have been loaded.  This is called once for
  * every plugin.  If a plugin late loads, it will be called immediately
  * after OnPluginStart().
  */
-public static override void OnAllPluginsLoaded() { throw new NotImplementedException(); }
+public static virtual void OnAllPluginsLoaded() { throw new NotImplementedException(); }
 
 /**
  * Returns the calling plugin's Handle.
@@ -487,7 +487,7 @@ public static int GetExtensionFileStatus(string name, string error="", int maxle
  *
  * @param name          Library name.
  */
-public static override void OnLibraryAdded(string name) { throw new NotImplementedException(); }
+public static virtual void OnLibraryAdded(string name) { throw new NotImplementedException(); }
 
 /**
  * Called right before a library is removed.
@@ -496,7 +496,7 @@ public static override void OnLibraryAdded(string name) { throw new NotImplement
  *
  * @param name          Library name.
  */
-public static override void OnLibraryRemoved(string name) { throw new NotImplementedException(); }
+public static virtual void OnLibraryRemoved(string name) { throw new NotImplementedException(); }
 
 public const object MAPLIST_FLAG_MAPSFOLDER    (1<<0)    /**< On failure, use all maps in the maps folder. */
 public const object MAPLIST_FLAG_CLEARARRAY    (1<<1)    /**< If an input array is specified, clear it before adding. */
@@ -575,7 +575,7 @@ public static void SetMapListCompatBind(string name, string file) { throw new No
  * @param client        Client index.  The server (0) will never be passed.
  * @return              True if client is spamming the server, false otherwise.
  */
-public static override bool OnClientFloodCheck(int client) { throw new NotImplementedException(); }
+public static virtual bool OnClientFloodCheck(int client) { throw new NotImplementedException(); }
 
 /**
  * Called after a client's flood check has been computed.  This can be used
@@ -588,12 +588,12 @@ public static override bool OnClientFloodCheck(int client) { throw new NotImplem
  * @param client        Client index.  The server (0) will never be passed.
  * @param blocked       True if client flooded last "say", false otherwise.
  */
-public static override void OnClientFloodResult(int client, bool blocked) { throw new NotImplementedException(); }
+public static virtual void OnClientFloodResult(int client, bool blocked) { throw new NotImplementedException(); }
 
 /**
  * Feature types.
  */
-enum FeatureType
+public enum FeatureType
 {
 	/**
 	 * A public static function call.
@@ -613,7 +613,7 @@ enum FeatureType
 /**
  * Feature statuses.
  */
-enum FeatureStatus
+public enum FeatureStatus
 {
 	/**
 	 * Feature is available for use.
@@ -667,14 +667,14 @@ public static void RequireFeature(FeatureType type, string name,
 /**
  * Represents how many bytes we can read from an address with one load
  */
-enum NumberType
+public enum NumberType
 {
     NumberType_Int8,
     NumberType_Int16,
     NumberType_Int32
 };
 
-enum Address
+public enum Address
 {
     Address_Null = 0               // a typical invalid result when an address lookup fails
 };
@@ -713,7 +713,7 @@ public class FrameIterator : Handle {
 	public void Reset() { throw new NotImplementedException(); }
 
 	// Returns the line number of the current function call.
-	public int LineNumber {
+	public int Linpublic enumber {
 		get { throw new NotImplementedException(); }
 	}
 

@@ -37,7 +37,7 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-enum RoundState {
+public enum RoundState {
 	// initialize the game, create teams
 	RoundState_Init,
 

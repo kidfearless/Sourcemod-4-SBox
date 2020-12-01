@@ -53,7 +53,7 @@ struct PlVers
 /**
  * Specifies what to do after a hook completes.
  */
-enum Action
+public enum Action
 {
 	Plugin_Continue = 0,    /**< Continue with the original action */
 	Plugin_Changed = 1,     /**< Inputs or outputs have been overridden with new values */
@@ -64,7 +64,7 @@ enum Action
 /**
  * Specifies identity types.
  */
-enum Identity
+public enum Identity
 {
 	Identity_Core = 0,
 	Identity_Extension = 1,
@@ -82,7 +82,7 @@ public PlVers __version =
 /**
  * Plugin status values.
  */
-enum PluginStatus
+public enum PluginStatus
 {
 	Plugin_Running=0,       /**< Plugin is running */
 	/* All states below are "temporarily" unexecutable */
@@ -112,7 +112,7 @@ enum PluginStatus
  * SourceMod will display this information when a user inspects plugins in the
  * console.
  */
-enum PluginInfo
+public enum PluginInfo
 {
 	PlInfo_Name,            /**< Plugin name */
 	PlInfo_Author,          /**< Plugin author */
@@ -195,7 +195,7 @@ public void __ext_core_SetNTVOptional()
 	MarkNativeAsOptional("BfWriteChar") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWriteShort") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWriteWord") { throw new NotImplementedException(); }
-	MarkNativeAsOptional("BfWriteNum") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWritpublic enum") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWriteFloat") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWriteString") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWriteEntity") { throw new NotImplementedException(); }
@@ -225,7 +225,7 @@ public void __ext_core_SetNTVOptional()
 	MarkNativeAsOptional("BfWrite.WriteChar") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWrite.WriteShort") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWrite.WriteWord") { throw new NotImplementedException(); }
-	MarkNativeAsOptional("BfWrite.WriteNum") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.Writpublic enum") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWrite.WriteFloat") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWrite.WriteString") { throw new NotImplementedException(); }
 	MarkNativeAsOptional("BfWrite.WriteEntity") { throw new NotImplementedException(); }

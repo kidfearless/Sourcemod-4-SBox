@@ -40,7 +40,7 @@ namespace Sourcemod
 /**
  * KeyValue data value types
  */
-enum KvDataTypes
+public enum KvDataTypes
 {
 	KvData_None = 0,    /**< Type could not be identified, or no type */
 	KvData_String,      /**< String value */

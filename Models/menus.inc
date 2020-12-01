@@ -40,7 +40,7 @@ namespace Sourcemod
 /**
  * Low-level drawing style of the menu.
  */
-enum MenuStyle
+public enum MenuStyle
 {
 	MenuStyle_Default = 0,      /**< The "default" menu style for the mod */
 	MenuStyle_Valve = 1,        /**< The Valve provided menu style (Used on HL2DM) */
@@ -50,7 +50,7 @@ enum MenuStyle
 /**
  * Different actions for the menu "pump" callback
  */
-enum MenuAction
+public enum MenuAction
 {
 	MenuAction_Start = (1<<0),      /**< A menu has been started (nothing passed) */
 	MenuAction_Display = (1<<1),    /**< A menu is about to be displayed (param1=client, param2=MenuPanel Handle) */
@@ -100,7 +100,7 @@ public const object VOTEFLAG_NO_REVOTES         (1<<0)  /**< Players cannot chan
 /**
  * Reasons a menu can be cancelled (MenuAction_Cancel).
  */
-enum
+public enum
 {
 	MenuCancel_Disconnected = -1,   /**< Client dropped from the server */
 	MenuCancel_Interrupted = -2,    /**< Client was interrupted with another menu */
@@ -113,7 +113,7 @@ enum
 /**
  * Reasons a vote can be cancelled (MenuAction_VoteCancel).
  */
-enum
+public enum
 {
 	VoteCancel_Generic = -1,        /**< Vote was generically cancelled. */
 	VoteCancel_NoVotes = -2         /**< Vote did not receive any votes. */
@@ -122,7 +122,7 @@ enum
 /**
  * Reasons a menu ended (MenuAction_End).
  */
-enum
+public enum
 {
 	MenuEnd_Selected = 0,           /**< Menu item was selected */
 	MenuEnd_VotingDone = -1,        /**< Voting finished */
@@ -135,7 +135,7 @@ enum
 /**
  * Describes a menu's source
  */
-enum MenuSource
+public enum MenuSource
 {
 	MenuSource_None = 0,            /**< No menu is being displayed */
 	MenuSource_External = 1,        /**< External menu */

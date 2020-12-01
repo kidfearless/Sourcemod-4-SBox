@@ -55,7 +55,7 @@ namespace Sourcemod
 #include <sdktools_gamerules>
 #include <sdktools_client>
 
-enum SDKCallType
+public enum SDKCallType
 {
 	SDKCall_Static,         /**< Static call */
 	SDKCall_Entity,         /**< CBaseEntity call */
@@ -65,20 +65,20 @@ enum SDKCallType
 	SDKCall_Raw             /**< |this| pointer with an arbitrary address */
 };
 
-enum SDKLibrary
+public enum SDKLibrary
 {
 	SDKLibrary_Server,      /**< server.dll/server_i486.so */
 	SDKLibrary_Engine       /**< engine.dll/engine_*.so */
 };
 
-enum SDKFuncConfSource
+public enum SDKFuncConfSource
 {
 	SDKConf_Virtual = 0,    /**< Read a virtual index from the Offsets section */
 	SDKConf_Signature = 1,  /**< Read a signature from the Signatures section */
 	SDKConf_Address = 2     /**< Read an address from the Addresses section */
 };
 
-enum SDKType
+public enum SDKType
 {
 	SDKType_CBaseEntity,    /**< CBaseEntity (always as pointer) */
 	SDKType_CBasePlayer,    /**< CBasePlayer (always as pointer) */
@@ -91,7 +91,7 @@ enum SDKType
 	SDKType_Bool            /**< Boolean (any) */
 };
 
-enum SDKPassMethod
+public enum SDKPassMethod
 {
 	SDKPass_Pointer,        /**< Pass as a pointer */
 	SDKPass_Plain,          /**< Pass as plain data */

@@ -91,8 +91,8 @@ public static void TE_SetupSparks(ReadOnlyCollection<float> pos[3], ReadOnlyColl
 	TE_Start("Sparks") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin[0]", pos) { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecDir", dir) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nMagnitude", Magnitude) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nTrailLength", TrailLength) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nMagnitude", Magnitude) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nTrailLength", TrailLength) { throw new NotImplementedException(); }
 }
 
 /**
@@ -107,9 +107,9 @@ public static void TE_SetupSmoke(ReadOnlyCollection<float> pos[3], int Model, fl
 {
 	TE_Start("Smoke") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nModelIndex", Model) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nModelIndex", Model) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fScale", Scale) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
 }
 
 /**
@@ -143,7 +143,7 @@ public static void TE_SetupMuzzleFlash(ReadOnlyCollection<float> pos[3], ReadOnl
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecAngles", angles) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_flScale", Scale) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nType", Type) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nType", Type) { throw new NotImplementedException(); }
 }
 
 /**
@@ -171,7 +171,7 @@ public static void TE_SetupEnergySplash(ReadOnlyCollection<float> pos[3], ReadOn
 	TE_Start("Energy Splash") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecPos", pos) { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecDir", dir) { throw new NotImplementedException(); }
-	TE_WriteNum("m_bExplosive", Explosive) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_bExplosive", Explosive) { throw new NotImplementedException(); }
 }
 
 /**
@@ -200,10 +200,10 @@ public static void TE_SetupGlowSprite(ReadOnlyCollection<float> pos[3], int Mode
 {
 	TE_Start("GlowSprite") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nModelIndex", Model) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nModelIndex", Model) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fScale", Size) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nBrightness", Brightness) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nBrightness", Brightness) { throw new NotImplementedException(); }
 }
 
 /**
@@ -224,13 +224,13 @@ public static void TE_SetupExplosion(ReadOnlyCollection<float> pos[3], int Model
 	TE_Start("Explosion") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin[0]", pos) { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecNormal", normal) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nModelIndex", Model) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nModelIndex", Model) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fScale", Scale) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFrameRate", Framerate) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFlags", Flags) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nRadius", Radius) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nMagnitude", Magnitude) { throw new NotImplementedException(); }
-	TE_WriteNum("m_chMaterialType", MaterialType) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFrameRate", Framerate) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFlags", Flags) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nRadius", Radius) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nMagnitude", Magnitude) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_chMaterialType", MaterialType) { throw new NotImplementedException(); }
 }
 
 /**
@@ -248,13 +248,13 @@ public static void TE_SetupBloodSprite(ReadOnlyCollection<float> pos[3], ReadOnl
 	TE_Start("Blood Sprite") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecDirection", dir) { throw new NotImplementedException(); }
-	TE_WriteNum("r", color[0]) { throw new NotImplementedException(); }
-	TE_WriteNum("g", color[1]) { throw new NotImplementedException(); }
-	TE_WriteNum("b", color[2]) { throw new NotImplementedException(); }
-	TE_WriteNum("a", color[3]) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nSize", Size) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nSprayModel", SprayModel) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nDropModel", BloodDropModel) { throw new NotImplementedException(); }
+	TE_Writpublic enum("r", color[0]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("g", color[1]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("b", color[2]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("a", color[3]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nSize", Size) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nSprayModel", SprayModel) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nDropModel", BloodDropModel) { throw new NotImplementedException(); }
 }
 
 /**
@@ -281,21 +281,21 @@ public static void TE_SetupBeamRingPoint(ReadOnlyCollection<float> center[3], fl
 	TE_WriteVector("m_vecCenter", center) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_flStartRadius", Start_Radius) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_flEndRadius", End_Radius) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fEndWidth", Width) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fAmplitude", Amplitude) { throw new NotImplementedException(); }
-	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
-	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
-	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
-	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nSpeed", Speed) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFlags", Flags) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFadeLength", 0) { throw new NotImplementedException(); }
+	TE_Writpublic enum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nSpeed", Speed) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFlags", Flags) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFadeLength", 0) { throw new NotImplementedException(); }
 }
 
 /**
@@ -321,20 +321,20 @@ public static void TE_SetupBeamPoints(ReadOnlyCollection<float> start[3], ReadOn
 	TE_Start("BeamPoints") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecStartPoint", start) { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecEndPoint", end) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fEndWidth", EndWidth) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fAmplitude", Amplitude) { throw new NotImplementedException(); }
-	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
-	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
-	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
-	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nSpeed", Speed) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
+	TE_Writpublic enum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nSpeed", Speed) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
 }
 
 /**
@@ -360,20 +360,20 @@ public static void TE_SetupBeamLaser(int StartEntity, int EndEntity, int ModelIn
 	TE_Start("BeamLaser") { throw new NotImplementedException(); }
 	TE_WriteEncodedEnt("m_nStartEntity", StartEntity) { throw new NotImplementedException(); }
 	TE_WriteEncodedEnt("m_nEndEntity", EndEntity) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fEndWidth", EndWidth) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fAmplitude", Amplitude) { throw new NotImplementedException(); }
-	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
-	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
-	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
-	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nSpeed", Speed) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
+	TE_Writpublic enum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nSpeed", Speed) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
 }
 
 /**
@@ -397,21 +397,21 @@ public static void TE_SetupBeamRing(int StartEntity, int EndEntity, int ModelInd
 	TE_Start("BeamRing") { throw new NotImplementedException(); }
 	TE_WriteEncodedEnt("m_nStartEntity", StartEntity) { throw new NotImplementedException(); }
 	TE_WriteEncodedEnt("m_nEndEntity", EndEntity) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fEndWidth", Width) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fAmplitude", Amplitude) { throw new NotImplementedException(); }
-	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
-	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
-	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
-	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nSpeed", Speed) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFadeLength", 0) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFlags", Flags) { throw new NotImplementedException(); }
+	TE_Writpublic enum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nSpeed", Speed) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFadeLength", 0) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFlags", Flags) { throw new NotImplementedException(); }
 }
 
 /**
@@ -430,18 +430,18 @@ public static void TE_SetupBeamFollow(int EntIndex, int ModelIndex, int HaloInde
 {
 	TE_Start("BeamFollow") { throw new NotImplementedException(); }
 	TE_WriteEncodedEnt("m_iEntIndex", EntIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nStartFrame", 0) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFrameRate", 0) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nStartFrame", 0) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFrameRate", 0) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
 	TE_WriteFloat("m_fEndWidth", EndWidth) { throw new NotImplementedException(); }
-	TE_WriteNum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
-	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
-	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
-	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
-	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
+	TE_Writpublic enum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_Writpublic enum("a", Color[3]) { throw new NotImplementedException(); }
 }
 	}
 }

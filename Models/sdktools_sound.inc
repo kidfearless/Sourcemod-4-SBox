@@ -55,7 +55,7 @@ public const object SOUND_FROM_WORLD        0
 /**
  * Sound channels.
  */
-enum
+public enum
 {
 	SNDCHAN_REPLACE = -1,       /**< Unknown */
 	SNDCHAN_AUTO = 0,           /**< Auto */
@@ -72,7 +72,7 @@ enum
 /**
  * Sound flags for the sound emitter system.
  */
-enum
+public enum
 {
 	SND_NOFLAGS= 0,             /**< Nothing */
 	SND_CHANGEVOL = 1,          /**< Change sound volume */
@@ -88,7 +88,7 @@ enum
 /**
  * Various predefined sound levels in dB.
  */
-enum
+public enum
 {
 	SNDLEVEL_NONE = 0,          /**< None */
 	SNDLEVEL_RUSTLE = 20,       /**< Rustling leaves */

@@ -41,7 +41,7 @@ namespace Sourcemod
 /**
  * Opaque handle to a datapack position.
  */
-enum DataPackPos: {};
+public enum DataPackPos: {};
 
 // A DataPack allows serializing multiple variables into a single stream.
 public class DataPack : Handle

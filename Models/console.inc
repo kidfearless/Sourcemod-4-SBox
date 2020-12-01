@@ -42,7 +42,7 @@ public const object INVALID_FCVAR_FLAGS (-1)
 /**
  * Console variable query helper values.
  */
-enum QueryCookie
+public enum QueryCookie
 {
 	QUERYCOOKIE_FAILED = 0
 };
@@ -50,7 +50,7 @@ enum QueryCookie
 /**
  * Reply sources for commands.
  */
-enum ReplySource
+public enum ReplySource
 {
 	SM_REPLY_TO_CONSOLE = 0,
 	SM_REPLY_TO_CHAT = 1
@@ -735,7 +735,7 @@ public static bool CommandExists(string command)
  * @return              An Action value. Returning Plugin_Handled bypasses the game function call.
  *                      Returning Plugin_Stop bypasses the post hook as well as the game function.
  */
-public static override Action OnClientSayCommand(int client, string command, string sArgs) { throw new NotImplementedException(); }
+public static virtual Action OnClientSayCommand(int client, string command, string sArgs) { throw new NotImplementedException(); }
 
 /**
  * Global post listener for the chat commands.
@@ -744,6 +744,6 @@ public static override Action OnClientSayCommand(int client, string command, str
  * @param command       Command name.
  * @param sArgs         Chat argument string.
  */
-public static override void OnClientSayCommand_Post(int client, string command, string sArgs) { throw new NotImplementedException(); }
+public static virtual void OnClientSayCommand_Post(int client, string command, string sArgs) { throw new NotImplementedException(); }
 	}
 }

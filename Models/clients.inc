@@ -40,7 +40,7 @@ namespace Sourcemod
 /**
  * Network flow directions.
  */
-enum NetFlow
+public enum NetFlow
 {
 	NetFlow_Outgoing = 0,   /**< Outgoing traffic */
 	NetFlow_Incoming,       /**< Incoming traffic */
@@ -56,7 +56,7 @@ enum NetFlow
  * "STEAM_ID_LAN" - Authentication is disabled because of being on a LAN server.
  * "BOT" - The client is a bot.
  */
-enum AuthIdType
+public enum AuthIdType
 {
 	AuthId_Engine = 0,     /**< The game-specific auth string as returned from the engine */
 	
@@ -79,7 +79,7 @@ public const int MaxClients;   /**< Maximum number of players the server support
 /**
  * Called on client connection.  If you return true, the client will be allowed in the server.
  * If you return false (or return nothing), the client will be rejected.  If the client is 
- * rejected by this public static override or any other, OnClientDisconnect will not be called.
+ * rejected by this public static virtual or any other, OnClientDisconnect will not be called.
  *
  * Note: Do not write to rejectmsg if you plan on returning true.  If multiple plugins write
  * to the string buffer, it is not defined which plugin's string will be shown to the client,
@@ -90,14 +90,14 @@ public const int MaxClients;   /**< Maximum number of players the server support
  * @param maxlen        Maximum number of characters for rejection buffer.
  * @return              True to validate client's connection, false to refuse it.
  */
-public static override bool OnClientConnect(int client, string rejectmsg, int maxlen) { throw new NotImplementedException(); }
+public static virtual bool OnClientConnect(int client, string rejectmsg, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Called once a client successfully connects.  This callback is paired with OnClientDisconnect.
  *
  * @param client        Client index.
  */
-public static override void OnClientConnected(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientConnected(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is entering the game.
@@ -112,21 +112,21 @@ public static override void OnClientConnected(int client) { throw new NotImpleme
  *
  * @param client        Client index.
  */
-public static override void OnClientPutInServer(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientPutInServer(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is disconnecting from the server.
  *
  * @param client        Client index.
  */
-public static override void OnClientDisconnect(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientDisconnect(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is disconnected from the server.
  *
  * @param client        Client index.
  */
-public static override void OnClientDisconnect_Post(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientDisconnect_Post(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is sending a command.
@@ -139,7 +139,7 @@ public static override void OnClientDisconnect_Post(int client) { throw new NotI
  * @return              Plugin_Handled blocks the command from being sent,
  *                      and Plugin_Continue resumes normal functionality.
  */
-public static override Action OnClientCommand(int client, int args) { throw new NotImplementedException(); }
+public static virtual Action OnClientCommand(int client, int args) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is sending a KeyValues command.
@@ -147,11 +147,11 @@ public static override Action OnClientCommand(int client, int args) { throw new 
  * @param client        Client index.
  * @param kv            Editable KeyValues data to be sent as the command.
  *                      (This handle should not be stored and will be closed
- *                      after this public static override completes.)
+ *                      after this public static virtual completes.)
  * @return              Plugin_Handled blocks the command from being sent,
  *                      and Plugin_Continue resumes normal functionality.
  */
-public static override Action OnClientCommandKeyValues(int client, KeyValues kv) { throw new NotImplementedException(); }
+public static virtual Action OnClientCommandKeyValues(int client, KeyValues kv) { throw new NotImplementedException(); }
 
 /**
  * Called after a client has sent a KeyValues command.
@@ -159,16 +159,16 @@ public static override Action OnClientCommandKeyValues(int client, KeyValues kv)
  * @param client        Client index.
  * @param kv            KeyValues data sent as the command.
  *                      (This handle should not be stored and will be closed
- *                      after this public static override completes.)
+ *                      after this public static virtual completes.)
  */
-public static override void OnClientCommandKeyValues_Post(int client, KeyValues kv) { throw new NotImplementedException(); }
+public static virtual void OnClientCommandKeyValues_Post(int client, KeyValues kv) { throw new NotImplementedException(); }
 
 /**
  * Called whenever the client's settings are changed.
  *
  * @param client        Client index.
  */
-public static override void OnClientSettingsChanged(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientSettingsChanged(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client receives an auth ID.  The state of a client's 
@@ -180,7 +180,7 @@ public static override void OnClientSettingsChanged(int client) { throw new NotI
  * @param client        Client index.
  * @param auth          Client Steam2 id, if available, else engine auth id.
  */
-public static override void OnClientAuthorized(int client, string auth) { throw new NotImplementedException(); }
+public static virtual void OnClientAuthorized(int client, string auth) { throw new NotImplementedException(); }
 
 /**
  * Called once a client is authorized and fully in-game, but 
@@ -198,7 +198,7 @@ public static override void OnClientAuthorized(int client, string auth) { throw 
  * @param client        Client index.
  * @return              Plugin_Handled to block admin checks.
  */
-public static override Action OnClientPreAdminCheck(int client) { throw new NotImplementedException(); }
+public static virtual Action OnClientPreAdminCheck(int client) { throw new NotImplementedException(); }
 
 /**
  * Called directly before OnClientPostAdminCheck() as a method to 
@@ -214,7 +214,7 @@ public static override Action OnClientPreAdminCheck(int client) { throw new NotI
  *
  * @param client        Client index.
  */
-public static override void OnClientPostAdminFilter(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientPostAdminFilter(int client) { throw new NotImplementedException(); }
 
 /**
  * Called once a client is authorized and fully in-game, and 
@@ -225,7 +225,7 @@ public static override void OnClientPostAdminFilter(int client) { throw new NotI
  *
  * @param client        Client index.
  */
-public static override void OnClientPostAdminCheck(int client) { throw new NotImplementedException(); }
+public static virtual void OnClientPostAdminCheck(int client) { throw new NotImplementedException(); }
 
 /**
  * This function is deprecated. Use the MaxClients variable instead.
@@ -323,7 +323,7 @@ public static bool GetClientAuthId(int client, AuthIdType authType, string auth,
 
 /**
  * Returns the client's Steam account ID, a number uniquely identifying a given Steam account.
- * This number is the basis for the various display SteamID forms, see the AuthIdType enum for examples.
+ * This number is the basis for the various display SteamID forms, see the AuthIdType public enum for examples.
  *
  * @param client        Client Index.
  * @param validate      Check backend validation status.

@@ -89,7 +89,7 @@ public static bool TE_IsValidProp(string prop) { throw new NotImplementedExcepti
  * @param value         Integer value to set.
  * @error               public not found.
  */
-public static void TE_WriteNum(string prop, int value) { throw new NotImplementedException(); }
+public static void TE_Writpublic enum(string prop, int value) { throw new NotImplementedException(); }
 
 /**
  * Reads an integer value in the current temp entity.
@@ -176,7 +176,7 @@ public static void TE_Send(const int[] clients, int numClients, float delay=0.0)
 public static void TE_WriteEncodedEnt(string prop, int value)
 {
 	int encvalue = (value & 0x0FFF) | ((1 & 0xF)<<12) { throw new NotImplementedException(); }
-	TE_WriteNum(prop, encvalue) { throw new NotImplementedException(); }
+	TE_Writpublic enum(prop, encvalue) { throw new NotImplementedException(); }
 }
 
 /**

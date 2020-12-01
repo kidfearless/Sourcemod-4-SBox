@@ -160,7 +160,7 @@ public const object DISPSURF_FLAG_SURFPROP2       (1<<4)
  * @endsection
  */
 
-enum RayType
+public enum RayType
 {
 	RayType_EndPoint,   /**< The trace ray will go from the start position to the end position. */
 	RayType_Infinite    /**< The trace ray will go from the start position to infinity using a direction vector. */
@@ -188,22 +188,22 @@ typeset TraceEntityFilter
 	function bool (int entity, int contentsMask, any data) { throw new NotImplementedException(); }
 };
 
-typeset TraceEntityEnumerator
+typeset TraceEntitypublic enumerator
 {
 	/**
-	 * Called for each entity enumerated with EnumerateEntities*.
+	 * Called for each entity public enumerated with public enumerateEntities*.
 	 *
 	 * @param entity        Entity index.
-	 * @return              True to continue enumerating, otherwise false.
+	 * @return              True to continue public enumerating, otherwise false.
 	 */
 	function bool (int entity) { throw new NotImplementedException(); }
 
 	/**
-	 * Called for each entity enumerated with EnumerateEntities*.
+	 * Called for each entity public enumerated with public enumerateEntities*.
 	 *
 	 * @param entity        Entity index.
 	 * @param data          Data value, if used.
-	 * @return              True to continue enumerating, otherwise false. */
+	 * @return              True to continue public enumerating, otherwise false. */
 	function bool (int entity, any data) { throw new NotImplementedException(); }
 }
 
@@ -255,7 +255,7 @@ public static void TR_TraceHull(ReadOnlyCollection<float> pos[3],
                          int flags) { throw new NotImplementedException(); }
 
 /**
- * Enumerates over entities along a ray. This may find entities that are
+ * public enumerates over entities along a ray. This may find entities that are
  * close to the ray but do not actually intersect it. Use TR_Clip*RayToEntity
  * with TR_DidHit to check if the ray actually intersects the entity.
  *
@@ -264,19 +264,19 @@ public static void TR_TraceHull(ReadOnlyCollection<float> pos[3],
  *                      point, or the direction angle.
  * @param mask          Mask to use for the trace. See PARTITION_* flags.
  * @param rtype         Method to calculate the ray direction.
- * @param enumerator    Function to use as enumerator. For each entity found
+ * @param public enumerator    Function to use as public enumerator. For each entity found
  *                      along the ray, this function is called.
- * @param data          Arbitrary data value to pass through to the enumerator.
+ * @param data          Arbitrary data value to pass through to the public enumerator.
  */
-public static void TR_EnumerateEntities(ReadOnlyCollection<float> pos[3],
+public static void TR_public enumerateEntities(ReadOnlyCollection<float> pos[3],
                                  ReadOnlyCollection<float> vec[3],
                                  int mask,
                                  RayType rtype,
-                                 TraceEntityEnumerator enumerator,
+                                 TraceEntitypublic enumerator public enumerator,
                                  any data=0) { throw new NotImplementedException(); }
 
 /**
- * Enumerates over entities along a ray hull. This may find entities that are
+ * public enumerates over entities along a ray hull. This may find entities that are
  * close to the ray but do not actually intersect it. Use TR_Clip*RayToEntity
  * with TR_DidHit to check if the ray actually intersects the entity.
  *
@@ -285,62 +285,62 @@ public static void TR_EnumerateEntities(ReadOnlyCollection<float> pos[3],
  * @param mins          Hull minimum size.
  * @param maxs          Hull maximum size.
  * @param mask          Mask to use for the trace. See PARTITION_* flags.
- * @param enumerator    Function to use as enumerator. For each entity found
+ * @param public enumerator    Function to use as public enumerator. For each entity found
  *                      along the ray, this function is called.
- * @param data          Arbitrary data value to pass through to the enumerator.
+ * @param data          Arbitrary data value to pass through to the public enumerator.
  */
-public static void TR_EnumerateEntitiesHull(ReadOnlyCollection<float> pos[3],
+public static void TR_public enumerateEntitiesHull(ReadOnlyCollection<float> pos[3],
                                     ReadOnlyCollection<float> vec[3],
                                     ReadOnlyCollection<float> mins[3],
                                     ReadOnlyCollection<float> maxs[3],
                                     int mask,
-                                    TraceEntityEnumerator enumerator,
+                                    TraceEntitypublic enumerator public enumerator,
                                     any data=0) { throw new NotImplementedException(); }
 
 /**
- * Enumerates over entities in a sphere.
+ * public enumerates over entities in a sphere.
  *
  * @param pos           Starting position of the ray.
  * @param radius        Radius of the ray.
  * @param mask          Mask to use for the trace. See PARTITION_* flags.
- * @param enumerator    Function to use as enumerator. For each entity found
+ * @param public enumerator    Function to use as public enumerator. For each entity found
  *                      along the ray, this function is called.
- * @param data          Arbitrary data value to pass through to the enumerator.
+ * @param data          Arbitrary data value to pass through to the public enumerator.
  */
-public static void TR_EnumerateEntitiesSphere(ReadOnlyCollection<float> pos[3],
+public static void TR_public enumerateEntitiesSphere(ReadOnlyCollection<float> pos[3],
                                     float radius,
                                     int mask,
-                                    TraceEntityEnumerator enumerator,
+                                    TraceEntitypublic enumerator public enumerator,
                                     any data=0) { throw new NotImplementedException(); }
                                     
 /**
- * Enumerates over entities in a box.
+ * public enumerates over entities in a box.
  *
  * @param mins          Box minimum size.
  * @param maxs          Box maximum size.
  * @param mask          Mask to use for the trace. See PARTITION_* flags.
- * @param enumerator    Function to use as enumerator. For each entity found
+ * @param public enumerator    Function to use as public enumerator. For each entity found
  *                      along the box, this function is called.
- * @param data          Arbitrary data value to pass through to the enumerator.
+ * @param data          Arbitrary data value to pass through to the public enumerator.
  */
-public static void TR_EnumerateEntitiesBox(ReadOnlyCollection<float> mins[3],
+public static void TR_public enumerateEntitiesBox(ReadOnlyCollection<float> mins[3],
                                     ReadOnlyCollection<float> maxs[3],
                                     int mask,
-                                    TraceEntityEnumerator enumerator,
+                                    TraceEntitypublic enumerator public enumerator,
                                     any data=0) { throw new NotImplementedException(); }
         
 /**
- * Enumerates over entities at point.
+ * public enumerates over entities at point.
  *
  * @param pos           Position of the point.
  * @param mask          Mask to use for the trace. See PARTITION_* flags.
- * @param enumerator    Function to use as enumerator. For each entity found
+ * @param public enumerator    Function to use as public enumerator. For each entity found
  *                      along the point, this function is called.
- * @param data          Arbitrary data value to pass through to the enumerator.
+ * @param data          Arbitrary data value to pass through to the public enumerator.
  */
-public static void TR_EnumerateEntitiesPoint(ReadOnlyCollection<float> pos[3],
+public static void TR_public enumerateEntitiesPoint(ReadOnlyCollection<float> pos[3],
                                     int mask,
-                                    TraceEntityEnumerator enumerator,
+                                    TraceEntitypublic enumerator public enumerator,
                                     any data=0) { throw new NotImplementedException(); }
         
 /**
