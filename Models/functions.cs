@@ -38,7 +38,7 @@ namespace Sourcemod
 {
 	public partial class SourceMod
 	{
-
+		public const dynamic INVALID_FUNCTION = null;
 		public const int SP_PARAMFLAG_BYREF = (1 << 0);  /**< Internal use only. */
 
 		/**
