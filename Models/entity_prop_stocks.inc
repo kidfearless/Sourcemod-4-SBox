@@ -99,72 +99,72 @@ public enum RenderFx
 };
 
 // These defines are for client button presses.
-public const object IN_ATTACK                (1 << 0)
-public const object IN_JUMP                  (1 << 1)
-public const object IN_DUCK                  (1 << 2)
-public const object IN_public static virtual               (1 << 3)
-public const object IN_BACK                  (1 << 4)
-public const object IN_USE                   (1 << 5)
-public const object IN_CANCEL                (1 << 6)
-public const object IN_LEFT                  (1 << 7)
-public const object IN_RIGHT                 (1 << 8)
-public const object IN_MOVELEFT              (1 << 9)
-public const object IN_MOVERIGHT             (1 << 10)
-public const object IN_ATTACK2               (1 << 11)
-public const object IN_RUN                   (1 << 12)
-public const object IN_RELOAD                (1 << 13)
-public const object IN_ALT1                  (1 << 14)
-public const object IN_ALT2                  (1 << 15)
-public const object IN_SCORE                 (1 << 16)   /**< Used by client.dll for when scoreboard is held down */
-public const object IN_SPEED                 (1 << 17)   /**< Player is holding the speed key */
-public const object IN_WALK                  (1 << 18)   /**< Player holding walk key */
-public const object IN_ZOOM                  (1 << 19)   /**< Zoom key for HUD zoom */
-public const object IN_WEAPON1               (1 << 20)   /**< weapon defines these bits */
-public const object IN_WEAPON2               (1 << 21)   /**< weapon defines these bits */
-public const object IN_BULLRUSH              (1 << 22)
-public const object IN_GRENADE1              (1 << 23)   /**< grenade 1 */
-public const object IN_GRENADE2              (1 << 24)   /**< grenade 2 */
-public const object IN_ATTACK3               (1 << 25)
+public const int IN_ATTACK                (1 << 0)
+public const int IN_JUMP                  (1 << 1)
+public const int IN_DUCK                  (1 << 2)
+public const int IN_public static virtual               (1 << 3)
+public const int IN_BACK                  (1 << 4)
+public const int IN_USE                   (1 << 5)
+public const int IN_CANCEL                (1 << 6)
+public const int IN_LEFT                  (1 << 7)
+public const int IN_RIGHT                 (1 << 8)
+public const int IN_MOVELEFT              (1 << 9)
+public const int IN_MOVERIGHT             (1 << 10)
+public const int IN_ATTACK2               (1 << 11)
+public const int IN_RUN                   (1 << 12)
+public const int IN_RELOAD                (1 << 13)
+public const int IN_ALT1                  (1 << 14)
+public const int IN_ALT2                  (1 << 15)
+public const int IN_SCORE                 (1 << 16)   /**< Used by client.dll for when scoreboard is held down */
+public const int IN_SPEED                 (1 << 17)   /**< Player is holding the speed key */
+public const int IN_WALK                  (1 << 18)   /**< Player holding walk key */
+public const int IN_ZOOM                  (1 << 19)   /**< Zoom key for HUD zoom */
+public const int IN_WEAPON1               (1 << 20)   /**< weapon defines these bits */
+public const int IN_WEAPON2               (1 << 21)   /**< weapon defines these bits */
+public const int IN_BULLRUSH              (1 << 22)
+public const int IN_GRENADE1              (1 << 23)   /**< grenade 1 */
+public const int IN_GRENADE2              (1 << 24)   /**< grenade 2 */
+public const int IN_ATTACK3               (1 << 25)
 
 // Note: these are only for use with GetEntityFlags and SetEntityFlags
 //       and may not match the game's actual, internal m_fFlags values.
 // PLAYER SPECIFIC FLAGS FIRST BECAUSE WE USE ONLY A FEW BITS OF NETWORK PRECISION
-public const object FL_ONGROUND              (1 << 0)   /**< At rest / on the ground */
-public const object FL_DUCKING               (1 << 1)   /**< Player flag -- Player is fully crouched */
-public const object FL_WATERJUMP             (1 << 2)   /**< player jumping out of water */
-public const object FL_ONTRAIN               (1 << 3)   /**< Player is _controlling_ a train, so movement commands should be ignored on client during prediction. */
-public const object FL_INRAIN                (1 << 4)   /**< Indicates the entity is standing in rain */
-public const object FL_FROZEN                (1 << 5)   /**< Player is frozen for 3rd person camera */
-public const object FL_ATCONTROLS            (1 << 6)   /**< Player can't move, but keeps key inputs for controlling another entity */
-public const object FL_CLIENT                (1 << 7)   /**< Is a player */
-public const object FL_FAKECLIENT            (1 << 8)   /**< Fake client, simulated server side; don't send network messages to them */
+public const int FL_ONGROUND              (1 << 0)   /**< At rest / on the ground */
+public const int FL_DUCKING               (1 << 1)   /**< Player flag -- Player is fully crouched */
+public const int FL_WATERJUMP             (1 << 2)   /**< player jumping out of water */
+public const int FL_ONTRAIN               (1 << 3)   /**< Player is _controlling_ a train, so movement commands should be ignored on client during prediction. */
+public const int FL_INRAIN                (1 << 4)   /**< Indicates the entity is standing in rain */
+public const int FL_FROZEN                (1 << 5)   /**< Player is frozen for 3rd person camera */
+public const int FL_ATCONTROLS            (1 << 6)   /**< Player can't move, but keeps key inputs for controlling another entity */
+public const int FL_CLIENT                (1 << 7)   /**< Is a player */
+public const int FL_FAKECLIENT            (1 << 8)   /**< Fake client, simulated server side; don't send network messages to them */
 // NOTE if you move things up, make sure to change this value
-public const object PLAYER_FLAG_BITS          9
+public const int PLAYER_FLAG_BITS          9
 // NON-PLAYER SPECIFIC (i.e., not used by GameMovement or the client .dll ) -- Can still be applied to players, though
-public const object FL_INWATER               (1 << 9)   /**< In water */
-public const object FL_FLY                   (1 << 10)  /**< Changes the SV_Movestep() behavior to not need to be on ground */
-public const object FL_SWIM                  (1 << 11)  /**< Changes the SV_Movestep() behavior to not need to be on ground (but stay in water) */
-public const object FL_CONVEYOR              (1 << 12)
-public const object FL_NPC                   (1 << 13)
-public const object FL_GODMODE               (1 << 14)
-public const object FL_NOTARGET              (1 << 15)
-public const object FL_AIMTARGET             (1 << 16)  /**< set if the crosshair needs to aim onto the entity */
-public const object FL_PARTIALGROUND         (1 << 17)  /**< not all corners are valid */
-public const object FL_STATICPROP            (1 << 18)  /**< Eetsa static prop!  */
-public const object FL_GRAPHED               (1 << 19)  /**< worldgraph has this ent listed as something that blocks a connection */
-public const object FL_GRENADE               (1 << 20)
-public const object FL_STEPMOVEMENT          (1 << 21)  /**< Changes the SV_Movestep() behavior to not do any processing */
-public const object FL_DONTTOUCH             (1 << 22)  /**< Doesn't generate touch functions, generates Untouch() for anything it was touching when this flag was set */
-public const object FL_BASEVELOCITY          (1 << 23)  /**< Base velocity has been applied this frame (used to convert base velocity into momentum) */
-public const object FL_WORLDBRUSH            (1 << 24)  /**< Not moveable/removeable brush entity (really part of the world, but represented as an entity for transparency or something) */
-public const object FL_OBJECT                (1 << 25)  /**< Terrible name. This is an object that NPCs should see. Missiles, for example. */
-public const object FL_KILLME                (1 << 26)  /**< This entity is marked for death -- will be freed by game DLL */
-public const object FL_ONFIRE                (1 << 27)  /**< You know... */
-public const object FL_DISSOLVING            (1 << 28)  /**< We're dissolving! */
-public const object FL_TRANSRAGDOLL          (1 << 29)  /**< In the process of turning into a client side ragdoll. */
-public const object FL_UNBLOCKABLE_BY_PLAYER (1 << 30)  /**< pusher that can't be blocked by the player */
-public const object FL_FREEZING              (1 << 31)  /**< We're becoming frozen! */
-public const object FL_EP2V_UNKNOWN1         (1 << 31)  /**< Unknown */
+public const int FL_INWATER               (1 << 9)   /**< In water */
+public const int FL_FLY                   (1 << 10)  /**< Changes the SV_Movestep() behavior to not need to be on ground */
+public const int FL_SWIM                  (1 << 11)  /**< Changes the SV_Movestep() behavior to not need to be on ground (but stay in water) */
+public const int FL_CONVEYOR              (1 << 12)
+public const int FL_NPC                   (1 << 13)
+public const int FL_GODMODE               (1 << 14)
+public const int FL_NOTARGET              (1 << 15)
+public const int FL_AIMTARGET             (1 << 16)  /**< set if the crosshair needs to aim onto the entity */
+public const int FL_PARTIALGROUND         (1 << 17)  /**< not all corners are valid */
+public const int FL_STATICPROP            (1 << 18)  /**< Eetsa static prop!  */
+public const int FL_GRAPHED               (1 << 19)  /**< worldgraph has this ent listed as something that blocks a connection */
+public const int FL_GRENADE               (1 << 20)
+public const int FL_STEPMOVEMENT          (1 << 21)  /**< Changes the SV_Movestep() behavior to not do any processing */
+public const int FL_DONTTOUCH             (1 << 22)  /**< Doesn't generate touch functions, generates Untouch() for anything it was touching when this flag was set */
+public const int FL_BASEVELOCITY          (1 << 23)  /**< Base velocity has been applied this frame (used to convert base velocity into momentum) */
+public const int FL_WORLDBRUSH            (1 << 24)  /**< Not moveable/removeable brush entity (really part of the world, but represented as an entity for transparency or something) */
+public const int FL_OBJECT                (1 << 25)  /**< Terrible name. This is an object that NPCs should see. Missiles, for example. */
+public const int FL_KILLME                (1 << 26)  /**< This entity is marked for death -- will be freed by game DLL */
+public const int FL_ONFIRE                (1 << 27)  /**< You know... */
+public const int FL_DISSOLVING            (1 << 28)  /**< We're dissolving! */
+public const int FL_TRANSRAGDOLL          (1 << 29)  /**< In the process of turning into a client side ragdoll. */
+public const int FL_UNBLOCKABLE_BY_PLAYER (1 << 30)  /**< pusher that can't be blocked by the player */
+public const int FL_FREEZING              (1 << 31)  /**< We're becoming frozen! */
+public const int FL_EP2V_UNKNOWN1         (1 << 31)  /**< Unknown */
 // END entity flag #defines
 
 /**

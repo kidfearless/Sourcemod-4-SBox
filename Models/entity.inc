@@ -49,17 +49,17 @@ public enum PropType
 /**
  * @section For more information on these, see the HL2SDK (public/edict.h)
  */
-public const object FL_EDICT_CHANGED                (1<<0)  /**< Game DLL sets this when the entity state changes
+public const int FL_EDICT_CHANGED                (1<<0)  /**< Game DLL sets this when the entity state changes
                                                      Mutually exclusive with FL_EDICT_PARTIAL_CHANGE. */
-public const object FL_EDICT_FREE                   (1<<1)  /**< this edict if free for reuse */
-public const object FL_EDICT_FULL                   (1<<2)  /**< this is a full server entity */
-public const object FL_EDICT_FULLCHECK              (0<<0)  /**< call ShouldTransmit() each time, this is a fake flag */
-public const object FL_EDICT_ALWAYS                 (1<<3)  /**< always transmit this entity */
-public const object FL_EDICT_DONTSEND               (1<<4)  /**< don't transmit this entity */
-public const object FL_EDICT_PVSCHECK               (1<<5)  /**< always transmit entity, but cull against PVS */
-public const object FL_EDICT_PENDING_DORMANT_CHECK  (1<<6)
-public const object FL_EDICT_DIRTY_PVS_INFORMATION  (1<<7)
-public const object FL_FULL_EDICT_CHANGED           (1<<8)
+public const int FL_EDICT_FREE                   (1<<1)  /**< this edict if free for reuse */
+public const int FL_EDICT_FULL                   (1<<2)  /**< this is a full server entity */
+public const int FL_EDICT_FULLCHECK              (0<<0)  /**< call ShouldTransmit() each time, this is a fake flag */
+public const int FL_EDICT_ALWAYS                 (1<<3)  /**< always transmit this entity */
+public const int FL_EDICT_DONTSEND               (1<<4)  /**< don't transmit this entity */
+public const int FL_EDICT_PVSCHECK               (1<<5)  /**< always transmit entity, but cull against PVS */
+public const int FL_EDICT_PENDING_DORMANT_CHECK  (1<<6)
+public const int FL_EDICT_DIRTY_PVS_INFORMATION  (1<<7)
+public const int FL_FULL_EDICT_CHANGED           (1<<8)
 
 public enum PropFieldType
 {

@@ -37,7 +37,7 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const object MAX_LIGHTSTYLES 64
+public const int MAX_LIGHTSTYLES 64
 
 /**
  * Sets a client's "viewing entity."

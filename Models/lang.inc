@@ -37,7 +37,7 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const object LANG_SERVER 0      /**< Translate using the server's language */
+public const int LANG_SERVER 0      /**< Translate using the server's language */
 
 /**
  * Loads a translation file for the plugin calling this native.

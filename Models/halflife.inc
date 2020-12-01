@@ -37,25 +37,25 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const object SOURCE_SDK_UNKNOWN           0      /**< Could not determine the engine version */
-public const object SOURCE_SDK_ORIGINAL         10      /**< Original Source engine (still used by "The Ship") */
-public const object SOURCE_SDK_DARKMESSIAH      15      /**< Modified version of original engine used by Dark Messiah (no SDK) */
-public const object SOURCE_SDK_EPISODE1         20      /**< SDK+Engine released after Episode 1 */
-public const object SOURCE_SDK_EPISODE2         30      /**< SDK+Engine released after Episode 2/Orange Box */
-public const object SOURCE_SDK_BLOODYGOODTIME   32      /**< Modified version of ep2 engine used by Bloody Good Time (no SDK) */
-public const object SOURCE_SDK_EYE              33      /**< Modified version of ep2 engine used by E.Y.E Divine Cybermancy (no SDK) */
-public const object SOURCE_SDK_CSS              34      /**< Sometime-older version of Source 2009 SDK+Engine, used for Counter-Strike: Source */
-public const object SOURCE_SDK_EPISODE2VALVE    35      /**< SDK+Engine released after Episode 2/Orange Box, "Source 2009" or "Source MP" */
-public const object SOURCE_SDK_LEFT4DEAD        40      /**< Engine released after Left 4 Dead (no SDK yet) */
-public const object SOURCE_SDK_LEFT4DEAD2       50      /**< Engine released after Left 4 Dead 2 (no SDK yet) */
-public const object SOURCE_SDK_ALIENSWARM       60      /**< SDK+Engine released after Alien Swarm */
-public const object SOURCE_SDK_CSGO             80      /**< Engine released after CS:GO (no SDK yet) */
-public const object SOURCE_SDK_DOTA             90      /**< Engine released after Dota 2 (no SDK) */
+public const int SOURCE_SDK_UNKNOWN           0      /**< Could not determine the engine version */
+public const int SOURCE_SDK_ORIGINAL         10      /**< Original Source engine (still used by "The Ship") */
+public const int SOURCE_SDK_DARKMESSIAH      15      /**< Modified version of original engine used by Dark Messiah (no SDK) */
+public const int SOURCE_SDK_EPISODE1         20      /**< SDK+Engine released after Episode 1 */
+public const int SOURCE_SDK_EPISODE2         30      /**< SDK+Engine released after Episode 2/Orange Box */
+public const int SOURCE_SDK_BLOODYGOODTIME   32      /**< Modified version of ep2 engine used by Bloody Good Time (no SDK) */
+public const int SOURCE_SDK_EYE              33      /**< Modified version of ep2 engine used by E.Y.E Divine Cybermancy (no SDK) */
+public const int SOURCE_SDK_CSS              34      /**< Sometime-older version of Source 2009 SDK+Engine, used for Counter-Strike: Source */
+public const int SOURCE_SDK_EPISODE2VALVE    35      /**< SDK+Engine released after Episode 2/Orange Box, "Source 2009" or "Source MP" */
+public const int SOURCE_SDK_LEFT4DEAD        40      /**< Engine released after Left 4 Dead (no SDK yet) */
+public const int SOURCE_SDK_LEFT4DEAD2       50      /**< Engine released after Left 4 Dead 2 (no SDK yet) */
+public const int SOURCE_SDK_ALIENSWARM       60      /**< SDK+Engine released after Alien Swarm */
+public const int SOURCE_SDK_CSGO             80      /**< Engine released after CS:GO (no SDK yet) */
+public const int SOURCE_SDK_DOTA             90      /**< Engine released after Dota 2 (no SDK) */
 
-public const object MOTDPANEL_TYPE_TEXT          0      /**< Treat msg as plain text */
-public const object MOTDPANEL_TYPE_INDEX         1      /**< Msg is auto determined by the engine */
-public const object MOTDPANEL_TYPE_URL           2      /**< Treat msg as an URL link */
-public const object MOTDPANEL_TYPE_FILE          3      /**< Treat msg as a filename to be opened */
+public const int MOTDPANEL_TYPE_TEXT          0      /**< Treat msg as plain text */
+public const int MOTDPANEL_TYPE_INDEX         1      /**< Msg is auto determined by the engine */
+public const int MOTDPANEL_TYPE_URL           2      /**< Treat msg as an URL link */
+public const int MOTDPANEL_TYPE_FILE          3      /**< Treat msg as a filename to be opened */
 
 public enum DialogType
 {
@@ -113,7 +113,7 @@ public enum FindMapResult
 	FindMap_PossiblyAvailable
 };
 
-public const object INVALID_ENT_REFERENCE 0xFFFFFFFF
+public const int INVALID_ENT_REFERENCE 0xFFFFFFFF
 
 /**
  * Logs a generic message to the HL2 logs.

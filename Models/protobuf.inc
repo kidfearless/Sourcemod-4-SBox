@@ -37,7 +37,7 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const object PB_FIELD_NOT_REPEATED -1
+public const int PB_FIELD_NOT_REPEATED -1
 
 public class Protobuf : Handle
 {

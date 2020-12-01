@@ -397,7 +397,7 @@ public static virtual operator%(float oper1, int oper2) { throw new NotImplement
 public static virtual operator%(int oper1, float oper2) { throw new NotImplementedException(); }
 #endif // __sourcepawn2__
 
-public const object FLOAT_PI 3.1415926535897932384626433832795
+public const int FLOAT_PI 3.1415926535897932384626433832795
 
 /**
  * Converts degrees to radians.

@@ -498,9 +498,9 @@ public static virtual void OnLibraryAdded(string name) { throw new NotImplemente
  */
 public static virtual void OnLibraryRemoved(string name) { throw new NotImplementedException(); }
 
-public const object MAPLIST_FLAG_MAPSFOLDER    (1<<0)    /**< On failure, use all maps in the maps folder. */
-public const object MAPLIST_FLAG_CLEARARRAY    (1<<1)    /**< If an input array is specified, clear it before adding. */
-public const object MAPLIST_FLAG_NO_DEFAULT    (1<<2)    /**< Do not read "default" or "mapcyclefile" on failure. */
+public const int MAPLIST_FLAG_MAPSFOLDER    (1<<0)    /**< On failure, use all maps in the maps folder. */
+public const int MAPLIST_FLAG_CLEARARRAY    (1<<1)    /**< If an input array is specified, clear it before adding. */
+public const int MAPLIST_FLAG_NO_DEFAULT    (1<<2)    /**< Do not read "default" or "mapcyclefile" on failure. */
 
 /**
  * Loads a map list to an ADT Array.

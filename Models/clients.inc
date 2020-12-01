@@ -71,8 +71,8 @@ public enum AuthIdType
  * MAXPLAYERS is a hardcoded value as an upper limit.  MaxClients changes based on the server.
  */
 
-public const object MAXPLAYERS      65  /**< Maximum number of players SourceMod supports */
-public const object MAX_NAME_LENGTH 128 /**< Maximum buffer required to store a client name */
+public const int MAXPLAYERS      65  /**< Maximum number of players SourceMod supports */
+public const int MAX_NAME_LENGTH 128 /**< Maximum buffer required to store a client name */
 
 public const int MaxClients;   /**< Maximum number of players the server supports (dynamic) */
 

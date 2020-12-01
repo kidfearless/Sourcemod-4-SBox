@@ -37,7 +37,7 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const object FEATURECAP_PLAYERRUNCMD_11PARAMS    "SDKTools PlayerRunCmd 11Params"
+public const int FEATURECAP_PLAYERRUNCMD_11PARAMS    "SDKTools PlayerRunCmd 11Params"
 
 /**
  * Called when a clients movement buttons are being processed

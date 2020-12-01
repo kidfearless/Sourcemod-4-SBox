@@ -41,17 +41,17 @@ namespace Sourcemod
  * @section     Flags for compiling regex expressions.  These come directly from the
  * pcre library and can be used in MatchRegex and CompileRegex.
  */
-public const object PCRE_CASELESS           0x00000001 /* Ignore Case */
-public const object PCRE_MULTILINE          0x00000002 /* Multilines (affects ^ and $ so that they match the start/end of a line rather than matching the start/end of the string). */
-public const object PCRE_DOTALL             0x00000004 /* Single line (affects . so that it matches any character, even new line characters). */
-public const object PCRE_EXTENDED           0x00000008 /* Pattern extension (ignore whitespace and # comments). */
-public const object PCRE_ANCHORED           0x00000010 /* Force pattern anchoring. */
-public const object PCRE_DOLLAR_ENDONLY     0x00000020 /* $ not to match newline at end. */
-public const object PCRE_UNGREEDY           0x00000200 /* Invert greediness of quantifiers */
-public const object PCRE_NOTEMPTY           0x00000400 /* An empty string is not a valid match. */
-public const object PCRE_UTF8               0x00000800 /* Use UTF-8 Chars */
-public const object PCRE_NO_UTF8_CHECK      0x00002000 /* Do not check the pattern for UTF-8 validity (only relevant if PCRE_UTF8 is set) */
-public const object PCRE_UCP                0x20000000 /* Use Unicode properties for \ed, \ew, etc. */
+public const int PCRE_CASELESS           0x00000001 /* Ignore Case */
+public const int PCRE_MULTILINE          0x00000002 /* Multilines (affects ^ and $ so that they match the start/end of a line rather than matching the start/end of the string). */
+public const int PCRE_DOTALL             0x00000004 /* Single line (affects . so that it matches any character, even new line characters). */
+public const int PCRE_EXTENDED           0x00000008 /* Pattern extension (ignore whitespace and # comments). */
+public const int PCRE_ANCHORED           0x00000010 /* Force pattern anchoring. */
+public const int PCRE_DOLLAR_ENDONLY     0x00000020 /* $ not to match newline at end. */
+public const int PCRE_UNGREEDY           0x00000200 /* Invert greediness of quantifiers */
+public const int PCRE_NOTEMPTY           0x00000400 /* An empty string is not a valid match. */
+public const int PCRE_UTF8               0x00000800 /* Use UTF-8 Chars */
+public const int PCRE_NO_UTF8_CHECK      0x00002000 /* Do not check the pattern for UTF-8 validity (only relevant if PCRE_UTF8 is set) */
+public const int PCRE_UCP                0x20000000 /* Use Unicode properties for \ed, \ew, etc. */
 
 
 /**

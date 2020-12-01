@@ -33,7 +33,7 @@
 #if defined _nextmap_included_
  #endinput
 #endif
-public const object _nextmap_included_
+public const int _nextmap_included_
 
 /**
  * Sets SourceMod's internal nextmap.

@@ -37,23 +37,23 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const object MAX_TARGET_LENGTH           64
+public const int MAX_TARGET_LENGTH           64
 
-public const object COMMAND_FILTER_ALIVE        (1<<0)      /**< Only allow alive players */
-public const object COMMAND_FILTER_DEAD         (1<<1)      /**< Only filter dead players */
-public const object COMMAND_FILTER_CONNECTED    (1<<2)      /**< Allow players not fully in-game */
-public const object COMMAND_FILTER_NO_IMMUNITY  (1<<3)      /**< Ignore immunity rules */
-public const object COMMAND_FILTER_NO_MULTI     (1<<4)      /**< Do not allow multiple target patterns */
-public const object COMMAND_FILTER_NO_BOTS      (1<<5)      /**< Do not allow bots to be targetted */
+public const int COMMAND_FILTER_ALIVE        (1<<0)      /**< Only allow alive players */
+public const int COMMAND_FILTER_DEAD         (1<<1)      /**< Only filter dead players */
+public const int COMMAND_FILTER_CONNECTED    (1<<2)      /**< Allow players not fully in-game */
+public const int COMMAND_FILTER_NO_IMMUNITY  (1<<3)      /**< Ignore immunity rules */
+public const int COMMAND_FILTER_NO_MULTI     (1<<4)      /**< Do not allow multiple target patterns */
+public const int COMMAND_FILTER_NO_BOTS      (1<<5)      /**< Do not allow bots to be targetted */
 
-public const object COMMAND_TARGET_NONE          0          /**< No target was found */
-public const object COMMAND_TARGET_NOT_ALIVE    -1          /**< Single client is not alive */
-public const object COMMAND_TARGET_NOT_DEAD     -2          /**< Single client is not dead */
-public const object COMMAND_TARGET_NOT_IN_GAME  -3          /**< Single client is not in game */
-public const object COMMAND_TARGET_IMMUNE       -4          /**< Single client is immune */
-public const object COMMAND_TARGET_EMPTY_FILTER -5          /**< A multi-filter (such as @all) had no targets */
-public const object COMMAND_TARGET_NOT_HUMAN    -6          /**< Target was not human */
-public const object COMMAND_TARGET_AMBIGUOUS    -7          /**< Partial name had too many targets */
+public const int COMMAND_TARGET_NONE          0          /**< No target was found */
+public const int COMMAND_TARGET_NOT_ALIVE    -1          /**< Single client is not alive */
+public const int COMMAND_TARGET_NOT_DEAD     -2          /**< Single client is not dead */
+public const int COMMAND_TARGET_NOT_IN_GAME  -3          /**< Single client is not in game */
+public const int COMMAND_TARGET_IMMUNE       -4          /**< Single client is immune */
+public const int COMMAND_TARGET_EMPTY_FILTER -5          /**< A multi-filter (such as @all) had no targets */
+public const int COMMAND_TARGET_NOT_HUMAN    -6          /**< Target was not human */
+public const int COMMAND_TARGET_AMBIGUOUS    -7          /**< Partial name had too many targets */
 
 /**
  * Processes a generic command target string, and resolves it to a list 

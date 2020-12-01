@@ -32,7 +32,7 @@
 #if defined _mapchooser_included_
  #endinput
 #endif
-public const object _mapchooser_included_
+public const int _mapchooser_included_
 
 public enum NominateResult
 {

@@ -57,9 +57,9 @@ public enum UserMessageType
 /**
  * @section Message Flags.
  */
-public const object USERMSG_RELIABLE        (1<<2)    /**< Message will be set on the reliable stream */
-public const object USERMSG_INITMSG         (1<<3)    /**< Message will be considered to be an initmsg */
-public const object USERMSG_BLOCKHOOKS      (1<<7)    /**< Prevents the message from triggering SourceMod and Metamod hooks */
+public const int USERMSG_RELIABLE        (1<<2)    /**< Message will be set on the reliable stream */
+public const int USERMSG_INITMSG         (1<<3)    /**< Message will be considered to be an initmsg */
+public const int USERMSG_BLOCKHOOKS      (1<<7)    /**< Prevents the message from triggering SourceMod and Metamod hooks */
 
 /**
  * @endsection

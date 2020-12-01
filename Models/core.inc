@@ -40,7 +40,7 @@ namespace Sourcemod
 #include <version>
 
 /** If this gets changed, you need to update Core's check. */
-public const object SOURCEMOD_PLUGINAPI_VERSION     5
+public const int SOURCEMOD_PLUGINAPI_VERSION     5
 
 struct PlVers
 {
@@ -317,8 +317,8 @@ public void __ext_core_SetNTVOptional()
 }
 
 
-public const object AUTOLOAD_EXTENSIONS
-public const object REQUIRE_EXTENSIONS
-public const object REQUIRE_PLUGIN
+public const int AUTOLOAD_EXTENSIONS
+public const int REQUIRE_EXTENSIONS
+public const int REQUIRE_PLUGIN
 	}
 }

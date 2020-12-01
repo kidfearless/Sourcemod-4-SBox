@@ -99,12 +99,12 @@ public enum SDKPassMethod
 	SDKPass_ByRef           /**< Pass an object by reference */
 };
 
-public const object VDECODE_FLAG_ALLOWNULL      (1<<0)    /**< Allow NULL for pointers */
-public const object VDECODE_FLAG_ALLOWNOTINGAME (1<<1)    /**< Allow players not in game */
-public const object VDECODE_FLAG_ALLOWWORLD     (1<<2)    /**< Allow World entity */
-public const object VDECODE_FLAG_BYREF          (1<<3)    /**< Floats/ints by reference */
+public const int VDECODE_FLAG_ALLOWNULL      (1<<0)    /**< Allow NULL for pointers */
+public const int VDECODE_FLAG_ALLOWNOTINGAME (1<<1)    /**< Allow players not in game */
+public const int VDECODE_FLAG_ALLOWWORLD     (1<<2)    /**< Allow World entity */
+public const int VDECODE_FLAG_BYREF          (1<<3)    /**< Floats/ints by reference */
 
-public const object VENCODE_FLAG_COPYBACK       (1<<0)    /**< Copy back data once done */
+public const int VENCODE_FLAG_COPYBACK       (1<<0)    /**< Copy back data once done */
 
 /**
  * Starts the preparation of an SDK call.

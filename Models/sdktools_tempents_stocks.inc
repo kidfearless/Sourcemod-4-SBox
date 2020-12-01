@@ -40,15 +40,15 @@ namespace Sourcemod
 /**
  * @section TE Explosion flags.
  */
-public const object TE_EXPLFLAG_NONE            0x0   /**< all flags clear makes default Half-Life explosion */
-public const object TE_EXPLFLAG_NOADDITIVE      0x1   /**< sprite will be drawn opaque (ensure that the sprite you send is a non-additive sprite) */
-public const object TE_EXPLFLAG_NODLIGHTS       0x2   /**< do not render dynamic lights */
-public const object TE_EXPLFLAG_NOSOUND         0x4   /**< do not play client explosion sound */
-public const object TE_EXPLFLAG_NOPARTICLES     0x8   /**< do not draw particles */
-public const object TE_EXPLFLAG_DRAWALPHA       0x10  /**< sprite will be drawn alpha */
-public const object TE_EXPLFLAG_ROTATE          0x20  /**< rotate the sprite randomly */
-public const object TE_EXPLFLAG_NOFIREBALL      0x40  /**< do not draw a fireball */
-public const object TE_EXPLFLAG_NOFIREBALLSMOKE 0x80  /**< do not draw smoke with the fireball */
+public const int TE_EXPLFLAG_NONE            0x0   /**< all flags clear makes default Half-Life explosion */
+public const int TE_EXPLFLAG_NOADDITIVE      0x1   /**< sprite will be drawn opaque (ensure that the sprite you send is a non-additive sprite) */
+public const int TE_EXPLFLAG_NODLIGHTS       0x2   /**< do not render dynamic lights */
+public const int TE_EXPLFLAG_NOSOUND         0x4   /**< do not play client explosion sound */
+public const int TE_EXPLFLAG_NOPARTICLES     0x8   /**< do not draw particles */
+public const int TE_EXPLFLAG_DRAWALPHA       0x10  /**< sprite will be drawn alpha */
+public const int TE_EXPLFLAG_ROTATE          0x20  /**< rotate the sprite randomly */
+public const int TE_EXPLFLAG_NOFIREBALL      0x40  /**< do not draw a fireball */
+public const int TE_EXPLFLAG_NOFIREBALLSMOKE 0x80  /**< do not draw smoke with the fireball */
 
 /**
  * @endsection
@@ -57,22 +57,22 @@ public const object TE_EXPLFLAG_NOFIREBALLSMOKE 0x80  /**< do not draw smoke wit
 /**
  * @section TE Beam flags.
  */
-public const object FBEAM_STARTENTITY   0x00000001
-public const object FBEAM_ENDENTITY     0x00000002
-public const object FBEAM_FADEIN        0x00000004
-public const object FBEAM_FADEOUT       0x00000008
-public const object FBEAM_SINENOISE     0x00000010
-public const object FBEAM_SOLID         0x00000020
-public const object FBEAM_SHADEIN       0x00000040
-public const object FBEAM_SHADEOUT      0x00000080
-public const object FBEAM_ONLYNOISEONCE 0x00000100  /**< Only calculate our noise once */
-public const object FBEAM_NOTILE        0x00000200
-public const object FBEAM_USE_HITBOXES  0x00000400  /**< Attachment indices represent hitbox indices instead when this is set. */
-public const object FBEAM_STARTVISIBLE  0x00000800  /**< Has this client actually seen this beam's start entity yet? */
-public const object FBEAM_ENDVISIBLE    0x00001000  /**< Has this client actually seen this beam's end entity yet? */
-public const object FBEAM_ISACTIVE      0x00002000
-public const object FBEAM_FOREVER       0x00004000
-public const object FBEAM_HALOBEAM      0x00008000  /**< When drawing a beam with a halo, don't ignore the segments and endwidth */
+public const int FBEAM_STARTENTITY   0x00000001
+public const int FBEAM_ENDENTITY     0x00000002
+public const int FBEAM_FADEIN        0x00000004
+public const int FBEAM_FADEOUT       0x00000008
+public const int FBEAM_SINENOISE     0x00000010
+public const int FBEAM_SOLID         0x00000020
+public const int FBEAM_SHADEIN       0x00000040
+public const int FBEAM_SHADEOUT      0x00000080
+public const int FBEAM_ONLYNOISEONCE 0x00000100  /**< Only calculate our noise once */
+public const int FBEAM_NOTILE        0x00000200
+public const int FBEAM_USE_HITBOXES  0x00000400  /**< Attachment indices represent hitbox indices instead when this is set. */
+public const int FBEAM_STARTVISIBLE  0x00000800  /**< Has this client actually seen this beam's start entity yet? */
+public const int FBEAM_ENDVISIBLE    0x00001000  /**< Has this client actually seen this beam's end entity yet? */
+public const int FBEAM_ISACTIVE      0x00002000
+public const int FBEAM_FOREVER       0x00004000
+public const int FBEAM_HALOBEAM      0x00008000  /**< When drawing a beam with a halo, don't ignore the segments and endwidth */
 
 /**
  * @endsection

@@ -37,20 +37,20 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const object CS_TEAM_NONE        0   /**< No team yet. */
-public const object CS_TEAM_SPECTATOR   1   /**< Spectators. */
-public const object CS_TEAM_T           2   /**< Terrorists. */
-public const object CS_TEAM_CT          3   /**< Counter-Terrorists. */
+public const int CS_TEAM_NONE        0   /**< No team yet. */
+public const int CS_TEAM_SPECTATOR   1   /**< Spectators. */
+public const int CS_TEAM_T           2   /**< Terrorists. */
+public const int CS_TEAM_CT          3   /**< Counter-Terrorists. */
 
-public const object CS_SLOT_PRIMARY     0   /**< Primary weapon slot. */
-public const object CS_SLOT_SECONDARY   1   /**< Secondary weapon slot. */
-public const object CS_SLOT_KNIFE       2   /**< Knife slot. */
-public const object CS_SLOT_GRENADE     3   /**< Grenade slot (will only return one grenade). */
-public const object CS_SLOT_C4          4   /**< C4 slot. */
-public const object CS_SLOT_BOOST       11  /**< Slot for healthshot and shield (will only return one weapon/item). */
-public const object CS_SLOT_UTILITY     12  /**< Slot for tablet. */
+public const int CS_SLOT_PRIMARY     0   /**< Primary weapon slot. */
+public const int CS_SLOT_SECONDARY   1   /**< Secondary weapon slot. */
+public const int CS_SLOT_KNIFE       2   /**< Knife slot. */
+public const int CS_SLOT_GRENADE     3   /**< Grenade slot (will only return one grenade). */
+public const int CS_SLOT_C4          4   /**< C4 slot. */
+public const int CS_SLOT_BOOST       11  /**< Slot for healthshot and shield (will only return one weapon/item). */
+public const int CS_SLOT_UTILITY     12  /**< Slot for tablet. */
 
-public const object CS_DMG_HEADSHOT     (1 << 30)    /**< Headshot */
+public const int CS_DMG_HEADSHOT     (1 << 30)    /**< Headshot */
 
 public enum CSRoundEndReason
 {

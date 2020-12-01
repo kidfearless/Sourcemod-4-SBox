@@ -40,17 +40,17 @@ namespace Sourcemod
 /**
  * Sound should be from the target client.
  */
-public const object SOUND_FROM_PLAYER       -2
+public const int SOUND_FROM_PLAYER       -2
 
 /**
  * Sound should be from the listen server player.
  */
-public const object SOUND_FROM_LOCAL_PLAYER -1
+public const int SOUND_FROM_LOCAL_PLAYER -1
 
 /**
  * Sound is from the world.
  */
-public const object SOUND_FROM_WORLD        0
+public const int SOUND_FROM_WORLD        0
 
 /**
  * Sound channels.
@@ -113,15 +113,15 @@ public enum
 	SNDLEVEL_ROCKET = 180       /**< Rocket launching (0.2 attn) */
 };
 
-public const object SNDVOL_NORMAL       1.0     /**< Normal volume */
-public const object SNDPITCH_NORMAL     100     /**< Normal pitch */
-public const object SNDPITCH_LOW        95      /**< A low pitch */
-public const object SNDPITCH_HIGH       120     /**< A high pitch */
-public const object SNDATTN_NONE        0.0     /**< No attenuation */
-public const object SNDATTN_NORMAL      0.8     /**< Normal attenuation */
-public const object SNDATTN_STATIC      1.25    /**< Static attenuation? */
-public const object SNDATTN_RICOCHET    1.5     /**< Ricochet effect */
-public const object SNDATTN_IDLE        2.0     /**< Idle attenuation? */
+public const int SNDVOL_NORMAL       1.0     /**< Normal volume */
+public const int SNDPITCH_NORMAL     100     /**< Normal pitch */
+public const int SNDPITCH_LOW        95      /**< A low pitch */
+public const int SNDPITCH_HIGH       120     /**< A high pitch */
+public const int SNDATTN_NONE        0.0     /**< No attenuation */
+public const int SNDATTN_NORMAL      0.8     /**< Normal attenuation */
+public const int SNDATTN_STATIC      1.25    /**< Static attenuation? */
+public const int SNDATTN_RICOCHET    1.5     /**< Ricochet effect */
+public const int SNDATTN_IDLE        2.0     /**< Idle attenuation? */
 
 /**
  * Prefetches a sound.

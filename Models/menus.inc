@@ -70,32 +70,32 @@ public enum MenuAction
 };
 
 /** Default menu actions */
-public const object MENU_ACTIONS_DEFAULT    MenuAction_Select|MenuAction_Cancel|MenuAction_End
+public const int MENU_ACTIONS_DEFAULT    MenuAction_Select|MenuAction_Cancel|MenuAction_End
 /** All menu actions */
-public const object MENU_ACTIONS_ALL        view_as<MenuAction>(0xFFFFFFFF)
+public const int MENU_ACTIONS_ALL        view_as<MenuAction>(0xFFFFFFFF)
 
-public const object MENU_NO_PAGINATION      0           /**< Menu should not be paginated (10 items max) */
-public const object MENU_TIME_FOREVER       0           /**< Menu should be displayed as long as possible */
+public const int MENU_NO_PAGINATION      0           /**< Menu should not be paginated (10 items max) */
+public const int MENU_TIME_FOREVER       0           /**< Menu should be displayed as long as possible */
 
-public const object ITEMDRAW_DEFAULT            (0)     /**< Item should be drawn normally */
-public const object ITEMDRAW_DISABLED           (1<<0)  /**< Item is drawn but not selectable */
-public const object ITEMDRAW_RAWLINE            (1<<1)  /**< Item should be a raw line, without a slot */
-public const object ITEMDRAW_NOTEXT             (1<<2)  /**< No text should be drawn */
-public const object ITEMDRAW_SPACER             (1<<3)  /**< Item should be drawn as a spacer, if possible */
-public const object ITEMDRAW_IGNORE     ((1<<1)|(1<<2)) /**< Item should be completely ignored (rawline + notext) */
-public const object ITEMDRAW_CONTROL            (1<<4)  /**< Item is control text (back/next/exit) */
+public const int ITEMDRAW_DEFAULT            (0)     /**< Item should be drawn normally */
+public const int ITEMDRAW_DISABLED           (1<<0)  /**< Item is drawn but not selectable */
+public const int ITEMDRAW_RAWLINE            (1<<1)  /**< Item should be a raw line, without a slot */
+public const int ITEMDRAW_NOTEXT             (1<<2)  /**< No text should be drawn */
+public const int ITEMDRAW_SPACER             (1<<3)  /**< Item should be drawn as a spacer, if possible */
+public const int ITEMDRAW_IGNORE     ((1<<1)|(1<<2)) /**< Item should be completely ignored (rawline + notext) */
+public const int ITEMDRAW_CONTROL            (1<<4)  /**< Item is control text (back/next/exit) */
 
-public const object MENUFLAG_BUTTON_EXIT        (1<<0)  /**< Menu has an "exit" button (default if paginated) */
-public const object MENUFLAG_BUTTON_EXITBACK    (1<<1)  /**< Menu has an "exit back" button */
-public const object MENUFLAG_NO_SOUND           (1<<2)  /**< Menu will not have any select sounds */
-public const object MENUFLAG_BUTTON_NOVOTE      (1<<3)  /**< Menu has a "No Vote" button at slot 1 */
+public const int MENUFLAG_BUTTON_EXIT        (1<<0)  /**< Menu has an "exit" button (default if paginated) */
+public const int MENUFLAG_BUTTON_EXITBACK    (1<<1)  /**< Menu has an "exit back" button */
+public const int MENUFLAG_NO_SOUND           (1<<2)  /**< Menu will not have any select sounds */
+public const int MENUFLAG_BUTTON_NOVOTE      (1<<3)  /**< Menu has a "No Vote" button at slot 1 */
 
-public const object VOTEINFO_CLIENT_INDEX       0       /**< Client index */
-public const object VOTEINFO_CLIENT_ITEM        1       /**< Item the client selected, or -1 for none */
-public const object VOTEINFO_ITEM_INDEX         0       /**< Item index */
-public const object VOTEINFO_ITEM_VOTES         1       /**< Number of votes for the item */
+public const int VOTEINFO_CLIENT_INDEX       0       /**< Client index */
+public const int VOTEINFO_CLIENT_ITEM        1       /**< Item the client selected, or -1 for none */
+public const int VOTEINFO_ITEM_INDEX         0       /**< Item index */
+public const int VOTEINFO_ITEM_VOTES         1       /**< Number of votes for the item */
 
-public const object VOTEFLAG_NO_REVOTES         (1<<0)  /**< Players cannot change their votes */
+public const int VOTEFLAG_NO_REVOTES         (1<<0)  /**< Players cannot change their votes */
 
 /**
  * Reasons a menu can be cancelled (MenuAction_Cancel).

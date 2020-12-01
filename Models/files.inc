@@ -74,11 +74,11 @@ public enum FileTimeMode
 	FileTime_LastChange = 2     /* Last modification */
 };
 
-public const object PLATFORM_MAX_PATH 256   /**< Maximum path length. */
+public const int PLATFORM_MAX_PATH 256   /**< Maximum path length. */
 
-public const object SEEK_SET 0              /**< Seek from start. */
-public const object SEEK_CUR 1              /**< Seek from current position. */
-public const object SEEK_END 2              /**< Seek from end position. */
+public const int SEEK_SET 0              /**< Seek from start. */
+public const int SEEK_CUR 1              /**< Seek from current position. */
+public const int SEEK_END 2              /**< Seek from end position. */
 
 /**
  * Path types.
@@ -564,15 +564,15 @@ public static bool FlushFile(Handle file) { throw new NotImplementedException();
  */
 public static bool RemoveDir(string path) { throw new NotImplementedException(); }
 
-public const object FPERM_U_READ        0x0100  /* User can read. */
-public const object FPERM_U_WRITE       0x0080  /* User can write. */
-public const object FPERM_U_EXEC        0x0040  /* User can exec. */
-public const object FPERM_G_READ        0x0020  /* Group can read. */
-public const object FPERM_G_WRITE       0x0010  /* Group can write. */
-public const object FPERM_G_EXEC        0x0008  /* Group can exec. */
-public const object FPERM_O_READ        0x0004  /* Anyone can read. */
-public const object FPERM_O_WRITE       0x0002  /* Anyone can write. */
-public const object FPERM_O_EXEC        0x0001  /* Anyone can exec. */
+public const int FPERM_U_READ        0x0100  /* User can read. */
+public const int FPERM_U_WRITE       0x0080  /* User can write. */
+public const int FPERM_U_EXEC        0x0040  /* User can exec. */
+public const int FPERM_G_READ        0x0020  /* Group can read. */
+public const int FPERM_G_WRITE       0x0010  /* Group can write. */
+public const int FPERM_G_EXEC        0x0008  /* Group can exec. */
+public const int FPERM_O_READ        0x0004  /* Anyone can read. */
+public const int FPERM_O_WRITE       0x0002  /* Anyone can write. */
+public const int FPERM_O_EXEC        0x0001  /* Anyone can exec. */
 
 /**
  * Creates a directory.

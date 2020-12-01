@@ -37,8 +37,8 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const object INVALID_STRING_TABLE -1     /**< An invalid string table index */
-public const object INVALID_STRING_INDEX -1     /**< An invalid string index in a table */
+public const int INVALID_STRING_TABLE -1     /**< An invalid string table index */
+public const int INVALID_STRING_INDEX -1     /**< An invalid string index in a table */
 
 /**
  * Searches for a string table.

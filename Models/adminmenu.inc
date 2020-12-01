@@ -54,11 +54,11 @@ namespace Sourcemod
 #endif
 
 /** Category for player commands. */
-public const object ADMINMENU_PLAYERCOMMANDS        "PlayerCommands"
+public const int ADMINMENU_PLAYERCOMMANDS        "PlayerCommands"
 /** Category for server commands. */
-public const object ADMINMENU_SERVERCOMMANDS        "ServerCommands"
+public const int ADMINMENU_SERVERCOMMANDS        "ServerCommands"
 /** Category for voting commands. */
-public const object ADMINMENU_VOTINGCOMMANDS        "VotingCommands"
+public const int ADMINMENU_VOTINGCOMMANDS        "VotingCommands"
 
 /**
  * Called when the admin menu is created and 3rd party plugins can grab 

@@ -40,12 +40,12 @@ namespace Sourcemod
 /**
  * @section voice flags.
  */
-public const object VOICE_NORMAL        0   /**< Allow the client to listen and speak normally. */
-public const object VOICE_MUTED         1   /**< Mutes the client from speaking to everyone. */
-public const object VOICE_SPEAKALL      2   /**< Allow the client to speak to everyone. */
-public const object VOICE_LISTENALL     4   /**< Allow the client to listen to everyone. */
-public const object VOICE_TEAM          8   /**< Allow the client to always speak to team, even when dead. */
-public const object VOICE_LISTENTEAM    16  /**< Allow the client to always hear teammates, including dead ones. */
+public const int VOICE_NORMAL        0   /**< Allow the client to listen and speak normally. */
+public const int VOICE_MUTED         1   /**< Mutes the client from speaking to everyone. */
+public const int VOICE_SPEAKALL      2   /**< Allow the client to speak to everyone. */
+public const int VOICE_LISTENALL     4   /**< Allow the client to listen to everyone. */
+public const int VOICE_TEAM          8   /**< Allow the client to always speak to team, even when dead. */
+public const int VOICE_LISTENTEAM    16  /**< Allow the client to always hear teammates, including dead ones. */
 
 /**
  * @endsection

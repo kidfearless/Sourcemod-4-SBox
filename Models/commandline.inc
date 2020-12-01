@@ -33,7 +33,7 @@
 #if defined _commandline_included_
  #endinput
 #endif
-public const object _commandline_included_
+public const int _commandline_included_
 
 /**
  * Gets the full command line the server was launched with.

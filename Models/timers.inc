@@ -39,10 +39,10 @@ namespace Sourcemod
 
 #include <datapack>
 
-public const object TIMER_REPEAT            (1<<0)      /**< Timer will repeat until it returns Plugin_Stop */
-public const object TIMER_FLAG_NO_MAPCHANGE (1<<1)      /**< Timer will not carry over mapchanges */
-public const object TIMER_HNDL_CLOSE        (1<<9)      /**< Deprecated define, replaced by below */
-public const object TIMER_DATA_HNDL_CLOSE   (1<<9)      /**< Timer will automatically call CloseHandle() on its data when finished */
+public const int TIMER_REPEAT            (1<<0)      /**< Timer will repeat until it returns Plugin_Stop */
+public const int TIMER_FLAG_NO_MAPCHANGE (1<<1)      /**< Timer will not carry over mapchanges */
+public const int TIMER_HNDL_CLOSE        (1<<9)      /**< Deprecated define, replaced by below */
+public const int TIMER_DATA_HNDL_CLOSE   (1<<9)      /**< Timer will automatically call CloseHandle() on its data when finished */
 
 /**
  * Any of the following prototypes will work for a timed function.
