@@ -95,7 +95,7 @@ public static int ProcessTargetString(string pattern,
  * @param client        Client index, or 0 for server.
  * @param reason        COMMAND_TARGET reason.
  */
-stock void ReplyToTargetError(int client, int reason)
+public static void ReplyToTargetError(int client, int reason)
 {
 	switch (reason)
 	{

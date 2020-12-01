@@ -239,7 +239,7 @@ public static bool GetRegexSubString(Handle regex, int str_id, string buffer, in
  * @param maxLen        Maximum length of the error buffer.
  * @return              Number of substrings found or -1 on failure.
  */
-stock int SimpleRegexMatch(string str, string pattern, int flags = 0, string error="", int maxLen = 0)
+public static int SimpleRegexMatch(string str, string pattern, int flags = 0, string error="", int maxLen = 0)
 {
 	Regex regex = new Regex(pattern, flags, error, maxLen) { throw new NotImplementedException(); }
 	if (!regex)

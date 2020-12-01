@@ -154,7 +154,7 @@ public static float GetSoundDuration(string name) { throw new NotImplementedExce
  * @param delay         Play delay.
  */
 public static void EmitAmbientSound(string name,
-						const float pos[3],
+						ReadOnlyCollection<float> pos[3],
 						int entity = SOUND_FROM_WORLD,
 						int level = SNDLEVEL_NORMAL,
 						int flags = SND_NOFLAGS,
@@ -213,8 +213,8 @@ public static void EmitSound(const int[] clients,
 				 float volume = SNDVOL_NORMAL,
 				 int pitch = SNDPITCH_NORMAL,
 				 int speakerentity = -1,
-				 const float origin[3] = NULL_VECTOR,
-				 const float dir[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> origin[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
 				 any ...) { throw new NotImplementedException(); }
@@ -254,8 +254,8 @@ public static void EmitSoundEntry(const int[] clients,
 				 float volume = SNDVOL_NORMAL,
 				 int pitch = SNDPITCH_NORMAL,
 				 int speakerentity = -1,
-				 const float origin[3] = NULL_VECTOR,
-				 const float dir[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> origin[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
 				 any ...) { throw new NotImplementedException(); }
@@ -290,8 +290,8 @@ public static void EmitSentence(const int[] clients,
 				 float volume = SNDVOL_NORMAL,
 				 int pitch = SNDPITCH_NORMAL,
 				 int speakerentity = -1,
-				 const float origin[3] = NULL_VECTOR,
-				 const float dir[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> origin[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
 				 any ...) { throw new NotImplementedException(); }
@@ -414,7 +414,7 @@ public static void RemoveNormalSoundHook(NormalSHook hook) { throw new NotImplem
  * @param soundtime     Alternate time to play sound for.
  * @error               Invalid client index.
  */
-stock void EmitSoundToClient(int client,
+public static void EmitSoundToClient(int client,
 				 string sample,
 				 int entity = SOUND_FROM_PLAYER,
 				 int channel = SNDCHAN_AUTO,
@@ -423,8 +423,8 @@ stock void EmitSoundToClient(int client,
 				 float volume = SNDVOL_NORMAL,
 				 int pitch = SNDPITCH_NORMAL,
 				 int speakerentity = -1,
-				 const float origin[3] = NULL_VECTOR,
-				 const float dir[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> origin[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0)
 {
@@ -454,7 +454,7 @@ stock void EmitSoundToClient(int client,
  * @param soundtime     Alternate time to play sound for.
  * @error               Invalid client index.
  */
-stock void EmitSoundToAll(string sample,
+public static void EmitSoundToAll(string sample,
 				 int entity = SOUND_FROM_PLAYER,
 				 int channel = SNDCHAN_AUTO,
 				 int level = SNDLEVEL_NORMAL,
@@ -462,8 +462,8 @@ stock void EmitSoundToAll(string sample,
 				 float volume = SNDVOL_NORMAL,
 				 int pitch = SNDPITCH_NORMAL,
 				 int speakerentity = -1,
-				 const float origin[3] = NULL_VECTOR,
-				 const float dir[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> origin[3] = NULL_VECTOR,
+				 ReadOnlyCollection<float> dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0)
 {
@@ -493,7 +493,7 @@ stock void EmitSoundToAll(string sample,
  * @param attn          Attenuation value.
  * @return              Integer sound level.
  */
-stock int ATTN_TO_SNDLEVEL(float attn)
+public static int ATTN_TO_SNDLEVEL(float attn)
 {
 	if (attn > 0.0)
 	{
@@ -553,14 +553,14 @@ public static bool GetGameSoundParams(string gameSound,
  * @return              True if the sound was played successfully, false if it failed
  * @error               Invalid client index.
  */
-stock bool EmitGameSound(const int[] clients,
+public static bool EmitGameSound(const int[] clients,
 				int numClients,
 				string gameSound,
 				int entity = SOUND_FROM_PLAYER,
 				int flags = SND_NOFLAGS,
 				int speakerentity = -1,
-				const float origin[3] = NULL_VECTOR,
-				const float dir[3] = NULL_VECTOR,
+				ReadOnlyCollection<float> origin[3] = NULL_VECTOR,
+				ReadOnlyCollection<float> dir[3] = NULL_VECTOR,
 				bool updatePos = true,
 				float soundtime = 0.0)
 {
@@ -594,8 +594,8 @@ stock bool EmitGameSound(const int[] clients,
  * @param flags         Sound flags.
  * @param delay         Play delay.
  */
-stock bool EmitAmbientGameSound(string gameSound,
-				const float pos[3],
+public static bool EmitAmbientGameSound(string gameSound,
+				ReadOnlyCollection<float> pos[3],
 				int entity = SOUND_FROM_WORLD,
 				int flags = SND_NOFLAGS,
 				float delay = 0.0)
@@ -635,13 +635,13 @@ stock bool EmitAmbientGameSound(string gameSound,
  * @param soundtime     Alternate time to play sound for.
  * @error               Invalid client index.
  */
-stock bool EmitGameSoundToClient(int client,
+public static bool EmitGameSoundToClient(int client,
 				string gameSound,
 				int entity = SOUND_FROM_PLAYER,
 				int flags = SND_NOFLAGS,
 				int speakerentity = -1,
-				const float origin[3] = NULL_VECTOR,
-				const float dir[3] = NULL_VECTOR,
+				ReadOnlyCollection<float> origin[3] = NULL_VECTOR,
+				ReadOnlyCollection<float> dir[3] = NULL_VECTOR,
 				bool updatePos = true,
 				float soundtime = 0.0)
 {
@@ -672,12 +672,12 @@ stock bool EmitGameSoundToClient(int client,
  * @param soundtime     Alternate time to play sound for.
  * @error               Invalid client index.
  */
-stock bool EmitGameSoundToAll(string gameSound,
+public static bool EmitGameSoundToAll(string gameSound,
 				int entity = SOUND_FROM_PLAYER,
 				int flags = SND_NOFLAGS,
 				int speakerentity = -1,
-				const float origin[3] = NULL_VECTOR,
-				const float dir[3] = NULL_VECTOR,
+				ReadOnlyCollection<float> origin[3] = NULL_VECTOR,
+				ReadOnlyCollection<float> dir[3] = NULL_VECTOR,
 				bool updatePos = true,
 				float soundtime = 0.0)
 {

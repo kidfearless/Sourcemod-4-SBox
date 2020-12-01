@@ -166,7 +166,7 @@ public static bool LockStringTables(bool lock) { throw new NotImplementedExcepti
  *
  * @param filename      File that will be added to downloadables table.
  */
-stock void AddFileToDownloadsTable(string filename)
+public static void AddFileToDownloadsTable(string filename)
 {
 	static int table = INVALID_STRING_TABLE;
 

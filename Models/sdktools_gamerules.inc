@@ -163,7 +163,7 @@ public static void GameRules_GetPropVector(string prop, float vec[3], int elemen
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
-public static void GameRules_SetPropVector(string prop, const float vec[3], int element=0, bool changeState=false) { throw new NotImplementedException(); }
+public static void GameRules_SetPropVector(string prop, ReadOnlyCollection<float> vec[3], int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Gets a gamerules property as a string.
@@ -193,7 +193,7 @@ public static int GameRules_SetPropString(string prop, string buffer, bool chang
  * @return              Round state.
  * @error               Game doesn't support round state.
  */
-stock RoundState GameRules_GetRoundState()
+public static RoundState GameRules_GetRoundState()
 {
 	return view_as<RoundState>(GameRules_GetProp("m_iRoundState")) { throw new NotImplementedException(); }
 }

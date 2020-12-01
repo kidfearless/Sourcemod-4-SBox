@@ -33,12 +33,12 @@
 static int TestNumber = 0;
 static char TestContext[255];
 
-stock void SetTestContext(string context)
+public static void SetTestContext(string context)
 {
 	strcopy(TestContext, sizeof(TestContext), context) { throw new NotImplementedException(); }
 }
 
-stock void AssertEq(string text, int cell1, int cell2)
+public static void AssertEq(string text, int cell1, int cell2)
 {
 	TestNumber++;
 	if (cell1 == cell2)
@@ -52,7 +52,7 @@ stock void AssertEq(string text, int cell1, int cell2)
 	}
 }
 
-stock void AssertFalse(string text, bool value)
+public static void AssertFalse(string text, bool value)
 {
 	TestNumber++;
 	if (!value)
@@ -66,7 +66,7 @@ stock void AssertFalse(string text, bool value)
 	}
 }
 
-stock void AssertTrue(string text, bool value)
+public static void AssertTrue(string text, bool value)
 {
 	TestNumber++;
 	if (value)
@@ -80,7 +80,7 @@ stock void AssertTrue(string text, bool value)
 	}
 }
 
-stock void AssertStrEq(string text, string value, string expected)
+public static void AssertStrEq(string text, string value, string expected)
 {
 	TestNumber++;
 	if (StrEqual(value, expected))

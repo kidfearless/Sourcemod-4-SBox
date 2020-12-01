@@ -638,7 +638,7 @@ enum FeatureStatus
  *
  * @return              True if GetFeatureStatus will work, false otherwise.
  */
-stock bool CanTestFeatures()
+public static bool CanTestFeatures()
 {
 	return LibraryExists("__CanTestFeatures__") { throw new NotImplementedException(); }
 }

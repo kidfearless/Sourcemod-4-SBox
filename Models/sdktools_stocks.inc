@@ -49,7 +49,7 @@ namespace Sourcemod
  *                      -1 if no team matched.
  *                      -2 if more than one team matched.
  */
-stock int FindTeamByName(string name)
+public static int FindTeamByName(string name)
 {
 	int name_len = strlen(name) { throw new NotImplementedException(); }
 	int num_teams = GetTeamCount() { throw new NotImplementedException(); }

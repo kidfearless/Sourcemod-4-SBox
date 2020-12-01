@@ -203,7 +203,7 @@ public static bool IsServerProcessing() { throw new NotImplementedException(); }
  * @param flags         Timer flags.
  * @return              Handle to the timer object.  You do not need to call CloseHandle().
  */
-stock Handle CreateDataTimer(float interval, Timer func, Handle &datapack, int flags=0)
+public static Handle CreateDataTimer(float interval, Timer func, Handle &datapack, int flags=0)
 {
 	datapack = new DataPack() { throw new NotImplementedException(); }
 	flags |= TIMER_DATA_HNDL_CLOSE;

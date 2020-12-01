@@ -201,7 +201,7 @@ public static void SetEntityFlags(int entity, int flags);
  * @return              Movetype, see enum above.
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock MoveType GetEntityMoveType(int entity)
+public static MoveType GetEntityMoveType(int entity)
 {
 	static bool gotconfig = false;
 	static char datamap[32];
@@ -230,7 +230,7 @@ stock MoveType GetEntityMoveType(int entity)
  * @param mt            Movetype, see enum above.
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock void SetEntityMoveType(int entity, MoveType mt)
+public static void SetEntityMoveType(int entity, MoveType mt)
 {
 	static bool gotconfig = false;
 	static char datamap[32];
@@ -259,7 +259,7 @@ stock void SetEntityMoveType(int entity, MoveType mt)
  * @return              RenderMode value.
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock RenderMode GetEntityRenderMode(int entity)
+public static RenderMode GetEntityRenderMode(int entity)
 {
 	static bool gotconfig = false;
 	static char prop[32];
@@ -288,7 +288,7 @@ stock RenderMode GetEntityRenderMode(int entity)
  * @param mode          RenderMode value.
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock void SetEntityRenderMode(int entity, RenderMode mode)
+public static void SetEntityRenderMode(int entity, RenderMode mode)
 {
 	static bool gotconfig = false;
 	static char prop[32];
@@ -317,7 +317,7 @@ stock void SetEntityRenderMode(int entity, RenderMode mode)
  * @return              RenderFx value.
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock RenderFx GetEntityRenderFx(int entity)
+public static RenderFx GetEntityRenderFx(int entity)
 {
 	static bool gotconfig = false;
 	static char prop[32];
@@ -346,7 +346,7 @@ stock RenderFx GetEntityRenderFx(int entity)
  * @param fx            RenderFx value.
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock void SetEntityRenderFx(int entity, RenderFx fx)
+public static void SetEntityRenderFx(int entity, RenderFx fx)
 {
 	static bool gotconfig = false;
 	static char prop[32];
@@ -378,7 +378,7 @@ stock void SetEntityRenderFx(int entity, RenderFx fx)
  * @param a             Amount of alpha (0-255)
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock void GetEntityRenderColor(int entity, int &r, int &g, int &b, int &a)
+public static void GetEntityRenderColor(int entity, int &r, int &g, int &b, int &a)
 {
 	static bool gotconfig = false;
 	static char prop[32];
@@ -420,7 +420,7 @@ stock void GetEntityRenderColor(int entity, int &r, int &g, int &b, int &a)
  * @param a             Amount of alpha (0-255)
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock void SetEntityRenderColor(int entity, int r=255, int g=255, int b=255, int a=255)
+public static void SetEntityRenderColor(int entity, int r=255, int g=255, int b=255, int a=255)
 {
 	static bool gotconfig = false;
 	static char prop[32];
@@ -459,7 +459,7 @@ stock void SetEntityRenderColor(int entity, int r=255, int g=255, int b=255, int
  * @return              Entity's m_flGravity value.
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock float GetEntityGravity(int entity)
+public static float GetEntityGravity(int entity)
 {
 	static bool gotconfig = false;
 	static char datamap[32];
@@ -488,7 +488,7 @@ stock float GetEntityGravity(int entity)
  * @param amount        Gravity to set (default = 1.0, half = 0.5, double = 2.0).
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock void SetEntityGravity(int entity, float amount)
+public static void SetEntityGravity(int entity, float amount)
 {
 	static bool gotconfig = false;
 	static char datamap[32];
@@ -517,7 +517,7 @@ stock void SetEntityGravity(int entity, float amount)
  * @param amount        Health amount.
  * @error               Invalid entity index, or lack of mod compliance.
  */
-stock void SetEntityHealth(int entity, int amount)
+public static void SetEntityHealth(int entity, int amount)
 {
 	static bool gotconfig = false;
 	static char prop[32];
@@ -573,7 +573,7 @@ stock void SetEntityHealth(int entity, int amount)
  * @error               Invalid client index, client not in game,
  *                      or lack of mod compliance.
  */
-stock int GetClientButtons(int client)
+public static int GetClientButtons(int client)
 {
 	static bool gotconfig = false;
 	static char datamap[32];

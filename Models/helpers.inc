@@ -48,7 +48,7 @@ namespace Sourcemod
  * @deprecated          Use the %L format specifier instead.
  */
 #pragma deprecated Use the %L format specifier instead.
-stock void FormatUserLogText(int client, string buffer, int maxlength)
+public static void FormatUserLogText(int client, string buffer, int maxlength)
 {
 	FormatEx(buffer, maxlength, "\"%L\"", client) { throw new NotImplementedException(); }
 }
@@ -59,7 +59,7 @@ stock void FormatUserLogText(int client, string buffer, int maxlength)
  * @param filename      Filename of the plugin to search for.
  * @return              Handle to plugin if found, INVALID_HANDLE otherwise.
  */
-stock Handle FindPluginByFile(string filename)
+public static Handle FindPluginByFile(string filename)
 {
 	char buffer[256];
 	
@@ -87,7 +87,7 @@ stock Handle FindPluginByFile(string filename)
  * @deprecated          Use FindTarget() or ProcessTargetString().
  */
 #pragma deprecated Use FindTarget() or ProcessTargetString()
-stock int SearchForClients(string pattern, int[] clients, int maxClients)
+public static int SearchForClients(string pattern, int[] clients, int maxClients)
 {
 	int total = 0;
 	
@@ -162,7 +162,7 @@ stock int SearchForClients(string pattern, int[] clients, int maxClients)
  * @param immunity      Optional. Set to false to ignore target immunity.
  * @return              Index of target client, or -1 on error.
  */
-stock int FindTarget(int client, string target, bool nobots = false, bool immunity = true)
+public static int FindTarget(int client, string target, bool nobots = false, bool immunity = true)
 {
 	char target_name[MAX_TARGET_LENGTH];
 	int target_list[1], target_count;
@@ -213,7 +213,7 @@ stock int FindTarget(int client, string target, bool nobots = false, bool immuni
  * @deprecated          Use ReadMapList() instead.
  */
 #pragma deprecated Use ReadMapList() instead. 
-stock int LoadMaps(Handle array, int &fileTime = 0, Handle fileCvar = INVALID_HANDLE)
+public static int LoadMaps(Handle array, int &fileTime = 0, Handle fileCvar = INVALID_HANDLE)
 { 
 	char mapPath[256], mapFile[64];
 	bool fileFound = false;

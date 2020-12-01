@@ -72,7 +72,7 @@ public const object USERMSG_BLOCKHOOKS      (1<<7)    /**< Prevents the message 
  */
 public static UserMessageType GetUserMessageType() { throw new NotImplementedException(); }
 
-stock Protobuf UserMessageToProtobuf(Handle msg)
+public static Protobuf UserMessageToProtobuf(Handle msg)
 {
 	if (GetUserMessageType() != UM_Protobuf)
 	{
@@ -83,7 +83,7 @@ stock Protobuf UserMessageToProtobuf(Handle msg)
 }
 
 // Make sure to only call this on writable buffers (eg from StartMessage).
-stock BfWrite UserMessageToBfWrite(Handle msg)
+public static BfWrite UserMessageToBfWrite(Handle msg)
 {
 	if (GetUserMessageType() == UM_Protobuf)
 	{
@@ -94,7 +94,7 @@ stock BfWrite UserMessageToBfWrite(Handle msg)
 }
 
 // Make sure to only call this on readable buffers (eg from a message hook).
-stock BfRead UserMessageToBfRead(Handle msg)
+public static BfRead UserMessageToBfRead(Handle msg)
 {
 	if (GetUserMessageType() == UM_Protobuf)
 	{
@@ -237,7 +237,7 @@ public static void UnhookUserMessage(UserMsg msg_id, MsgHook hook, bool intercep
  * @return              A handle to a bf_write bit packing structure, or
  *                      INVALID_HANDLE on failure.
  */
-stock Handle StartMessageAll(string msgname, int flags=0)
+public static Handle StartMessageAll(string msgname, int flags=0)
 {
 	int total = 0;
 	int[] clients = new int[MaxClients];
@@ -263,7 +263,7 @@ stock Handle StartMessageAll(string msgname, int flags=0)
  * @return              A handle to a bf_write bit packing structure, or
  *                      INVALID_HANDLE on failure.
  */
-stock Handle StartMessageOne(string msgname, int client, int flags=0)
+public static Handle StartMessageOne(string msgname, int client, int flags=0)
 {
 	int players[1];
 	players[0] = client;

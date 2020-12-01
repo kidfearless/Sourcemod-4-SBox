@@ -98,7 +98,7 @@ public static void ExtinguishEntity(int entity) { throw new NotImplementedExcept
  * @param velocity      New velocity, or NULL_VECTOR for no change.
  * @error               Invalid entity or client not in game, or lack of mod support.
  */
-public static void TeleportEntity(int entity, const float origin[3] = NULL_VECTOR, const float angles[3] = NULL_VECTOR, const float velocity[3] = NULL_VECTOR) { throw new NotImplementedException(); }
+public static void TeleportEntity(int entity, ReadOnlyCollection<float> origin[3] = NULL_VECTOR, ReadOnlyCollection<float> angles[3] = NULL_VECTOR, ReadOnlyCollection<float> velocity[3] = NULL_VECTOR) { throw new NotImplementedException(); }
 
 /**
  * Forces a player to commit suicide.
@@ -191,7 +191,7 @@ public static bool DispatchKeyValueFloat(int entity, string keyName, float value
  * @return              True on success, false otherwise.
  * @error               Invalid entity index, or no mod support.
  */
-public static bool DispatchKeyValueVector(int entity, string keyName, const float vec[3]) { throw new NotImplementedException(); }
+public static bool DispatchKeyValueVector(int entity, string keyName, ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns the entity a client is aiming at.

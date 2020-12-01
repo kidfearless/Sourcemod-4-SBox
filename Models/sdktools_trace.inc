@@ -214,7 +214,7 @@ typeset TraceEntityEnumerator
  * @param entindex      Entity index found at the given position (by reference).
  * @return              Contents mask.
  */
-public static int TR_GetPointContents(const float pos[3], int &entindex=-1) { throw new NotImplementedException(); }
+public static int TR_GetPointContents(ReadOnlyCollection<float> pos[3], int &entindex=-1) { throw new NotImplementedException(); }
 
 /**
  * Get the point contents testing only the given entity index.
@@ -223,7 +223,7 @@ public static int TR_GetPointContents(const float pos[3], int &entindex=-1) { th
  * @param pos           World position.
  * @return              Contents mask.
  */
-public static int TR_GetPointContentsEnt(int entindex, const float pos[3]) { throw new NotImplementedException(); }
+public static int TR_GetPointContentsEnt(int entindex, ReadOnlyCollection<float> pos[3]) { throw new NotImplementedException(); }
 
 /**
  * Starts up a new trace ray using a global trace result.
@@ -234,8 +234,8 @@ public static int TR_GetPointContentsEnt(int entindex, const float pos[3]) { thr
  * @param flags         Trace flags.
  * @param rtype         Method to calculate the ray direction.
  */
-public static void TR_TraceRay(const float pos[3],
-                        const float vec[3],
+public static void TR_TraceRay(ReadOnlyCollection<float> pos[3],
+                        ReadOnlyCollection<float> vec[3],
                         int flags,
                         RayType rtype) { throw new NotImplementedException(); }
 
@@ -248,10 +248,10 @@ public static void TR_TraceRay(const float pos[3],
  * @param maxs          Hull maximum size.
  * @param flags         Trace flags.
  */
-public static void TR_TraceHull(const float pos[3],
-                         const float vec[3],
-                         const float mins[3],
-                         const float maxs[3],
+public static void TR_TraceHull(ReadOnlyCollection<float> pos[3],
+                         ReadOnlyCollection<float> vec[3],
+                         ReadOnlyCollection<float> mins[3],
+                         ReadOnlyCollection<float> maxs[3],
                          int flags) { throw new NotImplementedException(); }
 
 /**
@@ -268,8 +268,8 @@ public static void TR_TraceHull(const float pos[3],
  *                      along the ray, this function is called.
  * @param data          Arbitrary data value to pass through to the enumerator.
  */
-public static void TR_EnumerateEntities(const float pos[3],
-                                 const float vec[3],
+public static void TR_EnumerateEntities(ReadOnlyCollection<float> pos[3],
+                                 ReadOnlyCollection<float> vec[3],
                                  int mask,
                                  RayType rtype,
                                  TraceEntityEnumerator enumerator,
@@ -289,10 +289,10 @@ public static void TR_EnumerateEntities(const float pos[3],
  *                      along the ray, this function is called.
  * @param data          Arbitrary data value to pass through to the enumerator.
  */
-public static void TR_EnumerateEntitiesHull(const float pos[3],
-                                    const float vec[3],
-                                    const float mins[3],
-                                    const float maxs[3],
+public static void TR_EnumerateEntitiesHull(ReadOnlyCollection<float> pos[3],
+                                    ReadOnlyCollection<float> vec[3],
+                                    ReadOnlyCollection<float> mins[3],
+                                    ReadOnlyCollection<float> maxs[3],
                                     int mask,
                                     TraceEntityEnumerator enumerator,
                                     any data=0) { throw new NotImplementedException(); }
@@ -307,7 +307,7 @@ public static void TR_EnumerateEntitiesHull(const float pos[3],
  *                      along the ray, this function is called.
  * @param data          Arbitrary data value to pass through to the enumerator.
  */
-public static void TR_EnumerateEntitiesSphere(const float pos[3],
+public static void TR_EnumerateEntitiesSphere(ReadOnlyCollection<float> pos[3],
                                     float radius,
                                     int mask,
                                     TraceEntityEnumerator enumerator,
@@ -323,8 +323,8 @@ public static void TR_EnumerateEntitiesSphere(const float pos[3],
  *                      along the box, this function is called.
  * @param data          Arbitrary data value to pass through to the enumerator.
  */
-public static void TR_EnumerateEntitiesBox(const float mins[3],
-                                    const float maxs[3],
+public static void TR_EnumerateEntitiesBox(ReadOnlyCollection<float> mins[3],
+                                    ReadOnlyCollection<float> maxs[3],
                                     int mask,
                                     TraceEntityEnumerator enumerator,
                                     any data=0) { throw new NotImplementedException(); }
@@ -338,7 +338,7 @@ public static void TR_EnumerateEntitiesBox(const float mins[3],
  *                      along the point, this function is called.
  * @param data          Arbitrary data value to pass through to the enumerator.
  */
-public static void TR_EnumerateEntitiesPoint(const float pos[3],
+public static void TR_EnumerateEntitiesPoint(ReadOnlyCollection<float> pos[3],
                                     int mask,
                                     TraceEntityEnumerator enumerator,
                                     any data=0) { throw new NotImplementedException(); }
@@ -359,8 +359,8 @@ public static void TR_EnumerateEntitiesPoint(const float pos[3],
  * @param data          Arbitrary data value to pass through to the filter
  *                      function.
  */
-public static void TR_TraceRayFilter(const float pos[3],
-                              const float vec[3],
+public static void TR_TraceRayFilter(ReadOnlyCollection<float> pos[3],
+                              ReadOnlyCollection<float> vec[3],
                               int flags,
                               RayType rtype,
                               TraceEntityFilter filter,
@@ -382,10 +382,10 @@ public static void TR_TraceRayFilter(const float pos[3],
  * @param data          Arbitrary data value to pass through to the filter
  *                      function.
  */
-public static void TR_TraceHullFilter(const float pos[3],
-                               const float vec[3],
-                               const float mins[3],
-                               const float maxs[3],
+public static void TR_TraceHullFilter(ReadOnlyCollection<float> pos[3],
+                               ReadOnlyCollection<float> vec[3],
+                               ReadOnlyCollection<float> mins[3],
+                               ReadOnlyCollection<float> maxs[3],
                                int flags,
                                TraceEntityFilter filter,
                                any data=0) { throw new NotImplementedException(); }
@@ -400,8 +400,8 @@ public static void TR_TraceHullFilter(const float pos[3],
  * @param rtype         Method to calculate the ray direction.
  * @param entity        Entity to clip to.
  */
-public static void TR_ClipRayToEntity(const float pos[3],
-                               const float vec[3],
+public static void TR_ClipRayToEntity(ReadOnlyCollection<float> pos[3],
+                               ReadOnlyCollection<float> vec[3],
                                int flags,
                                RayType rtype,
                                int entity) { throw new NotImplementedException(); }
@@ -416,10 +416,10 @@ public static void TR_ClipRayToEntity(const float pos[3],
  * @param flags         Trace flags.
  * @param entity        Entity to clip to.
  */
-public static void TR_ClipRayHullToEntity(const float pos[3],
-                                   const float vec[3],
-                                   const float mins[3],
-                                   const float maxs[3],
+public static void TR_ClipRayHullToEntity(ReadOnlyCollection<float> pos[3],
+                                   ReadOnlyCollection<float> vec[3],
+                                   ReadOnlyCollection<float> mins[3],
+                                   ReadOnlyCollection<float> maxs[3],
                                    int flags,
                                    int entity) { throw new NotImplementedException(); }
 
@@ -441,8 +441,8 @@ public static void TR_ClipCurrentRayToEntity(int flags, int entity) { throw new 
  * @param rtype         Method to calculate the ray direction.
  * @return              Ray trace handle, which must be closed via CloseHandle().
  */
-public static Handle TR_TraceRayEx(const float pos[3],
-                            const float vec[3],
+public static Handle TR_TraceRayEx(ReadOnlyCollection<float> pos[3],
+                            ReadOnlyCollection<float> vec[3],
                             int flags,
                             RayType rtype) { throw new NotImplementedException(); }
 
@@ -456,10 +456,10 @@ public static Handle TR_TraceRayEx(const float pos[3],
  * @param flags         Trace flags.
  * @return              Ray trace handle, which must be closed via CloseHandle().
  */
-public static Handle TR_TraceHullEx(const float pos[3],
-                             const float vec[3],
-                             const float mins[3],
-                             const float maxs[3],
+public static Handle TR_TraceHullEx(ReadOnlyCollection<float> pos[3],
+                             ReadOnlyCollection<float> vec[3],
+                             ReadOnlyCollection<float> mins[3],
+                             ReadOnlyCollection<float> maxs[3],
                              int flags) { throw new NotImplementedException(); }
 
 /**
@@ -478,8 +478,8 @@ public static Handle TR_TraceHullEx(const float pos[3],
  * @param data          Arbitrary data value to pass through to the filter function.
  * @return              Ray trace handle, which must be closed via CloseHandle().
  */
-public static Handle TR_TraceRayFilterEx(const float pos[3],
-                                  const float vec[3],
+public static Handle TR_TraceRayFilterEx(ReadOnlyCollection<float> pos[3],
+                                  ReadOnlyCollection<float> vec[3],
                                   int flags,
                                   RayType rtype,
                                   TraceEntityFilter filter,
@@ -501,10 +501,10 @@ public static Handle TR_TraceRayFilterEx(const float pos[3],
  * @param data          Arbitrary data value to pass through to the filter function.
  * @return              Ray trace handle, which must be closed via CloseHandle().
  */
-public static Handle TR_TraceHullFilterEx(const float pos[3],
-                                   const float vec[3],
-                                   const float mins[3],
-                                   const float maxs[3],
+public static Handle TR_TraceHullFilterEx(ReadOnlyCollection<float> pos[3],
+                                   ReadOnlyCollection<float> vec[3],
+                                   ReadOnlyCollection<float> mins[3],
+                                   ReadOnlyCollection<float> maxs[3],
                                    int flags,
                                    TraceEntityFilter filter,
                                    any data=0) { throw new NotImplementedException(); }
@@ -520,8 +520,8 @@ public static Handle TR_TraceHullFilterEx(const float pos[3],
  * @param entity        Entity to clip to.
  * @return              Ray trace handle, which must be closed via CloseHandle().
  */
-public static Handle TR_ClipRayToEntityEx(const float pos[3],
-                                   const float vec[3],
+public static Handle TR_ClipRayToEntityEx(ReadOnlyCollection<float> pos[3],
+                                   ReadOnlyCollection<float> vec[3],
                                    int flags,
                                    RayType rtype,
                                    int entity) { throw new NotImplementedException(); }
@@ -537,10 +537,10 @@ public static Handle TR_ClipRayToEntityEx(const float pos[3],
  * @param entity        Entity to clip to.
  * @return              Ray trace handle, which must be closed via CloseHandle().
  */
-public static Handle TR_ClipRayHullToEntityEx(const float pos[3],
-                                       const float vec[3],
-                                       const float mins[3],
-                                       const float maxs[3],
+public static Handle TR_ClipRayHullToEntityEx(ReadOnlyCollection<float> pos[3],
+                                       ReadOnlyCollection<float> vec[3],
+                                       ReadOnlyCollection<float> mins[3],
+                                       ReadOnlyCollection<float> maxs[3],
                                        int flags,
                                        int entity) { throw new NotImplementedException(); }
 

@@ -500,7 +500,7 @@ public static QueryCookie QueryClientConVar(int client, string cvarName, ConVarQ
  * @param c             Character to validate.
  * @return              True is valid for ConVars, false otherwise
  */
-stock bool IsValidConVarChar(int c)
+public static bool IsValidConVarChar(int c)
 {
 	return (c == '_' || IsCharAlpha(c) || IsCharNumeric(c)) { throw new NotImplementedException(); }
 }

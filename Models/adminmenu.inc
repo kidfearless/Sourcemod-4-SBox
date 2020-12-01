@@ -121,7 +121,7 @@ public static int AddTargetsToMenu2(Handle menu, int source_client, int flags) {
  * @param client        Client index.
  * @return              True on success, false on failure.
  */
-stock bool RedisplayAdminMenu(Handle topmenu, int client)
+public static bool RedisplayAdminMenu(Handle topmenu, int client)
 {
 	if (topmenu == INVALID_HANDLE)
 	{

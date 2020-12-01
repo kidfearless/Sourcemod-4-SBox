@@ -430,7 +430,7 @@ public static bool WriteFileLine(Handle hndl, string format, any ...) { throw ne
  * @return              Number of elements read (max 1), or -1 on error.
  * @error               Invalid Handle.
  */
-stock int ReadFileCell(Handle hndl, int &data, int size)
+public static int ReadFileCell(Handle hndl, int &data, int size)
 {
 	int ret;
 	int array[1];
@@ -456,7 +456,7 @@ stock int ReadFileCell(Handle hndl, int &data, int size)
  * @return              True on success, false on error.
  * @error               Invalid Handle.
  */
-stock bool WriteFileCell(Handle hndl, int data, int size)
+public static bool WriteFileCell(Handle hndl, int data, int size)
 {
 	int array[1];
 	array[0] = data;

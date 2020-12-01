@@ -183,7 +183,7 @@ methodmap Protobuf < Handle
 	// @param angle      Angle value to set.
 	// @param index      Index into repeated field.
 	// @error            Non-existent field, or incorrect field type.
-	public native void SetAngle(string field, const float angle[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+	public native void SetAngle(string field, ReadOnlyCollection<float> angle[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 	// Sets an XYZ vector on a protobuf message.
 	//
@@ -191,7 +191,7 @@ methodmap Protobuf < Handle
 	// @param vec        Vector value to set.
 	// @param index      Index into repeated field.
 	// @error            Non-existent field, or incorrect field type.
-	public native void SetVector(string field, const float vec[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+	public native void SetVector(string field, ReadOnlyCollection<float> vec[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 	// Sets an XY vector on a protobuf message.
 	//
@@ -199,7 +199,7 @@ methodmap Protobuf < Handle
 	// @param vec        Vector value to set.
 	// @param index      Index into repeated field.
 	// @error            Non-existent field, or incorrect field type.
-	public native void SetVector2D(string field, const float vec[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+	public native void SetVector2D(string field, ReadOnlyCollection<float> vec[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 	// Add an int32, uint32, sint32, fixed32, sfixed32, or enum value to a protobuf message repeated field.
 	//
@@ -248,21 +248,21 @@ methodmap Protobuf < Handle
 	// @param field      Field name.
 	// @param angle      Angle value to add.
 	// @error            Non-existent field, or incorrect field type.
-	public native void AddAngle(string field, const float angle[3]) { throw new NotImplementedException(); }
+	public native void AddAngle(string field, ReadOnlyCollection<float> angle[3]) { throw new NotImplementedException(); }
 
 	// Add an XYZ vector to a protobuf message repeated field.
 	//
 	// @param field      Field name.
 	// @param vec        Vector value to add.
 	// @error            Non-existent field, or incorrect field type.
-	public native void AddVector(string field, const float vec[3]) { throw new NotImplementedException(); }
+	public native void AddVector(string field, ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
 
 	// Add an XY vector to a protobuf message repeated field.
 	//
 	// @param field      Field name.
 	// @param vec        Vector value to add.
 	// @error            Non-existent field, or incorrect field type.
-	public native void AddVector2D(string field, const float vec[2]) { throw new NotImplementedException(); }
+	public native void AddVector2D(string field, ReadOnlyCollection<float> vec[2]) { throw new NotImplementedException(); }
 
 	// Removes a value by index from a protobuf message repeated field.
 	//
@@ -458,7 +458,7 @@ public static void PbSetColor(Handle pb, string field, const int color[4], int i
  * @param index         Index into repeated field.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbSetAngle(Handle pb, string field, const float angle[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+public static void PbSetAngle(Handle pb, string field, ReadOnlyCollection<float> angle[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
  * Sets an XYZ vector on a protobuf message.
@@ -469,7 +469,7 @@ public static void PbSetAngle(Handle pb, string field, const float angle[3], int
  * @param index         Index into repeated field.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbSetVector(Handle pb, string field, const float vec[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+public static void PbSetVector(Handle pb, string field, ReadOnlyCollection<float> vec[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
  * Sets an XY vector on a protobuf message.
@@ -480,7 +480,7 @@ public static void PbSetVector(Handle pb, string field, const float vec[3], int 
  * @param index         Index into repeated field.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbSetVector2D(Handle pb, string field, const float vec[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+public static void PbSetVector2D(Handle pb, string field, ReadOnlyCollection<float> vec[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
  * Add an int32, uint32, sint32, fixed32, sfixed32, or enum value to a protobuf message repeated field.
@@ -540,7 +540,7 @@ public static void PbAddColor(Handle pb, string field, const int color[4]) { thr
  * @param angle         Angle value to add.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbAddAngle(Handle pb, string field, const float angle[3]) { throw new NotImplementedException(); }
+public static void PbAddAngle(Handle pb, string field, ReadOnlyCollection<float> angle[3]) { throw new NotImplementedException(); }
 
 /**
  * Add an XYZ vector to a protobuf message repeated field.
@@ -550,7 +550,7 @@ public static void PbAddAngle(Handle pb, string field, const float angle[3]) { t
  * @param vec           Vector value to add.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbAddVector(Handle pb, string field, const float vec[3]) { throw new NotImplementedException(); }
+public static void PbAddVector(Handle pb, string field, ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Add an XY vector to a protobuf message repeated field.
@@ -560,7 +560,7 @@ public static void PbAddVector(Handle pb, string field, const float vec[3]) { th
  * @param vec           Vector value to add.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbAddVector2D(Handle pb, string field, const float vec[2]) { throw new NotImplementedException(); }
+public static void PbAddVector2D(Handle pb, string field, ReadOnlyCollection<float> vec[2]) { throw new NotImplementedException(); }
 
 /**
  * Removes a value by index from a protobuf message repeated field.

@@ -817,7 +817,7 @@ public static bool VoteMenu(Handle menu, int[] clients, int numClients, int time
  *                      in progress.
  * @error               Invalid Handle.
  */
-stock bool VoteMenuToAll(Handle menu, int time, int flags=0)
+public static bool VoteMenuToAll(Handle menu, int time, int flags=0)
 {
 	int total;
 	int[] players = new int[MaxClients];
@@ -1131,21 +1131,21 @@ public static bool InternalShowMenu(int client, string str, int time, int keys=-
  * @param winningVotes  Number of votes received by the winning option.
  * @param totalVotes    Number of total votes received.
  */
-stock void GetMenuVoteInfo(int param2, int &winningVotes, int &totalVotes)
+public static void GetMenuVoteInfo(int param2, int &winningVotes, int &totalVotes)
 {
 	winningVotes = param2 & 0xFFFF;
 	totalVotes = param2 >> 16;
 }
 
 /**
- * Quick stock to determine whether voting is allowed.  This doesn't let you
+ * Quick public static to determine whether voting is allowed.  This doesn't let you
  * fine-tune a reason for not voting, so it's not recommended for lazily
  * telling clients that voting isn't allowed.
  *
  * @return              True if voting is allowed, false if voting is in progress
  *                      or the cooldown is active.
  */
-stock bool IsNewVoteAllowed()
+public static bool IsNewVoteAllowed()
 {
 	if (IsVoteInProgress() || CheckVoteDelay() != 0)
 	{

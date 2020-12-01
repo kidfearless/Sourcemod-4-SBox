@@ -372,11 +372,11 @@ public static bool IsClientInGame(int client) { throw new NotImplementedExceptio
 public static bool IsClientInKickQueue(int client) { throw new NotImplementedException(); }
 
 /**
- * Backwards compatibility stock - use IsClientInGame
+ * Backwards compatibility public static - use IsClientInGame
  * @deprecated          Renamed to IsClientInGame
  */
 #pragma deprecated Use IsClientInGame() instead
-stock bool IsPlayerInGame(int client)
+public static bool IsPlayerInGame(int client)
 {
 	return IsClientInGame(client) { throw new NotImplementedException(); }
 }

@@ -219,7 +219,7 @@ public static void PrintToConsole(int client, string format, any ...) { throw ne
  * @param format        Formatting rules.
  * @param ...           Variable number of format parameters.
  */
-stock void PrintToConsoleAll(string format, any ...)
+public static void PrintToConsoleAll(string format, any ...)
 {
 	char buffer[254];
 	
@@ -433,7 +433,7 @@ public static int GetCmdArg(int argnum, string buffer, int maxlength) { throw ne
  * @param argnum Argument number to retrieve.
  * @return       Value of the command argument.
  */
-stock int GetCmdArgInt(int argnum) {
+public static int GetCmdArgInt(int argnum) {
     char str[12];
     GetCmdArg(argnum, str, sizeof(str)) { throw new NotImplementedException(); }
 
@@ -449,7 +449,7 @@ stock int GetCmdArgInt(int argnum) {
  * @param value  Populated with the value of the command argument.
  * @return       Whether the argument was entirely a numeric value.
  */
-stock bool GetCmdArgIntEx(int argnum, int &value) {
+public static bool GetCmdArgIntEx(int argnum, int &value) {
     char str[12];
     int len = GetCmdArg(argnum, str, sizeof(str)) { throw new NotImplementedException(); }
 
@@ -721,7 +721,7 @@ public static void RemoveCommandListener(CommandListener callback, string comman
  * @param command       Command to find.
  * @return              True if command is found, false otherwise.
  */
-stock bool CommandExists(string command)
+public static bool CommandExists(string command)
 {
 	return (GetCommandFlags(command) != INVALID_FCVAR_FLAGS) { throw new NotImplementedException(); }
 }

@@ -151,7 +151,7 @@ public const char NULL_STRING[1];   /**< pass this into certain functions to act
  * @param vec     The vector to test.
  * @return        True if NULL_VECTOR, false otherwise.
  */
-public static bool IsNullVector(const float vec[3]) { throw new NotImplementedException(); }
+public static bool IsNullVector(ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Check if the given string is the NULL_STRING.

@@ -366,7 +366,7 @@ public static void GetEntDataVector(int entity, int offset, float vec[3]) { thro
  * @param changeState   If true, change will be sent over the network.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-public static void SetEntDataVector(int entity, int offset, const float vec[3], bool changeState=false) { throw new NotImplementedException(); }
+public static void SetEntDataVector(int entity, int offset, ReadOnlyCollection<float> vec[3], bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and retrieves the string at
@@ -489,7 +489,7 @@ public static int FindDataMapInfo(int entity,
  *                      is used instead.
  * @return              An offset, or -1 on failure.
  */
-stock int GetEntSendPropOffs(int ent, string prop, bool actual=false)
+public static int GetEntSendPropOffs(int ent, string prop, bool actual=false)
 {
 	char cls[64];
 
@@ -518,7 +518,7 @@ stock int GetEntSendPropOffs(int ent, string prop, bool actual=false)
  * @return              Whether the property exists on the entity.
  * @error               Invalid entity.
  */
-stock bool HasEntProp(int entity, PropType type, string prop)
+public static bool HasEntProp(int entity, PropType type, string prop)
 {
 	if (type == Prop_Data)
 	{
@@ -667,7 +667,7 @@ public static void GetEntPropVector(int entity, PropType type, string prop, floa
  * @error               Invalid entity, property not found, or property not
  *                      actually a vector data type.
  */
-public static void SetEntPropVector(int entity, PropType type, string prop, const float vec[3], int element=0) { throw new NotImplementedException(); }
+public static void SetEntPropVector(int entity, PropType type, string prop, ReadOnlyCollection<float> vec[3], int element=0) { throw new NotImplementedException(); }
 
 /**
  * Gets a network property as a string.
@@ -717,7 +717,7 @@ public static int GetEntPropArraySize(int entity, PropType type, string prop) { 
  * @param dataSize      Size of each value in bytes (1, 2, or 4).
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-stock void GetEntDataArray(int entity, int offset, any[] array, int arraySize, int dataSize=4)
+public static void GetEntDataArray(int entity, int offset, any[] array, int arraySize, int dataSize=4)
 {
 	for (int i = 0; i < arraySize; i++)
 	{
@@ -736,7 +736,7 @@ stock void GetEntDataArray(int entity, int offset, any[] array, int arraySize, i
  * @param changeState   True to set the network state as changed; false otherwise.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-stock void SetEntDataArray(int entity, int offset, const any[] array, int arraySize, int dataSize=4, bool changeState=false)
+public static void SetEntDataArray(int entity, int offset, const any[] array, int arraySize, int dataSize=4, bool changeState=false)
 {
 	for (int i = 0; i < arraySize; i++)
 	{
@@ -763,7 +763,7 @@ public static Address GetEntityAddress(int entity) { throw new NotImplementedExc
  * @param maxlength     Maximum length of the buffer.
  * @return              True on success, false if there is no classname set.
  */
-stock bool GetEntityClassname(int entity, string clsname, int maxlength)
+public static bool GetEntityClassname(int entity, string clsname, int maxlength)
 {
 	return !!GetEntPropString(entity, Prop_Data, "m_iClassname", clsname, maxlength) { throw new NotImplementedException(); }
 }

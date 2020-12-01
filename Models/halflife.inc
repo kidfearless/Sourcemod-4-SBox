@@ -378,7 +378,7 @@ public static void PrintToChat(int client, string format, any ...) { throw new N
  * @param format        Formatting rules.
  * @param ...           Variable number of format parameters.
  */
-stock void PrintToChatAll(string format, any ...)
+public static void PrintToChatAll(string format, any ...)
 {
 	char buffer[254];
 
@@ -409,7 +409,7 @@ public static void PrintCenterText(int client, string format, any ...) { throw n
  * @param format        Formatting rules.
  * @param ...           Variable number of format parameters.
  */
-stock void PrintCenterTextAll(string format, any ...)
+public static void PrintCenterTextAll(string format, any ...)
 {
 	char buffer[254];
 
@@ -440,7 +440,7 @@ public static void PrintHintText(int client, string format, any ...) { throw new
  * @param format        Formatting rules.
  * @param ...           Variable number of format parameters.
  */
-stock void PrintHintTextToAll(string format, any ...)
+public static void PrintHintTextToAll(string format, any ...)
 {
 	char buffer[254];
 
@@ -614,7 +614,7 @@ public static int ShowHudText(int client, int channel, string message, any ...) 
  * @param type          Determines the way to treat the message body of the panel.
  * @error               If the client is not connected an error will be thrown.
  */
-stock void ShowMOTDPanel(int client, string title, string msg, int type=MOTDPANEL_TYPE_INDEX)
+public static void ShowMOTDPanel(int client, string title, string msg, int type=MOTDPANEL_TYPE_INDEX)
 {
 	char num[3];
 	IntToString(type, num, sizeof(num)) { throw new NotImplementedException(); }
@@ -635,7 +635,7 @@ stock void ShowMOTDPanel(int client, string title, string msg, int type=MOTDPANE
  * @param ip            Destination IP.
  * @param password      Password to connect to the destination IP. The client will be able to see this.
  */
-stock void DisplayAskConnectBox(int client, float time, string ip, string password = "")
+public static void DisplayAskConnectBox(int client, float time, string ip, string password = "")
 {
 	char destination[288];
 	FormatEx(destination, sizeof(destination), "%s/%s", ip, password) { throw new NotImplementedException(); }
@@ -686,7 +686,7 @@ enum ClientRangeType
  * @param size          Maximum size of clients array.
  * @return              Number of client indexes written to clients array.
  */
-public static int GetClientsInRange(const float origin[3], ClientRangeType rangeType, int[] clients, int size) { throw new NotImplementedException(); }
+public static int GetClientsInRange(ReadOnlyCollection<float> origin[3], ClientRangeType rangeType, int[] clients, int size) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the server's authentication string (SteamID).

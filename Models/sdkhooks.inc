@@ -305,12 +305,12 @@ typeset SDKHookCB
 
 	// OnTakeDamagePost
 	// OnTakeDamageAlivePost
-	function void (int victim, int attacker, int inflictor, float damage, int damagetype, int weapon, const float damageForce[3], const float damagePosition[3]) { throw new NotImplementedException(); }
+	function void (int victim, int attacker, int inflictor, float damage, int damagetype, int weapon, ReadOnlyCollection<float> damageForce[3], ReadOnlyCollection<float> damagePosition[3]) { throw new NotImplementedException(); }
 
 	// OnTakeDamagePost
 	// OnTakeDamageAlivePost
 	function void (int victim, int attacker, int inflictor, float damage, int damagetype, int weapon,
-		const float damageForce[3], const float damagePosition[3], int damagecustom) { throw new NotImplementedException(); }
+		ReadOnlyCollection<float> damageForce[3], ReadOnlyCollection<float> damagePosition[3], int damagecustom) { throw new NotImplementedException(); }
 
 	// FireBulletsPost
 	function void (int client, int shots, string weaponname) { throw new NotImplementedException(); }
@@ -429,7 +429,7 @@ public static void SDKUnhook(int entity, SDKHookType type, SDKHookCB callback) {
  */
 public static void SDKHooks_TakeDamage(int entity, int inflictor, int attacker,
 		float damage, int damageType=DMG_GENERIC, int weapon=-1,
-		const float damageForce[3]=NULL_VECTOR, const float damagePosition[3]=NULL_VECTOR) { throw new NotImplementedException(); }
+		ReadOnlyCollection<float> damageForce[3]=NULL_VECTOR, ReadOnlyCollection<float> damagePosition[3]=NULL_VECTOR) { throw new NotImplementedException(); }
 
 /**
  * Forces a client to drop the specified weapon
@@ -440,8 +440,8 @@ public static void SDKHooks_TakeDamage(int entity, int inflictor, int attacker,
  * @param vecVelocity   Velocity at which to toss weapon, or NULL_VECTOR for default.
  * @error               Invalid client or weapon entity, weapon not owned by client.
  */
-public static void SDKHooks_DropWeapon(int client, int weapon, const float vecTarget[3]=NULL_VECTOR,
-		const float vecVelocity[3]=NULL_VECTOR) { throw new NotImplementedException(); }
+public static void SDKHooks_DropWeapon(int client, int weapon, ReadOnlyCollection<float> vecTarget[3]=NULL_VECTOR,
+		ReadOnlyCollection<float> vecVelocity[3]=NULL_VECTOR) { throw new NotImplementedException(); }
 
 /**
  * Do not edit below this line!

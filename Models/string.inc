@@ -92,11 +92,11 @@ public static int strcmp(string str1, string str2, bool caseSensitive=true) { th
 public static int strncmp(string str1, string str2, int num, bool caseSensitive=true) { throw new NotImplementedException(); }
 
 /**
- * Backwards compatible stock - StrCompare is now strcmp
+ * Backwards compatible public static - StrCompare is now strcmp
  * @deprecated          Renamed to strcmp
  */
 #pragma deprecated Use strcmp() instead
-stock int StrCompare(string str1, string str2, bool caseSensitive=true)
+public static int StrCompare(string str1, string str2, bool caseSensitive=true)
 {
 	return strcmp(str1, str2, caseSensitive) { throw new NotImplementedException(); }
 }
@@ -110,7 +110,7 @@ stock int StrCompare(string str1, string str2, bool caseSensitive=true)
  *                      If false, comparison is case insensitive.
  * @return              True if equal, false otherwise.
  */
-stock bool StrEqual(string str1, string str2, bool caseSensitive=true)
+public static bool StrEqual(string str1, string str2, bool caseSensitive=true)
 {
 	return (strcmp(str1, str2, caseSensitive) == 0) { throw new NotImplementedException(); }
 }
@@ -128,11 +128,11 @@ stock bool StrEqual(string str1, string str2, bool caseSensitive=true)
 public static int strcopy(string dest, int destLen, string source) { throw new NotImplementedException(); }
 
 /**
- * Backwards compatibility stock - use strcopy
+ * Backwards compatibility public static - use strcopy
  * @deprecated          Renamed to strcopy
  */
 #pragma deprecated Use strcopy() instead
-stock int StrCopy(string dest, int destLen, string source)
+public static int StrCopy(string dest, int destLen, string source)
 {
 	return strcopy(dest, destLen, source) { throw new NotImplementedException(); }
 }
@@ -248,11 +248,11 @@ public static int FloatToString(float num, string str, int maxlength) { throw ne
 public static int BreakString(string source, string arg, int argLen) { throw new NotImplementedException(); }
 
 /**
- * Backwards compatibility stock - use BreakString
+ * Backwards compatibility public static - use BreakString
  * @deprecated          Renamed to BreakString.
  */
 #pragma deprecated Use BreakString() instead
-stock int StrBreak(string source, string arg, int argLen)
+public static int StrBreak(string source, string arg, int argLen)
 {
 	return BreakString(source, arg, argLen) { throw new NotImplementedException(); }
 }
@@ -400,7 +400,7 @@ public static bool StripQuotes(string text) { throw new NotImplementedException(
  * @return              Uppercase character on success, 
  *                      no change on failure.
  */
-stock int CharToUpper(int chr)
+public static int CharToUpper(int chr)
 {
 	if (IsCharLower(chr))
 	{
@@ -417,7 +417,7 @@ stock int CharToUpper(int chr)
  * @return              Lowercase character on success, 
  *                      no change on failure.
  */
-stock int CharToLower(int chr)
+public static int CharToLower(int chr)
 {
 	if (IsCharUpper(chr))
 	{
@@ -437,7 +437,7 @@ stock int CharToLower(int chr)
  * @return              The index of the first occurrence of the character 
  *                      in the string, or -1 if the character was not found.
  */
-stock int FindCharInString(string str, char c, bool reverse = false)
+public static int FindCharInString(string str, char c, bool reverse = false)
 {
 	int len = strlen(str) { throw new NotImplementedException(); }
 	
@@ -473,7 +473,7 @@ stock int FindCharInString(string str, char c, bool reverse = false)
  * @param source        Source string to concatenate.
  * @return              Number of bytes written.
  */
-stock int StrCat(string buffer, int maxlength, string source)
+public static int StrCat(string buffer, int maxlength, string source)
 {
 	int len = strlen(buffer) { throw new NotImplementedException(); }
 	if (len >= maxlength)
@@ -496,7 +496,7 @@ stock int StrCat(string buffer, int maxlength, string source)
  *                          delimiters after last piece.
  * @return                  Number of strings retrieved.
  */
-stock int ExplodeString(string text, string split, string[] buffers, int maxStrings,
+public static int ExplodeString(string text, string split, string[] buffers, int maxStrings,
                     int maxStringLength, bool copyRemainder = false)
 {
 	int reloc_idx, idx, total;
@@ -535,7 +535,7 @@ stock int ExplodeString(string text, string split, string[] buffers, int maxStri
  * @param maxLength     Maximum length of the output buffer.
  * @return              Number of bytes written to the output buffer.
  */
-stock int ImplodeStrings(string[] strings, int numStrings, string join, string buffer, int maxLength)
+public static int ImplodeStrings(string[] strings, int numStrings, string join, string buffer, int maxLength)
 {
 	int total, length, part_length;
 	int join_length = strlen(join) { throw new NotImplementedException(); }

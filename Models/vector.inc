@@ -44,7 +44,7 @@ namespace Sourcemod
  * @param squared       If true, the result will be squared (for optimization).
  * @return              Vector length (magnitude).
  */
-public static float GetVectorLength(const float vec[3], bool squared=false) { throw new NotImplementedException(); }
+public static float GetVectorLength(ReadOnlyCollection<float> vec[3], bool squared=false) { throw new NotImplementedException(); }
 
 /**
  * Calculates the distance between two vectors.
@@ -54,7 +54,7 @@ public static float GetVectorLength(const float vec[3], bool squared=false) { th
  * @param squared       If true, the result will be squared (for optimization).
  * @return              Vector distance.
  */
-public static float GetVectorDistance(const float vec1[3], const float vec2[3], bool squared=false) { throw new NotImplementedException(); }
+public static float GetVectorDistance(ReadOnlyCollection<float> vec1[3], ReadOnlyCollection<float> vec2[3], bool squared=false) { throw new NotImplementedException(); }
 
 /**
  * Calculates the dot product of two vectors.
@@ -63,7 +63,7 @@ public static float GetVectorDistance(const float vec1[3], const float vec2[3], 
  * @param vec2          Second vector.
  * @return              Dot product of the two vectors.
  */
-public static float GetVectorDotProduct(const float vec1[3], const float vec2[3]) { throw new NotImplementedException(); }
+public static float GetVectorDotProduct(ReadOnlyCollection<float> vec1[3], ReadOnlyCollection<float> vec2[3]) { throw new NotImplementedException(); }
 
 /**
  * Computes the cross product of two vectors.  Any input array can be the same
@@ -73,7 +73,7 @@ public static float GetVectorDotProduct(const float vec1[3], const float vec2[3]
  * @param vec2          Second vector.
  * @param result        Resultant vector.
  */
-public static void GetVectorCrossProduct(const float vec1[3], const float vec2[3], float result[3]) { throw new NotImplementedException(); }
+public static void GetVectorCrossProduct(ReadOnlyCollection<float> vec1[3], ReadOnlyCollection<float> vec2[3], float result[3]) { throw new NotImplementedException(); }
 
 /**
  * Normalizes a vector.  The input array can be the same as the output array.
@@ -82,7 +82,7 @@ public static void GetVectorCrossProduct(const float vec1[3], const float vec2[3
  * @param result        Resultant vector.
  * @return              Vector length.
  */
-public static float NormalizeVector(const float vec[3], float result[3]) { throw new NotImplementedException(); }
+public static float NormalizeVector(ReadOnlyCollection<float> vec[3], float result[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns vectors in the direction of an angle.
@@ -92,7 +92,7 @@ public static float NormalizeVector(const float vec[3], float result[3]) { throw
  * @param right         Right vector buffer or NULL_VECTOR.
  * @param up            Up vector buffer or NULL_VECTOR.
  */
-public static void GetAngleVectors(const float angle[3], float fwd[3], float right[3], float up[3]) { throw new NotImplementedException(); }
+public static void GetAngleVectors(ReadOnlyCollection<float> angle[3], float fwd[3], float right[3], float up[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns angles from a vector.
@@ -100,7 +100,7 @@ public static void GetAngleVectors(const float angle[3], float fwd[3], float rig
  * @param vec           Vector.
  * @param angle         Angle buffer.
  */
-public static void GetVectorAngles(const float vec[3], float angle[3]) { throw new NotImplementedException(); }
+public static void GetVectorAngles(ReadOnlyCollection<float> vec[3], float angle[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns direction vectors from a vector.
@@ -109,7 +109,7 @@ public static void GetVectorAngles(const float vec[3], float angle[3]) { throw n
  * @param right         Right vector buffer or NULL_VECTOR.
  * @param up            Up vector buffer or NULL_VECTOR.
  */
-public static void GetVectorVectors(const float vec[3], float right[3], float up[3]) { throw new NotImplementedException(); }
+public static void GetVectorVectors(ReadOnlyCollection<float> vec[3], float right[3], float up[3]) { throw new NotImplementedException(); }
 
 /**
  * Adds two vectors.  It is safe to use either input buffer as an output
@@ -119,7 +119,7 @@ public static void GetVectorVectors(const float vec[3], float right[3], float up
  * @param vec2          Second vector.
  * @param result        Result buffer.
  */
-stock void AddVectors(const float vec1[3], const float vec2[3], float result[3])
+public static void AddVectors(ReadOnlyCollection<float> vec1[3], ReadOnlyCollection<float> vec2[3], float result[3])
 {
 	result[0] = vec1[0] + vec2[0];
 	result[1] = vec1[1] + vec2[1];
@@ -134,7 +134,7 @@ stock void AddVectors(const float vec1[3], const float vec2[3], float result[3])
  * @param vec2          Second vector to subtract from first.
  * @param result        Result buffer.
  */
-stock void SubtractVectors(const float vec1[3], const float vec2[3], float result[3])
+public static void SubtractVectors(ReadOnlyCollection<float> vec1[3], ReadOnlyCollection<float> vec2[3], float result[3])
 {
 	result[0] = vec1[0] - vec2[0];
 	result[1] = vec1[1] - vec2[1];
@@ -147,7 +147,7 @@ stock void SubtractVectors(const float vec1[3], const float vec2[3], float resul
  * @param vec           Vector.
  * @param scale         Scale value.
  */
-stock void ScaleVector(float vec[3], float scale)
+public static void ScaleVector(float vec[3], float scale)
 {
 	vec[0] *= scale;
 	vec[1] *= scale;
@@ -159,7 +159,7 @@ stock void ScaleVector(float vec[3], float scale)
  *
  * @param vec           Vector.
  */
-stock void NegateVector(float vec[3])
+public static void NegateVector(float vec[3])
 {
 	vec[0] = -vec[0];
 	vec[1] = -vec[1];
@@ -173,7 +173,7 @@ stock void NegateVector(float vec[3])
  * @param pt2           Second point.
  * @param output        Output vector buffer.
  */
-stock void MakeVectorFromPoints(const float pt1[3], const float pt2[3], float output[3])
+public static void MakeVectorFromPoints(ReadOnlyCollection<float> pt1[3], ReadOnlyCollection<float> pt2[3], float output[3])
 {
 	output[0] = pt2[0] - pt1[0];
 	output[1] = pt2[1] - pt1[1];

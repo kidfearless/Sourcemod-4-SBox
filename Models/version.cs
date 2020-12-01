@@ -36,18 +36,13 @@ namespace Sourcemod
 {
 	public partial class SourceMod
 	{
+		public const string SOURCEMOD_V_TAG = "";
+		public const string SOURCEMOD_V_CSET = "0caa349f";
+		public const int SOURCEMOD_V_MAJOR = 1;
+		public const int SOURCEMOD_V_MINOR = 11;
+		public const int SOURCEMOD_V_RELEASE = 0;
+		public const int SOURCEMOD_V_REV = 6645;
+		public const string SOURCEMOD_VERSION = "1.11.0.6645";
 
-#tryinclude <version_auto>
-
-#if !defined _auto_version_included
- #define SOURCEMOD_V_TAG         "manual"
- #define SOURCEMOD_V_REV         0
- #define SOURCEMOD_V_CSET        "0"
- #define SOURCEMOD_V_MAJOR       1               /**< SourceMod Major version */
- #define SOURCEMOD_V_MINOR       11              /**< SourceMod Minor version */
- #define SOURCEMOD_V_RELEASE     0               /**< SourceMod Release version */
-
- #define SOURCEMOD_VERSION       "1.11.0-manual" /**< SourceMod version string (major.minor.release-tag) */
-#endif
 	}
 }

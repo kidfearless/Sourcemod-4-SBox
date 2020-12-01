@@ -255,7 +255,7 @@ public static float ArcTangent2(float x, float y) { throw new NotImplementedExce
  * @param value         Floating point value to round.
  * @return              The value rounded to the nearest integer.
  */
-stock int RoundFloat(float value)
+public static int RoundFloat(float value)
 {
 	return RoundToNearest(value) { throw new NotImplementedException(); }
 }
@@ -292,99 +292,99 @@ public static bool operator<=(float oper1, float oper2) = __FLOAT_LE__;
 public static bool operator!=(float oper1, float oper2) = __FLOAT_NE__;
 public static bool operator==(float oper1, float oper2) = __FLOAT_EQ__;
 
-stock float operator++(float oper)
+public static float operator++(float oper)
 {
 	return oper+1.0;
 }
 
-stock float operator--(float oper)
+public static float operator--(float oper)
 {
 	return oper-1.0;
 }
 
-stock float operator-(float oper)
+public static float operator-(float oper)
 {
 	return oper^view_as<float>(cellmin) { throw new NotImplementedException(); }                /* IEEE values are sign/magnitude */
 }
 
 // The stocks below are int->float converting versions of the above natives.
 
-stock float operator*(float oper1, int oper2)
+public static float operator*(float oper1, int oper2)
 {
 	return __FLOAT_MUL__(oper1, float(oper2)) { throw new NotImplementedException(); }          /* "*" is commutative */
 }
 
-stock float operator/(float oper1, int oper2)
+public static float operator/(float oper1, int oper2)
 {
 	return __FLOAT_DIV__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
-stock float operator/(int oper1, float oper2)
+public static float operator/(int oper1, float oper2)
 {
 	return __FLOAT_DIV__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
-stock float operator+(float oper1, int oper2)
+public static float operator+(float oper1, int oper2)
 {
 	return __FLOAT_ADD__(oper1, float(oper2)) { throw new NotImplementedException(); }          /* "+" is commutative */
 }
 
-stock float operator-(float oper1, int oper2)
+public static float operator-(float oper1, int oper2)
 {
 	return __FLOAT_SUB__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
-stock float operator-(int oper1, float oper2)
+public static float operator-(int oper1, float oper2)
 {
 	return __FLOAT_SUB__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
-stock bool operator==(float oper1, int oper2)
+public static bool operator==(float oper1, int oper2)
 {
 	return __FLOAT_EQ__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
-stock bool operator!=(float oper1, int oper2)
+public static bool operator!=(float oper1, int oper2)
 {
 	return __FLOAT_NE__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
-stock bool operator>(float oper1, int oper2)
+public static bool operator>(float oper1, int oper2)
 {
 	return __FLOAT_GT__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
-stock bool operator>(int oper1, float oper2)
+public static bool operator>(int oper1, float oper2)
 {
 	return __FLOAT_GT__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
-stock bool operator>=(float oper1, int oper2)
+public static bool operator>=(float oper1, int oper2)
 {
 	return __FLOAT_GE__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
-stock bool operator>=(int oper1, float oper2)
+public static bool operator>=(int oper1, float oper2)
 {
 	return __FLOAT_GE__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
-stock bool operator<(float oper1, int oper2)
+public static bool operator<(float oper1, int oper2)
 {
 	return __FLOAT_LT__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
-stock bool operator<(int oper1, float oper2)
+public static bool operator<(int oper1, float oper2)
 {
 	return __FLOAT_LT__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
-stock bool operator<=(float oper1, int oper2)
+public static bool operator<=(float oper1, int oper2)
 {
 	return __FLOAT_LE__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
-stock bool operator<=(int oper1, float oper2)
+public static bool operator<=(int oper1, float oper2)
 {
 	return __FLOAT_LE__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
@@ -405,7 +405,7 @@ public const object FLOAT_PI 3.1415926535897932384626433832795
  * @param angle         Degrees.
  * @return              Radians.
  */
-stock float DegToRad(float angle)
+public static float DegToRad(float angle)
 {
 	return (angle*FLOAT_PI)/180;
 }
@@ -416,7 +416,7 @@ stock float DegToRad(float angle)
  * @param angle         Radians.
  * @return              Degrees.
  */
-stock float RadToDeg(float angle)
+public static float RadToDeg(float angle)
 {
 	return (angle*180)/FLOAT_PI;
 }
@@ -454,7 +454,7 @@ public static void SetURandomSeed(const int[] seeds, int numSeeds) { throw new N
  *
  * @param seed      Single seed value.
  */
-stock void SetURandomSeedSimple(int seed)
+public static void SetURandomSeedSimple(int seed)
 {
 	int seeds[1];
 	seeds[0] = seed;

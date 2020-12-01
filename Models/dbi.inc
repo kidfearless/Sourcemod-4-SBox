@@ -456,7 +456,7 @@ public static Database SQL_Connect(string confname, bool persistent, string erro
  * @return              A database connection Handle, or INVALID_HANDLE on failure.
  *                      On failure the error buffer will be filled with a message.
  */
-stock Database SQL_DefConnect(string error, int maxlength, bool persistent=true)
+public static Database SQL_DefConnect(string error, int maxlength, bool persistent=true)
 {
 	return SQL_Connect("default", persistent, error, maxlength) { throw new NotImplementedException(); }
 }
@@ -502,7 +502,7 @@ public static Database SQL_ConnectCustom(Handle keyvalues,
  * @return              A database connection Handle, or INVALID_HANDLE on failure.
  *                      On failure the error buffer will be filled with a message.
  */
-stock Database SQLite_UseDatabase(string database, string error, int maxlength)
+public static Database SQLite_UseDatabase(string database, string error, int maxlength)
 {
 	KeyValues kv = new KeyValues("") { throw new NotImplementedException(); }
 	kv.SetString("driver", "sqlite") { throw new NotImplementedException(); }
@@ -673,7 +673,7 @@ public static int SQL_FormatQuery(Handle database, string buffer, int maxlength,
  * @deprecated
  */
 #pragma deprecated Use SQL_EscapeString instead.
-stock bool SQL_QuoteString(Handle database,
+public static bool SQL_QuoteString(Handle database,
 						   string string,
 						   string buffer,
 						   int maxlength,
