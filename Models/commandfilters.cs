@@ -94,37 +94,28 @@ namespace Sourcemod
 			switch (reason)
 			{
 				case COMMAND_TARGET_NONE:
-					{
-						ReplyToCommand(client, "[SM] %t", "No matching client") { throw new NotImplementedException(); }
-					}
+					ReplyToCommand(client, "[SM] %t", "No matching client");
+					break;
 				case COMMAND_TARGET_NOT_ALIVE:
-					{
-						ReplyToCommand(client, "[SM] %t", "Target must be alive") { throw new NotImplementedException(); }
-					}
+					ReplyToCommand(client, "[SM] %t", "Target must be alive");
+					break;
 				case COMMAND_TARGET_NOT_DEAD:
-					{
-						ReplyToCommand(client, "[SM] %t", "Target must be dead") { throw new NotImplementedException(); }
-					}
+					ReplyToCommand(client, "[SM] %t", "Target must be dead");
+					break;
 				case COMMAND_TARGET_NOT_IN_GAME:
-					{
-						ReplyToCommand(client, "[SM] %t", "Target is not in game") { throw new NotImplementedException(); }
-					}
+					ReplyToCommand(client, "[SM] %t", "Target is not in game");
+					break;
 				case COMMAND_TARGET_IMMUNE:
-					{
-						ReplyToCommand(client, "[SM] %t", "Unable to target") { throw new NotImplementedException(); }
-					}
+					ReplyToCommand(client, "[SM] %t", "Unable to target");
+					break;
 				case COMMAND_TARGET_EMPTY_FILTER:
-					{
-						ReplyToCommand(client, "[SM] %t", "No matching clients") { throw new NotImplementedException(); }
-					}
+					ReplyToCommand(client, "[SM] %t", "No matching clients");
+					break;
 				case COMMAND_TARGET_NOT_HUMAN:
-					{
-						ReplyToCommand(client, "[SM] %t", "Cannot target bot") { throw new NotImplementedException(); }
-					}
+					ReplyToCommand(client, "[SM] %t", "Cannot target bot");
+					break;
 				case COMMAND_TARGET_AMBIGUOUS:
-					{
-						ReplyToCommand(client, "[SM] %t", "More than one client matched") { throw new NotImplementedException(); }
-					}
+					ReplyToCommand(client, "[SM] %t", "More than one client matched");
 			}
 		}
 
