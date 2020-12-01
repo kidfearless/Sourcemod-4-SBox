@@ -469,7 +469,7 @@ namespace Sourcemod
 		 * @param fmt           Error message format.
 		 * @param ...           Format arguments.
 		 */
-		public static int ThrowNativeError(int error, string fmt, any...) { throw new NotImplementedException(); }
+		public static int ThrowNativeError(int error, string fmt, params any[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Retrieves the string length from a public static parameter string.  This is useful for
