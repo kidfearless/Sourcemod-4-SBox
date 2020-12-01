@@ -146,7 +146,7 @@ public static bool PrepSDKCall_SetAddress(Address addr) { throw new NotImplement
  *
  * @param gameconf      GameConfig Handle, or INVALID_HANDLE to use sdktools.games.txt.
  * @param source        Whether to look in Offsets or Signatures.
- * @param name          Name of the property to find.
+ * @param name          Name of the public to find.
  * @return              True on success, false if nothing was found.
  */
 public static bool PrepSDKCall_SetFromConf(Handle gameconf, SDKFuncConfSource source, string name) { throw new NotImplementedException(); }

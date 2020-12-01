@@ -90,7 +90,7 @@ enum PathType
 
 // A DirectoryListing iterates over the contents of a directory. To obtain a
 // DirectoryListing handle, call OpenDirectory().
-methodmap DirectoryListing < Handle
+public class DirectoryListing : Handle
 {
 	// Reads the current directory entry as a local filename, then moves to the
 	// next file.
@@ -101,13 +101,13 @@ methodmap DirectoryListing < Handle
 	// @param maxlength       Maximum size of string buffer.
 	// @param type            Optional variable to store the file type.
 	// @return                True on success, false if there are no more files to read.
-	public native bool GetNext(string buffer, int maxlength, FileType &type=FileType_Unknown) { throw new NotImplementedException(); }
+	public bool GetNext(string buffer, int maxlength, FileType &type=FileType_Unknown) { throw new NotImplementedException(); }
 };
 
 // A File object can be obtained by calling OpenFile(). File objects should be
 // closed with delete or Close(). Note that, "delete file" does not
 // actually delete the file, it just closes the handle.
-methodmap File < Handle
+public class File : Handle
 {
 	// Close the file handle. This is the same as using CloseHandle() or delete.
 	public void Close() {
@@ -119,7 +119,7 @@ methodmap File < Handle
 	// @param buffer          String buffer to hold the line.
 	// @param maxlength       Maximum size of string buffer.
 	// @return                True on success, false otherwise.
-	public native bool ReadLine(string buffer, int maxlength) { throw new NotImplementedException(); }
+	public bool ReadLine(string buffer, int maxlength) { throw new NotImplementedException(); }
 
 	// Reads binary data from a file.
 	//
@@ -128,7 +128,7 @@ methodmap File < Handle
 	// @param size            Size of each element, in bytes, to be read.
 	//                        Valid sizes are 1, 2, or 4.
 	// @return                Number of elements read, or -1 on error.
-	public native int Read(any[] items, int num_items, int size) { throw new NotImplementedException(); }
+	public int Read(any[] items, int num_items, int size) { throw new NotImplementedException(); }
 
 	// Reads a UTF8 or ANSI string from a file.
 	//
@@ -142,7 +142,7 @@ methodmap File < Handle
 	// @return                Number of characters written to the buffer, or -1
 	//                        if an error was encountered.
 	// @error                 read_count > max_size.
-	public native int ReadString(string buffer, int max_size, int read_count=-1) { throw new NotImplementedException(); }
+	public int ReadString(string buffer, int max_size, int read_count=-1) { throw new NotImplementedException(); }
 
 	// Writes binary data to a file.
 	//
@@ -154,14 +154,14 @@ methodmap File < Handle
 	// @param size            Size of each item in the array in bytes.
 	//                        Valid sizes are 1, 2, or 4.
 	// @return                True on success, false on error.
-	public native bool Write(const any[] items, int num_items, int size) { throw new NotImplementedException(); }
+	public bool Write(const any[] items, int num_items, int size) { throw new NotImplementedException(); }
 
 	// Writes a binary string to a file.
 	//
 	// @param buffer          String to write.
 	// @param term            True to append NUL terminator, false otherwise.
 	// @return                True on success, false on error.
-	public native bool WriteString(string buffer, bool term) { throw new NotImplementedException(); }
+	public bool WriteString(string buffer, bool term) { throw new NotImplementedException(); }
 
 	// Writes a line of text to a text file.  A newline is automatically appended.
 	//
@@ -169,82 +169,82 @@ methodmap File < Handle
 	// @param format          Formatting rules.
 	// @param ...             Variable number of format parameters.
 	// @return                True on success, false otherwise.
-	public native bool WriteLine(string format, any ...) { throw new NotImplementedException(); }
+	public bool WriteLine(string format, any ...) { throw new NotImplementedException(); }
 
 	// Reads a single int8 (byte) from a file. The returned value is sign-
 	// extended to an int32.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadInt8(int &data) { throw new NotImplementedException(); }
+	public bool ReadInt8(int &data) { throw new NotImplementedException(); }
 
 	// Reads a single uint8 (unsigned byte) from a file. The returned value is
 	// zero-extended to an int32.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadUint8(int &data) { throw new NotImplementedException(); }
+	public bool ReadUint8(int &data) { throw new NotImplementedException(); }
 
 	// Reads a single int16 (short) from a file. The value is sign-extended to
 	// an int32.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadInt16(int &data) { throw new NotImplementedException(); }
+	public bool ReadInt16(int &data) { throw new NotImplementedException(); }
 
 	// Reads a single unt16 (unsigned short) from a file. The value is zero-
 	// extended to an int32.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadUint16(int &data) { throw new NotImplementedException(); }
+	public bool ReadUint16(int &data) { throw new NotImplementedException(); }
 
 	// Reads a single int32 (int/cell) from a file.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadInt32(int &data) { throw new NotImplementedException(); }
+	public bool ReadInt32(int &data) { throw new NotImplementedException(); }
 
 	// Writes a single int8 (byte) to a file.
 	//
 	// @param data            Data to write (truncated to an int8).
 	// @return                True on success, false on failure.
-	public native bool WriteInt8(int data) { throw new NotImplementedException(); }
+	public bool WriteInt8(int data) { throw new NotImplementedException(); }
 
 	// Writes a single int16 (short) to a file.
 	//
 	// @param data            Data to write (truncated to an int16).
 	// @return                True on success, false on failure.
-	public native bool WriteInt16(int data) { throw new NotImplementedException(); }
+	public bool WriteInt16(int data) { throw new NotImplementedException(); }
 
 	// Writes a single int32 (int/cell) to a file.
 	//
 	// @param data            Data to write.
 	// @return                True on success, false on failure.
-	public native bool WriteInt32(int data) { throw new NotImplementedException(); }
+	public bool WriteInt32(int data) { throw new NotImplementedException(); }
 
 	// Tests if the end of file has been reached.
 	//
 	// @return                True if end of file has been reached, false otherwise.
-	public native bool EndOfFile() { throw new NotImplementedException(); }
+	public bool EndOfFile() { throw new NotImplementedException(); }
 
 	// Sets the file position indicator.
 	//
 	// @param position        Position relative to what is specified in whence.
 	// @param where           SEEK_ constant value of where to see from.
 	// @return                True on success, false otherwise.
-	public native bool Seek(int position, int where) { throw new NotImplementedException(); }
+	public bool Seek(int position, int where) { throw new NotImplementedException(); }
 
 	// Flushes a file's buffered output; any buffered output
 	// is immediately written to the file.
 	// 
 	// @return              True on success or use_valve_fs specified with OpenFile,
 	//                      otherwise false on failure.
-	public native bool Flush() { throw new NotImplementedException(); }
+	public bool Flush() { throw new NotImplementedException(); }
 	
 	// Get the current position in the file; returns -1 on failure.
-	property int Position {
-		public native get() { throw new NotImplementedException(); }
+	public int Position {
+		get { throw new NotImplementedException(); }
 	}
 }
 

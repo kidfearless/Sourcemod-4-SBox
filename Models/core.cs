@@ -131,7 +131,7 @@ namespace Sourcemod
 		};
 
 		/**
-		 * Defines how a plugin must expose itself for native requiring.
+		 * Defines how a plugin must expose itself for public static requiring.
 		 */
 		public struct SharedPlugin
 		{
@@ -173,11 +173,11 @@ namespace Sourcemod
 		public static int VerifyCoreVersion() { throw new NotImplementedException(); }
 
 		/**
-		 * Sets a native as optional, such that if it is unloaded, removed,
+		 * Sets a public static as optional, such that if it is unloaded, removed,
 		 * or otherwise non-existent, the plugin will still work.  Calling
 		 * removed natives results in a run-time error.
 		 *
-		 * @param name          Native name.
+		 * @param name          public static name.
 		 */
 		public static void MarkNativeAsOptional(string name) { throw new NotImplementedException(); }
 

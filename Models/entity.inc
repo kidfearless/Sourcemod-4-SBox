@@ -38,12 +38,12 @@ namespace Sourcemod
 	{
 
 /**
- * Property types for entities.
+ * public types for entities.
  */
 enum PropType
 {
-	Prop_Send = 0,  /**< This property is networked. */
-	Prop_Data = 1   /**< This property is for save game data fields. */
+	Prop_Send = 0,  /**< This public is networked. */
+	Prop_Data = 1   /**< This public is for save game data fields. */
 };
 
 /**
@@ -296,7 +296,7 @@ public static int GetEntDataEnt(int entity, int offset) { throw new NotImplement
  * reasons explained in the notes.
  *
  * Note: This function uses 0 as an indicator to unset data, but
- * 0 is also the world entity index.  Thus, a property cannot
+ * 0 is also the world entity index.  Thus, a public cannot
  * be set to the world entity using this native.
  *
  * @param entity        Edict index.
@@ -400,17 +400,17 @@ public static int SetEntDataString(int entity, int offset, string buffer, int ma
  */
 
 /**
- * Given a ServerClass name, finds a networkable send property offset.
+ * Given a ServerClass name, finds a networkable send public offset.
  * This information is cached for future calls.
  *
  * Note, this function may return offsets that do not work!
- * If a property is nested beneath a parent object, the resulting offset
+ * If a public is nested beneath a parent object, the resulting offset
  * will be invalid for direct use with data functions.  Therefore, you
- * should use FindSendPropInfo() instead.  An example of such a property is
+ * should use FindSendPropInfo() instead.  An example of such a public is
  * CTFPlayer::DT_LocalPlayer.m_nDisguiseClass on Team Fortress.
  *
  * @param cls           Classname.
- * @param prop          Property name.
+ * @param prop          public name.
  * @return              An offset, or -1 on failure.
  * @deprecated          Use FindSendPropInfo instead, or HasEntProp if you just want to check for existence.
  */
@@ -418,11 +418,11 @@ public static int SetEntDataString(int entity, int offset, string buffer, int ma
 public static int FindSendPropOffs(string cls, string prop) { throw new NotImplementedException(); }
 
 /**
- * Given a ServerClass name, finds a networkable send property offset.
+ * Given a ServerClass name, finds a networkable send public offset.
  * This information is cached for future calls.
  *
  * @param cls           Classname.
- * @param prop          Property name.
+ * @param prop          public name.
  * @param type          Optional parameter to store the type.
  * @param num_bits      Optional parameter to store the number of bits the field
  *                      uses, if applicable (otherwise 0 is stored).  The number
@@ -432,7 +432,7 @@ public static int FindSendPropOffs(string cls, string prop) { throw new NotImple
  *                      FindSendPropOffs() would return.
  * @return              On success, returns an absolutely computed offset.
  *                      If no offset is available, 0 is returned.
- *                      If the property is not found, -1 is returned.
+ *                      If the public is not found, -1 is returned.
  */
 public static int FindSendPropInfo(string cls,
 						string prop,
@@ -441,11 +441,11 @@ public static int FindSendPropInfo(string cls,
 						int &local_offset=0) { throw new NotImplementedException(); }
 
 /**
- * Given an entity, finds a datamap property offset.
+ * Given an entity, finds a datamap public offset.
  * This information is cached for future calls.
  *
  * @param entity        Entity index.
- * @param prop          Property name.
+ * @param prop          public name.
  * @param type          Optional parameter to store the type.
  * @param num_bits      Optional parameter to store the number of bits the field
  *                      uses.  The bit count will either be 1 (for boolean) or
@@ -460,11 +460,11 @@ public static int FindDataMapOffs(int entity,
 					   int &num_bits=0) { throw new NotImplementedException(); }
 
 /**
- * Given an entity, finds a nested datamap property offset.
+ * Given an entity, finds a nested datamap public offset.
  * This information is cached for future calls.
  *
  * @param entity        Entity index.
- * @param prop          Property name.
+ * @param prop          public name.
  * @param type          Optional parameter to store the type.
  * @param num_bits      Optional parameter to store the number of bits the field
  *                      uses.  The bit count will either be 1 (for boolean) or
@@ -480,10 +480,10 @@ public static int FindDataMapInfo(int entity,
 					   int &local_offset=0) { throw new NotImplementedException(); }
 
 /**
- * Wrapper function for finding a send property for a particular entity.
+ * Wrapper function for finding a send public for a particular entity.
  *
  * @param ent           Entity index.
- * @param prop          Property name.
+ * @param prop          public name.
  * @param actual        Defaults to false for backwards compatibility.
  *                      If true, the newer FindSendPropInfo() function
  *                      is used instead.
@@ -510,12 +510,12 @@ public static int GetEntSendPropOffs(int ent, string prop, bool actual=false)
 }
 
 /**
- * Checks if an entity property exists on an entity.
+ * Checks if an entity public exists on an entity.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
- * @return              Whether the property exists on the entity.
+ * @param type          public type.
+ * @param prop          public name.
+ * @return              Whether the public exists on the entity.
  * @error               Invalid entity.
  */
 public static bool HasEntProp(int entity, PropType type, string prop)
@@ -546,14 +546,14 @@ public static bool HasEntProp(int entity, PropType type, string prop)
  * because it performs strict offset checking and typing rules.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
+ * @param type          public type.
+ * @param prop          public name.
  * @param size          Number of bytes to write (valid values are 1, 2, or 4).
  *                      This value is auto-detected, and the size parameter is
  *                      only used as a fallback in case detection fails.
- * @param element       Element # (starting from 0) if property is an array.
- * @return              Value at the given property offset.
- * @error               Invalid entity or property not found.
+ * @param element       Element # (starting from 0) if public is an array.
+ * @return              Value at the given public offset.
+ * @error               Invalid entity or public not found.
  */
 public static int GetEntProp(int entity, PropType type, string prop, int size=4, int element=0) { throw new NotImplementedException(); }
 
@@ -564,13 +564,13 @@ public static int GetEntProp(int entity, PropType type, string prop, int size=4,
  * because it performs strict offset checking and typing rules.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
+ * @param type          public type.
+ * @param prop          public name.
  * @param value         Value to set.
  * @param size          Number of bytes to write (valid values are 1, 2, or 4).
  *                      This value is auto-detected, and the size parameter is
  *                      only used as a fallback in case detection fails.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
 public static void SetEntProp(int entity, PropType type, string prop, any value, int size=4, int element=0) { throw new NotImplementedException(); }
@@ -582,10 +582,10 @@ public static void SetEntProp(int entity, PropType type, string prop, any value,
  * because it performs strict offset checking and typing rules.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
- * @param element       Element # (starting from 0) if property is an array.
- * @return              Value at the given property offset.
+ * @param type          public type.
+ * @param prop          public name.
+ * @param element       Element # (starting from 0) if public is an array.
+ * @return              Value at the given public offset.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
 public static float GetEntPropFloat(int entity, PropType type, string prop, int element=0) { throw new NotImplementedException(); }
@@ -597,10 +597,10 @@ public static float GetEntPropFloat(int entity, PropType type, string prop, int 
  * because it performs strict offset checking and typing rules.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
+ * @param type          public type.
+ * @param prop          public name.
  * @param value         Value to set.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
 public static void SetEntPropFloat(int entity, PropType type, string prop, float value, int element=0) { throw new NotImplementedException(); }
@@ -612,9 +612,9 @@ public static void SetEntPropFloat(int entity, PropType type, string prop, float
  * because it performs strict offset checking and typing rules.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param type          public type.
+ * @param prop          public name.
+ * @param element       Element # (starting from 0) if public is an array.
  * @return              Entity index at the given property.
  *                      If there is no entity, or the entity is not valid,
  *                      then -1 is returned.
@@ -629,10 +629,10 @@ public static int GetEntPropEnt(int entity, PropType type, string prop, int elem
  * because it performs strict offset checking and typing rules.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
+ * @param type          public type.
+ * @param prop          public name.
  * @param other         Entity index to set, or -1 to unset.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
 public static void SetEntPropEnt(int entity, PropType type, string prop, int other, int element=0) { throw new NotImplementedException(); }
@@ -644,11 +644,11 @@ public static void SetEntPropEnt(int entity, PropType type, string prop, int oth
  * because it performs strict offset checking and typing rules.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
+ * @param type          public type.
+ * @param prop          public name.
  * @param vec           Vector buffer to store data in.
- * @param element       Element # (starting from 0) if property is an array.
- * @error               Invalid entity, property not found, or property not
+ * @param element       Element # (starting from 0) if public is an array.
+ * @error               Invalid entity, public not found, or public not
  *                      actually a vector data type.
  */
 public static void GetEntPropVector(int entity, PropType type, string prop, float vec[3], int element=0) { throw new NotImplementedException(); }
@@ -660,39 +660,39 @@ public static void GetEntPropVector(int entity, PropType type, string prop, floa
  * because it performs strict offset checking and typing rules.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
+ * @param type          public type.
+ * @param prop          public name.
  * @param vec           Vector to set.
- * @param element       Element # (starting from 0) if property is an array.
- * @error               Invalid entity, property not found, or property not
+ * @param element       Element # (starting from 0) if public is an array.
+ * @error               Invalid entity, public not found, or public not
  *                      actually a vector data type.
  */
 public static void SetEntPropVector(int entity, PropType type, string prop, ReadOnlyCollection<float> vec[3], int element=0) { throw new NotImplementedException(); }
 
 /**
- * Gets a network property as a string.
+ * Gets a network public as a string.
  *
  * @param entity        Edict index.
- * @param type          Property type.
- * @param prop          Property to use.
+ * @param type          public type.
+ * @param prop          public to use.
  * @param buffer        Destination string buffer.
  * @param maxlen        Maximum length of output string buffer.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @return              Number of non-null bytes written.
- * @error               Invalid entity, offset out of reasonable bounds, or property is not a valid string.
+ * @error               Invalid entity, offset out of reasonable bounds, or public is not a valid string.
  */
 public static int GetEntPropString(int entity, PropType type, string prop, string buffer, int maxlen, int element=0) { throw new NotImplementedException(); }
 
 /**
- * Sets a network property as a string.
+ * Sets a network public as a string.
  *
  * @param entity        Edict index.
- * @param type          Property type.
- * @param prop          Property to use.
+ * @param type          public type.
+ * @param prop          public to use.
  * @param buffer        String to set.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @return              Number of non-null bytes written.
- * @error               Invalid entity, offset out of reasonable bounds, or property is not a valid string.
+ * @error               Invalid entity, offset out of reasonable bounds, or public is not a valid string.
  */
 public static int SetEntPropString(int entity, PropType type, string prop, string buffer, int element=0) { throw new NotImplementedException(); }
 
@@ -700,10 +700,10 @@ public static int SetEntPropString(int entity, PropType type, string prop, strin
  * Retrieves the count of values that an entity property's array can store.
  *
  * @param entity        Entity/edict index.
- * @param type          Property type.
- * @param prop          Property name.
- * @return              Size of array (in elements) or 1 if property is not an array.
- * @error               Invalid entity or property not found.
+ * @param type          public type.
+ * @param prop          public name.
+ * @return              Size of array (in elements) or 1 if public is not an array.
+ * @error               Invalid entity or public not found.
  */
 public static int GetEntPropArraySize(int entity, PropType type, string prop) { throw new NotImplementedException(); }
 

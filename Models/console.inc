@@ -466,7 +466,7 @@ public static bool GetCmdArgIntEx(int argnum, int &value) {
  */
 public static int GetCmdArgString(string buffer, int maxlength) { throw new NotImplementedException(); }
 
-methodmap CommandIterator < Handle {
+public class CommandIterator : Handle {
 	// Creates a new CommandIterator. Must be freed with delete or
 	// CloseHandle().
 	//
@@ -475,40 +475,40 @@ methodmap CommandIterator < Handle {
 	// with the command.
 	// 
 	// @return              New CommandIterator Handle.
-	public native CommandIterator() { throw new NotImplementedException(); }
+	public CommandIterator() { throw new NotImplementedException(); }
 
 	// Determines if there is a next command. If one is found, the
 	// iterator is advanced to it.
 	//
 	// @return              true if found and iterator is advanced.
-	public native bool Next() { throw new NotImplementedException(); }
+	public bool Next() { throw new NotImplementedException(); }
 
 	// Retrieves the command's description.
 	//
 	// @param buffer        Buffer to copy to.
 	// @param maxlen        Maximum size of the buffer.
 	// @error               Invalid iterator position.
-	public native void GetDescription(string buffer, int maxlen) { throw new NotImplementedException(); }
+	public void GetDescription(string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Retrieves the command's name.
 	//
 	// @param buffer        Buffer to copy to.
 	// @param maxlen        Maximum size of the buffer.
 	// @error               Invalid iterator position.
-	public native void GetName(string buffer, int maxlen) { throw new NotImplementedException(); }
+	public void GetName(string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Retrieves the plugin handle of the command's creator
 	//
 	// @error               Invalid iterator position.
-	property Handle Plugin {
-		public native get() { throw new NotImplementedException(); }
+	public Handle Plugin {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Retrieves the command's default flags
 	//
 	// @error                Invalid iterator position.
-	property int Flags {
-		public native get() { throw new NotImplementedException(); }
+	public int Flags {
+		get { throw new NotImplementedException(); }
 	}
 }
 

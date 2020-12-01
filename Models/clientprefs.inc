@@ -96,12 +96,12 @@ typedef CookieMenuHandler = function void (
 /**
  * Note:
  * 
- * A successful return value/result on any client prefs native only guarantees that the local cache has been updated.
+ * A successful return value/result on any client prefs public static only guarantees that the local cache has been updated.
  * Database connection problems can still prevent the data from being permanently saved. Connection problems will be logged as
  * errors by the clientprefs extension.
  */
 
-methodmap Cookie < Handle {
+public class Cookie : Handle {
 	// Creates a new Client preference cookie.
 	//
 	// Handles returned can be closed via CloseHandle() when
@@ -113,7 +113,7 @@ methodmap Cookie < Handle {
 	// @return              A handle to the newly created cookie. If the cookie already
 	//                      exists, a handle to it will still be returned.
 	// @error               Cookie name is blank.
-	public native Cookie(string name, string description, CookieAccess access) { throw new NotImplementedException(); }
+	public Cookie(string name, string description, CookieAccess access) { throw new NotImplementedException(); }
 
 	// Searches for a Client preference cookie.
 	//
@@ -123,14 +123,14 @@ methodmap Cookie < Handle {
 	// @param name          Name of cookie to find.
 	// @return              A handle to the cookie if it is found, null otherwise.
 
-	public static native Cookie Find(string name) { throw new NotImplementedException(); }
+	public static public static Cookie Find(string name) { throw new NotImplementedException(); }
 
 	// Set the value of a Client preference cookie.
 	//
 	// @param client        Client index.
 	// @param value         String value to set.
 	// @error               Invalid cookie handle or invalid client index.
-	public native void Set(int client, string value) { throw new NotImplementedException(); }
+	public void Set(int client, string value) { throw new NotImplementedException(); }
 
 	// Retrieve the value of a Client preference cookie.
 	//
@@ -138,14 +138,14 @@ methodmap Cookie < Handle {
 	// @param buffer        Copyback buffer for value.
 	// @param maxlen        Maximum length of the buffer.
 	// @error               Invalid cookie handle or invalid client index.
-	public native void Get(int client, string buffer, int maxlen) { throw new NotImplementedException(); }
+	public void Get(int client, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Sets the value of a Client preference cookie based on an authID string.
 	//
 	// @param authID        String Auth/STEAM ID of player to set.
 	// @param value         String value to set.
 	// @error               Invalid cookie handle.
-	public native void SetByAuthId(string authID, string value) { throw new NotImplementedException(); }
+	public void SetByAuthId(string authID, string value) { throw new NotImplementedException(); }
 
 	// Add a new prefab item to the client cookie settings menu.
 	//
@@ -156,20 +156,20 @@ methodmap Cookie < Handle {
 	// @param handler       Optional handler callback for translations and output on selection
 	// @param info          Info data to pass to the callback.
 	// @error               Invalid cookie handle.
-	public native void SetPrefabMenu(CookieMenu type, string display, CookieMenuHandler handler=INVALID_FUNCTION, any info=0) { throw new NotImplementedException(); }
+	public void SetPrefabMenu(CookieMenu type, string display, CookieMenuHandler handler=INVALID_FUNCTION, any info=0) { throw new NotImplementedException(); }
 
 	// Returns the last updated timestamp for a client cookie
 	//
 	// @param client        Client index.
 	// @return              Last updated timestamp.
-	public native int GetClientTime(int client) { throw new NotImplementedException(); }
+	public int GetClientTime(int client) { throw new NotImplementedException(); }
 
 	// Returns the access level of a cookie
 	//
 	// @return              CookieAccess access level.
 	// @error               Invalid cookie handle.
-	property CookieAccess AccessLevel {
-		public native get() { throw new NotImplementedException(); }
+	public CookieAccess AccessLevel {
+		get { throw new NotImplementedException(); }
 	}
 };
 

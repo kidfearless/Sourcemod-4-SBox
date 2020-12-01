@@ -58,7 +58,7 @@ typeset EventHook
 	//                      this event has set the hook mode EventHookMode_PostNoCopy.
 	// @param name          String containing the name of the event.
 	// @param dontBroadcast True if event was not broadcast to clients, false otherwise.
-	//                      May not correspond to the real value. Use the property BroadcastDisabled.
+	//                      May not correspond to the real value. Use the public BroadcastDisabled.
 	// @return              Ignored for post hooks. Plugin_Handled will block event if hooked as pre.
 	///
 	function Action (Event event, string name, bool dontBroadcast) { throw new NotImplementedException(); }
@@ -74,45 +74,45 @@ typeset EventHook
 	function void (Event event, string name, bool dontBroadcast) { throw new NotImplementedException(); }
 };
 
-methodmap Event < Handle
+public class Event : Handle
 {
 	// Fires a game event.
 	//
 	// This function closes the event Handle after completing.
 	//
 	// @param dontBroadcast Optional boolean that determines if event should be broadcast to clients.
-	public native void Fire(bool dontBroadcast=false) { throw new NotImplementedException(); }
+	public void Fire(bool dontBroadcast=false) { throw new NotImplementedException(); }
 	
 	// Fires a game event to only the specified client.
 	//
 	// Unlike Fire, this function DOES NOT close the event Handle.
 	//
 	// @param client        Index of client to receive the event..
-	public native void FireToClient(int client) { throw new NotImplementedException(); }
+	public void FireToClient(int client) { throw new NotImplementedException(); }
 
 	// Cancels a previously created game event that has not been fired. This
 	// is necessary to avoid leaking memory when an event isn't fired.
-	public native void Cancel() { throw new NotImplementedException(); }
+	public void Cancel() { throw new NotImplementedException(); }
 
 	// Returns the boolean value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param defValue     Optional default value to use if the key is not found.
 	// @return             The boolean value of the specified event key.
-	public native bool GetBool(string key, bool defValue=false) { throw new NotImplementedException(); }
+	public bool GetBool(string key, bool defValue=false) { throw new NotImplementedException(); }
 
 	// Sets the boolean value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param value        New boolean value.
-	public native void SetBool(string key, bool value) { throw new NotImplementedException(); }
+	public void SetBool(string key, bool value) { throw new NotImplementedException(); }
 
 	// Returns the integer value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param defValue     Optional default value to use if the key is not found.
 	// @return             The integer value of the specified event key.
-	public native int GetInt(string key, int defValue=0) { throw new NotImplementedException(); }
+	public int GetInt(string key, int defValue=0) { throw new NotImplementedException(); }
 
 	// Sets the integer value of a game event's key.
 	//
@@ -123,20 +123,20 @@ methodmap Event < Handle
 	//
 	// @param key          Name of event key.
 	// @param value        New integer value.
-	public native void SetInt(string key, int value) { throw new NotImplementedException(); }
+	public void SetInt(string key, int value) { throw new NotImplementedException(); }
 
 	// Returns the floating point value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param defValue     Optional default value to use if the key is not found.
 	// @return             The floating point value of the specified event key.
-	public native float GetFloat(string key, float defValue=0.0) { throw new NotImplementedException(); }
+	public float GetFloat(string key, float defValue=0.0) { throw new NotImplementedException(); }
 
 	// Sets the floating point value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param value        New floating point value.
-	public native void SetFloat(string key, float value) { throw new NotImplementedException(); }
+	public void SetFloat(string key, float value) { throw new NotImplementedException(); }
 
 	// Retrieves the string value of a game event's key.
 	//
@@ -144,27 +144,27 @@ methodmap Event < Handle
 	// @param value        Buffer to store the value of the specified event key.
 	// @param maxlength    Maximum length of string buffer.
 	// @param defValue     Optional default value to use if the key is not found.
-	public native void GetString(string key, string value, int maxlength, string defvalue="") { throw new NotImplementedException(); }
+	public void GetString(string key, string value, int maxlength, string defvalue="") { throw new NotImplementedException(); }
 
 	// Sets the string value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param value        New string value.
-	public native void SetString(string key, string value) { throw new NotImplementedException(); }
+	public void SetString(string key, string value) { throw new NotImplementedException(); }
 
 	// Retrieves the name of a game event.
 	//
 	// @param name         Buffer to store the name of the event.
 	// @param maxlength    Maximum length of string buffer.
-	public native void GetName(string name, int maxlength) { throw new NotImplementedException(); }
+	public void GetName(string name, int maxlength) { throw new NotImplementedException(); }
 
 	// Sets whether an event's broadcasting will be disabled or not.
 	//
 	// This has no effect on events Handles that are not from HookEvent
 	// or HookEventEx callbacks.
-	property bool BroadcastDisabled {
-		public native set(bool dontBroadcast) { throw new NotImplementedException(); }
-		public native get() { throw new NotImplementedException(); }
+	public bool BroadcastDisabled {
+		public set(bool dontBroadcast) { throw new NotImplementedException(); }
+		get { throw new NotImplementedException(); }
 	}
 }
 

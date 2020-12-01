@@ -75,83 +75,83 @@ public static void RemoveTempEntHook(string te_name, TEHook hook) { throw new No
 public static void TE_Start(string te_name) { throw new NotImplementedException(); }
 
 /**
- * Checks if a certain TE property exists.
+ * Checks if a certain TE public exists.
  *
- * @param prop          Property to use.
- * @return              True if the property exists, otherwise false.
+ * @param prop          public to use.
+ * @return              True if the public exists, otherwise false.
  */
 public static bool TE_IsValidProp(string prop) { throw new NotImplementedException(); }
 
 /**
  * Sets an integer value in the current temp entity.
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param value         Integer value to set.
- * @error               Property not found.
+ * @error               public not found.
  */
 public static void TE_WriteNum(string prop, int value) { throw new NotImplementedException(); }
 
 /**
  * Reads an integer value in the current temp entity.
  *
- * @param prop          Property to use.
- * @return              Property value.
- * @error               Property not found.
+ * @param prop          public to use.
+ * @return              public value.
+ * @error               public not found.
  */
 public static int TE_ReadNum(string prop) { throw new NotImplementedException(); }
 
 /**
  * Sets a floating point number in the current temp entity.
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param value         Floating point number to set.
- * @error               Property not found.
+ * @error               public not found.
  */
 public static void TE_WriteFloat(string prop, float value) { throw new NotImplementedException(); }
 
 /**
  * Reads a floating point number in the current temp entity.
  *
- * @param prop          Property to use.
- * @return              Property value.
- * @error               Property not found.
+ * @param prop          public to use.
+ * @return              public value.
+ * @error               public not found.
  */
 public static float TE_ReadFloat(string prop) { throw new NotImplementedException(); }
 
 /**
  * Sets a vector in the current temp entity.
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param vector        Vector to set.
- * @error               Property not found.
+ * @error               public not found.
  */
 public static void TE_WriteVector(string prop, ReadOnlyCollection<float> vector[3]) { throw new NotImplementedException(); }
 
 /**
  * Reads a vector in the current temp entity.
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param vector        Vector to read.
- * @error               Property not found.
+ * @error               public not found.
  */
 public static void TE_ReadVector(string prop, float vector[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets a QAngle in the current temp entity.
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param angles        Angles to set.
- * @error               Property not found.
+ * @error               public not found.
  */
 public static void TE_WriteAngles(string prop, ReadOnlyCollection<float> angles[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets an array of floats in the current temp entity.
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param array         Array of values to copy.
  * @param arraySize     Number of values to copy.
- * @error               Property not found.
+ * @error               public not found.
  */
 public static void TE_WriteFloatArray(string prop, ReadOnlyCollection<float>[] array, int arraySize) { throw new NotImplementedException(); }
 
@@ -169,9 +169,9 @@ public static void TE_Send(const int[] clients, int numClients, float delay=0.0)
  * Sets an encoded entity index in the current temp entity.
  * (This is usually used for m_nStartEntity and m_nEndEntity).
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param value         Value to set.
- * @error               Property not found.
+ * @error               public not found.
  */
 public static void TE_WriteEncodedEnt(string prop, int value)
 {

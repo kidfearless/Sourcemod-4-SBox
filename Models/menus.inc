@@ -155,18 +155,18 @@ typedef MenuHandler = function int (Menu menu, MenuAction action, int param1, in
 
 // Panels are used for drawing raw menus without any extra helper functions.
 // Handles must be closed via delete or CloseHandle().
-methodmap Panel < Handle
+public class Panel : Handle
 {
 	// Constructor for a new Panel.
 	//
 	// @param hStyle        MenuStyle Handle, or null to use the default style.
-	public native Panel(Handle hStyle = null) { throw new NotImplementedException(); }
+	public Panel(Handle hStyle = null) { throw new NotImplementedException(); }
 
 	// Sets the panel's title.
 	//
 	// @param text          Text to set as the title.
 	// @param onlyIfEmpty   If true, the title will only be set if no title is set.
-	public native void SetTitle(string text, bool onlyIfEmpty=false) { throw new NotImplementedException(); }
+	public void SetTitle(string text, bool onlyIfEmpty=false) { throw new NotImplementedException(); }
 
 	// Draws an item on a panel.  If the item takes up a slot, the position
 	// is returned.
@@ -176,21 +176,21 @@ methodmap Panel < Handle
 	//                      No numbering or newlines are needed.
 	// @param style         ITEMDRAW style flags.
 	// @return              A slot position, or 0 if item was a rawline or could not be drawn.
-	public native int DrawItem(string text, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
+	public int DrawItem(string text, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 	// Draws a raw line of text on a panel, without any markup other than a
 	// newline.
 	//
 	// @param text          Display text to use.
 	// @return              True on success, false if raw lines are not supported.
-	public native bool DrawText(string text) { throw new NotImplementedException(); }
+	public bool DrawText(string text) { throw new NotImplementedException(); }
 
 	// Returns whether or not the given drawing flags are supported by
 	// the menu style.
 	//
 	// @param style         ITEMDRAW style flags.
 	// @return              True if item is drawable, false otherwise.
-	public native bool CanDrawFlags(int style) { throw new NotImplementedException(); }
+	public bool CanDrawFlags(int style) { throw new NotImplementedException(); }
 
 	// Sets the selectable key map of a panel.  This is not supported by
 	// all styles (only by Radio, as of this writing).
@@ -199,7 +199,7 @@ methodmap Panel < Handle
 	//                      N+1 to be selected.  If no keys are selectable,
 	//                      then key 0 (bit 9) is automatically set.
 	// @return              True if supported, false otherwise.
-	public native bool SetKeys(int keys) { throw new NotImplementedException(); }
+	public bool SetKeys(int keys) { throw new NotImplementedException(); }
 
 	// Sends a panel to a client.  Unlike full menus, the handler
 	// function will only receive the following actions, both of
@@ -214,32 +214,32 @@ methodmap Panel < Handle
 	// @param handler       The MenuHandler function to catch actions with.
 	// @param time          Time to hold the menu for.
 	// @return              True on success, false on failure.
-	public native bool Send(int client, MenuHandler handler, int time) { throw new NotImplementedException(); }
+	public bool Send(int client, MenuHandler handler, int time) { throw new NotImplementedException(); }
 
 	// Returns the amount of text the menu can still hold.  If this is
 	// limit is reached or overflowed, the text is silently truncated.
 	//
 	// Radio menus: Currently 511 characters (512 bytes).
 	// Valve menus: Currently -1 (no meaning).
-	property int TextRemaining {
-		public native get() { throw new NotImplementedException(); }
+	public int TextRemaining {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Returns or sets the current key position, starting at 1. This cannot be
 	// used to traverse backwards.
-	property int CurrentKey {
-		public native get() { throw new NotImplementedException(); }
-		public native set(int key) { throw new NotImplementedException(); }
+	public int CurrentKey {
+		get { throw new NotImplementedException(); }
+		public set(int key) { throw new NotImplementedException(); }
 	}
 
 	// Returns the panel's style. Style handles are global and cannot be closed.
-	property Handle Style {
-		public native get() { throw new NotImplementedException(); }
+	public Handle Style {
+		get { throw new NotImplementedException(); }
 	}
 };
 
 // A menu is a helper object for managing in-game menus.
-methodmap Menu < Handle
+public class Menu : Handle
 {
 	// Creates a new, empty menu using the default style.
 	//
@@ -248,7 +248,7 @@ methodmap Menu < Handle
 	//                      Cancel, and End will always be received regardless
 	//                      of whether they are set or not.  They are also
 	//                      the only default actions.
-	public native Menu(MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFAULT) { throw new NotImplementedException(); }
+	public Menu(MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFAULT) { throw new NotImplementedException(); }
 
 	// Displays a menu to a client.
 	//
@@ -256,7 +256,7 @@ methodmap Menu < Handle
 	// @param time          Maximum time to leave menu on the screen.
 	// @return              True on success, false on failure.
 	// @error               Client not in game.
-	public native bool Display(int client, int time) { throw new NotImplementedException(); }
+	public bool Display(int client, int time) { throw new NotImplementedException(); }
 
 	// Displays a menu to a client, starting from the given item.
 	//
@@ -266,7 +266,7 @@ methodmap Menu < Handle
 	// @return              True on success, false on failure.
 	// @error               Client not in game.
 	///
-	public native bool DisplayAt(int client, int first_item, int time) { throw new NotImplementedException(); }
+	public bool DisplayAt(int client, int first_item, int time) { throw new NotImplementedException(); }
 
 	// Appends a new item to the end of a menu.
 	//
@@ -276,7 +276,7 @@ methodmap Menu < Handle
 	//                      DISABLED will be completely ignored when paginating.
 	// @return              True on success, false on failure.
 	// @error               Item limit reached.
-	public native bool AddItem(string info, string display, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
+	public bool AddItem(string info, string display, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 	// Inserts an item into the menu before a certain position; the new item will
 	// be at the given position and all next items pushed forward.
@@ -288,7 +288,7 @@ methodmap Menu < Handle
 	//                      DISABLED will be completely ignored when paginating.
 	// @return              True on success, false on failure.
 	// @error               Invalid menu position.
-	public native bool InsertItem(int position, string info,
+	public bool InsertItem(int position, string info,
 	                              string display, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 	// Removes an item from the menu.
@@ -296,10 +296,10 @@ methodmap Menu < Handle
 	// @param position      Position, starting from 0.
 	// @return              True on success, false on failure.
 	// @error               Invalid menu position.
-	public native bool RemoveItem(int position) { throw new NotImplementedException(); }
+	public bool RemoveItem(int position) { throw new NotImplementedException(); }
 
 	// Removes all items from a menu.
-	public native void RemoveAllItems() { throw new NotImplementedException(); }
+	public void RemoveAllItems() { throw new NotImplementedException(); }
 
 	// Retrieves information about a menu item.
 	//
@@ -311,40 +311,40 @@ methodmap Menu < Handle
 	// @param dispBufLen    Maximum length of the display buffer.
 	// @param client		Client index. Must be specified if menu is per-client random shuffled, -1 to ignore.
 	// @return              True on success, false if position is invalid.
-	public native bool GetItem(int position, string infoBuf, int infoBufLen,
+	public bool GetItem(int position, string infoBuf, int infoBufLen,
 							   int &style=0, string dispBuf="", int dispBufLen=0, int client=0) { throw new NotImplementedException(); }
 
 	// Generates a per-client random mapping for the current vote options.
 	//
 	// @param start         Menu item index to start randomizing from.
 	// @param stop          Menu item index to stop randomizing at. -1 = infinite
-	public native void ShufflePerClient(int start=0, int stop=-1) { throw new NotImplementedException(); }
+	public void ShufflePerClient(int start=0, int stop=-1) { throw new NotImplementedException(); }
 
 	// Fills the client vote option mapping with user supplied values.
 	//
 	// @param client		Client index.
 	// @param array			Integer array with mapping.
 	// @param length		Length of array.
-	public native void SetClientMapping(int client, int[] array, int length) { throw new NotImplementedException(); }
+	public void SetClientMapping(int client, int[] array, int length) { throw new NotImplementedException(); }
 
 	// Sets the menu's default title/instruction message.
 	//
 	// @param fmt           Message string format
 	// @param ...           Message string arguments.
-	public native void SetTitle(string fmt, any ...) { throw new NotImplementedException(); }
+	public void SetTitle(string fmt, any ...) { throw new NotImplementedException(); }
 
 	// Returns the text of a menu's title.
 	//
 	// @param buffer        Buffer to store title.
 	// @param maxlength     Maximum length of the buffer.
 	// @return              Number of bytes written.
-	public native void GetTitle(string buffer, int maxlength) { throw new NotImplementedException(); }
+	public void GetTitle(string buffer, int maxlength) { throw new NotImplementedException(); }
 
 	// Creates a raw MenuPanel based off the menu's style.
 	// The Handle must be freed with CloseHandle().
 	//
 	// @return              A new MenuPanel Handle.
-	public native Panel ToPanel() { throw new NotImplementedException(); }
+	public Panel ToPanel() { throw new NotImplementedException(); }
 
 	// Cancels a menu from displaying on all clients.  While the
 	// cancellation is in progress, this menu cannot be re-displayed
@@ -354,7 +354,7 @@ methodmap Menu < Handle
 	// This simply verifies that the menu is not being used anywhere.
 	//
 	// If any vote is in progress on a menu, it will be cancelled.
-	public native void Cancel() { throw new NotImplementedException(); }
+	public void Cancel() { throw new NotImplementedException(); }
 
 	// Broadcasts a menu to a list of clients.  The most selected item will be
 	// returned through MenuAction_End.  On a tie, a random item will be returned
@@ -370,7 +370,7 @@ methodmap Menu < Handle
 	// @return              True on success, false if this menu already has a
 	//                      vote session in progress.
 	// @error               A vote is already in progress.
-	public native bool DisplayVote(int[] clients, int numClients, int time, int flags=0) { throw new NotImplementedException(); }
+	public bool DisplayVote(int[] clients, int numClients, int time, int flags=0) { throw new NotImplementedException(); }
 
 	// Sends a vote menu to all clients.  See VoteMenu() for more information.
 	//
@@ -395,24 +395,24 @@ methodmap Menu < Handle
 	//
 	// If pagination is MENU_NO_PAGINATION, and the exit button flag is set,
 	// then the exit button flag is removed. It can be re-applied if desired.
-	property int Pagination {
-		public native get() { throw new NotImplementedException(); }
-		public native set(int value) { throw new NotImplementedException(); }
+	public int Pagination {
+		get { throw new NotImplementedException(); }
+		public set(int value) { throw new NotImplementedException(); }
 	}
 
 	// Get or set the menu's option flags.
 	//
 	// If a certain bit is not supported, it will be stripped before being set.
-	property int OptionFlags {
-		public native get() { throw new NotImplementedException(); }
-		public native set(int value) { throw new NotImplementedException(); }
+	public int OptionFlags {
+		get { throw new NotImplementedException(); }
+		public set(int value) { throw new NotImplementedException(); }
 	}
 
 	// Returns whether or not the menu has an exit button. By default, menus
 	// have an exit button.
-	property bool ExitButton {
-		public native get() { throw new NotImplementedException(); }
-		public native set(bool value) { throw new NotImplementedException(); }
+	public bool ExitButton {
+		get { throw new NotImplementedException(); }
+		public set(bool value) { throw new NotImplementedException(); }
 	}
 
 	// Controls whether or not the menu has an "exit back" button. By default,
@@ -420,38 +420,38 @@ methodmap Menu < Handle
 	//
 	// Exit Back buttons appear as "Back" on page 1 of paginated menus and have
 	// functionality defined by the user in MenuEnd_ExitBack.
-	property bool ExitBackButton {
-		public native get() { throw new NotImplementedException(); }
-		public native set(bool value) { throw new NotImplementedException(); }
+	public bool ExitBackButton {
+		get { throw new NotImplementedException(); }
+		public set(bool value) { throw new NotImplementedException(); }
 	}
 
 	// Sets whether or not the menu has a "no vote" button in slot 1.
 	// By default, menus do not have a no vote button.
-	property bool NoVoteButton {
-		public native set(bool value) { throw new NotImplementedException(); }
+	public bool NoVoteButton {
+		public set(bool value) { throw new NotImplementedException(); }
 	}
 
 	// Sets an advanced vote handling callback. If this callback is set,
 	// MenuAction_VoteEnd will not be called.
-	property VoteHandler VoteResultCallback {
-		public native set(VoteHandler handler) { throw new NotImplementedException(); }
+	public VoteHandler VoteResultCallback {
+		public set(VoteHandler handler) { throw new NotImplementedException(); }
 	}
 
 	// Returns the number of items in a menu.
-	property int ItemCount {
-		public native get() { throw new NotImplementedException(); }
+	public int ItemCount {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Returns the menu style. The Handle is global and cannot be closed.
-	property Handle Style {
-		public native get() { throw new NotImplementedException(); }
+	public Handle Style {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Returns the first item on the page of a currently selected menu.
 	//
 	// This is only valid inside a MenuAction_Select callback.
-	property int Selection {
-		public native get() { throw new NotImplementedException(); }
+	public int Selection {
+		get { throw new NotImplementedException(); }
 	}
 }
 

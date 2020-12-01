@@ -70,7 +70,7 @@ enum SMCError
 	SMCError_InvalidSection5,   /**< A section beginning has no matching ending */
 	SMCError_InvalidTokens,     /**< There were too many unidentifiable strings on one line */
 	SMCError_TokenOverflow,     /**< The token buffer overflowed */
-	SMCError_InvalidProperty1   /**< A property was declared outside of any section */
+	SMCError_InvalidProperty1   /**< A public was declared outside of any section */
 };
 
 /**
@@ -136,10 +136,10 @@ typedef SMC_RawLine = function SMCResult (SMCParser smc, string line, int lineno
 // SMC files are similar to Valve KeyValues format, with two key differences:
 //  (1) SMC cannot handle single-item entries (that is, a key with no value).
 //  (2) SMC files can have multi-line comment blocks, whereas KeyValues cannot.
-methodmap SMCParser < Handle
+public class SMCParser : Handle
 {
 	// Create a new SMC file format parser.
-	public native SMCParser() { throw new NotImplementedException(); }
+	public SMCParser() { throw new NotImplementedException(); }
 
 	// Parses an SMC file.
 	//
@@ -147,36 +147,36 @@ methodmap SMCParser < Handle
 	// @param line          An optional variable to store the last line number read.
 	// @param col           An optional variable to store the last column number read.
 	// @return              An SMCParseError result.
-	public native SMCError ParseFile(string file, int &line = 0, int &col = 0) { throw new NotImplementedException(); }
+	public SMCError ParseFile(string file, int &line = 0, int &col = 0) { throw new NotImplementedException(); }
 
 	// Sets the callback for receiving SMC_ParseStart events.
-	property SMC_ParseStart OnStart {
-		public native set(SMC_ParseStart func) { throw new NotImplementedException(); }
+	public SMC_ParseStart OnStart {
+		public set(SMC_ParseStart func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_ParseEnd events.
-	property SMC_ParseEnd OnEnd {
-		public native set(SMC_ParseEnd func) { throw new NotImplementedException(); }
+	public SMC_ParseEnd OnEnd {
+		public set(SMC_ParseEnd func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_NewSection events.
-	property SMC_NewSection OnEnterSection {
-		public native set(SMC_NewSection func) { throw new NotImplementedException(); }
+	public SMC_NewSection OnEnterSection {
+		public set(SMC_NewSection func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_EndSection events.
-	property SMC_EndSection OnLeaveSection {
-		public native set(SMC_EndSection func) { throw new NotImplementedException(); }
+	public SMC_EndSection OnLeaveSection {
+		public set(SMC_EndSection func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_KeyValue events.
-	property SMC_KeyValue OnKeyValue {
-		public native set(SMC_KeyValue func) { throw new NotImplementedException(); }
+	public SMC_KeyValue OnKeyValue {
+		public set(SMC_KeyValue func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_RawLine events.
-	property SMC_RawLine OnRawLine {
-		public native set(SMC_RawLine func) { throw new NotImplementedException(); }
+	public SMC_RawLine OnRawLine {
+		public set(SMC_RawLine func) { throw new NotImplementedException(); }
 	}
 
 	// Gets an error string for an SMCError code.
@@ -185,7 +185,7 @@ methodmap SMCParser < Handle
 	// @param buffer        A string buffer for the error (contents undefined on failure).
 	// @param buf_max       The maximum size of the buffer.
 	// @return              The number of characters written to buffer.
-	public native void GetErrorString(SMCError error, string buffer, int buf_max) { throw new NotImplementedException(); }
+	public void GetErrorString(SMCError error, string buffer, int buf_max) { throw new NotImplementedException(); }
 };
 
 /**

@@ -41,29 +41,29 @@ namespace Sourcemod
  * ONLY AVAILABLE ON WINDOWS RIGHT NOW K.
  */
 
-methodmap Profiler < Handle
+public class Profiler : Handle
 {
 	// Creates a new profile object.  The Handle must be freed
 	// using delete or CloseHandle().
 	//
 	// @return              A new Profiler Handle.
-	public native Profiler() { throw new NotImplementedException(); }
+	public Profiler() { throw new NotImplementedException(); }
 	
 	// Starts a cycle for profiling.
-	public native void Start() { throw new NotImplementedException(); }
+	public void Start() { throw new NotImplementedException(); }
 
 	// Stops a cycle for profiling.
 	//
 	// @error               Profiler was never started.
-	public native void Stop() { throw new NotImplementedException(); }
+	public void Stop() { throw new NotImplementedException(); }
 	
 	// Returns the amount of high-precision time in seconds
 	// that passed during the profiler's last start/stop 
 	// cycle.
 	//
 	// @return              Time elapsed in seconds.
-	property float Time {
-		public native get() { throw new NotImplementedException(); }
+	public float Time {
+		get { throw new NotImplementedException(); }
 	}
 };
 

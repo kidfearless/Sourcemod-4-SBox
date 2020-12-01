@@ -74,58 +74,58 @@ enum RoundState {
 };
 
 /**
- * Retrieves an integer value from a property of the gamerules entity.
+ * Retrieves an integer value from a public of the gamerules entity.
  *
- * @param prop          Property name.
+ * @param prop          public name.
  * @param size          Number of bytes to read (valid values are 1, 2, or 4).
  *                      This value is auto-detected, and the size parameter is
  *                      only used as a fallback in case detection fails.
- * @param element       Element # (starting from 0) if property is an array.
- * @return              Value at the given property offset.
+ * @param element       Element # (starting from 0) if public is an array.
+ * @return              Value at the given public offset.
  * @error               Not supported.
  */
 public static int GameRules_GetProp(string prop, int size=4, int element=0) { throw new NotImplementedException(); }
 
 /**
- * Sets an integer value for a property of the gamerules entity.
+ * Sets an integer value for a public of the gamerules entity.
  *
- * @param prop          Property name.
+ * @param prop          public name.
  * @param value         Value to set.
  * @param size          Number of bytes to write (valid values are 1, 2, or 4).
  *                      This value is auto-detected, and the size parameter is
  *                      only used as a fallback in case detection fails.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
 public static void GameRules_SetProp(string prop, any value, int size=4, int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
- * Retrieves a float value from a property of the gamerules entity.
+ * Retrieves a float value from a public of the gamerules entity.
  *
- * @param prop          Property name.
- * @param element       Element # (starting from 0) if property is an array.
- * @return              Value at the given property offset.
+ * @param prop          public name.
+ * @param element       Element # (starting from 0) if public is an array.
+ * @return              Value at the given public offset.
  * @error               Not supported.
  */
 public static float GameRules_GetPropFloat(string prop, int element=0) { throw new NotImplementedException(); }
 
 /**
- * Sets a float value for a property of the gamerules entity.
+ * Sets a float value for a public of the gamerules entity.
  *
- * @param prop          Property name.
+ * @param prop          public name.
  * @param value         Value to set.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
 public static void GameRules_SetPropFloat(string prop, float value, int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
- * Retrieves a entity index from a property of the gamerules entity.
+ * Retrieves a entity index from a public of the gamerules entity.
  *
- * @param prop          Property name.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param prop          public name.
+ * @param element       Element # (starting from 0) if public is an array.
  * @return              Entity index at the given property.
  *                      If there is no entity, or the entity is not valid,
  *                      then -1 is returned.
@@ -134,11 +134,11 @@ public static void GameRules_SetPropFloat(string prop, float value, int element=
 public static int GameRules_GetPropEnt(string prop, int element=0) { throw new NotImplementedException(); }
 
 /**
- * Sets an entity index for a property of the gamerules entity.
+ * Sets an entity index for a public of the gamerules entity.
  *
- * @param prop          Property name.
+ * @param prop          public name.
  * @param other         Entity index to set, or -1 to unset.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
@@ -147,9 +147,9 @@ public static void GameRules_SetPropEnt(string prop, int other, int element=0, b
 /**
  * Retrieves a vector of floats from the gamerules entity, given a named network property.
  *
- * @param prop          Property name.
+ * @param prop          public name.
  * @param vec           Vector buffer to store data in.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @error               Not supported.
  */
 public static void GameRules_GetPropVector(string prop, float vec[3], int element=0) { throw new NotImplementedException(); }
@@ -157,18 +157,18 @@ public static void GameRules_GetPropVector(string prop, float vec[3], int elemen
 /**
  * Sets a vector of floats in the gamerules entity, given a named network property.
  *
- * @param prop          Property name.
+ * @param prop          public name.
  * @param vec           Vector to set.
- * @param element       Element # (starting from 0) if property is an array.
+ * @param element       Element # (starting from 0) if public is an array.
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
 public static void GameRules_SetPropVector(string prop, ReadOnlyCollection<float> vec[3], int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
- * Gets a gamerules property as a string.
+ * Gets a gamerules public as a string.
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param buffer        Destination string buffer.
  * @param maxlen        Maximum length of output string buffer.
  * @return              Number of non-null bytes written.
@@ -177,9 +177,9 @@ public static void GameRules_SetPropVector(string prop, ReadOnlyCollection<float
 public static int GameRules_GetPropString(string prop, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 /**
- * Sets a gamerules property as a string.
+ * Sets a gamerules public as a string.
  *
- * @param prop          Property to use.
+ * @param prop          public to use.
  * @param buffer        String to set.
  * @param changeState   This parameter is ignored.
  * @return              Number of non-null bytes written.

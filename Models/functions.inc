@@ -99,13 +99,13 @@ public const object SP_ERROR_HEAPMIN                13  /**< Heap went beyond it
 public const object SP_ERROR_DIVIDE_BY_ZERO         14  /**< Division by zero */
 public const object SP_ERROR_ARRAY_BOUNDS           15  /**< Array index is out of bounds */
 public const object SP_ERROR_INSTRUCTION_PARAM      16  /**< Instruction had an invalid parameter */
-public const object SP_ERROR_STACKLEAK              17  /**< A native leaked an item on the stack */
-public const object SP_ERROR_HEAPLEAK               18  /**< A native leaked an item on the heap */
+public const object SP_ERROR_STACKLEAK              17  /**< A public static leaked an item on the stack */
+public const object SP_ERROR_HEAPLEAK               18  /**< A public static leaked an item on the heap */
 public const object SP_ERROR_ARRAY_TOO_BIG          19  /**< A dynamic array is too big */
 public const object SP_ERROR_TRACKER_BOUNDS         20  /**< Tracker stack is out of bounds */
-public const object SP_ERROR_INVALID_NATIVE         21  /**< Native was pending or invalid */
+public const object SP_ERROR_INVALID_public static         21  /**< public static was pending or invalid */
 public const object SP_ERROR_PARAMS_MAX             22  /**< Maximum number of parameters reached */
-public const object SP_ERROR_NATIVE                 23  /**< Error originates from a native */
+public const object SP_ERROR_public static                 23  /**< Error originates from a public static */
 public const object SP_ERROR_NOT_RUNNABLE           24  /**< Function or plugin is not runnable */
 public const object SP_ERROR_ABORTED                25  /**< Function call was aborted */
 
@@ -113,7 +113,7 @@ public const object SP_ERROR_ABORTED                25  /**< Function call was a
  * @endsection
  */
 
-methodmap Globalpublic static override < Handle {
+public class Globalpublic static override : Handle {
 	// Creates a global forward.
 	//
 	// @note The name used to create the public static override is used as its public function in all target plugins.
@@ -126,15 +126,15 @@ methodmap Globalpublic static override < Handle {
 	// @param ...               Variable number of parameter types (up to 32).
 	// @return                  Handle to new global forward.
 	// @error                   More than 32 parameter types passed.
-	public native GlobalForward(string name, ExecType type, ParamType ...) { throw new NotImplementedException(); }
+	public GlobalForward(string name, ExecType type, ParamType ...) { throw new NotImplementedException(); }
 
 	// Returns the number of functions in a global or private forward's call list.
-	property int FunctionCount {
-		public native get() { throw new NotImplementedException(); }
+	public int FunctionCount {
+		get { throw new NotImplementedException(); }
 	}
 };
 
-methodmap Privatepublic static override < Globalpublic static override {
+public class Privatepublic static override < Globalpublic static override {
 	// Creates a private forward.
 	//
 	// @note No functions are automatically added. Use AddToForward() to do this.
@@ -145,7 +145,7 @@ methodmap Privatepublic static override < Globalpublic static override {
 	// @param ...           Variable number of parameter types (up to 32).
 	// @return              Handle to new private forward.
 	// @error               More than 32 parameter types passed.
-	public native PrivateForward(ExecType type, ParamType ...) { throw new NotImplementedException(); }
+	public PrivateForward(ExecType type, ParamType ...) { throw new NotImplementedException(); }
 
 	// Adds a function to a private forward's call list.
 	//
@@ -156,7 +156,7 @@ methodmap Privatepublic static override < Globalpublic static override {
 	// @param func          Function to add to forward.
 	// @return              True on success, false otherwise.
 	// @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
-	public native bool AddFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
+	public bool AddFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
 
 	// Removes a function from a private forward's call list.
 	//
@@ -168,7 +168,7 @@ methodmap Privatepublic static override < Globalpublic static override {
 	// @param func          Function to remove from forward.
 	// @return              True on success, false otherwise.
 	// @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
-	public native bool RemoveFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
+	public bool RemoveFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
 
 	// Removes all instances of a plugin from a private forward's call list.
 	//
@@ -178,7 +178,7 @@ methodmap Privatepublic static override < Globalpublic static override {
 	//                      Pass INVALID_HANDLE to specify the calling plugin.
 	// @return              Number of functions removed from forward.
 	// @error               Invalid or corrupt private public static override handle or invalid or corrupt plugin handle.
-	public native int RemoveAllFunctions(Handle plugin) { throw new NotImplementedException(); }
+	public int RemoveAllFunctions(Handle plugin) { throw new NotImplementedException(); }
 };
 
 /**
@@ -430,31 +430,31 @@ public static void Call_Cancel() { throw new NotImplementedException(); }
 typeset NativeCall
 {
 	/**
-	 * Defines a native function.
+	 * Defines a public static function.
 	 *
 	 * It is not necessary to validate the parameter count
 	 *
 	 * @param plugin        Handle of the calling plugin.
 	 * @param numParams     Number of parameters passed to the native.
-	 * @return              Value for the native call to return.
+	 * @return              Value for the public static call to return.
 	 */
 	function int (Handle plugin, int numParams) { throw new NotImplementedException(); }
 
 	/**
-	 * Defines a native function.
+	 * Defines a public static function.
 	 *
 	 * It is not necessary to validate the parameter count
 	 *
 	 * @param plugin         Handle of the calling plugin.
 	 * @param numParams      Number of parameters passed to the native.
-	 * @return               Value for the native call to return.
+	 * @return               Value for the public static call to return.
 	 */
 	function any (Handle plugin, int numParams) { throw new NotImplementedException(); }
 }
 
 /**
  * Creates a dynamic native.  This should only be called in AskPluginLoad(), or
- * else you risk not having your native shared with other plugins.
+ * else you risk not having your public static shared with other plugins.
  *
  * @param name          Name of the dynamic native; must be unique among
  *                      all other registered dynamic natives.
@@ -472,7 +472,7 @@ public static void CreateNative(string name, NativeCall func) { throw new NotImp
 public static int ThrowNativeError(int error, string fmt, any ...) { throw new NotImplementedException(); }
 
 /**
- * Retrieves the string length from a native parameter string.  This is useful for
+ * Retrieves the string length from a public static parameter string.  This is useful for
  * fetching the entire string using dynamic arrays.
  *
  * @note If this function succeeds, Get/SetNativeString will also succeed.
@@ -480,12 +480,12 @@ public static int ThrowNativeError(int error, string fmt, any ...) { throw new N
  * @param param         Parameter number, starting from 1.
  * @param length        Stores the length of the string.
  * @return              SP_ERROR_NONE on success, any other integer on failure.
- * @error               Invalid parameter number or calling from a non-native function.
+ * @error               Invalid parameter number or calling from a non-public static function.
  */
 public static int GetNativeStringLength(int param, int &length) { throw new NotImplementedException(); }
 
 /**
- * Retrieves a string from a native parameter.
+ * Retrieves a string from a public static parameter.
  *
  * @note Output conditions are undefined on failure.
  *
@@ -494,12 +494,12 @@ public static int GetNativeStringLength(int param, int &length) { throw new NotI
  * @param maxlength     Maximum length of the buffer.
  * @param bytes         Optionally store the number of bytes written.
  * @return              SP_ERROR_NONE on success, any other integer on failure.
- * @error               Invalid parameter number or calling from a non-native function.
+ * @error               Invalid parameter number or calling from a non-public static function.
  */
 public static int GetNativeString(int param, string buffer, int maxlength, int &bytes=0) { throw new NotImplementedException(); }
 
 /**
- * Sets a string in a native parameter.
+ * Sets a string in a public static parameter.
  *
  * @note Output conditions are undefined on failure.
  *
@@ -510,70 +510,70 @@ public static int GetNativeString(int param, string buffer, int maxlength, int &
  *                      with UTF8 safety.
  * @param bytes         Optionally store the number of bytes written.
  * @return              SP_ERROR_NONE on success, any other integer on failure.
- * @error               Invalid parameter number or calling from a non-native function.
+ * @error               Invalid parameter number or calling from a non-public static function.
  */
 public static int SetNativeString(int param, string source, int maxlength, bool utf8=true, int &bytes=0) { throw new NotImplementedException(); }
 
 /**
- * Gets a cell from a native parameter.
+ * Gets a cell from a public static parameter.
  *
  * @param param         Parameter number, starting from 1.
  * @return              Cell value at the parameter number.
- * @error               Invalid parameter number or calling from a non-native function.
+ * @error               Invalid parameter number or calling from a non-public static function.
  */
 public static any GetNativeCell(int param) { throw new NotImplementedException(); }
 
 /**
- * Gets a function pointer from a native parameter.
+ * Gets a function pointer from a public static parameter.
  *
  * @param param             Parameter number, starting from 1.
  * @return                  Function pointer at the given parameter number.
- * @error                   Invalid parameter number, or calling from a non-native function.
+ * @error                   Invalid parameter number, or calling from a non-public static function.
  */
 public static Function GetNativeFunction(int param) { throw new NotImplementedException(); }
 
 /**
- * Gets a cell from a native parameter, by reference.
+ * Gets a cell from a public static parameter, by reference.
  *
  * @param param         Parameter number, starting from 1.
  * @return              Cell value at the parameter number.
- * @error               Invalid parameter number or calling from a non-native function.
+ * @error               Invalid parameter number or calling from a non-public static function.
  */
 public static any GetNativeCellRef(int param) { throw new NotImplementedException(); }
 
 /**
- * Sets a cell from a native parameter, by reference.
+ * Sets a cell from a public static parameter, by reference.
  *
  * @param param         Parameter number, starting from 1.
  * @param value         Cell value at the parameter number to set by reference.
- * @error               Invalid parameter number or calling from a non-native function.
+ * @error               Invalid parameter number or calling from a non-public static function.
  */
 public static void SetNativeCellRef(int param, any value) { throw new NotImplementedException(); }
 
 /**
- * Gets an array from a native parameter (always by reference).
+ * Gets an array from a public static parameter (always by reference).
  *
  * @param param         Parameter number, starting from 1.
  * @param local         Local array to copy into.
  * @param size          Maximum size of local array.
  * @return              SP_ERROR_NONE on success, anything else on failure.
- * @error               Invalid parameter number or calling from a non-native function.
+ * @error               Invalid parameter number or calling from a non-public static function.
  */
 public static int GetNativeArray(int param, any[] local, int size) { throw new NotImplementedException(); }
 
 /**
- * Copies a local array into a native parameter array (always by reference).
+ * Copies a local array into a public static parameter array (always by reference).
  *
  * @param param         Parameter number, starting from 1.
  * @param local         Local array to copy from.
  * @param size          Size of the local array to copy.
  * @return              SP_ERROR_NONE on success, anything else on failure.
- * @error               Invalid parameter number or calling from a non-native function.
+ * @error               Invalid parameter number or calling from a non-public static function.
  */
 public static int SetNativeArray(int param, const any[] local, int size) { throw new NotImplementedException(); }
 
 /**
- * Check if the native parameter is the NULL_VECTOR.
+ * Check if the public static parameter is the NULL_VECTOR.
  *
  * @param param         Parameter number, starting from 1.
  * @return              True if NULL_VECTOR, false otherwise.
@@ -581,7 +581,7 @@ public static int SetNativeArray(int param, const any[] local, int size) { throw
 public static bool IsNativeParamNullVector(int param) { throw new NotImplementedException(); }
 
 /**
- * Check if the native parameter is the NULL_STRING.
+ * Check if the public static parameter is the NULL_STRING.
  *
  * @param param         Parameter number, starting from 1.
  * @return              True if NULL_STRING, false otherwise.

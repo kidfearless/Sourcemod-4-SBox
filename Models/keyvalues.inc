@@ -54,7 +54,7 @@ enum KvDataTypes
 	KvData_NUMTYPES
 };
 
-methodmap KeyValues < Handle
+public class KeyValues : Handle
 {
 	// Creates a new KeyValues structure.  The Handle must be closed with
 	// CloseHandle() or delete.
@@ -62,24 +62,24 @@ methodmap KeyValues < Handle
 	// @param name          Name of the root section.
 	// @param firstKey      If non-empty, specifies the first key value.
 	// @param firstValue    If firstKey is non-empty, specifies the first key's value.
-	public native KeyValues(string name, string firstKey="", string firstValue="") { throw new NotImplementedException(); }
+	public KeyValues(string name, string firstKey="", string firstValue="") { throw new NotImplementedException(); }
 
 	// Exports a KeyValues tree to a file. The tree is dumped from the current position.
 	//
 	// @param file          File to dump write to.
 	// @return              True on success, false otherwise.
-	public native bool ExportToFile(string file) { throw new NotImplementedException(); }
+	public bool ExportToFile(string file) { throw new NotImplementedException(); }
 
 	// Exports a KeyValues tree to a string. The string is dumped from the current position.
 	//
 	// @param buffer        Buffer to write to.
 	// @param maxlength     Max length of buffer.
 	// @return              Number of bytes that can be written to buffer.
-	public native int ExportToString(string buffer, int maxlength) { throw new NotImplementedException(); }
+	public int ExportToString(string buffer, int maxlength) { throw new NotImplementedException(); }
 
 	// Amount of bytes written by ExportToFile & ExportToString.
-	property int ExportLength {
-		public native get() { throw new NotImplementedException(); }
+	public int ExportLength {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Imports a file in KeyValues format. The file is read into the current
@@ -87,7 +87,7 @@ methodmap KeyValues < Handle
 	//
 	// @param file          File to read from.
 	// @return              True on success, false otherwise.
-	public native bool ImportFromFile(string file) { throw new NotImplementedException(); }
+	public bool ImportFromFile(string file) { throw new NotImplementedException(); }
 
 	// Converts a given string to a KeyValues tree.  The string is read into
 	// the current postion of the tree.
@@ -95,39 +95,39 @@ methodmap KeyValues < Handle
 	// @param buffer        String buffer to load into the KeyValues.
 	// @param resourceName  The resource name of the KeyValues, used for error tracking purposes.
 	// @return              True on success, false otherwise.
-	public native bool ImportFromString(string buffer, string resourceName="StringToKeyValues") { throw new NotImplementedException(); }
+	public bool ImportFromString(string buffer, string resourceName="StringToKeyValues") { throw new NotImplementedException(); }
 
 	// Imports subkeys in the given KeyValues, at the current position in that
 	// KeyValues, into the current position in this KeyValues. Note that this
 	// copies keys; it does not embed a reference to them.
 	//
 	// @param other         Origin KeyValues Handle.
-	public native void Import(KeyValues other) { throw new NotImplementedException(); }
+	public void Import(KeyValues other) { throw new NotImplementedException(); }
 
 	// Sets a string value of a KeyValues key.
 	//
 	// @param kv            KeyValues Handle.
 	// @param key           Name of the key, or NULL_STRING.
 	// @param value         String value.
-	public native void SetString(string key, string value) { throw new NotImplementedException(); }
+	public void SetString(string key, string value) { throw new NotImplementedException(); }
 
 	// Sets an integer value of a KeyValues key.
 	//
 	// @param key           Name of the key, or NULL_STRING.
 	// @param value         Value number.
-	public native void SetNum(string key, int value) { throw new NotImplementedException(); }
+	public void SetNum(string key, int value) { throw new NotImplementedException(); }
 
 	// Sets a large integer value of a KeyValues key.
 	//
 	// @param key           Name of the key, or NULL_STRING.
 	// @param value         Large integer value (0=High bits, 1=Low bits)
-	public native void SetUInt64(string key, const int value[2]) { throw new NotImplementedException(); }
+	public void SetUInt64(string key, const int value[2]) { throw new NotImplementedException(); }
 
 	// Sets a floating point value of a KeyValues key.
 	//
 	// @param key           Name of the key, or NULL_STRING.
 	// @param value         Floating point value.
-	public native void SetFloat(string key, float value) { throw new NotImplementedException(); }
+	public void SetFloat(string key, float value) { throw new NotImplementedException(); }
 
 	// Sets a set of color values of a KeyValues key.
 	//
@@ -136,7 +136,7 @@ methodmap KeyValues < Handle
 	// @param g             Green value.
 	// @param b             Blue value.
 	// @param a             Alpha value.
-	public native void SetColor(string key, int r, int g, int b, int a=0) { throw new NotImplementedException(); }
+	public void SetColor(string key, int r, int g, int b, int a=0) { throw new NotImplementedException(); }
 
 	// Sets a set of color values of a KeyValues key.
 	//
@@ -150,7 +150,7 @@ methodmap KeyValues < Handle
 	//
 	// @param key           Name of the key, or NULL_STRING.
 	// @param vec           Vector value.
-	public native void SetVector(string key, ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
+	public void SetVector(string key, ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
 
 	// Retrieves a string value from a KeyValues key.
 	//
@@ -158,21 +158,21 @@ methodmap KeyValues < Handle
 	// @param value         Buffer to store key value in.
 	// @param maxlength     Maximum length of the value buffer.
 	// @param defvalue      Optional default value to use if the key is not found.
-	public native void GetString(string key, string value, int maxlength, string defvalue="") { throw new NotImplementedException(); }
+	public void GetString(string key, string value, int maxlength, string defvalue="") { throw new NotImplementedException(); }
 
 	// Retrieves an integer value from a KeyValues key.
 	//
 	// @param key           Name of the key, or NULL_STRING.
 	// @param defvalue      Optional default value to use if the key is not found.
 	// @return              Integer value of the key.
-	public native int GetNum(string key, int defvalue=0) { throw new NotImplementedException(); }
+	public int GetNum(string key, int defvalue=0) { throw new NotImplementedException(); }
 
 	// Retrieves a floating point value from a KeyValues key.
 	//
 	// @param key           Name of the key, or NULL_STRING.
 	// @param defvalue      Optional default value to use if the key is not found.
 	// @return              Floating point value of the key.
-	public native float GetFloat(string key, float defvalue=0.0) { throw new NotImplementedException(); }
+	public float GetFloat(string key, float defvalue=0.0) { throw new NotImplementedException(); }
 
 	// Retrieves a set of color values from a KeyValues key.
 	//
@@ -181,7 +181,7 @@ methodmap KeyValues < Handle
 	// @param g             Green value, set by reference.
 	// @param b             Blue value, set by reference.
 	// @param a             Alpha value, set by reference.
-	public native void GetColor(string key, int &r, int &g, int &b, int &a) { throw new NotImplementedException(); }
+	public void GetColor(string key, int &r, int &g, int &b, int &a) { throw new NotImplementedException(); }
 
 	// Retrieves a set of color values from a KeyValues key.
 	//
@@ -201,49 +201,49 @@ methodmap KeyValues < Handle
 	// @param key           Name of the key, or NULL_STRING.
 	// @param value         Array to represent the large integer.
 	// @param defvalue      Optional default value to use if the key is not found.
-	public native void GetUInt64(string key, int value[2], int defvalue[2]={0,0}) { throw new NotImplementedException(); }
+	public void GetUInt64(string key, int value[2], int defvalue[2]={0,0}) { throw new NotImplementedException(); }
 
 	// Retrieves a vector value from a KeyValues key.
 	//
 	// @param key           Name of the key, or NULL_STRING.
 	// @param vec           Destination vector to store the value in.
 	// @param defvalue      Optional default value to use if the key is not found.
-	public native void GetVector(string key, float vec[3], ReadOnlyCollection<float> defvalue[3]={0.0, 0.0, 0.0}) { throw new NotImplementedException(); }
+	public void GetVector(string key, float vec[3], ReadOnlyCollection<float> defvalue[3]={0.0, 0.0, 0.0}) { throw new NotImplementedException(); }
 
 	// Sets the current position in the KeyValues tree to the given key.
 	//
 	// @param key           Name of the key.
 	// @param create        If true, and the key does not exist, it will be created.
 	// @return              True if the key exists, false if it does not and was not created.
-	public native bool JumpToKey(string key, bool create=false) { throw new NotImplementedException(); }
+	public bool JumpToKey(string key, bool create=false) { throw new NotImplementedException(); }
 
 	// Sets the current position in the KeyValues tree to the given key.
 	//
 	// @param id            KeyValues id.
 	// @return              True if the key exists, false if it does not.
-	public native bool JumpToKeySymbol(int id) { throw new NotImplementedException(); }
+	public bool JumpToKeySymbol(int id) { throw new NotImplementedException(); }
 
 	// Sets the current position in the KeyValues tree to the first sub key.
-	// This native adds to the internal traversal stack.
+	// This public static adds to the internal traversal stack.
 	//
 	// @param keyOnly       If false, non-keys will be traversed (values).
 	// @return              True on success, false if there was no first sub key.
-	public native bool GotoFirstSubKey(bool keyOnly=true) { throw new NotImplementedException(); }
+	public bool GotoFirstSubKey(bool keyOnly=true) { throw new NotImplementedException(); }
 
 	// Sets the current position in the KeyValues tree to the next sub key.
-	// This native does NOT add to the internal traversal stack, and thus
+	// This public static does NOT add to the internal traversal stack, and thus
 	// GoBack() is not needed for each successive call to this function.
 	//
 	// @param keyOnly       If false, non-keys will be traversed (values).
 	// @return              True on success, false if there was no next sub key.
-	public native bool GotoNextKey(bool keyOnly=true) { throw new NotImplementedException(); }
+	public bool GotoNextKey(bool keyOnly=true) { throw new NotImplementedException(); }
 
 	// Saves the current position in the traversal stack onto the traversal
 	// stack.  This can be useful if you wish to use KvGotoNextKey() and
 	// have the previous key saved for backwards traversal.
 	//
 	// @param kv            KeyValues Handle.
-	public native void SavePosition() { throw new NotImplementedException(); }
+	public void SavePosition() { throw new NotImplementedException(); }
 
 	// Jumps back to the previous position.  Returns false if there are no
 	// previous positions (i.e., at the root node).  This should be called
@@ -251,13 +251,13 @@ methodmap KeyValues < Handle
 	// This function pops one node off the internal traversal stack.
 	//
 	// @return              True on success, false if there is no higher node.
-	public native bool GoBack() { throw new NotImplementedException(); }
+	public bool GoBack() { throw new NotImplementedException(); }
 
 	// Removes the given key from the current position.
 	//
 	// @param key           Name of the key.
 	// @return              True on success, false if key did not exist.
-	public native bool DeleteKey(string key) { throw new NotImplementedException(); }
+	public bool DeleteKey(string key) { throw new NotImplementedException(); }
 
 	// Removes the current sub-key and attempts to set the position
 	// to the sub-key after the removed one.  If no such sub-key exists,
@@ -271,46 +271,46 @@ methodmap KeyValues < Handle
 	//                        previous node, or no previous node exists.
 	//                      -1 if removal succeeded and there were no more keys,
 	//                        thus the state is as if KvGoBack() was called.
-	public native int DeleteThis() { throw new NotImplementedException(); }
+	public int DeleteThis() { throw new NotImplementedException(); }
 
 	// Sets the position back to the top node, emptying the entire node
 	// traversal history.  This can be used instead of looping KvGoBack()
 	// if recursive iteration is not important.
 	//
 	// @param kv            KeyValues Handle.
-	public native void Rewind() { throw new NotImplementedException(); }
+	public void Rewind() { throw new NotImplementedException(); }
 
 	// Retrieves the current section name.
 	//
 	// @param section       Buffer to store the section name.
 	// @param maxlength     Maximum length of the name buffer.
 	// @return              True on success, false on failure.
-	public native bool GetSectionName(string section, int maxlength) { throw new NotImplementedException(); }
+	public bool GetSectionName(string section, int maxlength) { throw new NotImplementedException(); }
 
 	// Sets the current section name.
 	//
 	// @param section       Section name.
-	public native void SetSectionName(string section) { throw new NotImplementedException(); }
+	public void SetSectionName(string section) { throw new NotImplementedException(); }
 
 	// Returns the data type at a key.
 	//
 	// @param key           Key name.
 	// @return              KvDataType value of the key.
-	public native KvDataTypes GetDataType(string key) { throw new NotImplementedException(); }
+	public KvDataTypes GetDataType(string key) { throw new NotImplementedException(); }
 
 	// Sets whether or not the KeyValues parser will read escape sequences.
 	// For example, \n would be read as a literal newline.  This defaults
 	// to false for new KeyValues structures.
 	//
 	// @param useEscapes    Whether or not to read escape sequences.
-	public native void SetEscapeSequences(bool useEscapes) { throw new NotImplementedException(); }
+	public void SetEscapeSequences(bool useEscapes) { throw new NotImplementedException(); }
 
 	// Returns the position in the jump stack; I.e. the number of calls
 	// required for KvGoBack to return to the root node.  If at the root node,
 	// 0 is returned.
 	//
 	// @return              Number of non-root nodes in the jump stack.
-	public native int NodesInStack() { throw new NotImplementedException(); }
+	public int NodesInStack() { throw new NotImplementedException(); }
 
 	// Finds a KeyValues name by id.
 	//
@@ -318,21 +318,21 @@ methodmap KeyValues < Handle
 	// @param name          Buffer to store the name.
 	// @param maxlength     Maximum length of the value buffer.
 	// @return              True on success, false if id not found.
-	public native bool FindKeyById(int id, string name, int maxlength) { throw new NotImplementedException(); }
+	public bool FindKeyById(int id, string name, int maxlength) { throw new NotImplementedException(); }
 
 	// Finds a KeyValues id inside a KeyValues tree.
 	//
 	// @param key           Key name.
 	// @param id            Id of the found KeyValue.
 	// @return              True on success, false if key not found.
-	public native bool GetNameSymbol(string key, int &id) { throw new NotImplementedException(); }
+	public bool GetNameSymbol(string key, int &id) { throw new NotImplementedException(); }
 
 	// Retrieves the current section id.
 	//
 	// @param kv            KeyValues Handle.
 	// @param id            Id of the current section.
 	// @return              True on success, false on failure.
-	public native bool GetSectionSymbol(int &id) { throw new NotImplementedException(); }
+	public bool GetSectionSymbol(int &id) { throw new NotImplementedException(); }
 };
 
 /**
@@ -498,7 +498,7 @@ public static bool KvJumpToKeySymbol(Handle kv, int id) { throw new NotImplement
 
 /**
  * Sets the current position in the KeyValues tree to the first sub key.
- * This native adds to the internal traversal stack.
+ * This public static adds to the internal traversal stack.
  *
  * @param kv            KeyValues Handle.
  * @param keyOnly       If false, non-keys will be traversed (values).
@@ -509,7 +509,7 @@ public static bool KvGotoFirstSubKey(Handle kv, bool keyOnly=true) { throw new N
 
 /**
  * Sets the current position in the KeyValues tree to the next sub key.
- * This native does NOT add to the internal traversal stack, and thus
+ * This public static does NOT add to the internal traversal stack, and thus
  * KvGoBack() is not needed for each successive call to this function.
  *
  * @param kv            KeyValues Handle.

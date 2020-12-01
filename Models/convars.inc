@@ -97,30 +97,30 @@ public static ConVar CreateConVar(
 public static ConVar FindConVar(string name) { throw new NotImplementedException(); }
 
 // A ConVar is a configurable, named setting in the srcds console.
-methodmap ConVar < Handle
+public class ConVar : Handle
 {
 	// Retrieves or sets a boolean value for the convar.
-	property bool BoolValue {
-		public native get() { throw new NotImplementedException(); }
-		public native set(bool b) { throw new NotImplementedException(); }
+	public bool BoolValue {
+		get { throw new NotImplementedException(); }
+		public set(bool b) { throw new NotImplementedException(); }
 	}
 
 	// Retrieves or sets an integer value for the convar.
-	property int IntValue {
-		public native get() { throw new NotImplementedException(); }
-		public native set(int value) { throw new NotImplementedException(); }
+	public int IntValue {
+		get { throw new NotImplementedException(); }
+		public set(int value) { throw new NotImplementedException(); }
 	}
 
 	// Retrieves or sets a float value for the convar.
-	property float FloatValue {
-		public native get() { throw new NotImplementedException(); }
-		public native set(float value) { throw new NotImplementedException(); }
+	public float FloatValue {
+		get { throw new NotImplementedException(); }
+		public set(float value) { throw new NotImplementedException(); }
 	}
 
 	// Gets or sets the flag bits (FCVAR_*) on the convar.
-	property int Flags {
-		public native get() { throw new NotImplementedException(); }
-		public native set(int flags) { throw new NotImplementedException(); }
+	public int Flags {
+		get { throw new NotImplementedException(); }
+		public set(int flags) { throw new NotImplementedException(); }
 	}
 
 	// Sets the boolean value of a console variable.
@@ -135,7 +135,7 @@ methodmap ConVar < Handle
 	//                  and actually exists on clients.
 	// @param notify    If set to true, clients will be notified that the convar has changed.
 	//                  This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void SetBool(bool value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
+	public void SetBool(bool value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Sets the integer value of a console variable.
 	//
@@ -149,7 +149,7 @@ methodmap ConVar < Handle
 	//                  and actually exists on clients.
 	// @param notify    If set to true, clients will be notified that the convar has changed.
 	//                  This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void SetInt(int value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
+	public void SetInt(int value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Sets the floating point value of a console variable.
 	//
@@ -163,14 +163,14 @@ methodmap ConVar < Handle
 	//                  and actually exists on clients.
 	// @param notify    If set to true, clients will be notified that the convar has changed.
 	//                  This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void SetFloat(float value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
+	public void SetFloat(float value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Retrieves the string value of a console variable.
 	//
 	// @param convar     Handle to the convar.
 	// @param value      Buffer to store the value of the convar.
 	// @param maxlength  Maximum length of string buffer.
-	public native void GetString(string value, int maxlength) { throw new NotImplementedException(); }
+	public void GetString(string value, int maxlength) { throw new NotImplementedException(); }
 
 	// Sets the string value of a console variable.
 	//
@@ -184,7 +184,7 @@ methodmap ConVar < Handle
 	//                   and actually exists on clients.
 	// @param notify     If set to true, clients will be notified that the convar has changed.
 	//                   This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void SetString(string value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
+	public void SetString(string value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Resets the console variable to its default value.
 	//
@@ -197,34 +197,34 @@ methodmap ConVar < Handle
 	//                   and actually exists on clients.
 	// @param notify     If set to true, clients will be notified that the convar has changed.
 	//                   This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void RestoreDefault(bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
+	public void RestoreDefault(bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Retrieves the default string value of a console variable.
 	//
 	// @param value      Buffer to store the default value of the convar.
 	// @param maxlength  Maximum length of string buffer.
 	// @return           Number of bytes written to the buffer (UTF-8 safe).
-	public native int GetDefault(string value, int maxlength) { throw new NotImplementedException(); }
+	public int GetDefault(string value, int maxlength) { throw new NotImplementedException(); }
 
 	// Retrieves the specified bound of a console variable.
 	//
 	// @param type       Type of bound to retrieve, ConVarBound_Lower or ConVarBound_Upper.
 	// @param value      By-reference cell to store the specified floating point bound value.
 	// @return           True if the convar has the specified bound set, false otherwise.
-	public native bool GetBounds(ConVarBounds type, float &value) { throw new NotImplementedException(); }
+	public bool GetBounds(ConVarBounds type, float &value) { throw new NotImplementedException(); }
 
 	// Sets the specified bound of a console variable.
 	//
 	// @param type       Type of bound to set, ConVarBound_Lower or ConVarBound_Upper
 	// @param set        If set to true, convar will use specified bound. If false, bound will be removed.
 	// @param value      Floating point value to use as the specified bound.
-	public native void SetBounds(ConVarBounds type, bool set, float value=0.0) { throw new NotImplementedException(); }
+	public void SetBounds(ConVarBounds type, bool set, float value=0.0) { throw new NotImplementedException(); }
 
 	// Retrieves the name of a console variable.
 	//
 	// @param name       Buffer to store the name of the convar.
 	// @param maxlength  Maximum length of string buffer.
-	public native void GetName(string name, int maxlength) { throw new NotImplementedException(); }
+	public void GetName(string name, int maxlength) { throw new NotImplementedException(); }
 
 	// Replicates a convar value to a specific client. This does not change the actual convar value.
 	//
@@ -232,19 +232,19 @@ methodmap ConVar < Handle
 	// @param value      String value to send
 	// @return           True on success, false on failure
 	// @error            Invalid client index, client not in game, or client is fake
-	public native bool ReplicateToClient(int client, string value) { throw new NotImplementedException(); }
+	public bool ReplicateToClient(int client, string value) { throw new NotImplementedException(); }
 
 	// Creates a hook for when a console variable's value is changed.
 	//
 	// @param callback  An OnConVarChanged function pointer.
-	public native void AddChangeHook(ConVarChanged callback) { throw new NotImplementedException(); }
+	public void AddChangeHook(ConVarChanged callback) { throw new NotImplementedException(); }
 
 	// Removes a hook for when a console variable's value is changed.
 	//
 	// @param convar    Handle to the convar.
 	// @param callback  An OnConVarChanged function pointer.
 	// @error           No active hook on convar.
-	public native void RemoveChangeHook(ConVarChanged callback) { throw new NotImplementedException(); }
+	public void RemoveChangeHook(ConVarChanged callback) { throw new NotImplementedException(); }
 }
 
 /**

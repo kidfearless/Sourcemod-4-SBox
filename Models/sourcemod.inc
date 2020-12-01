@@ -86,20 +86,20 @@ enum APLRes
 	APLRes_SilentFailure    /**< Plugin shouldn't load but do so silently */
 };
 
-methodmap GameData < Handle
+public class GameData : Handle
 {
 	// Loads a game config file.
 	//
 	// @param file          File to load.  The path must be relative to the 'gamedata' folder under the config folder
 	//                      and the extension should be omitted.
 	// @return              A handle to the game config file or null on failure.
-	public native GameData(string file) { throw new NotImplementedException(); }
+	public GameData(string file) { throw new NotImplementedException(); }
 
 	// Returns an offset value.
 	//
 	// @param key           Key to retrieve from the offset section.
 	// @return              An offset, or -1 on failure.
-	public native int GetOffset(string key) { throw new NotImplementedException(); }
+	public int GetOffset(string key) { throw new NotImplementedException(); }
 
 	// Gets the value of a key from the "Keys" section.
 	//
@@ -107,20 +107,20 @@ methodmap GameData < Handle
 	// @param buffer        Destination string buffer.
 	// @param maxlen        Maximum length of output string buffer.
 	// @return              True if key existed, false otherwise.
-	public native bool GetKeyValue(string key, string buffer, int maxlen) { throw new NotImplementedException(); }
+	public bool GetKeyValue(string key, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Finds an address calculation in a GameConfig file,
 	// performs LoadFromAddress on it as appropriate, then returns the final address.
 	//
-	// @param name          Name of the property to find.
+	// @param name          Name of the public to find.
 	// @return              An address calculated on success, or 0 on failure.
-	public native Address GetAddress(string name) { throw new NotImplementedException(); }
+	public Address GetAddress(string name) { throw new NotImplementedException(); }
 
 	// Returns a function address calculated from a signature.
 	//
-	// @param name          Name of the property to find.
+	// @param name          Name of the public to find.
 	// @return              An address calculated on success, or 0 on failure.
-	public native Address GetMemSig(string name) { throw new NotImplementedException(); }
+	public Address GetMemSig(string name) { throw new NotImplementedException(); }
 };
 
 /**
@@ -301,10 +301,10 @@ public static bool IsPluginDebugging(Handle plugin) { throw new NotImplementedEx
  * Retrieves a plugin's public info.
  *
  * @param plugin        Plugin Handle (INVALID_HANDLE uses the calling plugin).
- * @param info          Plugin info property to retrieve.
+ * @param info          Plugin info public to retrieve.
  * @param buffer        Buffer to store info in.
  * @param maxlength     Maximum length of buffer.
- * @return              True on success, false if property is not available.
+ * @return              True on success, false if public is not available.
  * @error               Invalid Handle.
  */
 public static bool GetPluginInfo(Handle plugin, PluginInfo info, string buffer, int maxlength) { throw new NotImplementedException(); }
@@ -420,7 +420,7 @@ public static bool GameConfGetKeyValue(Handle gc, string key, string buffer, int
  * performs LoadFromAddress on it as appropriate, then returns the final address.
  *
  * @param gameconf      Game config handle.
- * @param name          Name of the property to find.
+ * @param name          Name of the public to find.
  * @return              An address calculated on success, or 0 on failure.
  */
 public static Address GameConfGetAddress(Handle gameconf, string name) { throw new NotImplementedException(); }
@@ -508,7 +508,7 @@ public const object MAPLIST_FLAG_NO_DEFAULT    (1<<2)    /**< Do not read "defau
  * A map list is a list of maps from a file.  SourceMod allows easy configuration of
  * maplists through addons/sourcemod/configs/maplists.cfg.  Each entry is given a
  * name and a file (for example, "rtv" => "rtv.cfg"), or a name and a redirection
- * (for example, "rtv" => "default").  This native will read a map list entry,
+ * (for example, "rtv" => "default").  This public static will read a map list entry,
  * cache the file, and return the list of maps it holds.
  *
  * Serial change numbers are used to identify if a map list has changed.  Thus, if
@@ -596,14 +596,14 @@ public static override void OnClientFloodResult(int client, bool blocked) { thro
 enum FeatureType
 {
 	/**
-	 * A native function call.
+	 * A public static function call.
 	 */
 	FeatureType_Native,
 
 	/**
 	 * A named capability. This is distinctly different from checking for a
 	 * native, because the underlying functionality could be enabled on-demand
-	 * to improve loading time. Thus a native may appear to exist, but it might
+	 * to improve loading time. Thus a public static may appear to exist, but it might
 	 * be part of a set of features that are not compatible with the current game
 	 * or version of SourceMod.
 	 */
@@ -699,35 +699,35 @@ public static any LoadFromAddress(Address addr, NumberType size) { throw new Not
  */
 public static void StoreToAddress(Address addr, any data, NumberType size) { throw new NotImplementedException(); }
 
-methodmap FrameIterator < Handle {
+public class FrameIterator : Handle {
 	// Creates a stack frame iterator to build your own stack traces.
 	// @return              New handle to a FrameIterator.
-	public native FrameIterator() { throw new NotImplementedException(); }
+	public FrameIterator() { throw new NotImplementedException(); }
 
 	// Advances the iterator to the next stack frame.
 	// @return              True if another frame was fetched and data can be successfully read.
 	// @error               No next element exception.
-	public native bool Next() { throw new NotImplementedException(); }
+	public bool Next() { throw new NotImplementedException(); }
 
 	// Resets the iterator back to it's starting position.
-	public native void Reset() { throw new NotImplementedException(); }
+	public void Reset() { throw new NotImplementedException(); }
 
 	// Returns the line number of the current function call.
-	property int LineNumber {
-		public native get() { throw new NotImplementedException(); }
+	public int LineNumber {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Gets the name of the current function in the call stack.
 	//
 	// @param buffer Buffer to copy to.
 	// @param maxlen Max size of the buffer.
-	public native void GetFunctionName(string buffer, int maxlen) { throw new NotImplementedException(); }
+	public void GetFunctionName(string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Gets the file path to the current call in the call stack.
 	//
 	// @param buffer Buffer to copy to.
 	// @param maxlen Max size of the buffer.
-	public native void GetFilePath(string buffer, int maxlen) { throw new NotImplementedException(); }
+	public void GetFilePath(string buffer, int maxlen) { throw new NotImplementedException(); }
 }
 
 #include <helpers>

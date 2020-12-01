@@ -71,7 +71,7 @@ enum DBPriority
 // A Driver represents a database backend, currently MySQL or SQLite.
 //
 // Driver handles cannot be closed.
-methodmap DBDriver < Handle
+public class DBDriver : Handle
 {
 	// Finds the driver associated with a name.
 	//
@@ -82,7 +82,7 @@ methodmap DBDriver < Handle
 	// @param name          Driver identification string, or an empty string
 	//                      to return the default driver.
 	// @return              Driver handle, or null on failure.
-	public static native DBDriver Find(string name = "") { throw new NotImplementedException(); }
+	public static public static DBDriver Find(string name = "") { throw new NotImplementedException(); }
 
 	// Retrieves a driver's identification string.
 	//
@@ -90,7 +90,7 @@ methodmap DBDriver < Handle
 	//
 	// @param ident         Identification string buffer.
 	// @param maxlength     Maximum length of the buffer.
-	public native void GetIdentifier(string ident, int maxlength) { throw new NotImplementedException(); }
+	public void GetIdentifier(string ident, int maxlength) { throw new NotImplementedException(); }
 
 	// Retrieves a driver's product string.
 	//
@@ -98,11 +98,11 @@ methodmap DBDriver < Handle
 	//
 	// @param product       Product string buffer.
 	// @param maxlength     Maximum length of the buffer.
-	public native void GetProduct(string product, int maxlength) { throw new NotImplementedException(); }
+	public void GetProduct(string product, int maxlength) { throw new NotImplementedException(); }
 };
 
 // Represents a set of results returned from executing a query.
-methodmap DBResultSet < Handle
+public class DBResultSet : Handle
 {
 	// Advances to the next set of results.
 	//
@@ -112,37 +112,37 @@ methodmap DBResultSet < Handle
 	// another query is made.
 	//
 	// @return             True if there was another result set, false otherwise.
-	public native bool FetchMoreResults() { throw new NotImplementedException(); }
+	public bool FetchMoreResults() { throw new NotImplementedException(); }
 
 	// Returns whether or not a result set exists.  This will
 	// return true even if 0 results were returned, but false
 	// on queries like UPDATE, INSERT, or DELETE.
-	property bool HasResults {
-		public native get() { throw new NotImplementedException(); }
+	public bool HasResults {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Retrieves the number of rows in the last result set.
 	// 
 	// @param query        A query (or statement) Handle.
 	// @return             Number of rows in the current result set.
-	property int RowCount {
-		public native get() { throw new NotImplementedException(); }
+	public int RowCount {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Retrieves the number of fields in the last result set.
-	property int FieldCount {
-		public native get() { throw new NotImplementedException(); }
+	public int FieldCount {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Returns the number of affected rows from the query that generated this
 	// result set.
-	property int AffectedRows {
-		public native get() { throw new NotImplementedException(); }
+	public int AffectedRows {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Returns the insert id from the query that generated this result set.
-	property int InsertId {
-		public native get() { throw new NotImplementedException(); }
+	public int InsertId {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Retrieves the name of a field by index.
@@ -151,7 +151,7 @@ methodmap DBResultSet < Handle
 	// @param name         Name buffer.
 	// @param maxlength    Maximum length of the name buffer.
 	// @error              Invalid field index, or no current result set.
-	public native void FieldNumToName(int field, string name, int maxlength) { throw new NotImplementedException(); }
+	public void FieldNumToName(int field, string name, int maxlength) { throw new NotImplementedException(); }
 
 	// Retrieves a field index by name.
 	// 
@@ -159,7 +159,7 @@ methodmap DBResultSet < Handle
 	// @param field        Variable to store field index in.
 	// @return             True if found, false if not found.
 	// @error              No current result set.
-	public native bool FieldNameToNum(string name, int &field) { throw new NotImplementedException(); }
+	public bool FieldNameToNum(string name, int &field) { throw new NotImplementedException(); }
 
 	// Fetches a row from the current result set.  This must be 
 	// successfully called before any results are fetched.
@@ -168,20 +168,20 @@ methodmap DBResultSet < Handle
 	// tell if there was an error or the result set is finished.
 	// 
 	// @return             True if a row was fetched, false otherwise.
-	public native bool FetchRow() { throw new NotImplementedException(); }
+	public bool FetchRow() { throw new NotImplementedException(); }
 
 	// Returns if there are more rows.
 	// 
 	// @return             True if there are more rows, false otherwise.
-	property bool MoreRows {
-		public native get() { throw new NotImplementedException(); }
+	public bool MoreRows {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Rewinds a result set back to the first result.
 	// 
 	// @return             True on success, false otherwise.
 	// @error              No current result set.
-	public native bool Rewind() { throw new NotImplementedException(); }
+	public bool Rewind() { throw new NotImplementedException(); }
 
 	// Fetches a string from a field in the current row of a result set.  
 	// If the result is NULL, an empty string will be returned.  A NULL 
@@ -194,7 +194,7 @@ methodmap DBResultSet < Handle
 	// @return             Number of bytes written.
 	// @error              Invalid field index, invalid type conversion requested
 	//                     from the database, or no current result set.
-	public native int FetchString(int field, string buffer, int maxlength, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
+	public int FetchString(int field, string buffer, int maxlength, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 	// Fetches a float from a field in the current row of a result set.  
 	// If the result is NULL, a value of 0.0 will be returned.  A NULL 
@@ -205,7 +205,7 @@ methodmap DBResultSet < Handle
 	// @return             A float value.
 	// @error              Invalid field index, invalid type conversion requested
 	//                     from the database, or no current result set.
-	public native float FetchFloat(int field, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
+	public float FetchFloat(int field, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 	// Fetches an integer from a field in the current row of a result set.  
 	// If the result is NULL, a value of 0 will be returned.  A NULL 
@@ -216,7 +216,7 @@ methodmap DBResultSet < Handle
 	// @return             An integer value.
 	// @error              Invalid field index, invalid type conversion requested
 	//                     from the database, or no current result set.
-	public native int FetchInt(int field, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
+	public int FetchInt(int field, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 	// Returns whether a field's data in the current row of a result set is 
 	// NULL or not.  NULL is an SQL type which means "no data."
@@ -224,7 +224,7 @@ methodmap DBResultSet < Handle
 	// @param field        The field index (starting from 0).
 	// @return             True if data is NULL, false otherwise.
 	// @error              Invalid field index, or no current result set.
-	public native bool IsFieldNull(int field) { throw new NotImplementedException(); }
+	public bool IsFieldNull(int field) { throw new NotImplementedException(); }
 
 	// Returns the length of a field's data in the current row of a result
 	// set.  This only needs to be called for strings to determine how many
@@ -234,7 +234,7 @@ methodmap DBResultSet < Handle
 	// @param field        The field index (starting from 0).
 	// @return             Number of bytes for the field's data size.
 	// @error              Invalid field index or no current result set.
-	public native int FetchSize(int field) { throw new NotImplementedException(); }
+	public int FetchSize(int field) { throw new NotImplementedException(); }
 };
 
 typeset SQLTxnSuccess
@@ -272,23 +272,23 @@ typedef SQLTxnFailure = function void (Database db, any data, int numQueries, st
 
 // A Transaction is a collection of SQL statements that must all execute
 // successfully or not at all.
-methodmap Transaction < Handle
+public class Transaction : Handle
 {
 	// Create a new transaction.
-	public native Transaction() { throw new NotImplementedException(); }
+	public Transaction() { throw new NotImplementedException(); }
 
 	// Adds a query to the transaction.
 	//
 	// @param query        Query string.
 	// @param data         Extra data value to pass to the final callback.
 	// @return             The index of the query in the transaction's query list.
-	public native int AddQuery(string query, any data=0) { throw new NotImplementedException(); }
+	public int AddQuery(string query, any data=0) { throw new NotImplementedException(); }
 };
 
 // A DBStatement is a pre-compiled SQL query that may be executed multiple
 // times with different parameters. A DBStatement holds a reference to the
 // Database that prepared it.
-methodmap DBStatement < Handle
+public class DBStatement : Handle
 {
 	// Binds a parameter in a prepared statement to a given integer value.
 	// 
@@ -297,14 +297,14 @@ methodmap DBStatement < Handle
 	// @param signed        True to bind the number as signed, false to 
 	//                      bind it as unsigned.
 	// @error               Invalid parameter index, or SQL error.
-	public native void BindInt(int param, int number, bool signed=true) { throw new NotImplementedException(); }
+	public void BindInt(int param, int number, bool signed=true) { throw new NotImplementedException(); }
 
 	// Binds a parameter in a prepared statement to a given float value.
 	// 
 	// @param param         The parameter index (starting from 0).
 	// @param value         The float number to bind.
 	// @error               Invalid parameter index, or SQL error.
-	public native void BindFloat(int param, float value) { throw new NotImplementedException(); }
+	public void BindFloat(int param, float value) { throw new NotImplementedException(); }
 
 	// Binds a parameter in a prepared statement to a given string value.
 	// 
@@ -315,7 +315,7 @@ methodmap DBStatement < Handle
 	//                      won't change before calling SQL_Execute(), this
 	//                      can be set to false for optimization.
 	// @error               Invalid parameter index, or SQL error.
-	public native void BindString(int param, string value, bool copy) { throw new NotImplementedException(); }
+	public void BindString(int param, string value, bool copy) { throw new NotImplementedException(); }
 };
 
 /**
@@ -343,18 +343,18 @@ typedef SQLQueryCallback = function void (Database db, DBResultSet results, stri
 
 // A Database represents a live connection to a database, either over the
 // wire, through a unix domain socket, or over an open file.
-methodmap Database < Handle
+public class Database : Handle
 {
 	// Connects to a database asynchronously, so the game thread is not blocked.
 	//
 	// @param callback      Callback. If no driver was found, the owner is null.
 	// @param name          Database configuration name.
 	// @param data          Extra data value to pass to the callback.
-	public static native void Connect(SQLConnectCallback callback, string name="default", any data=0) { throw new NotImplementedException(); }
+	public static public static void Connect(SQLConnectCallback callback, string name="default", any data=0) { throw new NotImplementedException(); }
 
 	// Returns the driver for this database connection.
-	property DBDriver Driver {
-		public native get() { throw new NotImplementedException(); }
+	public DBDriver Driver {
+		get { throw new NotImplementedException(); }
 	}
 
 	// Sets the character set of the connection. 
@@ -364,7 +364,7 @@ methodmap Database < Handle
 	//
 	// @param charset       The character set string to change to.
 	// @return              True, if character set was changed, false otherwise.
-	public native bool SetCharset(string charset) { throw new NotImplementedException(); }
+	public bool SetCharset(string charset) { throw new NotImplementedException(); }
 
 	// Escapes a database string for literal insertion.  This is not needed
 	// for binding strings in prepared statements.  
@@ -385,7 +385,7 @@ methodmap Database < Handle
 	// @param written       Optionally returns the number of bytes written.
 	// @return              True on success, false if buffer is not big enough.
 	//                      The buffer must be at least 2*strlen(string)+1.
-	public native bool Escape(string string, string buffer, int maxlength, int &written=0) { throw new NotImplementedException(); }
+	public bool Escape(string string, string buffer, int maxlength, int &written=0) { throw new NotImplementedException(); }
 
 	// Formats a string according to the SourceMod format rules (see documentation).
 	// All format specifiers are escaped (see SQL_EscapeString) unless the '!' flag is used.
@@ -395,10 +395,10 @@ methodmap Database < Handle
 	// @param format        Formatting rules.
 	// @param ...           Variable number of format parameters.
 	// @return              Number of cells written.
-	public native int Format(string buffer, int maxlength, string format, any ...) { throw new NotImplementedException(); }
+	public int Format(string buffer, int maxlength, string format, any ...) { throw new NotImplementedException(); }
 
 	// Returns whether a database is the same connection as another database.
-	public native bool IsSameConnection(Database other) { throw new NotImplementedException(); }
+	public bool IsSameConnection(Database other) { throw new NotImplementedException(); }
 
 	// Executes a query via a thread. The result handle is passed through the
 	// callback.
@@ -414,7 +414,7 @@ methodmap Database < Handle
 	// @param query          Query string.
 	// @param data           Extra data value to pass to the callback.
 	// @param prio           Priority queue to use.
-	public native void Query(SQLQueryCallback callback, string query,
+	public void Query(SQLQueryCallback callback, string query,
 	                         any data = 0,
 	                         DBPriority prio = DBPrio_Normal) { throw new NotImplementedException(); }
 
@@ -427,7 +427,7 @@ methodmap Database < Handle
 	// @param onError        An optional callback to receive an error message.
 	// @param data           An optional value to pass to callbacks.
 	// @param prio           Priority queue to use.
-	public native void Execute(Transaction txn,
+	public void Execute(Transaction txn,
 	                           SQLTxnSuccess onSuccess = INVALID_FUNCTION,
 	                           SQLTxnFailure onError = INVALID_FUNCTION,
 	                           any data = 0,

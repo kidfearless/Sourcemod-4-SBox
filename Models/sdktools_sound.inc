@@ -221,7 +221,7 @@ public static void EmitSound(const int[] clients,
 
 /**
  * Emits a sound or game sound to a list of clients using the latest version of the engine sound interface.
- * This native is only available in engines that are greater than or equal to Portal 2.
+ * This public static is only available in engines that are greater than or equal to Portal 2.
  *
  * @param clients       Array of client indexes.
  * @param numClients    Number of clients in the array.
@@ -707,7 +707,7 @@ public static bool EmitGameSoundToAll(string gameSound,
  * Most games will precache all game sounds on map start, but this is not guaranteed...
  * Team Fortress 2 is known to not pre-cache MvM game mode sounds on non-MvM maps.
  *
- * Due to the above, this native should be called before any calls to GetGameSoundParams,
+ * Due to the above, this public static should be called before any calls to GetGameSoundParams,
  * EmitGameSound*, or EmitAmbientGameSound.
  *
  * It should be safe to pass already precached game sounds to this function.

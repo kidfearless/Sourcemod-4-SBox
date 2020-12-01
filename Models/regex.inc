@@ -114,7 +114,7 @@ enum RegexError
 
 // Regular expression objects are used to match or decompose strings based on
 // patterns.
-methodmap Regex < Handle
+public class Regex : Handle
 {
 	// Compile a regular expression.
 	//
@@ -123,7 +123,7 @@ methodmap Regex < Handle
 	// @param error         Error message encountered, if applicable.
 	// @param maxLen        Maximum string length of the error buffer.
 	// @param errcode       Regex type error code encountered, if applicable.
-	public native Regex(string pattern, int flags = 0, string error="", int maxLen = 0, RegexError &errcode = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
+	public Regex(string pattern, int flags = 0, string error="", int maxLen = 0, RegexError &errcode = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
 
 	// Matches a string against a pre-compiled regular expression pattern.
 	//
@@ -134,7 +134,7 @@ methodmap Regex < Handle
 	//
 	// @note Use the regex handle passed to this function to extract
 	//       matches with GetSubString().
-	public native int Match(string str, RegexError &ret = REGEX_ERROR_NONE, int offset = 0) { throw new NotImplementedException(); }
+	public int Match(string str, RegexError &ret = REGEX_ERROR_NONE, int offset = 0) { throw new NotImplementedException(); }
 
 	// Gets all matches from a string against a pre-compiled regular expression pattern.
 	//
@@ -143,7 +143,7 @@ methodmap Regex < Handle
 	// @return              Number of matches found or -1 on failure.
 	//
 	// @note Use GetSubString() and loop from 0 -> totalmatches - 1.
-	public native int MatchAll(string str, RegexError &ret = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
+	public int MatchAll(string str, RegexError &ret = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
 
 	// Returns a matched substring from a regex handle.
 	//
@@ -158,13 +158,13 @@ methodmap Regex < Handle
 	//
 	// @note str_id = 0 is the full captured string, anything else is the capture group index.
 	//       if Regex.Match is used match can only be 0
-	public native bool GetSubString(int str_id, string buffer, int maxlen, int match = 0) { throw new NotImplementedException(); }
+	public bool GetSubString(int str_id, string buffer, int maxlen, int match = 0) { throw new NotImplementedException(); }
 
 	// Returns number of matches
 	//
 	// When using Match this is always 1 or 0 (unless an error occured)
 	// @return              Total number of matches found.
-	public native int MatchCount() { throw new NotImplementedException(); }
+	public int MatchCount() { throw new NotImplementedException(); }
 
 	// Returns number of captures for a match
 	//
@@ -172,13 +172,13 @@ methodmap Regex < Handle
 	// @return              Number of captures in the match.
 	//
 	// @note Use GetSubString() and loop from 1 -> captures -1 for str_id to get all captures
-	public native int CaptureCount(int match = 0) { throw new NotImplementedException(); }
+	public int CaptureCount(int match = 0) { throw new NotImplementedException(); }
 
 	// Returns the string offset of a match.
 	//
 	// @param match         Match to get the offset of. Match starts at 0, and ends at MatchCount() -1
 	// @return              Offset of the match in the string.
-	public native int MatchOffset(int match = 0) { throw new NotImplementedException(); }
+	public int MatchOffset(int match = 0) { throw new NotImplementedException(); }
 };
 
 /**

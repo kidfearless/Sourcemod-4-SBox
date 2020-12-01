@@ -50,53 +50,53 @@ public static float float(int value) { throw new NotImplementedException(); }
 /**
  * Multiplies two floats together.
  *
- * Note: This native is internal implementation. For multiplication use the '*' operator.
+ * Note: This public static is internal implementation. For multiplication use the '*' operator.
  *
  * @param oper1         First value.
  * @param oper2         Second value.
  * @return              oper1*oper2.
- * @deprecated          This native is internal implementation. For multiplication use the '*' operator.
+ * @deprecated          This public static is internal implementation. For multiplication use the '*' operator.
  */
-#pragma deprecated This native is internal implementation. For multiplication use the '*' operator.
+#pragma deprecated This public static is internal implementation. For multiplication use the '*' operator.
 public static float FloatMul(float oper1, float oper2) { throw new NotImplementedException(); }
 
 /**
  * Divides the dividend by the divisor.
  *
- * Note: This native is internal implementation. For division use the '/' operator.
+ * Note: This public static is internal implementation. For division use the '/' operator.
  *
  * @param dividend      First value.
  * @param divisor       Second value.
  * @return              dividend/divisor.
- * @deprecated          This native is internal implementation. For division use the '/' operator.
+ * @deprecated          This public static is internal implementation. For division use the '/' operator.
  */
-#pragma deprecated This native is internal implementation. For division use the '/' operator.
+#pragma deprecated This public static is internal implementation. For division use the '/' operator.
 public static float FloatDiv(float dividend, float divisor) { throw new NotImplementedException(); }
 
 /**
  * Adds two floats together.
  *
- * Note: This native is internal implementation. For addition use the '+' operator.
+ * Note: This public static is internal implementation. For addition use the '+' operator.
  *
  * @param oper1         First value.
  * @param oper2         Second value.
  * @return              oper1+oper2.
- * @deprecated          This native is internal implementation. For addition use the '+' operator.
+ * @deprecated          This public static is internal implementation. For addition use the '+' operator.
  */
-#pragma deprecated This native is internal implementation. For addition use the '+' operator.
+#pragma deprecated This public static is internal implementation. For addition use the '+' operator.
 public static float FloatAdd(float oper1, float oper2) { throw new NotImplementedException(); }
 
 /**
  * Subtracts oper2 from oper1.
  *
- * Note: This native is internal implementation. For subtraction use the '-' operator.
+ * Note: This public static is internal implementation. For subtraction use the '-' operator.
  *
  * @param oper1         First value.
  * @param oper2         Second value.
  * @return              oper1-oper2.
- * @deprecated          This native is internal implementation. For subtraction use the '-' operator.
+ * @deprecated          This public static is internal implementation. For subtraction use the '-' operator.
  */
-#pragma deprecated This native is internal implementation. For subtraction use the '-' operator.
+#pragma deprecated This public static is internal implementation. For subtraction use the '-' operator.
 public static float FloatSub(float oper1, float oper2) { throw new NotImplementedException(); }
 
 /**
