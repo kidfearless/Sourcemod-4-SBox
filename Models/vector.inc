@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _vector_included
- #endinput
-#endif
-#define _vector_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Calculates a vector's length.
@@ -42,7 +44,7 @@
  * @param squared       If true, the result will be squared (for optimization).
  * @return              Vector length (magnitude).
  */
-native float GetVectorLength(const float vec[3], bool squared=false);
+public static float GetVectorLength(const float vec[3], bool squared=false) { throw new NotImplementedException(); }
 
 /**
  * Calculates the distance between two vectors.
@@ -52,7 +54,7 @@ native float GetVectorLength(const float vec[3], bool squared=false);
  * @param squared       If true, the result will be squared (for optimization).
  * @return              Vector distance.
  */
-native float GetVectorDistance(const float vec1[3], const float vec2[3], bool squared=false);
+public static float GetVectorDistance(const float vec1[3], const float vec2[3], bool squared=false) { throw new NotImplementedException(); }
 
 /**
  * Calculates the dot product of two vectors.
@@ -61,7 +63,7 @@ native float GetVectorDistance(const float vec1[3], const float vec2[3], bool sq
  * @param vec2          Second vector.
  * @return              Dot product of the two vectors.
  */
-native float GetVectorDotProduct(const float vec1[3], const float vec2[3]);
+public static float GetVectorDotProduct(const float vec1[3], const float vec2[3]) { throw new NotImplementedException(); }
 
 /**
  * Computes the cross product of two vectors.  Any input array can be the same
@@ -71,7 +73,7 @@ native float GetVectorDotProduct(const float vec1[3], const float vec2[3]);
  * @param vec2          Second vector.
  * @param result        Resultant vector.
  */
-native void GetVectorCrossProduct(const float vec1[3], const float vec2[3], float result[3]);
+public static void GetVectorCrossProduct(const float vec1[3], const float vec2[3], float result[3]) { throw new NotImplementedException(); }
 
 /**
  * Normalizes a vector.  The input array can be the same as the output array.
@@ -80,17 +82,17 @@ native void GetVectorCrossProduct(const float vec1[3], const float vec2[3], floa
  * @param result        Resultant vector.
  * @return              Vector length.
  */
-native float NormalizeVector(const float vec[3], float result[3]);
+public static float NormalizeVector(const float vec[3], float result[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns vectors in the direction of an angle.
  *
  * @param angle         Angle.
- * @param fwd           Forward vector buffer or NULL_VECTOR.
+ * @param fwd           public static override vector buffer or NULL_VECTOR.
  * @param right         Right vector buffer or NULL_VECTOR.
  * @param up            Up vector buffer or NULL_VECTOR.
  */
-native void GetAngleVectors(const float angle[3], float fwd[3], float right[3], float up[3]);
+public static void GetAngleVectors(const float angle[3], float fwd[3], float right[3], float up[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns angles from a vector.
@@ -98,7 +100,7 @@ native void GetAngleVectors(const float angle[3], float fwd[3], float right[3], 
  * @param vec           Vector.
  * @param angle         Angle buffer.
  */
-native void GetVectorAngles(const float vec[3], float angle[3]);
+public static void GetVectorAngles(const float vec[3], float angle[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns direction vectors from a vector.
@@ -107,7 +109,7 @@ native void GetVectorAngles(const float vec[3], float angle[3]);
  * @param right         Right vector buffer or NULL_VECTOR.
  * @param up            Up vector buffer or NULL_VECTOR.
  */
-native void GetVectorVectors(const float vec[3], float right[3], float up[3]);
+public static void GetVectorVectors(const float vec[3], float right[3], float up[3]) { throw new NotImplementedException(); }
 
 /**
  * Adds two vectors.  It is safe to use either input buffer as an output
@@ -176,4 +178,6 @@ stock void MakeVectorFromPoints(const float pt1[3], const float pt2[3], float ou
 	output[0] = pt2[0] - pt1[0];
 	output[1] = pt2[1] - pt1[1];
 	output[2] = pt2[2] - pt1[2];
+}
+	}
 }

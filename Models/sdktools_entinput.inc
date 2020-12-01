@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_entinput_included
- #endinput
-#endif
-#define _sdktools_entinput_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Invokes a named input method on an entity.
@@ -48,4 +50,6 @@
  * @return              True if successful otherwise false.
  * @error               Invalid entity index or no mod support.
  */
-native bool AcceptEntityInput(int dest, const char[] input, int activator=-1, int caller=-1, int outputid=0);
+public static bool AcceptEntityInput(int dest, string input, int activator=-1, int caller=-1, int outputid=0) { throw new NotImplementedException(); }
+	}
+}

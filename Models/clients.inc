@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _clients_included
- #endinput
-#endif
-#define _clients_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Network flow directions.
@@ -69,15 +71,15 @@ enum AuthIdType
  * MAXPLAYERS is a hardcoded value as an upper limit.  MaxClients changes based on the server.
  */
 
-#define MAXPLAYERS      65  /**< Maximum number of players SourceMod supports */
-#define MAX_NAME_LENGTH 128 /**< Maximum buffer required to store a client name */
+public const object MAXPLAYERS      65  /**< Maximum number of players SourceMod supports */
+public const object MAX_NAME_LENGTH 128 /**< Maximum buffer required to store a client name */
 
 public const int MaxClients;   /**< Maximum number of players the server supports (dynamic) */
 
 /**
  * Called on client connection.  If you return true, the client will be allowed in the server.
  * If you return false (or return nothing), the client will be rejected.  If the client is 
- * rejected by this forward or any other, OnClientDisconnect will not be called.
+ * rejected by this public static override or any other, OnClientDisconnect will not be called.
  *
  * Note: Do not write to rejectmsg if you plan on returning true.  If multiple plugins write
  * to the string buffer, it is not defined which plugin's string will be shown to the client,
@@ -88,14 +90,14 @@ public const int MaxClients;   /**< Maximum number of players the server support
  * @param maxlen        Maximum number of characters for rejection buffer.
  * @return              True to validate client's connection, false to refuse it.
  */
-forward bool OnClientConnect(int client, char[] rejectmsg, int maxlen);
+public static override bool OnClientConnect(int client, string rejectmsg, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Called once a client successfully connects.  This callback is paired with OnClientDisconnect.
  *
  * @param client        Client index.
  */
-forward void OnClientConnected(int client);
+public static override void OnClientConnected(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is entering the game.
@@ -110,21 +112,21 @@ forward void OnClientConnected(int client);
  *
  * @param client        Client index.
  */
-forward void OnClientPutInServer(int client);
+public static override void OnClientPutInServer(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is disconnecting from the server.
  *
  * @param client        Client index.
  */
-forward void OnClientDisconnect(int client);
+public static override void OnClientDisconnect(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is disconnected from the server.
  *
  * @param client        Client index.
  */
-forward void OnClientDisconnect_Post(int client);
+public static override void OnClientDisconnect_Post(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is sending a command.
@@ -137,7 +139,7 @@ forward void OnClientDisconnect_Post(int client);
  * @return              Plugin_Handled blocks the command from being sent,
  *                      and Plugin_Continue resumes normal functionality.
  */
-forward Action OnClientCommand(int client, int args);
+public static override Action OnClientCommand(int client, int args) { throw new NotImplementedException(); }
 
 /**
  * Called when a client is sending a KeyValues command.
@@ -145,11 +147,11 @@ forward Action OnClientCommand(int client, int args);
  * @param client        Client index.
  * @param kv            Editable KeyValues data to be sent as the command.
  *                      (This handle should not be stored and will be closed
- *                      after this forward completes.)
+ *                      after this public static override completes.)
  * @return              Plugin_Handled blocks the command from being sent,
  *                      and Plugin_Continue resumes normal functionality.
  */
-forward Action OnClientCommandKeyValues(int client, KeyValues kv);
+public static override Action OnClientCommandKeyValues(int client, KeyValues kv) { throw new NotImplementedException(); }
 
 /**
  * Called after a client has sent a KeyValues command.
@@ -157,16 +159,16 @@ forward Action OnClientCommandKeyValues(int client, KeyValues kv);
  * @param client        Client index.
  * @param kv            KeyValues data sent as the command.
  *                      (This handle should not be stored and will be closed
- *                      after this forward completes.)
+ *                      after this public static override completes.)
  */
-forward void OnClientCommandKeyValues_Post(int client, KeyValues kv);
+public static override void OnClientCommandKeyValues_Post(int client, KeyValues kv) { throw new NotImplementedException(); }
 
 /**
  * Called whenever the client's settings are changed.
  *
  * @param client        Client index.
  */
-forward void OnClientSettingsChanged(int client);
+public static override void OnClientSettingsChanged(int client) { throw new NotImplementedException(); }
 
 /**
  * Called when a client receives an auth ID.  The state of a client's 
@@ -178,7 +180,7 @@ forward void OnClientSettingsChanged(int client);
  * @param client        Client index.
  * @param auth          Client Steam2 id, if available, else engine auth id.
  */
-forward void OnClientAuthorized(int client, const char[] auth);
+public static override void OnClientAuthorized(int client, string auth) { throw new NotImplementedException(); }
 
 /**
  * Called once a client is authorized and fully in-game, but 
@@ -196,7 +198,7 @@ forward void OnClientAuthorized(int client, const char[] auth);
  * @param client        Client index.
  * @return              Plugin_Handled to block admin checks.
  */
-forward Action OnClientPreAdminCheck(int client);
+public static override Action OnClientPreAdminCheck(int client) { throw new NotImplementedException(); }
 
 /**
  * Called directly before OnClientPostAdminCheck() as a method to 
@@ -212,7 +214,7 @@ forward Action OnClientPreAdminCheck(int client);
  *
  * @param client        Client index.
  */
-forward void OnClientPostAdminFilter(int client);
+public static override void OnClientPostAdminFilter(int client) { throw new NotImplementedException(); }
 
 /**
  * Called once a client is authorized and fully in-game, and 
@@ -223,7 +225,7 @@ forward void OnClientPostAdminFilter(int client);
  *
  * @param client        Client index.
  */
-forward void OnClientPostAdminCheck(int client);
+public static override void OnClientPostAdminCheck(int client) { throw new NotImplementedException(); }
 
 /**
  * This function is deprecated. Use the MaxClients variable instead.
@@ -240,7 +242,7 @@ forward void OnClientPostAdminCheck(int client);
  * @deprecated          Use MaxClients variable instead.
  */
 #pragma deprecated Use MaxClients variable instead.
-native int GetMaxClients();
+public static int GetMaxClients() { throw new NotImplementedException(); }
 
 /**
  * Returns the maximum number of human players allowed on the server.  This is 
@@ -255,7 +257,7 @@ native int GetMaxClients();
  *
  * @return              Maximum number of humans allowed.
  */
-native int GetMaxHumanPlayers();
+public static int GetMaxHumanPlayers() { throw new NotImplementedException(); }
 
 /**
  * Returns the client count put in the server.
@@ -263,7 +265,7 @@ native int GetMaxHumanPlayers();
  * @param inGameOnly    If false connecting players are also counted.
  * @return              Client count in the server.
  */
-native int GetClientCount(bool inGameOnly=true);
+public static int GetClientCount(bool inGameOnly=true) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's name.
@@ -274,7 +276,7 @@ native int GetClientCount(bool inGameOnly=true);
  * @return              True on success, false otherwise.
  * @error               If the client is not connected an error will be thrown.
  */
-native bool GetClientName(int client, char[] name, int maxlen);
+public static bool GetClientName(int client, string name, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a client's IP address.
@@ -286,7 +288,7 @@ native bool GetClientName(int client, char[] name, int maxlen);
  * @return              True on success, false otherwise.
  * @error               If the client is not connected or the index is invalid.
  */
-native bool GetClientIP(int client, char[] ip, int maxlen, bool remport=true);
+public static bool GetClientIP(int client, string ip, int maxlen, bool remport=true) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a client's authentication string (SteamID).
@@ -302,7 +304,7 @@ native bool GetClientIP(int client, char[] ip, int maxlen, bool remport=true);
  * @deprecated          Use GetClientAuthId
  */
 #pragma deprecated Use GetClientAuthId
-native bool GetClientAuthString(int client, char[] auth, int maxlen, bool validate=true);
+public static bool GetClientAuthString(int client, string auth, int maxlen, bool validate=true) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a client's authentication string (SteamID).
@@ -317,7 +319,7 @@ native bool GetClientAuthString(int client, char[] auth, int maxlen, bool valida
  * @return              True on success, false otherwise.
  * @error               If the client is not connected or the index is invalid.
  */
-native bool GetClientAuthId(int client, AuthIdType authType, char[] auth, int maxlen, bool validate=true);
+public static bool GetClientAuthId(int client, AuthIdType authType, string auth, int maxlen, bool validate=true) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's Steam account ID, a number uniquely identifying a given Steam account.
@@ -330,7 +332,7 @@ native bool GetClientAuthId(int client, AuthIdType authType, char[] auth, int ma
  * @return              Steam account ID or 0 if not available.
  * @error               If the client is not connected or the index is invalid.
  */
-native int GetSteamAccountID(int client, bool validate=true);
+public static int GetSteamAccountID(int client, bool validate=true) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a client's user id, which is an index incremented for every client
@@ -340,7 +342,7 @@ native int GetSteamAccountID(int client, bool validate=true);
  * @return              User id of the client.
  * @error               If the client is not connected or the index is invalid.
  */
-native int GetClientUserId(int client);
+public static int GetClientUserId(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if a certain player is connected.
@@ -348,7 +350,7 @@ native int GetClientUserId(int client);
  * @param client        Player index.
  * @return              True if player is connected to the server, false otherwise.
  */
-native bool IsClientConnected(int client);
+public static bool IsClientConnected(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if a certain player has entered the game.
@@ -357,7 +359,7 @@ native bool IsClientConnected(int client);
  * @return              True if player has entered the game, false otherwise.
  * @error               Invalid client index.
  */
-native bool IsClientInGame(int client);
+public static bool IsClientInGame(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if a client is in the "kick queue" (i.e. the client will be kicked 
@@ -367,7 +369,7 @@ native bool IsClientInGame(int client);
  * @return              True if in the kick queue, false otherwise.
  * @error               Invalid client index.
  */
-native bool IsClientInKickQueue(int client);
+public static bool IsClientInKickQueue(int client) { throw new NotImplementedException(); }
 
 /**
  * Backwards compatibility stock - use IsClientInGame
@@ -376,7 +378,7 @@ native bool IsClientInKickQueue(int client);
 #pragma deprecated Use IsClientInGame() instead
 stock bool IsPlayerInGame(int client)
 {
-	return IsClientInGame(client);
+	return IsClientInGame(client) { throw new NotImplementedException(); }
 }
 
 /**
@@ -385,7 +387,7 @@ stock bool IsPlayerInGame(int client)
  * @param client        Player index.
  * @return              True if player has been authenticated, false otherwise.
  */
-native bool IsClientAuthorized(int client);
+public static bool IsClientAuthorized(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if a certain player is a fake client.
@@ -393,7 +395,7 @@ native bool IsClientAuthorized(int client);
  * @param client        Player index.
  * @return              True if player is a fake client, false otherwise.
  */
-native bool IsFakeClient(int client);
+public static bool IsFakeClient(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if a certain player is the SourceTV bot.
@@ -401,7 +403,7 @@ native bool IsFakeClient(int client);
  * @param client        Player index.
  * @return              True if player is the SourceTV bot, false otherwise.
  */
-native bool IsClientSourceTV(int client);
+public static bool IsClientSourceTV(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if a certain player is the Replay bot.
@@ -409,7 +411,7 @@ native bool IsClientSourceTV(int client);
  * @param client        Player index.
  * @return              True if player is the Replay bot, false otherwise.
  */
-native bool IsClientReplay(int client);
+public static bool IsClientReplay(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if a certain player is an observer/spectator.
@@ -417,7 +419,7 @@ native bool IsClientReplay(int client);
  * @param client        Player index.
  * @return              True if player is an observer, false otherwise.
  */
-native bool IsClientObserver(int client);
+public static bool IsClientObserver(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if the client is alive or dead.
@@ -428,7 +430,7 @@ native bool IsClientObserver(int client);
  * @return              True if the client is alive, false otherwise.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native bool IsPlayerAlive(int client);
+public static bool IsPlayerAlive(int client) { throw new NotImplementedException(); }
 
 /**
  * Retrieves values from client replicated keys.
@@ -440,7 +442,7 @@ native bool IsPlayerAlive(int client);
  * @return              True on success, false otherwise.
  * @error               Invalid client index, or client not connected.
  */
-native bool GetClientInfo(int client, const char[] key, char[] value, int maxlen);
+public static bool GetClientInfo(int client, string key, string value, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a client's team index.
@@ -449,7 +451,7 @@ native bool GetClientInfo(int client, const char[] key, char[] value, int maxlen
  * @return              Team index the client is on (mod specific).
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native int GetClientTeam(int client);
+public static int GetClientTeam(int client) { throw new NotImplementedException(); }
  
 /**
  * Sets a client's AdminId.  
@@ -459,7 +461,7 @@ native int GetClientTeam(int client);
  * @param temp          True if the id should be freed on disconnect.
  * @error               Invalid client index, client not connected, or bogus AdminId.
  */
-native void SetUserAdmin(int client, AdminId id, bool temp=false);
+public static void SetUserAdmin(int client, AdminId id, bool temp=false) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a client's AdminId.
@@ -468,7 +470,7 @@ native void SetUserAdmin(int client, AdminId id, bool temp=false);
  * @return              AdminId of the client, or INVALID_ADMIN_ID if none.
  * @error               Invalid client index, or client not connected.
  */
-native AdminId GetUserAdmin(int client);
+public static AdminId GetUserAdmin(int client) { throw new NotImplementedException(); }
 
 /**
  * Sets access flags on a client.  If the client is not an admin,
@@ -478,7 +480,7 @@ native AdminId GetUserAdmin(int client);
  * @param ...           Flags to set on the client.
  * @error               Invalid client index, or client not connected.
  */
-native void AddUserFlags(int client, AdminFlag ...);
+public static void AddUserFlags(int client, AdminFlag ...) { throw new NotImplementedException(); }
 
 /**
  * Removes flags from a client.  If the client is not an admin,
@@ -488,7 +490,7 @@ native void AddUserFlags(int client, AdminFlag ...);
  * @param ...           Flags to remove from the client.
  * @error               Invalid client index, or client not connected.
  */
-native void RemoveUserFlags(int client, AdminFlag ...);
+public static void RemoveUserFlags(int client, AdminFlag ...) { throw new NotImplementedException(); }
 
 /** 
  * Sets access flags on a client using bits instead of flags.  If the
@@ -497,7 +499,7 @@ native void RemoveUserFlags(int client, AdminFlag ...);
  * @param client        Player's index.
  * @param flags         Bitstring of flags to set on client.
  */
-native void SetUserFlagBits(int client, int flags);
+public static void SetUserFlagBits(int client, int flags) { throw new NotImplementedException(); }
 
 /**
  * Returns client access flags.  If the client is not an admin,
@@ -507,7 +509,7 @@ native void SetUserFlagBits(int client, int flags);
  * @return              Flags
  * @error               Invalid client index, or client not connected.
  */
-native int GetUserFlagBits(int client);
+public static int GetUserFlagBits(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a user can target another user.
@@ -518,7 +520,7 @@ native int GetUserFlagBits(int client);
  * @return              True if target is targettable by the player, false otherwise.
  * @error               Invalid or unconnected player indexers.
  */
-native bool CanUserTarget(int client, int target);
+public static bool CanUserTarget(int client, int target) { throw new NotImplementedException(); }
 
 /**
  * Runs through the Core-defined admin authorization checks on a player.
@@ -530,7 +532,7 @@ native bool CanUserTarget(int client, int target);
  * @return              True if access was changed, false if it did not.
  * @error               Invalid client index or client not in-game AND authorized.
  */
-native bool RunAdminCacheChecks(int client);
+public static bool RunAdminCacheChecks(int client) { throw new NotImplementedException(); }
 
 /**
  * Signals that a player has completed post-connection admin checks.
@@ -541,7 +543,7 @@ native bool RunAdminCacheChecks(int client);
  * @param client        Client index.
  * @error               Invalid client index or client not in-game AND authorized.
  */
-native void NotifyPostAdminCheck(int client);
+public static void NotifyPostAdminCheck(int client) { throw new NotImplementedException(); }
 
 /** 
  * Creates a fake client.
@@ -549,7 +551,7 @@ native void NotifyPostAdminCheck(int client);
  * @param name          Name to use.
  * @return              Client index on success, 0 otherwise.
  */
-native int CreateFakeClient(const char[] name);
+public static int CreateFakeClient(string name) { throw new NotImplementedException(); }
 
 /**
  * Sets a convar value on a fake client.
@@ -560,7 +562,7 @@ native int CreateFakeClient(const char[] name);
  * @error               Invalid client index, client not connected,
  *                      or client not a fake client.
  */
-native void SetFakeClientConVar(int client, const char[] cvar, const char[] value);
+public static void SetFakeClientConVar(int client, string cvar, string value) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's health.
@@ -569,7 +571,7 @@ native void SetFakeClientConVar(int client, const char[] cvar, const char[] valu
  * @return              Health value.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native int GetClientHealth(int client);
+public static int GetClientHealth(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's model name.
@@ -579,7 +581,7 @@ native int GetClientHealth(int client);
  * @param maxlen        Maximum length of string buffer (includes NULL terminator).
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native void GetClientModel(int client, char[] model, int maxlen);
+public static void GetClientModel(int client, string model, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's weapon name.
@@ -589,7 +591,7 @@ native void GetClientModel(int client, char[] model, int maxlen);
  * @param maxlen        Maximum length of string buffer (includes NULL terminator).
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native void GetClientWeapon(int client, char[] weapon, int maxlen);
+public static void GetClientWeapon(int client, string weapon, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's max size vector.
@@ -598,7 +600,7 @@ native void GetClientWeapon(int client, char[] weapon, int maxlen);
  * @param vec           Destination vector to store the client's max size.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native void GetClientMaxs(int client, float vec[3]);
+public static void GetClientMaxs(int client, float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's min size vector.
@@ -607,7 +609,7 @@ native void GetClientMaxs(int client, float vec[3]);
  * @param vec           Destination vector to store the client's min size.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native void GetClientMins(int client, float vec[3]);
+public static void GetClientMins(int client, float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's position angle.
@@ -616,7 +618,7 @@ native void GetClientMins(int client, float vec[3]);
  * @param ang           Destination vector to store the client's position angle.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native void GetClientAbsAngles(int client, float ang[3]);
+public static void GetClientAbsAngles(int client, float ang[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's origin vector.
@@ -625,7 +627,7 @@ native void GetClientAbsAngles(int client, float ang[3]);
  * @param vec           Destination vector to store the client's origin vector.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native void GetClientAbsOrigin(int client, float vec[3]);
+public static void GetClientAbsOrigin(int client, float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's armor.
@@ -634,7 +636,7 @@ native void GetClientAbsOrigin(int client, float vec[3]);
  * @return              Armor value.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native int GetClientArmor(int client);
+public static int GetClientArmor(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's death count.
@@ -643,7 +645,7 @@ native int GetClientArmor(int client);
  * @return              Death count.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native int GetClientDeaths(int client);
+public static int GetClientDeaths(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's frag count.
@@ -652,7 +654,7 @@ native int GetClientDeaths(int client);
  * @return              Frag count.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native int GetClientFrags(int client);
+public static int GetClientFrags(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's send data rate in bytes/sec.
@@ -661,7 +663,7 @@ native int GetClientFrags(int client);
  * @return              Data rate.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native int GetClientDataRate(int client);
+public static int GetClientDataRate(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns if a client is timing out
@@ -670,7 +672,7 @@ native int GetClientDataRate(int client);
  * @return              True if client is timing out, false otherwise.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native bool IsClientTimingOut(int client);
+public static bool IsClientTimingOut(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's connection time in seconds.
@@ -679,7 +681,7 @@ native bool IsClientTimingOut(int client);
  * @return              Connection time.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native float GetClientTime(int client);
+public static float GetClientTime(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's current latency (RTT), more accurate than GetAvgLatency but jittering.
@@ -689,7 +691,7 @@ native float GetClientTime(int client);
  * @return              Latency, or -1 if network info is not available.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native float GetClientLatency(int client, NetFlow flow);
+public static float GetClientLatency(int client, NetFlow flow) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's average packet latency in seconds.
@@ -699,7 +701,7 @@ native float GetClientLatency(int client, NetFlow flow);
  * @return              Latency, or -1 if network info is not available.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native float GetClientAvgLatency(int client, NetFlow flow);
+public static float GetClientAvgLatency(int client, NetFlow flow) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's average packet loss, values go from 0 to 1 (for percentages).
@@ -709,7 +711,7 @@ native float GetClientAvgLatency(int client, NetFlow flow);
  * @return              Average packet loss, or -1 if network info is not available.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native float GetClientAvgLoss(int client, NetFlow flow);
+public static float GetClientAvgLoss(int client, NetFlow flow) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's average packet choke, values go from 0 to 1 (for percentages).
@@ -719,7 +721,7 @@ native float GetClientAvgLoss(int client, NetFlow flow);
  * @return              Average packet loss, or -1 if network info is not available.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native float GetClientAvgChoke(int client, NetFlow flow);
+public static float GetClientAvgChoke(int client, NetFlow flow) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's data flow in bytes/sec.
@@ -729,7 +731,7 @@ native float GetClientAvgChoke(int client, NetFlow flow);
  * @return              Data flow.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native float GetClientAvgData(int client, NetFlow flow);
+public static float GetClientAvgData(int client, NetFlow flow) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's average packet frequency in packets/sec.
@@ -739,7 +741,7 @@ native float GetClientAvgData(int client, NetFlow flow);
  * @return              Packet frequency.
  * @error               Invalid client index, client not connected, or fake client.
  */
-native float GetClientAvgPackets(int client, NetFlow flow);
+public static float GetClientAvgPackets(int client, NetFlow flow) { throw new NotImplementedException(); }
 
 /**
  * Translates an userid index to the real player index.
@@ -748,7 +750,7 @@ native float GetClientAvgPackets(int client, NetFlow flow);
  * @return              Client value.
  * @error               Returns 0 if invalid userid.
  */
-native int GetClientOfUserId(int userid);
+public static int GetClientOfUserId(int userid) { throw new NotImplementedException(); }
 
 /**
  * Disconnects a client from the server as soon as the next frame starts.
@@ -768,7 +770,7 @@ native int GetClientOfUserId(int userid);
  * @param ...           Variable number of format parameters.
  * @error               Invalid client index, or client not connected.
  */
-native void KickClient(int client, const char[] format="", any ...);
+public static void KickClient(int client, string format="", any ...) { throw new NotImplementedException(); }
 
 /**
  * Immediately disconnects a client from the server.
@@ -783,7 +785,7 @@ native void KickClient(int client, const char[] format="", any ...);
  * @param ...           Variable number of format parameters.
  * @error               Invalid client index, or client not connected.
  */
-native void KickClientEx(int client, const char[] format="", any ...);
+public static void KickClientEx(int client, string format="", any ...) { throw new NotImplementedException(); }
 
 /**
  * Changes a client's team through the mod's generic team changing function.
@@ -794,7 +796,7 @@ native void KickClientEx(int client, const char[] format="", any ...);
  * @error               Invalid client index, client not connected, or lack of 
  *                      mod support.
  */
-native void ChangeClientTeam(int client, int team);
+public static void ChangeClientTeam(int client, int team) { throw new NotImplementedException(); }
 
 /**
  * Returns the clients unique serial identifier.
@@ -803,7 +805,7 @@ native void ChangeClientTeam(int client, int team);
  * @return              Serial number.
  * @error               Invalid client index, or client not connected.
  */
-native int GetClientSerial(int client);
+public static int GetClientSerial(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns the client index by its serial number.
@@ -811,4 +813,6 @@ native int GetClientSerial(int client);
  * @param serial        Serial number.
  * @return              Client index, or 0 for invalid serial.
  */
-native int GetClientFromSerial(int serial);
+public static int GetClientFromSerial(int serial) { throw new NotImplementedException(); }
+	}
+}

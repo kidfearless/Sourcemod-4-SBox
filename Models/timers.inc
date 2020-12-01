@@ -30,17 +30,19 @@
  * Version: $Id$
  */
 
-#if defined _timers_included
- #endinput
-#endif
-#define _timers_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 #include <datapack>
 
-#define TIMER_REPEAT            (1<<0)      /**< Timer will repeat until it returns Plugin_Stop */
-#define TIMER_FLAG_NO_MAPCHANGE (1<<1)      /**< Timer will not carry over mapchanges */
-#define TIMER_HNDL_CLOSE        (1<<9)      /**< Deprecated define, replaced by below */
-#define TIMER_DATA_HNDL_CLOSE   (1<<9)      /**< Timer will automatically call CloseHandle() on its data when finished */
+public const object TIMER_REPEAT            (1<<0)      /**< Timer will repeat until it returns Plugin_Stop */
+public const object TIMER_FLAG_NO_MAPCHANGE (1<<1)      /**< Timer will not carry over mapchanges */
+public const object TIMER_HNDL_CLOSE        (1<<9)      /**< Deprecated define, replaced by below */
+public const object TIMER_DATA_HNDL_CLOSE   (1<<9)      /**< Timer will automatically call CloseHandle() on its data when finished */
 
 /**
  * Any of the following prototypes will work for a timed function.
@@ -55,7 +57,7 @@ typeset Timer
 	 * @return              Plugin_Stop to stop a repeating timer, any other value for
 	 *                      default behavior.
 	 */
-	function Action(Handle timer, Handle hndl);
+	function Action(Handle timer, Handle hndl) { throw new NotImplementedException(); }
 
 	/**
 	 * Called when the timer interval has elapsed.
@@ -65,7 +67,7 @@ typeset Timer
 	 * @return              Plugin_Stop to stop a repeating timer, any other value for
 	 *                      default behavior.
 	 */
-	function Action(Handle timer, any data);
+	function Action(Handle timer, any data) { throw new NotImplementedException(); }
 
 	/**
 	 * Called when the timer interval has elapsed.
@@ -74,7 +76,7 @@ typeset Timer
 	 * @return              Plugin_Stop to stop a repeating timer, any other value for
 	 *                      default behavior.
 	 */
-	function Action(Handle timer);
+	function Action(Handle timer) { throw new NotImplementedException(); }
 };
 
 /**
@@ -87,7 +89,7 @@ typeset Timer
  * @return              Handle to the timer object.  You do not need to call CloseHandle().
  *                      If the timer could not be created, INVALID_HANDLE will be returned.
  */
-native Handle CreateTimer(float interval, Timer func, any data=INVALID_HANDLE, int flags=0);
+public static Handle CreateTimer(float interval, Timer func, any data=INVALID_HANDLE, int flags=0) { throw new NotImplementedException(); }
 
 /**
  * Kills a timer.  Use this instead of CloseHandle() if you need more options.
@@ -97,7 +99,7 @@ native Handle CreateTimer(float interval, Timer func, any data=INVALID_HANDLE, i
  *                      be closed as a handle if TIMER_DATA_HNDL_CLOSE was not specified.
  * @error               Invalid handles will cause a run time error.
  */
-native void KillTimer(Handle timer, bool autoClose=false);
+public static void KillTimer(Handle timer, bool autoClose=false) { throw new NotImplementedException(); }
 
 /**
  * Manually triggers a timer so its function will be called.
@@ -106,7 +108,7 @@ native void KillTimer(Handle timer, bool autoClose=false);
  * @param reset         If reset is true, the elapsed time counter is reset
  *                      so the full interval must pass again.
  */
-native void TriggerTimer(Handle timer, bool reset=false);
+public static void TriggerTimer(Handle timer, bool reset=false) { throw new NotImplementedException(); }
 
 /**
  * Returns the simulated game time.
@@ -119,7 +121,7 @@ native void TriggerTimer(Handle timer, bool reset=false);
  *
  * @return              Time based on the game tick count.
  */
-native float GetTickedTime();
+public static float GetTickedTime() { throw new NotImplementedException(); }
 
 /**
  * Returns an estimate of the time left before the map ends.  If the server
@@ -130,7 +132,7 @@ native float GetTickedTime();
  *                      value is less than 0, the time limit is infinite.
  * @return              True if the operation is supported, false otherwise.
  */
-native bool GetMapTimeLeft(int &timeleft);
+public static bool GetMapTimeLeft(int &timeleft) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the current map time limit.  If the server has not processed any
@@ -141,7 +143,7 @@ native bool GetMapTimeLeft(int &timeleft);
  *                      limit, or 0 if there is no time limit set.
  * @return              True on success, false if operation is not supported.
  */
-native bool GetMapTimeLimit(int &time);
+public static bool GetMapTimeLimit(int &time) { throw new NotImplementedException(); }
 
 /**
  * Extends the map time limit in a way that will notify all plugins.
@@ -151,7 +153,7 @@ native bool GetMapTimeLimit(int &time);
  *                      If 0, the map will be set to have no time limit.
  * @return              True on success, false if operation is not supported.
  */
-native bool ExtendMapTimeLimit(int time);
+public static bool ExtendMapTimeLimit(int time) { throw new NotImplementedException(); }
 
 /**
  * Returns the number of seconds in between game server ticks.
@@ -160,7 +162,7 @@ native bool ExtendMapTimeLimit(int time);
  *
  * @return              Number of seconds in between ticks.
  */
-native float GetTickInterval();
+public static float GetTickInterval() { throw new NotImplementedException(); }
 
 /**
  * Notification that the map's time left has changed via a change in the time
@@ -176,7 +178,7 @@ native float GetTickInterval();
  * the map yet), then this will be called once the server begins ticking, even
  * if there is no time limit set.
  */
-forward void OnMapTimeLeftChanged();
+public static override void OnMapTimeLeftChanged() { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not the server is processing frames or not.
@@ -187,7 +189,7 @@ forward void OnMapTimeLeftChanged();
  *
  * @return              True if the server is ticking, false otherwise.
  */
-native bool IsServerProcessing();
+public static bool IsServerProcessing() { throw new NotImplementedException(); }
 
 /**
  * Creates a timer associated with a new datapack, and returns the datapack.
@@ -203,7 +205,9 @@ native bool IsServerProcessing();
  */
 stock Handle CreateDataTimer(float interval, Timer func, Handle &datapack, int flags=0)
 {
-	datapack = new DataPack();
+	datapack = new DataPack() { throw new NotImplementedException(); }
 	flags |= TIMER_DATA_HNDL_CLOSE;
-	return CreateTimer(interval, func, datapack, flags);
+	return CreateTimer(interval, func, datapack, flags) { throw new NotImplementedException(); }
+}
+	}
 }

@@ -30,59 +30,61 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_variant_t_included
- #endinput
-#endif
-#define _sdktools_variant_t_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Sets a bool value in the global variant object.
  *
  * @param val           Input value.
  */
-native void SetVariantBool(bool val);
+public static void SetVariantBool(bool val) { throw new NotImplementedException(); }
 
 /**
  * Sets a string in the global variant object.
  *
  * @param str           Input string.
  */
-native void SetVariantString(const char[] str);
+public static void SetVariantString(string str) { throw new NotImplementedException(); }
 
 /**
  * Sets an integer value in the global variant object.
  *
  * @param val           Input value.
  */
-native void SetVariantInt(int val);
+public static void SetVariantInt(int val) { throw new NotImplementedException(); }
 
 /**
  * Sets a floating point value in the global variant object.
  *
  * @param val           Input value.
  */
-native void SetVariantFloat(float val);
+public static void SetVariantFloat(float val) { throw new NotImplementedException(); }
 
 /**
  * Sets a 3D vector in the global variant object.
  *
  * @param vec           Input vector.
  */
-native void SetVariantVector3D(const float vec[3]);
+public static void SetVariantVector3D(const float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets a 3D position vector in the global variant object.
  *
  * @param vec           Input position vector.
  */
-native void SetVariantPosVector3D(const float vec[3]);
+public static void SetVariantPosVector3D(const float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets a color in the global variant object.
  *
  * @param color         Input color.
  */
-native void SetVariantColor(const int color[4]);
+public static void SetVariantColor(const int color[4]) { throw new NotImplementedException(); }
 
 /**
  * Sets an entity in the global variant object.
@@ -90,4 +92,6 @@ native void SetVariantColor(const int color[4]);
  * @param entity        Entity index.
  * @error               Invalid entity index.
  */
-native void SetVariantEntity(int entity);
+public static void SetVariantEntity(int entity) { throw new NotImplementedException(); }
+	}
+}

@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_included
- #endinput
-#endif
-#define _sdktools_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 #include <core>
 #include <sdktools_engine>
@@ -97,26 +99,26 @@ enum SDKPassMethod
 	SDKPass_ByRef           /**< Pass an object by reference */
 };
 
-#define VDECODE_FLAG_ALLOWNULL      (1<<0)    /**< Allow NULL for pointers */
-#define VDECODE_FLAG_ALLOWNOTINGAME (1<<1)    /**< Allow players not in game */
-#define VDECODE_FLAG_ALLOWWORLD     (1<<2)    /**< Allow World entity */
-#define VDECODE_FLAG_BYREF          (1<<3)    /**< Floats/ints by reference */
+public const object VDECODE_FLAG_ALLOWNULL      (1<<0)    /**< Allow NULL for pointers */
+public const object VDECODE_FLAG_ALLOWNOTINGAME (1<<1)    /**< Allow players not in game */
+public const object VDECODE_FLAG_ALLOWWORLD     (1<<2)    /**< Allow World entity */
+public const object VDECODE_FLAG_BYREF          (1<<3)    /**< Floats/ints by reference */
 
-#define VENCODE_FLAG_COPYBACK       (1<<0)    /**< Copy back data once done */
+public const object VENCODE_FLAG_COPYBACK       (1<<0)    /**< Copy back data once done */
 
 /**
  * Starts the preparation of an SDK call.
  *
  * @param type          Type of function call this will be.
  */
-native void StartPrepSDKCall(SDKCallType type);
+public static void StartPrepSDKCall(SDKCallType type) { throw new NotImplementedException(); }
 
 /**
  * Sets the virtual index of the SDK call if it is virtual.
  *
  * @param vtblidx       Virtual table index.
  */
-native void PrepSDKCall_SetVirtual(int vtblidx);
+public static void PrepSDKCall_SetVirtual(int vtblidx) { throw new NotImplementedException(); }
 
 /**
  * Finds an address in a library and sets it as the address to use for the SDK call.
@@ -128,7 +130,7 @@ native void PrepSDKCall_SetVirtual(int vtblidx);
  * @param bytes         Number of bytes in the binary search string.
  * @return              True on success, false if nothing was found.
  */
-native bool PrepSDKCall_SetSignature(SDKLibrary lib, const char[] signature, int bytes);
+public static bool PrepSDKCall_SetSignature(SDKLibrary lib, string signature, int bytes) { throw new NotImplementedException(); }
 
 /**
  * Uses the given function address for the SDK call.
@@ -136,7 +138,7 @@ native bool PrepSDKCall_SetSignature(SDKLibrary lib, const char[] signature, int
  * @param addr          Address of function to use.
  * @return              True on success, false on failure.
  */
-native bool PrepSDKCall_SetAddress(Address addr);
+public static bool PrepSDKCall_SetAddress(Address addr) { throw new NotImplementedException(); }
 
 /**
  * Finds an address or virtual function index in a GameConfig file and sets it as
@@ -147,7 +149,7 @@ native bool PrepSDKCall_SetAddress(Address addr);
  * @param name          Name of the property to find.
  * @return              True on success, false if nothing was found.
  */
-native bool PrepSDKCall_SetFromConf(Handle gameconf, SDKFuncConfSource source, const char[] name);
+public static bool PrepSDKCall_SetFromConf(Handle gameconf, SDKFuncConfSource source, string name) { throw new NotImplementedException(); }
 
 /**
  * Sets the return information of an SDK call.  Do not call this if there is no return data.
@@ -159,7 +161,7 @@ native bool PrepSDKCall_SetFromConf(Handle gameconf, SDKFuncConfSource source, c
  * @param decflags      Flags on decoding from the plugin to C++.
  * @param encflags      Flags on encoding from C++ to the plugin.
  */
-native void PrepSDKCall_SetReturnInfo(SDKType type, SDKPassMethod pass, int decflags=0, int encflags=0);
+public static void PrepSDKCall_SetReturnInfo(SDKType type, SDKPassMethod pass, int decflags=0, int encflags=0) { throw new NotImplementedException(); }
 
 /**
  * Adds a parameter to the calling convention.  This should be called in normal ascending order.
@@ -169,14 +171,14 @@ native void PrepSDKCall_SetReturnInfo(SDKType type, SDKPassMethod pass, int decf
  * @param decflags      Flags on decoding from the plugin to C++.
  * @param encflags      Flags on encoding from C++ to the plugin.
  */
-native void PrepSDKCall_AddParameter(SDKType type, SDKPassMethod pass, int decflags=0, int encflags=0);
+public static void PrepSDKCall_AddParameter(SDKType type, SDKPassMethod pass, int decflags=0, int encflags=0) { throw new NotImplementedException(); }
 
 /**
  * Finalizes an SDK call preparation and returns the resultant Handle.
  *
  * @return              A new SDKCall Handle on success, or INVALID_HANDLE on failure.
  */
-native Handle EndPrepSDKCall();
+public static Handle EndPrepSDKCall() { throw new NotImplementedException(); }
 
 /**
  * Calls an SDK function with the given parameters.
@@ -198,14 +200,14 @@ native Handle EndPrepSDKCall();
  * @return              Simple return value, if any.
  * @error               Invalid Handle or internal decoding error.
  */
-native any SDKCall(Handle call, any ...);
+public static any SDKCall(Handle call, any ...) { throw new NotImplementedException(); }
 
 /**
  * Returns the entity index of the player resource/manager entity.
  *
  * @return              Index of resource entity or -1 if not found.
  */
-native int GetPlayerResourceEntity();
+public static int GetPlayerResourceEntity() { throw new NotImplementedException(); }
 
 #include <sdktools_stocks>
 
@@ -227,3 +229,5 @@ public Extension __ext_sdktools =
 	required = 0,
 #endif
 };
+	}
+}

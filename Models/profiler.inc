@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _profiler_included
- #endinput
-#endif
-#define _profiler_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * ONLY AVAILABLE ON WINDOWS RIGHT NOW K.
@@ -45,15 +47,15 @@ methodmap Profiler < Handle
 	// using delete or CloseHandle().
 	//
 	// @return              A new Profiler Handle.
-	public native Profiler();
+	public native Profiler() { throw new NotImplementedException(); }
 	
 	// Starts a cycle for profiling.
-	public native void Start();
+	public native void Start() { throw new NotImplementedException(); }
 
 	// Stops a cycle for profiling.
 	//
 	// @error               Profiler was never started.
-	public native void Stop();
+	public native void Stop() { throw new NotImplementedException(); }
 	
 	// Returns the amount of high-precision time in seconds
 	// that passed during the profiler's last start/stop 
@@ -61,7 +63,7 @@ methodmap Profiler < Handle
 	//
 	// @return              Time elapsed in seconds.
 	property float Time {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 };
 
@@ -71,7 +73,7 @@ methodmap Profiler < Handle
  *
  * @return              Handle to the profiler object.
  */
-native Profiler CreateProfiler();
+public static Profiler CreateProfiler() { throw new NotImplementedException(); }
 
 /**
  * Starts profiling.
@@ -79,7 +81,7 @@ native Profiler CreateProfiler();
  * @param prof          Profiling object.
  * @error               Invalid Handle.
  */
-native void StartProfiling(Handle prof);
+public static void StartProfiling(Handle prof) { throw new NotImplementedException(); }
 
 /**
  * Stops profiling.
@@ -87,7 +89,7 @@ native void StartProfiling(Handle prof);
  * @param prof          Profiling object.
  * @error               Invalid Handle or profiling was never started.
  */
-native void StopProfiling(Handle prof);
+public static void StopProfiling(Handle prof) { throw new NotImplementedException(); }
 
 /**
  * Returns the amount of high-precision time in seconds
@@ -98,7 +100,7 @@ native void StopProfiling(Handle prof);
  * @return              Time elapsed in seconds.
  * @error               Invalid Handle.
  */
-native float GetProfilerTime(Handle prof);
+public static float GetProfilerTime(Handle prof) { throw new NotImplementedException(); }
 
 /**
  * Mark the start of a profiling event.
@@ -107,17 +109,19 @@ native float GetProfilerTime(Handle prof);
  *                  description like "Timers" or "Events".
  * @param name      A name to attribute to this profiling event.
  */
-native void EnterProfilingEvent(const char[] group, const char[] name);
+public static void EnterProfilingEvent(string group, string name) { throw new NotImplementedException(); }
 
 /**
  * Mark the end of the last profiling event. This must be called in the same
  * stack frame as StartProfilingEvent(). Not doing so, or throwing errors,
  * will make the resulting profile very wrong.
  */
-native void LeaveProfilingEvent();
+public static void LeaveProfilingEvent() { throw new NotImplementedException(); }
 
 /**
  * Returns true if the global profiler is enabled; false otherwise. It is
  * not necessary to call this before Enter/LeaveProfilingEvent.
  */
-native bool IsProfilingActive();
+public static bool IsProfilingActive() { throw new NotImplementedException(); }
+	}
+}

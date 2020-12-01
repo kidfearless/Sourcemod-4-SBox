@@ -30,30 +30,32 @@
  * Version: $Id$
  */
 
-#if defined _halflife_included
- #endinput
-#endif
-#define _halflife_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
-#define SOURCE_SDK_UNKNOWN           0      /**< Could not determine the engine version */
-#define SOURCE_SDK_ORIGINAL         10      /**< Original Source engine (still used by "The Ship") */
-#define SOURCE_SDK_DARKMESSIAH      15      /**< Modified version of original engine used by Dark Messiah (no SDK) */
-#define SOURCE_SDK_EPISODE1         20      /**< SDK+Engine released after Episode 1 */
-#define SOURCE_SDK_EPISODE2         30      /**< SDK+Engine released after Episode 2/Orange Box */
-#define SOURCE_SDK_BLOODYGOODTIME   32      /**< Modified version of ep2 engine used by Bloody Good Time (no SDK) */
-#define SOURCE_SDK_EYE              33      /**< Modified version of ep2 engine used by E.Y.E Divine Cybermancy (no SDK) */
-#define SOURCE_SDK_CSS              34      /**< Sometime-older version of Source 2009 SDK+Engine, used for Counter-Strike: Source */
-#define SOURCE_SDK_EPISODE2VALVE    35      /**< SDK+Engine released after Episode 2/Orange Box, "Source 2009" or "Source MP" */
-#define SOURCE_SDK_LEFT4DEAD        40      /**< Engine released after Left 4 Dead (no SDK yet) */
-#define SOURCE_SDK_LEFT4DEAD2       50      /**< Engine released after Left 4 Dead 2 (no SDK yet) */
-#define SOURCE_SDK_ALIENSWARM       60      /**< SDK+Engine released after Alien Swarm */
-#define SOURCE_SDK_CSGO             80      /**< Engine released after CS:GO (no SDK yet) */
-#define SOURCE_SDK_DOTA             90      /**< Engine released after Dota 2 (no SDK) */
+public const object SOURCE_SDK_UNKNOWN           0      /**< Could not determine the engine version */
+public const object SOURCE_SDK_ORIGINAL         10      /**< Original Source engine (still used by "The Ship") */
+public const object SOURCE_SDK_DARKMESSIAH      15      /**< Modified version of original engine used by Dark Messiah (no SDK) */
+public const object SOURCE_SDK_EPISODE1         20      /**< SDK+Engine released after Episode 1 */
+public const object SOURCE_SDK_EPISODE2         30      /**< SDK+Engine released after Episode 2/Orange Box */
+public const object SOURCE_SDK_BLOODYGOODTIME   32      /**< Modified version of ep2 engine used by Bloody Good Time (no SDK) */
+public const object SOURCE_SDK_EYE              33      /**< Modified version of ep2 engine used by E.Y.E Divine Cybermancy (no SDK) */
+public const object SOURCE_SDK_CSS              34      /**< Sometime-older version of Source 2009 SDK+Engine, used for Counter-Strike: Source */
+public const object SOURCE_SDK_EPISODE2VALVE    35      /**< SDK+Engine released after Episode 2/Orange Box, "Source 2009" or "Source MP" */
+public const object SOURCE_SDK_LEFT4DEAD        40      /**< Engine released after Left 4 Dead (no SDK yet) */
+public const object SOURCE_SDK_LEFT4DEAD2       50      /**< Engine released after Left 4 Dead 2 (no SDK yet) */
+public const object SOURCE_SDK_ALIENSWARM       60      /**< SDK+Engine released after Alien Swarm */
+public const object SOURCE_SDK_CSGO             80      /**< Engine released after CS:GO (no SDK yet) */
+public const object SOURCE_SDK_DOTA             90      /**< Engine released after Dota 2 (no SDK) */
 
-#define MOTDPANEL_TYPE_TEXT          0      /**< Treat msg as plain text */
-#define MOTDPANEL_TYPE_INDEX         1      /**< Msg is auto determined by the engine */
-#define MOTDPANEL_TYPE_URL           2      /**< Treat msg as an URL link */
-#define MOTDPANEL_TYPE_FILE          3      /**< Treat msg as a filename to be opened */
+public const object MOTDPANEL_TYPE_TEXT          0      /**< Treat msg as plain text */
+public const object MOTDPANEL_TYPE_INDEX         1      /**< Msg is auto determined by the engine */
+public const object MOTDPANEL_TYPE_URL           2      /**< Treat msg as an URL link */
+public const object MOTDPANEL_TYPE_FILE          3      /**< Treat msg as a filename to be opened */
 
 enum DialogType
 {
@@ -111,7 +113,7 @@ enum FindMapResult
 	FindMap_PossiblyAvailable
 };
 
-#define INVALID_ENT_REFERENCE 0xFFFFFFFF
+public const object INVALID_ENT_REFERENCE 0xFFFFFFFF
 
 /**
  * Logs a generic message to the HL2 logs.
@@ -119,14 +121,14 @@ enum FindMapResult
  * @param format        String format.
  * @param ...           Format arguments.
  */
-native void LogToGame(const char[] format, any ...);
+public static void LogToGame(string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Sets the seed value for the global Half-Life 2 Random Stream.
  *
  * @param seed         Seed value.
  */
-native void SetRandomSeed(int seed);
+public static void SetRandomSeed(int seed) { throw new NotImplementedException(); }
 
 /**
  * Returns a random floating point number from the Half-Life 2 Random Stream.
@@ -135,7 +137,7 @@ native void SetRandomSeed(int seed);
  * @param fMax          Maximum random bound.
  * @return              A random number between (inclusive) fMin and fMax.
  */
-native float GetRandomFloat(float fMin=0.0, float fMax=1.0);
+public static float GetRandomFloat(float fMin=0.0, float fMax=1.0) { throw new NotImplementedException(); }
 
 /**
  * Returns a random number from the Half-Life 2 Random Stream.
@@ -144,7 +146,7 @@ native float GetRandomFloat(float fMin=0.0, float fMax=1.0);
  * @param nmax          Maximum random bound.
  * @return              A random number between (inclusive) nmin and nmax.
  */
-native int GetRandomInt(int nmin, int nmax);
+public static int GetRandomInt(int nmin, int nmax) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a map is valid or not.
@@ -152,7 +154,7 @@ native int GetRandomInt(int nmin, int nmax);
  * @param map           Map name, excluding .bsp extension.
  * @return              True if valid, false otherwise.
  */
-native bool IsMapValid(const char[] map);
+public static bool IsMapValid(string map) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a full or partial map name is found or can be resolved
@@ -164,7 +166,7 @@ native bool IsMapValid(const char[] map);
  * @param maxlen        Maximum length to write to map var.
  * @return              Result of the find operation. Not all result types are supported on all games.
  */
-native FindMapResult FindMap(const char[] map, char[] foundmap, int maxlen);
+public static FindMapResult FindMap(string map, string foundmap, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Get the display name of a workshop map.
@@ -182,42 +184,42 @@ native FindMapResult FindMap(const char[] map, char[] foundmap, int maxlen);
  *                      FindMap_NonCanonical.
  *                      false if FindMap returns FindMap_PossiblyAvailable or FindMap_NotFound.
  */
-native bool GetMapDisplayName(const char[] map, char[] displayName, int maxlen);
+public static bool GetMapDisplayName(string map, string displayName, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Returns whether the server is dedicated.
  *
  * @return              True if dedicated, false otherwise.
  */
-native bool IsDedicatedServer();
+public static bool IsDedicatedServer() { throw new NotImplementedException(); }
 
 /**
  * Returns a high-precision time value for profiling the engine.
  *
  * @return              A floating point time value.
  */
-native float GetEngineTime();
+public static float GetEngineTime() { throw new NotImplementedException(); }
 
 /**
  * Returns the game time based on the game tick.
  *
  * @return              Game tick time.
  */
-native float GetGameTime();
+public static float GetGameTime() { throw new NotImplementedException(); }
 
 /**
  * Returns the game's internal tick count.
  *
  * @return              Game tick count.
  */
-native int GetGameTickCount();
+public static int GetGameTickCount() { throw new NotImplementedException(); }
 
 /**
  * Returns the time the Game took processing the last frame.
  *
  * @return              Game frame time.
  */
-native float GetGameFrameTime();
+public static float GetGameFrameTime() { throw new NotImplementedException(); }
 
 /**
  * Returns the game description from the mod.
@@ -228,7 +230,7 @@ native float GetGameFrameTime();
  *                      ignoring any potential hooks from plugins.
  * @return              Number of bytes written to the buffer (UTF-8 safe).
  */
-native int GetGameDescription(char[] buffer, int maxlength, bool original=false);
+public static int GetGameDescription(string buffer, int maxlength, bool original=false) { throw new NotImplementedException(); }
 
 /**
  * Returns the name of the game's directory.
@@ -237,7 +239,7 @@ native int GetGameDescription(char[] buffer, int maxlength, bool original=false)
  * @param maxlength     Maximum size of the buffer.
  * @return              Number of bytes written to the buffer (UTF-8 safe).
  */
-native int GetGameFolderName(char[] buffer, int maxlength);
+public static int GetGameFolderName(string buffer, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Returns the current map name.
@@ -246,7 +248,7 @@ native int GetGameFolderName(char[] buffer, int maxlength);
  * @param maxlength     Maximum length of buffer.
  * @return              Number of bytes written (UTF-8 safe).
  */
-native int GetCurrentMap(char[] buffer, int maxlength);
+public static int GetCurrentMap(string buffer, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Precaches a given model.
@@ -255,7 +257,7 @@ native int GetCurrentMap(char[] buffer, int maxlength);
  * @param preload       If preload is true the file will be precached before level startup.
  * @return              Returns the model index, 0 for error.
  */
-native int PrecacheModel(const char[] model, bool preload=false);
+public static int PrecacheModel(string model, bool preload=false) { throw new NotImplementedException(); }
 
 /**
  * Precaches a given sentence file.
@@ -264,7 +266,7 @@ native int PrecacheModel(const char[] model, bool preload=false);
  * @param preload       If preload is true the file will be precached before level startup.
  * @return              Returns a sentence file index.
  */
-native int PrecacheSentenceFile(const char[] file, bool preload=false);
+public static int PrecacheSentenceFile(string file, bool preload=false) { throw new NotImplementedException(); }
 
 /**
  * Precaches a given decal.
@@ -273,7 +275,7 @@ native int PrecacheSentenceFile(const char[] file, bool preload=false);
  * @param preload       If preload is true the file will be precached before level startup.
  * @return              Returns a decal index.
  */
-native int PrecacheDecal(const char[] decal, bool preload=false);
+public static int PrecacheDecal(string decal, bool preload=false) { throw new NotImplementedException(); }
 
 /**
  * Precaches a given generic file.
@@ -282,7 +284,7 @@ native int PrecacheDecal(const char[] decal, bool preload=false);
  * @param preload       If preload is true the file will be precached before level startup.
  * @return              Returns a generic file index.
  */
-native int PrecacheGeneric(const char[] generic, bool preload=false);
+public static int PrecacheGeneric(string generic, bool preload=false) { throw new NotImplementedException(); }
 
 /**
  * Returns if a given model is precached.
@@ -290,7 +292,7 @@ native int PrecacheGeneric(const char[] generic, bool preload=false);
  * @param model         Name of the model to check.
  * @return              True if precached, false otherwise.
  */
-native bool IsModelPrecached(const char[] model);
+public static bool IsModelPrecached(string model) { throw new NotImplementedException(); }
 
 /**
  * Returns if a given decal is precached.
@@ -298,7 +300,7 @@ native bool IsModelPrecached(const char[] model);
  * @param decal         Name of the decal to check.
  * @return              True if precached, false otherwise.
  */
-native bool IsDecalPrecached(const char[] decal);
+public static bool IsDecalPrecached(string decal) { throw new NotImplementedException(); }
 
 /**
  * Returns if a given generic file is precached.
@@ -306,7 +308,7 @@ native bool IsDecalPrecached(const char[] decal);
  * @param generic       Name of the generic file to check.
  * @return              True if precached, false otherwise.
  */
-native bool IsGenericPrecached(const char[] generic);
+public static bool IsGenericPrecached(string generic) { throw new NotImplementedException(); }
 
 /**
  * Precaches a given sound.
@@ -315,7 +317,7 @@ native bool IsGenericPrecached(const char[] generic);
  * @param preload       If preload is true the file will be precached before level startup.
  * @return              True if successfully precached, false otherwise.
  */
-native bool PrecacheSound(const char[] sound, bool preload=false);
+public static bool PrecacheSound(string sound, bool preload=false) { throw new NotImplementedException(); }
 
 /**
  * Returns if a given sound is precached.
@@ -325,7 +327,7 @@ native bool PrecacheSound(const char[] sound, bool preload=false);
  * @deprecated          Doesn't work correctly, always returns true.
  */
 #pragma deprecated Doesn't work correctly, always returns true.
-native bool IsSoundPrecached(const char[] sound);
+public static bool IsSoundPrecached(string sound) { throw new NotImplementedException(); }
 
 /**
  * Creates different types of ingame messages.
@@ -335,7 +337,7 @@ native bool IsSoundPrecached(const char[] sound);
  * @param type          Message type to display ingame.
  * @error               Invalid client index, or client not connected.
  */
-native void CreateDialog(int client, Handle kv, DialogType type);
+public static void CreateDialog(int client, Handle kv, DialogType type) { throw new NotImplementedException(); }
 
 /**
  * Guesses the SDK version a mod was compiled against.  If nothing
@@ -348,7 +350,7 @@ native void CreateDialog(int client, Handle kv, DialogType type);
  * @deprecated          See GetEngineVersion()
  */
 #pragma deprecated See GetEngineVersion()
-native int GuessSDKVersion();
+public static int GuessSDKVersion() { throw new NotImplementedException(); }
 
 /**
  * Gets the engine version that the currently-loaded SM core was compiled against.
@@ -358,7 +360,7 @@ native int GuessSDKVersion();
  *
  * @return              An EngineVersion value.
  */
-native EngineVersion GetEngineVersion();
+public static EngineVersion GetEngineVersion() { throw new NotImplementedException(); }
 
 /**
  * Prints a message to a specific client in the chat area.
@@ -368,7 +370,7 @@ native EngineVersion GetEngineVersion();
  * @param ...           Variable number of format parameters.
  * @error               If the client is not connected an error will be thrown.
  */
-native void PrintToChat(int client, const char[] format, any ...);
+public static void PrintToChat(int client, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Prints a message to all clients in the chat area.
@@ -376,7 +378,7 @@ native void PrintToChat(int client, const char[] format, any ...);
  * @param format        Formatting rules.
  * @param ...           Variable number of format parameters.
  */
-stock void PrintToChatAll(const char[] format, any ...)
+stock void PrintToChatAll(string format, any ...)
 {
 	char buffer[254];
 
@@ -384,9 +386,9 @@ stock void PrintToChatAll(const char[] format, any ...)
 	{
 		if (IsClientInGame(i))
 		{
-			SetGlobalTransTarget(i);
-			VFormat(buffer, sizeof(buffer), format, 2);
-			PrintToChat(i, "%s", buffer);
+			SetGlobalTransTarget(i) { throw new NotImplementedException(); }
+			VFormat(buffer, sizeof(buffer), format, 2) { throw new NotImplementedException(); }
+			PrintToChat(i, "%s", buffer) { throw new NotImplementedException(); }
 		}
 	}
 }
@@ -399,7 +401,7 @@ stock void PrintToChatAll(const char[] format, any ...)
  * @param ...           Variable number of format parameters.
  * @error               If the client is not connected an error will be thrown.
  */
-native void PrintCenterText(int client, const char[] format, any ...);
+public static void PrintCenterText(int client, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Prints a message to all clients in the center of the screen.
@@ -407,7 +409,7 @@ native void PrintCenterText(int client, const char[] format, any ...);
  * @param format        Formatting rules.
  * @param ...           Variable number of format parameters.
  */
-stock void PrintCenterTextAll(const char[] format, any ...)
+stock void PrintCenterTextAll(string format, any ...)
 {
 	char buffer[254];
 
@@ -415,9 +417,9 @@ stock void PrintCenterTextAll(const char[] format, any ...)
 	{
 		if (IsClientInGame(i))
 		{
-			SetGlobalTransTarget(i);
-			VFormat(buffer, sizeof(buffer), format, 2);
-			PrintCenterText(i, "%s", buffer);
+			SetGlobalTransTarget(i) { throw new NotImplementedException(); }
+			VFormat(buffer, sizeof(buffer), format, 2) { throw new NotImplementedException(); }
+			PrintCenterText(i, "%s", buffer) { throw new NotImplementedException(); }
 		}
 	}
 }
@@ -430,7 +432,7 @@ stock void PrintCenterTextAll(const char[] format, any ...)
  * @param ...           Variable number of format parameters.
  * @error               If the client is not connected an error will be thrown.
  */
-native void PrintHintText(int client, const char[] format, any ...);
+public static void PrintHintText(int client, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Prints a message to all clients with a hint box.
@@ -438,7 +440,7 @@ native void PrintHintText(int client, const char[] format, any ...);
  * @param format        Formatting rules.
  * @param ...           Variable number of format parameters.
  */
-stock void PrintHintTextToAll(const char[] format, any ...)
+stock void PrintHintTextToAll(string format, any ...)
 {
 	char buffer[254];
 
@@ -446,9 +448,9 @@ stock void PrintHintTextToAll(const char[] format, any ...)
 	{
 		if (IsClientInGame(i))
 		{
-			SetGlobalTransTarget(i);
-			VFormat(buffer, sizeof(buffer), format, 2);
-			PrintHintText(i, "%s", buffer);
+			SetGlobalTransTarget(i) { throw new NotImplementedException(); }
+			VFormat(buffer, sizeof(buffer), format, 2) { throw new NotImplementedException(); }
+			PrintHintText(i, "%s", buffer) { throw new NotImplementedException(); }
 		}
 	}
 }
@@ -464,7 +466,7 @@ stock void PrintHintTextToAll(const char[] format, any ...)
  * @param show          True to show the panel, or false to remove it from the client screen.
  * @error               If the client is not connected an error will be thrown.
  */
-native void ShowVGUIPanel(int client, const char[] name, Handle Kv=INVALID_HANDLE, bool show=true);
+public static void ShowVGUIPanel(int client, string name, Handle Kv=INVALID_HANDLE, bool show=true) { throw new NotImplementedException(); }
 
 /**
  * Creates a HUD synchronization object.  This object is used to automatically assign and
@@ -499,7 +501,7 @@ native void ShowVGUIPanel(int client, const char[] name, Handle Kv=INVALID_HANDL
  *                      If HUD text is not supported on this mod, then
  *                      INVALID_HANDLE is returned.
  */
-native Handle CreateHudSynchronizer();
+public static Handle CreateHudSynchronizer() { throw new NotImplementedException(); }
 
 /**
  * Sets the HUD parameters for drawing text.  These parameters are stored
@@ -524,8 +526,8 @@ native Handle CreateHudSynchronizer();
  * @param fadeIn        Number of seconds to spend fading in.
  * @param fadeOut       Number of seconds to spend fading out.
  */
-native void SetHudTextParams(float x, float y, float holdTime, int r, int g, int b, int a, int effect = 0,
-						float fxTime=6.0, float fadeIn=0.1, float fadeOut=0.2);
+public static void SetHudTextParams(float x, float y, float holdTime, int r, int g, int b, int a, int effect = 0,
+						float fxTime=6.0, float fadeIn=0.1, float fadeOut=0.2) { throw new NotImplementedException(); }
 
 /**
  * Sets the HUD parameters for drawing text.  These parameters are stored
@@ -546,9 +548,9 @@ native void SetHudTextParams(float x, float y, float holdTime, int r, int g, int
  * @param fadeIn        Number of seconds to spend fading in.
  * @param fadeOut       Number of seconds to spend fading out.
  */
-native void SetHudTextParamsEx(float x, float y, float holdTime, int color1[4],
+public static void SetHudTextParamsEx(float x, float y, float holdTime, int color1[4],
 						  int color2[4]={255,255,255,0}, int effect = 0, float fxTime=6.0,
-						  float fadeIn=0.1, float fadeOut=0.2);
+						  float fadeIn=0.1, float fadeOut=0.2) { throw new NotImplementedException(); }
 
 /**
  * Shows a synchronized HUD message to a client.
@@ -563,7 +565,7 @@ native void SetHudTextParamsEx(float x, float y, float holdTime, int color1[4],
  *                      This function fails if the mod does not support it.
  * @error               Client not in-game, or sync object not valid.
  */
-native int ShowSyncHudText(int client, Handle sync, const char[] message, any ...);
+public static int ShowSyncHudText(int client, Handle sync, string message, any ...) { throw new NotImplementedException(); }
 
 /**
  * Clears the text on a synchronized HUD channel.
@@ -581,7 +583,7 @@ native int ShowSyncHudText(int client, Handle sync, const char[] message, any ..
  * @param sync          Synchronization object.
  * @error               Client not in-game, or sync object not valid.
  */
-native void ClearSyncHud(int client, Handle sync);
+public static void ClearSyncHud(int client, Handle sync) { throw new NotImplementedException(); }
 
 /**
  * Shows a HUD message to a client on the given channel.
@@ -600,7 +602,7 @@ native void ClearSyncHud(int client, Handle sync);
  *                      Any other return value is the channel number that was
  *                      used to render the text.
  */
-native int ShowHudText(int client, int channel, const char[] message, any ...);
+public static int ShowHudText(int client, int channel, string message, any ...) { throw new NotImplementedException(); }
 
 /**
  * Shows a MOTD panel to a specific client.
@@ -612,16 +614,16 @@ native int ShowHudText(int client, int channel, const char[] message, any ...);
  * @param type          Determines the way to treat the message body of the panel.
  * @error               If the client is not connected an error will be thrown.
  */
-stock void ShowMOTDPanel(int client, const char[] title, const char[] msg, int type=MOTDPANEL_TYPE_INDEX)
+stock void ShowMOTDPanel(int client, string title, string msg, int type=MOTDPANEL_TYPE_INDEX)
 {
 	char num[3];
-	IntToString(type, num, sizeof(num));
+	IntToString(type, num, sizeof(num)) { throw new NotImplementedException(); }
 
-	KeyValues kv = new KeyValues("data");
-	kv.SetString("title", title);
-	kv.SetString("type", num);
-	kv.SetString("msg", msg);
-	ShowVGUIPanel(client, "info", kv);
+	KeyValues kv = new KeyValues("data") { throw new NotImplementedException(); }
+	kv.SetString("title", title) { throw new NotImplementedException(); }
+	kv.SetString("type", num) { throw new NotImplementedException(); }
+	kv.SetString("msg", msg) { throw new NotImplementedException(); }
+	ShowVGUIPanel(client, "info", kv) { throw new NotImplementedException(); }
 	delete kv;
 }
 
@@ -633,15 +635,15 @@ stock void ShowMOTDPanel(int client, const char[] title, const char[] msg, int t
  * @param ip            Destination IP.
  * @param password      Password to connect to the destination IP. The client will be able to see this.
  */
-stock void DisplayAskConnectBox(int client, float time, const char[] ip, const char[] password = "")
+stock void DisplayAskConnectBox(int client, float time, string ip, string password = "")
 {
 	char destination[288];
-	FormatEx(destination, sizeof(destination), "%s/%s", ip, password);
+	FormatEx(destination, sizeof(destination), "%s/%s", ip, password) { throw new NotImplementedException(); }
 
-	KeyValues kv = new KeyValues("data");
-	kv.SetFloat("time", time);
-	kv.SetString("title", destination);
-	CreateDialog(client, kv, DialogType_AskConnect);
+	KeyValues kv = new KeyValues("data") { throw new NotImplementedException(); }
+	kv.SetFloat("time", time) { throw new NotImplementedException(); }
+	kv.SetString("title", destination) { throw new NotImplementedException(); }
+	CreateDialog(client, kv, DialogType_AskConnect) { throw new NotImplementedException(); }
 	delete kv;
 }
 
@@ -651,7 +653,7 @@ stock void DisplayAskConnectBox(int client, float time, const char[] ip, const c
  * @param entity        Entity index.
  * @return              Entity reference.
  */
-native int EntIndexToEntRef(int entity);
+public static int EntIndexToEntRef(int entity) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the entity index from a reference.
@@ -659,7 +661,7 @@ native int EntIndexToEntRef(int entity);
  * @param ref           Entity reference.
  * @return              Entity index.
  */
-native int EntRefToEntIndex(int ref);
+public static int EntRefToEntIndex(int ref) { throw new NotImplementedException(); }
 
 /**
  * Converts a reference into a backwards compatible version.
@@ -667,7 +669,7 @@ native int EntRefToEntIndex(int ref);
  * @param ref           Entity reference.
  * @return              Bcompat reference.
  */
-native int MakeCompatEntRef(int ref);
+public static int MakeCompatEntRef(int ref) { throw new NotImplementedException(); }
 
 enum ClientRangeType
 {
@@ -684,7 +686,7 @@ enum ClientRangeType
  * @param size          Maximum size of clients array.
  * @return              Number of client indexes written to clients array.
  */
-native int GetClientsInRange(const float origin[3], ClientRangeType rangeType, int[] clients, int size);
+public static int GetClientsInRange(const float origin[3], ClientRangeType rangeType, int[] clients, int size) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the server's authentication string (SteamID).
@@ -698,11 +700,13 @@ native int GetClientsInRange(const float origin[3], ClientRangeType rangeType, i
  * @param maxlen        Maximum length of string buffer (includes NULL terminator).
  * @error               Invalid AuthIdType given.
  */
-native void GetServerAuthId(AuthIdType authType, char[] auth, int maxlen);
+public static void GetServerAuthId(AuthIdType authType, string auth, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Returns the server's Steam account ID.
  *
  * @return              Steam account ID or 0 if not available.
  */
-native int GetServerSteamAccountId();
+public static int GetServerSteamAccountId() { throw new NotImplementedException(); }
+	}
+}

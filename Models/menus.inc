@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _menus_included
- #endinput
-#endif
-#define _menus_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Low-level drawing style of the menu.
@@ -68,32 +70,32 @@ enum MenuAction
 };
 
 /** Default menu actions */
-#define MENU_ACTIONS_DEFAULT    MenuAction_Select|MenuAction_Cancel|MenuAction_End
+public const object MENU_ACTIONS_DEFAULT    MenuAction_Select|MenuAction_Cancel|MenuAction_End
 /** All menu actions */
-#define MENU_ACTIONS_ALL        view_as<MenuAction>(0xFFFFFFFF)
+public const object MENU_ACTIONS_ALL        view_as<MenuAction>(0xFFFFFFFF)
 
-#define MENU_NO_PAGINATION      0           /**< Menu should not be paginated (10 items max) */
-#define MENU_TIME_FOREVER       0           /**< Menu should be displayed as long as possible */
+public const object MENU_NO_PAGINATION      0           /**< Menu should not be paginated (10 items max) */
+public const object MENU_TIME_FOREVER       0           /**< Menu should be displayed as long as possible */
 
-#define ITEMDRAW_DEFAULT            (0)     /**< Item should be drawn normally */
-#define ITEMDRAW_DISABLED           (1<<0)  /**< Item is drawn but not selectable */
-#define ITEMDRAW_RAWLINE            (1<<1)  /**< Item should be a raw line, without a slot */
-#define ITEMDRAW_NOTEXT             (1<<2)  /**< No text should be drawn */
-#define ITEMDRAW_SPACER             (1<<3)  /**< Item should be drawn as a spacer, if possible */
-#define ITEMDRAW_IGNORE     ((1<<1)|(1<<2)) /**< Item should be completely ignored (rawline + notext) */
-#define ITEMDRAW_CONTROL            (1<<4)  /**< Item is control text (back/next/exit) */
+public const object ITEMDRAW_DEFAULT            (0)     /**< Item should be drawn normally */
+public const object ITEMDRAW_DISABLED           (1<<0)  /**< Item is drawn but not selectable */
+public const object ITEMDRAW_RAWLINE            (1<<1)  /**< Item should be a raw line, without a slot */
+public const object ITEMDRAW_NOTEXT             (1<<2)  /**< No text should be drawn */
+public const object ITEMDRAW_SPACER             (1<<3)  /**< Item should be drawn as a spacer, if possible */
+public const object ITEMDRAW_IGNORE     ((1<<1)|(1<<2)) /**< Item should be completely ignored (rawline + notext) */
+public const object ITEMDRAW_CONTROL            (1<<4)  /**< Item is control text (back/next/exit) */
 
-#define MENUFLAG_BUTTON_EXIT        (1<<0)  /**< Menu has an "exit" button (default if paginated) */
-#define MENUFLAG_BUTTON_EXITBACK    (1<<1)  /**< Menu has an "exit back" button */
-#define MENUFLAG_NO_SOUND           (1<<2)  /**< Menu will not have any select sounds */
-#define MENUFLAG_BUTTON_NOVOTE      (1<<3)  /**< Menu has a "No Vote" button at slot 1 */
+public const object MENUFLAG_BUTTON_EXIT        (1<<0)  /**< Menu has an "exit" button (default if paginated) */
+public const object MENUFLAG_BUTTON_EXITBACK    (1<<1)  /**< Menu has an "exit back" button */
+public const object MENUFLAG_NO_SOUND           (1<<2)  /**< Menu will not have any select sounds */
+public const object MENUFLAG_BUTTON_NOVOTE      (1<<3)  /**< Menu has a "No Vote" button at slot 1 */
 
-#define VOTEINFO_CLIENT_INDEX       0       /**< Client index */
-#define VOTEINFO_CLIENT_ITEM        1       /**< Item the client selected, or -1 for none */
-#define VOTEINFO_ITEM_INDEX         0       /**< Item index */
-#define VOTEINFO_ITEM_VOTES         1       /**< Number of votes for the item */
+public const object VOTEINFO_CLIENT_INDEX       0       /**< Client index */
+public const object VOTEINFO_CLIENT_ITEM        1       /**< Item the client selected, or -1 for none */
+public const object VOTEINFO_ITEM_INDEX         0       /**< Item index */
+public const object VOTEINFO_ITEM_VOTES         1       /**< Number of votes for the item */
 
-#define VOTEFLAG_NO_REVOTES         (1<<0)  /**< Players cannot change their votes */
+public const object VOTEFLAG_NO_REVOTES         (1<<0)  /**< Players cannot change their votes */
 
 /**
  * Reasons a menu can be cancelled (MenuAction_Cancel).
@@ -149,7 +151,7 @@ enum MenuSource
  * @param param1            First action parameter (usually the client).
  * @param param2            Second action parameter (usually the item).
  */
-typedef MenuHandler = function int (Menu menu, MenuAction action, int param1, int param2);
+typedef MenuHandler = function int (Menu menu, MenuAction action, int param1, int param2) { throw new NotImplementedException(); }
 
 // Panels are used for drawing raw menus without any extra helper functions.
 // Handles must be closed via delete or CloseHandle().
@@ -158,13 +160,13 @@ methodmap Panel < Handle
 	// Constructor for a new Panel.
 	//
 	// @param hStyle        MenuStyle Handle, or null to use the default style.
-	public native Panel(Handle hStyle = null);
+	public native Panel(Handle hStyle = null) { throw new NotImplementedException(); }
 
 	// Sets the panel's title.
 	//
 	// @param text          Text to set as the title.
 	// @param onlyIfEmpty   If true, the title will only be set if no title is set.
-	public native void SetTitle(const char[] text, bool onlyIfEmpty=false);
+	public native void SetTitle(string text, bool onlyIfEmpty=false) { throw new NotImplementedException(); }
 
 	// Draws an item on a panel.  If the item takes up a slot, the position
 	// is returned.
@@ -174,21 +176,21 @@ methodmap Panel < Handle
 	//                      No numbering or newlines are needed.
 	// @param style         ITEMDRAW style flags.
 	// @return              A slot position, or 0 if item was a rawline or could not be drawn.
-	public native int DrawItem(const char[] text, int style=ITEMDRAW_DEFAULT);
+	public native int DrawItem(string text, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 	// Draws a raw line of text on a panel, without any markup other than a
 	// newline.
 	//
 	// @param text          Display text to use.
 	// @return              True on success, false if raw lines are not supported.
-	public native bool DrawText(const char[] text);
+	public native bool DrawText(string text) { throw new NotImplementedException(); }
 
 	// Returns whether or not the given drawing flags are supported by
 	// the menu style.
 	//
 	// @param style         ITEMDRAW style flags.
 	// @return              True if item is drawable, false otherwise.
-	public native bool CanDrawFlags(int style);
+	public native bool CanDrawFlags(int style) { throw new NotImplementedException(); }
 
 	// Sets the selectable key map of a panel.  This is not supported by
 	// all styles (only by Radio, as of this writing).
@@ -197,7 +199,7 @@ methodmap Panel < Handle
 	//                      N+1 to be selected.  If no keys are selectable,
 	//                      then key 0 (bit 9) is automatically set.
 	// @return              True if supported, false otherwise.
-	public native bool SetKeys(int keys);
+	public native bool SetKeys(int keys) { throw new NotImplementedException(); }
 
 	// Sends a panel to a client.  Unlike full menus, the handler
 	// function will only receive the following actions, both of
@@ -212,7 +214,7 @@ methodmap Panel < Handle
 	// @param handler       The MenuHandler function to catch actions with.
 	// @param time          Time to hold the menu for.
 	// @return              True on success, false on failure.
-	public native bool Send(int client, MenuHandler handler, int time);
+	public native bool Send(int client, MenuHandler handler, int time) { throw new NotImplementedException(); }
 
 	// Returns the amount of text the menu can still hold.  If this is
 	// limit is reached or overflowed, the text is silently truncated.
@@ -220,19 +222,19 @@ methodmap Panel < Handle
 	// Radio menus: Currently 511 characters (512 bytes).
 	// Valve menus: Currently -1 (no meaning).
 	property int TextRemaining {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Returns or sets the current key position, starting at 1. This cannot be
 	// used to traverse backwards.
 	property int CurrentKey {
-		public native get();
-		public native set(int key);
+		public native get() { throw new NotImplementedException(); }
+		public native set(int key) { throw new NotImplementedException(); }
 	}
 
 	// Returns the panel's style. Style handles are global and cannot be closed.
 	property Handle Style {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 };
 
@@ -246,7 +248,7 @@ methodmap Menu < Handle
 	//                      Cancel, and End will always be received regardless
 	//                      of whether they are set or not.  They are also
 	//                      the only default actions.
-	public native Menu(MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFAULT);
+	public native Menu(MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFAULT) { throw new NotImplementedException(); }
 
 	// Displays a menu to a client.
 	//
@@ -254,7 +256,7 @@ methodmap Menu < Handle
 	// @param time          Maximum time to leave menu on the screen.
 	// @return              True on success, false on failure.
 	// @error               Client not in game.
-	public native bool Display(int client, int time);
+	public native bool Display(int client, int time) { throw new NotImplementedException(); }
 
 	// Displays a menu to a client, starting from the given item.
 	//
@@ -264,7 +266,7 @@ methodmap Menu < Handle
 	// @return              True on success, false on failure.
 	// @error               Client not in game.
 	///
-	public native bool DisplayAt(int client, int first_item, int time);
+	public native bool DisplayAt(int client, int first_item, int time) { throw new NotImplementedException(); }
 
 	// Appends a new item to the end of a menu.
 	//
@@ -274,7 +276,7 @@ methodmap Menu < Handle
 	//                      DISABLED will be completely ignored when paginating.
 	// @return              True on success, false on failure.
 	// @error               Item limit reached.
-	public native bool AddItem(const char[] info, const char[] display, int style=ITEMDRAW_DEFAULT);
+	public native bool AddItem(string info, string display, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 	// Inserts an item into the menu before a certain position; the new item will
 	// be at the given position and all next items pushed forward.
@@ -286,18 +288,18 @@ methodmap Menu < Handle
 	//                      DISABLED will be completely ignored when paginating.
 	// @return              True on success, false on failure.
 	// @error               Invalid menu position.
-	public native bool InsertItem(int position, const char[] info,
-	                              const char[] display, int style=ITEMDRAW_DEFAULT);
+	public native bool InsertItem(int position, string info,
+	                              string display, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 	// Removes an item from the menu.
 	//
 	// @param position      Position, starting from 0.
 	// @return              True on success, false on failure.
 	// @error               Invalid menu position.
-	public native bool RemoveItem(int position);
+	public native bool RemoveItem(int position) { throw new NotImplementedException(); }
 
 	// Removes all items from a menu.
-	public native void RemoveAllItems();
+	public native void RemoveAllItems() { throw new NotImplementedException(); }
 
 	// Retrieves information about a menu item.
 	//
@@ -309,40 +311,40 @@ methodmap Menu < Handle
 	// @param dispBufLen    Maximum length of the display buffer.
 	// @param client		Client index. Must be specified if menu is per-client random shuffled, -1 to ignore.
 	// @return              True on success, false if position is invalid.
-	public native bool GetItem(int position, char[] infoBuf, int infoBufLen,
-							   int &style=0, char[] dispBuf="", int dispBufLen=0, int client=0);
+	public native bool GetItem(int position, string infoBuf, int infoBufLen,
+							   int &style=0, string dispBuf="", int dispBufLen=0, int client=0) { throw new NotImplementedException(); }
 
 	// Generates a per-client random mapping for the current vote options.
 	//
 	// @param start         Menu item index to start randomizing from.
 	// @param stop          Menu item index to stop randomizing at. -1 = infinite
-	public native void ShufflePerClient(int start=0, int stop=-1);
+	public native void ShufflePerClient(int start=0, int stop=-1) { throw new NotImplementedException(); }
 
 	// Fills the client vote option mapping with user supplied values.
 	//
 	// @param client		Client index.
 	// @param array			Integer array with mapping.
 	// @param length		Length of array.
-	public native void SetClientMapping(int client, int[] array, int length);
+	public native void SetClientMapping(int client, int[] array, int length) { throw new NotImplementedException(); }
 
 	// Sets the menu's default title/instruction message.
 	//
 	// @param fmt           Message string format
 	// @param ...           Message string arguments.
-	public native void SetTitle(const char[] fmt, any ...);
+	public native void SetTitle(string fmt, any ...) { throw new NotImplementedException(); }
 
 	// Returns the text of a menu's title.
 	//
 	// @param buffer        Buffer to store title.
 	// @param maxlength     Maximum length of the buffer.
 	// @return              Number of bytes written.
-	public native void GetTitle(char[] buffer, int maxlength);
+	public native void GetTitle(string buffer, int maxlength) { throw new NotImplementedException(); }
 
 	// Creates a raw MenuPanel based off the menu's style.
 	// The Handle must be freed with CloseHandle().
 	//
 	// @return              A new MenuPanel Handle.
-	public native Panel ToPanel();
+	public native Panel ToPanel() { throw new NotImplementedException(); }
 
 	// Cancels a menu from displaying on all clients.  While the
 	// cancellation is in progress, this menu cannot be re-displayed
@@ -352,7 +354,7 @@ methodmap Menu < Handle
 	// This simply verifies that the menu is not being used anywhere.
 	//
 	// If any vote is in progress on a menu, it will be cancelled.
-	public native void Cancel();
+	public native void Cancel() { throw new NotImplementedException(); }
 
 	// Broadcasts a menu to a list of clients.  The most selected item will be
 	// returned through MenuAction_End.  On a tie, a random item will be returned
@@ -368,7 +370,7 @@ methodmap Menu < Handle
 	// @return              True on success, false if this menu already has a
 	//                      vote session in progress.
 	// @error               A vote is already in progress.
-	public native bool DisplayVote(int[] clients, int numClients, int time, int flags=0);
+	public native bool DisplayVote(int[] clients, int numClients, int time, int flags=0) { throw new NotImplementedException(); }
 
 	// Sends a vote menu to all clients.  See VoteMenu() for more information.
 	//
@@ -386,7 +388,7 @@ methodmap Menu < Handle
 			}
 			players[total++] = i;
 		}
-		return this.DisplayVote(players, total, time, flags);
+		return this.DisplayVote(players, total, time, flags) { throw new NotImplementedException(); }
 	}
 
 	// Get or set the menu's pagination.
@@ -394,23 +396,23 @@ methodmap Menu < Handle
 	// If pagination is MENU_NO_PAGINATION, and the exit button flag is set,
 	// then the exit button flag is removed. It can be re-applied if desired.
 	property int Pagination {
-		public native get();
-		public native set(int value);
+		public native get() { throw new NotImplementedException(); }
+		public native set(int value) { throw new NotImplementedException(); }
 	}
 
 	// Get or set the menu's option flags.
 	//
 	// If a certain bit is not supported, it will be stripped before being set.
 	property int OptionFlags {
-		public native get();
-		public native set(int value);
+		public native get() { throw new NotImplementedException(); }
+		public native set(int value) { throw new NotImplementedException(); }
 	}
 
 	// Returns whether or not the menu has an exit button. By default, menus
 	// have an exit button.
 	property bool ExitButton {
-		public native get();
-		public native set(bool value);
+		public native get() { throw new NotImplementedException(); }
+		public native set(bool value) { throw new NotImplementedException(); }
 	}
 
 	// Controls whether or not the menu has an "exit back" button. By default,
@@ -419,37 +421,37 @@ methodmap Menu < Handle
 	// Exit Back buttons appear as "Back" on page 1 of paginated menus and have
 	// functionality defined by the user in MenuEnd_ExitBack.
 	property bool ExitBackButton {
-		public native get();
-		public native set(bool value);
+		public native get() { throw new NotImplementedException(); }
+		public native set(bool value) { throw new NotImplementedException(); }
 	}
 
 	// Sets whether or not the menu has a "no vote" button in slot 1.
 	// By default, menus do not have a no vote button.
 	property bool NoVoteButton {
-		public native set(bool value);
+		public native set(bool value) { throw new NotImplementedException(); }
 	}
 
 	// Sets an advanced vote handling callback. If this callback is set,
 	// MenuAction_VoteEnd will not be called.
 	property VoteHandler VoteResultCallback {
-		public native set(VoteHandler handler);
+		public native set(VoteHandler handler) { throw new NotImplementedException(); }
 	}
 
 	// Returns the number of items in a menu.
 	property int ItemCount {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Returns the menu style. The Handle is global and cannot be closed.
 	property Handle Style {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Returns the first item on the page of a currently selected menu.
 	//
 	// This is only valid inside a MenuAction_Select callback.
 	property int Selection {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 }
 
@@ -463,7 +465,7 @@ methodmap Menu < Handle
  *                      the only default actions.
  * @return              A new menu Handle.
  */
-native Menu CreateMenu(MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFAULT);
+public static Menu CreateMenu(MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFAULT) { throw new NotImplementedException(); }
 
 /**
  * Displays a menu to a client.
@@ -474,7 +476,7 @@ native Menu CreateMenu(MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFA
  * @return              True on success, false on failure.
  * @error               Invalid Handle or client not in game.
  */
-native bool DisplayMenu(Handle menu, int client, int time);
+public static bool DisplayMenu(Handle menu, int client, int time) { throw new NotImplementedException(); }
 
 /**
  * Displays a menu to a client, starting from the given item.
@@ -486,7 +488,7 @@ native bool DisplayMenu(Handle menu, int client, int time);
  * @return              True on success, false on failure.
  * @error               Invalid Handle or client not in game.
  */
-native bool DisplayMenuAtItem(Handle menu, int client, int first_item, int time);
+public static bool DisplayMenuAtItem(Handle menu, int client, int first_item, int time) { throw new NotImplementedException(); }
 
 /**
  * Appends a new item to the end of a menu.
@@ -499,10 +501,10 @@ native bool DisplayMenuAtItem(Handle menu, int client, int first_item, int time)
  * @return              True on success, false on failure.
  * @error               Invalid Handle or item limit reached.
  */
-native bool AddMenuItem(Handle menu,
-						const char[] info,
-						const char[] display,
-						int style=ITEMDRAW_DEFAULT);
+public static bool AddMenuItem(Handle menu,
+						string info,
+						string display,
+						int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 /**
  * Inserts an item into the menu before a certain position; the new item will
@@ -517,11 +519,11 @@ native bool AddMenuItem(Handle menu,
  * @return              True on success, false on failure.
  * @error               Invalid Handle or menu position.
  */
-native bool InsertMenuItem(Handle menu,
+public static bool InsertMenuItem(Handle menu,
 						position,
-						const char[] info,
-						const char[] display,
-						int style=ITEMDRAW_DEFAULT);
+						string info,
+						string display,
+						int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 /**
  * Removes an item from the menu.
@@ -531,7 +533,7 @@ native bool InsertMenuItem(Handle menu,
  * @return              True on success, false on failure.
  * @error               Invalid Handle or menu position.
  */
-native bool RemoveMenuItem(Handle menu, int position);
+public static bool RemoveMenuItem(Handle menu, int position) { throw new NotImplementedException(); }
 
 /**
  * Removes all items from a menu.
@@ -539,7 +541,7 @@ native bool RemoveMenuItem(Handle menu, int position);
  * @param menu          Menu Handle.
  * @error               Invalid Handle or menu position.
  */
-native void RemoveAllMenuItems(Handle menu);
+public static void RemoveAllMenuItems(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Retrieves information about a menu item.
@@ -555,14 +557,14 @@ native void RemoveAllMenuItems(Handle menu);
  * @return              True on success, false if position is invalid.
  * @error               Invalid Handle.
  */
-native bool GetMenuItem(Handle menu,
+public static bool GetMenuItem(Handle menu,
 						int position,
-						char[] infoBuf,
+						string infoBuf,
 						int infoBufLen,
 						int &style=0,
-						char[] dispBuf="",
+						string dispBuf="",
 						int dispBufLen=0,
-						int client=0);
+						int client=0) { throw new NotImplementedException(); }
 
 /**
  * Generates a per-client random mapping for the current vote options.
@@ -571,7 +573,7 @@ native bool GetMenuItem(Handle menu,
  * @param start         Menu item index to start randomizing from.
  * @param stop          Menu item index to stop randomizing at. -1 = infinite
  */
-native void MenuShufflePerClient(Handle menu, int start=0, int stop=-1);
+public static void MenuShufflePerClient(Handle menu, int start=0, int stop=-1) { throw new NotImplementedException(); }
 
 /*
  * Fills the client vote option mapping with user supplied values.
@@ -581,7 +583,7 @@ native void MenuShufflePerClient(Handle menu, int start=0, int stop=-1);
  * @param array			Integer array with mapping.
  * @param length		Length of array.
  */
-native void MenuSetClientMapping(Handle menu, int client, int[] array, int length);
+public static void MenuSetClientMapping(Handle menu, int client, int[] array, int length) { throw new NotImplementedException(); }
 
 /**
  * Returns the first item on the page of a currently selected menu.
@@ -594,7 +596,7 @@ native void MenuSetClientMapping(Handle menu, int client, int[] array, int lengt
  *                      position.
  * @error               Not called from inside a MenuAction_Select callback.
  */
-native int GetMenuSelectionPosition();
+public static int GetMenuSelectionPosition() { throw new NotImplementedException(); }
 
 /**
  * Returns the number of items in a menu.
@@ -603,7 +605,7 @@ native int GetMenuSelectionPosition();
  * @return              Number of items in the menu.
  * @error               Invalid Handle.
  */
-native int GetMenuItemCount(Handle menu);
+public static int GetMenuItemCount(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Sets whether the menu should be paginated or not.
@@ -617,7 +619,7 @@ native int GetMenuItemCount(Handle menu);
  *                      low.
  * @error               Invalid Handle.
  */
-native bool SetMenuPagination(Handle menu, int itemsPerPage);
+public static bool SetMenuPagination(Handle menu, int itemsPerPage) { throw new NotImplementedException(); }
 
 /**
  * Returns a menu's pagination setting.
@@ -626,7 +628,7 @@ native bool SetMenuPagination(Handle menu, int itemsPerPage);
  * @return              Pagination setting.
  * @error               Invalid Handle.
  */
-native int GetMenuPagination(Handle menu);
+public static int GetMenuPagination(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Returns a menu's MenuStyle Handle.  The Handle
@@ -636,7 +638,7 @@ native int GetMenuPagination(Handle menu);
  * @return              Handle to the menu's draw style.
  * @error               Invalid Handle.
  */
-native Handle GetMenuStyle(Handle menu);
+public static Handle GetMenuStyle(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Sets the menu's default title/instruction message.
@@ -646,7 +648,7 @@ native Handle GetMenuStyle(Handle menu);
  * @param ...           Message string arguments.
  * @error               Invalid Handle.
  */
-native void SetMenuTitle(Handle menu, const char[] fmt, any ...);
+public static void SetMenuTitle(Handle menu, string fmt, any ...) { throw new NotImplementedException(); }
 
 /**
  * Returns the text of a menu's title.
@@ -657,7 +659,7 @@ native void SetMenuTitle(Handle menu, const char[] fmt, any ...);
  * @return              Number of bytes written.
  * @error               Invalid Handle/
  */
-native int GetMenuTitle(Handle menu, char[] buffer, int maxlength);
+public static int GetMenuTitle(Handle menu, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Creates a raw MenuPanel based off the menu's style.
@@ -667,7 +669,7 @@ native int GetMenuTitle(Handle menu, char[] buffer, int maxlength);
  * @return              A new MenuPanel Handle.
  * @error               Invalid Handle.
  */
-native Panel CreatePanelFromMenu(Handle menu);
+public static Panel CreatePanelFromMenu(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not the menu has an exit button.
@@ -677,7 +679,7 @@ native Panel CreatePanelFromMenu(Handle menu);
  * @return              True if the menu has an exit button; false otherwise.
  * @error               Invalid Handle.
  */
-native bool GetMenuExitButton(Handle menu);
+public static bool GetMenuExitButton(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Sets whether or not the menu has an exit button.  By default, paginated menus
@@ -695,7 +697,7 @@ native bool GetMenuExitButton(Handle menu);
  * @return              True if allowed; false on failure.
  * @error               Invalid Handle.
  */
-native bool SetMenuExitButton(Handle menu, bool button);
+public static bool SetMenuExitButton(Handle menu, bool button) { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not the menu has an "exit back" button.  By default,
@@ -708,7 +710,7 @@ native bool SetMenuExitButton(Handle menu, bool button);
  * @return              True if the menu has an exit back button; false otherwise.
  * @error               Invalid Handle.
  */
-native bool GetMenuExitBackButton(Handle menu);
+public static bool GetMenuExitBackButton(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Sets whether or not the menu has an "exit back" button. By default, menus
@@ -721,7 +723,7 @@ native bool GetMenuExitBackButton(Handle menu);
  * @param button        True to enable the button, false to remove it.
  * @error               Invalid Handle.
  */
-native void SetMenuExitBackButton(Handle menu, bool button);
+public static void SetMenuExitBackButton(Handle menu, bool button) { throw new NotImplementedException(); }
 
 /**
  * Sets whether or not the menu has a "no vote" button in slot 1.
@@ -732,7 +734,7 @@ native void SetMenuExitBackButton(Handle menu, bool button);
  * @return              True if allowed; false on failure.
  * @error               Invalid Handle.
  */
-native bool SetMenuNoVoteButton(Handle menu, bool button);
+public static bool SetMenuNoVoteButton(Handle menu, bool button) { throw new NotImplementedException(); }
 
 /**
  * Cancels a menu from displaying on all clients.  While the
@@ -747,7 +749,7 @@ native bool SetMenuNoVoteButton(Handle menu, bool button);
  * @param menu          Menu Handle.
  * @error               Invalid Handle.
  */
-native void CancelMenu(Handle menu);
+public static void CancelMenu(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a menu's option flags.
@@ -756,7 +758,7 @@ native void CancelMenu(Handle menu);
  * @return              A bitstring of MENUFLAG bits.
  * @error               Invalid Handle.
  */
-native int GetMenuOptionFlags(Handle menu);
+public static int GetMenuOptionFlags(Handle menu) { throw new NotImplementedException(); }
 
 /**
  * Sets a menu's option flags.
@@ -769,7 +771,7 @@ native int GetMenuOptionFlags(Handle menu);
  * @param flags         A new bitstring of MENUFLAG bits.
  * @error               Invalid Handle.
  */
-native void SetMenuOptionFlags(Handle menu, int flags);
+public static void SetMenuOptionFlags(Handle menu, int flags) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a vote is in progress.
@@ -777,14 +779,14 @@ native void SetMenuOptionFlags(Handle menu, int flags);
  * @param menu          Deprecated; no longer used.
  * @return              True if a vote is in progress, false otherwise.
  */
-native bool IsVoteInProgress(Handle menu=INVALID_HANDLE);
+public static bool IsVoteInProgress(Handle menu=INVALID_HANDLE) { throw new NotImplementedException(); }
 
 /**
  * Cancels the vote in progress.
  *
  * @error               If no vote is in progress.
  */
-native void CancelVote();
+public static void CancelVote() { throw new NotImplementedException(); }
 
 /**
  * Broadcasts a menu to a list of clients.  The most selected item will be
@@ -803,7 +805,7 @@ native void CancelVote();
  *                      in progress.
  * @error               Invalid Handle, or a vote is already in progress.
  */
-native bool VoteMenu(Handle menu, int[] clients, int numClients, int time, int flags=0);
+public static bool VoteMenu(Handle menu, int[] clients, int numClients, int time, int flags=0) { throw new NotImplementedException(); }
 
 /**
  * Sends a vote menu to all clients.  See VoteMenu() for more information.
@@ -829,7 +831,7 @@ stock bool VoteMenuToAll(Handle menu, int time, int flags=0)
 		players[total++] = i;
 	}
 
-	return VoteMenu(menu, players, total, time, flags);
+	return VoteMenu(menu, players, total, time, flags) { throw new NotImplementedException(); }
 }
 
 /**
@@ -853,7 +855,7 @@ typeset VoteHandler
 		const int client_info[][2],
 		int num_items,
 		const int item_info[][2]
-	);
+	) { throw new NotImplementedException(); }
 
 	// new style
 	function void(
@@ -863,7 +865,7 @@ typeset VoteHandler
 		const int[][] client_info,
 		int num_items,
 		const int[][] item_info
-	);
+	) { throw new NotImplementedException(); }
 };
 
 /**
@@ -874,7 +876,7 @@ typeset VoteHandler
  * @param callback      Callback function.
  * @error               Invalid Handle or callback.
  */
-native void SetVoteResultCallback(Handle menu, VoteHandler callback);
+public static void SetVoteResultCallback(Handle menu, VoteHandler callback) { throw new NotImplementedException(); }
 
 /**
  * Returns the number of seconds you should "wait" before displaying
@@ -883,7 +885,7 @@ native void SetVoteResultCallback(Handle menu, VoteHandler callback);
  *
  * @return              Number of seconds to wait, or 0 for none.
  */
-native int CheckVoteDelay();
+public static int CheckVoteDelay() { throw new NotImplementedException(); }
 
 /**
  * Returns whether a client is in the pool of clients allowed
@@ -894,7 +896,7 @@ native int CheckVoteDelay();
  * @return              True if client is allowed to vote, false otherwise.
  * @error               If no vote is in progress or client index is invalid.
  */
-native bool IsClientInVotePool(int client);
+public static bool IsClientInVotePool(int client) { throw new NotImplementedException(); }
 
 /**
  * Redraws the current vote menu to a client in the voting pool.
@@ -906,7 +908,7 @@ native bool IsClientInVotePool(int client);
  * @error               No vote in progress, int client is not in the voting pool,
  *                      or client index is invalid.
  */
-native bool RedrawClientVoteMenu(int client, bool revotes=true);
+public static bool RedrawClientVoteMenu(int client, bool revotes=true) { throw new NotImplementedException(); }
 
 /**
  * Returns a style's global Handle.
@@ -914,7 +916,7 @@ native bool RedrawClientVoteMenu(int client, bool revotes=true);
  * @param style         Menu Style.
  * @return              A Handle, or INVALID_HANDLE if not found or unusable.
  */
-native Handle GetMenuStyleHandle(MenuStyle style);
+public static Handle GetMenuStyleHandle(MenuStyle style) { throw new NotImplementedException(); }
 
 /**
  * Creates a MenuPanel from a MenuStyle.  Panels are used for drawing raw
@@ -925,7 +927,7 @@ native Handle GetMenuStyleHandle(MenuStyle style);
  * @return              A new MenuPanel Handle.
  * @error               Invalid Handle other than INVALID_HANDLE.
  */
-native Panel CreatePanel(Handle hStyle=INVALID_HANDLE);
+public static Panel CreatePanel(Handle hStyle=INVALID_HANDLE) { throw new NotImplementedException(); }
 
 /**
  * Creates a Menu from a MenuStyle.  The Handle must be closed with
@@ -940,7 +942,7 @@ native Panel CreatePanel(Handle hStyle=INVALID_HANDLE);
  * @return              A new menu Handle.
  * @error               Invalid Handle other than INVALID_HANDLE.
  */
-native Menu CreateMenuEx(Handle hStyle=INVALID_HANDLE, MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFAULT);
+public static Menu CreateMenuEx(Handle hStyle=INVALID_HANDLE, MenuHandler handler, MenuAction actions=MENU_ACTIONS_DEFAULT) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a client is viewing a menu.
@@ -950,7 +952,7 @@ native Menu CreateMenuEx(Handle hStyle=INVALID_HANDLE, MenuHandler handler, Menu
  * @return              A MenuSource value.
  * @error               Invalid Handle other than null.
  */
-native MenuSource GetClientMenu(int client, Handle hStyle=null);
+public static MenuSource GetClientMenu(int client, Handle hStyle=null) { throw new NotImplementedException(); }
 
 /**
  * Cancels a menu on a client.  This will only affect non-external menus.
@@ -961,7 +963,7 @@ native MenuSource GetClientMenu(int client, Handle hStyle=null);
  * @param hStyle        MenuStyle Handle, or INVALID_HANDLE to use the default style.
  * @return              True if a menu was cancelled, false otherwise.
  */
-native bool CancelClientMenu(int client, bool autoIgnore=false, Handle hStyle=INVALID_HANDLE);
+public static bool CancelClientMenu(int client, bool autoIgnore=false, Handle hStyle=INVALID_HANDLE) { throw new NotImplementedException(); }
 
 /**
  * Returns a style's maximum items per page.
@@ -970,7 +972,7 @@ native bool CancelClientMenu(int client, bool autoIgnore=false, Handle hStyle=IN
  * @return              Maximum items per page.
  * @error               Invalid Handle other than INVALID_HANDLE.
  */
-native int GetMaxPageItems(Handle hStyle=INVALID_HANDLE);
+public static int GetMaxPageItems(Handle hStyle=INVALID_HANDLE) { throw new NotImplementedException(); }
 
 /**
  * Returns a MenuPanel's parent style.
@@ -979,7 +981,7 @@ native int GetMaxPageItems(Handle hStyle=INVALID_HANDLE);
  * @return              The MenuStyle Handle that created the panel.
  * @error               Invalid Handle.
  */
-native Handle GetPanelStyle(Handle panel);
+public static Handle GetPanelStyle(Handle panel) { throw new NotImplementedException(); }
 
 /**
  * Sets the panel's title.
@@ -989,7 +991,7 @@ native Handle GetPanelStyle(Handle panel);
  * @param onlyIfEmpty   If true, the title will only be set if no title is set.
  * @error               Invalid Handle.
  */
-native void SetPanelTitle(Handle panel, const char[] text, bool onlyIfEmpty=false);
+public static void SetPanelTitle(Handle panel, string text, bool onlyIfEmpty=false) { throw new NotImplementedException(); }
 
 /**
  * Draws an item on a panel.  If the item takes up a slot, the position
@@ -1003,7 +1005,7 @@ native void SetPanelTitle(Handle panel, const char[] text, bool onlyIfEmpty=fals
  * @return              A slot position, or 0 if item was a rawline or could not be drawn.
  * @error               Invalid Handle.
  */
-native int DrawPanelItem(Handle panel, const char[] text, int style=ITEMDRAW_DEFAULT);
+public static int DrawPanelItem(Handle panel, string text, int style=ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 /**
  * Draws a raw line of text on a panel, without any markup other than a newline.
@@ -1014,7 +1016,7 @@ native int DrawPanelItem(Handle panel, const char[] text, int style=ITEMDRAW_DEF
  * @return              True on success, false if raw lines are not supported.
  * @error               Invalid Handle.
  */
-native bool DrawPanelText(Handle panel, const char[] text);
+public static bool DrawPanelText(Handle panel, string text) { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not the given drawing flags are supported by
@@ -1025,7 +1027,7 @@ native bool DrawPanelText(Handle panel, const char[] text);
  * @return              True if item is drawable, false otherwise.
  * @error               Invalid Handle.
  */
-native bool CanPanelDrawFlags(Handle panel, int style);
+public static bool CanPanelDrawFlags(Handle panel, int style) { throw new NotImplementedException(); }
 
 /**
  * Sets the selectable key map of a panel.  This is not supported by
@@ -1037,7 +1039,7 @@ native bool CanPanelDrawFlags(Handle panel, int style);
  *                      then key 0 (bit 9) is automatically set.
  * @return              True if supported, false otherwise.
  */
-native bool SetPanelKeys(Handle panel, int keys);
+public static bool SetPanelKeys(Handle panel, int keys) { throw new NotImplementedException(); }
 
 /**
  * Sends a panel to a client.  Unlike full menus, the handler
@@ -1057,7 +1059,7 @@ native bool SetPanelKeys(Handle panel, int keys);
  * @return              True on success, false on failure.
  * @error               Invalid Handle.
  */
-native bool SendPanelToClient(Handle panel, int client, MenuHandler handler, int time);
+public static bool SendPanelToClient(Handle panel, int client, MenuHandler handler, int time) { throw new NotImplementedException(); }
 
 /**
  * @brief Returns the amount of text the menu can still hold.  If this is
@@ -1071,7 +1073,7 @@ native bool SendPanelToClient(Handle panel, int client, MenuHandler handler, int
  *                      or -1 if there is no known limit.
  * @error               Invalid Handle.
  */
-native int GetPanelTextRemaining(Handle panel);
+public static int GetPanelTextRemaining(Handle panel) { throw new NotImplementedException(); }
 
 /**
  * @brief Returns the current key position.
@@ -1080,7 +1082,7 @@ native int GetPanelTextRemaining(Handle panel);
  * @return              Current key position starting at 1.
  * @error               Invalid Handle.
  */
-native int GetPanelCurrentKey(Handle panel);
+public static int GetPanelCurrentKey(Handle panel) { throw new NotImplementedException(); }
 
 /**
  * @brief Sets the next key position.  This cannot be used
@@ -1092,7 +1094,7 @@ native int GetPanelCurrentKey(Handle panel);
  * @return              True on success, false otherwise.
  * @error               Invalid Handle.
  */
-native bool SetPanelCurrentKey(Handle panel, int key);
+public static bool SetPanelCurrentKey(Handle panel, int key) { throw new NotImplementedException(); }
 
 /**
  * @brief Redraws menu text from inside a MenuAction_DisplayItem callback.
@@ -1100,7 +1102,7 @@ native bool SetPanelCurrentKey(Handle panel, int key);
  * @param text          Menu text to draw.
  * @return              Item position; must be returned via the callback.
  */
-native int RedrawMenuItem(const char[] text);
+public static int RedrawMenuItem(string text) { throw new NotImplementedException(); }
 
 /**
  * This function is provided for legacy code only.  Some older plugins may use
@@ -1120,7 +1122,7 @@ native int RedrawMenuItem(const char[] text);
  * @return              True on success, false on failure.
  * @error               Invalid client index, or radio menus not supported.
  */
-native bool InternalShowMenu(int client, const char[] str, int time, int keys=-1, MenuHandler handler=INVALID_FUNCTION);
+public static bool InternalShowMenu(int client, string str, int time, int keys=-1, MenuHandler handler=INVALID_FUNCTION) { throw new NotImplementedException(); }
 
 /**
  * Retrieves voting information from MenuAction_VoteEnd.
@@ -1151,4 +1153,6 @@ stock bool IsNewVoteAllowed()
 	}
 
 	return true;
+}
+	}
 }

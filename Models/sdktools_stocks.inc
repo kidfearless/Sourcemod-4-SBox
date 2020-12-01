@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_stocks_included
- #endinput
-#endif
-#define _sdktools_stocks_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Given a partial team name, attempts to find a matching team.
@@ -47,16 +49,16 @@
  *                      -1 if no team matched.
  *                      -2 if more than one team matched.
  */
-stock int FindTeamByName(const char[] name)
+stock int FindTeamByName(string name)
 {
-	int name_len = strlen(name);
-	int num_teams = GetTeamCount();
+	int name_len = strlen(name) { throw new NotImplementedException(); }
+	int num_teams = GetTeamCount() { throw new NotImplementedException(); }
 	char team_name[32];
 	int found_team = -1;
 
 	for (int i = 0; i < num_teams; i++)
 	{
-		GetTeamName(i, team_name, sizeof(team_name));
+		GetTeamName(i, team_name, sizeof(team_name)) { throw new NotImplementedException(); }
 
 		if (strncmp(team_name, name, name_len, false) == 0)
 		{
@@ -72,4 +74,6 @@ stock int FindTeamByName(const char[] name)
 	}
 
 	return found_team;
+}
+	}
 }

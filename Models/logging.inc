@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _sm_logging_included
- #endinput
-#endif
-#define _sm_logging_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Logs a plugin message to the SourceMod logs.  The log message will be
@@ -42,7 +44,7 @@
  * @param format        String format.
  * @param ...           Format arguments.
  */
-native void LogMessage(const char[] format, any ...);
+public static void LogMessage(string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Logs a message to any file.  The log message will be in the normal
@@ -53,7 +55,7 @@ native void LogMessage(const char[] format, any ...);
  * @param ...           Format arguments.
  * @error               File could not be opened/written.
  */
-native void LogToFile(const char[] file, const char[] format, any ...);
+public static void LogToFile(string file, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Same as LogToFile(), except no plugin logtag is prepended.
@@ -63,7 +65,7 @@ native void LogToFile(const char[] file, const char[] format, any ...);
  * @param ...           Format arguments.
  * @error               File could not be opened/written.
  */
-native void LogToFileEx(const char[] file, const char[] format, any ...);
+public static void LogToFileEx(string file, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Logs an action from a command or event whereby interception and routing may
@@ -75,7 +77,7 @@ native void LogToFileEx(const char[] file, const char[] format, any ...);
  * @param message       Message format.
  * @param ...           Message formatting parameters.
  */
-native void LogAction(int client, int target, const char[] message, any ...);
+public static void LogAction(int client, int target, string message, any ...) { throw new NotImplementedException(); }
 
 /**
  * Logs a plugin error message to the SourceMod logs.
@@ -83,7 +85,7 @@ native void LogAction(int client, int target, const char[] message, any ...);
  * @param format        String format.
  * @param ...           Format arguments.
  */
-native void LogError(const char[] format, any ...);
+public static void LogError(string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Called when an action is going to be logged.
@@ -99,11 +101,11 @@ native void LogError(const char[] format, any ...);
  *                      Plugin_Stop is the same as Handled, but prevents any other
  *                      plugins from handling the message.
  */
-forward Action OnLogAction(Handle source,
+public static override Action OnLogAction(Handle source,
 						   Identity ident,
 						   int client,
 						   int target,
-						   const char[] message);
+						   string message) { throw new NotImplementedException(); }
 
 /**
  * Called when a game log message is received.
@@ -118,18 +120,20 @@ forward Action OnLogAction(Handle source,
  * @return              Plugin_Handled or Plugin_Stop will prevent the message
  *                      from being written to the log file.
  */
-typedef GameLogHook = function Action (const char[] message);
+typedef GameLogHook = function Action (string message) { throw new NotImplementedException(); }
 
 /**
  * Adds a game log hook.
  *
  * @param hook          Hook function.
  */
-native void AddGameLogHook(GameLogHook hook);
+public static void AddGameLogHook(GameLogHook hook) { throw new NotImplementedException(); }
 
 /**
  * Removes a game log hook.
  *
  * @param hook          Hook function.
  */
-native void RemoveGameLogHook(GameLogHook hook);
+public static void RemoveGameLogHook(GameLogHook hook) { throw new NotImplementedException(); }
+	}
+}

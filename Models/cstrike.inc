@@ -30,25 +30,27 @@
  * Version: $Id$
  */
 
-#if defined _cstrike_included
- #endinput
-#endif
-#define _cstrike_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
-#define CS_TEAM_NONE        0   /**< No team yet. */
-#define CS_TEAM_SPECTATOR   1   /**< Spectators. */
-#define CS_TEAM_T           2   /**< Terrorists. */
-#define CS_TEAM_CT          3   /**< Counter-Terrorists. */
+public const object CS_TEAM_NONE        0   /**< No team yet. */
+public const object CS_TEAM_SPECTATOR   1   /**< Spectators. */
+public const object CS_TEAM_T           2   /**< Terrorists. */
+public const object CS_TEAM_CT          3   /**< Counter-Terrorists. */
 
-#define CS_SLOT_PRIMARY     0   /**< Primary weapon slot. */
-#define CS_SLOT_SECONDARY   1   /**< Secondary weapon slot. */
-#define CS_SLOT_KNIFE       2   /**< Knife slot. */
-#define CS_SLOT_GRENADE     3   /**< Grenade slot (will only return one grenade). */
-#define CS_SLOT_C4          4   /**< C4 slot. */
-#define CS_SLOT_BOOST       11  /**< Slot for healthshot and shield (will only return one weapon/item). */
-#define CS_SLOT_UTILITY     12  /**< Slot for tablet. */
+public const object CS_SLOT_PRIMARY     0   /**< Primary weapon slot. */
+public const object CS_SLOT_SECONDARY   1   /**< Secondary weapon slot. */
+public const object CS_SLOT_KNIFE       2   /**< Knife slot. */
+public const object CS_SLOT_GRENADE     3   /**< Grenade slot (will only return one grenade). */
+public const object CS_SLOT_C4          4   /**< C4 slot. */
+public const object CS_SLOT_BOOST       11  /**< Slot for healthshot and shield (will only return one weapon/item). */
+public const object CS_SLOT_UTILITY     12  /**< Slot for tablet. */
 
-#define CS_DMG_HEADSHOT     (1 << 30)    /**< Headshot */
+public const object CS_DMG_HEADSHOT     (1 << 30)    /**< Headshot */
 
 enum CSRoundEndReason
 {
@@ -187,7 +189,7 @@ enum CSWeaponID
  * @param client        Client index
  * @param weapon        User input for weapon name
  */
-forward Action CS_OnBuyCommand(int client, const char[] weapon);
+public static override Action CS_OnBuyCommand(int client, string weapon) { throw new NotImplementedException(); }
 
 /**
  * Called when CSWeaponDrop is called
@@ -197,7 +199,7 @@ forward Action CS_OnBuyCommand(int client, const char[] weapon);
  * @param client        Client index
  * @param weaponIndex   Weapon index
  */
-forward Action CS_OnCSWeaponDrop(int client, int weaponIndex);
+public static override Action CS_OnCSWeaponDrop(int client, int weaponIndex) { throw new NotImplementedException(); }
 
 /**
  * Called when game retrieves a weapon's price for a player.
@@ -212,7 +214,7 @@ forward Action CS_OnCSWeaponDrop(int client, int weaponIndex);
  *
  * @note Not all "weapons" call GetWeaponPrice. Example: c4, knife, vest, vest helmet, night vision.
  */
-forward Action CS_OnGetWeaponPrice(int client, const char[] weapon, int &price);
+public static override Action CS_OnGetWeaponPrice(int client, string weapon, int &price) { throw new NotImplementedException(); }
 
 /**
  * Called when TerminateRound is called.
@@ -223,7 +225,7 @@ forward Action CS_OnGetWeaponPrice(int client, const char[] weapon, int &price);
  * @param delay         Time (in seconds) until new round starts
  * @param reason        Reason for round end
  */
-forward Action CS_OnTerminateRound(float &delay, CSRoundEndReason &reason);
+public static override Action CS_OnTerminateRound(float &delay, CSRoundEndReason &reason) { throw new NotImplementedException(); }
 
 /**
  * Respawns a player.
@@ -231,7 +233,7 @@ forward Action CS_OnTerminateRound(float &delay, CSRoundEndReason &reason);
  * @param client        Player's index.
  * @error               Invalid client index, client not in game.
  */
-native void CS_RespawnPlayer(int client);
+public static void CS_RespawnPlayer(int client) { throw new NotImplementedException(); }
 
 /**
  * Switches the player's team.
@@ -240,7 +242,7 @@ native void CS_RespawnPlayer(int client);
  * @param team          Team index.
  * @error               Invalid client index, client not in game.
  */
-native void CS_SwitchTeam(int client, int team);
+public static void CS_SwitchTeam(int client, int team) { throw new NotImplementedException(); }
 
 /**
  * Forces a player to drop or toss their weapon
@@ -251,7 +253,7 @@ native void CS_SwitchTeam(int client, int team);
  * @param blockhook     Set to true to stop the corresponding CS_OnCSWeaponDrop
  * @error               Invalid client index, client not in game, or invalid weapon index.
  */
-native void CS_DropWeapon(int client, int weaponIndex, bool toss, bool blockhook = false);
+public static void CS_DropWeapon(int client, int weaponIndex, bool toss, bool blockhook = false) { throw new NotImplementedException(); }
 
 /**
  * Forces round to end with a reason
@@ -259,9 +261,9 @@ native void CS_DropWeapon(int client, int weaponIndex, bool toss, bool blockhook
  * @param delay         Time (in seconds) to delay before new round starts
  * @param reason        Reason for the round ending
  * @param blockhook     Set to true to stop the corresponding CS_OnTerminateRound
- *                      forward from being called.
+ *                      public static override from being called.
  */
-native void CS_TerminateRound(float delay, CSRoundEndReason reason, bool blockhook = false);
+public static void CS_TerminateRound(float delay, CSRoundEndReason reason, bool blockhook = false) { throw new NotImplementedException(); }
  
 /**
  * Gets a weapon name from a weapon alias
@@ -272,7 +274,7 @@ native void CS_TerminateRound(float delay, CSRoundEndReason reason, bool blockho
  *
  * @note Will set the buffer to the original alias if it is not an alias to a weapon.
  */
-native void CS_GetTranslatedWeaponAlias(const char[] alias, char[] weapon, int size);
+public static void CS_GetTranslatedWeaponAlias(string alias, string weapon, int size) { throw new NotImplementedException(); }
  
 /**
  * Gets a weapon's price
@@ -285,7 +287,7 @@ native void CS_GetTranslatedWeaponAlias(const char[] alias, char[] weapon, int s
  *
  * @note c4, knife and shield will always return 0. vest, vest helmet and night vision will always return default price.
  */
-native int CS_GetWeaponPrice(int client, CSWeaponID id, bool defaultprice = false);
+public static int CS_GetWeaponPrice(int client, CSWeaponID id, bool defaultprice = false) { throw new NotImplementedException(); }
  
 /**
  * Gets a clients clan tag
@@ -296,7 +298,7 @@ native int CS_GetWeaponPrice(int client, CSWeaponID id, bool defaultprice = fals
  * @return              Number of non-null bytes written.
  * @error               Invalid client.
  */
-native int CS_GetClientClanTag(int client, char[] buffer, int size);
+public static int CS_GetClientClanTag(int client, string buffer, int size) { throw new NotImplementedException(); }
 
 /**
  * Sets a clients clan tag
@@ -305,7 +307,7 @@ native int CS_GetClientClanTag(int client, char[] buffer, int size);
  * @param tag           Tag to set clients clan tag as.
  * @error               Invalid client.
  */
-native void CS_SetClientClanTag(int client, const char[] tag);
+public static void CS_SetClientClanTag(int client, string tag) { throw new NotImplementedException(); }
 
 /**
  * Gets a team's score
@@ -314,7 +316,7 @@ native void CS_SetClientClanTag(int client, const char[] tag);
  * @return              Returns the internal team score.
  * @error               Invalid team index.
  */
-native int CS_GetTeamScore(int team);
+public static int CS_GetTeamScore(int team) { throw new NotImplementedException(); }
 
 /**
  * Sets a team's score
@@ -326,7 +328,7 @@ native int CS_GetTeamScore(int team);
  * @note This will update the scoreboard only after the scoreboard update function is called.
  *       Use SetTeamScore plus this to update the scoreboard instantly and save values correctly.
  */
-native void CS_SetTeamScore(int team, int value);
+public static void CS_SetTeamScore(int team, int value) { throw new NotImplementedException(); }
 
 /**
  * Gets a client's mvp count
@@ -335,7 +337,7 @@ native void CS_SetTeamScore(int team, int value);
  * @return              Returns the client's internal MVP count.
  * @error               Invalid client.
  */
-native int CS_GetMVPCount(int client);
+public static int CS_GetMVPCount(int client) { throw new NotImplementedException(); }
 
 /**
  * Sets a client's mvp count
@@ -344,7 +346,7 @@ native int CS_GetMVPCount(int client);
  * @param value         Value to set client's mvp count as.
  * @error               Invalid client.
  */
-native void CS_SetMVPCount(int client, int value);
+public static void CS_SetMVPCount(int client, int value) { throw new NotImplementedException(); }
 
 /**
  * Gets a client's contribution score (CS:GO only)
@@ -353,7 +355,7 @@ native void CS_SetMVPCount(int client, int value);
  * @return              Returns the client's score.
  * @error               Invalid client.
  */
-native int CS_GetClientContributionScore(int client);
+public static int CS_GetClientContributionScore(int client) { throw new NotImplementedException(); }
 
 /**
  * Sets a client's contribution score (CS:GO only)
@@ -362,7 +364,7 @@ native int CS_GetClientContributionScore(int client);
  * @param value         Value to set client's score as.
  * @error               Invalid client.
  */
-native void CS_SetClientContributionScore(int client, int value);
+public static void CS_SetClientContributionScore(int client, int value) { throw new NotImplementedException(); }
 
 /**
  * Gets a client's assists (CS:GO only)
@@ -371,7 +373,7 @@ native void CS_SetClientContributionScore(int client, int value);
  * @return              Returns the client's assists.
  * @error               Invalid client.
  */
-native int CS_GetClientAssists(int client);
+public static int CS_GetClientAssists(int client) { throw new NotImplementedException(); }
 
 /**
  * Sets a client's assists (CS:GO only)
@@ -380,7 +382,7 @@ native int CS_GetClientAssists(int client);
  * @param value         Value to set client's assists as.
  * @error               Invalid client.
  */
-native void CS_SetClientAssists(int client, int value);
+public static void CS_SetClientAssists(int client, int value) { throw new NotImplementedException(); }
 
 /**
  * Gets a weaponID from a alias
@@ -390,7 +392,7 @@ native void CS_SetClientAssists(int client, int value);
  *
  * @note For best results use CS_GetTranslatedWeaponAlias on the weapon name before passing it.
  */
-native CSWeaponID CS_AliasToWeaponID(const char[] alias);
+public static CSWeaponID CS_AliasToWeaponID(string alias) { throw new NotImplementedException(); }
 
 /**
  * Gets a alias from a weaponID
@@ -400,7 +402,7 @@ native CSWeaponID CS_AliasToWeaponID(const char[] alias);
  * @param len           Length of the destination array.
  * @return              Returns number of cells written.
  */
-native int CS_WeaponIDToAlias(CSWeaponID weaponID, char[] destination, int len);
+public static int CS_WeaponIDToAlias(CSWeaponID weaponID, string destination, int len) { throw new NotImplementedException(); }
 
 /**
  * Returns weather a WeaponID is valid on the current mod (css or csgo)
@@ -410,7 +412,7 @@ native int CS_WeaponIDToAlias(CSWeaponID weaponID, char[] destination, int len);
  *
  * @note This will return false always for CSWeapon_NONE. Should only be called after OnMapStart since weapon info isnt intialized before.
  */
-native bool CS_IsValidWeaponID(CSWeaponID id);
+public static bool CS_IsValidWeaponID(CSWeaponID id) { throw new NotImplementedException(); }
 
 /**
  * Sets a player's model based on their current class
@@ -418,7 +420,7 @@ native bool CS_IsValidWeaponID(CSWeaponID id);
  * @param client        Player's index.
  * @error               Invalid client index, client not in game.
  */
-native void CS_UpdateClientModel(int client);
+public static void CS_UpdateClientModel(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns a CSWeaponID equivalent based on the item definition index.
@@ -429,7 +431,7 @@ native void CS_UpdateClientModel(int client);
  *
  * @note In most cases the id will be the item definition index. Works for CS:GO ONLY.
  */
-native CSWeaponID CS_ItemDefIndexToID(int iDefIndex);
+public static CSWeaponID CS_ItemDefIndexToID(int iDefIndex) { throw new NotImplementedException(); }
 
 /**
  * Returns a item definition index equivalent based on the CSWeaponID.
@@ -440,7 +442,7 @@ native CSWeaponID CS_ItemDefIndexToID(int iDefIndex);
  *
  * @note In most cases the item deinition index will be the id. Works for CS:GO ONLY.
  */
-native int CS_WeaponIDToItemDefIndex(CSWeaponID id);
+public static int CS_WeaponIDToItemDefIndex(CSWeaponID id) { throw new NotImplementedException(); }
 
 /**
  * Do not edit below this line!
@@ -460,27 +462,29 @@ public Extension __ext_cstrike =
 #if !defined REQUIRE_EXTENSIONS
 public void __ext_cstrike_SetNTVOptional()
 {
-	MarkNativeAsOptional("CS_RespawnPlayer");
-	MarkNativeAsOptional("CS_SwitchTeam");
-	MarkNativeAsOptional("CS_DropWeapon");
-	MarkNativeAsOptional("CS_TerminateRound");
-	MarkNativeAsOptional("CS_GetTranslatedWeaponAlias");
-	MarkNativeAsOptional("CS_GetWeaponPrice");
-	MarkNativeAsOptional("CS_GetClientClanTag");
-	MarkNativeAsOptional("CS_SetClientClanTag");
-	MarkNativeAsOptional("CS_GetTeamScore");
-	MarkNativeAsOptional("CS_SetTeamScore");
-	MarkNativeAsOptional("CS_GetMVPCount");
-	MarkNativeAsOptional("CS_SetMVPCount");
-	MarkNativeAsOptional("CS_GetClientContributionScore");
-	MarkNativeAsOptional("CS_SetClientContributionScore");
-	MarkNativeAsOptional("CS_GetClientAssists");
-	MarkNativeAsOptional("CS_SetClientAssists");
-	MarkNativeAsOptional("CS_AliasToWeaponID");
-	MarkNativeAsOptional("CS_WeaponIDToAlias");
-	MarkNativeAsOptional("CS_IsValidWeaponID");
-	MarkNativeAsOptional("CS_UpdateClientModel");
-	MarkNativeAsOptional("CS_ItemDefIndexToID");
-	MarkNativeAsOptional("CS_WeaponIDToItemDefIndex");
+	MarkNativeAsOptional("CS_RespawnPlayer") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_SwitchTeam") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_DropWeapon") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_TerminateRound") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_GetTranslatedWeaponAlias") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_GetWeaponPrice") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_GetClientClanTag") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_SetClientClanTag") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_GetTeamScore") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_SetTeamScore") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_GetMVPCount") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_SetMVPCount") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_GetClientContributionScore") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_SetClientContributionScore") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_GetClientAssists") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_SetClientAssists") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_AliasToWeaponID") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_WeaponIDToAlias") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_IsValidWeaponID") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_UpdateClientModel") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_ItemDefIndexToID") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CS_WeaponIDToItemDefIndex") { throw new NotImplementedException(); }
 }
 #endif
+	}
+}

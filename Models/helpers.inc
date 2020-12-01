@@ -30,10 +30,12 @@
  * Version: $Id$
  */
  
-#if defined _helpers_included
- #endinput
-#endif
-#define _helpers_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * This function is deprecated. Use the %L format specifier instead.
@@ -46,9 +48,9 @@
  * @deprecated          Use the %L format specifier instead.
  */
 #pragma deprecated Use the %L format specifier instead.
-stock void FormatUserLogText(int client, char[] buffer, int maxlength)
+stock void FormatUserLogText(int client, string buffer, int maxlength)
 {
-	FormatEx(buffer, maxlength, "\"%L\"", client);
+	FormatEx(buffer, maxlength, "\"%L\"", client) { throw new NotImplementedException(); }
 }
 
 /**
@@ -57,26 +59,26 @@ stock void FormatUserLogText(int client, char[] buffer, int maxlength)
  * @param filename      Filename of the plugin to search for.
  * @return              Handle to plugin if found, INVALID_HANDLE otherwise.
  */
-stock Handle FindPluginByFile(const char[] filename)
+stock Handle FindPluginByFile(string filename)
 {
 	char buffer[256];
 	
-	Handle iter = GetPluginIterator();
+	Handle iter = GetPluginIterator() { throw new NotImplementedException(); }
 	Handle pl;
 	
 	while (MorePlugins(iter))
 	{
-		pl = ReadPlugin(iter);
+		pl = ReadPlugin(iter) { throw new NotImplementedException(); }
 		
-		GetPluginFilename(pl, buffer, sizeof(buffer));
+		GetPluginFilename(pl, buffer, sizeof(buffer)) { throw new NotImplementedException(); }
 		if (strcmp(buffer, filename, false) == 0)
 		{
-			CloseHandle(iter);
+			CloseHandle(iter) { throw new NotImplementedException(); }
 			return pl;
 		}
 	}
 	
-	CloseHandle(iter);
+	CloseHandle(iter) { throw new NotImplementedException(); }
 	
 	return INVALID_HANDLE;
 }
@@ -85,7 +87,7 @@ stock Handle FindPluginByFile(const char[] filename)
  * @deprecated          Use FindTarget() or ProcessTargetString().
  */
 #pragma deprecated Use FindTarget() or ProcessTargetString()
-stock int SearchForClients(const char[] pattern, int[] clients, int maxClients)
+stock int SearchForClients(string pattern, int[] clients, int maxClients)
 {
 	int total = 0;
 	
@@ -96,7 +98,7 @@ stock int SearchForClients(const char[] pattern, int[] clients, int maxClients)
 	
 	if (pattern[0] == '#')
 	{
-		int input = StringToInt(pattern[1]);
+		int input = StringToInt(pattern[1]) { throw new NotImplementedException(); }
 		if (!input) {
 			char name[MAX_NAME_LENGTH];
 			for (int i=1; i<=MaxClients; i++)
@@ -105,7 +107,7 @@ stock int SearchForClients(const char[] pattern, int[] clients, int maxClients)
 				{
 					continue;
 				}
-				GetClientName(i, name, sizeof(name));
+				GetClientName(i, name, sizeof(name)) { throw new NotImplementedException(); }
 				if (strcmp(name, pattern, false) == 0)
 				{
 					clients[0] = i;
@@ -115,7 +117,7 @@ stock int SearchForClients(const char[] pattern, int[] clients, int maxClients)
 		}
 		else
 		{
-			int client = GetClientOfUserId(input);
+			int client = GetClientOfUserId(input) { throw new NotImplementedException(); }
 			if (client)
 			{
 				clients[0] = client;
@@ -132,7 +134,7 @@ stock int SearchForClients(const char[] pattern, int[] clients, int maxClients)
 			continue;
 		}
 
-		GetClientName(i, name, sizeof(name));
+		GetClientName(i, name, sizeof(name)) { throw new NotImplementedException(); }
 		if (StrContains(name, pattern, false) != -1)
 		{
 			clients[total++] = i;
@@ -160,7 +162,7 @@ stock int SearchForClients(const char[] pattern, int[] clients, int maxClients)
  * @param immunity      Optional. Set to false to ignore target immunity.
  * @return              Index of target client, or -1 on error.
  */
-stock int FindTarget(int client, const char[] target, bool nobots = false, bool immunity = true)
+stock int FindTarget(int client, string target, bool nobots = false, bool immunity = true)
 {
 	char target_name[MAX_TARGET_LENGTH];
 	int target_list[1], target_count;
@@ -190,7 +192,7 @@ stock int FindTarget(int client, const char[] target, bool nobots = false, bool 
 		return target_list[0];
 	}
 
-	ReplyToTargetError(client, target_count);
+	ReplyToTargetError(client, target_count) { throw new NotImplementedException(); }
 	return -1;
 }
 
@@ -218,51 +220,51 @@ stock int LoadMaps(Handle array, int &fileTime = 0, Handle fileCvar = INVALID_HA
 	
 	if (fileCvar != INVALID_HANDLE)
 	{
-		GetConVarString(fileCvar, mapFile, 64);
-		BuildPath(Path_SM, mapPath, sizeof(mapPath), mapFile);
-		fileFound = FileExists(mapPath);
+		GetConVarString(fileCvar, mapFile, 64) { throw new NotImplementedException(); }
+		BuildPath(Path_SM, mapPath, sizeof(mapPath), mapFile) { throw new NotImplementedException(); }
+		fileFound = FileExists(mapPath) { throw new NotImplementedException(); }
 	}
  
 	if (!fileFound)
 	{
-		Handle mapCycleFile = FindConVar("mapcyclefile");
-		GetConVarString(mapCycleFile, mapPath, sizeof(mapPath));
-		fileFound = FileExists(mapPath);
+		Handle mapCycleFile = FindConVar("mapcyclefile") { throw new NotImplementedException(); }
+		GetConVarString(mapCycleFile, mapPath, sizeof(mapPath)) { throw new NotImplementedException(); }
+		fileFound = FileExists(mapPath) { throw new NotImplementedException(); }
 	}
 	
 	if (!fileFound)
 	{
-		LogError("Failed to find a file to load maps from. No maps loaded.");
-		ClearArray(array);
+		LogError("Failed to find a file to load maps from. No maps loaded.") { throw new NotImplementedException(); }
+		ClearArray(array) { throw new NotImplementedException(); }
 		
 		return 0;		
 	}
  
 	// If the file hasn't changed, there's no reason to reload
 	// all of the maps.
-	int newTime =  GetFileTime(mapPath, FileTime_LastChange);
+	int newTime =  GetFileTime(mapPath, FileTime_LastChange) { throw new NotImplementedException(); }
 	if (fileTime == newTime)
 	{
-		return GetArraySize(array);
+		return GetArraySize(array) { throw new NotImplementedException(); }
 	}
 	
 	fileTime = newTime;
 	
-	ClearArray(array);
+	ClearArray(array) { throw new NotImplementedException(); }
  
-	File file = OpenFile(mapPath, "rt");
+	File file = OpenFile(mapPath, "rt") { throw new NotImplementedException(); }
 	if (!file) {
-		LogError("Could not open file: %s", mapPath);
+		LogError("Could not open file: %s", mapPath) { throw new NotImplementedException(); }
 		return 0;
 	}
  
-	LogMessage("Loading maps from file: %s", mapPath);
+	LogMessage("Loading maps from file: %s", mapPath) { throw new NotImplementedException(); }
 	
 	int len;
 	char buffer[64];
 	while (!file.EndOfFile() && file.ReadLine(buffer, sizeof(buffer)))
 	{
-		TrimString(buffer);
+		TrimString(buffer) { throw new NotImplementedException(); }
  
 		if ((len = StrContains(buffer, ".bsp", false)) != -1)
 		{
@@ -279,9 +281,11 @@ stock int LoadMaps(Handle array, int &fileTime = 0, Handle fileCvar = INVALID_HA
 			continue;
 		}
  
-		PushArrayString(array, buffer);
+		PushArrayString(array, buffer) { throw new NotImplementedException(); }
 	}
  
-	file.Close();
-	return GetArraySize(array);
+	file.Close() { throw new NotImplementedException(); }
+	return GetArraySize(array) { throw new NotImplementedException(); }
+}
+	}
 }

@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_functions_included
- #endinput
-#endif
-#define _sdktools_functions_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Removes a player's item.
@@ -44,7 +46,7 @@
  * @error               Invalid client or entity, lack of mod support, or client not in
  *                      game.
  */
-native bool RemovePlayerItem(int client, int item);
+public static bool RemovePlayerItem(int client, int item) { throw new NotImplementedException(); }
 
 /**
  * Gives a named item to a player.
@@ -55,7 +57,7 @@ native bool RemovePlayerItem(int client, int item);
  * @return              Entity index on success, or -1 on failure.
  * @error               Invalid client or client not in game, or lack of mod support.
  */
-native int GivePlayerItem(int client, const char[] item, int iSubType=0);
+public static int GivePlayerItem(int client, string item, int iSubType=0) { throw new NotImplementedException(); }
 
 /**
  * Returns the weapon in a player's slot.
@@ -65,7 +67,7 @@ native int GivePlayerItem(int client, const char[] item, int iSubType=0);
  * @return              Entity index on success, -1 if no weapon existed.
  * @error               Invalid client or client not in game, or lack of mod support.
  */
-native int GetPlayerWeaponSlot(int client, int slot);
+public static int GetPlayerWeaponSlot(int client, int slot) { throw new NotImplementedException(); }
 
 /**
  * Ignites an entity on fire.
@@ -77,7 +79,7 @@ native int GetPlayerWeaponSlot(int client, int slot);
  * @param level         Unknown.
  * @error               Invalid entity or client not in game, or lack of mod support.
  */
-native void IgniteEntity(int entity, float time, bool npc=false, float size=0.0, bool level=false);
+public static void IgniteEntity(int entity, float time, bool npc=false, float size=0.0, bool level=false) { throw new NotImplementedException(); }
 
 /**
  * Extinguishes an entity that is on fire.
@@ -85,7 +87,7 @@ native void IgniteEntity(int entity, float time, bool npc=false, float size=0.0,
  * @param entity        Entity index.
  * @error               Invalid entity or client not in game, or lack of mod support.
  */
-native void ExtinguishEntity(int entity);
+public static void ExtinguishEntity(int entity) { throw new NotImplementedException(); }
 
 /**
  * Teleports an entity.
@@ -96,7 +98,7 @@ native void ExtinguishEntity(int entity);
  * @param velocity      New velocity, or NULL_VECTOR for no change.
  * @error               Invalid entity or client not in game, or lack of mod support.
  */
-native void TeleportEntity(int entity, const float origin[3] = NULL_VECTOR, const float angles[3] = NULL_VECTOR, const float velocity[3] = NULL_VECTOR);
+public static void TeleportEntity(int entity, const float origin[3] = NULL_VECTOR, const float angles[3] = NULL_VECTOR, const float velocity[3] = NULL_VECTOR) { throw new NotImplementedException(); }
 
 /**
  * Forces a player to commit suicide.
@@ -104,7 +106,7 @@ native void TeleportEntity(int entity, const float origin[3] = NULL_VECTOR, cons
  * @param client        Client index.
  * @error               Invalid client or client not in game, or lack of mod support.
  */
-native void ForcePlayerSuicide(int client);
+public static void ForcePlayerSuicide(int client) { throw new NotImplementedException(); }
 
 /**
  * Slaps a player in a random direction.
@@ -114,7 +116,7 @@ native void ForcePlayerSuicide(int client);
  * @param sound         False to disable the sound effects.
  * @error               Invalid client or client not in game, or lack of mod support.
  */
-native void SlapPlayer(int client, int health=5, bool sound=true);
+public static void SlapPlayer(int client, int health=5, bool sound=true) { throw new NotImplementedException(); }
 
 /**
  * Searches for an entity by classname.
@@ -125,7 +127,7 @@ native void SlapPlayer(int client, int health=5, bool sound=true);
  * @return              Entity index >= 0 if found, -1 otherwise.
  * @error               Lack of mod support.
  */
-native int FindEntityByClassname(int startEnt, const char[] classname);
+public static int FindEntityByClassname(int startEnt, string classname) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's eye angles.
@@ -135,7 +137,7 @@ native int FindEntityByClassname(int startEnt, const char[] classname);
  * @return              True on success, false on failure.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native bool GetClientEyeAngles(int client, float ang[3]);
+public static bool GetClientEyeAngles(int client, float ang[3]) { throw new NotImplementedException(); }
 
 /**
  * Creates an entity by string name, but does not spawn it (see DispatchSpawn).
@@ -147,7 +149,7 @@ native bool GetClientEyeAngles(int client, float ang[3]);
  * @return                  Entity index on success, or -1 on failure.
  * @error                   Invalid edict index, or no mod support.
  */
-native int CreateEntityByName(const char[] classname, int ForceEdictIndex=-1);
+public static int CreateEntityByName(string classname, int ForceEdictIndex=-1) { throw new NotImplementedException(); }
 
 /**
  * Spawns an entity into the game.
@@ -156,7 +158,7 @@ native int CreateEntityByName(const char[] classname, int ForceEdictIndex=-1);
  * @return              True on success, false otherwise.
  * @error               Invalid entity index, or no mod support.
  */
-native bool DispatchSpawn(int entity);
+public static bool DispatchSpawn(int entity) { throw new NotImplementedException(); }
 
 /**
  * Dispatches a KeyValue into given entity using a string value.
@@ -167,7 +169,7 @@ native bool DispatchSpawn(int entity);
  * @return              True on success, false otherwise.
  * @error               Invalid entity index, or no mod support.
  */
-native bool DispatchKeyValue(int entity, const char[] keyName, const char[] value);
+public static bool DispatchKeyValue(int entity, string keyName, string value) { throw new NotImplementedException(); }
 
 /**
  * Dispatches a KeyValue into given entity using a floating point value.
@@ -178,7 +180,7 @@ native bool DispatchKeyValue(int entity, const char[] keyName, const char[] valu
  * @return              True on success, false otherwise.
  * @error               Invalid entity index, or no mod support.
  */
-native bool DispatchKeyValueFloat(int entity, const char[] keyName, float value);
+public static bool DispatchKeyValueFloat(int entity, string keyName, float value) { throw new NotImplementedException(); }
 
 /**
  * Dispatches a KeyValue into given entity using a vector value.
@@ -189,7 +191,7 @@ native bool DispatchKeyValueFloat(int entity, const char[] keyName, float value)
  * @return              True on success, false otherwise.
  * @error               Invalid entity index, or no mod support.
  */
-native bool DispatchKeyValueVector(int entity, const char[] keyName, const float vec[3]);
+public static bool DispatchKeyValueVector(int entity, string keyName, const float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns the entity a client is aiming at.
@@ -201,7 +203,7 @@ native bool DispatchKeyValueVector(int entity, const char[] keyName, const float
  *                      -2 if the function is not supported.
  * @error               Invalid client index or client not in game.
  */
-native int GetClientAimTarget(int client, bool only_clients=true);
+public static int GetClientAimTarget(int client, bool only_clients=true) { throw new NotImplementedException(); }
 
 /**
  * Returns the total number of teams in a game.
@@ -209,7 +211,7 @@ native int GetClientAimTarget(int client, bool only_clients=true);
  *
  * @return              Total number of teams.
  */
-native int GetTeamCount();
+public static int GetTeamCount() { throw new NotImplementedException(); }
 
 /**
  * Retrieves the team name based on a team index.
@@ -220,7 +222,7 @@ native int GetTeamCount();
  * @param maxlength     Maximum length of string buffer.
  * @error               Invalid team index.
  */
-native void GetTeamName(int index, char[] name, int maxlength);
+public static void GetTeamName(int index, string name, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Returns the score of a team based on a team index.
@@ -230,7 +232,7 @@ native void GetTeamName(int index, char[] name, int maxlength);
  * @return              Score.
  * @error               Invalid team index.
  */
-native int GetTeamScore(int index);
+public static int GetTeamScore(int index) { throw new NotImplementedException(); }
 
 /**
  * Sets the score of a team based on a team index.
@@ -240,7 +242,7 @@ native int GetTeamScore(int index);
  * @param value         New score value.
  * @error               Invalid team index.
  */
-native void SetTeamScore(int index, int value);
+public static void SetTeamScore(int index, int value) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the number of players in a certain team.
@@ -250,7 +252,7 @@ native void SetTeamScore(int index, int value);
  * @return              Number of players in the team.
  * @error               Invalid team index.
  */
-native int GetTeamClientCount(int index);
+public static int GetTeamClientCount(int index) { throw new NotImplementedException(); }
 
 /**
  * Returns the entity index of a team.
@@ -259,7 +261,7 @@ native int GetTeamClientCount(int index);
  * @return              Entity index of team.
  * @error               Invalid team index.
  */
-native int GetTeamEntity(int teamIndex);
+public static int GetTeamEntity(int teamIndex) { throw new NotImplementedException(); }
 
 /**
  * Sets the model to a given entity.
@@ -268,7 +270,7 @@ native int GetTeamEntity(int teamIndex);
  * @param model         Model name.
  * @error               Invalid entity index, or no mod support.
  */
-native void SetEntityModel(int entity, const char[] model);
+public static void SetEntityModel(int entity, string model) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the decal file name associated with a given client.
@@ -279,7 +281,7 @@ native void SetEntityModel(int entity, const char[] model);
  * @return              True on success, otherwise false.
  * @error               Invalid client or client not in game.
  */
-native bool GetPlayerDecalFile(int client, char[] hex, int maxlength);
+public static bool GetPlayerDecalFile(int client, string hex, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the jingle file name associated with a given client.
@@ -290,7 +292,7 @@ native bool GetPlayerDecalFile(int client, char[] hex, int maxlength);
  * @return              True on success, otherwise false.
  * @error               Invalid client or client not in game.
  */
-native bool GetPlayerJingleFile(int client, char[] hex, int maxlength);
+public static bool GetPlayerJingleFile(int client, string hex, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Returns the average server network traffic in bytes/sec.
@@ -298,7 +300,7 @@ native bool GetPlayerJingleFile(int client, char[] hex, int maxlength);
  * @param in            Buffer to store the input traffic velocity.
  * @param out           Buffer to store the output traffic velocity.
  */
-native void GetServerNetStats(float &inAmount, float &outAmout);
+public static void GetServerNetStats(float &inAmount, float &outAmout) { throw new NotImplementedException(); }
 
 /**
  * Equip's a player's weapon.
@@ -308,7 +310,7 @@ native void GetServerNetStats(float &inAmount, float &outAmout);
  * @error               Invalid client or entity, lack of mod support, or client not in
  *                      game.
  */
-native void EquipPlayerWeapon(int client, int weapon);
+public static void EquipPlayerWeapon(int client, int weapon) { throw new NotImplementedException(); }
 
 /**
  * Activates an entity (CBaseAnimating::Activate)
@@ -316,7 +318,7 @@ native void EquipPlayerWeapon(int client, int weapon);
  * @param entity        Entity index.
  * @error               Invalid entity or lack of mod support.
  */
-native void ActivateEntity(int entity);
+public static void ActivateEntity(int entity) { throw new NotImplementedException(); }
 
 /**
  * Sets values to client info buffer keys and notifies the engine of the change.
@@ -327,7 +329,7 @@ native void ActivateEntity(int entity);
  * @param value         Value string.
  * @error               Invalid client index, or client not connected.
  */
-native void SetClientInfo(int client, const char[] key, const char[] value);
+public static void SetClientInfo(int client, string key, string value) { throw new NotImplementedException(); }
 
 /**
  * Changes a client's name.
@@ -336,7 +338,7 @@ native void SetClientInfo(int client, const char[] key, const char[] value);
  * @param name          New name.
  * @error               Invalid client index, or client not connected.
  */
-native void SetClientName(int client, const char[] name);
+public static void SetClientName(int client, string name) { throw new NotImplementedException(); }
 
 /**
  * Gives ammo of a certain type to a player.
@@ -348,4 +350,6 @@ native void SetClientName(int client, const char[] name);
  * @param suppressSound If true, don't play the ammo pickup sound.
  * @return              Amount of ammo actually given.
  */
-native int GivePlayerAmmo(int client, int amount, int ammotype, bool suppressSound=false);
+public static int GivePlayerAmmo(int client, int amount, int ammotype, bool suppressSound=false) { throw new NotImplementedException(); }
+	}
+}

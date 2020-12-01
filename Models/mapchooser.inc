@@ -32,7 +32,7 @@
 #if defined _mapchooser_included_
  #endinput
 #endif
-#define _mapchooser_included_
+public const object _mapchooser_included_
 
 enum NominateResult
 {
@@ -59,7 +59,7 @@ enum MapChange
  *                      Use 0 for constant nominations
  * @return              Nominate Result of the outcome
  */
-native NominateResult NominateMap(const char[] map, bool force, int owner);
+public static NominateResult NominateMap(string map, bool force, int owner) { throw new NotImplementedException(); }
 
 /**
  * Attempt to remove a map from the mapchooser map list.
@@ -67,7 +67,7 @@ native NominateResult NominateMap(const char[] map, bool force, int owner);
  * @param map           Map to remove.
  * @return              True if the nomination was found and removed, or false if the nomination was not found.
  */
-native bool RemoveNominationByMap(const char[] map);
+public static bool RemoveNominationByMap(string map) { throw new NotImplementedException(); }
 
 /**
  * Attempt to remove a map from the mapchooser map list.
@@ -75,14 +75,14 @@ native bool RemoveNominationByMap(const char[] map);
  * @param owner         Client index of the nominator.
  * @return              True if the nomination was found and removed, or false if the nomination was not found.
  */
-native bool RemoveNominationByOwner(int owner);
+public static bool RemoveNominationByOwner(int owner) { throw new NotImplementedException(); }
 
 /**
  * Gets the current list of excluded maps.
  *
  * @param array         An ADT array handle to add the map strings to.
  */
-native void GetExcludeMapList(ArrayList array);
+public static void GetExcludeMapList(ArrayList array) { throw new NotImplementedException(); }
 
 /**
  * Gets the current list of nominated maps.
@@ -90,14 +90,14 @@ native void GetExcludeMapList(ArrayList array);
  * @param maparray      An ADT array handle to add the map strings to.
  * @param ownerarray    An optional ADT array handle to add the nominator client indexes to.
  */
-native void GetNominatedMapList(ArrayList maparray, ArrayList ownerarray = null);
+public static void GetNominatedMapList(ArrayList maparray, ArrayList ownerarray = null) { throw new NotImplementedException(); }
 
 /**
  * Checks if MapChooser will allow a vote
  *
  * @return              True if a vote can be held, or false if mapchooser is already holding a vote.
  */
-native bool CanMapChooserStartVote();
+public static bool CanMapChooserStartVote() { throw new NotImplementedException(); }
 
 /**
  * Initiates a MapChooser map vote
@@ -108,32 +108,32 @@ native bool CanMapChooserStartVote();
  * @param when          MapChange consant of when the resulting mapchange should occur.
  * @param inputarray    ADT array list of maps to add to the vote.
  */
-native void InitiateMapChooserVote(MapChange when, ArrayList inputarray=null);
+public static void InitiateMapChooserVote(MapChange when, ArrayList inputarray=null) { throw new NotImplementedException(); }
 
 /**
  * Checks if MapChooser's end of map vote has completed.
  *
  * @return              True if complete, false otherwise.
  */
-native bool HasEndOfMapVoteFinished();
+public static bool HasEndOfMapVoteFinished() { throw new NotImplementedException(); }
 
 /**
  * Checks if MapChooser is set to run an end of map vote.
  *
  * @return              True if enabled, false otherwise.
  */
-native bool EndOfMapVoteEnabled();
+public static bool EndOfMapVoteEnabled() { throw new NotImplementedException(); }
 
 /**
  * Called when mapchooser removes a nomination from its list.
  * Nominations cleared on map start will not trigger this forward
  */
-forward void OnNominationRemoved(const char[] map, int owner);
+public static override void OnNominationRemoved(string map, int owner) { throw new NotImplementedException(); }
 
 /**
  * Called when mapchooser starts a Map Vote.
  */
-forward void OnMapVoteStarted();
+public static override void OnMapVoteStarted() { throw new NotImplementedException(); }
 
 public SharedPlugin __pl_mapchooser =
 {
@@ -148,13 +148,15 @@ public SharedPlugin __pl_mapchooser =
 
 public void __pl_mapchooser_SetNTVOptional()
 {
-	MarkNativeAsOptional("NominateMap");
-	MarkNativeAsOptional("RemoveNominationByMap");
-	MarkNativeAsOptional("RemoveNominationByOwner");
-	MarkNativeAsOptional("GetExcludeMapList");
-	MarkNativeAsOptional("GetNominatedMapList");
-	MarkNativeAsOptional("CanMapChooserStartVote");
-	MarkNativeAsOptional("InitiateMapChooserVote");
-	MarkNativeAsOptional("HasEndOfMapVoteFinished");
-	MarkNativeAsOptional("EndOfMapVoteEnabled");
+	MarkNativeAsOptional("NominateMap") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("RemoveNominationByMap") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("RemoveNominationByOwner") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GetExcludeMapList") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GetNominatedMapList") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("CanMapChooserStartVote") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("InitiateMapChooserVote") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("HasEndOfMapVoteFinished") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("EndOfMapVoteEnabled") { throw new NotImplementedException(); }
+}
+	}
 }

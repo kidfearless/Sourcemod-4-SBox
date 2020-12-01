@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _version_included
- #endinput
-#endif
-#define _version_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 #tryinclude <version_auto>
 
@@ -47,3 +49,5 @@
 
  #define SOURCEMOD_VERSION       "1.11.0-manual" /**< SourceMod version string (major.minor.release-tag) */
 #endif
+	}
+}

@@ -30,21 +30,25 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_client_included
- #endinput
-#endif
-#define _sdktools_client_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Sets the client to an inactive state waiting for a new map
  *
  * @param client        The client index
  */
-native void InactivateClient(int client);
+public static void InactivateClient(int client) { throw new NotImplementedException(); }
 
 /**
  * Reconnect a client without dropping the netchannel
  *
  * @param client        The client index
  */
-native void ReconnectClient(int client);
+public static void ReconnectClient(int client) { throw new NotImplementedException(); }
+	}
+}

@@ -30,28 +30,30 @@
  * Version: $Id$
  */
  
-#if defined _commandfilters_included
- #endinput
-#endif
-#define _commandfilters_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
-#define MAX_TARGET_LENGTH           64
+public const object MAX_TARGET_LENGTH           64
 
-#define COMMAND_FILTER_ALIVE        (1<<0)      /**< Only allow alive players */
-#define COMMAND_FILTER_DEAD         (1<<1)      /**< Only filter dead players */
-#define COMMAND_FILTER_CONNECTED    (1<<2)      /**< Allow players not fully in-game */
-#define COMMAND_FILTER_NO_IMMUNITY  (1<<3)      /**< Ignore immunity rules */
-#define COMMAND_FILTER_NO_MULTI     (1<<4)      /**< Do not allow multiple target patterns */
-#define COMMAND_FILTER_NO_BOTS      (1<<5)      /**< Do not allow bots to be targetted */
+public const object COMMAND_FILTER_ALIVE        (1<<0)      /**< Only allow alive players */
+public const object COMMAND_FILTER_DEAD         (1<<1)      /**< Only filter dead players */
+public const object COMMAND_FILTER_CONNECTED    (1<<2)      /**< Allow players not fully in-game */
+public const object COMMAND_FILTER_NO_IMMUNITY  (1<<3)      /**< Ignore immunity rules */
+public const object COMMAND_FILTER_NO_MULTI     (1<<4)      /**< Do not allow multiple target patterns */
+public const object COMMAND_FILTER_NO_BOTS      (1<<5)      /**< Do not allow bots to be targetted */
 
-#define COMMAND_TARGET_NONE          0          /**< No target was found */
-#define COMMAND_TARGET_NOT_ALIVE    -1          /**< Single client is not alive */
-#define COMMAND_TARGET_NOT_DEAD     -2          /**< Single client is not dead */
-#define COMMAND_TARGET_NOT_IN_GAME  -3          /**< Single client is not in game */
-#define COMMAND_TARGET_IMMUNE       -4          /**< Single client is immune */
-#define COMMAND_TARGET_EMPTY_FILTER -5          /**< A multi-filter (such as @all) had no targets */
-#define COMMAND_TARGET_NOT_HUMAN    -6          /**< Target was not human */
-#define COMMAND_TARGET_AMBIGUOUS    -7          /**< Partial name had too many targets */
+public const object COMMAND_TARGET_NONE          0          /**< No target was found */
+public const object COMMAND_TARGET_NOT_ALIVE    -1          /**< Single client is not alive */
+public const object COMMAND_TARGET_NOT_DEAD     -2          /**< Single client is not dead */
+public const object COMMAND_TARGET_NOT_IN_GAME  -3          /**< Single client is not in game */
+public const object COMMAND_TARGET_IMMUNE       -4          /**< Single client is immune */
+public const object COMMAND_TARGET_EMPTY_FILTER -5          /**< A multi-filter (such as @all) had no targets */
+public const object COMMAND_TARGET_NOT_HUMAN    -6          /**< Target was not human */
+public const object COMMAND_TARGET_AMBIGUOUS    -7          /**< Partial name had too many targets */
 
 /**
  * Processes a generic command target string, and resolves it to a list 
@@ -75,14 +77,14 @@
  *                      if one valid client is found.  Otherwise, a COMMAND_TARGET reason 
  *                      for failure is returned.
  */
-native int ProcessTargetString(const char[] pattern,
+public static int ProcessTargetString(string pattern,
 							   int admin, 
 							   int[] targets,
 							   int max_targets,
 							   int filter_flags,
-							   char[] target_name,
+							   string target_name,
 							   int tn_maxlength,
-							   bool &tn_is_ml);
+							   bool &tn_is_ml) { throw new NotImplementedException(); }
 
 /**
  * Replies to a client with a given message describing a targetting 
@@ -99,35 +101,35 @@ stock void ReplyToTargetError(int client, int reason)
 	{
 		case COMMAND_TARGET_NONE:
 		{
-			ReplyToCommand(client, "[SM] %t", "No matching client");
+			ReplyToCommand(client, "[SM] %t", "No matching client") { throw new NotImplementedException(); }
 		}
 		case COMMAND_TARGET_NOT_ALIVE:
 		{
-			ReplyToCommand(client, "[SM] %t", "Target must be alive");
+			ReplyToCommand(client, "[SM] %t", "Target must be alive") { throw new NotImplementedException(); }
 		}
 		case COMMAND_TARGET_NOT_DEAD:
 		{
-			ReplyToCommand(client, "[SM] %t", "Target must be dead");
+			ReplyToCommand(client, "[SM] %t", "Target must be dead") { throw new NotImplementedException(); }
 		}
 		case COMMAND_TARGET_NOT_IN_GAME:
 		{
-			ReplyToCommand(client, "[SM] %t", "Target is not in game");
+			ReplyToCommand(client, "[SM] %t", "Target is not in game") { throw new NotImplementedException(); }
 		}
 		case COMMAND_TARGET_IMMUNE:
 		{
-			ReplyToCommand(client, "[SM] %t", "Unable to target");
+			ReplyToCommand(client, "[SM] %t", "Unable to target") { throw new NotImplementedException(); }
 		}
 		case COMMAND_TARGET_EMPTY_FILTER:
 		{
-			ReplyToCommand(client, "[SM] %t", "No matching clients");
+			ReplyToCommand(client, "[SM] %t", "No matching clients") { throw new NotImplementedException(); }
 		}
 		case COMMAND_TARGET_NOT_HUMAN:
 		{
-			ReplyToCommand(client, "[SM] %t", "Cannot target bot");
+			ReplyToCommand(client, "[SM] %t", "Cannot target bot") { throw new NotImplementedException(); }
 		}
 		case COMMAND_TARGET_AMBIGUOUS:
 		{
-			ReplyToCommand(client, "[SM] %t", "More than one client matched");
+			ReplyToCommand(client, "[SM] %t", "More than one client matched") { throw new NotImplementedException(); }
 		}
 	}
 }
@@ -140,8 +142,8 @@ stock void ReplyToTargetError(int client, int reason)
  * @return              True if pattern was recognized, false otherwise.
  */
 typeset MultiTargetFilter {
-	function bool (const char[] pattern, Handle clients);
-	function bool (const char[] pattern, ArrayList clients);
+	function bool (string pattern, Handle clients) { throw new NotImplementedException(); }
+	function bool (string pattern, ArrayList clients) { throw new NotImplementedException(); }
 }
 
 /**
@@ -152,8 +154,8 @@ typeset MultiTargetFilter {
  * @param phrase        Descriptive phrase to display on successful match.
  * @param phraseIsML    True if phrase is multi-lingual, false otherwise.
  */
-native void AddMultiTargetFilter(const char[] pattern, MultiTargetFilter filter,
-                                 const char[] phrase, bool phraseIsML);
+public static void AddMultiTargetFilter(string pattern, MultiTargetFilter filter,
+                                 string phrase, bool phraseIsML) { throw new NotImplementedException(); }
 
 /**
  * Removes a multi-target filter function from ProcessTargetString().
@@ -161,4 +163,6 @@ native void AddMultiTargetFilter(const char[] pattern, MultiTargetFilter filter,
  * @param pattern       Pattern to match (case sensitive).
  * @param filter        Filter function.
  */
-native void RemoveMultiTargetFilter(const char[] pattern, MultiTargetFilter filter);
+public static void RemoveMultiTargetFilter(string pattern, MultiTargetFilter filter) { throw new NotImplementedException(); }
+	}
+}

@@ -30,12 +30,14 @@
  * Version: $Id$
  */
 
-#if defined _functions_included
- #endinput
-#endif
-#define _functions_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
-#define SP_PARAMFLAG_BYREF  (1<<0)  /**< Internal use only. */
+public const object SP_PARAMFLAG_BYREF  (1<<0)  /**< Internal use only. */
 
 /**
  * Describes the various ways to pass parameters to functions or forwards.
@@ -53,7 +55,7 @@ enum ParamType
 };
 
 /**
- * Defines how a forward iterates through plugin functions.
+ * Defines how a public static override iterates through plugin functions.
  */
 enum ExecType
 {
@@ -67,11 +69,11 @@ enum ExecType
  * @section Flags that are used with Call_PushArrayEx() and Call_PushStringEx()
  */
 
-#define SM_PARAM_COPYBACK       (1<<0)      /**< Copy an array/reference back after call */
+public const object SM_PARAM_COPYBACK       (1<<0)      /**< Copy an array/reference back after call */
 
-#define SM_PARAM_STRING_UTF8    (1<<0)      /**< String should be UTF-8 handled */
-#define SM_PARAM_STRING_COPY    (1<<1)      /**< String should be copied into the plugin */
-#define SM_PARAM_STRING_BINARY  (1<<2)      /**< Treat the string as a binary string */
+public const object SM_PARAM_STRING_UTF8    (1<<0)      /**< String should be UTF-8 handled */
+public const object SM_PARAM_STRING_COPY    (1<<1)      /**< String should be copied into the plugin */
+public const object SM_PARAM_STRING_BINARY  (1<<2)      /**< Treat the string as a binary string */
 
 /**
  * @endsection
@@ -80,41 +82,41 @@ enum ExecType
 /**
  * @section Error codes
  */
-#define SP_ERROR_NONE                   0   /**< No error occurred */
-#define SP_ERROR_FILE_FORMAT            1   /**< File format unrecognized */
-#define SP_ERROR_DECOMPRESSOR           2   /**< A decompressor was not found */
-#define SP_ERROR_HEAPLOW                3   /**< Not enough space left on the heap */
-#define SP_ERROR_PARAM                  4   /**< Invalid parameter or parameter type */
-#define SP_ERROR_INVALID_ADDRESS        5   /**< A memory address was not valid */
-#define SP_ERROR_NOT_FOUND              6   /**< The object in question was not found */
-#define SP_ERROR_INDEX                  7   /**< Invalid index parameter */
-#define SP_ERROR_STACKLOW               8   /**< Not enough space left on the stack */
-#define SP_ERROR_NOTDEBUGGING           9   /**< Debug mode was not on or debug section not found */
-#define SP_ERROR_INVALID_INSTRUCTION    10  /**< Invalid instruction was encountered */
-#define SP_ERROR_MEMACCESS              11  /**< Invalid memory access */
-#define SP_ERROR_STACKMIN               12  /**< Stack went beyond its minimum value */
-#define SP_ERROR_HEAPMIN                13  /**< Heap went beyond its minimum value */
-#define SP_ERROR_DIVIDE_BY_ZERO         14  /**< Division by zero */
-#define SP_ERROR_ARRAY_BOUNDS           15  /**< Array index is out of bounds */
-#define SP_ERROR_INSTRUCTION_PARAM      16  /**< Instruction had an invalid parameter */
-#define SP_ERROR_STACKLEAK              17  /**< A native leaked an item on the stack */
-#define SP_ERROR_HEAPLEAK               18  /**< A native leaked an item on the heap */
-#define SP_ERROR_ARRAY_TOO_BIG          19  /**< A dynamic array is too big */
-#define SP_ERROR_TRACKER_BOUNDS         20  /**< Tracker stack is out of bounds */
-#define SP_ERROR_INVALID_NATIVE         21  /**< Native was pending or invalid */
-#define SP_ERROR_PARAMS_MAX             22  /**< Maximum number of parameters reached */
-#define SP_ERROR_NATIVE                 23  /**< Error originates from a native */
-#define SP_ERROR_NOT_RUNNABLE           24  /**< Function or plugin is not runnable */
-#define SP_ERROR_ABORTED                25  /**< Function call was aborted */
+public const object SP_ERROR_NONE                   0   /**< No error occurred */
+public const object SP_ERROR_FILE_FORMAT            1   /**< File format unrecognized */
+public const object SP_ERROR_DECOMPRESSOR           2   /**< A decompressor was not found */
+public const object SP_ERROR_HEAPLOW                3   /**< Not enough space left on the heap */
+public const object SP_ERROR_PARAM                  4   /**< Invalid parameter or parameter type */
+public const object SP_ERROR_INVALID_ADDRESS        5   /**< A memory address was not valid */
+public const object SP_ERROR_NOT_FOUND              6   /**< The object in question was not found */
+public const object SP_ERROR_INDEX                  7   /**< Invalid index parameter */
+public const object SP_ERROR_STACKLOW               8   /**< Not enough space left on the stack */
+public const object SP_ERROR_NOTDEBUGGING           9   /**< Debug mode was not on or debug section not found */
+public const object SP_ERROR_INVALID_INSTRUCTION    10  /**< Invalid instruction was encountered */
+public const object SP_ERROR_MEMACCESS              11  /**< Invalid memory access */
+public const object SP_ERROR_STACKMIN               12  /**< Stack went beyond its minimum value */
+public const object SP_ERROR_HEAPMIN                13  /**< Heap went beyond its minimum value */
+public const object SP_ERROR_DIVIDE_BY_ZERO         14  /**< Division by zero */
+public const object SP_ERROR_ARRAY_BOUNDS           15  /**< Array index is out of bounds */
+public const object SP_ERROR_INSTRUCTION_PARAM      16  /**< Instruction had an invalid parameter */
+public const object SP_ERROR_STACKLEAK              17  /**< A native leaked an item on the stack */
+public const object SP_ERROR_HEAPLEAK               18  /**< A native leaked an item on the heap */
+public const object SP_ERROR_ARRAY_TOO_BIG          19  /**< A dynamic array is too big */
+public const object SP_ERROR_TRACKER_BOUNDS         20  /**< Tracker stack is out of bounds */
+public const object SP_ERROR_INVALID_NATIVE         21  /**< Native was pending or invalid */
+public const object SP_ERROR_PARAMS_MAX             22  /**< Maximum number of parameters reached */
+public const object SP_ERROR_NATIVE                 23  /**< Error originates from a native */
+public const object SP_ERROR_NOT_RUNNABLE           24  /**< Function or plugin is not runnable */
+public const object SP_ERROR_ABORTED                25  /**< Function call was aborted */
 
 /**
  * @endsection
  */
 
-methodmap GlobalForward < Handle {
+methodmap Globalpublic static override < Handle {
 	// Creates a global forward.
 	//
-	// @note The name used to create the forward is used as its public function in all target plugins.
+	// @note The name used to create the public static override is used as its public function in all target plugins.
 	// @note This is ideal for global, static forwards that are never changed.
 	// @note Global forwards cannot be cloned.
 	// @note Use CloseHandle() to destroy these.
@@ -124,15 +126,15 @@ methodmap GlobalForward < Handle {
 	// @param ...               Variable number of parameter types (up to 32).
 	// @return                  Handle to new global forward.
 	// @error                   More than 32 parameter types passed.
-	public native GlobalForward(const char[] name, ExecType type, ParamType ...);
+	public native GlobalForward(string name, ExecType type, ParamType ...) { throw new NotImplementedException(); }
 
 	// Returns the number of functions in a global or private forward's call list.
 	property int FunctionCount {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 };
 
-methodmap PrivateForward < GlobalForward {
+methodmap Privatepublic static override < Globalpublic static override {
 	// Creates a private forward.
 	//
 	// @note No functions are automatically added. Use AddToForward() to do this.
@@ -143,7 +145,7 @@ methodmap PrivateForward < GlobalForward {
 	// @param ...           Variable number of parameter types (up to 32).
 	// @return              Handle to new private forward.
 	// @error               More than 32 parameter types passed.
-	public native PrivateForward(ExecType type, ParamType ...);
+	public native PrivateForward(ExecType type, ParamType ...) { throw new NotImplementedException(); }
 
 	// Adds a function to a private forward's call list.
 	//
@@ -153,8 +155,8 @@ methodmap PrivateForward < GlobalForward {
 	//                      Pass INVALID_HANDLE to specify the calling plugin.
 	// @param func          Function to add to forward.
 	// @return              True on success, false otherwise.
-	// @error               Invalid or corrupt private forward handle, invalid or corrupt plugin handle, or invalid function.
-	public native bool AddFunction(Handle plugin, Function func);
+	// @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
+	public native bool AddFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
 
 	// Removes a function from a private forward's call list.
 	//
@@ -165,8 +167,8 @@ methodmap PrivateForward < GlobalForward {
 	//                      Pass INVALID_HANDLE to specify the calling plugin.
 	// @param func          Function to remove from forward.
 	// @return              True on success, false otherwise.
-	// @error               Invalid or corrupt private forward handle, invalid or corrupt plugin handle, or invalid function.
-	public native bool RemoveFunction(Handle plugin, Function func);
+	// @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
+	public native bool RemoveFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
 
 	// Removes all instances of a plugin from a private forward's call list.
 	//
@@ -175,8 +177,8 @@ methodmap PrivateForward < GlobalForward {
 	// @param plugin        Handle of the plugin to remove instances of.
 	//                      Pass INVALID_HANDLE to specify the calling plugin.
 	// @return              Number of functions removed from forward.
-	// @error               Invalid or corrupt private forward handle or invalid or corrupt plugin handle.
-	public native int RemoveAllFunctions(Handle plugin);
+	// @error               Invalid or corrupt private public static override handle or invalid or corrupt plugin handle.
+	public native int RemoveAllFunctions(Handle plugin) { throw new NotImplementedException(); }
 };
 
 /**
@@ -188,12 +190,12 @@ methodmap PrivateForward < GlobalForward {
  * @return              Function id or INVALID_FUNCTION if not found.
  * @error               Invalid or corrupt plugin handle.
  */
-native Function GetFunctionByName(Handle plugin, const char[] name);
+public static Function GetFunctionByName(Handle plugin, string name) { throw new NotImplementedException(); }
 
 /**
  * Creates a global forward.
  *
- * @note The name used to create the forward is used as its public function in all target plugins.
+ * @note The name used to create the public static override is used as its public function in all target plugins.
  * @note This is ideal for global, static forwards that are never changed.
  * @note Global forwards cannot be cloned.
  * @note Use CloseHandle() to destroy these.
@@ -204,7 +206,7 @@ native Function GetFunctionByName(Handle plugin, const char[] name);
  * @return              Handle to new global forward.
  * @error               More than 32 parameter types passed.
  */
-native GlobalForward CreateGlobalForward(const char[] name, ExecType type, ParamType ...);
+public static Globalpublic static override CreateGlobalForward(string name, ExecType type, ParamType ...) { throw new NotImplementedException(); }
 
 /**
  * Creates a private forward.
@@ -218,16 +220,16 @@ native GlobalForward CreateGlobalForward(const char[] name, ExecType type, Param
  * @return              Handle to new private forward.
  * @error               More than 32 parameter types passed.
  */
-native PrivateForward CreateForward(ExecType type, ParamType ...);
+public static Privatepublic static override CreateForward(ExecType type, ParamType ...) { throw new NotImplementedException(); }
 
 /**
  * Returns the number of functions in a global or private forward's call list.
  *
  * @param fwd           Handle to global or private forward.
  * @return              Number of functions in forward.
- * @error               Invalid or corrupt forward handle.
+ * @error               Invalid or corrupt public static override handle.
  */
-native int GetForwardFunctionCount(Handle fwd);
+public static int GetForwardFunctionCount(Handle fwd) { throw new NotImplementedException(); }
 
 /**
  * Adds a function to a private forward's call list.
@@ -239,9 +241,9 @@ native int GetForwardFunctionCount(Handle fwd);
  *                      Pass INVALID_HANDLE to specify the calling plugin.
  * @param func          Function to add to forward.
  * @return              True on success, false otherwise.
- * @error               Invalid or corrupt private forward handle, invalid or corrupt plugin handle, or invalid function.
+ * @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
  */
-native bool AddToForward(Handle fwd, Handle plugin, Function func);
+public static bool AddToForward(Handle fwd, Handle plugin, Function func) { throw new NotImplementedException(); }
 
 /**
  * Removes a function from a private forward's call list.
@@ -254,9 +256,9 @@ native bool AddToForward(Handle fwd, Handle plugin, Function func);
  *                      Pass INVALID_HANDLE to specify the calling plugin.
  * @param func          Function to remove from forward.
  * @return              True on success, false otherwise.
- * @error               Invalid or corrupt private forward handle, invalid or corrupt plugin handle, or invalid function.
+ * @error               Invalid or corrupt private public static override handle, invalid or corrupt plugin handle, or invalid function.
  */
-native bool RemoveFromForward(Handle fwd, Handle plugin, Function func);
+public static bool RemoveFromForward(Handle fwd, Handle plugin, Function func) { throw new NotImplementedException(); }
 
 /**
  * Removes all instances of a plugin from a private forward's call list.
@@ -267,9 +269,9 @@ native bool RemoveFromForward(Handle fwd, Handle plugin, Function func);
  * @param plugin        Handle of the plugin to remove instances of.
  *                      Pass INVALID_HANDLE to specify the calling plugin.
  * @return              Number of functions removed from forward.
- * @error               Invalid or corrupt private forward handle or invalid or corrupt plugin handle.
+ * @error               Invalid or corrupt private public static override handle or invalid or corrupt plugin handle.
  */
-native int RemoveAllFromForward(Handle fwd, Handle plugin);
+public static int RemoveAllFromForward(Handle fwd, Handle plugin) { throw new NotImplementedException(); }
 
 /**
  * Starts a call to functions in a forward's call list.
@@ -277,9 +279,9 @@ native int RemoveAllFromForward(Handle fwd, Handle plugin);
  * @note Cannot be used during an incomplete call.
  *
  * @param fwd           Handle to global or private forward.
- * @error               Invalid or corrupt forward handle or called before another call has completed.
+ * @error               Invalid or corrupt public static override handle or called before another call has completed.
  */
-native void Call_StartForward(Handle fwd);
+public static void Call_StartForward(Handle fwd) { throw new NotImplementedException(); }
 
 /**
  * Starts a call to a function.
@@ -291,7 +293,7 @@ native void Call_StartForward(Handle fwd);
  * @param func          Function to call.
  * @error               Invalid or corrupt plugin handle, invalid function, or called before another call has completed.
  */
-native void Call_StartFunction(Handle plugin, Function func);
+public static void Call_StartFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
 
 /**
  * Pushes a cell onto the current call.
@@ -301,7 +303,7 @@ native void Call_StartFunction(Handle plugin, Function func);
  * @param value         Cell value to push.
  * @error               Called before a call has been started.
  */
-native void Call_PushCell(any value);
+public static void Call_PushCell(any value) { throw new NotImplementedException(); }
 
 /**
  * Pushes a cell by reference onto the current call.
@@ -311,7 +313,7 @@ native void Call_PushCell(any value);
  * @param value         Cell reference to push.
  * @error               Called before a call has been started.
  */
-native void Call_PushCellRef(any &value);
+public static void Call_PushCellRef(any &value) { throw new NotImplementedException(); }
 
 /**
  * Pushes a float onto the current call.
@@ -321,7 +323,7 @@ native void Call_PushCellRef(any &value);
  * @param value         Floating point value to push.
  * @error               Called before a call has been started.
  */
-native void Call_PushFloat(float value);
+public static void Call_PushFloat(float value) { throw new NotImplementedException(); }
 
 /**
  * Pushes a float by reference onto the current call.
@@ -331,7 +333,7 @@ native void Call_PushFloat(float value);
  * @param value         Floating point reference to push.
  * @error               Called before a call has been started.
  */
-native void Call_PushFloatRef(float &value);
+public static void Call_PushFloatRef(float &value) { throw new NotImplementedException(); }
 
 /**
  * Pushes an array onto the current call.
@@ -343,7 +345,7 @@ native void Call_PushFloatRef(float &value);
  * @param size          Size of array.
  * @error               Called before a call has been started.
  */
-native void Call_PushArray(const any[] value, int size);
+public static void Call_PushArray(const any[] value, int size) { throw new NotImplementedException(); }
 
 /**
  * Pushes an array onto the current call.
@@ -356,7 +358,7 @@ native void Call_PushArray(const any[] value, int size);
  *                      See SP_PARAM_* constants for details.
  * @error               Called before a call has been started.
  */
-native void Call_PushArrayEx(any[] value, int size, int cpflags);
+public static void Call_PushArrayEx(any[] value, int size, int cpflags) { throw new NotImplementedException(); }
 
 /**
  * Pushes the NULL_VECTOR onto the current call.
@@ -366,7 +368,7 @@ native void Call_PushArrayEx(any[] value, int size, int cpflags);
  *
  * @error               Called before a call has been started.
  */
-native void Call_PushNullVector();
+public static void Call_PushNullVector() { throw new NotImplementedException(); }
 
 /**
  * Pushes a string onto the current call.
@@ -377,7 +379,7 @@ native void Call_PushNullVector();
  * @param value         String to push.
  * @error               Called before a call has been started.
  */
-native void Call_PushString(const char[] value);
+public static void Call_PushString(string value) { throw new NotImplementedException(); }
 
 /**
  * Pushes a string onto the current call.
@@ -393,7 +395,7 @@ native void Call_PushString(const char[] value);
  *                      See SM_PARAM_* constants for details.
  * @error               Called before a call has been started.
  */
-native void Call_PushStringEx(char[] value, int length, int szflags, int cpflags);
+public static void Call_PushStringEx(string value, int length, int szflags, int cpflags) { throw new NotImplementedException(); }
 
 /**
  * Pushes the NULL_STRING onto the current call.
@@ -403,7 +405,7 @@ native void Call_PushStringEx(char[] value, int length, int szflags, int cpflags
  *
  * @error               Called before a call has been started.
  */
-native void Call_PushNullString();
+public static void Call_PushNullString() { throw new NotImplementedException(); }
 
 /**
  * Completes a call to a function or forward's call list.
@@ -414,7 +416,7 @@ native void Call_PushNullString();
  * @return              SP_ERROR_NONE on success, any other integer on failure.
  * @error               Called before a call has been started.
  */
-native int Call_Finish(any &result=0);
+public static int Call_Finish(any &result=0) { throw new NotImplementedException(); }
 
 /**
  * Cancels a call to a function or forward's call list.
@@ -423,7 +425,7 @@ native int Call_Finish(any &result=0);
  *
  * @error               Called before a call has been started.
  */
-native void Call_Cancel();
+public static void Call_Cancel() { throw new NotImplementedException(); }
 
 typeset NativeCall
 {
@@ -436,7 +438,7 @@ typeset NativeCall
 	 * @param numParams     Number of parameters passed to the native.
 	 * @return              Value for the native call to return.
 	 */
-	function int (Handle plugin, int numParams);
+	function int (Handle plugin, int numParams) { throw new NotImplementedException(); }
 
 	/**
 	 * Defines a native function.
@@ -447,7 +449,7 @@ typeset NativeCall
 	 * @param numParams      Number of parameters passed to the native.
 	 * @return               Value for the native call to return.
 	 */
-	function any (Handle plugin, int numParams);
+	function any (Handle plugin, int numParams) { throw new NotImplementedException(); }
 }
 
 /**
@@ -458,7 +460,7 @@ typeset NativeCall
  *                      all other registered dynamic natives.
  * @param func          Function to use as the dynamic native.
  */
-native void CreateNative(const char[] name, NativeCall func);
+public static void CreateNative(string name, NativeCall func) { throw new NotImplementedException(); }
 
 /**
  * Throws an error in the calling plugin of a native, instead of your own plugin.
@@ -467,7 +469,7 @@ native void CreateNative(const char[] name, NativeCall func);
  * @param fmt           Error message format.
  * @param ...           Format arguments.
  */
-native int ThrowNativeError(int error, const char[] fmt, any ...);
+public static int ThrowNativeError(int error, string fmt, any ...) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the string length from a native parameter string.  This is useful for
@@ -480,7 +482,7 @@ native int ThrowNativeError(int error, const char[] fmt, any ...);
  * @return              SP_ERROR_NONE on success, any other integer on failure.
  * @error               Invalid parameter number or calling from a non-native function.
  */
-native int GetNativeStringLength(int param, int &length);
+public static int GetNativeStringLength(int param, int &length) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a string from a native parameter.
@@ -494,7 +496,7 @@ native int GetNativeStringLength(int param, int &length);
  * @return              SP_ERROR_NONE on success, any other integer on failure.
  * @error               Invalid parameter number or calling from a non-native function.
  */
-native int GetNativeString(int param, char[] buffer, int maxlength, int &bytes=0);
+public static int GetNativeString(int param, string buffer, int maxlength, int &bytes=0) { throw new NotImplementedException(); }
 
 /**
  * Sets a string in a native parameter.
@@ -510,7 +512,7 @@ native int GetNativeString(int param, char[] buffer, int maxlength, int &bytes=0
  * @return              SP_ERROR_NONE on success, any other integer on failure.
  * @error               Invalid parameter number or calling from a non-native function.
  */
-native int SetNativeString(int param, const char[] source, int maxlength, bool utf8=true, int &bytes=0);
+public static int SetNativeString(int param, string source, int maxlength, bool utf8=true, int &bytes=0) { throw new NotImplementedException(); }
 
 /**
  * Gets a cell from a native parameter.
@@ -519,7 +521,7 @@ native int SetNativeString(int param, const char[] source, int maxlength, bool u
  * @return              Cell value at the parameter number.
  * @error               Invalid parameter number or calling from a non-native function.
  */
-native any GetNativeCell(int param);
+public static any GetNativeCell(int param) { throw new NotImplementedException(); }
 
 /**
  * Gets a function pointer from a native parameter.
@@ -528,7 +530,7 @@ native any GetNativeCell(int param);
  * @return                  Function pointer at the given parameter number.
  * @error                   Invalid parameter number, or calling from a non-native function.
  */
-native Function GetNativeFunction(int param);
+public static Function GetNativeFunction(int param) { throw new NotImplementedException(); }
 
 /**
  * Gets a cell from a native parameter, by reference.
@@ -537,7 +539,7 @@ native Function GetNativeFunction(int param);
  * @return              Cell value at the parameter number.
  * @error               Invalid parameter number or calling from a non-native function.
  */
-native any GetNativeCellRef(int param);
+public static any GetNativeCellRef(int param) { throw new NotImplementedException(); }
 
 /**
  * Sets a cell from a native parameter, by reference.
@@ -546,7 +548,7 @@ native any GetNativeCellRef(int param);
  * @param value         Cell value at the parameter number to set by reference.
  * @error               Invalid parameter number or calling from a non-native function.
  */
-native void SetNativeCellRef(int param, any value);
+public static void SetNativeCellRef(int param, any value) { throw new NotImplementedException(); }
 
 /**
  * Gets an array from a native parameter (always by reference).
@@ -557,7 +559,7 @@ native void SetNativeCellRef(int param, any value);
  * @return              SP_ERROR_NONE on success, anything else on failure.
  * @error               Invalid parameter number or calling from a non-native function.
  */
-native int GetNativeArray(int param, any[] local, int size);
+public static int GetNativeArray(int param, any[] local, int size) { throw new NotImplementedException(); }
 
 /**
  * Copies a local array into a native parameter array (always by reference).
@@ -568,7 +570,7 @@ native int GetNativeArray(int param, any[] local, int size);
  * @return              SP_ERROR_NONE on success, anything else on failure.
  * @error               Invalid parameter number or calling from a non-native function.
  */
-native int SetNativeArray(int param, const any[] local, int size);
+public static int SetNativeArray(int param, const any[] local, int size) { throw new NotImplementedException(); }
 
 /**
  * Check if the native parameter is the NULL_VECTOR.
@@ -576,7 +578,7 @@ native int SetNativeArray(int param, const any[] local, int size);
  * @param param         Parameter number, starting from 1.
  * @return              True if NULL_VECTOR, false otherwise.
  */
-native bool IsNativeParamNullVector(int param);
+public static bool IsNativeParamNullVector(int param) { throw new NotImplementedException(); }
 
 /**
  * Check if the native parameter is the NULL_STRING.
@@ -584,7 +586,7 @@ native bool IsNativeParamNullVector(int param);
  * @param param         Parameter number, starting from 1.
  * @return              True if NULL_STRING, false otherwise.
  */
-native bool IsNativeParamNullString(int param);
+public static bool IsNativeParamNullString(int param) { throw new NotImplementedException(); }
 
 /**
  * Formats a string using parameters from a native.
@@ -602,13 +604,13 @@ native bool IsNativeParamNullString(int param);
  * @param fmt_string    Format string to use if fmt_param is not used.
  * @return              SP_ERROR_NONE on success, anything else on failure.
  */
-native int FormatNativeString(int out_param,
+public static int FormatNativeString(int out_param,
 						  int fmt_param,
 						  int vararg_param,
 						  int out_len,
 						  int &written=0,
-						  char[] out_string="",
-						  const char[] fmt_string="");
+						  string out_string="",
+						  string fmt_string="") { throw new NotImplementedException(); }
 
 /**
  * Defines a RequestFrame Callback.
@@ -616,8 +618,8 @@ native int FormatNativeString(int out_param,
  * @param data          Data passed to the RequestFrame native.
  */
 typeset RequestFrameCallback {
-	function void ();
-	function void (any data);
+	function void () { throw new NotImplementedException(); }
+	function void (any data) { throw new NotImplementedException(); }
 }
 
 /**
@@ -626,4 +628,6 @@ typeset RequestFrameCallback {
  * @param Function      Function to call on the next frame.
  * @param data          Value to be passed on the invocation of the Function.
  */
-native void RequestFrame(RequestFrameCallback Function, any data=0);
+public static void RequestFrame(RequestFrameCallback Function, any data=0) { throw new NotImplementedException(); }
+	}
+}

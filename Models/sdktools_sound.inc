@@ -30,25 +30,27 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_sound_included
- #endinput
-#endif
-#define _sdktools_sound_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Sound should be from the target client.
  */
-#define SOUND_FROM_PLAYER       -2
+public const object SOUND_FROM_PLAYER       -2
 
 /**
  * Sound should be from the listen server player.
  */
-#define SOUND_FROM_LOCAL_PLAYER -1
+public const object SOUND_FROM_LOCAL_PLAYER -1
 
 /**
  * Sound is from the world.
  */
-#define SOUND_FROM_WORLD        0
+public const object SOUND_FROM_WORLD        0
 
 /**
  * Sound channels.
@@ -111,22 +113,22 @@ enum
 	SNDLEVEL_ROCKET = 180       /**< Rocket launching (0.2 attn) */
 };
 
-#define SNDVOL_NORMAL       1.0     /**< Normal volume */
-#define SNDPITCH_NORMAL     100     /**< Normal pitch */
-#define SNDPITCH_LOW        95      /**< A low pitch */
-#define SNDPITCH_HIGH       120     /**< A high pitch */
-#define SNDATTN_NONE        0.0     /**< No attenuation */
-#define SNDATTN_NORMAL      0.8     /**< Normal attenuation */
-#define SNDATTN_STATIC      1.25    /**< Static attenuation? */
-#define SNDATTN_RICOCHET    1.5     /**< Ricochet effect */
-#define SNDATTN_IDLE        2.0     /**< Idle attenuation? */
+public const object SNDVOL_NORMAL       1.0     /**< Normal volume */
+public const object SNDPITCH_NORMAL     100     /**< Normal pitch */
+public const object SNDPITCH_LOW        95      /**< A low pitch */
+public const object SNDPITCH_HIGH       120     /**< A high pitch */
+public const object SNDATTN_NONE        0.0     /**< No attenuation */
+public const object SNDATTN_NORMAL      0.8     /**< Normal attenuation */
+public const object SNDATTN_STATIC      1.25    /**< Static attenuation? */
+public const object SNDATTN_RICOCHET    1.5     /**< Ricochet effect */
+public const object SNDATTN_IDLE        2.0     /**< Idle attenuation? */
 
 /**
  * Prefetches a sound.
  *
  * @param name          Sound file name relative to the "sound" folder.
  */
-native void PrefetchSound(const char[] name);
+public static void PrefetchSound(string name) { throw new NotImplementedException(); }
 
 /**
  * This function is not known to work, and may crash.  You should
@@ -137,7 +139,7 @@ native void PrefetchSound(const char[] name);
  * @deprecated          Does not work, may crash.
  */
 #pragma deprecated Does not work, may crash.
-native float GetSoundDuration(const char[] name);
+public static float GetSoundDuration(string name) { throw new NotImplementedException(); }
 
 /**
  * Emits an ambient sound.
@@ -151,14 +153,14 @@ native float GetSoundDuration(const char[] name);
  * @param pitch         Pitch (from 0 to 255).
  * @param delay         Play delay.
  */
-native void EmitAmbientSound(const char[] name,
+public static void EmitAmbientSound(string name,
 						const float pos[3],
 						int entity = SOUND_FROM_WORLD,
 						int level = SNDLEVEL_NORMAL,
 						int flags = SND_NOFLAGS,
 						float vol = SNDVOL_NORMAL,
 						int pitch = SNDPITCH_NORMAL,
-						float delay = 0.0);
+						float delay = 0.0) { throw new NotImplementedException(); }
 
 /**
  * Fades a client's volume level toward silence or a given percentage.
@@ -170,7 +172,7 @@ native void EmitAmbientSound(const char[] name,
  * @param intime        Fade in time, in seconds.
  * @error               Invalid client index or client not in game.
  */
-native void FadeClientVolume(int client, float percent, float outtime, float holdtime, float intime);
+public static void FadeClientVolume(int client, float percent, float outtime, float holdtime, float intime) { throw new NotImplementedException(); }
 
 /**
  * Stops a sound.
@@ -179,7 +181,7 @@ native void FadeClientVolume(int client, float percent, float outtime, float hol
  * @param channel       Channel number.
  * @param name          Sound file name relative to the "sound" folder.
  */
-native void StopSound(int entity, int channel, const char[] name);
+public static void StopSound(int entity, int channel, string name) { throw new NotImplementedException(); }
 
 /**
  * Emits a sound to a list of clients.
@@ -201,9 +203,9 @@ native void StopSound(int entity, int channel, const char[] name);
  * @param ...           Optional list of Float[3] arrays to specify additional origins.
  * @error               Invalid client index.
  */
-native void EmitSound(const int[] clients,
+public static void EmitSound(const int[] clients,
 				 int numClients,
-				 const char[] sample,
+				 string sample,
 				 int entity = SOUND_FROM_PLAYER,
 				 int channel = SNDCHAN_AUTO,
 				 int level = SNDLEVEL_NORMAL,
@@ -215,7 +217,7 @@ native void EmitSound(const int[] clients,
 				 const float dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
-				 any ...);
+				 any ...) { throw new NotImplementedException(); }
 
 /**
  * Emits a sound or game sound to a list of clients using the latest version of the engine sound interface.
@@ -240,10 +242,10 @@ native void EmitSound(const int[] clients,
  * @param ...           Optional list of Float[3] arrays to specify additional origins.
  * @error               Invalid client index.
  */
-native void EmitSoundEntry(const int[] clients,
+public static void EmitSoundEntry(const int[] clients,
 				 int numClients,
-				 const char[] soundEntry,
-				 const char[] sample,
+				 string soundEntry,
+				 string sample,
 				 int entity = SOUND_FROM_PLAYER,
 				 int channel = SNDCHAN_AUTO,
 				 int level = SNDLEVEL_NORMAL,
@@ -256,7 +258,7 @@ native void EmitSoundEntry(const int[] clients,
 				 const float dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
-				 any ...);
+				 any ...) { throw new NotImplementedException(); }
 
 /**
  * Emits a sentence to a list of clients.
@@ -278,7 +280,7 @@ native void EmitSoundEntry(const int[] clients,
  * @param ...           Optional list of Float[3] arrays to specify additional origins.
  * @error               Invalid client index.
  */
-native void EmitSentence(const int[] clients,
+public static void EmitSentence(const int[] clients,
 				 int numClients,
 				 int sentence,
 				 int entity,
@@ -292,7 +294,7 @@ native void EmitSentence(const int[] clients,
 				 const float dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
-				 any ...);
+				 any ...) { throw new NotImplementedException(); }
 
 /**
  * Calculates gain of sound on given distance with given sound level in decibel
@@ -301,7 +303,7 @@ native void EmitSentence(const int[] clients,
  * @param distance      distance of sound to calculate, not meter or feet, but Source Engine`s normal Coordinate unit
  * @return              gain of sound. you can multiply this with original sound`s volume to calculate volume on given distance
  */
-native float GetDistGainFromSoundLevel(int soundlevel, float distance);
+public static float GetDistGainFromSoundLevel(int soundlevel, float distance) { throw new NotImplementedException(); }
 
 /**
  * Called when an ambient sound is about to be emitted to one or more clients.
@@ -328,7 +330,7 @@ typedef AmbientSHook = function Action (
   float pos[3],
   int &flags,
   float &delay
-);
+) { throw new NotImplementedException(); }
 
 typeset NormalSHook
 {
@@ -350,16 +352,16 @@ typeset NormalSHook
 	//                      Plugin_Changed when any parameter has been modified.
 	function Action (int clients[MAXPLAYERS], int &numClients, char sample[PLATFORM_MAX_PATH],
 	  int &entity, int &channel, float &volume, int &level, int &pitch, int &flags,
-	  char soundEntry[PLATFORM_MAX_PATH], int &seed);
+	  char soundEntry[PLATFORM_MAX_PATH], int &seed) { throw new NotImplementedException(); }
 
 	// Deprecated. Use other prototype.
 	function Action (int clients[64], int &numClients, char sample[PLATFORM_MAX_PATH],
 	  int &entity, int &channel, float &volume, int &level, int &pitch, int &flags,
-	  char soundEntry[PLATFORM_MAX_PATH], int &seed);
+	  char soundEntry[PLATFORM_MAX_PATH], int &seed) { throw new NotImplementedException(); }
 
 	// Deprecated. Use other prototype.
 	function Action (int clients[64], int &numClients, char sample[PLATFORM_MAX_PATH],
-	  int &entity, int &channel, float &volume, int &level, int &pitch, int &flags);
+	  int &entity, int &channel, float &volume, int &level, int &pitch, int &flags) { throw new NotImplementedException(); }
 };
 
 /**
@@ -368,7 +370,7 @@ typeset NormalSHook
  * @param hook          Function to use as a hook.
  * @error               Invalid function hook.
  */
-native void AddAmbientSoundHook(AmbientSHook hook);
+public static void AddAmbientSoundHook(AmbientSHook hook) { throw new NotImplementedException(); }
 
 /**
  * Hooks all played normal sounds.
@@ -376,7 +378,7 @@ native void AddAmbientSoundHook(AmbientSHook hook);
  * @param hook          Function to use as a hook.
  * @error               Invalid function hook.
  */
-native void AddNormalSoundHook(NormalSHook hook);
+public static void AddNormalSoundHook(NormalSHook hook) { throw new NotImplementedException(); }
 
 /**
  * Unhooks all played ambient sounds.
@@ -384,7 +386,7 @@ native void AddNormalSoundHook(NormalSHook hook);
  * @param hook          Function used for the hook.
  * @error               Invalid function hook.
  */
-native void RemoveAmbientSoundHook(AmbientSHook hook);
+public static void RemoveAmbientSoundHook(AmbientSHook hook) { throw new NotImplementedException(); }
 
 /**
  * Unhooks all played normal sounds.
@@ -392,7 +394,7 @@ native void RemoveAmbientSoundHook(AmbientSHook hook);
  * @param hook          Function used for the hook.
  * @error               Invalid function hook.
  */
-native void RemoveNormalSoundHook(NormalSHook hook);
+public static void RemoveNormalSoundHook(NormalSHook hook) { throw new NotImplementedException(); }
 
 /**
  * Wrapper to emit sound to one client.
@@ -413,7 +415,7 @@ native void RemoveNormalSoundHook(NormalSHook hook);
  * @error               Invalid client index.
  */
 stock void EmitSoundToClient(int client,
-				 const char[] sample,
+				 string sample,
 				 int entity = SOUND_FROM_PLAYER,
 				 int channel = SNDCHAN_AUTO,
 				 int level = SNDLEVEL_NORMAL,
@@ -432,7 +434,7 @@ stock void EmitSoundToClient(int client,
 	entity = (entity == SOUND_FROM_PLAYER) ? client : entity;
 	EmitSound(clients, 1, sample, entity, channel,
 		level, flags, volume, pitch, speakerentity,
-		origin, dir, updatePos, soundtime);
+		origin, dir, updatePos, soundtime) { throw new NotImplementedException(); }
 }
 
 /**
@@ -452,7 +454,7 @@ stock void EmitSoundToClient(int client,
  * @param soundtime     Alternate time to play sound for.
  * @error               Invalid client index.
  */
-stock void EmitSoundToAll(const char[] sample,
+stock void EmitSoundToAll(string sample,
 				 int entity = SOUND_FROM_PLAYER,
 				 int channel = SNDCHAN_AUTO,
 				 int level = SNDLEVEL_NORMAL,
@@ -480,7 +482,7 @@ stock void EmitSoundToAll(const char[] sample,
 	{
 		EmitSound(clients, total, sample, entity, channel,
 			level, flags, volume, pitch, speakerentity,
-			origin, dir, updatePos, soundtime);
+			origin, dir, updatePos, soundtime) { throw new NotImplementedException(); }
 	}
 }
 
@@ -495,7 +497,7 @@ stock int ATTN_TO_SNDLEVEL(float attn)
 {
 	if (attn > 0.0)
 	{
-		return RoundFloat(50.0 + (20.0 / attn));
+		return RoundFloat(50.0 + (20.0 / attn)) { throw new NotImplementedException(); }
 	}
 	return 0;
 }
@@ -520,14 +522,14 @@ stock int ATTN_TO_SNDLEVEL(float attn)
  * @return              True if the sound was successfully retrieved, false if it
  *                      was not found
  */
-native bool GetGameSoundParams(const char[] gameSound,
+public static bool GetGameSoundParams(string gameSound,
 				int &channel,
 				int &soundLevel,
 				float &volume,
 				int &pitch,
-				char[] sample,
+				string sample,
 				int maxlength,
-				int entity=SOUND_FROM_PLAYER);
+				int entity=SOUND_FROM_PLAYER) { throw new NotImplementedException(); }
 
 /**
  * Emits a game sound to a list of clients.
@@ -553,7 +555,7 @@ native bool GetGameSoundParams(const char[] gameSound,
  */
 stock bool EmitGameSound(const int[] clients,
 				int numClients,
-				const char[] gameSound,
+				string gameSound,
 				int entity = SOUND_FROM_PLAYER,
 				int flags = SND_NOFLAGS,
 				int speakerentity = -1,
@@ -570,7 +572,7 @@ stock bool EmitGameSound(const int[] clients,
 
 	if (GetGameSoundParams(gameSound, channel, level, volume, pitch, sample, sizeof(sample), entity))
 	{
-		EmitSound(clients, numClients, sample, entity, channel, level, flags, volume, pitch, speakerentity, origin, dir, updatePos, soundtime);
+		EmitSound(clients, numClients, sample, entity, channel, level, flags, volume, pitch, speakerentity, origin, dir, updatePos, soundtime) { throw new NotImplementedException(); }
 		return true;
 	}
 
@@ -592,7 +594,7 @@ stock bool EmitGameSound(const int[] clients,
  * @param flags         Sound flags.
  * @param delay         Play delay.
  */
-stock bool EmitAmbientGameSound(const char[] gameSound,
+stock bool EmitAmbientGameSound(string gameSound,
 				const float pos[3],
 				int entity = SOUND_FROM_WORLD,
 				int flags = SND_NOFLAGS,
@@ -606,7 +608,7 @@ stock bool EmitAmbientGameSound(const char[] gameSound,
 
 	if (GetGameSoundParams(gameSound, channel, level, volume, pitch, sample, sizeof(sample), entity))
 	{
-		EmitAmbientSound(sample, pos, entity, level, flags, volume, pitch, delay);
+		EmitAmbientSound(sample, pos, entity, level, flags, volume, pitch, delay) { throw new NotImplementedException(); }
 		return true;
 	}
 
@@ -634,7 +636,7 @@ stock bool EmitAmbientGameSound(const char[] gameSound,
  * @error               Invalid client index.
  */
 stock bool EmitGameSoundToClient(int client,
-				const char[] gameSound,
+				string gameSound,
 				int entity = SOUND_FROM_PLAYER,
 				int flags = SND_NOFLAGS,
 				int speakerentity = -1,
@@ -648,7 +650,7 @@ stock bool EmitGameSoundToClient(int client,
 	/* Save some work for SDKTools and remove SOUND_FROM_PLAYER references */
 	entity = (entity == SOUND_FROM_PLAYER) ? client : entity;
 	return EmitGameSound(clients, 1, gameSound, entity, flags,
-		speakerentity, origin, dir, updatePos, soundtime);
+		speakerentity, origin, dir, updatePos, soundtime) { throw new NotImplementedException(); }
 }
 
 /**
@@ -670,7 +672,7 @@ stock bool EmitGameSoundToClient(int client,
  * @param soundtime     Alternate time to play sound for.
  * @error               Invalid client index.
  */
-stock bool EmitGameSoundToAll(const char[] gameSound,
+stock bool EmitGameSoundToAll(string gameSound,
 				int entity = SOUND_FROM_PLAYER,
 				int flags = SND_NOFLAGS,
 				int speakerentity = -1,
@@ -696,7 +698,7 @@ stock bool EmitGameSoundToAll(const char[] gameSound,
 	}
 
 	return EmitGameSound(clients, total, gameSound, entity, flags,
-		speakerentity, origin, dir, updatePos, soundtime);
+		speakerentity, origin, dir, updatePos, soundtime) { throw new NotImplementedException(); }
 }
 
 /**
@@ -716,4 +718,6 @@ stock bool EmitGameSoundToAll(const char[] gameSound,
  * @return              True if the game sound was found, false if sound did not exist
  *                      or had no files
  */
-native bool PrecacheScriptSound(const char[] soundname);
+public static bool PrecacheScriptSound(string soundname) { throw new NotImplementedException(); }
+	}
+}

@@ -30,10 +30,12 @@
  * Version: $Id$
  */
  
-#if defined _basecomm_included
- #endinput
-#endif
-#define _basecomm_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Called when a client is muted or unmuted
@@ -41,7 +43,7 @@
  * @param   client      Client index
  * @param   muteState   True if client was muted, false otherwise
  */
-forward void BaseComm_OnClientMute(int client, bool muteState);
+public static override void BaseComm_OnClientMute(int client, bool muteState) { throw new NotImplementedException(); }
  
  /**
  * Called when a client is gagged or ungagged
@@ -49,7 +51,7 @@ forward void BaseComm_OnClientMute(int client, bool muteState);
  * @param   client      Client index
  * @param   gagState    True if client was gaged, false otherwise
  */
-forward void BaseComm_OnClientGag(int client, bool gagState);
+public static override void BaseComm_OnClientGag(int client, bool gagState) { throw new NotImplementedException(); }
  
 /**
  * Returns whether or not a client is gagged
@@ -57,7 +59,7 @@ forward void BaseComm_OnClientGag(int client, bool gagState);
  * @param client        Client index.
  * @return              True if client is gagged, false otherwise.
  */
-native bool BaseComm_IsClientGagged(int client);
+public static bool BaseComm_IsClientGagged(int client) { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not a client is muted
@@ -65,7 +67,7 @@ native bool BaseComm_IsClientGagged(int client);
  * @param client        Client index.
  * @return              True if client is muted, false otherwise.
  */
-native bool BaseComm_IsClientMuted(int client);
+public static bool BaseComm_IsClientMuted(int client) { throw new NotImplementedException(); }
 
 /**
  * Sets a client's gag state
@@ -74,7 +76,7 @@ native bool BaseComm_IsClientMuted(int client);
  * @param gagState      True to gag client, false to ungag.
  * @return              True if this caused a change in gag state, false otherwise.
  */
-native bool BaseComm_SetClientGag(int client, bool gagState);
+public static bool BaseComm_SetClientGag(int client, bool gagState) { throw new NotImplementedException(); }
 
 /**
  * Sets a client's mute state
@@ -83,27 +85,4 @@ native bool BaseComm_SetClientGag(int client, bool gagState);
  * @param muteState     True to mute client, false to unmute.
  * @return              True if this caused a change in mute state, false otherwise.
  */
-native bool BaseComm_SetClientMute(int client, bool muteState);
-
-/* DO NOT EDIT BELOW THIS LINE */
-
-public SharedPlugin __pl_basecomm = 
-{
-	name = "basecomm",
-	file = "basecomm.smx",
-#if defined REQUIRE_PLUGIN
-	required = 1,
-#else
-	required = 0,
-#endif
-};
-
-#if !defined REQUIRE_PLUGIN
-public void __pl_basecomm_SetNTVOptional()
-{
-	MarkNativeAsOptional("BaseComm_IsClientGagged");
-	MarkNativeAsOptional("BaseComm_IsClientMuted");
-	MarkNativeAsOptional("BaseComm_SetClientGag");
-	MarkNativeAsOptional("BaseComm_SetClientMute");
-}
-#endif
+public static bool BaseComm_SetClientMute(int client, bool muteState) { throw new NotImplementedException(); }

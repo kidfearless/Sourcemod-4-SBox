@@ -30,10 +30,12 @@
  * Version: $Id$
  */
  
-#if defined _events_included
- #endinput
-#endif
-#define _events_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Event hook modes determining how hooking should be handled
@@ -59,7 +61,7 @@ typeset EventHook
 	//                      May not correspond to the real value. Use the property BroadcastDisabled.
 	// @return              Ignored for post hooks. Plugin_Handled will block event if hooked as pre.
 	///
-	function Action (Event event, const char[] name, bool dontBroadcast);
+	function Action (Event event, string name, bool dontBroadcast) { throw new NotImplementedException(); }
 	
 	//
 	// Called when a game event is fired.
@@ -69,7 +71,7 @@ typeset EventHook
 	// @param name          String containing the name of the event.
 	// @param dontBroadcast True if event was not broadcast to clients, false otherwise.
 	///
-	function void (Event event, const char[] name, bool dontBroadcast);
+	function void (Event event, string name, bool dontBroadcast) { throw new NotImplementedException(); }
 };
 
 methodmap Event < Handle
@@ -79,38 +81,38 @@ methodmap Event < Handle
 	// This function closes the event Handle after completing.
 	//
 	// @param dontBroadcast Optional boolean that determines if event should be broadcast to clients.
-	public native void Fire(bool dontBroadcast=false);
+	public native void Fire(bool dontBroadcast=false) { throw new NotImplementedException(); }
 	
 	// Fires a game event to only the specified client.
 	//
 	// Unlike Fire, this function DOES NOT close the event Handle.
 	//
 	// @param client        Index of client to receive the event..
-	public native void FireToClient(int client);
+	public native void FireToClient(int client) { throw new NotImplementedException(); }
 
 	// Cancels a previously created game event that has not been fired. This
 	// is necessary to avoid leaking memory when an event isn't fired.
-	public native void Cancel();
+	public native void Cancel() { throw new NotImplementedException(); }
 
 	// Returns the boolean value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param defValue     Optional default value to use if the key is not found.
 	// @return             The boolean value of the specified event key.
-	public native bool GetBool(const char[] key, bool defValue=false);
+	public native bool GetBool(string key, bool defValue=false) { throw new NotImplementedException(); }
 
 	// Sets the boolean value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param value        New boolean value.
-	public native void SetBool(const char[] key, bool value);
+	public native void SetBool(string key, bool value) { throw new NotImplementedException(); }
 
 	// Returns the integer value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param defValue     Optional default value to use if the key is not found.
 	// @return             The integer value of the specified event key.
-	public native int GetInt(const char[] key, int defValue=0);
+	public native int GetInt(string key, int defValue=0) { throw new NotImplementedException(); }
 
 	// Sets the integer value of a game event's key.
 	//
@@ -121,20 +123,20 @@ methodmap Event < Handle
 	//
 	// @param key          Name of event key.
 	// @param value        New integer value.
-	public native void SetInt(const char[] key, int value);
+	public native void SetInt(string key, int value) { throw new NotImplementedException(); }
 
 	// Returns the floating point value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param defValue     Optional default value to use if the key is not found.
 	// @return             The floating point value of the specified event key.
-	public native float GetFloat(const char[] key, float defValue=0.0);
+	public native float GetFloat(string key, float defValue=0.0) { throw new NotImplementedException(); }
 
 	// Sets the floating point value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param value        New floating point value.
-	public native void SetFloat(const char[] key, float value);
+	public native void SetFloat(string key, float value) { throw new NotImplementedException(); }
 
 	// Retrieves the string value of a game event's key.
 	//
@@ -142,27 +144,27 @@ methodmap Event < Handle
 	// @param value        Buffer to store the value of the specified event key.
 	// @param maxlength    Maximum length of string buffer.
 	// @param defValue     Optional default value to use if the key is not found.
-	public native void GetString(const char[] key, char[] value, int maxlength, const char[] defvalue="");
+	public native void GetString(string key, string value, int maxlength, string defvalue="") { throw new NotImplementedException(); }
 
 	// Sets the string value of a game event's key.
 	//
 	// @param key          Name of event key.
 	// @param value        New string value.
-	public native void SetString(const char[] key, const char[] value);
+	public native void SetString(string key, string value) { throw new NotImplementedException(); }
 
 	// Retrieves the name of a game event.
 	//
 	// @param name         Buffer to store the name of the event.
 	// @param maxlength    Maximum length of string buffer.
-	public native void GetName(char[] name, int maxlength);
+	public native void GetName(string name, int maxlength) { throw new NotImplementedException(); }
 
 	// Sets whether an event's broadcasting will be disabled or not.
 	//
 	// This has no effect on events Handles that are not from HookEvent
 	// or HookEventEx callbacks.
 	property bool BroadcastDisabled {
-		public native set(bool dontBroadcast);
-		public native get();
+		public native set(bool dontBroadcast) { throw new NotImplementedException(); }
+		public native get() { throw new NotImplementedException(); }
 	}
 }
 
@@ -174,7 +176,7 @@ methodmap Event < Handle
  * @param mode          Optional EventHookMode determining the type of hook.
  * @error               Invalid event name or invalid callback function.
  */
-native void HookEvent(const char[] name, EventHook callback, EventHookMode mode=EventHookMode_Post);
+public static void HookEvent(string name, EventHook callback, EventHookMode mode=EventHookMode_Post) { throw new NotImplementedException(); }
 
 /**
  * Creates a hook for when a game event is fired.
@@ -185,7 +187,7 @@ native void HookEvent(const char[] name, EventHook callback, EventHookMode mode=
  * @return              True if event exists and was hooked successfully, false otherwise.
  * @error               Invalid callback function.
  */
-native bool HookEventEx(const char[] name, EventHook callback, EventHookMode mode=EventHookMode_Post);
+public static bool HookEventEx(string name, EventHook callback, EventHookMode mode=EventHookMode_Post) { throw new NotImplementedException(); }
 
 /**
  * Removes a hook for when a game event is fired.
@@ -195,7 +197,7 @@ native bool HookEventEx(const char[] name, EventHook callback, EventHookMode mod
  * @param mode          Optional EventHookMode determining the type of hook.
  * @error               Invalid callback function or no active hook for specified event.
  */
-native void UnhookEvent(const char[] name, EventHook callback, EventHookMode mode=EventHookMode_Post);
+public static void UnhookEvent(string name, EventHook callback, EventHookMode mode=EventHookMode_Post) { throw new NotImplementedException(); }
 
 /**
  * Creates a game event to be fired later.
@@ -209,7 +211,7 @@ native void UnhookEvent(const char[] name, EventHook callback, EventHookMode mod
  * @return              Handle to event. INVALID_HANDLE is returned if the event doesn't exist or isn't 
  *                      being hooked (unless force is true).
  */
-native Event CreateEvent(const char[] name, bool force=false);
+public static Event CreateEvent(string name, bool force=false) { throw new NotImplementedException(); }
 
 /**
  * Fires a game event.
@@ -220,7 +222,7 @@ native Event CreateEvent(const char[] name, bool force=false);
  * @param dontBroadcast Optional boolean that determines if event should be broadcast to clients.
  * @error               Invalid or corrupt Handle.
  */
-native void FireEvent(Handle event, bool dontBroadcast=false);
+public static void FireEvent(Handle event, bool dontBroadcast=false) { throw new NotImplementedException(); }
 
 /**
  * Cancels a previously created game event that has not been fired.
@@ -228,7 +230,7 @@ native void FireEvent(Handle event, bool dontBroadcast=false);
  * @param event         Handled to the event.
  * @error               Invalid or corrupt Handle.
  */
-native void CancelCreatedEvent(Handle event);
+public static void CancelCreatedEvent(Handle event) { throw new NotImplementedException(); }
 
 /**
  * Returns the boolean value of a game event's key.
@@ -239,7 +241,7 @@ native void CancelCreatedEvent(Handle event);
  * @return              The boolean value of the specified event key.
  * @error               Invalid or corrupt Handle.
  */
-native bool GetEventBool(Handle event, const char[] key, bool defValue=false);
+public static bool GetEventBool(Handle event, string key, bool defValue=false) { throw new NotImplementedException(); }
 
 /**
  * Sets the boolean value of a game event's key.
@@ -249,7 +251,7 @@ native bool GetEventBool(Handle event, const char[] key, bool defValue=false);
  * @param value         New boolean value.
  * @error               Invalid or corrupt Handle.
  */
-native void SetEventBool(Handle event, const char[] key, bool value);
+public static void SetEventBool(Handle event, string key, bool value) { throw new NotImplementedException(); }
 
 /**
  * Returns the integer value of a game event's key.
@@ -260,7 +262,7 @@ native void SetEventBool(Handle event, const char[] key, bool value);
  * @return              The integer value of the specified event key.
  * @error               Invalid or corrupt Handle.
  */
-native int GetEventInt(Handle event, const char[] key, int defValue=0);
+public static int GetEventInt(Handle event, string key, int defValue=0) { throw new NotImplementedException(); }
 
 /**
  * Sets the integer value of a game event's key.
@@ -275,7 +277,7 @@ native int GetEventInt(Handle event, const char[] key, int defValue=0);
  * @param value         New integer value.
  * @error               Invalid or corrupt Handle.
  */
-native void SetEventInt(Handle event, const char[] key, int value);
+public static void SetEventInt(Handle event, string key, int value) { throw new NotImplementedException(); }
 
 /**
  * Returns the floating point value of a game event's key.
@@ -286,7 +288,7 @@ native void SetEventInt(Handle event, const char[] key, int value);
  * @return              The floating point value of the specified event key.
  * @error               Invalid or corrupt Handle.
  */
-native float GetEventFloat(Handle event, const char[] key, float defValue=0.0);
+public static float GetEventFloat(Handle event, string key, float defValue=0.0) { throw new NotImplementedException(); }
 
 /**
  * Sets the floating point value of a game event's key.
@@ -296,7 +298,7 @@ native float GetEventFloat(Handle event, const char[] key, float defValue=0.0);
  * @param value         New floating point value.
  * @error               Invalid or corrupt Handle.
  */
-native void SetEventFloat(Handle event, const char[] key, float value);
+public static void SetEventFloat(Handle event, string key, float value) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the string value of a game event's key.
@@ -308,7 +310,7 @@ native void SetEventFloat(Handle event, const char[] key, float value);
  * @param defValue      Optional default value to use if the key is not found.
  * @error               Invalid or corrupt Handle.
  */
-native void GetEventString(Handle event, const char[] key, char[] value, int maxlength, const char[] defvalue="");
+public static void GetEventString(Handle event, string key, string value, int maxlength, string defvalue="") { throw new NotImplementedException(); }
 
 /**
  * Sets the string value of a game event's key.
@@ -318,7 +320,7 @@ native void GetEventString(Handle event, const char[] key, char[] value, int max
  * @param value         New string value.
  * @error               Invalid or corrupt Handle.
  */
-native void SetEventString(Handle event, const char[] key, const char[] value);
+public static void SetEventString(Handle event, string key, string value) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the name of a game event.
@@ -328,7 +330,7 @@ native void SetEventString(Handle event, const char[] key, const char[] value);
  * @param maxlength     Maximum length of string buffer.
  * @error               Invalid or corrupt Handle.     
  */
-native void GetEventName(Handle event, char[] name, int maxlength);
+public static void GetEventName(Handle event, string name, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Sets whether an event's broadcasting will be disabled or not.
@@ -340,4 +342,6 @@ native void GetEventName(Handle event, char[] name, int maxlength);
  * @param dontBroadcast True to disable broadcasting, false otherwise.
  * @error               Invalid Handle.
  */
-native void SetEventBroadcast(Handle event, bool dontBroadcast);
+public static void SetEventBroadcast(Handle event, bool dontBroadcast) { throw new NotImplementedException(); }
+	}
+}

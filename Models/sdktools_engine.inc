@@ -30,12 +30,14 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_engine_included
- #endinput
-#endif
-#define _sdktools_engine_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
-#define MAX_LIGHTSTYLES 64
+public const object MAX_LIGHTSTYLES 64
 
 /**
  * Sets a client's "viewing entity."
@@ -45,7 +47,7 @@
  * @error               Invalid client or entity, lack of mod support, or client not in 
  *                      game.
  */
-native void SetClientViewEntity(int client, int entity);
+public static void SetClientViewEntity(int client, int entity) { throw new NotImplementedException(); }
 
 /**
  * Sets a light style.
@@ -54,7 +56,7 @@ native void SetClientViewEntity(int client, int entity);
  * @param value         Light value string (see world.cpp/light.cpp in dlls)
  * @error               Light style index is out of range.
  */
-native void SetLightStyle(int style, const char[] value);
+public static void SetLightStyle(int style, string value) { throw new NotImplementedException(); }
 
 /**
  * Returns the client's eye position.
@@ -63,4 +65,6 @@ native void SetLightStyle(int style, const char[] value);
  * @param pos           Destination vector to store the client's eye position.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-native void GetClientEyePosition(int client, float pos[3]);
+public static void GetClientEyePosition(int client, float pos[3]) { throw new NotImplementedException(); }
+	}
+}

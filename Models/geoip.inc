@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _geoip_included
- #endinput
-#endif
-#define _geoip_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 #include <core>
 
@@ -48,7 +50,7 @@
  * @param ccode         Destination string buffer to store the code.
  * @return              True on success, false if no country found.
  */
-native bool GeoipCode2(const char[] ip, char ccode[3]);
+public static bool GeoipCode2(string ip, char ccode[3]) { throw new NotImplementedException(); }
 
 /**
  * Gets the three character country code from an IP address. (USA, CAN, etc)
@@ -57,7 +59,7 @@ native bool GeoipCode2(const char[] ip, char ccode[3]);
  * @param ccode         Destination string buffer to store the code.
  * @return              True on success, false if no country found.
  */
-native bool GeoipCode3(const char[] ip, char ccode[4]);
+public static bool GeoipCode3(string ip, char ccode[4]) { throw new NotImplementedException(); }
 
 /**
  * Gets the full country name. (max length of output string is 45)
@@ -67,7 +69,7 @@ native bool GeoipCode3(const char[] ip, char ccode[4]);
  * @param maxlength     Maximum length of output string buffer.
  * @return              True on success, false if no country found.
  */
-native bool GeoipCountry(const char[] ip, char[] name, int maxlength);
+public static bool GeoipCountry(string ip, string name, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * @endsection
@@ -95,8 +97,10 @@ public Extension __ext_geoip =
 #if !defined REQUIRE_EXTENSIONS
 public void __ext_geoip_SetNTVOptional()
 {
-	MarkNativeAsOptional("GeoipCode2");
-	MarkNativeAsOptional("GeoipCode3");
-	MarkNativeAsOptional("GeoipCountry");
+	MarkNativeAsOptional("GeoipCode2") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GeoipCode3") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GeoipCountry") { throw new NotImplementedException(); }
 }
 #endif
+	}
+}

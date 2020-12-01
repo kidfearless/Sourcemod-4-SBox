@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_gamerules_included
- #endinput
-#endif
-#define _sdktools_gamerules_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 enum RoundState {
 	// initialize the game, create teams
@@ -82,7 +84,7 @@ enum RoundState {
  * @return              Value at the given property offset.
  * @error               Not supported.
  */
-native int GameRules_GetProp(const char[] prop, int size=4, int element=0);
+public static int GameRules_GetProp(string prop, int size=4, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets an integer value for a property of the gamerules entity.
@@ -96,7 +98,7 @@ native int GameRules_GetProp(const char[] prop, int size=4, int element=0);
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
-native void GameRules_SetProp(const char[] prop, any value, int size=4, int element=0, bool changeState=false);
+public static void GameRules_SetProp(string prop, any value, int size=4, int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a float value from a property of the gamerules entity.
@@ -106,7 +108,7 @@ native void GameRules_SetProp(const char[] prop, any value, int size=4, int elem
  * @return              Value at the given property offset.
  * @error               Not supported.
  */
-native float GameRules_GetPropFloat(const char[] prop, int element=0);
+public static float GameRules_GetPropFloat(string prop, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets a float value for a property of the gamerules entity.
@@ -117,7 +119,7 @@ native float GameRules_GetPropFloat(const char[] prop, int element=0);
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
-native void GameRules_SetPropFloat(const char[] prop, float value, int element=0, bool changeState=false);
+public static void GameRules_SetPropFloat(string prop, float value, int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a entity index from a property of the gamerules entity.
@@ -129,7 +131,7 @@ native void GameRules_SetPropFloat(const char[] prop, float value, int element=0
  *                      then -1 is returned.
  * @error               Not supported.
  */
-native int GameRules_GetPropEnt(const char[] prop, int element=0);
+public static int GameRules_GetPropEnt(string prop, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets an entity index for a property of the gamerules entity.
@@ -140,7 +142,7 @@ native int GameRules_GetPropEnt(const char[] prop, int element=0);
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
-native void GameRules_SetPropEnt(const char[] prop, int other, int element=0, bool changeState=false);
+public static void GameRules_SetPropEnt(string prop, int other, int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a vector of floats from the gamerules entity, given a named network property.
@@ -150,7 +152,7 @@ native void GameRules_SetPropEnt(const char[] prop, int other, int element=0, bo
  * @param element       Element # (starting from 0) if property is an array.
  * @error               Not supported.
  */
-native void GameRules_GetPropVector(const char[] prop, float vec[3], int element=0);
+public static void GameRules_GetPropVector(string prop, float vec[3], int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets a vector of floats in the gamerules entity, given a named network property.
@@ -161,7 +163,7 @@ native void GameRules_GetPropVector(const char[] prop, float vec[3], int element
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
-native void GameRules_SetPropVector(const char[] prop, const float vec[3], int element=0, bool changeState=false);
+public static void GameRules_SetPropVector(string prop, const float vec[3], int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Gets a gamerules property as a string.
@@ -172,7 +174,7 @@ native void GameRules_SetPropVector(const char[] prop, const float vec[3], int e
  * @return              Number of non-null bytes written.
  * @error               Not supported.
  */
-native int GameRules_GetPropString(const char[] prop, char[] buffer, int maxlen);
+public static int GameRules_GetPropString(string prop, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Sets a gamerules property as a string.
@@ -183,7 +185,7 @@ native int GameRules_GetPropString(const char[] prop, char[] buffer, int maxlen)
  * @return              Number of non-null bytes written.
  * @error               Not supported.
  */
-native int GameRules_SetPropString(const char[] prop, const char[] buffer, bool changeState=false);
+public static int GameRules_SetPropString(string prop, string buffer, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Gets the current round state.
@@ -193,5 +195,7 @@ native int GameRules_SetPropString(const char[] prop, const char[] buffer, bool 
  */
 stock RoundState GameRules_GetRoundState()
 {
-	return view_as<RoundState>(GameRules_GetProp("m_iRoundState"));
+	return view_as<RoundState>(GameRules_GetProp("m_iRoundState")) { throw new NotImplementedException(); }
+}
+	}
 }

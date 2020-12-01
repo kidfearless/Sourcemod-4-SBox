@@ -30,83 +30,85 @@
  * Version: $Id$
  */
 
-#if defined _bitbuffer_included
- #endinput
-#endif
-#define _bitbuffer_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 methodmap BfWrite < Handle
 {
 	// Writes a single bit to a writable bitbuffer (bf_write).
 	//
 	// @param bit       Bit to write (true for 1, false for 0).
-	public native void WriteBool(bool bit);
+	public native void WriteBool(bool bit) { throw new NotImplementedException(); }
 	 
 	// Writes a byte to a writable bitbuffer (bf_write).
 	//
 	// @param byte      Byte to write (value will be written as 8bit).
-	public native void WriteByte(int byte);
+	public native void WriteByte(int byte) { throw new NotImplementedException(); }
 
 	// Writes a byte to a writable bitbuffer (bf_write).
 	//
 	// @param chr       Character to write.
-	public native void WriteChar(int chr);
+	public native void WriteChar(int chr) { throw new NotImplementedException(); }
 
 	// Writes a 16bit integer to a writable bitbuffer (bf_write).
 	//
 	// @param num       Integer to write (value will be written as 16bit).
-	public native void WriteShort(int num);
+	public native void WriteShort(int num) { throw new NotImplementedException(); }
 
 	// Writes a 16bit unsigned integer to a writable bitbuffer (bf_write).
 	//
 	// @param num       Integer to write (value will be written as 16bit).
-	public native void WriteWord(int num);
+	public native void WriteWord(int num) { throw new NotImplementedException(); }
 
 	// Writes a normal integer to a writable bitbuffer (bf_write).
 	//
 	// @param num       Integer to write (value will be written as 32bit).
-	public native void WriteNum(int num);
+	public native void WriteNum(int num) { throw new NotImplementedException(); }
 
 	// Writes a floating point number to a writable bitbuffer (bf_write).
 	//
 	// @param num       Number to write.
-	public native void WriteFloat(float num);
+	public native void WriteFloat(float num) { throw new NotImplementedException(); }
 
 	// Writes a string to a writable bitbuffer (bf_write).
 	//
 	// @param string    Text string to write.
-	public native void WriteString(const char[] string);
+	public native void WriteString(string string) { throw new NotImplementedException(); }
 
 	// Writes an entity to a writable bitbuffer (bf_write).
 	//
 	// @param ent       Entity index to write.
-	public native void WriteEntity(int ent);
+	public native void WriteEntity(int ent) { throw new NotImplementedException(); }
 
 	// Writes a bit angle to a writable bitbuffer (bf_write).
 	//
 	// @param angle     Angle to write.
 	// @param numBits   Optional number of bits to use.
-	public native void WriteAngle(float angle, int numBits=8);
+	public native void WriteAngle(float angle, int numBits=8) { throw new NotImplementedException(); }
 
 	// Writes a coordinate to a writable bitbuffer (bf_write).
 	//
 	// @param coord     Coordinate to write.
-	public native void WriteCoord(float coord);
+	public native void WriteCoord(float coord) { throw new NotImplementedException(); }
 
 	// Writes a 3D vector of coordinates to a writable bitbuffer (bf_write).
 	//
 	// @param coord     Coordinate array to write.
-	public native void WriteVecCoord(float coord[3]);
+	public native void WriteVecCoord(float coord[3]) { throw new NotImplementedException(); }
 
 	// Writes a 3D normal vector to a writable bitbuffer (bf_write).
 	//
 	// @param vec       Vector to write.
-	public native void WriteVecNormal(float vec[3]);
+	public native void WriteVecNormal(float vec[3]) { throw new NotImplementedException(); }
 
 	// Writes a 3D angle vector to a writable bitbuffer (bf_write).
 	//
 	// @param angles    Angle vector to write.
-	public native void WriteAngles(float angles[3]);
+	public native void WriteAngles(float angles[3]) { throw new NotImplementedException(); }
 };
 
 methodmap BfRead < Handle
@@ -114,39 +116,39 @@ methodmap BfRead < Handle
 	// Reads a single bit from a readable bitbuffer (bf_read).
 	//
 	// @return          Bit value read.
-	public native bool ReadBool();
+	public native bool ReadBool() { throw new NotImplementedException(); }
 
 	// Reads a byte from a readable bitbuffer (bf_read).
 	//
 	// @return          Byte value read (read as 8bit).
-	public native int ReadByte();
+	public native int ReadByte() { throw new NotImplementedException(); }
 
 	// Reads a character from a readable bitbuffer (bf_read).
 	//
 	// @return          Character value read.
-	public native int ReadChar();
+	public native int ReadChar() { throw new NotImplementedException(); }
 
 	// Reads a 16bit integer from a readable bitbuffer (bf_read).
 	//
 	// @param bf        bf_read handle to read from.
 	// @return          Integer value read (read as 16bit).
-	public native int ReadShort();
+	public native int ReadShort() { throw new NotImplementedException(); }
 
 	// Reads a 16bit unsigned integer from a readable bitbuffer (bf_read).
 	//
 	// @param bf        bf_read handle to read from.
 	// @return          Integer value read (read as 16bit).
-	public native int ReadWord();
+	public native int ReadWord() { throw new NotImplementedException(); }
 
 	// Reads a normal integer to a readable bitbuffer (bf_read).
 	//
 	// @return          Integer value read (read as 32bit).
-	public native int ReadNum();
+	public native int ReadNum() { throw new NotImplementedException(); }
 
 	// Reads a floating point number from a readable bitbuffer (bf_read).
 	//
 	// @return          Floating point value read.
-	public native float ReadFloat();
+	public native float ReadFloat() { throw new NotImplementedException(); }
 
 	// Reads a string from a readable bitbuffer (bf_read).
 	//
@@ -158,42 +160,42 @@ methodmap BfRead < Handle
 	//                  number will be returned equal to the number of characters written to the 
 	//                  buffer minus 1.  The buffer will be null terminated regardless of the 
 	//                  return value.
-	public native int ReadString(char[] buffer, int maxlength, bool line=false);
+	public native int ReadString(string buffer, int maxlength, bool line=false) { throw new NotImplementedException(); }
 
 	// Reads an entity from a readable bitbuffer (bf_read).
 	//
 	// @return          Entity index read.
-	public native int ReadEntity();
+	public native int ReadEntity() { throw new NotImplementedException(); }
 
 	// Reads a bit angle from a readable bitbuffer (bf_read).
 	//
 	// @param numBits   Optional number of bits to use.
 	// @return          Angle read.
-	public native float ReadAngle(int numBits=8);
+	public native float ReadAngle(int numBits=8) { throw new NotImplementedException(); }
 
 	// Reads a coordinate from a readable bitbuffer (bf_read).
 	//
 	// @return          Coordinate read.
-	public native float ReadCoord();
+	public native float ReadCoord() { throw new NotImplementedException(); }
 
 	// Reads a 3D vector of coordinates from a readable bitbuffer (bf_read).
 	//
 	// @param coord     Destination coordinate array.
-	public native void ReadVecCoord(float coord[3]);
+	public native void ReadVecCoord(float coord[3]) { throw new NotImplementedException(); }
 
 	// Reads a 3D normal vector from a readable bitbuffer (bf_read).
 	//
 	// @param vec       Destination vector array.
-	public native void ReadVecNormal(float vec[3]);
+	public native void ReadVecNormal(float vec[3]) { throw new NotImplementedException(); }
 
 	// Reads a 3D angle vector from a readable bitbuffer (bf_read).
 	//
 	// @param angles    Destination angle vector.
-	public native void ReadAngles(float angles[3]);
+	public native void ReadAngles(float angles[3]) { throw new NotImplementedException(); }
 
 	// Returns the number of bytes left in a readable bitbuffer (bf_read).
 	property int BytesLeft {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 };
 
@@ -204,7 +206,7 @@ methodmap BfRead < Handle
  * @param bit           Bit to write (true for 1, false for 0).
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteBool(Handle bf, bool bit);
+public static void BfWriteBool(Handle bf, bool bit) { throw new NotImplementedException(); }
  
 /**
  * Writes a byte to a writable bitbuffer (bf_write).
@@ -213,7 +215,7 @@ native void BfWriteBool(Handle bf, bool bit);
  * @param byte          Byte to write (value will be written as 8bit).
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteByte(Handle bf, int byte);
+public static void BfWriteByte(Handle bf, int byte) { throw new NotImplementedException(); }
 
 /**
  * Writes a byte to a writable bitbuffer (bf_write).
@@ -222,7 +224,7 @@ native void BfWriteByte(Handle bf, int byte);
  * @param chr           Character to write.
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteChar(Handle bf, int chr);
+public static void BfWriteChar(Handle bf, int chr) { throw new NotImplementedException(); }
 
 /**
  * Writes a 16bit integer to a writable bitbuffer (bf_write).
@@ -231,7 +233,7 @@ native void BfWriteChar(Handle bf, int chr);
  * @param num           Integer to write (value will be written as 16bit).
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteShort(Handle bf, int num);
+public static void BfWriteShort(Handle bf, int num) { throw new NotImplementedException(); }
 
 /**
  * Writes a 16bit unsigned integer to a writable bitbuffer (bf_write).
@@ -240,7 +242,7 @@ native void BfWriteShort(Handle bf, int num);
  * @param num           Integer to write (value will be written as 16bit).
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteWord(Handle bf, int num);
+public static void BfWriteWord(Handle bf, int num) { throw new NotImplementedException(); }
 
 /**
  * Writes a normal integer to a writable bitbuffer (bf_write).
@@ -249,7 +251,7 @@ native void BfWriteWord(Handle bf, int num);
  * @param num           Integer to write (value will be written as 32bit).
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteNum(Handle bf, int num);
+public static void BfWriteNum(Handle bf, int num) { throw new NotImplementedException(); }
 
 /**
  * Writes a floating point number to a writable bitbuffer (bf_write).
@@ -258,7 +260,7 @@ native void BfWriteNum(Handle bf, int num);
  * @param num           Number to write.
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteFloat(Handle bf, float num);
+public static void BfWriteFloat(Handle bf, float num) { throw new NotImplementedException(); }
 
 /**
  * Writes a string to a writable bitbuffer (bf_write).
@@ -267,7 +269,7 @@ native void BfWriteFloat(Handle bf, float num);
  * @param string        Text string to write.
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteString(Handle bf, const char[] string);
+public static void BfWriteString(Handle bf, string string) { throw new NotImplementedException(); }
 
 /**
  * Writes an entity to a writable bitbuffer (bf_write).
@@ -277,7 +279,7 @@ native void BfWriteString(Handle bf, const char[] string);
  * @param ent           Entity index to write.
  * @error               Invalid or incorrect Handle, or invalid entity.
  */
-native void BfWriteEntity(Handle bf, int ent);
+public static void BfWriteEntity(Handle bf, int ent) { throw new NotImplementedException(); }
 
 /**
  * Writes a bit angle to a writable bitbuffer (bf_write).
@@ -287,7 +289,7 @@ native void BfWriteEntity(Handle bf, int ent);
  * @param numBits       Optional number of bits to use.
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteAngle(Handle bf, float angle, int numBits=8);
+public static void BfWriteAngle(Handle bf, float angle, int numBits=8) { throw new NotImplementedException(); }
 
 /**
  * Writes a coordinate to a writable bitbuffer (bf_write).
@@ -296,7 +298,7 @@ native void BfWriteAngle(Handle bf, float angle, int numBits=8);
  * @param coord         Coordinate to write.
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteCoord(Handle bf, float coord);
+public static void BfWriteCoord(Handle bf, float coord) { throw new NotImplementedException(); }
 
 /**
  * Writes a 3D vector of coordinates to a writable bitbuffer (bf_write).
@@ -305,7 +307,7 @@ native void BfWriteCoord(Handle bf, float coord);
  * @param coord         Coordinate array to write.
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteVecCoord(Handle bf, float coord[3]);
+public static void BfWriteVecCoord(Handle bf, float coord[3]) { throw new NotImplementedException(); }
 
 /**
  * Writes a 3D normal vector to a writable bitbuffer (bf_write).
@@ -314,7 +316,7 @@ native void BfWriteVecCoord(Handle bf, float coord[3]);
  * @param vec           Vector to write.
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteVecNormal(Handle bf, float vec[3]);
+public static void BfWriteVecNormal(Handle bf, float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Writes a 3D angle vector to a writable bitbuffer (bf_write).
@@ -323,7 +325,7 @@ native void BfWriteVecNormal(Handle bf, float vec[3]);
  * @param angles        Angle vector to write.
  * @error               Invalid or incorrect Handle.
  */
-native void BfWriteAngles(Handle bf, float angles[3]);
+public static void BfWriteAngles(Handle bf, float angles[3]) { throw new NotImplementedException(); }
 
 /** 
  * Reads a single bit from a readable bitbuffer (bf_read).
@@ -332,7 +334,7 @@ native void BfWriteAngles(Handle bf, float angles[3]);
  * @return              Bit value read.
  * @error               Invalid or incorrect Handle.
  */
-native bool BfReadBool(Handle bf);
+public static bool BfReadBool(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a byte from a readable bitbuffer (bf_read).
@@ -341,7 +343,7 @@ native bool BfReadBool(Handle bf);
  * @return              Byte value read (read as 8bit).
  * @error               Invalid or incorrect Handle.
  */
-native int BfReadByte(Handle bf);
+public static int BfReadByte(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a character from a readable bitbuffer (bf_read).
@@ -350,7 +352,7 @@ native int BfReadByte(Handle bf);
  * @return              Character value read.
  * @error               Invalid or incorrect Handle.
  */
-native int BfReadChar(Handle bf);
+public static int BfReadChar(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a 16bit integer from a readable bitbuffer (bf_read).
@@ -359,7 +361,7 @@ native int BfReadChar(Handle bf);
  * @return              Integer value read (read as 16bit).
  * @error               Invalid or incorrect Handle.
  */
-native int BfReadShort(Handle bf);
+public static int BfReadShort(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a 16bit unsigned integer from a readable bitbuffer (bf_read).
@@ -368,7 +370,7 @@ native int BfReadShort(Handle bf);
  * @return              Integer value read (read as 16bit).
  * @error               Invalid or incorrect Handle.
  */
-native int BfReadWord(Handle bf);
+public static int BfReadWord(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a normal integer to a readable bitbuffer (bf_read).
@@ -377,7 +379,7 @@ native int BfReadWord(Handle bf);
  * @return              Integer value read (read as 32bit).
  * @error               Invalid or incorrect Handle.
  */
-native int BfReadNum(Handle bf);
+public static int BfReadNum(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a floating point number from a readable bitbuffer (bf_read).
@@ -386,7 +388,7 @@ native int BfReadNum(Handle bf);
  * @return              Floating point value read.
  * @error               Invalid or incorrect Handle.
  */
-native float BfReadFloat(Handle bf);
+public static float BfReadFloat(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a string from a readable bitbuffer (bf_read).
@@ -402,7 +404,7 @@ native float BfReadFloat(Handle bf);
  *                      return value.
  * @error               Invalid or incorrect Handle.
  */
-native int BfReadString(Handle bf, char[] buffer, int maxlength, bool line=false);
+public static int BfReadString(Handle bf, string buffer, int maxlength, bool line=false) { throw new NotImplementedException(); }
 
 /**
  * Reads an entity from a readable bitbuffer (bf_read).
@@ -412,7 +414,7 @@ native int BfReadString(Handle bf, char[] buffer, int maxlength, bool line=false
  * @return              Entity index read.
  * @error               Invalid or incorrect Handle.
  */
-native int BfReadEntity(Handle bf);
+public static int BfReadEntity(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a bit angle from a readable bitbuffer (bf_read).
@@ -422,7 +424,7 @@ native int BfReadEntity(Handle bf);
  * @return              Angle read.
  * @error               Invalid or incorrect Handle.
  */
-native float BfReadAngle(Handle bf, int numBits=8);
+public static float BfReadAngle(Handle bf, int numBits=8) { throw new NotImplementedException(); }
 
 /**
  * Reads a coordinate from a readable bitbuffer (bf_read).
@@ -431,7 +433,7 @@ native float BfReadAngle(Handle bf, int numBits=8);
  * @return              Coordinate read.
  * @error               Invalid or incorrect Handle.
  */
-native float BfReadCoord(Handle bf);
+public static float BfReadCoord(Handle bf) { throw new NotImplementedException(); }
 
 /**
  * Reads a 3D vector of coordinates from a readable bitbuffer (bf_read).
@@ -440,7 +442,7 @@ native float BfReadCoord(Handle bf);
  * @param coord         Destination coordinate array.
  * @error               Invalid or incorrect Handle.
  */
-native void BfReadVecCoord(Handle bf, float coord[3]);
+public static void BfReadVecCoord(Handle bf, float coord[3]) { throw new NotImplementedException(); }
 
 /**
  * Reads a 3D normal vector from a readable bitbuffer (bf_read).
@@ -449,7 +451,7 @@ native void BfReadVecCoord(Handle bf, float coord[3]);
  * @param vec           Destination vector array.
  * @error               Invalid or incorrect Handle.
  */
-native void BfReadVecNormal(Handle bf, float vec[3]);
+public static void BfReadVecNormal(Handle bf, float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Reads a 3D angle vector from a readable bitbuffer (bf_read).
@@ -458,7 +460,7 @@ native void BfReadVecNormal(Handle bf, float vec[3]);
  * @param angles        Destination angle vector.
  * @error               Invalid or incorrect Handle.
  */
-native void BfReadAngles(Handle bf, float angles[3]);
+public static void BfReadAngles(Handle bf, float angles[3]) { throw new NotImplementedException(); }
 
 /**
  * Returns the number of bytes left in a readable bitbuffer (bf_read).
@@ -467,4 +469,6 @@ native void BfReadAngles(Handle bf, float angles[3]);
  * @return              Number of bytes left unread.
  * @error               Invalid or incorrect Handle.
  */
-native int BfGetNumBytesLeft(Handle bf);
+public static int BfGetNumBytesLeft(Handle bf) { throw new NotImplementedException(); }
+	}
+}

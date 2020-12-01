@@ -30,22 +30,24 @@
  * Version: $Id$
  */
 
-#if defined _core_included
- #endinput
-#endif
-#define _core_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 #include <version>
 
 /** If this gets changed, you need to update Core's check. */
-#define SOURCEMOD_PLUGINAPI_VERSION     5
+public const object SOURCEMOD_PLUGINAPI_VERSION     5
 
 struct PlVers
 {
 	public int version;
-	public const char[] filevers;
-	public const char[] date;
-	public const char[] time;
+	public string filevers;
+	public string date;
+	public string time;
 };
 
 /**
@@ -124,8 +126,8 @@ enum PluginInfo
  */
 struct Extension
 {
-	public const char[] name;   /**< Short name */
-	public const char[] file;   /**< Default file name */
+	public string name;   /**< Short name */
+	public string file;   /**< Default file name */
 	public bool autoload;       /**< Whether or not to auto-load */
 	public bool required;       /**< Whether or not to require */
 };
@@ -135,8 +137,8 @@ struct Extension
  */
 struct SharedPlugin
 {
-	public const char[] name;   /**< Short name */
-	public const char[] file;   /**< File name */
+	public string name;   /**< Short name */
+	public string file;   /**< File name */
 	public bool required;       /**< Whether or not to require */
 };
 
@@ -149,7 +151,7 @@ public const char NULL_STRING[1];   /**< pass this into certain functions to act
  * @param vec     The vector to test.
  * @return        True if NULL_VECTOR, false otherwise.
  */
-native bool IsNullVector(const float vec[3]);
+public static bool IsNullVector(const float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Check if the given string is the NULL_STRING.
@@ -157,7 +159,7 @@ native bool IsNullVector(const float vec[3]);
  * @param str     The string to test.
  * @return        True if NULL_STRING, false otherwise.
  */
-native bool IsNullString(const char[] str);
+public static bool IsNullString(string str) { throw new NotImplementedException(); }
 
 /**
  * Horrible compatibility shim.
@@ -170,7 +172,7 @@ public Extension __ext_core =
 	required = 0,
 };
 
-native int VerifyCoreVersion();
+public static int VerifyCoreVersion() { throw new NotImplementedException(); }
 
 /**
  * Sets a native as optional, such that if it is unloaded, removed,
@@ -179,142 +181,144 @@ native int VerifyCoreVersion();
  *
  * @param name          Native name.
  */
-native void MarkNativeAsOptional(const char[] name);
+public static void MarkNativeAsOptional(string name) { throw new NotImplementedException(); }
 
 public void __ext_core_SetNTVOptional()
 {
-	MarkNativeAsOptional("GetFeatureStatus");
-	MarkNativeAsOptional("RequireFeature");
-	MarkNativeAsOptional("AddCommandListener");
-	MarkNativeAsOptional("RemoveCommandListener");
+	MarkNativeAsOptional("GetFeatureStatus") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("RequireFeature") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("AddCommandListener") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("RemoveCommandListener") { throw new NotImplementedException(); }
 
-	MarkNativeAsOptional("BfWriteBool");
-	MarkNativeAsOptional("BfWriteByte");
-	MarkNativeAsOptional("BfWriteChar");
-	MarkNativeAsOptional("BfWriteShort");
-	MarkNativeAsOptional("BfWriteWord");
-	MarkNativeAsOptional("BfWriteNum");
-	MarkNativeAsOptional("BfWriteFloat");
-	MarkNativeAsOptional("BfWriteString");
-	MarkNativeAsOptional("BfWriteEntity");
-	MarkNativeAsOptional("BfWriteAngle");
-	MarkNativeAsOptional("BfWriteCoord");
-	MarkNativeAsOptional("BfWriteVecCoord");
-	MarkNativeAsOptional("BfWriteVecNormal");
-	MarkNativeAsOptional("BfWriteAngles");
-	MarkNativeAsOptional("BfReadBool");
-	MarkNativeAsOptional("BfReadByte");
-	MarkNativeAsOptional("BfReadChar");
-	MarkNativeAsOptional("BfReadShort");
-	MarkNativeAsOptional("BfReadWord");
-	MarkNativeAsOptional("BfReadNum");
-	MarkNativeAsOptional("BfReadFloat");
-	MarkNativeAsOptional("BfReadString");
-	MarkNativeAsOptional("BfReadEntity");
-	MarkNativeAsOptional("BfReadAngle");
-	MarkNativeAsOptional("BfReadCoord");
-	MarkNativeAsOptional("BfReadVecCoord");
-	MarkNativeAsOptional("BfReadVecNormal");
-	MarkNativeAsOptional("BfReadAngles");
-	MarkNativeAsOptional("BfGetNumBytesLeft");
+	MarkNativeAsOptional("BfWriteBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteByte") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteChar") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteShort") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteWord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteNum") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteEntity") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteCoord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteVecCoord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteVecNormal") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWriteAngles") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadByte") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadChar") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadShort") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadWord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadNum") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadEntity") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadCoord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadVecCoord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadVecNormal") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfReadAngles") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfGetNumBytesLeft") { throw new NotImplementedException(); }
 
-	MarkNativeAsOptional("BfWrite.WriteBool");
-	MarkNativeAsOptional("BfWrite.WriteByte");
-	MarkNativeAsOptional("BfWrite.WriteChar");
-	MarkNativeAsOptional("BfWrite.WriteShort");
-	MarkNativeAsOptional("BfWrite.WriteWord");
-	MarkNativeAsOptional("BfWrite.WriteNum");
-	MarkNativeAsOptional("BfWrite.WriteFloat");
-	MarkNativeAsOptional("BfWrite.WriteString");
-	MarkNativeAsOptional("BfWrite.WriteEntity");
-	MarkNativeAsOptional("BfWrite.WriteAngle");
-	MarkNativeAsOptional("BfWrite.WriteCoord");
-	MarkNativeAsOptional("BfWrite.WriteVecCoord");
-	MarkNativeAsOptional("BfWrite.WriteVecNormal");
-	MarkNativeAsOptional("BfWrite.WriteAngles");
-	MarkNativeAsOptional("BfRead.ReadBool");
-	MarkNativeAsOptional("BfRead.ReadByte");
-	MarkNativeAsOptional("BfRead.ReadChar");
-	MarkNativeAsOptional("BfRead.ReadShort");
-	MarkNativeAsOptional("BfRead.ReadWord");
-	MarkNativeAsOptional("BfRead.ReadNum");
-	MarkNativeAsOptional("BfRead.ReadFloat");
-	MarkNativeAsOptional("BfRead.ReadString");
-	MarkNativeAsOptional("BfRead.ReadEntity");
-	MarkNativeAsOptional("BfRead.ReadAngle");
-	MarkNativeAsOptional("BfRead.ReadCoord");
-	MarkNativeAsOptional("BfRead.ReadVecCoord");
-	MarkNativeAsOptional("BfRead.ReadVecNormal");
-	MarkNativeAsOptional("BfRead.ReadAngles");
-	MarkNativeAsOptional("BfRead.BytesLeft.get");
+	MarkNativeAsOptional("BfWrite.WriteBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteByte") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteChar") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteShort") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteWord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteNum") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteEntity") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteCoord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteVecCoord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteVecNormal") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfWrite.WriteAngles") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadByte") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadChar") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadShort") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadWord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadNum") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadEntity") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadCoord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadVecCoord") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadVecNormal") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.ReadAngles") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("BfRead.BytesLeft.get") { throw new NotImplementedException(); }
 
-	MarkNativeAsOptional("PbReadInt");
-	MarkNativeAsOptional("PbReadFloat");
-	MarkNativeAsOptional("PbReadBool");
-	MarkNativeAsOptional("PbReadString");
-	MarkNativeAsOptional("PbReadColor");
-	MarkNativeAsOptional("PbReadAngle");
-	MarkNativeAsOptional("PbReadVector");
-	MarkNativeAsOptional("PbReadVector2D");
-	MarkNativeAsOptional("PbGetRepeatedFieldCount");
-	MarkNativeAsOptional("PbSetInt");
-	MarkNativeAsOptional("PbSetFloat");
-	MarkNativeAsOptional("PbSetBool");
-	MarkNativeAsOptional("PbSetString");
-	MarkNativeAsOptional("PbSetColor");
-	MarkNativeAsOptional("PbSetAngle");
-	MarkNativeAsOptional("PbSetVector");
-	MarkNativeAsOptional("PbSetVector2D");
-	MarkNativeAsOptional("PbAddInt");
-	MarkNativeAsOptional("PbAddFloat");
-	MarkNativeAsOptional("PbAddBool");
-	MarkNativeAsOptional("PbAddString");
-	MarkNativeAsOptional("PbAddColor");
-	MarkNativeAsOptional("PbAddAngle");
-	MarkNativeAsOptional("PbAddVector");
-	MarkNativeAsOptional("PbAddVector2D");
-	MarkNativeAsOptional("PbRemoveRepeatedFieldValue");
-	MarkNativeAsOptional("PbReadMessage");
-	MarkNativeAsOptional("PbReadRepeatedMessage");
-	MarkNativeAsOptional("PbAddMessage");
+	MarkNativeAsOptional("PbReadInt") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadColor") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadVector") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadVector2D") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbGetRepeatedFieldCount") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbSetInt") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbSetFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbSetBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbSetString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbSetColor") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbSetAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbSetVector") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbSetVector2D") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddInt") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddColor") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddVector") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddVector2D") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbRemoveRepeatedFieldValue") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadMessage") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbReadRepeatedMessage") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("PbAddMessage") { throw new NotImplementedException(); }
 
-	MarkNativeAsOptional("Protobuf.ReadInt");
-	MarkNativeAsOptional("Protobuf.ReadInt64");
-	MarkNativeAsOptional("Protobuf.ReadFloat");
-	MarkNativeAsOptional("Protobuf.ReadBool");
-	MarkNativeAsOptional("Protobuf.ReadString");
-	MarkNativeAsOptional("Protobuf.ReadColor");
-	MarkNativeAsOptional("Protobuf.ReadAngle");
-	MarkNativeAsOptional("Protobuf.ReadVector");
-	MarkNativeAsOptional("Protobuf.ReadVector2D");
-	MarkNativeAsOptional("Protobuf.GetRepeatedFieldCount");
-	MarkNativeAsOptional("Protobuf.SetInt");
-	MarkNativeAsOptional("Protobuf.SetInt64");
-	MarkNativeAsOptional("Protobuf.SetFloat");
-	MarkNativeAsOptional("Protobuf.SetBool");
-	MarkNativeAsOptional("Protobuf.SetString");
-	MarkNativeAsOptional("Protobuf.SetColor");
-	MarkNativeAsOptional("Protobuf.SetAngle");
-	MarkNativeAsOptional("Protobuf.SetVector");
-	MarkNativeAsOptional("Protobuf.SetVector2D");
-	MarkNativeAsOptional("Protobuf.AddInt");
-	MarkNativeAsOptional("Protobuf.AddInt64");
-	MarkNativeAsOptional("Protobuf.AddFloat");
-	MarkNativeAsOptional("Protobuf.AddBool");
-	MarkNativeAsOptional("Protobuf.AddString");
-	MarkNativeAsOptional("Protobuf.AddColor");
-	MarkNativeAsOptional("Protobuf.AddAngle");
-	MarkNativeAsOptional("Protobuf.AddVector");
-	MarkNativeAsOptional("Protobuf.AddVector2D");
-	MarkNativeAsOptional("Protobuf.RemoveRepeatedFieldValue");
-	MarkNativeAsOptional("Protobuf.ReadMessage");
-	MarkNativeAsOptional("Protobuf.ReadRepeatedMessage");
-	MarkNativeAsOptional("Protobuf.AddMessage");
+	MarkNativeAsOptional("Protobuf.ReadInt") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadInt64") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadColor") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadVector") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadVector2D") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.GetRepeatedFieldCount") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetInt") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetInt64") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetColor") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetVector") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.SetVector2D") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddInt") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddInt64") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddFloat") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddBool") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddColor") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddAngle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddVector") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddVector2D") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.RemoveRepeatedFieldValue") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadMessage") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.ReadRepeatedMessage") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Protobuf.AddMessage") { throw new NotImplementedException(); }
 
-	VerifyCoreVersion();
+	VerifyCoreVersion() { throw new NotImplementedException(); }
 }
 
 
-#define AUTOLOAD_EXTENSIONS
-#define REQUIRE_EXTENSIONS
-#define REQUIRE_PLUGIN
+public const object AUTOLOAD_EXTENSIONS
+public const object REQUIRE_EXTENSIONS
+public const object REQUIRE_PLUGIN
+	}
+}

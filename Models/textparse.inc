@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _textparse_included
- #endinput
-#endif
-#define _textparse_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 
 /********************************
@@ -76,7 +78,7 @@ enum SMCError
  *
  * @param smc           The SMC Parse Handle.
  */
-typedef SMC_ParseStart = function void (SMCParser smc);
+typedef SMC_ParseStart = function void (SMCParser smc) { throw new NotImplementedException(); }
 
 /**
  * Called when the parser is entering a new section or sub-section.
@@ -88,7 +90,7 @@ typedef SMC_ParseStart = function void (SMCParser smc);
  * @param opt_quotes    True if the section name was quote-enclosed in the file.
  * @return              An SMCResult action to take.
  */
-typedef SMC_NewSection = function SMCResult (SMCParser smc, const char[] name, bool opt_quotes);
+typedef SMC_NewSection = function SMCResult (SMCParser smc, string name, bool opt_quotes) { throw new NotImplementedException(); }
 
 /**
  * Called when the parser finds a new key/value pair.
@@ -102,14 +104,14 @@ typedef SMC_NewSection = function SMCResult (SMCParser smc, const char[] name, b
  * @param value_quotes  Whether or not the value was enclosed in quotes.
  * @return              An SMCResult action to take.
  */
-typedef SMC_KeyValue = function SMCResult (SMCParser smc, const char[] key, const char[] value, bool key_quotes, bool value_quotes);
+typedef SMC_KeyValue = function SMCResult (SMCParser smc, string key, string value, bool key_quotes, bool value_quotes) { throw new NotImplementedException(); }
 
 /** Called when the parser finds the end of the current section.
  *
  * @param smc           The SMCParser.
  * @return              An SMCResult action to take.
  */
-typedef SMC_EndSection = function SMCResult (SMCParser smc);
+typedef SMC_EndSection = function SMCResult (SMCParser smc) { throw new NotImplementedException(); }
 
 /**
  * Called when parsing is halted.
@@ -118,7 +120,7 @@ typedef SMC_EndSection = function SMCResult (SMCParser smc);
  * @param halted        True if abnormally halted, false otherwise.
  * @param failed        True if parsing failed, false otherwise.
  */
-typedef SMC_ParseEnd = function void (SMCParser smc, bool halted, bool failed);
+typedef SMC_ParseEnd = function void (SMCParser smc, bool halted, bool failed) { throw new NotImplementedException(); }
 
 /**
  * Callback for whenever a new line of text is about to be parsed.
@@ -128,7 +130,7 @@ typedef SMC_ParseEnd = function void (SMCParser smc, bool halted, bool failed);
  * @param lineno        The line number it occurs on.
  * @return              An SMCResult action to take.
  */
-typedef SMC_RawLine = function SMCResult (SMCParser smc, const char[] line, int lineno);
+typedef SMC_RawLine = function SMCResult (SMCParser smc, string line, int lineno) { throw new NotImplementedException(); }
 
 // An SMCParser is a callback-driven parser for SourceMod configuration files.
 // SMC files are similar to Valve KeyValues format, with two key differences:
@@ -137,7 +139,7 @@ typedef SMC_RawLine = function SMCResult (SMCParser smc, const char[] line, int 
 methodmap SMCParser < Handle
 {
 	// Create a new SMC file format parser.
-	public native SMCParser();
+	public native SMCParser() { throw new NotImplementedException(); }
 
 	// Parses an SMC file.
 	//
@@ -145,36 +147,36 @@ methodmap SMCParser < Handle
 	// @param line          An optional variable to store the last line number read.
 	// @param col           An optional variable to store the last column number read.
 	// @return              An SMCParseError result.
-	public native SMCError ParseFile(const char[] file, int &line = 0, int &col = 0);
+	public native SMCError ParseFile(string file, int &line = 0, int &col = 0) { throw new NotImplementedException(); }
 
 	// Sets the callback for receiving SMC_ParseStart events.
 	property SMC_ParseStart OnStart {
-		public native set(SMC_ParseStart func);
+		public native set(SMC_ParseStart func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_ParseEnd events.
 	property SMC_ParseEnd OnEnd {
-		public native set(SMC_ParseEnd func);
+		public native set(SMC_ParseEnd func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_NewSection events.
 	property SMC_NewSection OnEnterSection {
-		public native set(SMC_NewSection func);
+		public native set(SMC_NewSection func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_EndSection events.
 	property SMC_EndSection OnLeaveSection {
-		public native set(SMC_EndSection func);
+		public native set(SMC_EndSection func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_KeyValue events.
 	property SMC_KeyValue OnKeyValue {
-		public native set(SMC_KeyValue func);
+		public native set(SMC_KeyValue func) { throw new NotImplementedException(); }
 	}
 
 	// Sets the callback for receiving SMC_RawLine events.
 	property SMC_RawLine OnRawLine {
-		public native set(SMC_RawLine func);
+		public native set(SMC_RawLine func) { throw new NotImplementedException(); }
 	}
 
 	// Gets an error string for an SMCError code.
@@ -183,7 +185,7 @@ methodmap SMCParser < Handle
 	// @param buffer        A string buffer for the error (contents undefined on failure).
 	// @param buf_max       The maximum size of the buffer.
 	// @return              The number of characters written to buffer.
-	public native void GetErrorString(SMCError error, char[] buffer, int buf_max);
+	public native void GetErrorString(SMCError error, string buffer, int buf_max) { throw new NotImplementedException(); }
 };
 
 /**
@@ -191,7 +193,7 @@ methodmap SMCParser < Handle
  *
  * @return              A new Handle to an SMC Parse structure.
  */
-native SMCParser SMC_CreateParser();
+public static SMCParser SMC_CreateParser() { throw new NotImplementedException(); }
 
 /**
  * Parses an SMC file.
@@ -203,7 +205,7 @@ native SMCParser SMC_CreateParser();
  * @return              An SMCParseError result.
  * @error               Invalid or corrupt Handle.
  */
-native SMCError SMC_ParseFile(Handle smc, const char[] file, int &line=0, int &col=0);
+public static SMCError SMC_ParseFile(Handle smc, string file, int &line=0, int &col=0) { throw new NotImplementedException(); }
 
 /**
  * Gets an error string for an SMCError code.
@@ -216,7 +218,7 @@ native SMCError SMC_ParseFile(Handle smc, const char[] file, int &line=0, int &c
  * @param buf_max       The maximum size of the buffer.
  * @return              True on success, false otherwise.
  */
-native bool SMC_GetErrorString(SMCError error, char[] buffer, int buf_max);
+public static bool SMC_GetErrorString(SMCError error, string buffer, int buf_max) { throw new NotImplementedException(); }
 
 /**
  * Sets the SMC_ParseStart function of a parse Handle.
@@ -225,7 +227,7 @@ native bool SMC_GetErrorString(SMCError error, char[] buffer, int buf_max);
  * @param func          SMC_ParseStart function.
  * @error               Invalid or corrupt Handle.
  */
-native void SMC_SetParseStart(Handle smc, SMC_ParseStart func);
+public static void SMC_SetParseStart(Handle smc, SMC_ParseStart func) { throw new NotImplementedException(); }
 
 /**
  * Sets the SMC_ParseEnd of a parse handle.
@@ -234,7 +236,7 @@ native void SMC_SetParseStart(Handle smc, SMC_ParseStart func);
  * @param func          SMC_ParseEnd function.
  * @error               Invalid or corrupt Handle.
  */
-native void SMC_SetParseEnd(Handle smc, SMC_ParseEnd func);
+public static void SMC_SetParseEnd(Handle smc, SMC_ParseEnd func) { throw new NotImplementedException(); }
 
 /**
  * Sets the three main reader functions.
@@ -244,7 +246,7 @@ native void SMC_SetParseEnd(Handle smc, SMC_ParseEnd func);
  * @param kv            An SMC_KeyValue function pointer.
  * @param es            An SMC_EndSection function pointer.
  */
-native void SMC_SetReaders(Handle smc, SMC_NewSection ns, SMC_KeyValue kv, SMC_EndSection es);
+public static void SMC_SetReaders(Handle smc, SMC_NewSection ns, SMC_KeyValue kv, SMC_EndSection es) { throw new NotImplementedException(); }
 
 /**
  * Sets a raw line reader on an SMC parser Handle.
@@ -252,4 +254,6 @@ native void SMC_SetReaders(Handle smc, SMC_NewSection ns, SMC_KeyValue kv, SMC_E
  * @param smc           Handle to an SMC Parse.
  * @param func          SMC_RawLine function.
  */
-native void SMC_SetRawLine(Handle smc, SMC_RawLine func);
+public static void SMC_SetRawLine(Handle smc, SMC_RawLine func) { throw new NotImplementedException(); }
+	}
+}

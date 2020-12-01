@@ -30,21 +30,23 @@
  * Version: $Id$
  */
 
-#if defined _sourcemod_included
- #endinput
-#endif
-#define _sourcemod_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Plugin public information.
  */
 struct Plugin
 {
-   public const char[] name;        /**< Plugin Name */
-   public const char[] description; /**< Plugin Description */
-   public const char[] author;      /**< Plugin Author */
-   public const char[] version;     /**< Plugin Version */
-   public const char[] url;         /**< Plugin URL */
+   public string name;        /**< Plugin Name */
+   public string description; /**< Plugin Description */
+   public string author;      /**< Plugin Author */
+   public string version;     /**< Plugin Version */
+   public string url;         /**< Plugin URL */
 };
 
 #include <core>
@@ -91,13 +93,13 @@ methodmap GameData < Handle
 	// @param file          File to load.  The path must be relative to the 'gamedata' folder under the config folder
 	//                      and the extension should be omitted.
 	// @return              A handle to the game config file or null on failure.
-	public native GameData(const char[] file);
+	public native GameData(string file) { throw new NotImplementedException(); }
 
 	// Returns an offset value.
 	//
 	// @param key           Key to retrieve from the offset section.
 	// @return              An offset, or -1 on failure.
-	public native int GetOffset(const char[] key);
+	public native int GetOffset(string key) { throw new NotImplementedException(); }
 
 	// Gets the value of a key from the "Keys" section.
 	//
@@ -105,20 +107,20 @@ methodmap GameData < Handle
 	// @param buffer        Destination string buffer.
 	// @param maxlen        Maximum length of output string buffer.
 	// @return              True if key existed, false otherwise.
-	public native bool GetKeyValue(const char[] key, char[] buffer, int maxlen);
+	public native bool GetKeyValue(string key, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Finds an address calculation in a GameConfig file,
 	// performs LoadFromAddress on it as appropriate, then returns the final address.
 	//
 	// @param name          Name of the property to find.
 	// @return              An address calculated on success, or 0 on failure.
-	public native Address GetAddress(const char[] name);
+	public native Address GetAddress(string name) { throw new NotImplementedException(); }
 
 	// Returns a function address calculated from a signature.
 	//
 	// @param name          Name of the property to find.
 	// @return              An address calculated on success, or 0 on failure.
-	public native Address GetMemSig(const char[] name);
+	public native Address GetMemSig(string name) { throw new NotImplementedException(); }
 };
 
 /**
@@ -129,7 +131,7 @@ methodmap GameData < Handle
  * If any run-time error is thrown during this callback, the plugin will be marked
  * as failed.
  */
-forward void OnPluginStart();
+public static override void OnPluginStart() { throw new NotImplementedException(); }
 
 /**
  * @deprecated Use AskPluginLoad2() instead.
@@ -137,12 +139,12 @@ forward void OnPluginStart();
  * not be called, but old plugins with only AskPluginLoad() will work.
  */
 #pragma deprecated Use AskPluginLoad2() instead
-forward bool AskPluginLoad(Handle myself, bool late, char[] error, int err_max);
+public static override bool AskPluginLoad(Handle myself, bool late, string error, int err_max) { throw new NotImplementedException(); }
 
 /**
  * Called before OnPluginStart, in case the plugin wants to check for load failure.
  * This is called even if the plugin type is "private."  Any natives from modules are
- * not available at this point.  Thus, this forward should only be used for explicit
+ * not available at this point.  Thus, this public static override should only be used for explicit
  * pre-emptive things, such as adding dynamic natives, setting certain types of load
  * filters (such as not loading the plugin for certain games).
  *
@@ -157,7 +159,7 @@ forward bool AskPluginLoad(Handle myself, bool late, char[] error, int err_max);
  * @param err_max       Maximum number of characters for error message buffer.
  * @return              APLRes_Success for load success, APLRes_Failure or APLRes_SilentFailure otherwise
  */
-forward APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max);
+public static override APLRes AskPluginLoad2(Handle myself, bool late, string error, int err_max) { throw new NotImplementedException(); }
 
 /**
  * Called when the plugin is about to be unloaded.
@@ -166,33 +168,33 @@ forward APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_ma
  * SourceMod guarantees that plugin shutdown automatically and correctly releases
  * all resources.
  */
-forward void OnPluginEnd();
+public static override void OnPluginEnd() { throw new NotImplementedException(); }
 
 /**
  * Called when the plugin's pause status is changing.
  *
  * @param pause         True if the plugin is being paused, false otherwise.
  */
-forward void OnPluginPauseChange(bool pause);
+public static override void OnPluginPauseChange(bool pause) { throw new NotImplementedException(); }
 
 /**
  * Called before every server frame.  Note that you should avoid
  * doing expensive computations or declaring large local arrays.
  */
-forward void OnGameFrame();
+public static override void OnGameFrame() { throw new NotImplementedException(); }
 
 /**
  * Called when the map is loaded.
  *
  * @note This used to be OnServerLoad(), which is now deprecated.
- *       Plugins still using the old forward will work.
+ *       Plugins still using the old public static override will work.
  */
-forward void OnMapStart();
+public static override void OnMapStart() { throw new NotImplementedException(); }
 
 /**
  * Called right before a map ends.
  */
-forward void OnMapEnd();
+public static override void OnMapEnd() { throw new NotImplementedException(); }
 
 /**
  * Called when the map has loaded, servercfgfile (server.cfg) has been
@@ -202,7 +204,7 @@ forward void OnMapEnd();
  * @note This will always be called once and only once per map.  It will be
  *       called after OnMapStart().
  */
-forward void OnConfigsExecuted();
+public static override void OnConfigsExecuted() { throw new NotImplementedException(); }
 
 /**
  * This is called once, right after OnMapStart() but any time before
@@ -217,27 +219,27 @@ forward void OnConfigsExecuted();
  * Unlike OnMapStart() and OnConfigsExecuted(), this is not called on
  * late loads that occur after OnMapStart().
  */
-forward void OnAutoConfigsBuffered();
+public static override void OnAutoConfigsBuffered() { throw new NotImplementedException(); }
 
 /**
  * @deprecated          Use OnConfigsExecuted() instead.
  */
 #pragma deprecated Use OnConfigsExecuted() instead
-forward void OnServerCfg();
+public static override void OnServerCfg() { throw new NotImplementedException(); }
 
 /**
  * Called after all plugins have been loaded.  This is called once for
  * every plugin.  If a plugin late loads, it will be called immediately
  * after OnPluginStart().
  */
-forward void OnAllPluginsLoaded();
+public static override void OnAllPluginsLoaded() { throw new NotImplementedException(); }
 
 /**
  * Returns the calling plugin's Handle.
  *
  * @return              Handle of the calling plugin.
  */
-native Handle GetMyHandle();
+public static Handle GetMyHandle() { throw new NotImplementedException(); }
 
 /**
  * Returns an iterator that can be used to search through plugins.
@@ -246,7 +248,7 @@ native Handle GetMyHandle();
  *                      CloseHandle().
  * @error               Invalid Handle.
  */
-native Handle GetPluginIterator();
+public static Handle GetPluginIterator() { throw new NotImplementedException(); }
 
 /**
  * Returns whether there are more plugins available in the iterator.
@@ -255,7 +257,7 @@ native Handle GetPluginIterator();
  * @return              True on more plugins, false otherwise.
  * @error               Invalid Handle.
  */
-native bool MorePlugins(Handle iter);
+public static bool MorePlugins(Handle iter) { throw new NotImplementedException(); }
 
 /**
  * Returns the current plugin in the iterator and advances the iterator.
@@ -265,7 +267,7 @@ native bool MorePlugins(Handle iter);
  *                      the iterator is advanced.
  * @error               Invalid Handle.
  */
-native Handle ReadPlugin(Handle iter);
+public static Handle ReadPlugin(Handle iter) { throw new NotImplementedException(); }
 
 /**
  * Returns a plugin's status.
@@ -274,7 +276,7 @@ native Handle ReadPlugin(Handle iter);
  * @return              Status code for the plugin.
  * @error               Invalid Handle.
  */
-native PluginStatus GetPluginStatus(Handle plugin);
+public static PluginStatus GetPluginStatus(Handle plugin) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a plugin's file name relative to the plugins folder.
@@ -284,7 +286,7 @@ native PluginStatus GetPluginStatus(Handle plugin);
  * @param maxlength     Maximum length of the name buffer.
  * @error               Invalid Handle.
  */
-native void GetPluginFilename(Handle plugin, char[] buffer, int maxlength);
+public static void GetPluginFilename(Handle plugin, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Retrieves whether or not a plugin is being debugged.
@@ -293,7 +295,7 @@ native void GetPluginFilename(Handle plugin, char[] buffer, int maxlength);
  * @return              True if being debugged, false otherwise.
  * @error               Invalid Handle.
  */
-native bool IsPluginDebugging(Handle plugin);
+public static bool IsPluginDebugging(Handle plugin) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a plugin's public info.
@@ -305,7 +307,7 @@ native bool IsPluginDebugging(Handle plugin);
  * @return              True on success, false if property is not available.
  * @error               Invalid Handle.
  */
-native bool GetPluginInfo(Handle plugin, PluginInfo info, char[] buffer, int maxlength);
+public static bool GetPluginInfo(Handle plugin, PluginInfo info, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Finds a plugin by its order in the list from the "plugins list" server
@@ -317,7 +319,7 @@ native bool GetPluginInfo(Handle plugin, PluginInfo info, char[] buffer, int max
  * @return              Plugin Handle on success, INVALID_HANDLE if no plugin
  *                      matches the given number.
  */
-native Handle FindPluginByNumber(int order_num);
+public static Handle FindPluginByNumber(int order_num) { throw new NotImplementedException(); }
 
 /**
  * Causes the plugin to enter a failed state.  An error will be thrown and
@@ -336,7 +338,7 @@ native Handle FindPluginByNumber(int order_num);
  * @param ...           Formatting arguments.
  * @error               Always throws SP_ERROR_ABORT.
  */
-native void SetFailState(const char[] string, any ...);
+public static void SetFailState(string string, any ...) { throw new NotImplementedException(); }
 
 /**
  * Aborts the current callback and throws an error.  This function
@@ -346,7 +348,7 @@ native void SetFailState(const char[] string, any ...);
  * @param ...           Format arguments.
  * @error               Always!
  */
-native void ThrowError(const char[] fmt, any ...);
+public static void ThrowError(string fmt, any ...) { throw new NotImplementedException(); }
 
 /**
  * Logs a stack trace from the current function call. Code
@@ -356,7 +358,7 @@ native void ThrowError(const char[] fmt, any ...);
  * @param ...           Format arguments.
  * @error               Always logs a stack trace.
  */
-native void LogStackTrace(const char[] fmt, any ...);
+public static void LogStackTrace(string fmt, any ...) { throw new NotImplementedException(); }
 
 /**
  * Gets the system time as a unix timestamp.
@@ -364,7 +366,7 @@ native void LogStackTrace(const char[] fmt, any ...);
  * @param bigStamp      Optional array to store the 64bit timestamp in.
  * @return              32bit timestamp (number of seconds since unix epoch).
  */
-native int GetTime(int bigStamp[2]={0,0});
+public static int GetTime(int bigStamp[2]={0,0}) { throw new NotImplementedException(); }
 
 /**
  * Produces a date and/or time string value for a timestamp.
@@ -382,7 +384,7 @@ native int GetTime(int bigStamp[2]={0,0});
  * @param stamp         Optional time stamp.
  * @error               Buffer too small or invalid time format.
  */
-native void FormatTime(char[] buffer, int maxlength, const char[] format, int stamp=-1);
+public static void FormatTime(string buffer, int maxlength, string format, int stamp=-1) { throw new NotImplementedException(); }
 
 /**
  * Loads a game config file.
@@ -391,7 +393,7 @@ native void FormatTime(char[] buffer, int maxlength, const char[] format, int st
  *                      and the extension should be omitted.
  * @return              A handle to the game config file or INVALID_HANDLE on failure.
  */
-native GameData LoadGameConfigFile(const char[] file);
+public static GameData LoadGameConfigFile(string file) { throw new NotImplementedException(); }
 
 /**
  * Returns an offset value.
@@ -400,7 +402,7 @@ native GameData LoadGameConfigFile(const char[] file);
  * @param key           Key to retrieve from the offset section.
  * @return              An offset, or -1 on failure.
  */
-native int GameConfGetOffset(Handle gc, const char[] key);
+public static int GameConfGetOffset(Handle gc, string key) { throw new NotImplementedException(); }
 
 /**
  * Gets the value of a key from the "Keys" section.
@@ -411,7 +413,7 @@ native int GameConfGetOffset(Handle gc, const char[] key);
  * @param maxlen        Maximum length of output string buffer.
  * @return              True if key existed, false otherwise.
  */
-native bool GameConfGetKeyValue(Handle gc, const char[] key, char[] buffer, int maxlen);
+public static bool GameConfGetKeyValue(Handle gc, string key, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Finds an address calculation in a GameConfig file,
@@ -421,7 +423,7 @@ native bool GameConfGetKeyValue(Handle gc, const char[] key, char[] buffer, int 
  * @param name          Name of the property to find.
  * @return              An address calculated on success, or 0 on failure.
  */
-native Address GameConfGetAddress(Handle gameconf, const char[] name);
+public static Address GameConfGetAddress(Handle gameconf, string name) { throw new NotImplementedException(); }
 
 /**
  * Returns the operating system's "tick count," which is a number of
@@ -430,7 +432,7 @@ native Address GameConfGetAddress(Handle gameconf, const char[] name);
  *
  * @return              Tick count in milliseconds.
  */
-native int GetSysTickCount();
+public static int GetSysTickCount() { throw new NotImplementedException(); }
 
 /**
  * Specifies that the given config file should be executed after plugin load.
@@ -444,7 +446,7 @@ native int GetSysTickCount();
  *                      If empty, <plugin.filename.cfg> is assumed.
  * @param folder        Folder under cfg/ to use.  By default this is "sourcemod."
  */
-native void AutoExecConfig(bool autoCreate=true, const char[] name="", const char[] folder="sourcemod");
+public static void AutoExecConfig(bool autoCreate=true, string name="", string folder="sourcemod") { throw new NotImplementedException(); }
 
 /**
  * Registers a library name for identifying as a dependency to
@@ -452,7 +454,7 @@ native void AutoExecConfig(bool autoCreate=true, const char[] name="", const cha
  *
  * @param name          Library name.
  */
-native void RegPluginLibrary(const char[] name);
+public static void RegPluginLibrary(string name) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a library exists.  This function should be considered
@@ -463,7 +465,7 @@ native void RegPluginLibrary(const char[] name);
  * @param name          Library name of a plugin or extension.
  * @return              True if exists, false otherwise.
  */
-native bool LibraryExists(const char[] name);
+public static bool LibraryExists(string name) { throw new NotImplementedException(); }
 
 /**
  * Returns the status of an extension, by filename.
@@ -476,7 +478,7 @@ native bool LibraryExists(const char[] name);
  *                      0 if the extension loaded but reported an error.
  *                      1 if the extension is running without error.
  */
-native int GetExtensionFileStatus(const char[] name, char[] error="", int maxlength=0);
+public static int GetExtensionFileStatus(string name, string error="", int maxlength=0) { throw new NotImplementedException(); }
 
 /**
  * Called after a library is added.
@@ -485,7 +487,7 @@ native int GetExtensionFileStatus(const char[] name, char[] error="", int maxlen
  *
  * @param name          Library name.
  */
-forward void OnLibraryAdded(const char[] name);
+public static override void OnLibraryAdded(string name) { throw new NotImplementedException(); }
 
 /**
  * Called right before a library is removed.
@@ -494,11 +496,11 @@ forward void OnLibraryAdded(const char[] name);
  *
  * @param name          Library name.
  */
-forward void OnLibraryRemoved(const char[] name);
+public static override void OnLibraryRemoved(string name) { throw new NotImplementedException(); }
 
-#define MAPLIST_FLAG_MAPSFOLDER    (1<<0)    /**< On failure, use all maps in the maps folder. */
-#define MAPLIST_FLAG_CLEARARRAY    (1<<1)    /**< If an input array is specified, clear it before adding. */
-#define MAPLIST_FLAG_NO_DEFAULT    (1<<2)    /**< Do not read "default" or "mapcyclefile" on failure. */
+public const object MAPLIST_FLAG_MAPSFOLDER    (1<<0)    /**< On failure, use all maps in the maps folder. */
+public const object MAPLIST_FLAG_CLEARARRAY    (1<<1)    /**< If an input array is specified, clear it before adding. */
+public const object MAPLIST_FLAG_NO_DEFAULT    (1<<2)    /**< Do not read "default" or "mapcyclefile" on failure. */
 
 /**
  * Loads a map list to an ADT Array.
@@ -548,10 +550,10 @@ forward void OnLibraryRemoved(const char[] name);
  *                      least one item.  The serial number is updated to a positive number.
  * @error               Invalid array Handle that is not INVALID_HANDLE.
  */
-native Handle ReadMapList(Handle array=INVALID_HANDLE,
+public static Handle ReadMapList(Handle array=INVALID_HANDLE,
                           int &serial=-1,
-                          const char[] str="default",
-                          int flags=MAPLIST_FLAG_CLEARARRAY);
+                          string str="default",
+                          int flags=MAPLIST_FLAG_CLEARARRAY) { throw new NotImplementedException(); }
 
 /**
  * Makes a compatibility binding for map lists.  For example, if a function previously used
@@ -561,7 +563,7 @@ native Handle ReadMapList(Handle array=INVALID_HANDLE,
  * @param name          Configuration name that would be used with ReadMapList().
  * @param file          Default file to use.
  */
-native void SetMapListCompatBind(const char[] name, const char[] file);
+public static void SetMapListCompatBind(string name, string file) { throw new NotImplementedException(); }
 
 /**
  * Called when a client has sent chat text.  This must return either true or
@@ -573,7 +575,7 @@ native void SetMapListCompatBind(const char[] name, const char[] file);
  * @param client        Client index.  The server (0) will never be passed.
  * @return              True if client is spamming the server, false otherwise.
  */
-forward bool OnClientFloodCheck(int client);
+public static override bool OnClientFloodCheck(int client) { throw new NotImplementedException(); }
 
 /**
  * Called after a client's flood check has been computed.  This can be used
@@ -586,7 +588,7 @@ forward bool OnClientFloodCheck(int client);
  * @param client        Client index.  The server (0) will never be passed.
  * @param blocked       True if client flooded last "say", false otherwise.
  */
-forward void OnClientFloodResult(int client, bool blocked);
+public static override void OnClientFloodResult(int client, bool blocked) { throw new NotImplementedException(); }
 
 /**
  * Feature types.
@@ -638,7 +640,7 @@ enum FeatureStatus
  */
 stock bool CanTestFeatures()
 {
-	return LibraryExists("__CanTestFeatures__");
+	return LibraryExists("__CanTestFeatures__") { throw new NotImplementedException(); }
 }
 
 /**
@@ -648,7 +650,7 @@ stock bool CanTestFeatures()
  * @param name          Feature name.
  * @return              Feature status.
  */
-native FeatureStatus GetFeatureStatus(FeatureType type, const char[] name);
+public static FeatureStatus GetFeatureStatus(FeatureType type, string name) { throw new NotImplementedException(); }
 
 /**
  * Requires that a given feature is available. If it is not, SetFailState()
@@ -659,8 +661,8 @@ native FeatureStatus GetFeatureStatus(FeatureType type, const char[] name);
  * @param fmt           Message format string, or empty to use default.
  * @param ...           Message format parameters, if any.
  */
-native void RequireFeature(FeatureType type, const char[] name,
-                           const char[] fmt="", any ...);
+public static void RequireFeature(FeatureType type, string name,
+                           string fmt="", any ...) { throw new NotImplementedException(); }
 
 /**
  * Represents how many bytes we can read from an address with one load
@@ -685,7 +687,7 @@ enum Address
  *                      If loading a floating-point value, use NumberType_Int32.
  * @return              The value that is stored at that address.
  */
-native any LoadFromAddress(Address addr, NumberType size);
+public static any LoadFromAddress(Address addr, NumberType size) { throw new NotImplementedException(); }
 
 /**
  * Store up to 4 bytes to a memory address.
@@ -695,39 +697,41 @@ native any LoadFromAddress(Address addr, NumberType size);
  * @param size          How many bytes should be written.
  *                      If storing a floating-point value, use NumberType_Int32.
  */
-native void StoreToAddress(Address addr, any data, NumberType size);
+public static void StoreToAddress(Address addr, any data, NumberType size) { throw new NotImplementedException(); }
 
 methodmap FrameIterator < Handle {
 	// Creates a stack frame iterator to build your own stack traces.
 	// @return              New handle to a FrameIterator.
-	public native FrameIterator();
+	public native FrameIterator() { throw new NotImplementedException(); }
 
 	// Advances the iterator to the next stack frame.
 	// @return              True if another frame was fetched and data can be successfully read.
 	// @error               No next element exception.
-	public native bool Next();
+	public native bool Next() { throw new NotImplementedException(); }
 
 	// Resets the iterator back to it's starting position.
-	public native void Reset();
+	public native void Reset() { throw new NotImplementedException(); }
 
 	// Returns the line number of the current function call.
 	property int LineNumber {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Gets the name of the current function in the call stack.
 	//
 	// @param buffer Buffer to copy to.
 	// @param maxlen Max size of the buffer.
-	public native void GetFunctionName(char[] buffer, int maxlen);
+	public native void GetFunctionName(string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Gets the file path to the current call in the call stack.
 	//
 	// @param buffer Buffer to copy to.
 	// @param maxlen Max size of the buffer.
-	public native void GetFilePath(char[] buffer, int maxlen);
+	public native void GetFilePath(string buffer, int maxlen) { throw new NotImplementedException(); }
 }
 
 #include <helpers>
 #include <entity>
 #include <entity_prop_stocks>
+	}
+}

@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _datapack_included
- #endinput
-#endif
-#define _datapack_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 
 /**
@@ -45,94 +47,94 @@ enum DataPackPos: {};
 methodmap DataPack < Handle
 {
 	// Creates a new data pack.
-	public native DataPack();
+	public native DataPack() { throw new NotImplementedException(); }
 
 	// Packs a normal cell into a data pack.
 	//
 	// @param cell          Cell to add.
 	// @param insert        Determines whether mid-pack writes will insert instead of overwrite.
-	public native void WriteCell(any cell, bool insert = false);
+	public native void WriteCell(any cell, bool insert = false) { throw new NotImplementedException(); }
 
 	// Packs a float into a data pack.
 	//
 	// @param val           Float to add.
 	// @param insert        Determines whether mid-pack writes will insert instead of overwrite.
-	public native void WriteFloat(float val, bool insert = false);
+	public native void WriteFloat(float val, bool insert = false) { throw new NotImplementedException(); }
 
 	// Packs a string into a data pack.
 	//
 	// @param str           String to add.
 	// @param insert        Determines whether mid-pack writes will insert instead of overwrite.
-	public native void WriteString(const char[] str, bool insert = false);
+	public native void WriteString(string str, bool insert = false) { throw new NotImplementedException(); }
 
 	// Packs a function pointer into a data pack.
 	//
 	// @param fktptr        Function pointer to add.
 	// @param insert        Determines whether mid-pack writes will insert instead of overwrite.
-	public native void WriteFunction(Function fktptr, bool insert = false);
+	public native void WriteFunction(Function fktptr, bool insert = false) { throw new NotImplementedException(); }
 
 	// Packs an array of cells into a data pack.
 	//
 	// @param array         Array to add.
 	// @param count         Number of elements
 	// @param insert        Determines whether mid-pack writes will insert instead of overwrite.
-	public native void WriteCellArray(const any[] array, int count, bool insert = false);
+	public native void WriteCellArray(const any[] array, int count, bool insert = false) { throw new NotImplementedException(); }
 
 	// Packs an array of floats into a data pack.
 	//
 	// @param array         Array to add.
 	// @param count         Number of elements
 	// @param insert        Determines whether mid-pack writes will insert instead of overwrite.
-	public native void WriteFloatArray(const float[] array, int count, bool insert = false);
+	public native void WriteFloatArray(const float[] array, int count, bool insert = false) { throw new NotImplementedException(); }
 
 	// Reads a cell from a data pack.
 	//
 	// @return		A cell at this position
-	public native any ReadCell();
+	public native any ReadCell() { throw new NotImplementedException(); }
 
 	// Reads a float from a data pack.
 	//
 	// @return		Float at this position
-	public native float ReadFloat();
+	public native float ReadFloat() { throw new NotImplementedException(); }
 
 	// Reads a string from a data pack.
 	//
 	// @param buffer        Destination string buffer.
 	// @param maxlen        Maximum length of output string buffer.
-	public native void ReadString(char[] buffer, int maxlen);
+	public native void ReadString(string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Reads a function pointer from a data pack.
 	//
 	// @return              Function pointer.
-	public native Function ReadFunction();
+	public native Function ReadFunction() { throw new NotImplementedException(); }
 
 	// Reads an array of cells a data pack.
 	//
 	// @param buffer        Destination buffer.
 	// @param count         Maximum length of output buffer.
-	public native void ReadCellArray(any[] buffer, int count);
+	public native void ReadCellArray(any[] buffer, int count) { throw new NotImplementedException(); }
 
 	// Reads an array of floats from a data pack.
 	//
 	// @param buffer        Destination buffer.
 	// @param count         Maximum length of output buffer.
-	public native void ReadFloatArray(float[] buffer, int count);
+	public native void ReadFloatArray(float[] buffer, int count) { throw new NotImplementedException(); }
 
 	// Resets the position in a data pack.
 	//
 	// @param clear         If true, clears the contained data.
-	public native void Reset(bool clear=false);
+	public native void Reset(bool clear=false) { throw new NotImplementedException(); }
 
 	// Returns whether or not a specified number of bytes from the data pack
 	//  position to the end can be read.
 	//
 	// @param unused        Unused variable. Exists for backwards compatability.
-	public native bool IsReadable(int unused = 0);
+	public native bool IsReadable(int unused = 0) { throw new NotImplementedException(); }
 	
 	// The read or write position in a data pack.
 	property DataPackPos Position {
-		public native get();
-		public native set(DataPackPos pos);
+		public native get() { throw new NotImplementedException(); }
+		public native set(DataPackPos pos) { throw new NotImplementedException(); }
 	}
 };
 
@@ -141,7 +143,7 @@ methodmap DataPack < Handle
  *
  * @return              A Handle to the data pack.  Must be closed with CloseHandle().
  */
-native DataPack CreateDataPack();
+public static DataPack CreateDataPack() { throw new NotImplementedException(); }
 
 /**
  * Packs a normal cell into a data pack.
@@ -150,7 +152,7 @@ native DataPack CreateDataPack();
  * @param cell          Cell to add.
  * @error               Invalid handle.
  */
-native void WritePackCell(Handle pack, any cell);
+public static void WritePackCell(Handle pack, any cell) { throw new NotImplementedException(); }
 
 /**
  * Packs a float into a data pack.
@@ -159,7 +161,7 @@ native void WritePackCell(Handle pack, any cell);
  * @param val           Float to add.
  * @error               Invalid handle.
  */
-native void WritePackFloat(Handle pack, float val);
+public static void WritePackFloat(Handle pack, float val) { throw new NotImplementedException(); }
 
 /**
  * Packs a string into a data pack.
@@ -168,7 +170,7 @@ native void WritePackFloat(Handle pack, float val);
  * @param str           String to add.
  * @error               Invalid handle.
  */
-native void WritePackString(Handle pack, const char[] str);
+public static void WritePackString(Handle pack, string str) { throw new NotImplementedException(); }
 
 /**
  * Packs a function pointer into a data pack.
@@ -177,7 +179,7 @@ native void WritePackString(Handle pack, const char[] str);
  * @param fktptr        Function pointer to add.
  * @error               Invalid handle.
  */
-native void WritePackFunction(Handle pack, Function fktptr);
+public static void WritePackFunction(Handle pack, Function fktptr) { throw new NotImplementedException(); }
 
 /**
  * Reads a cell from a data pack.
@@ -186,7 +188,7 @@ native void WritePackFunction(Handle pack, Function fktptr);
  * @return              Cell value.
  * @error               Invalid handle, or bounds error.
  */
-native any ReadPackCell(Handle pack);
+public static any ReadPackCell(Handle pack) { throw new NotImplementedException(); }
 
 /**
  * Reads a float from a data pack.
@@ -195,7 +197,7 @@ native any ReadPackCell(Handle pack);
  * @return              Float value.
  * @error               Invalid handle, or bounds error.
  */
-native float ReadPackFloat(Handle pack);
+public static float ReadPackFloat(Handle pack) { throw new NotImplementedException(); }
 
 /**
  * Reads a string from a data pack.
@@ -205,7 +207,7 @@ native float ReadPackFloat(Handle pack);
  * @param maxlen        Maximum length of output string buffer.
  * @error               Invalid handle, or bounds error.
  */
-native void ReadPackString(Handle pack, char[] buffer, int maxlen);
+public static void ReadPackString(Handle pack, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Reads a function pointer from a data pack.
@@ -214,7 +216,7 @@ native void ReadPackString(Handle pack, char[] buffer, int maxlen);
  * @return              Function pointer.
  * @error               Invalid handle, or bounds error.
  */
-native Function ReadPackFunction(Handle pack);
+public static Function ReadPackFunction(Handle pack) { throw new NotImplementedException(); }
 
 /**
  * Resets the position in a data pack.
@@ -223,7 +225,7 @@ native Function ReadPackFunction(Handle pack);
  * @param clear         If true, clears the contained data.
  * @error               Invalid handle.
  */
-native void ResetPack(Handle pack, bool clear=false);
+public static void ResetPack(Handle pack, bool clear=false) { throw new NotImplementedException(); }
 
 /**
  * Returns the read or write position in a data pack.
@@ -232,7 +234,7 @@ native void ResetPack(Handle pack, bool clear=false);
  * @return              Position in the data pack, only usable with calls to SetPackPosition.
  * @error               Invalid handle.
  */
-native DataPackPos GetPackPosition(Handle pack);
+public static DataPackPos GetPackPosition(Handle pack) { throw new NotImplementedException(); }
 
 /**
  * Sets the read/write position in a data pack.
@@ -241,7 +243,7 @@ native DataPackPos GetPackPosition(Handle pack);
  * @param position      New position to set. Must have been previously retrieved from a call to GetPackPosition.
  * @error               Invalid handle, or position is beyond the pack bounds.
  */
-native void SetPackPosition(Handle pack, DataPackPos position);
+public static void SetPackPosition(Handle pack, DataPackPos position) { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not a specified number of bytes from the data pack
@@ -252,4 +254,6 @@ native void SetPackPosition(Handle pack, DataPackPos position);
  * @return              True if can be read, false otherwise.
  * @error               Invalid handle.
  */
-native bool IsPackReadable(Handle pack, int bytes);
+public static bool IsPackReadable(Handle pack, int bytes) { throw new NotImplementedException(); }
+	}
+}

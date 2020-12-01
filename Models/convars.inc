@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _convars_included
- #endinput
-#endif
-#define _convars_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Console variable bound values used with Get/SetConVarBounds()
@@ -62,7 +64,7 @@ enum ConVarQueryResult
  * @param oldValue      String containing the value of the convar before it was changed.
  * @param newValue      String containing the new value of the convar.
  */
-typedef ConVarChanged = function void (ConVar convar, const char[] oldValue, const char[] newValue);
+typedef ConVarChanged = function void (ConVar convar, string oldValue, string newValue) { throw new NotImplementedException(); }
 
 /**
  * Creates a new console variable.
@@ -78,13 +80,13 @@ typedef ConVarChanged = function void (ConVar convar, const char[] oldValue, con
  * @return              A handle to the newly created convar. If the convar already exists, a handle to it will still be returned.
  * @error               Convar name is blank or is the same as an existing console command.
  */
-native ConVar CreateConVar(
-	const char[] name,
-	const char[] defaultValue,
-	const char[] description="",
+public static ConVar CreateConVar(
+	string name,
+	string defaultValue,
+	string description="",
 	int flags=0,
 	bool hasMin=false, float min=0.0,
-	bool hasMax=false, float max=0.0);
+	bool hasMax=false, float max=0.0) { throw new NotImplementedException(); }
 
 /**
  * Searches for a console variable.
@@ -92,33 +94,33 @@ native ConVar CreateConVar(
  * @param name          Name of convar to find.
  * @return              A ConVar object if found; null otherwise.
  */
-native ConVar FindConVar(const char[] name);
+public static ConVar FindConVar(string name) { throw new NotImplementedException(); }
 
 // A ConVar is a configurable, named setting in the srcds console.
 methodmap ConVar < Handle
 {
 	// Retrieves or sets a boolean value for the convar.
 	property bool BoolValue {
-		public native get();
-		public native set(bool b);
+		public native get() { throw new NotImplementedException(); }
+		public native set(bool b) { throw new NotImplementedException(); }
 	}
 
 	// Retrieves or sets an integer value for the convar.
 	property int IntValue {
-		public native get();
-		public native set(int value);
+		public native get() { throw new NotImplementedException(); }
+		public native set(int value) { throw new NotImplementedException(); }
 	}
 
 	// Retrieves or sets a float value for the convar.
 	property float FloatValue {
-		public native get();
-		public native set(float value);
+		public native get() { throw new NotImplementedException(); }
+		public native set(float value) { throw new NotImplementedException(); }
 	}
 
 	// Gets or sets the flag bits (FCVAR_*) on the convar.
 	property int Flags {
-		public native get();
-		public native set(int flags);
+		public native get() { throw new NotImplementedException(); }
+		public native set(int flags) { throw new NotImplementedException(); }
 	}
 
 	// Sets the boolean value of a console variable.
@@ -133,7 +135,7 @@ methodmap ConVar < Handle
 	//                  and actually exists on clients.
 	// @param notify    If set to true, clients will be notified that the convar has changed.
 	//                  This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void SetBool(bool value, bool replicate=false, bool notify=false);
+	public native void SetBool(bool value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Sets the integer value of a console variable.
 	//
@@ -147,7 +149,7 @@ methodmap ConVar < Handle
 	//                  and actually exists on clients.
 	// @param notify    If set to true, clients will be notified that the convar has changed.
 	//                  This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void SetInt(int value, bool replicate=false, bool notify=false);
+	public native void SetInt(int value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Sets the floating point value of a console variable.
 	//
@@ -161,14 +163,14 @@ methodmap ConVar < Handle
 	//                  and actually exists on clients.
 	// @param notify    If set to true, clients will be notified that the convar has changed.
 	//                  This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void SetFloat(float value, bool replicate=false, bool notify=false);
+	public native void SetFloat(float value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Retrieves the string value of a console variable.
 	//
 	// @param convar     Handle to the convar.
 	// @param value      Buffer to store the value of the convar.
 	// @param maxlength  Maximum length of string buffer.
-	public native void GetString(char[] value, int maxlength);
+	public native void GetString(string value, int maxlength) { throw new NotImplementedException(); }
 
 	// Sets the string value of a console variable.
 	//
@@ -182,7 +184,7 @@ methodmap ConVar < Handle
 	//                   and actually exists on clients.
 	// @param notify     If set to true, clients will be notified that the convar has changed.
 	//                   This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void SetString(const char[] value, bool replicate=false, bool notify=false);
+	public native void SetString(string value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Resets the console variable to its default value.
 	//
@@ -195,34 +197,34 @@ methodmap ConVar < Handle
 	//                   and actually exists on clients.
 	// @param notify     If set to true, clients will be notified that the convar has changed.
 	//                   This will only work if the convar has the FCVAR_NOTIFY flag.
-	public native void RestoreDefault(bool replicate=false, bool notify=false);
+	public native void RestoreDefault(bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 	// Retrieves the default string value of a console variable.
 	//
 	// @param value      Buffer to store the default value of the convar.
 	// @param maxlength  Maximum length of string buffer.
 	// @return           Number of bytes written to the buffer (UTF-8 safe).
-	public native int GetDefault(char[] value, int maxlength);
+	public native int GetDefault(string value, int maxlength) { throw new NotImplementedException(); }
 
 	// Retrieves the specified bound of a console variable.
 	//
 	// @param type       Type of bound to retrieve, ConVarBound_Lower or ConVarBound_Upper.
 	// @param value      By-reference cell to store the specified floating point bound value.
 	// @return           True if the convar has the specified bound set, false otherwise.
-	public native bool GetBounds(ConVarBounds type, float &value);
+	public native bool GetBounds(ConVarBounds type, float &value) { throw new NotImplementedException(); }
 
 	// Sets the specified bound of a console variable.
 	//
 	// @param type       Type of bound to set, ConVarBound_Lower or ConVarBound_Upper
 	// @param set        If set to true, convar will use specified bound. If false, bound will be removed.
 	// @param value      Floating point value to use as the specified bound.
-	public native void SetBounds(ConVarBounds type, bool set, float value=0.0);
+	public native void SetBounds(ConVarBounds type, bool set, float value=0.0) { throw new NotImplementedException(); }
 
 	// Retrieves the name of a console variable.
 	//
 	// @param name       Buffer to store the name of the convar.
 	// @param maxlength  Maximum length of string buffer.
-	public native void GetName(char[] name, int maxlength);
+	public native void GetName(string name, int maxlength) { throw new NotImplementedException(); }
 
 	// Replicates a convar value to a specific client. This does not change the actual convar value.
 	//
@@ -230,19 +232,19 @@ methodmap ConVar < Handle
 	// @param value      String value to send
 	// @return           True on success, false on failure
 	// @error            Invalid client index, client not in game, or client is fake
-	public native bool ReplicateToClient(int client, const char[] value);
+	public native bool ReplicateToClient(int client, string value) { throw new NotImplementedException(); }
 
 	// Creates a hook for when a console variable's value is changed.
 	//
 	// @param callback  An OnConVarChanged function pointer.
-	public native void AddChangeHook(ConVarChanged callback);
+	public native void AddChangeHook(ConVarChanged callback) { throw new NotImplementedException(); }
 
 	// Removes a hook for when a console variable's value is changed.
 	//
 	// @param convar    Handle to the convar.
 	// @param callback  An OnConVarChanged function pointer.
 	// @error           No active hook on convar.
-	public native void RemoveChangeHook(ConVarChanged callback);
+	public native void RemoveChangeHook(ConVarChanged callback) { throw new NotImplementedException(); }
 }
 
 /**
@@ -252,7 +254,7 @@ methodmap ConVar < Handle
  * @param callback      An OnConVarChanged function pointer.
  * @error               Invalid or corrupt Handle or invalid callback function.
  */
-native void HookConVarChange(Handle convar, ConVarChanged callback);
+public static void HookConVarChange(Handle convar, ConVarChanged callback) { throw new NotImplementedException(); }
 
 /**
  * Removes a hook for when a console variable's value is changed.
@@ -261,7 +263,7 @@ native void HookConVarChange(Handle convar, ConVarChanged callback);
  * @param callback      An OnConVarChanged function pointer.
  * @error               Invalid or corrupt Handle, invalid callback function, or no active hook on convar.
  */
-native void UnhookConVarChange(Handle convar, ConVarChanged callback);
+public static void UnhookConVarChange(Handle convar, ConVarChanged callback) { throw new NotImplementedException(); }
 
 /**
  * Returns the boolean value of a console variable.
@@ -270,7 +272,7 @@ native void UnhookConVarChange(Handle convar, ConVarChanged callback);
  * @return              The boolean value of the convar.
  * @error               Invalid or corrupt Handle.
  */
-native bool GetConVarBool(Handle convar);
+public static bool GetConVarBool(Handle convar) { throw new NotImplementedException(); }
 
 /**
  * Sets the boolean value of a console variable.
@@ -287,7 +289,7 @@ native bool GetConVarBool(Handle convar);
  *                      This will only work if the convar has the FCVAR_NOTIFY flag.
  * @error               Invalid or corrupt Handle.
  */
-native void SetConVarBool(Handle convar, bool value, bool replicate=false, bool notify=false);
+public static void SetConVarBool(Handle convar, bool value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 /**
  * Returns the integer value of a console variable.
@@ -296,7 +298,7 @@ native void SetConVarBool(Handle convar, bool value, bool replicate=false, bool 
  * @return              The integer value of the convar.
  * @error               Invalid or corrupt Handle.
  */
-native int GetConVarInt(Handle convar);
+public static int GetConVarInt(Handle convar) { throw new NotImplementedException(); }
 
 /**
  * Sets the integer value of a console variable.
@@ -313,7 +315,7 @@ native int GetConVarInt(Handle convar);
  *                      This will only work if the convar has the FCVAR_NOTIFY flag.
  * @error               Invalid or corrupt Handle.
  */
-native void SetConVarInt(Handle convar, int value, bool replicate=false, bool notify=false);
+public static void SetConVarInt(Handle convar, int value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 /**
  * Returns the floating point value of a console variable.
@@ -322,7 +324,7 @@ native void SetConVarInt(Handle convar, int value, bool replicate=false, bool no
  * @return              The floating point value of the convar.
  * @error               Invalid or corrupt Handle.
  */
-native float GetConVarFloat(Handle convar);
+public static float GetConVarFloat(Handle convar) { throw new NotImplementedException(); }
 
 /**
  * Sets the floating point value of a console variable.
@@ -339,7 +341,7 @@ native float GetConVarFloat(Handle convar);
  *                      This will only work if the convar has the FCVAR_NOTIFY flag.
  * @error               Invalid or corrupt Handle.
  */
-native void SetConVarFloat(Handle convar, float value, bool replicate=false, bool notify=false);
+public static void SetConVarFloat(Handle convar, float value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the string value of a console variable.
@@ -349,7 +351,7 @@ native void SetConVarFloat(Handle convar, float value, bool replicate=false, boo
  * @param maxlength     Maximum length of string buffer.
  * @error               Invalid or corrupt Handle.     
  */
-native void GetConVarString(Handle convar, char[] value, int maxlength);
+public static void GetConVarString(Handle convar, string value, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Sets the string value of a console variable.
@@ -366,7 +368,7 @@ native void GetConVarString(Handle convar, char[] value, int maxlength);
  *                      This will only work if the convar has the FCVAR_NOTIFY flag.
  * @error               Invalid or corrupt Handle.
  */
-native void SetConVarString(Handle convar, const char[] value, bool replicate=false, bool notify=false);
+public static void SetConVarString(Handle convar, string value, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 /**
  * Resets the console variable to its default value.
@@ -382,7 +384,7 @@ native void SetConVarString(Handle convar, const char[] value, bool replicate=fa
  *                      This will only work if the convar has the FCVAR_NOTIFY flag.
  * @error               Invalid or corrupt Handle.
  */
-native void ResetConVar(Handle convar, bool replicate=false, bool notify=false);
+public static void ResetConVar(Handle convar, bool replicate=false, bool notify=false) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the default string value of a console variable.
@@ -393,7 +395,7 @@ native void ResetConVar(Handle convar, bool replicate=false, bool notify=false);
  * @return              Number of bytes written to the buffer (UTF-8 safe).
  * @error               Invalid or corrupt Handle.
  */
-native int GetConVarDefault(Handle convar, char[] value, int maxlength);
+public static int GetConVarDefault(Handle convar, string value, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Returns the bitstring of flags on a console variable.
@@ -402,7 +404,7 @@ native int GetConVarDefault(Handle convar, char[] value, int maxlength);
  * @return              A bitstring containing the FCVAR_* flags that are enabled.
  * @error               Invalid or corrupt Handle.
  */
-native int GetConVarFlags(Handle convar);
+public static int GetConVarFlags(Handle convar) { throw new NotImplementedException(); }
 
 /**
  * Sets the bitstring of flags on a console variable.
@@ -411,7 +413,7 @@ native int GetConVarFlags(Handle convar);
  * @param flags         A bitstring containing the FCVAR_* flags to enable.
  * @error               Invalid or corrupt Handle.
  */
-native void SetConVarFlags(Handle convar, int flags);
+public static void SetConVarFlags(Handle convar, int flags) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the specified bound of a console variable.
@@ -422,7 +424,7 @@ native void SetConVarFlags(Handle convar, int flags);
  * @return              True if the convar has the specified bound set, false otherwise.
  * @error               Invalid or corrupt Handle.
  */
-native bool GetConVarBounds(Handle convar, ConVarBounds type, float &value);
+public static bool GetConVarBounds(Handle convar, ConVarBounds type, float &value) { throw new NotImplementedException(); }
 
 /**
  * Sets the specified bound of a console variable.
@@ -433,7 +435,7 @@ native bool GetConVarBounds(Handle convar, ConVarBounds type, float &value);
  * @param value         Floating point value to use as the specified bound.
  * @error               Invalid or corrupt Handle.
  */
-native void SetConVarBounds(Handle convar, ConVarBounds type, bool set, float value=0.0);
+public static void SetConVarBounds(Handle convar, ConVarBounds type, bool set, float value=0.0) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the name of a console variable.
@@ -443,7 +445,7 @@ native void SetConVarBounds(Handle convar, ConVarBounds type, bool set, float va
  * @param maxlength     Maximum length of string buffer.
  * @error               Invalid or corrupt Handle.     
  */
-native void GetConVarName(Handle convar, char[] name, int maxlength);
+public static void GetConVarName(Handle convar, string name, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Replicates a convar value to a specific client. This does not change the actual convar value.
@@ -454,7 +456,7 @@ native void GetConVarName(Handle convar, char[] name, int maxlength);
  * @return              True on success, false on failure
  * @error               Invalid client index, client not in game, or client is fake
  */
-native bool SendConVarValue(int client, Handle convar, const char[] value);
+public static bool SendConVarValue(int client, Handle convar, string value) { throw new NotImplementedException(); }
 
 typeset ConVarQueryFinished
 {	
@@ -467,7 +469,7 @@ typeset ConVarQueryFinished
 	// @param convarName    Name of client convar that was queried.
 	// @param convarValue   Value of client convar that was queried if successful. This will be "" if it was not.
 	// @param value         Value that was passed when query was started.
-	function void (QueryCookie cookie, int client, ConVarQueryResult result, const char[] cvarName, const char[] cvarValue, any value);
+	function void (QueryCookie cookie, int client, ConVarQueryResult result, string cvarName, string cvarValue, any value) { throw new NotImplementedException(); }
 	
 	// Called when a query to retrieve a client's console variable has finished.
 	//
@@ -477,7 +479,7 @@ typeset ConVarQueryFinished
 	//                      See ConVarQueryResult enum for more details.
 	// @param convarName    Name of client convar that was queried.
 	// @param convarValue   Value of client convar that was queried if successful. This will be "" if it was not.
-	function void (QueryCookie cookie, int client, ConVarQueryResult result, const char[] cvarName, const char[] cvarValue);
+	function void (QueryCookie cookie, int client, ConVarQueryResult result, string cvarName, string cvarValue) { throw new NotImplementedException(); }
 };
 
 /**
@@ -490,7 +492,7 @@ typeset ConVarQueryFinished
  * @return              A cookie that uniquely identifies the query. 
  *                      Returns QUERYCOOKIE_FAILED on failure, such as when used on a bot.
  */
-native QueryCookie QueryClientConVar(int client, const char[] cvarName, ConVarQueryFinished callback, any value=0);
+public static QueryCookie QueryClientConVar(int client, string cvarName, ConVarQueryFinished callback, any value=0) { throw new NotImplementedException(); }
 
 /**
  * Returns true if the supplied character is valid in a ConVar name.
@@ -500,5 +502,7 @@ native QueryCookie QueryClientConVar(int client, const char[] cvarName, ConVarQu
  */
 stock bool IsValidConVarChar(int c)
 {
-	return (c == '_' || IsCharAlpha(c) || IsCharNumeric(c));
+	return (c == '_' || IsCharAlpha(c) || IsCharNumeric(c)) { throw new NotImplementedException(); }
+}
+	}
 }

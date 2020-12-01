@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _topmenus_included
- #endinput
-#endif
-#define _topmenus_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 #include <menus>
 
@@ -131,9 +133,9 @@ typedef TopMenuHandler = function void (
   TopMenuAction action,
   TopMenuObject topobj_id,
   int param,
-  char[] buffer,
+  string buffer,
   int maxlength
-);
+) { throw new NotImplementedException(); }
 
 // TopMenu objects are used for constructing multi-layer menus. Currently, they
 // support at most two levels. The first level of items are called "categories".
@@ -143,12 +145,12 @@ methodmap TopMenu < Handle
 	//
 	// @param handler       Handler to use for drawing the root title.
 	// @return              A new TopMenu.
-	public native TopMenu(TopMenuHandler handler);
+	public native TopMenu(TopMenuHandler handler) { throw new NotImplementedException(); }
 
 	// Returns a TopMenu handle from a generic handle. If the given handle is
 	// a TopMenu, the handle is simply casted back. Otherwise, an error is
 	// raised.
-	public static native TopMenu FromHandle(Handle handle);
+	public static native TopMenu FromHandle(Handle handle) { throw new NotImplementedException(); }
 
 	// Re-sorts the items in a TopMenu via a configuration file.
 	//
@@ -173,7 +175,7 @@ methodmap TopMenu < Handle
 	//                     will be filled with a zero-terminated string if
 	//                     false is returned.
 	// @return              True on success, false on failure.
-	public native bool LoadConfig(const char[] file, char[] error, int maxlength);
+	public native bool LoadConfig(string file, string error, int maxlength) { throw new NotImplementedException(); }
 
 	// Adds a category to a TopMenu.
 	//
@@ -183,9 +185,9 @@ methodmap TopMenu < Handle
 	// @param flags        Default access flags.
 	// @param info_string  Arbitrary storage (max 255 bytes).
 	// @return              A new TopMenuObject ID, or INVALID_TOPMENUOBJECT on failure.
-	public native TopMenuObject AddCategory(const char[] name, TopMenuHandler handler,
-	                                        const char[] cmdname = "", int flags = 0,
-	                                        const char[] info_string = "");
+	public native TopMenuObject AddCategory(string name, TopMenuHandler handler,
+	                                        string cmdname = "", int flags = 0,
+	                                        string info_string = "") { throw new NotImplementedException(); }
 
 	// Adds an item to a TopMenu category.
 	//
@@ -196,9 +198,9 @@ methodmap TopMenu < Handle
 	// @param flags        Default access flags.
 	// @param info_string  Arbitrary storage (max 255 bytes).
 	// @return              A new TopMenuObject ID, or INVALID_TOPMENUOBJECT on failure.
-	public native TopMenuObject AddItem(const char[] name, TopMenuHandler handler,
-	                                    TopMenuObject parent, const char[] cmdname = "",
-	                                    int flags = 0, const char[] info_string = "");
+	public native TopMenuObject AddItem(string name, TopMenuHandler handler,
+	                                    TopMenuObject parent, string cmdname = "",
+	                                    int flags = 0, string info_string = "") { throw new NotImplementedException(); }
 
 	// Retrieves the info string of a top menu item.
 	//
@@ -206,7 +208,7 @@ methodmap TopMenu < Handle
 	// @param buffer       Buffer to store info string.
 	// @param maxlength    Maximum size of info string.
 	// @return              Number of bytes written, not including the  null terminator.
-	public native int GetInfoString(TopMenuObject parent, char[] buffer, int maxlength);
+	public native int GetInfoString(TopMenuObject parent, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 	// Retrieves the name string of a top menu item.
 	//
@@ -214,7 +216,7 @@ methodmap TopMenu < Handle
 	// @param buffer       Buffer to store info string.
 	// @param maxlength    Maximum size of info string.
 	// @return              Number of bytes written, not including the null terminator.
-	public native int GetObjName(TopMenuObject topobj, char[] buffer, int maxlength);
+	public native int GetObjName(TopMenuObject topobj, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 	// Removes an topobj from a TopMenu.
 	//
@@ -222,34 +224,34 @@ methodmap TopMenu < Handle
 	// plugin unloads or pauses.  In the case of unpausing, all items are restored.
 	//
 	// @param topobj       TopMenuObject ID.
-	public native void Remove(TopMenuObject topobj);
+	public native void Remove(TopMenuObject topobj) { throw new NotImplementedException(); }
 
 	// Displays a TopMenu to a client.
 	//
 	// @param client       Client index.
 	// @param position     Position to display from.
 	// @return              True on success, false on failure.
-	public native bool Display(int client, TopMenuPosition position);
+	public native bool Display(int client, TopMenuPosition position) { throw new NotImplementedException(); }
 
 	// Displays a TopMenu category to a client.
 	//
 	// @param category     Category topobj id.
 	// @param client       Client index.
 	// @return              True on success, false on failure.
-	public native bool DisplayCategory(TopMenuObject category, int client);
+	public native bool DisplayCategory(TopMenuObject category, int client) { throw new NotImplementedException(); }
 
 	// Finds a category's topobj ID in a TopMenu.
 	//
 	// @param name         Object's unique name.
 	// @return              TopMenuObject ID on success, or
 	//                     INVALID_TOPMENUOBJECT on failure.
-	public native TopMenuObject FindCategory(const char[] name);
+	public native TopMenuObject FindCategory(string name) { throw new NotImplementedException(); }
 
 	// Set the menu title caching behavior of the TopMenu. By default titles
 	// are cached to reduce overhead. If you need dynamic menu titles which
 	// change each time the menu is displayed to a user, set this to false.
 	property bool CacheTitles {
-		public native set(bool value);
+		public native set(bool value) { throw new NotImplementedException(); }
 	}
 };
 
@@ -259,7 +261,7 @@ methodmap TopMenu < Handle
  * @param handler       Handler to use for drawing the root title.
  * @return              A new TopMenu Handle, or INVALID_HANDLE on failure.
  */
-native TopMenu CreateTopMenu(TopMenuHandler handler);
+public static TopMenu CreateTopMenu(TopMenuHandler handler) { throw new NotImplementedException(); }
 
 /**
  * Re-sorts the items in a TopMenu via a configuration file.
@@ -288,7 +290,7 @@ native TopMenu CreateTopMenu(TopMenuHandler handler);
  * @return              True on success, false on failure.
  * @error               Invalid TopMenu Handle.
  */
-native bool LoadTopMenuConfig(Handle topmenu, const char[] file, char[] error, int maxlength);
+public static bool LoadTopMenuConfig(Handle topmenu, string file, string error, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Adds an topobj to a TopMenu.
@@ -307,14 +309,14 @@ native bool LoadTopMenuConfig(Handle topmenu, const char[] file, char[] error, i
  *                      failure.
  * @error               Invalid TopMenu Handle.
  */
-native TopMenuObject AddToTopMenu(Handle topmenu,
-								  const char[] name,
+public static TopMenuObject AddToTopMenu(Handle topmenu,
+								  string name,
 								  TopMenuObjectType type,
 								  TopMenuHandler handler,
 								  TopMenuObject parent,
-								  const char[] cmdname="",
+								  string cmdname="",
 								  int flags=0,
-								  const char[] info_string="");
+								  string info_string="") { throw new NotImplementedException(); }
 
 /**
  * Retrieves the info string of a top menu item.
@@ -327,7 +329,7 @@ native TopMenuObject AddToTopMenu(Handle topmenu,
  *                      null terminator.
  * @error               Invalid TopMenu Handle or TopMenuObject ID.
  */
-native int GetTopMenuInfoString(Handle topmenu, TopMenuObject parent, char[] buffer, int maxlength);
+public static int GetTopMenuInfoString(Handle topmenu, TopMenuObject parent, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the name string of a top menu item.
@@ -340,7 +342,7 @@ native int GetTopMenuInfoString(Handle topmenu, TopMenuObject parent, char[] buf
  *                      null terminator.
  * @error               Invalid TopMenu Handle or TopMenuObject ID.
  */
-native int GetTopMenuObjName(Handle topmenu, TopMenuObject topobj, char[] buffer, int maxlength);
+public static int GetTopMenuObjName(Handle topmenu, TopMenuObject topobj, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Removes an topobj from a TopMenu.
@@ -352,7 +354,7 @@ native int GetTopMenuObjName(Handle topmenu, TopMenuObject topobj, char[] buffer
  * @param topobj        TopMenuObject ID.
  * @error               Invalid TopMenu Handle.
  */
-native void RemoveFromTopMenu(Handle topmenu, TopMenuObject topobj);
+public static void RemoveFromTopMenu(Handle topmenu, TopMenuObject topobj) { throw new NotImplementedException(); }
 
 /**
  * Displays a TopMenu to a client.
@@ -363,7 +365,7 @@ native void RemoveFromTopMenu(Handle topmenu, TopMenuObject topobj);
  * @return              True on success, false on failure.
  * @error               Invalid TopMenu Handle or client not in game.
  */
-native bool DisplayTopMenu(Handle topmenu, int client, TopMenuPosition position);
+public static bool DisplayTopMenu(Handle topmenu, int client, TopMenuPosition position) { throw new NotImplementedException(); }
 
 /**
  * Displays a TopMenu category to a client.
@@ -374,7 +376,7 @@ native bool DisplayTopMenu(Handle topmenu, int client, TopMenuPosition position)
  * @return              True on success, false on failure.
  * @error               Invalid TopMenu Handle or client not in game.
  */
-native bool DisplayTopMenuCategory(Handle topmenu, TopMenuObject category, int client);
+public static bool DisplayTopMenuCategory(Handle topmenu, TopMenuObject category, int client) { throw new NotImplementedException(); }
 
 /**
  * Finds a category's topobj ID in a TopMenu.
@@ -385,7 +387,7 @@ native bool DisplayTopMenuCategory(Handle topmenu, TopMenuObject category, int c
  *                      INVALID_TOPMENUOBJECT on failure.
  * @error               Invalid TopMenu Handle.
  */
-native TopMenuObject FindTopMenuCategory(Handle topmenu, const char[] name);
+public static TopMenuObject FindTopMenuCategory(Handle topmenu, string name) { throw new NotImplementedException(); }
 
 /**
  * Change the menu title caching behavior of the TopMenu. By default the
@@ -397,7 +399,7 @@ native TopMenuObject FindTopMenuCategory(Handle topmenu, const char[] name);
  *                      TopMenuAction_DisplayTitle everytime the menu is drawn?
  * @error               Invalid TopMenu Handle
  */
-native void SetTopMenuTitleCaching(Handle topmenu, bool cache_titles);
+public static void SetTopMenuTitleCaching(Handle topmenu, bool cache_titles) { throw new NotImplementedException(); }
 
 
 /**
@@ -422,25 +424,27 @@ public Extension __ext_topmenus =
 #if !defined REQUIRE_EXTENSIONS
 public void __ext_topmenus_SetNTVOptional()
 {
-	MarkNativeAsOptional("CreateTopMenu");
-	MarkNativeAsOptional("LoadTopMenuConfig");
-	MarkNativeAsOptional("AddToTopMenu");
-	MarkNativeAsOptional("RemoveFromTopMenu");
-	MarkNativeAsOptional("DisplayTopMenu");
-	MarkNativeAsOptional("DisplayTopMenuCategory");
-	MarkNativeAsOptional("FindTopMenuCategory");
-	MarkNativeAsOptional("SetTopMenuTitleCaching");
-	MarkNativeAsOptional("TopMenu.TopMenu");
-	MarkNativeAsOptional("TopMenu.FromHandle");
-	MarkNativeAsOptional("TopMenu.LoadConfig");
-	MarkNativeAsOptional("TopMenu.AddCategory");
-	MarkNativeAsOptional("TopMenu.AddItem");
-	MarkNativeAsOptional("TopMenu.GetInfoString");
-	MarkNativeAsOptional("TopMenu.GetObjName");
-	MarkNativeAsOptional("TopMenu.Remove");
-	MarkNativeAsOptional("TopMenu.Display");
-	MarkNativeAsOptional("TopMenu.DisplayCategory");
-	MarkNativeAsOptional("TopMenu.FindCategory");
-	MarkNativeAsOptional("TopMenu.CacheTitles.set");
+	MarkNativeAsOptional("CreateTopMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("LoadTopMenuConfig") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("AddToTopMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("RemoveFromTopMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("DisplayTopMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("DisplayTopMenuCategory") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("FindTopMenuCategory") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("SetTopMenuTitleCaching") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.TopMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.FromHandle") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.LoadConfig") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.AddCategory") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.AddItem") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.GetInfoString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.GetObjName") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.Remove") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.Display") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.DisplayCategory") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.FindCategory") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("TopMenu.CacheTitles.set") { throw new NotImplementedException(); }
 }
 #endif
+	}
+}

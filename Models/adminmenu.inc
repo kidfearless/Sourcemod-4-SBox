@@ -30,10 +30,12 @@
  * Version: $Id$
  */
  
-#if defined _adminmenu_included
- #endinput
-#endif
-#define _adminmenu_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /* Decide whether topmenus should be required */
 #if !defined REQUIRE_PLUGIN
@@ -52,11 +54,11 @@
 #endif
 
 /** Category for player commands. */
-#define ADMINMENU_PLAYERCOMMANDS        "PlayerCommands"
+public const object ADMINMENU_PLAYERCOMMANDS        "PlayerCommands"
 /** Category for server commands. */
-#define ADMINMENU_SERVERCOMMANDS        "ServerCommands"
+public const object ADMINMENU_SERVERCOMMANDS        "ServerCommands"
 /** Category for voting commands. */
-#define ADMINMENU_VOTINGCOMMANDS        "VotingCommands"
+public const object ADMINMENU_VOTINGCOMMANDS        "VotingCommands"
 
 /**
  * Called when the admin menu is created and 3rd party plugins can grab 
@@ -64,14 +66,14 @@
  * 
  * @param topmenu       Handle to the admin menu's TopMenu.
  */
-forward void OnAdminMenuCreated(Handle topmenu);
+public static override void OnAdminMenuCreated(Handle topmenu) { throw new NotImplementedException(); }
 
 /**
  * Called when the admin menu is ready to have items added.
  * 
  * @param topmenu       Handle to the admin menu's TopMenu.
  */
-forward void OnAdminMenuReady(Handle topmenu);
+public static override void OnAdminMenuReady(Handle topmenu) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the Handle to the admin top menu.
@@ -79,7 +81,7 @@ forward void OnAdminMenuReady(Handle topmenu);
  * @return              Handle to the admin menu's TopMenu,
  *                      or INVALID_HANDLE if not created yet.
  */
-native TopMenu GetAdminTopMenu();
+public static TopMenu GetAdminTopMenu() { throw new NotImplementedException(); }
 
 /**
  * Adds targets to an admin menu.
@@ -93,10 +95,10 @@ native TopMenu GetAdminTopMenu();
  * @param alive_only    True to only select alive players.
  * @return              Number of clients added.
  */
-native int AddTargetsToMenu(Handle menu, 
+public static int AddTargetsToMenu(Handle menu, 
 							int source_client, 
 							bool in_game_only=true, 
-							bool alive_only=false);
+							bool alive_only=false) { throw new NotImplementedException(); }
 
 /**
  * Adds targets to an admin menu.
@@ -109,7 +111,7 @@ native int AddTargetsToMenu(Handle menu,
  * @param flags         COMMAND_FILTER flags from commandfilters.inc.
  * @return              Number of clients added.
  */
-native int AddTargetsToMenu2(Handle menu, int source_client, int flags);
+public static int AddTargetsToMenu2(Handle menu, int source_client, int flags) { throw new NotImplementedException(); }
 
 /**
  * Re-displays the admin menu to a client after selecting an item.
@@ -126,7 +128,7 @@ stock bool RedisplayAdminMenu(Handle topmenu, int client)
 		return false;
 	}
 
-	return DisplayTopMenu(topmenu, client, TopMenuPosition_LastCategory);
+	return DisplayTopMenu(topmenu, client, TopMenuPosition_LastCategory) { throw new NotImplementedException(); }
 }
 
 /* DO NOT EDIT BELOW THIS LINE */
@@ -145,8 +147,8 @@ public SharedPlugin __pl_adminmenu =
 #if !defined REQUIRE_PLUGIN
 public void __pl_adminmenu_SetNTVOptional()
 {
-	MarkNativeAsOptional("GetAdminTopMenu");
-	MarkNativeAsOptional("AddTargetsToMenu");
-	MarkNativeAsOptional("AddTargetsToMenu2");
+	MarkNativeAsOptional("GetAdminTopMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("AddTargetsToMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("AddTargetsToMenu2") { throw new NotImplementedException(); }
 }
 #endif

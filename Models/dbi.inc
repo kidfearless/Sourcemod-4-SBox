@@ -30,10 +30,12 @@
  * Version: $Id$
  */
  
-#if defined _dbi_included
- #endinput
-#endif
-#define _dbi_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Describes a database field fetch status.
@@ -80,7 +82,7 @@ methodmap DBDriver < Handle
 	// @param name          Driver identification string, or an empty string
 	//                      to return the default driver.
 	// @return              Driver handle, or null on failure.
-	public static native DBDriver Find(const char[] name = "");
+	public static native DBDriver Find(string name = "") { throw new NotImplementedException(); }
 
 	// Retrieves a driver's identification string.
 	//
@@ -88,7 +90,7 @@ methodmap DBDriver < Handle
 	//
 	// @param ident         Identification string buffer.
 	// @param maxlength     Maximum length of the buffer.
-	public native void GetIdentifier(char[] ident, int maxlength);
+	public native void GetIdentifier(string ident, int maxlength) { throw new NotImplementedException(); }
 
 	// Retrieves a driver's product string.
 	//
@@ -96,7 +98,7 @@ methodmap DBDriver < Handle
 	//
 	// @param product       Product string buffer.
 	// @param maxlength     Maximum length of the buffer.
-	public native void GetProduct(char[] product, int maxlength);
+	public native void GetProduct(string product, int maxlength) { throw new NotImplementedException(); }
 };
 
 // Represents a set of results returned from executing a query.
@@ -110,13 +112,13 @@ methodmap DBResultSet < Handle
 	// another query is made.
 	//
 	// @return             True if there was another result set, false otherwise.
-	public native bool FetchMoreResults();
+	public native bool FetchMoreResults() { throw new NotImplementedException(); }
 
 	// Returns whether or not a result set exists.  This will
 	// return true even if 0 results were returned, but false
 	// on queries like UPDATE, INSERT, or DELETE.
 	property bool HasResults {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Retrieves the number of rows in the last result set.
@@ -124,23 +126,23 @@ methodmap DBResultSet < Handle
 	// @param query        A query (or statement) Handle.
 	// @return             Number of rows in the current result set.
 	property int RowCount {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Retrieves the number of fields in the last result set.
 	property int FieldCount {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Returns the number of affected rows from the query that generated this
 	// result set.
 	property int AffectedRows {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Returns the insert id from the query that generated this result set.
 	property int InsertId {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Retrieves the name of a field by index.
@@ -149,7 +151,7 @@ methodmap DBResultSet < Handle
 	// @param name         Name buffer.
 	// @param maxlength    Maximum length of the name buffer.
 	// @error              Invalid field index, or no current result set.
-	public native void FieldNumToName(int field, char[] name, int maxlength);
+	public native void FieldNumToName(int field, string name, int maxlength) { throw new NotImplementedException(); }
 
 	// Retrieves a field index by name.
 	// 
@@ -157,7 +159,7 @@ methodmap DBResultSet < Handle
 	// @param field        Variable to store field index in.
 	// @return             True if found, false if not found.
 	// @error              No current result set.
-	public native bool FieldNameToNum(const char[] name, int &field);
+	public native bool FieldNameToNum(string name, int &field) { throw new NotImplementedException(); }
 
 	// Fetches a row from the current result set.  This must be 
 	// successfully called before any results are fetched.
@@ -166,20 +168,20 @@ methodmap DBResultSet < Handle
 	// tell if there was an error or the result set is finished.
 	// 
 	// @return             True if a row was fetched, false otherwise.
-	public native bool FetchRow();
+	public native bool FetchRow() { throw new NotImplementedException(); }
 
 	// Returns if there are more rows.
 	// 
 	// @return             True if there are more rows, false otherwise.
 	property bool MoreRows {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Rewinds a result set back to the first result.
 	// 
 	// @return             True on success, false otherwise.
 	// @error              No current result set.
-	public native bool Rewind();
+	public native bool Rewind() { throw new NotImplementedException(); }
 
 	// Fetches a string from a field in the current row of a result set.  
 	// If the result is NULL, an empty string will be returned.  A NULL 
@@ -192,7 +194,7 @@ methodmap DBResultSet < Handle
 	// @return             Number of bytes written.
 	// @error              Invalid field index, invalid type conversion requested
 	//                     from the database, or no current result set.
-	public native int FetchString(int field, char[] buffer, int maxlength, DBResult &result=DBVal_Error);
+	public native int FetchString(int field, string buffer, int maxlength, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 	// Fetches a float from a field in the current row of a result set.  
 	// If the result is NULL, a value of 0.0 will be returned.  A NULL 
@@ -203,7 +205,7 @@ methodmap DBResultSet < Handle
 	// @return             A float value.
 	// @error              Invalid field index, invalid type conversion requested
 	//                     from the database, or no current result set.
-	public native float FetchFloat(int field, DBResult &result=DBVal_Error);
+	public native float FetchFloat(int field, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 	// Fetches an integer from a field in the current row of a result set.  
 	// If the result is NULL, a value of 0 will be returned.  A NULL 
@@ -214,7 +216,7 @@ methodmap DBResultSet < Handle
 	// @return             An integer value.
 	// @error              Invalid field index, invalid type conversion requested
 	//                     from the database, or no current result set.
-	public native int FetchInt(int field, DBResult &result=DBVal_Error);
+	public native int FetchInt(int field, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 	// Returns whether a field's data in the current row of a result set is 
 	// NULL or not.  NULL is an SQL type which means "no data."
@@ -222,7 +224,7 @@ methodmap DBResultSet < Handle
 	// @param field        The field index (starting from 0).
 	// @return             True if data is NULL, false otherwise.
 	// @error              Invalid field index, or no current result set.
-	public native bool IsFieldNull(int field);
+	public native bool IsFieldNull(int field) { throw new NotImplementedException(); }
 
 	// Returns the length of a field's data in the current row of a result
 	// set.  This only needs to be called for strings to determine how many
@@ -232,7 +234,7 @@ methodmap DBResultSet < Handle
 	// @param field        The field index (starting from 0).
 	// @return             Number of bytes for the field's data size.
 	// @error              Invalid field index or no current result set.
-	public native int FetchSize(int field);
+	public native int FetchSize(int field) { throw new NotImplementedException(); }
 };
 
 typeset SQLTxnSuccess
@@ -244,7 +246,7 @@ typeset SQLTxnSuccess
 	// @param numQueries    Number of queries executed in the transaction.
 	// @param results       An array of Query handle results, one for each of numQueries. They are closed automatically.
 	// @param queryData     An array of each data value passed to SQL_AddQuery().
-	function void (Database db, any data, int numQueries, Handle[] results, any[] queryData);
+	function void (Database db, any data, int numQueries, Handle[] results, any[] queryData) { throw new NotImplementedException(); }
 	
 	// Callback for a successful transaction.
 	// 
@@ -253,7 +255,7 @@ typeset SQLTxnSuccess
 	// @param numQueries    Number of queries executed in the transaction.
 	// @param results       An array of DBResultSet results, one for each of numQueries. They are closed automatically.
 	// @param queryData     An array of each data value passed to SQL_AddQuery().
-	function void (Database db, any data, int numQueries, DBResultSet[] results, any[] queryData);	
+	function void (Database db, any data, int numQueries, DBResultSet[] results, any[] queryData) { throw new NotImplementedException(); }	
 }
 
 /**
@@ -266,21 +268,21 @@ typeset SQLTxnSuccess
  * @param failIndex     Index of the query that failed, or -1 if something else.
  * @param queryData     An array of each data value passed to SQL_AddQuery().
  */
-typedef SQLTxnFailure = function void (Database db, any data, int numQueries, const char[] error, int failIndex, any[] queryData);
+typedef SQLTxnFailure = function void (Database db, any data, int numQueries, string error, int failIndex, any[] queryData) { throw new NotImplementedException(); }
 
 // A Transaction is a collection of SQL statements that must all execute
 // successfully or not at all.
 methodmap Transaction < Handle
 {
 	// Create a new transaction.
-	public native Transaction();
+	public native Transaction() { throw new NotImplementedException(); }
 
 	// Adds a query to the transaction.
 	//
 	// @param query        Query string.
 	// @param data         Extra data value to pass to the final callback.
 	// @return             The index of the query in the transaction's query list.
-	public native int AddQuery(const char[] query, any data=0);
+	public native int AddQuery(string query, any data=0) { throw new NotImplementedException(); }
 };
 
 // A DBStatement is a pre-compiled SQL query that may be executed multiple
@@ -295,14 +297,14 @@ methodmap DBStatement < Handle
 	// @param signed        True to bind the number as signed, false to 
 	//                      bind it as unsigned.
 	// @error               Invalid parameter index, or SQL error.
-	public native void BindInt(int param, int number, bool signed=true);
+	public native void BindInt(int param, int number, bool signed=true) { throw new NotImplementedException(); }
 
 	// Binds a parameter in a prepared statement to a given float value.
 	// 
 	// @param param         The parameter index (starting from 0).
 	// @param value         The float number to bind.
 	// @error               Invalid parameter index, or SQL error.
-	public native void BindFloat(int param, float value);
+	public native void BindFloat(int param, float value) { throw new NotImplementedException(); }
 
 	// Binds a parameter in a prepared statement to a given string value.
 	// 
@@ -313,7 +315,7 @@ methodmap DBStatement < Handle
 	//                      won't change before calling SQL_Execute(), this
 	//                      can be set to false for optimization.
 	// @error               Invalid parameter index, or SQL error.
-	public native void BindString(int param, const char[] value, bool copy);
+	public native void BindString(int param, string value, bool copy) { throw new NotImplementedException(); }
 };
 
 /**
@@ -325,7 +327,7 @@ methodmap DBStatement < Handle
  *                      to check the actual Handle value instead.
  * @param data          Data passed in via the original threaded invocation.
  */
-typedef SQLConnectCallback = function void (Database db, const char[] error, any data);
+typedef SQLConnectCallback = function void (Database db, string error, any data) { throw new NotImplementedException(); }
 
 /**
  * Callback for receiving asynchronous database query results.
@@ -337,7 +339,7 @@ typedef SQLConnectCallback = function void (Database db, const char[] error, any
  *                      to check the actual results value instead.
  * @param data          Data passed in via the original threaded invocation.
  */
-typedef SQLQueryCallback = function void (Database db, DBResultSet results, const char[] error, any data);
+typedef SQLQueryCallback = function void (Database db, DBResultSet results, string error, any data) { throw new NotImplementedException(); }
 
 // A Database represents a live connection to a database, either over the
 // wire, through a unix domain socket, or over an open file.
@@ -348,11 +350,11 @@ methodmap Database < Handle
 	// @param callback      Callback. If no driver was found, the owner is null.
 	// @param name          Database configuration name.
 	// @param data          Extra data value to pass to the callback.
-	public static native void Connect(SQLConnectCallback callback, const char[] name="default", any data=0);
+	public static native void Connect(SQLConnectCallback callback, string name="default", any data=0) { throw new NotImplementedException(); }
 
 	// Returns the driver for this database connection.
 	property DBDriver Driver {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 
 	// Sets the character set of the connection. 
@@ -362,7 +364,7 @@ methodmap Database < Handle
 	//
 	// @param charset       The character set string to change to.
 	// @return              True, if character set was changed, false otherwise.
-	public native bool SetCharset(const char[] charset);
+	public native bool SetCharset(string charset) { throw new NotImplementedException(); }
 
 	// Escapes a database string for literal insertion.  This is not needed
 	// for binding strings in prepared statements.  
@@ -383,7 +385,7 @@ methodmap Database < Handle
 	// @param written       Optionally returns the number of bytes written.
 	// @return              True on success, false if buffer is not big enough.
 	//                      The buffer must be at least 2*strlen(string)+1.
-	public native bool Escape(const char[] string, char[] buffer, int maxlength, int &written=0);
+	public native bool Escape(string string, string buffer, int maxlength, int &written=0) { throw new NotImplementedException(); }
 
 	// Formats a string according to the SourceMod format rules (see documentation).
 	// All format specifiers are escaped (see SQL_EscapeString) unless the '!' flag is used.
@@ -393,10 +395,10 @@ methodmap Database < Handle
 	// @param format        Formatting rules.
 	// @param ...           Variable number of format parameters.
 	// @return              Number of cells written.
-	public native int Format(const char[] buffer, int maxlength, const char[] format, any ...);
+	public native int Format(string buffer, int maxlength, string format, any ...) { throw new NotImplementedException(); }
 
 	// Returns whether a database is the same connection as another database.
-	public native bool IsSameConnection(Database other);
+	public native bool IsSameConnection(Database other) { throw new NotImplementedException(); }
 
 	// Executes a query via a thread. The result handle is passed through the
 	// callback.
@@ -412,9 +414,9 @@ methodmap Database < Handle
 	// @param query          Query string.
 	// @param data           Extra data value to pass to the callback.
 	// @param prio           Priority queue to use.
-	public native void Query(SQLQueryCallback callback, const char[] query,
+	public native void Query(SQLQueryCallback callback, string query,
 	                         any data = 0,
-	                         DBPriority prio = DBPrio_Normal);
+	                         DBPriority prio = DBPrio_Normal) { throw new NotImplementedException(); }
 
 	// Sends a transaction to the database thread. The transaction handle is
 	// automatically closed. When the transaction completes, the optional
@@ -429,7 +431,7 @@ methodmap Database < Handle
 	                           SQLTxnSuccess onSuccess = INVALID_FUNCTION,
 	                           SQLTxnFailure onError = INVALID_FUNCTION,
 	                           any data = 0,
-	                           DBPriority priority = DBPrio_Normal);
+	                           DBPriority priority = DBPrio_Normal) { throw new NotImplementedException(); }
 };
 
 /**
@@ -442,7 +444,7 @@ methodmap Database < Handle
  * @param maxlength     Maximum length of the error buffer.
  * @return              A database connection Handle, or INVALID_HANDLE on failure.
  */
-native Database SQL_Connect(const char[] confname, bool persistent, char[] error, int maxlength);
+public static Database SQL_Connect(string confname, bool persistent, string error, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Creates a default SQL connection.
@@ -454,9 +456,9 @@ native Database SQL_Connect(const char[] confname, bool persistent, char[] error
  * @return              A database connection Handle, or INVALID_HANDLE on failure.
  *                      On failure the error buffer will be filled with a message.
  */
-stock Database SQL_DefConnect(char[] error, int maxlength, bool persistent=true)
+stock Database SQL_DefConnect(string error, int maxlength, bool persistent=true)
 {
-	return SQL_Connect("default", persistent, error, maxlength);
+	return SQL_Connect("default", persistent, error, maxlength) { throw new NotImplementedException(); }
 }
 
 /**
@@ -480,10 +482,10 @@ stock Database SQL_DefConnect(char[] error, int maxlength, bool persistent=true)
  *                      On failure the error buffer will be filled with a message.
  * @error               Invalid KeyValues handle.
  */
-native Database SQL_ConnectCustom(Handle keyvalues,
-								  char[] error,
+public static Database SQL_ConnectCustom(Handle keyvalues,
+								  string error,
 								  int maxlength,
-								  bool persistent);
+								  bool persistent) { throw new NotImplementedException(); }
 
 /**
  * Grabs a handle to an SQLite database, creating one if it does not exist.  
@@ -500,13 +502,13 @@ native Database SQL_ConnectCustom(Handle keyvalues,
  * @return              A database connection Handle, or INVALID_HANDLE on failure.
  *                      On failure the error buffer will be filled with a message.
  */
-stock Database SQLite_UseDatabase(const char[] database, char[] error, int maxlength)
+stock Database SQLite_UseDatabase(string database, string error, int maxlength)
 {
-	KeyValues kv = new KeyValues("");
-	kv.SetString("driver", "sqlite");
-	kv.SetString("database", database);
+	KeyValues kv = new KeyValues("") { throw new NotImplementedException(); }
+	kv.SetString("driver", "sqlite") { throw new NotImplementedException(); }
+	kv.SetString("database", database) { throw new NotImplementedException(); }
 
-	Database db = SQL_ConnectCustom(kv, error, maxlength, false);
+	Database db = SQL_ConnectCustom(kv, error, maxlength, false) { throw new NotImplementedException(); }
 
 	delete kv;
 
@@ -518,16 +520,16 @@ stock Database SQLite_UseDatabase(const char[] database, char[] error, int maxle
  * @deprecated
  */
 #pragma deprecated Use SQL_ConnectCustom instead.
-native Handle SQL_ConnectEx(Handle driver, 
-							const char[] host,
-							const char[] user, 
-							const char[] pass,
-							const char[] database,
-							char[] error,
+public static Handle SQL_ConnectEx(Handle driver, 
+							string host,
+							string user, 
+							string pass,
+							string database,
+							string error,
 							int maxlength,
 							bool persistent=true,
 							int port=0,
-							int maxTimeout=0);
+							int maxTimeout=0) { throw new NotImplementedException(); }
 							
 /**
  * Returns if a named configuration is present in databases.cfg.
@@ -535,7 +537,7 @@ native Handle SQL_ConnectEx(Handle driver,
  * @param name          Configuration name.
  * @return              True if it exists, false otherwise.
  */
-native bool SQL_CheckConfig(const char[] name);
+public static bool SQL_CheckConfig(string name) { throw new NotImplementedException(); }
 
 /**
  * Returns a driver Handle from a name string.
@@ -547,7 +549,7 @@ native bool SQL_CheckConfig(const char[] name);
  *                      string to return the default driver.
  * @return              Driver Handle, or INVALID_HANDLE on failure.
  */
-native DBDriver SQL_GetDriver(const char[] name="");
+public static DBDriver SQL_GetDriver(string name="") { throw new NotImplementedException(); }
 
 /**
  * Reads the driver of an opened database.
@@ -557,7 +559,7 @@ native DBDriver SQL_GetDriver(const char[] name="");
  * @param ident_length  Maximum length of the buffer.
  * @return              Driver Handle.
  */
-native DBDriver SQL_ReadDriver(Handle database, char[] ident="", int ident_length=0);
+public static DBDriver SQL_ReadDriver(Handle database, string ident="", int ident_length=0) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a driver's identification string.
@@ -569,7 +571,7 @@ native DBDriver SQL_ReadDriver(Handle database, char[] ident="", int ident_lengt
  * @param maxlength     Maximum length of the buffer.
  * @error               Invalid Handle other than INVALID_HANDLE.
  */
-native void SQL_GetDriverIdent(Handle driver, char[] ident, int maxlength);
+public static void SQL_GetDriverIdent(Handle driver, string ident, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a driver's product string.
@@ -581,7 +583,7 @@ native void SQL_GetDriverIdent(Handle driver, char[] ident, int maxlength);
  * @param maxlength     Maximum length of the buffer.
  * @error               Invalid Handle other than INVALID_HANDLE.
  */
-native void SQL_GetDriverProduct(Handle driver, char[] product, int maxlength);
+public static void SQL_GetDriverProduct(Handle driver, string product, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Sets the character set of the current connection. 
@@ -593,7 +595,7 @@ native void SQL_GetDriverProduct(Handle driver, char[] product, int maxlength);
  * @param charset       The character set string to change to.
  * @return              True, if character set was changed, false otherwise.
  */
-native bool SQL_SetCharset(Handle database, const char[] charset);
+public static bool SQL_SetCharset(Handle database, string charset) { throw new NotImplementedException(); }
 
 /**
  * Returns the number of affected rows from the last query.
@@ -602,7 +604,7 @@ native bool SQL_SetCharset(Handle database, const char[] charset);
  * @return              Number of rows affected by the last query.
  * @error               Invalid database or statement Handle.
  */
-native int SQL_GetAffectedRows(Handle hndl);
+public static int SQL_GetAffectedRows(Handle hndl) { throw new NotImplementedException(); }
 
 /**
  * Returns the last query's insertion id.
@@ -611,7 +613,7 @@ native int SQL_GetAffectedRows(Handle hndl);
  * @return              Last query's insertion id.
  * @error               Invalid database, query, or statement Handle.
  */
-native int SQL_GetInsertId(Handle hndl);
+public static int SQL_GetInsertId(Handle hndl) { throw new NotImplementedException(); }
 
 /**
  * Returns the error reported by the last query.
@@ -622,7 +624,7 @@ native int SQL_GetInsertId(Handle hndl);
  * @return              True if there was an error, false otherwise.
  * @error               Invalid database, query, or statement Handle.
  */
-native bool SQL_GetError(Handle hndl, char[] error, int maxlength);
+public static bool SQL_GetError(Handle hndl, string error, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Escapes a database string for literal insertion.  This is not needed
@@ -647,11 +649,11 @@ native bool SQL_GetError(Handle hndl, char[] error, int maxlength);
  *                      The buffer must be at least 2*strlen(string)+1.
  * @error               Invalid database or statement Handle.
  */
-native bool SQL_EscapeString(Handle database, 
-							 const char[] string, 
-							 char[] buffer, 
+public static bool SQL_EscapeString(Handle database, 
+							 string string, 
+							 string buffer, 
 							 int maxlength, 
-							 int &written=0);
+							 int &written=0) { throw new NotImplementedException(); }
 
 /**
  * Formats a string according to the SourceMod format rules (see documentation).
@@ -664,7 +666,7 @@ native bool SQL_EscapeString(Handle database,
  * @param ...           Variable number of format parameters.
  * @return              Number of cells written.
  */
-native int SQL_FormatQuery(Handle database, const char[] buffer, int maxlength, const char[] format, any ...);
+public static int SQL_FormatQuery(Handle database, string buffer, int maxlength, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * This function is deprecated.  Use SQL_EscapeString instead.
@@ -672,12 +674,12 @@ native int SQL_FormatQuery(Handle database, const char[] buffer, int maxlength, 
  */
 #pragma deprecated Use SQL_EscapeString instead.
 stock bool SQL_QuoteString(Handle database,
-						   const char[] string,
-						   char[] buffer,
+						   string string,
+						   string buffer,
 						   int maxlength,
 						   int &written=0)
 {
-	return SQL_EscapeString(database, string, buffer, maxlength, written);
+	return SQL_EscapeString(database, string, buffer, maxlength, written) { throw new NotImplementedException(); }
 }
 
 /**
@@ -692,7 +694,7 @@ stock bool SQL_QuoteString(Handle database,
  *                      SQL_GetError to find the last error.
  * @error               Invalid database Handle.
  */
-native bool SQL_FastQuery(Handle database, const char[] query, int len=-1);
+public static bool SQL_FastQuery(Handle database, string query, int len=-1) { throw new NotImplementedException(); }
 
 /**
  * Executes a simple query and returns a new query Handle for
@@ -707,7 +709,7 @@ native bool SQL_FastQuery(Handle database, const char[] query, int len=-1);
  *                      otherwise.  The Handle must be freed with CloseHandle().
  * @error               Invalid database Handle.
  */
-native DBResultSet SQL_Query(Handle database, const char[] query, int len=-1);
+public static DBResultSet SQL_Query(Handle database, string query, int len=-1) { throw new NotImplementedException(); }
 
 /**
  * Creates a new prepared statement query.  Prepared statements can
@@ -725,7 +727,7 @@ native DBResultSet SQL_Query(Handle database, const char[] query, int len=-1);
  *                      otherwise.  The Handle must be freed with CloseHandle().
  * @error               Invalid database Handle.
  */
-native DBStatement SQL_PrepareQuery(Handle database, const char[] query, char[] error, int maxlength);
+public static DBStatement SQL_PrepareQuery(Handle database, string query, string error, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Advances to the next set of results.
@@ -739,7 +741,7 @@ native DBStatement SQL_PrepareQuery(Handle database, const char[] query, char[] 
  * @return              True if there was another result set, false otherwise.
  * @error               Invalid query Handle.
  */
-native bool SQL_FetchMoreResults(Handle query);
+public static bool SQL_FetchMoreResults(Handle query) { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not a result set exists.  This will
@@ -750,7 +752,7 @@ native bool SQL_FetchMoreResults(Handle query);
  * @return              True if there is a result set, false otherwise.
  * @error               Invalid query Handle.
  */
-native bool SQL_HasResultSet(Handle query);
+public static bool SQL_HasResultSet(Handle query) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the number of rows in the last result set.
@@ -759,7 +761,7 @@ native bool SQL_HasResultSet(Handle query);
  * @return              Number of rows in the current result set.
  * @error               Invalid query Handle.
  */
-native int SQL_GetRowCount(Handle query);
+public static int SQL_GetRowCount(Handle query) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the number of fields in the last result set.
@@ -768,7 +770,7 @@ native int SQL_GetRowCount(Handle query);
  * @return              Number of fields in the current result set.
  * @error               Invalid query Handle.
  */
-native int SQL_GetFieldCount(Handle query);
+public static int SQL_GetFieldCount(Handle query) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the name of a field by index.
@@ -780,7 +782,7 @@ native int SQL_GetFieldCount(Handle query);
  * @error               Invalid query Handle, invalid field index, or
  *                      no current result set.
  */
-native void SQL_FieldNumToName(Handle query, int field, char[] name, int maxlength);
+public static void SQL_FieldNumToName(Handle query, int field, string name, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a field index by name.
@@ -791,7 +793,7 @@ native void SQL_FieldNumToName(Handle query, int field, char[] name, int maxleng
  * @return              True if found, false if not found.
  * @error               Invalid query Handle or no current result set.
  */
-native bool SQL_FieldNameToNum(Handle query, const char[] name, int &field);
+public static bool SQL_FieldNameToNum(Handle query, string name, int &field) { throw new NotImplementedException(); }
 
 /**
  * Fetches a row from the current result set.  This must be 
@@ -804,7 +806,7 @@ native bool SQL_FieldNameToNum(Handle query, const char[] name, int &field);
  * @return              True if a row was fetched, false otherwise.
  * @error               Invalid query Handle.
  */
-native bool SQL_FetchRow(Handle query);
+public static bool SQL_FetchRow(Handle query) { throw new NotImplementedException(); }
 
 /**
  * Returns if there are more rows.
@@ -813,7 +815,7 @@ native bool SQL_FetchRow(Handle query);
  * @return              True if there are more rows, false otherwise.
  * @error               Invalid query Handle.
  */
-native bool SQL_MoreRows(Handle query);
+public static bool SQL_MoreRows(Handle query) { throw new NotImplementedException(); }
 
 /**
  * Rewinds a result set back to the first result.
@@ -822,7 +824,7 @@ native bool SQL_MoreRows(Handle query);
  * @return              True on success, false otherwise.
  * @error               Invalid query Handle or no current result set.
  */
-native bool SQL_Rewind(Handle query);
+public static bool SQL_Rewind(Handle query) { throw new NotImplementedException(); }
 
 /**
  * Fetches a string from a field in the current row of a result set.  
@@ -839,7 +841,7 @@ native bool SQL_Rewind(Handle query);
  *                      type conversion requested from the database,
  *                      or no current result set.
  */
-native int SQL_FetchString(Handle query, int field, char[] buffer, int maxlength, DBResult &result=DBVal_Error);
+public static int SQL_FetchString(Handle query, int field, string buffer, int maxlength, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 /**
  * Fetches a float from a field in the current row of a result set.  
@@ -854,7 +856,7 @@ native int SQL_FetchString(Handle query, int field, char[] buffer, int maxlength
  *                      type conversion requested from the database,
  *                      or no current result set.
  */
-native float SQL_FetchFloat(Handle query, int field, DBResult &result=DBVal_Error);
+public static float SQL_FetchFloat(Handle query, int field, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 /**
  * Fetches an integer from a field in the current row of a result set.  
@@ -869,7 +871,7 @@ native float SQL_FetchFloat(Handle query, int field, DBResult &result=DBVal_Erro
  *                      type conversion requested from the database,
  *                      or no current result set.
  */
-native int SQL_FetchInt(Handle query, int field, DBResult &result=DBVal_Error);
+public static int SQL_FetchInt(Handle query, int field, DBResult &result=DBVal_Error) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a field's data in the current row of a result set is 
@@ -881,7 +883,7 @@ native int SQL_FetchInt(Handle query, int field, DBResult &result=DBVal_Error);
  * @error               Invalid query Handle or field index, or no
  *                      current result set.
  */
-native bool SQL_IsFieldNull(Handle query, int field);
+public static bool SQL_IsFieldNull(Handle query, int field) { throw new NotImplementedException(); }
 
 /**
  * Returns the length of a field's data in the current row of a result
@@ -895,7 +897,7 @@ native bool SQL_IsFieldNull(Handle query, int field);
  * @error               Invalid query Handle or field index or no
  *                      current result set.
  */
-native int SQL_FetchSize(Handle query, int field);
+public static int SQL_FetchSize(Handle query, int field) { throw new NotImplementedException(); }
 
 /**
  * Binds a parameter in a prepared statement to a given integer value.
@@ -908,7 +910,7 @@ native int SQL_FetchSize(Handle query, int field);
  * @error               Invalid statement Handle or parameter index, or
  *                      SQL error.
  */
-native void SQL_BindParamInt(Handle statement, int param, int number, bool signed=true);
+public static void SQL_BindParamInt(Handle statement, int param, int number, bool signed=true) { throw new NotImplementedException(); }
 
 /**
  * Binds a parameter in a prepared statement to a given float value.
@@ -919,7 +921,7 @@ native void SQL_BindParamInt(Handle statement, int param, int number, bool signe
  * @error               Invalid statement Handle or parameter index, or
  *                      SQL error.
  */
-native void SQL_BindParamFloat(Handle statement, int param, float value);
+public static void SQL_BindParamFloat(Handle statement, int param, float value) { throw new NotImplementedException(); }
 
 /**
  * Binds a parameter in a prepared statement to a given string value.
@@ -934,7 +936,7 @@ native void SQL_BindParamFloat(Handle statement, int param, float value);
  * @error               Invalid statement Handle or parameter index, or
  *                      SQL error.
  */
-native void SQL_BindParamString(Handle statement, int param, const char[] value, bool copy);
+public static void SQL_BindParamString(Handle statement, int param, string value, bool copy) { throw new NotImplementedException(); }
 
 /**
  * Executes a prepared statement.  All parameters must be bound beforehand.
@@ -943,7 +945,7 @@ native void SQL_BindParamString(Handle statement, int param, const char[] value,
  * @return              True on success, false on failure.
  * @error               Invalid statement Handle.
  */
-native bool SQL_Execute(Handle statement);
+public static bool SQL_Execute(Handle statement) { throw new NotImplementedException(); }
 
 /**
  * Locks a database so threading operations will not interrupt.
@@ -962,7 +964,7 @@ native bool SQL_Execute(Handle statement);
  * @param database      A database Handle.
  * @error               Invalid database Handle.
  */
-native void SQL_LockDatabase(Handle database);
+public static void SQL_LockDatabase(Handle database) { throw new NotImplementedException(); }
 
 /**
  * Unlocks a database so threading operations may continue.
@@ -970,7 +972,7 @@ native void SQL_LockDatabase(Handle database);
  * @param database      A database Handle.
  * @error               Invalid database Handle.
  */
-native void SQL_UnlockDatabase(Handle database);
+public static void SQL_UnlockDatabase(Handle database) { throw new NotImplementedException(); }
 
 /**
  * General callback for threaded SQL stuff.
@@ -982,7 +984,7 @@ native void SQL_UnlockDatabase(Handle database);
  *                      to check the actual Handle value instead.
  * @param data          Data passed in via the original threaded invocation.
  */
-typedef SQLTCallback = function void (Handle owner, Handle hndl, const char[] error, any data);
+typedef SQLTCallback = function void (Handle owner, Handle hndl, string error, any data) { throw new NotImplementedException(); }
 
 /**
  * Tells whether two database handles both point to the same database 
@@ -994,7 +996,7 @@ typedef SQLTCallback = function void (Handle owner, Handle hndl, const char[] er
  *                      connection, false otherwise.
  * @error               Invalid Handle.
  */
-native bool SQL_IsSameConnection(Handle hndl1, Handle hndl2);
+public static bool SQL_IsSameConnection(Handle hndl1, Handle hndl2) { throw new NotImplementedException(); }
 
 /**
  * Connects to a database via a thread.  This can be used instead of
@@ -1009,7 +1011,7 @@ native bool SQL_IsSameConnection(Handle hndl1, Handle hndl2);
  * @param name          Database name.
  * @param data          Extra data value to pass to the callback.
  */
-native void SQL_TConnect(SQLTCallback callback, const char[] name="default", any data=0);
+public static void SQL_TConnect(SQLTCallback callback, string name="default", any data=0) { throw new NotImplementedException(); }
 
 /**
  * Executes a simple query via a thread.  The query Handle is passed through
@@ -1030,7 +1032,7 @@ native void SQL_TConnect(SQLTCallback callback, const char[] name="default", any
  * @param prio          Priority queue to use.
  * @error               Invalid database Handle.
  */
-native void SQL_TQuery(Handle database, SQLTCallback callback, const char[] query, any data=0, DBPriority prio=DBPrio_Normal);
+public static void SQL_TQuery(Handle database, SQLTCallback callback, string query, any data=0, DBPriority prio=DBPrio_Normal) { throw new NotImplementedException(); }
 
 /**
  * Creates a new transaction object. A transaction object is a list of queries
@@ -1038,7 +1040,7 @@ native void SQL_TQuery(Handle database, SQLTCallback callback, const char[] quer
  *
  * @return              A transaction handle.
  */
-native Transaction SQL_CreateTransaction();
+public static Transaction SQL_CreateTransaction() { throw new NotImplementedException(); }
 
 /**
  * Adds a query to a transaction object.
@@ -1049,7 +1051,7 @@ native Transaction SQL_CreateTransaction();
  * @return              The index of the query in the transaction's query list.
  * @error               Invalid transaction handle.
  */
-native int SQL_AddQuery(Transaction txn, const char[] query, any data=0);
+public static int SQL_AddQuery(Transaction txn, string query, any data=0) { throw new NotImplementedException(); }
 
 /**
  * Sends a transaction to the database thread. The transaction handle is
@@ -1064,10 +1066,12 @@ native int SQL_AddQuery(Transaction txn, const char[] query, any data=0);
  * @param prio          Priority queue to use.
  * @error               An invalid handle.
  */
-native void SQL_ExecuteTransaction(
+public static void SQL_ExecuteTransaction(
 		Handle db,
 		Transaction txn,
 		SQLTxnSuccess onSuccess = INVALID_FUNCTION,
 		SQLTxnFailure onError = INVALID_FUNCTION,
 		any data=0,
-		DBPriority priority=DBPrio_Normal);
+		DBPriority priority=DBPrio_Normal) { throw new NotImplementedException(); }
+	}
+}

@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_entoutput_included
- #endinput
-#endif
-#define _sdktools_entoutput_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Called when an entity output is fired.
@@ -48,8 +50,8 @@
  */
 typeset EntityOutput
 {
-	function void (const char[] output, int caller, int activator, float delay);
-	function Action (const char[] output, int caller, int activator, float delay);
+	function void (string output, int caller, int activator, float delay) { throw new NotImplementedException(); }
+	function Action (string output, int caller, int activator, float delay) { throw new NotImplementedException(); }
 };
 
 /**
@@ -60,7 +62,7 @@ typeset EntityOutput
  * @param callback      An EntityOutput function pointer.
  * @error               Entity Outputs disabled.
  */
-native void HookEntityOutput(const char[] classname, const char[] output, EntityOutput callback);
+public static void HookEntityOutput(string classname, string output, EntityOutput callback) { throw new NotImplementedException(); }
 
 /**
  * Remove an entity output hook.
@@ -70,7 +72,7 @@ native void HookEntityOutput(const char[] classname, const char[] output, Entity
  * @return              True on success, false if no valid hook was found.
  * @error               Entity Outputs disabled.
  */
-native bool UnhookEntityOutput(const char[] classname, const char[] output, EntityOutput callback);
+public static bool UnhookEntityOutput(string classname, string output, EntityOutput callback) { throw new NotImplementedException(); }
 
 /**
  * Add an entity output hook on a single entity instance
@@ -81,7 +83,7 @@ native bool UnhookEntityOutput(const char[] classname, const char[] output, Enti
  * @param once          Only fire this hook once and then remove itself.
  * @error               Entity Outputs disabled or Invalid Entity index.
  */
-native void HookSingleEntityOutput(int entity, const char[] output, EntityOutput callback, bool once=false);
+public static void HookSingleEntityOutput(int entity, string output, EntityOutput callback, bool once=false) { throw new NotImplementedException(); }
 
 /**
  * Remove a single entity output hook.
@@ -92,7 +94,7 @@ native void HookSingleEntityOutput(int entity, const char[] output, EntityOutput
  * @return              True on success, false if no valid hook was found.
  * @error               Entity Outputs disabled or Invalid Entity index.
  */
-native bool UnhookSingleEntityOutput(int entity, const char[] output, EntityOutput callback);
+public static bool UnhookSingleEntityOutput(int entity, string output, EntityOutput callback) { throw new NotImplementedException(); }
 
 /**
  * Fire a named output on an entity.
@@ -105,4 +107,6 @@ native bool UnhookSingleEntityOutput(int entity, const char[] output, EntityOutp
  * @param delay         Delay before firing the output.
  * @error               Invalid entity index or no mod support.
  */
-native void FireEntityOutput(int caller, const char[] output, int activator=-1, float delay=0.0);
+public static void FireEntityOutput(int caller, string output, int activator=-1, float delay=0.0) { throw new NotImplementedException(); }
+	}
+}

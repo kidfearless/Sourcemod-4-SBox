@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_tempents_included
- #endinput
-#endif
-#define _sdktools_tempents_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Called when a temp entity is going to be sent.
@@ -44,7 +46,7 @@
  * @param delay         Delay in seconds to send the TE.
  * @return              Plugin_Continue to allow the transmission of the TE, Plugin_Stop to block it.
  */
-typedef TEHook = function Action (const char[] te_name, const int[] Players, int numClients, float delay);
+typedef TEHook = function Action (string te_name, const int[] Players, int numClients, float delay) { throw new NotImplementedException(); }
 
 /**
  * Hooks a temp entity.
@@ -53,7 +55,7 @@ typedef TEHook = function Action (const char[] te_name, const int[] Players, int
  * @param hook          Function to use as a hook.
  * @error               Temp Entity name not available or invalid function hook.
  */
-native void AddTempEntHook(const char[] te_name, TEHook hook);
+public static void AddTempEntHook(string te_name, TEHook hook) { throw new NotImplementedException(); }
 
 /**
  * Removes a temp entity hook.
@@ -62,7 +64,7 @@ native void AddTempEntHook(const char[] te_name, TEHook hook);
  * @param hook          Function used for the hook.
  * @error               Temp Entity name not available or invalid function hook.
  */
-native void RemoveTempEntHook(const char[] te_name, TEHook hook);
+public static void RemoveTempEntHook(string te_name, TEHook hook) { throw new NotImplementedException(); }
 
 /**
  * Starts a temp entity transmission.
@@ -70,7 +72,7 @@ native void RemoveTempEntHook(const char[] te_name, TEHook hook);
  * @param te_name       TE name.
  * @error               Temp Entity name not available.
  */
-native void TE_Start(const char[] te_name);
+public static void TE_Start(string te_name) { throw new NotImplementedException(); }
 
 /**
  * Checks if a certain TE property exists.
@@ -78,7 +80,7 @@ native void TE_Start(const char[] te_name);
  * @param prop          Property to use.
  * @return              True if the property exists, otherwise false.
  */
-native bool TE_IsValidProp(const char[] prop);
+public static bool TE_IsValidProp(string prop) { throw new NotImplementedException(); }
 
 /**
  * Sets an integer value in the current temp entity.
@@ -87,7 +89,7 @@ native bool TE_IsValidProp(const char[] prop);
  * @param value         Integer value to set.
  * @error               Property not found.
  */
-native void TE_WriteNum(const char[] prop, int value);
+public static void TE_WriteNum(string prop, int value) { throw new NotImplementedException(); }
 
 /**
  * Reads an integer value in the current temp entity.
@@ -96,7 +98,7 @@ native void TE_WriteNum(const char[] prop, int value);
  * @return              Property value.
  * @error               Property not found.
  */
-native int TE_ReadNum(const char[] prop);
+public static int TE_ReadNum(string prop) { throw new NotImplementedException(); }
 
 /**
  * Sets a floating point number in the current temp entity.
@@ -105,7 +107,7 @@ native int TE_ReadNum(const char[] prop);
  * @param value         Floating point number to set.
  * @error               Property not found.
  */
-native void TE_WriteFloat(const char[] prop, float value);
+public static void TE_WriteFloat(string prop, float value) { throw new NotImplementedException(); }
 
 /**
  * Reads a floating point number in the current temp entity.
@@ -114,7 +116,7 @@ native void TE_WriteFloat(const char[] prop, float value);
  * @return              Property value.
  * @error               Property not found.
  */
-native float TE_ReadFloat(const char[] prop);
+public static float TE_ReadFloat(string prop) { throw new NotImplementedException(); }
 
 /**
  * Sets a vector in the current temp entity.
@@ -123,7 +125,7 @@ native float TE_ReadFloat(const char[] prop);
  * @param vector        Vector to set.
  * @error               Property not found.
  */
-native void TE_WriteVector(const char[] prop, const float vector[3]);
+public static void TE_WriteVector(string prop, const float vector[3]) { throw new NotImplementedException(); }
 
 /**
  * Reads a vector in the current temp entity.
@@ -132,7 +134,7 @@ native void TE_WriteVector(const char[] prop, const float vector[3]);
  * @param vector        Vector to read.
  * @error               Property not found.
  */
-native void TE_ReadVector(const char[] prop, float vector[3]);
+public static void TE_ReadVector(string prop, float vector[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets a QAngle in the current temp entity.
@@ -141,7 +143,7 @@ native void TE_ReadVector(const char[] prop, float vector[3]);
  * @param angles        Angles to set.
  * @error               Property not found.
  */
-native void TE_WriteAngles(const char[] prop, const float angles[3]);
+public static void TE_WriteAngles(string prop, const float angles[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets an array of floats in the current temp entity.
@@ -151,7 +153,7 @@ native void TE_WriteAngles(const char[] prop, const float angles[3]);
  * @param arraySize     Number of values to copy.
  * @error               Property not found.
  */
-native void TE_WriteFloatArray(const char[] prop, const float[] array, int arraySize);
+public static void TE_WriteFloatArray(string prop, const float[] array, int arraySize) { throw new NotImplementedException(); }
 
 /**
  * Sends the current temp entity to one or more clients.
@@ -161,7 +163,7 @@ native void TE_WriteFloatArray(const char[] prop, const float[] array, int array
  * @param delay         Delay in seconds to send the TE.
  * @error               Invalid client index or client not in game.
  */
-native void TE_Send(const int[] clients, int numClients, float delay=0.0);
+public static void TE_Send(const int[] clients, int numClients, float delay=0.0) { throw new NotImplementedException(); }
 
 /**
  * Sets an encoded entity index in the current temp entity.
@@ -171,10 +173,10 @@ native void TE_Send(const int[] clients, int numClients, float delay=0.0);
  * @param value         Value to set.
  * @error               Property not found.
  */
-stock void TE_WriteEncodedEnt(const char[] prop, int value)
+stock void TE_WriteEncodedEnt(string prop, int value)
 {
-	int encvalue = (value & 0x0FFF) | ((1 & 0xF)<<12);
-	TE_WriteNum(prop, encvalue);
+	int encvalue = (value & 0x0FFF) | ((1 & 0xF)<<12) { throw new NotImplementedException(); }
+	TE_WriteNum(prop, encvalue) { throw new NotImplementedException(); }
 }
 
 /**
@@ -194,7 +196,7 @@ stock void TE_SendToAll(float delay=0.0)
 			clients[total++] = i;
 		}
 	}
-	TE_Send(clients, total, delay);
+	TE_Send(clients, total, delay) { throw new NotImplementedException(); }
 }
 
 /**
@@ -211,7 +213,7 @@ stock void TE_SendToClient(int client, float delay=0.0)
 
 	players[0] = client;
 
-	TE_Send(players, 1, delay);
+	TE_Send(players, 1, delay) { throw new NotImplementedException(); }
 }
 
 /**
@@ -227,6 +229,8 @@ stock void TE_SendToClient(int client, float delay=0.0)
 stock void TE_SendToAllInRange(const float origin[3], ClientRangeType rangeType, float delay=0.0)
 {
 	int[] clients = new int[MaxClients];
-	int total = GetClientsInRange(origin, rangeType, clients, MaxClients);
-	TE_Send(clients, total, delay);
+	int total = GetClientsInRange(origin, rangeType, clients, MaxClients) { throw new NotImplementedException(); }
+	TE_Send(clients, total, delay) { throw new NotImplementedException(); }
+}
+	}
 }

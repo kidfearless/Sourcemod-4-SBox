@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _float_included
- #endinput
-#endif
-#define _float_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 #if !defined __sourcepawn2__
 /**
@@ -42,7 +44,7 @@
  * @param value         Integer to convert.
  * @return              Floating point value.
  */
-native float float(int value);
+public static float float(int value) { throw new NotImplementedException(); }
 #endif
 
 /**
@@ -56,7 +58,7 @@ native float float(int value);
  * @deprecated          This native is internal implementation. For multiplication use the '*' operator.
  */
 #pragma deprecated This native is internal implementation. For multiplication use the '*' operator.
-native float FloatMul(float oper1, float oper2);
+public static float FloatMul(float oper1, float oper2) { throw new NotImplementedException(); }
 
 /**
  * Divides the dividend by the divisor.
@@ -69,7 +71,7 @@ native float FloatMul(float oper1, float oper2);
  * @deprecated          This native is internal implementation. For division use the '/' operator.
  */
 #pragma deprecated This native is internal implementation. For division use the '/' operator.
-native float FloatDiv(float dividend, float divisor);
+public static float FloatDiv(float dividend, float divisor) { throw new NotImplementedException(); }
 
 /**
  * Adds two floats together.
@@ -82,7 +84,7 @@ native float FloatDiv(float dividend, float divisor);
  * @deprecated          This native is internal implementation. For addition use the '+' operator.
  */
 #pragma deprecated This native is internal implementation. For addition use the '+' operator.
-native float FloatAdd(float oper1, float oper2);
+public static float FloatAdd(float oper1, float oper2) { throw new NotImplementedException(); }
 
 /**
  * Subtracts oper2 from oper1.
@@ -95,7 +97,7 @@ native float FloatAdd(float oper1, float oper2);
  * @deprecated          This native is internal implementation. For subtraction use the '-' operator.
  */
 #pragma deprecated This native is internal implementation. For subtraction use the '-' operator.
-native float FloatSub(float oper1, float oper2);
+public static float FloatSub(float oper1, float oper2) { throw new NotImplementedException(); }
 
 /**
  * Returns the decimal part of a float.
@@ -103,7 +105,7 @@ native float FloatSub(float oper1, float oper2);
  * @param value         Input value.
  * @return              Decimal part.
  */
-native float FloatFraction(float value);
+public static float FloatFraction(float value) { throw new NotImplementedException(); }
 
 /**
  * Rounds a float to the closest integer to zero.
@@ -111,7 +113,7 @@ native float FloatFraction(float value);
  * @param value         Input value to be rounded.
  * @return              Rounded value.
  */
-native int RoundToZero(float value);
+public static int RoundToZero(float value) { throw new NotImplementedException(); }
 
 /**
  * Rounds a float to the next highest integer value.
@@ -119,7 +121,7 @@ native int RoundToZero(float value);
  * @param value         Input value to be rounded.
  * @return              Rounded value.
  */
-native int RoundToCeil(float value);
+public static int RoundToCeil(float value) { throw new NotImplementedException(); }
 
 /**
  * Rounds a float to the next lowest integer value.
@@ -127,7 +129,7 @@ native int RoundToCeil(float value);
  * @param value         Input value to be rounded.
  * @return              Rounded value.
  */
-native int RoundToFloor(float value);
+public static int RoundToFloor(float value) { throw new NotImplementedException(); }
 
 /**
  * Standard IEEE rounding.
@@ -135,7 +137,7 @@ native int RoundToFloor(float value);
  * @param value         Input value to be rounded.
  * @return              Rounded value.
  */
-native int RoundToNearest(float value);
+public static int RoundToNearest(float value) { throw new NotImplementedException(); }
 
 /**
  * Compares two floats.
@@ -146,7 +148,7 @@ native int RoundToNearest(float value);
  *                      Returns -1 if the first argument is smaller than the second argument.
  *                      Returns 0 if both arguments are equal.
  */
-native int FloatCompare(float fOne, float fTwo);
+public static int FloatCompare(float fOne, float fTwo) { throw new NotImplementedException(); }
 
 /**
  * Returns the square root of the input value, equivalent to floatpower(value, 0.5).
@@ -154,7 +156,7 @@ native int FloatCompare(float fOne, float fTwo);
  * @param value         Input value.
  * @return              Square root of the value.
  */
-native float SquareRoot(float value);
+public static float SquareRoot(float value) { throw new NotImplementedException(); }
 
 /**
  * Returns the value raised to the power of the exponent.
@@ -163,7 +165,7 @@ native float SquareRoot(float value);
  * @param exponent      Value to raise the base.
  * @return              value^exponent.
  */
-native float Pow(float value, float exponent);
+public static float Pow(float value, float exponent) { throw new NotImplementedException(); }
 
 /**
  * Returns the value of raising the input by e.
@@ -171,7 +173,7 @@ native float Pow(float value, float exponent);
  * @param value         Input value.
  * @return              exp(value).
  */
-native float Exponential(float value);
+public static float Exponential(float value) { throw new NotImplementedException(); }
 
 /**
  * Returns the logarithm of any base specified.
@@ -180,7 +182,7 @@ native float Exponential(float value);
  * @param base          Logarithm base to use, default is 10.
  * @return              log(value)/log(base).
  */
-native float Logarithm(float value, float base=10.0);
+public static float Logarithm(float value, float base=10.0) { throw new NotImplementedException(); }
 
 /**
  * Returns the sine of the argument.
@@ -188,7 +190,7 @@ native float Logarithm(float value, float base=10.0);
  * @param value         Input value in radians.
  * @return              sin(value).
  */
-native float Sine(float value);
+public static float Sine(float value) { throw new NotImplementedException(); }
 
 /**
  * Returns the cosine of the argument.
@@ -196,7 +198,7 @@ native float Sine(float value);
  * @param value         Input value in radians.
  * @return              cos(value).
  */
-native float Cosine(float value);
+public static float Cosine(float value) { throw new NotImplementedException(); }
 
 /**
  * Returns the tangent of the argument.
@@ -204,7 +206,7 @@ native float Cosine(float value);
  * @param value         Input value in radians.
  * @return              tan(value).
  */
-native float Tangent(float value);
+public static float Tangent(float value) { throw new NotImplementedException(); }
 
 /**
  * Returns an absolute value.
@@ -212,7 +214,7 @@ native float Tangent(float value);
  * @param value         Input value.
  * @return              Absolute value of the input.
  */
-native float FloatAbs(float value);
+public static float FloatAbs(float value) { throw new NotImplementedException(); }
 
 /**
  * Returns the arctangent of the input value.
@@ -220,7 +222,7 @@ native float FloatAbs(float value);
  * @param angle         Input value.
  * @return              atan(value) in radians.
  */
-native float ArcTangent(float angle);
+public static float ArcTangent(float angle) { throw new NotImplementedException(); }
 
 /**
  * Returns the arccosine of the input value.
@@ -228,7 +230,7 @@ native float ArcTangent(float angle);
  * @param angle         Input value.
  * @return              acos(value) in radians.
  */
-native float ArcCosine(float angle);
+public static float ArcCosine(float angle) { throw new NotImplementedException(); }
 
 /**
  * Returns the arcsine of the input value.
@@ -236,7 +238,7 @@ native float ArcCosine(float angle);
  * @param angle         Input value.
  * @return              asin(value) in radians.
  */
-native float ArcSine(float angle);
+public static float ArcSine(float angle) { throw new NotImplementedException(); }
 
 /**
  * Returns the arctangent2 of the input values.
@@ -245,7 +247,7 @@ native float ArcSine(float angle);
  * @param y             Vertical value.
  * @return              atan2(value) in radians.
  */
-native float ArcTangent2(float x, float y);
+public static float ArcTangent2(float x, float y) { throw new NotImplementedException(); }
 
 /**
  * Rounds a floating point number using the "round to nearest" algorithm.
@@ -255,7 +257,7 @@ native float ArcTangent2(float x, float y);
  */
 stock int RoundFloat(float value)
 {
-	return RoundToNearest(value);
+	return RoundToNearest(value) { throw new NotImplementedException(); }
 }
 
 /**
@@ -265,30 +267,30 @@ stock int RoundFloat(float value)
 #pragma rational Float
 
 // Internal aliases for backwards compatability.
-native float __FLOAT_MUL__(float a, float b) = FloatMul;
-native float __FLOAT_DIV__(float a, float b) = FloatDiv;
-native float __FLOAT_ADD__(float a, float b) = FloatAdd;
-native float __FLOAT_SUB__(float a, float b) = FloatSub;
+public static float __FLOAT_MUL__(float a, float b) = FloatMul;
+public static float __FLOAT_DIV__(float a, float b) = FloatDiv;
+public static float __FLOAT_ADD__(float a, float b) = FloatAdd;
+public static float __FLOAT_SUB__(float a, float b) = FloatSub;
 
-native bool __FLOAT_GT__(float a, float b);
-native bool __FLOAT_GE__(float a, float b);
-native bool __FLOAT_LT__(float a, float b);
-native bool __FLOAT_LE__(float a, float b);
-native bool __FLOAT_EQ__(float a, float b);
-native bool __FLOAT_NE__(float a, float b);
-native bool __FLOAT_NOT__(float a);
+public static bool __FLOAT_GT__(float a, float b) { throw new NotImplementedException(); }
+public static bool __FLOAT_GE__(float a, float b) { throw new NotImplementedException(); }
+public static bool __FLOAT_LT__(float a, float b) { throw new NotImplementedException(); }
+public static bool __FLOAT_LE__(float a, float b) { throw new NotImplementedException(); }
+public static bool __FLOAT_EQ__(float a, float b) { throw new NotImplementedException(); }
+public static bool __FLOAT_NE__(float a, float b) { throw new NotImplementedException(); }
+public static bool __FLOAT_NOT__(float a) { throw new NotImplementedException(); }
 
-native float operator*(float oper1, float oper2) = FloatMul;
-native float operator/(float oper1, float oper2) = FloatDiv;
-native float operator+(float oper1, float oper2) = FloatAdd;
-native float operator-(float oper1, float oper2) = FloatSub;
-native bool operator!(float oper1) = __FLOAT_NOT__;
-native bool operator>(float oper1, float oper2) = __FLOAT_GT__;
-native bool operator>=(float oper1, float oper2) = __FLOAT_GE__;
-native bool operator<(float oper1, float oper2) = __FLOAT_LT__;
-native bool operator<=(float oper1, float oper2) = __FLOAT_LE__;
-native bool operator!=(float oper1, float oper2) = __FLOAT_NE__;
-native bool operator==(float oper1, float oper2) = __FLOAT_EQ__;
+public static float operator*(float oper1, float oper2) = FloatMul;
+public static float operator/(float oper1, float oper2) = FloatDiv;
+public static float operator+(float oper1, float oper2) = FloatAdd;
+public static float operator-(float oper1, float oper2) = FloatSub;
+public static bool operator!(float oper1) = __FLOAT_NOT__;
+public static bool operator>(float oper1, float oper2) = __FLOAT_GT__;
+public static bool operator>=(float oper1, float oper2) = __FLOAT_GE__;
+public static bool operator<(float oper1, float oper2) = __FLOAT_LT__;
+public static bool operator<=(float oper1, float oper2) = __FLOAT_LE__;
+public static bool operator!=(float oper1, float oper2) = __FLOAT_NE__;
+public static bool operator==(float oper1, float oper2) = __FLOAT_EQ__;
 
 stock float operator++(float oper)
 {
@@ -302,100 +304,100 @@ stock float operator--(float oper)
 
 stock float operator-(float oper)
 {
-	return oper^view_as<float>(cellmin);                /* IEEE values are sign/magnitude */
+	return oper^view_as<float>(cellmin) { throw new NotImplementedException(); }                /* IEEE values are sign/magnitude */
 }
 
 // The stocks below are int->float converting versions of the above natives.
 
 stock float operator*(float oper1, int oper2)
 {
-	return __FLOAT_MUL__(oper1, float(oper2));          /* "*" is commutative */
+	return __FLOAT_MUL__(oper1, float(oper2)) { throw new NotImplementedException(); }          /* "*" is commutative */
 }
 
 stock float operator/(float oper1, int oper2)
 {
-	return __FLOAT_DIV__(oper1, float(oper2));
+	return __FLOAT_DIV__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
 stock float operator/(int oper1, float oper2)
 {
-	return __FLOAT_DIV__(float(oper1), oper2);
+	return __FLOAT_DIV__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
 stock float operator+(float oper1, int oper2)
 {
-	return __FLOAT_ADD__(oper1, float(oper2));          /* "+" is commutative */
+	return __FLOAT_ADD__(oper1, float(oper2)) { throw new NotImplementedException(); }          /* "+" is commutative */
 }
 
 stock float operator-(float oper1, int oper2)
 {
-	return __FLOAT_SUB__(oper1, float(oper2));
+	return __FLOAT_SUB__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
 stock float operator-(int oper1, float oper2)
 {
-	return __FLOAT_SUB__(float(oper1), oper2);
+	return __FLOAT_SUB__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
 stock bool operator==(float oper1, int oper2)
 {
-	return __FLOAT_EQ__(oper1, float(oper2));
+	return __FLOAT_EQ__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
 stock bool operator!=(float oper1, int oper2)
 {
-	return __FLOAT_NE__(oper1, float(oper2));
+	return __FLOAT_NE__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
 stock bool operator>(float oper1, int oper2)
 {
-	return __FLOAT_GT__(oper1, float(oper2));
+	return __FLOAT_GT__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
 stock bool operator>(int oper1, float oper2)
 {
-	return __FLOAT_GT__(float(oper1), oper2);
+	return __FLOAT_GT__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
 stock bool operator>=(float oper1, int oper2)
 {
-	return __FLOAT_GE__(oper1, float(oper2));
+	return __FLOAT_GE__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
 stock bool operator>=(int oper1, float oper2)
 {
-	return __FLOAT_GE__(float(oper1), oper2);
+	return __FLOAT_GE__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
 stock bool operator<(float oper1, int oper2)
 {
-	return __FLOAT_LT__(oper1, float(oper2));
+	return __FLOAT_LT__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
 stock bool operator<(int oper1, float oper2)
 {
-	return __FLOAT_LT__(float(oper1), oper2);
+	return __FLOAT_LT__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
 stock bool operator<=(float oper1, int oper2)
 {
-	return __FLOAT_LE__(oper1, float(oper2));
+	return __FLOAT_LE__(oper1, float(oper2)) { throw new NotImplementedException(); }
 }
 
 stock bool operator<=(int oper1, float oper2)
 {
-	return __FLOAT_LE__(float(oper1), oper2);
+	return __FLOAT_LE__(float(oper1), oper2) { throw new NotImplementedException(); }
 }
 
 /**
  * Forbidden operators.
  */
-forward operator%(float oper1, float oper2);
-forward operator%(float oper1, int oper2);
-forward operator%(int oper1, float oper2);
+public static override operator%(float oper1, float oper2) { throw new NotImplementedException(); }
+public static override operator%(float oper1, int oper2) { throw new NotImplementedException(); }
+public static override operator%(int oper1, float oper2) { throw new NotImplementedException(); }
 #endif // __sourcepawn2__
 
-#define FLOAT_PI 3.1415926535897932384626433832795
+public const object FLOAT_PI 3.1415926535897932384626433832795
 
 /**
  * Converts degrees to radians.
@@ -426,7 +428,7 @@ stock float RadToDeg(float angle)
  *
  * @return              Random integer.
  */
-native int GetURandomInt();
+public static int GetURandomInt() { throw new NotImplementedException(); }
 
 /**
  * Returns a uniform random float in the range [0, 1).
@@ -435,7 +437,7 @@ native int GetURandomInt();
  *
  * @return              Uniform random floating-point number.
  */
-native float GetURandomFloat();
+public static float GetURandomFloat() { throw new NotImplementedException(); }
 
 /**
  * Seeds a plugin's uniform random number stream. This is done automatically,
@@ -444,7 +446,7 @@ native float GetURandomFloat();
  * @param seeds         Array of numbers to use as seeding data.
  * @param numSeeds      Number of seeds in the seeds array.
  */
-native void SetURandomSeed(const int[] seeds, int numSeeds);
+public static void SetURandomSeed(const int[] seeds, int numSeeds) { throw new NotImplementedException(); }
 
 /**
  * Seeds a plugin's uniform random number stream. This is done automatically,
@@ -456,5 +458,7 @@ stock void SetURandomSeedSimple(int seed)
 {
 	int seeds[1];
 	seeds[0] = seed;
-	SetURandomSeed(seeds, 1);
+	SetURandomSeed(seeds, 1) { throw new NotImplementedException(); }
+}
+	}
 }

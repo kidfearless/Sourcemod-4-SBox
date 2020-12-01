@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _eventsmsgs_included
- #endinput
-#endif
-#define _eventsmsgs_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * UserMsg helper values.
@@ -55,9 +57,9 @@ enum UserMessageType
 /**
  * @section Message Flags.
  */
-#define USERMSG_RELIABLE        (1<<2)    /**< Message will be set on the reliable stream */
-#define USERMSG_INITMSG         (1<<3)    /**< Message will be considered to be an initmsg */
-#define USERMSG_BLOCKHOOKS      (1<<7)    /**< Prevents the message from triggering SourceMod and Metamod hooks */
+public const object USERMSG_RELIABLE        (1<<2)    /**< Message will be set on the reliable stream */
+public const object USERMSG_INITMSG         (1<<3)    /**< Message will be considered to be an initmsg */
+public const object USERMSG_BLOCKHOOKS      (1<<7)    /**< Prevents the message from triggering SourceMod and Metamod hooks */
 
 /**
  * @endsection
@@ -68,7 +70,7 @@ enum UserMessageType
  *
  * @return              The supported usermessage type.
  */
-native UserMessageType GetUserMessageType();
+public static UserMessageType GetUserMessageType() { throw new NotImplementedException(); }
 
 stock Protobuf UserMessageToProtobuf(Handle msg)
 {
@@ -77,7 +79,7 @@ stock Protobuf UserMessageToProtobuf(Handle msg)
 		return null;
 	}
 
-	return view_as<Protobuf>(msg);
+	return view_as<Protobuf>(msg) { throw new NotImplementedException(); }
 }
 
 // Make sure to only call this on writable buffers (eg from StartMessage).
@@ -88,7 +90,7 @@ stock BfWrite UserMessageToBfWrite(Handle msg)
 		return null;
 	}
 
-	return view_as<BfWrite>(msg);
+	return view_as<BfWrite>(msg) { throw new NotImplementedException(); }
 }
 
 // Make sure to only call this on readable buffers (eg from a message hook).
@@ -99,7 +101,7 @@ stock BfRead UserMessageToBfRead(Handle msg)
 		return null;
 	}
 	
-	return view_as<BfRead>(msg);
+	return view_as<BfRead>(msg) { throw new NotImplementedException(); }
 }
 
 /**
@@ -108,7 +110,7 @@ stock BfRead UserMessageToBfRead(Handle msg)
  * @param msg           String containing message name (case sensitive).
  * @return              A message index, or INVALID_MESSAGE_ID on failure.
  */
-native UserMsg GetUserMessageId(const char[] msg);
+public static UserMsg GetUserMessageId(string msg) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the name of a message by ID.
@@ -118,7 +120,7 @@ native UserMsg GetUserMessageId(const char[] msg);
  * @param maxlength     Maximum length of string buffer.
  * @return              True if message index is valid, false otherwise.
  */
-native bool GetUserMessageName(UserMsg msg_id, char[] msg, int maxlength);
+public static bool GetUserMessageName(UserMsg msg_id, string msg, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Starts a usermessage (network message).
@@ -135,7 +137,7 @@ native bool GetUserMessageName(UserMsg msg_id, char[] msg, int maxlength);
  * @error               Invalid message name, unable to start a message, invalid client,
  *                      or client not connected.
  */
-native Handle StartMessage(const char[] msgname, const int[] clients, int numClients, int flags=0);
+public static Handle StartMessage(string msgname, const int[] clients, int numClients, int flags=0) { throw new NotImplementedException(); }
 
 /**
  * Starts a usermessage (network message).
@@ -152,12 +154,12 @@ native Handle StartMessage(const char[] msgname, const int[] clients, int numCli
  * @error               Invalid message name, unable to start a message, invalid client,
  *                      or client not connected.
  */
-native Handle StartMessageEx(UserMsg msg, const int[] clients, int numClients, int flags=0);
+public static Handle StartMessageEx(UserMsg msg, const int[] clients, int numClients, int flags=0) { throw new NotImplementedException(); }
 
 /**
  * Ends a previously started user message (network message).
  */
-native void EndMessage();
+public static void EndMessage() { throw new NotImplementedException(); }
 
 /**
  * Hook function types for user messages.
@@ -177,7 +179,7 @@ typeset MsgHook
 	 *                      blocks the message from being sent, and Plugin_Continue
 	 *                      resumes normal functionality.
 	 */
-	function Action (UserMsg msg_id, BfRead msg, const int[] players, int playersNum, bool reliable, bool init);
+	function Action (UserMsg msg_id, BfRead msg, const int[] players, int playersNum, bool reliable, bool init) { throw new NotImplementedException(); }
 	/**
 	 * Called when a protobuf based usermessage is hooked
 	 *
@@ -191,7 +193,7 @@ typeset MsgHook
 	 *                      blocks the message from being sent, and Plugin_Continue
 	 *                      resumes normal functionality.
 	 */
-	function Action (UserMsg msg_id, Protobuf msg, const int[] players, int playersNum, bool reliable, bool init);
+	function Action (UserMsg msg_id, Protobuf msg, const int[] players, int playersNum, bool reliable, bool init) { throw new NotImplementedException(); }
 };
 
 /**
@@ -200,7 +202,7 @@ typeset MsgHook
  * @param msg_id        Message index.
  * @param sent          True if message was sent, false if blocked.
  */
-typedef MsgPostHook = function void (UserMsg msg_id, bool sent);
+typedef MsgPostHook = function void (UserMsg msg_id, bool sent) { throw new NotImplementedException(); }
 
 /**
  * Hooks a user message.
@@ -213,7 +215,7 @@ typedef MsgPostHook = function void (UserMsg msg_id, bool sent);
  * @param post          Notification function.
  * @error               Invalid message index.
  */
-native void HookUserMessage(UserMsg msg_id, MsgHook hook, bool intercept=false, MsgPostHook post=INVALID_FUNCTION);
+public static void HookUserMessage(UserMsg msg_id, MsgHook hook, bool intercept=false, MsgPostHook post=INVALID_FUNCTION) { throw new NotImplementedException(); }
 
 /**
  * Removes one usermessage hook.
@@ -223,7 +225,7 @@ native void HookUserMessage(UserMsg msg_id, MsgHook hook, bool intercept=false, 
  * @param intercept     Specifies whether the hook was an intercept hook or not.
  * @error               Invalid message index.
  */
-native void UnhookUserMessage(UserMsg msg_id, MsgHook hook, bool intercept=false);
+public static void UnhookUserMessage(UserMsg msg_id, MsgHook hook, bool intercept=false) { throw new NotImplementedException(); }
 
 /**
  * Starts a usermessage (network message) that broadcasts to all clients.
@@ -235,7 +237,7 @@ native void UnhookUserMessage(UserMsg msg_id, MsgHook hook, bool intercept=false
  * @return              A handle to a bf_write bit packing structure, or
  *                      INVALID_HANDLE on failure.
  */
-stock Handle StartMessageAll(const char[] msgname, int flags=0)
+stock Handle StartMessageAll(string msgname, int flags=0)
 {
 	int total = 0;
 	int[] clients = new int[MaxClients];
@@ -247,7 +249,7 @@ stock Handle StartMessageAll(const char[] msgname, int flags=0)
 		}
 	}
 
-	return StartMessage(msgname, clients, total, flags);
+	return StartMessage(msgname, clients, total, flags) { throw new NotImplementedException(); }
 }
 
 /**
@@ -261,10 +263,12 @@ stock Handle StartMessageAll(const char[] msgname, int flags=0)
  * @return              A handle to a bf_write bit packing structure, or
  *                      INVALID_HANDLE on failure.
  */
-stock Handle StartMessageOne(const char[] msgname, int client, int flags=0)
+stock Handle StartMessageOne(string msgname, int client, int flags=0)
 {
 	int players[1];
 	players[0] = client;
 
-	return StartMessage(msgname, players, 1, flags);
+	return StartMessage(msgname, players, 1, flags) { throw new NotImplementedException(); }
+}
+	}
 }

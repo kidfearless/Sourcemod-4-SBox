@@ -30,10 +30,12 @@
  * Version: $Id$
  */
  
-#if defined _clientprefs_included
- #endinput
-#endif
-#define _clientprefs_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Cookie access types for client viewing
@@ -87,9 +89,9 @@ typedef CookieMenuHandler = function void (
   int client,
   CookieMenuAction action,
   any info,
-  char[] buffer,
+  string buffer,
   int maxlen
-);
+) { throw new NotImplementedException(); }
 
 /**
  * Note:
@@ -111,7 +113,7 @@ methodmap Cookie < Handle {
 	// @return              A handle to the newly created cookie. If the cookie already
 	//                      exists, a handle to it will still be returned.
 	// @error               Cookie name is blank.
-	public native Cookie(const char[] name, const char[] description, CookieAccess access);
+	public native Cookie(string name, string description, CookieAccess access) { throw new NotImplementedException(); }
 
 	// Searches for a Client preference cookie.
 	//
@@ -121,14 +123,14 @@ methodmap Cookie < Handle {
 	// @param name          Name of cookie to find.
 	// @return              A handle to the cookie if it is found, null otherwise.
 
-	public static native Cookie Find(const char[] name);
+	public static native Cookie Find(string name) { throw new NotImplementedException(); }
 
 	// Set the value of a Client preference cookie.
 	//
 	// @param client        Client index.
 	// @param value         String value to set.
 	// @error               Invalid cookie handle or invalid client index.
-	public native void Set(int client, const char[] value);
+	public native void Set(int client, string value) { throw new NotImplementedException(); }
 
 	// Retrieve the value of a Client preference cookie.
 	//
@@ -136,14 +138,14 @@ methodmap Cookie < Handle {
 	// @param buffer        Copyback buffer for value.
 	// @param maxlen        Maximum length of the buffer.
 	// @error               Invalid cookie handle or invalid client index.
-	public native void Get(int client, char[] buffer, int maxlen);
+	public native void Get(int client, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 	// Sets the value of a Client preference cookie based on an authID string.
 	//
 	// @param authID        String Auth/STEAM ID of player to set.
 	// @param value         String value to set.
 	// @error               Invalid cookie handle.
-	public native void SetByAuthId(const char[] authID, const char[] value);
+	public native void SetByAuthId(string authID, string value) { throw new NotImplementedException(); }
 
 	// Add a new prefab item to the client cookie settings menu.
 	//
@@ -154,20 +156,20 @@ methodmap Cookie < Handle {
 	// @param handler       Optional handler callback for translations and output on selection
 	// @param info          Info data to pass to the callback.
 	// @error               Invalid cookie handle.
-	public native void SetPrefabMenu(CookieMenu type, const char[] display, CookieMenuHandler handler=INVALID_FUNCTION, any info=0);
+	public native void SetPrefabMenu(CookieMenu type, string display, CookieMenuHandler handler=INVALID_FUNCTION, any info=0) { throw new NotImplementedException(); }
 
 	// Returns the last updated timestamp for a client cookie
 	//
 	// @param client        Client index.
 	// @return              Last updated timestamp.
-	public native int GetClientTime(int client);
+	public native int GetClientTime(int client) { throw new NotImplementedException(); }
 
 	// Returns the access level of a cookie
 	//
 	// @return              CookieAccess access level.
 	// @error               Invalid cookie handle.
 	property CookieAccess AccessLevel {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 };
 
@@ -184,7 +186,7 @@ methodmap Cookie < Handle {
  *                      exists, a handle to it will still be returned.
  * @error               Cookie name is blank.
  */
-native Cookie RegClientCookie(const char[] name, const char[] description, CookieAccess access);
+public static Cookie RegClientCookie(string name, string description, CookieAccess access) { throw new NotImplementedException(); }
 
 /**
  * Searches for a Client preference cookie.
@@ -196,7 +198,7 @@ native Cookie RegClientCookie(const char[] name, const char[] description, Cooki
  * @return              A handle to the cookie if it is found, null otherwise.
 
  */
-native Cookie FindClientCookie(const char[] name);
+public static Cookie FindClientCookie(string name) { throw new NotImplementedException(); }
 
 /**
  * Set the value of a Client preference cookie.
@@ -206,7 +208,7 @@ native Cookie FindClientCookie(const char[] name);
  * @param value         String value to set.
  * @error               Invalid cookie handle or invalid client index.
  */
-native void SetClientCookie(int client, Handle cookie, const char[] value);
+public static void SetClientCookie(int client, Handle cookie, string value) { throw new NotImplementedException(); }
 
 /**
  * Retrieve the value of a Client preference cookie.
@@ -217,7 +219,7 @@ native void SetClientCookie(int client, Handle cookie, const char[] value);
  * @param maxlen        Maximum length of the buffer.
  * @error               Invalid cookie handle or invalid client index.
  */
-native void GetClientCookie(int client, Handle cookie, char[] buffer, int maxlen);
+public static void GetClientCookie(int client, Handle cookie, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Sets the value of a Client preference cookie based on an authID string.
@@ -227,7 +229,7 @@ native void GetClientCookie(int client, Handle cookie, char[] buffer, int maxlen
  * @param value         String value to set.
  * @error               Invalid cookie handle.
  */
-native void SetAuthIdCookie(const char[] authID, Handle cookie, const char[] value);
+public static void SetAuthIdCookie(string authID, Handle cookie, string value) { throw new NotImplementedException(); }
 
 /**
  * Checks if a clients cookies have been loaded from the database.
@@ -236,14 +238,14 @@ native void SetAuthIdCookie(const char[] authID, Handle cookie, const char[] val
  * @return              True if loaded, false otherwise.
  * @error               Invalid client index.
  */
-native bool AreClientCookiesCached(int client);
+public static bool AreClientCookiesCached(int client) { throw new NotImplementedException(); }
 
 /**
  * Called once a client's saved cookies have been loaded from the database.
  *
  * @param client        Client index.
  */
-forward void OnClientCookiesCached(int client);
+public static override void OnClientCookiesCached(int client) { throw new NotImplementedException(); }
 
 /**
  * Add a new prefab item to the client cookie settings menu.
@@ -257,7 +259,7 @@ forward void OnClientCookiesCached(int client);
  * @param info          Info data to pass to the callback.
  * @error               Invalid cookie handle.
  */
-native void SetCookiePrefabMenu(Handle cookie, CookieMenu type, const char[] display, CookieMenuHandler handler=INVALID_FUNCTION, any info=0);
+public static void SetCookiePrefabMenu(Handle cookie, CookieMenu type, string display, CookieMenuHandler handler=INVALID_FUNCTION, any info=0) { throw new NotImplementedException(); }
 
 /**
  * Adds a new item to the client cookie settings menu.
@@ -269,21 +271,21 @@ native void SetCookiePrefabMenu(Handle cookie, CookieMenu type, const char[] dis
  * @param display       Text to show on the menu.
  * @error               Invalid cookie handle.
  */
-native void SetCookieMenuItem(CookieMenuHandler handler, any info, const char[] display);
+public static void SetCookieMenuItem(CookieMenuHandler handler, any info, string display) { throw new NotImplementedException(); }
 
 /**
  * Displays the settings menu to a client.
  *
  * @param client        Client index.
  */
-native void ShowCookieMenu(int client);
+public static void ShowCookieMenu(int client) { throw new NotImplementedException(); }
 
 /**
  * Gets a cookie iterator.  Must be freed with CloseHandle().
  *
  * @return              A new cookie iterator.
  */
-native Handle GetCookieIterator();
+public static Handle GetCookieIterator() { throw new NotImplementedException(); }
 
 /**
  * Reads a cookie iterator, then advances to the next cookie if any.
@@ -296,12 +298,12 @@ native Handle GetCookieIterator();
  * @param descLen       Cookie description buffer size.
  * @return              True on success, false if there are no more commands.
  */
-native bool ReadCookieIterator(Handle iter, 
-								char[] name, 
+public static bool ReadCookieIterator(Handle iter, 
+								string name, 
 								int nameLen,
 								CookieAccess &access, 
-								char[] desc="", 
-								int descLen=0);
+								string desc="", 
+								int descLen=0) { throw new NotImplementedException(); }
 
 /**
  * Returns the access level of a cookie
@@ -310,7 +312,7 @@ native bool ReadCookieIterator(Handle iter,
  * @return              CookieAccess access level.
  * @error               Invalid cookie handle.
  */
-native CookieAccess GetCookieAccess(Handle cookie);
+public static CookieAccess GetCookieAccess(Handle cookie) { throw new NotImplementedException(); }
 
 /**
  * Returns the last updated timestamp for a client cookie
@@ -319,7 +321,7 @@ native CookieAccess GetCookieAccess(Handle cookie);
  * @param cookie        Cookie handle.
  * @return              Last updated timestamp.
  */
-native int GetClientCookieTime(int client, Handle cookie);
+public static int GetClientCookieTime(int client, Handle cookie) { throw new NotImplementedException(); }
 
 /**
  * Do not edit below this line!
@@ -339,27 +341,29 @@ public Extension __ext_cprefs =
 #if !defined REQUIRE_EXTENSIONS
 public void __ext_cprefs_SetNTVOptional()
 {
-	MarkNativeAsOptional("RegClientCookie");
-	MarkNativeAsOptional("FindClientCookie");
-	MarkNativeAsOptional("SetClientCookie");
-	MarkNativeAsOptional("GetClientCookie");
-	MarkNativeAsOptional("SetAuthIdCookie");
-	MarkNativeAsOptional("AreClientCookiesCached");
-	MarkNativeAsOptional("SetCookiePrefabMenu");
-	MarkNativeAsOptional("SetCookieMenuItem");
-	MarkNativeAsOptional("ShowCookieMenu");
-	MarkNativeAsOptional("GetCookieIterator");
-	MarkNativeAsOptional("ReadCookieIterator");
-	MarkNativeAsOptional("GetCookieAccess");
-	MarkNativeAsOptional("GetClientCookieTime");
+	MarkNativeAsOptional("RegClientCookie") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("FindClientCookie") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("SetClientCookie") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GetClientCookie") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("SetAuthIdCookie") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("AreClientCookiesCached") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("SetCookiePrefabMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("SetCookieMenuItem") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("ShowCookieMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GetCookieIterator") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("ReadCookieIterator") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GetCookieAccess") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GetClientCookieTime") { throw new NotImplementedException(); }
 
-	MarkNativeAsOptional("Cookie.Cookie");
-	MarkNativeAsOptional("Cookie.Find");
-	MarkNativeAsOptional("Cookie.Set");
-	MarkNativeAsOptional("Cookie.Get");
-	MarkNativeAsOptional("Cookie.SetByAuthId");
-	MarkNativeAsOptional("Cookie.SetPrefabMenu");
-	MarkNativeAsOptional("Cookie.GetClientTime");
-	MarkNativeAsOptional("Cookie.AccessLevel.get");
+	MarkNativeAsOptional("Cookie.Cookie") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Cookie.Find") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Cookie.Set") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Cookie.Get") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Cookie.SetByAuthId") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Cookie.SetPrefabMenu") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Cookie.GetClientTime") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Cookie.AccessLevel.get") { throw new NotImplementedException(); }
 }
 #endif
+	}
+}

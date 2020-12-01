@@ -33,63 +33,65 @@
 static int TestNumber = 0;
 static char TestContext[255];
 
-stock void SetTestContext(const char[] context)
+stock void SetTestContext(string context)
 {
-	strcopy(TestContext, sizeof(TestContext), context);
+	strcopy(TestContext, sizeof(TestContext), context) { throw new NotImplementedException(); }
 }
 
-stock void AssertEq(const char[] text, int cell1, int cell2)
+stock void AssertEq(string text, int cell1, int cell2)
 {
 	TestNumber++;
 	if (cell1 == cell2)
 	{
-		PrintToServer("[%d] %s: %s == %d OK", TestNumber, TestContext, text, cell2);
+		PrintToServer("[%d] %s: %s == %d OK", TestNumber, TestContext, text, cell2) { throw new NotImplementedException(); }
 	}
 	else
 	{
-		PrintToServer("[%d] %s FAIL: %s should be %d, got %d", TestNumber, TestContext, text, cell2, cell1);
-		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext);
+		PrintToServer("[%d] %s FAIL: %s should be %d, got %d", TestNumber, TestContext, text, cell2, cell1) { throw new NotImplementedException(); }
+		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext) { throw new NotImplementedException(); }
 	}
 }
 
-stock void AssertFalse(const char[] text, bool value)
+stock void AssertFalse(string text, bool value)
 {
 	TestNumber++;
 	if (!value)
 	{
-		PrintToServer("[%d] %s: %s == false OK", TestNumber, TestContext, text, value);
+		PrintToServer("[%d] %s: %s == false OK", TestNumber, TestContext, text, value) { throw new NotImplementedException(); }
 	}
 	else
 	{
-		PrintToServer("[%d] %s FAIL: %s should be false, got true", TestNumber, TestContext, text);
-		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext);
+		PrintToServer("[%d] %s FAIL: %s should be false, got true", TestNumber, TestContext, text) { throw new NotImplementedException(); }
+		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext) { throw new NotImplementedException(); }
 	}
 }
 
-stock void AssertTrue(const char[] text, bool value)
+stock void AssertTrue(string text, bool value)
 {
 	TestNumber++;
 	if (value)
 	{
-		PrintToServer("[%d] %s: %s == true OK", TestNumber, TestContext, text, value);
+		PrintToServer("[%d] %s: %s == true OK", TestNumber, TestContext, text, value) { throw new NotImplementedException(); }
 	}
 	else
 	{
-		PrintToServer("[%d] %s FAIL: %s should be true, got false", TestNumber, TestContext, text);
-		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext);
+		PrintToServer("[%d] %s FAIL: %s should be true, got false", TestNumber, TestContext, text) { throw new NotImplementedException(); }
+		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext) { throw new NotImplementedException(); }
 	}
 }
 
-stock void AssertStrEq(const char[] text, const char[] value, const char[] expected)
+stock void AssertStrEq(string text, string value, string expected)
 {
 	TestNumber++;
 	if (StrEqual(value, expected))
 	{
-		PrintToServer("[%d] %s: '%s' == '%s' OK", TestNumber, TestContext, text, expected);
+		PrintToServer("[%d] %s: '%s' == '%s' OK", TestNumber, TestContext, text, expected) { throw new NotImplementedException(); }
 	}
 	else
 	{
-		PrintToServer("[%d] %s FAIL: %s should be '%s', got '%s'", TestNumber, TestContext, text, expected, value);
-		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext);
+		PrintToServer("[%d] %s FAIL: %s should be '%s', got '%s'", TestNumber, TestContext, text, expected, value) { throw new NotImplementedException(); }
+		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext) { throw new NotImplementedException(); }
+	}
+}
 	}
 }

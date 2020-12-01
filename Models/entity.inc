@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _entity_included
- #endinput
-#endif
-#define _entity_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * Property types for entities.
@@ -47,17 +49,17 @@ enum PropType
 /**
  * @section For more information on these, see the HL2SDK (public/edict.h)
  */
-#define FL_EDICT_CHANGED                (1<<0)  /**< Game DLL sets this when the entity state changes
+public const object FL_EDICT_CHANGED                (1<<0)  /**< Game DLL sets this when the entity state changes
                                                      Mutually exclusive with FL_EDICT_PARTIAL_CHANGE. */
-#define FL_EDICT_FREE                   (1<<1)  /**< this edict if free for reuse */
-#define FL_EDICT_FULL                   (1<<2)  /**< this is a full server entity */
-#define FL_EDICT_FULLCHECK              (0<<0)  /**< call ShouldTransmit() each time, this is a fake flag */
-#define FL_EDICT_ALWAYS                 (1<<3)  /**< always transmit this entity */
-#define FL_EDICT_DONTSEND               (1<<4)  /**< don't transmit this entity */
-#define FL_EDICT_PVSCHECK               (1<<5)  /**< always transmit entity, but cull against PVS */
-#define FL_EDICT_PENDING_DORMANT_CHECK  (1<<6)
-#define FL_EDICT_DIRTY_PVS_INFORMATION  (1<<7)
-#define FL_FULL_EDICT_CHANGED           (1<<8)
+public const object FL_EDICT_FREE                   (1<<1)  /**< this edict if free for reuse */
+public const object FL_EDICT_FULL                   (1<<2)  /**< this is a full server entity */
+public const object FL_EDICT_FULLCHECK              (0<<0)  /**< call ShouldTransmit() each time, this is a fake flag */
+public const object FL_EDICT_ALWAYS                 (1<<3)  /**< always transmit this entity */
+public const object FL_EDICT_DONTSEND               (1<<4)  /**< don't transmit this entity */
+public const object FL_EDICT_PVSCHECK               (1<<5)  /**< always transmit entity, but cull against PVS */
+public const object FL_EDICT_PENDING_DORMANT_CHECK  (1<<6)
+public const object FL_EDICT_DIRTY_PVS_INFORMATION  (1<<7)
+public const object FL_FULL_EDICT_CHANGED           (1<<8)
 
 enum PropFieldType
 {
@@ -88,7 +90,7 @@ enum PropFieldType
  *
  * @return              Maximum number of networked entities.
  */
-native int GetMaxEntities();
+public static int GetMaxEntities() { throw new NotImplementedException(); }
 
 /**
  * Returns the number of networked entities in the server.
@@ -99,7 +101,7 @@ native int GetMaxEntities();
  *
  * @return              Number of entities in the server.
  */
-native int GetEntityCount();
+public static int GetEntityCount() { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not an entity is valid.  Returns false
@@ -108,7 +110,7 @@ native int GetEntityCount();
  * @param entity        Index of the entity.
  * @return              True if valid, false otherwise.
  */
-native bool IsValidEntity(int entity);
+public static bool IsValidEntity(int entity) { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not an edict index is valid.
@@ -116,7 +118,7 @@ native bool IsValidEntity(int entity);
  * @param edict         Index of the edict.
  * @return              True if valid, false otherwise.
  */
-native bool IsValidEdict(int edict);
+public static bool IsValidEdict(int edict) { throw new NotImplementedException(); }
 
 /**
  * Returns whether or not an entity has a valid networkable edict.
@@ -124,14 +126,14 @@ native bool IsValidEdict(int edict);
  * @param entity        Index of the entity.
  * @return              True if networkable, false if invalid or not networkable.
  */
-native bool IsEntNetworkable(int entity);
+public static bool IsEntNetworkable(int entity) { throw new NotImplementedException(); }
 
 /**
  * Creates a new edict (the basis of a networkable entity)
  *
  * @return              Index of the edict, 0 on failure.
  */
-native int CreateEdict();
+public static int CreateEdict() { throw new NotImplementedException(); }
 
 /**
  * Removes an edict from the world.
@@ -139,7 +141,7 @@ native int CreateEdict();
  * @param edict         Index of the edict.
  * @error               Invalid edict index.
  */
-native void RemoveEdict(int edict);
+public static void RemoveEdict(int edict) { throw new NotImplementedException(); }
 
 /**
  * Marks an entity for deletion.
@@ -147,7 +149,7 @@ native void RemoveEdict(int edict);
  * @param entity        Index of the entity.
  * @error               Invalid entity index.
  */
-native void RemoveEntity(int entity);
+public static void RemoveEntity(int entity) { throw new NotImplementedException(); }
 
 /**
  * Returns the flags on an edict.  These are not the same as entity flags.
@@ -156,7 +158,7 @@ native void RemoveEntity(int entity);
  * @return              Edict flags.
  * @error               Invalid edict index.
  */
-native int GetEdictFlags(int edict);
+public static int GetEdictFlags(int edict) { throw new NotImplementedException(); }
 
 /**
  * Sets the flags on an edict.  These are not the same as entity flags.
@@ -165,7 +167,7 @@ native int GetEdictFlags(int edict);
  * @param flags         Flags to set.
  * @error               Invalid edict index.
  */
-native void SetEdictFlags(int edict, int flags);
+public static void SetEdictFlags(int edict, int flags) { throw new NotImplementedException(); }
 
 /**
  * Retrieves an edict classname.
@@ -175,7 +177,7 @@ native void SetEdictFlags(int edict, int flags);
  * @param maxlength     Maximum length of the buffer.
  * @return              True on success, false if there is no classname set.
  */
-native bool GetEdictClassname(int edict, char[] clsname, int maxlength);
+public static bool GetEdictClassname(int edict, string clsname, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Retrieves an entity's networkable serverclass name.
@@ -187,7 +189,7 @@ native bool GetEdictClassname(int edict, char[] clsname, int maxlength);
  * @return              True on success, false if the edict is not networkable.
  * @error               Invalid edict index.
  */
-native bool GetEntityNetClass(int edict, char[] clsname, int maxlength);
+public static bool GetEntityNetClass(int edict, string clsname, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * @section Entity offset functions
@@ -220,7 +222,7 @@ native bool GetEntityNetClass(int edict, char[] clsname, int maxlength);
  *                      the entire edict is marked as changed.
  * @error               Invalid entity or offset out of bounds.
  */
-native void ChangeEdictState(int edict, int offset = 0);
+public static void ChangeEdictState(int edict, int offset = 0) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and retrieves the integer value at
@@ -232,7 +234,7 @@ native void ChangeEdictState(int edict, int offset = 0);
  * @return              Value at the given memory location.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native int GetEntData(int entity, int offset, int size=4);
+public static int GetEntData(int entity, int offset, int size=4) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and sets the integer value at
@@ -245,7 +247,7 @@ native int GetEntData(int entity, int offset, int size=4);
  * @param changeState   If true, change will be sent over the network.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native void SetEntData(int entity, int offset, any value, int size=4, bool changeState=false);
+public static void SetEntData(int entity, int offset, any value, int size=4, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and retrieves the float value at
@@ -256,7 +258,7 @@ native void SetEntData(int entity, int offset, any value, int size=4, bool chang
  * @return              Value at the given memory location.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native float GetEntDataFloat(int entity, int offset);
+public static float GetEntDataFloat(int entity, int offset) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and sets the float value at
@@ -268,7 +270,7 @@ native float GetEntDataFloat(int entity, int offset);
  * @param changeState   If true, change will be sent over the network.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native void SetEntDataFloat(int entity, int offset, float value, bool changeState=false);
+public static void SetEntDataFloat(int entity, int offset, float value, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * This function is deprecated.  Use GetEntDataEnt2 instead, for
@@ -287,7 +289,7 @@ native void SetEntDataFloat(int entity, int offset, float value, bool changeStat
  * @deprecated          Use GetEntDataEnt2() instead.
  */
 #pragma deprecated Use GetEntDataEnt2() instead.
-native int GetEntDataEnt(int entity, int offset);
+public static int GetEntDataEnt(int entity, int offset) { throw new NotImplementedException(); }
 
 /**
  * This function is deprecated.   Use SetEntDataEnt2 instead, for
@@ -305,7 +307,7 @@ native int GetEntDataEnt(int entity, int offset);
  * @deprecated          Use SetEntDataEnt2() instead.
  */
 #pragma deprecated Use SetEntDataEnt2() instead.
-native void SetEntDataEnt(int entity, int offset, int other, bool changeState=false);
+public static void SetEntDataEnt(int entity, int offset, int other, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and retrieves the entity index
@@ -321,7 +323,7 @@ native void SetEntDataEnt(int entity, int offset, int other, bool changeState=fa
  *                      or the stored entity is invalid, then -1 is returned.
  * @error               Invalid input entity, or offset out of reasonable bounds.
  */
-native int GetEntDataEnt2(int entity, int offset);
+public static int GetEntDataEnt2(int entity, int offset) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and sets the entity index at the
@@ -337,7 +339,7 @@ native int GetEntDataEnt2(int entity, int offset);
  * @param changeState   If true, change will be sent over the network.
  * @error               Invalid input entity, or offset out of reasonable bounds.
  */
-native void SetEntDataEnt2(int entity, int offset, int other, bool changeState=false);
+public static void SetEntDataEnt2(int entity, int offset, int other, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and retrieves the vector at the
@@ -350,7 +352,7 @@ native void SetEntDataEnt2(int entity, int offset, int other, bool changeState=f
  * @param vec           Vector buffer to store data in.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native void GetEntDataVector(int entity, int offset, float vec[3]);
+public static void GetEntDataVector(int entity, int offset, float vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and sets the vector at the given
@@ -364,7 +366,7 @@ native void GetEntDataVector(int entity, int offset, float vec[3]);
  * @param changeState   If true, change will be sent over the network.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native void SetEntDataVector(int entity, int offset, const float vec[3], bool changeState=false);
+public static void SetEntDataVector(int entity, int offset, const float vec[3], bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and retrieves the string at
@@ -377,7 +379,7 @@ native void SetEntDataVector(int entity, int offset, const float vec[3], bool ch
  * @return              Number of non-null bytes written.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native int GetEntDataString(int entity, int offset, char[] buffer, int maxlen);
+public static int GetEntDataString(int entity, int offset, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Peeks into an entity's object data and sets the string at
@@ -391,7 +393,7 @@ native int GetEntDataString(int entity, int offset, char[] buffer, int maxlen);
  * @return              Number of non-null bytes written.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native int SetEntDataString(int entity, int offset, const char[] buffer, int maxlen, bool changeState=false);
+public static int SetEntDataString(int entity, int offset, string buffer, int maxlen, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * @endsection
@@ -413,7 +415,7 @@ native int SetEntDataString(int entity, int offset, const char[] buffer, int max
  * @deprecated          Use FindSendPropInfo instead, or HasEntProp if you just want to check for existence.
  */
 #pragma deprecated Use FindSendPropInfo instead, or HasEntProp if you just want to check for existence.
-native int FindSendPropOffs(const char[] cls, const char[] prop);
+public static int FindSendPropOffs(string cls, string prop) { throw new NotImplementedException(); }
 
 /**
  * Given a ServerClass name, finds a networkable send property offset.
@@ -432,11 +434,11 @@ native int FindSendPropOffs(const char[] cls, const char[] prop);
  *                      If no offset is available, 0 is returned.
  *                      If the property is not found, -1 is returned.
  */
-native int FindSendPropInfo(const char[] cls,
-						const char[] prop,
+public static int FindSendPropInfo(string cls,
+						string prop,
 						PropFieldType &type=view_as<PropFieldType>(0),
 						int &num_bits=0,
-						int &local_offset=0);
+						int &local_offset=0) { throw new NotImplementedException(); }
 
 /**
  * Given an entity, finds a datamap property offset.
@@ -452,10 +454,10 @@ native int FindSendPropInfo(const char[] cls,
  * @deprecated          Use FindDataMapInfo instead, or HasEntProp if you just want to check for existence.
  */
 #pragma deprecated Use FindDataMapInfo instead, or HasEntProp if you just want to check for existence.
-native int FindDataMapOffs(int entity,
-					   const char[] prop,
+public static int FindDataMapOffs(int entity,
+					   string prop,
 					   PropFieldType &type=view_as<PropFieldType>(0),
-					   int &num_bits=0);
+					   int &num_bits=0) { throw new NotImplementedException(); }
 
 /**
  * Given an entity, finds a nested datamap property offset.
@@ -471,11 +473,11 @@ native int FindDataMapOffs(int entity,
  *                      FindDataMapOffs() would return.
  * @return              An offset, or -1 on failure.
  */
-native int FindDataMapInfo(int entity,
-					   const char[] prop,
+public static int FindDataMapInfo(int entity,
+					   string prop,
 					   PropFieldType &type=view_as<PropFieldType>(0),
 					   int &num_bits=0,
-					   int &local_offset=0);
+					   int &local_offset=0) { throw new NotImplementedException(); }
 
 /**
  * Wrapper function for finding a send property for a particular entity.
@@ -487,7 +489,7 @@ native int FindDataMapInfo(int entity,
  *                      is used instead.
  * @return              An offset, or -1 on failure.
  */
-stock int GetEntSendPropOffs(int ent, const char[] prop, bool actual=false)
+stock int GetEntSendPropOffs(int ent, string prop, bool actual=false)
 {
 	char cls[64];
 
@@ -497,7 +499,7 @@ stock int GetEntSendPropOffs(int ent, const char[] prop, bool actual=false)
 	}
 
 	int local = -1;
-	int offset = FindSendPropInfo(cls, prop, _, _, local);
+	int offset = FindSendPropInfo(cls, prop, _, _, local) { throw new NotImplementedException(); }
 
 	if (actual)
 	{
@@ -516,11 +518,11 @@ stock int GetEntSendPropOffs(int ent, const char[] prop, bool actual=false)
  * @return              Whether the property exists on the entity.
  * @error               Invalid entity.
  */
-stock bool HasEntProp(int entity, PropType type, const char[] prop)
+stock bool HasEntProp(int entity, PropType type, string prop)
 {
 	if (type == Prop_Data)
 	{
-		return (FindDataMapInfo(entity, prop) != -1);
+		return (FindDataMapInfo(entity, prop) != -1) { throw new NotImplementedException(); }
 	}
 
 	if (type != Prop_Send)
@@ -534,7 +536,7 @@ stock bool HasEntProp(int entity, PropType type, const char[] prop)
 		return false;
 	}
 
-	return (FindSendPropInfo(cls, prop) != -1);
+	return (FindSendPropInfo(cls, prop) != -1) { throw new NotImplementedException(); }
 }
 
 /**
@@ -553,7 +555,7 @@ stock bool HasEntProp(int entity, PropType type, const char[] prop)
  * @return              Value at the given property offset.
  * @error               Invalid entity or property not found.
  */
-native int GetEntProp(int entity, PropType type, const char[] prop, int size=4, int element=0);
+public static int GetEntProp(int entity, PropType type, string prop, int size=4, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets an integer value in an entity's property.
@@ -571,7 +573,7 @@ native int GetEntProp(int entity, PropType type, const char[] prop, int size=4, 
  * @param element       Element # (starting from 0) if property is an array.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native void SetEntProp(int entity, PropType type, const char[] prop, any value, int size=4, int element=0);
+public static void SetEntProp(int entity, PropType type, string prop, any value, int size=4, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a float value from an entity's property.
@@ -586,7 +588,7 @@ native void SetEntProp(int entity, PropType type, const char[] prop, any value, 
  * @return              Value at the given property offset.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native float GetEntPropFloat(int entity, PropType type, const char[] prop, int element=0);
+public static float GetEntPropFloat(int entity, PropType type, string prop, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets a float value in an entity's property.
@@ -601,7 +603,7 @@ native float GetEntPropFloat(int entity, PropType type, const char[] prop, int e
  * @param element       Element # (starting from 0) if property is an array.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native void SetEntPropFloat(int entity, PropType type, const char[] prop, float value, int element=0);
+public static void SetEntPropFloat(int entity, PropType type, string prop, float value, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Retrieves an entity index from an entity's property.
@@ -618,7 +620,7 @@ native void SetEntPropFloat(int entity, PropType type, const char[] prop, float 
  *                      then -1 is returned.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native int GetEntPropEnt(int entity, PropType type, const char[] prop, int element=0);
+public static int GetEntPropEnt(int entity, PropType type, string prop, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets an entity index in an entity's property.
@@ -633,7 +635,7 @@ native int GetEntPropEnt(int entity, PropType type, const char[] prop, int eleme
  * @param element       Element # (starting from 0) if property is an array.
  * @error               Invalid entity or offset out of reasonable bounds.
  */
-native void SetEntPropEnt(int entity, PropType type, const char[] prop, int other, int element=0);
+public static void SetEntPropEnt(int entity, PropType type, string prop, int other, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a vector of floats from an entity, given a named network property.
@@ -649,7 +651,7 @@ native void SetEntPropEnt(int entity, PropType type, const char[] prop, int othe
  * @error               Invalid entity, property not found, or property not
  *                      actually a vector data type.
  */
-native void GetEntPropVector(int entity, PropType type, const char[] prop, float vec[3], int element=0);
+public static void GetEntPropVector(int entity, PropType type, string prop, float vec[3], int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets a vector of floats in an entity, given a named network property.
@@ -665,7 +667,7 @@ native void GetEntPropVector(int entity, PropType type, const char[] prop, float
  * @error               Invalid entity, property not found, or property not
  *                      actually a vector data type.
  */
-native void SetEntPropVector(int entity, PropType type, const char[] prop, const float vec[3], int element=0);
+public static void SetEntPropVector(int entity, PropType type, string prop, const float vec[3], int element=0) { throw new NotImplementedException(); }
 
 /**
  * Gets a network property as a string.
@@ -679,7 +681,7 @@ native void SetEntPropVector(int entity, PropType type, const char[] prop, const
  * @return              Number of non-null bytes written.
  * @error               Invalid entity, offset out of reasonable bounds, or property is not a valid string.
  */
-native int GetEntPropString(int entity, PropType type, const char[] prop, char[] buffer, int maxlen, int element=0);
+public static int GetEntPropString(int entity, PropType type, string prop, string buffer, int maxlen, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets a network property as a string.
@@ -692,7 +694,7 @@ native int GetEntPropString(int entity, PropType type, const char[] prop, char[]
  * @return              Number of non-null bytes written.
  * @error               Invalid entity, offset out of reasonable bounds, or property is not a valid string.
  */
-native int SetEntPropString(int entity, PropType type, const char[] prop, const char[] buffer, int element=0);
+public static int SetEntPropString(int entity, PropType type, string prop, string buffer, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the count of values that an entity property's array can store.
@@ -703,7 +705,7 @@ native int SetEntPropString(int entity, PropType type, const char[] prop, const 
  * @return              Size of array (in elements) or 1 if property is not an array.
  * @error               Invalid entity or property not found.
  */
-native int GetEntPropArraySize(int entity, PropType type, const char[] prop);
+public static int GetEntPropArraySize(int entity, PropType type, string prop) { throw new NotImplementedException(); }
 
 /**
  * Copies an array of cells from an entity at a given offset.
@@ -719,7 +721,7 @@ stock void GetEntDataArray(int entity, int offset, any[] array, int arraySize, i
 {
 	for (int i = 0; i < arraySize; i++)
 	{
-		array[i] = GetEntData(entity, offset + i*dataSize, dataSize);
+		array[i] = GetEntData(entity, offset + i*dataSize, dataSize) { throw new NotImplementedException(); }
 	}
 }
 
@@ -738,7 +740,7 @@ stock void SetEntDataArray(int entity, int offset, const any[] array, int arrayS
 {
 	for (int i = 0; i < arraySize; i++)
 	{
-		SetEntData(entity, offset + i*dataSize, array[i], dataSize, changeState);
+		SetEntData(entity, offset + i*dataSize, array[i], dataSize, changeState) { throw new NotImplementedException(); }
 	}
 }
 
@@ -749,7 +751,7 @@ stock void SetEntDataArray(int entity, int offset, const any[] array, int arrayS
  * @return              Address of the entity.
  * @error               Invalid entity.
  */
-native Address GetEntityAddress(int entity);
+public static Address GetEntityAddress(int entity) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the classname of an entity.
@@ -761,7 +763,9 @@ native Address GetEntityAddress(int entity);
  * @param maxlength     Maximum length of the buffer.
  * @return              True on success, false if there is no classname set.
  */
-stock bool GetEntityClassname(int entity, char[] clsname, int maxlength)
+stock bool GetEntityClassname(int entity, string clsname, int maxlength)
 {
-	return !!GetEntPropString(entity, Prop_Data, "m_iClassname", clsname, maxlength);
+	return !!GetEntPropString(entity, Prop_Data, "m_iClassname", clsname, maxlength) { throw new NotImplementedException(); }
+}
+	}
 }

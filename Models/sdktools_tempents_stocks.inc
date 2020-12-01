@@ -30,23 +30,25 @@
  * Version: $Id$
  */
 
-#if defined _te_stocks_included
- #endinput
-#endif
-#define _te_stocks_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * @section TE Explosion flags.
  */
-#define TE_EXPLFLAG_NONE            0x0   /**< all flags clear makes default Half-Life explosion */
-#define TE_EXPLFLAG_NOADDITIVE      0x1   /**< sprite will be drawn opaque (ensure that the sprite you send is a non-additive sprite) */
-#define TE_EXPLFLAG_NODLIGHTS       0x2   /**< do not render dynamic lights */
-#define TE_EXPLFLAG_NOSOUND         0x4   /**< do not play client explosion sound */
-#define TE_EXPLFLAG_NOPARTICLES     0x8   /**< do not draw particles */
-#define TE_EXPLFLAG_DRAWALPHA       0x10  /**< sprite will be drawn alpha */
-#define TE_EXPLFLAG_ROTATE          0x20  /**< rotate the sprite randomly */
-#define TE_EXPLFLAG_NOFIREBALL      0x40  /**< do not draw a fireball */
-#define TE_EXPLFLAG_NOFIREBALLSMOKE 0x80  /**< do not draw smoke with the fireball */
+public const object TE_EXPLFLAG_NONE            0x0   /**< all flags clear makes default Half-Life explosion */
+public const object TE_EXPLFLAG_NOADDITIVE      0x1   /**< sprite will be drawn opaque (ensure that the sprite you send is a non-additive sprite) */
+public const object TE_EXPLFLAG_NODLIGHTS       0x2   /**< do not render dynamic lights */
+public const object TE_EXPLFLAG_NOSOUND         0x4   /**< do not play client explosion sound */
+public const object TE_EXPLFLAG_NOPARTICLES     0x8   /**< do not draw particles */
+public const object TE_EXPLFLAG_DRAWALPHA       0x10  /**< sprite will be drawn alpha */
+public const object TE_EXPLFLAG_ROTATE          0x20  /**< rotate the sprite randomly */
+public const object TE_EXPLFLAG_NOFIREBALL      0x40  /**< do not draw a fireball */
+public const object TE_EXPLFLAG_NOFIREBALLSMOKE 0x80  /**< do not draw smoke with the fireball */
 
 /**
  * @endsection
@@ -55,22 +57,22 @@
 /**
  * @section TE Beam flags.
  */
-#define FBEAM_STARTENTITY   0x00000001
-#define FBEAM_ENDENTITY     0x00000002
-#define FBEAM_FADEIN        0x00000004
-#define FBEAM_FADEOUT       0x00000008
-#define FBEAM_SINENOISE     0x00000010
-#define FBEAM_SOLID         0x00000020
-#define FBEAM_SHADEIN       0x00000040
-#define FBEAM_SHADEOUT      0x00000080
-#define FBEAM_ONLYNOISEONCE 0x00000100  /**< Only calculate our noise once */
-#define FBEAM_NOTILE        0x00000200
-#define FBEAM_USE_HITBOXES  0x00000400  /**< Attachment indices represent hitbox indices instead when this is set. */
-#define FBEAM_STARTVISIBLE  0x00000800  /**< Has this client actually seen this beam's start entity yet? */
-#define FBEAM_ENDVISIBLE    0x00001000  /**< Has this client actually seen this beam's end entity yet? */
-#define FBEAM_ISACTIVE      0x00002000
-#define FBEAM_FOREVER       0x00004000
-#define FBEAM_HALOBEAM      0x00008000  /**< When drawing a beam with a halo, don't ignore the segments and endwidth */
+public const object FBEAM_STARTENTITY   0x00000001
+public const object FBEAM_ENDENTITY     0x00000002
+public const object FBEAM_FADEIN        0x00000004
+public const object FBEAM_FADEOUT       0x00000008
+public const object FBEAM_SINENOISE     0x00000010
+public const object FBEAM_SOLID         0x00000020
+public const object FBEAM_SHADEIN       0x00000040
+public const object FBEAM_SHADEOUT      0x00000080
+public const object FBEAM_ONLYNOISEONCE 0x00000100  /**< Only calculate our noise once */
+public const object FBEAM_NOTILE        0x00000200
+public const object FBEAM_USE_HITBOXES  0x00000400  /**< Attachment indices represent hitbox indices instead when this is set. */
+public const object FBEAM_STARTVISIBLE  0x00000800  /**< Has this client actually seen this beam's start entity yet? */
+public const object FBEAM_ENDVISIBLE    0x00001000  /**< Has this client actually seen this beam's end entity yet? */
+public const object FBEAM_ISACTIVE      0x00002000
+public const object FBEAM_FOREVER       0x00004000
+public const object FBEAM_HALOBEAM      0x00008000  /**< When drawing a beam with a halo, don't ignore the segments and endwidth */
 
 /**
  * @endsection
@@ -86,11 +88,11 @@
  */
 stock void TE_SetupSparks(const float pos[3], const float dir[3], int Magnitude, int TrailLength)
 {
-	TE_Start("Sparks");
-	TE_WriteVector("m_vecOrigin[0]", pos);
-	TE_WriteVector("m_vecDir", dir);
-	TE_WriteNum("m_nMagnitude", Magnitude);
-	TE_WriteNum("m_nTrailLength", TrailLength);
+	TE_Start("Sparks") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecOrigin[0]", pos) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecDir", dir) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nMagnitude", Magnitude) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nTrailLength", TrailLength) { throw new NotImplementedException(); }
 }
 
 /**
@@ -103,11 +105,11 @@ stock void TE_SetupSparks(const float pos[3], const float dir[3], int Magnitude,
  */
 stock void TE_SetupSmoke(const float pos[3], int Model, float Scale, int FrameRate)
 {
-	TE_Start("Smoke");
-	TE_WriteVector("m_vecOrigin", pos);
-	TE_WriteNum("m_nModelIndex", Model);
-	TE_WriteFloat("m_fScale", Scale);
-	TE_WriteNum("m_nFrameRate", FrameRate);
+	TE_Start("Smoke") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nModelIndex", Model) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fScale", Scale) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
 }
 
 /**
@@ -120,11 +122,11 @@ stock void TE_SetupSmoke(const float pos[3], int Model, float Scale, int FrameRa
  */
 stock void TE_SetupDust(const float pos[3], const float dir[3], float Size, float Speed)
 {
-	TE_Start("Dust");
-	TE_WriteVector("m_vecOrigin[0]", pos);
-	TE_WriteVector("m_vecDirection", dir);
-	TE_WriteFloat("m_flSize", Size);
-	TE_WriteFloat("m_flSpeed", Speed);
+	TE_Start("Dust") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecOrigin[0]", pos) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecDirection", dir) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_flSize", Size) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_flSpeed", Speed) { throw new NotImplementedException(); }
 }
 
 /**
@@ -137,11 +139,11 @@ stock void TE_SetupDust(const float pos[3], const float dir[3], float Size, floa
  */
 stock void TE_SetupMuzzleFlash(const float pos[3], const float angles[3], float Scale, int Type)
 {
-	TE_Start("MuzzleFlash");
-	TE_WriteVector("m_vecOrigin", pos);
-	TE_WriteVector("m_vecAngles", angles);
-	TE_WriteFloat("m_flScale", Scale);
-	TE_WriteNum("m_nType", Type);
+	TE_Start("MuzzleFlash") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecAngles", angles) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_flScale", Scale) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nType", Type) { throw new NotImplementedException(); }
 }
 
 /**
@@ -152,9 +154,9 @@ stock void TE_SetupMuzzleFlash(const float pos[3], const float angles[3], float 
  */
 stock void TE_SetupMetalSparks(const float pos[3], const float dir[3])
 {
-	TE_Start("Metal Sparks");
-	TE_WriteVector("m_vecPos", pos);
-	TE_WriteVector("m_vecDir", dir);
+	TE_Start("Metal Sparks") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecPos", pos) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecDir", dir) { throw new NotImplementedException(); }
 }
 
 /**
@@ -166,10 +168,10 @@ stock void TE_SetupMetalSparks(const float pos[3], const float dir[3])
  */
 stock void TE_SetupEnergySplash(const float pos[3], const float dir[3], bool Explosive)
 {
-	TE_Start("Energy Splash");
-	TE_WriteVector("m_vecPos", pos);
-	TE_WriteVector("m_vecDir", dir);
-	TE_WriteNum("m_bExplosive", Explosive);
+	TE_Start("Energy Splash") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecPos", pos) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecDir", dir) { throw new NotImplementedException(); }
+	TE_WriteNum("m_bExplosive", Explosive) { throw new NotImplementedException(); }
 }
 
 /**
@@ -180,9 +182,9 @@ stock void TE_SetupEnergySplash(const float pos[3], const float dir[3], bool Exp
  */
 stock void TE_SetupArmorRicochet(const float pos[3], const float dir[3])
 {
-	TE_Start("Armor Ricochet");
-	TE_WriteVector("m_vecPos", pos);
-	TE_WriteVector("m_vecDir", dir);
+	TE_Start("Armor Ricochet") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecPos", pos) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecDir", dir) { throw new NotImplementedException(); }
 }
 
 /**
@@ -196,12 +198,12 @@ stock void TE_SetupArmorRicochet(const float pos[3], const float dir[3])
  */
 stock void TE_SetupGlowSprite(const float pos[3], int Model, float Life, float Size, int Brightness)
 {
-	TE_Start("GlowSprite");
-	TE_WriteVector("m_vecOrigin", pos);
-	TE_WriteNum("m_nModelIndex", Model);
-	TE_WriteFloat("m_fScale", Size);
-	TE_WriteFloat("m_fLife", Life);
-	TE_WriteNum("m_nBrightness", Brightness);
+	TE_Start("GlowSprite") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nModelIndex", Model) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fScale", Size) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nBrightness", Brightness) { throw new NotImplementedException(); }
 }
 
 /**
@@ -219,16 +221,16 @@ stock void TE_SetupGlowSprite(const float pos[3], int Model, float Life, float S
  */
 stock void TE_SetupExplosion(const float pos[3], int Model, float Scale, int Framerate, int Flags, int Radius, int Magnitude, const float normal[3]={0.0, 0.0, 1.0}, int MaterialType='C')
 {
-	TE_Start("Explosion");
-	TE_WriteVector("m_vecOrigin[0]", pos);
-	TE_WriteVector("m_vecNormal", normal);
-	TE_WriteNum("m_nModelIndex", Model);
-	TE_WriteFloat("m_fScale", Scale);
-	TE_WriteNum("m_nFrameRate", Framerate);
-	TE_WriteNum("m_nFlags", Flags);
-	TE_WriteNum("m_nRadius", Radius);
-	TE_WriteNum("m_nMagnitude", Magnitude);
-	TE_WriteNum("m_chMaterialType", MaterialType);
+	TE_Start("Explosion") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecOrigin[0]", pos) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecNormal", normal) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nModelIndex", Model) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fScale", Scale) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFrameRate", Framerate) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFlags", Flags) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nRadius", Radius) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nMagnitude", Magnitude) { throw new NotImplementedException(); }
+	TE_WriteNum("m_chMaterialType", MaterialType) { throw new NotImplementedException(); }
 }
 
 /**
@@ -243,16 +245,16 @@ stock void TE_SetupExplosion(const float pos[3], int Model, float Scale, int Fra
  */
 stock void TE_SetupBloodSprite(const float pos[3], const float dir[3], const int color[4], int Size, int SprayModel, int BloodDropModel)
 {
-	TE_Start("Blood Sprite");
-	TE_WriteVector("m_vecOrigin", pos);
-	TE_WriteVector("m_vecDirection", dir);
-	TE_WriteNum("r", color[0]);
-	TE_WriteNum("g", color[1]);
-	TE_WriteNum("b", color[2]);
-	TE_WriteNum("a", color[3]);
-	TE_WriteNum("m_nSize", Size);
-	TE_WriteNum("m_nSprayModel", SprayModel);
-	TE_WriteNum("m_nDropModel", BloodDropModel);
+	TE_Start("Blood Sprite") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecDirection", dir) { throw new NotImplementedException(); }
+	TE_WriteNum("r", color[0]) { throw new NotImplementedException(); }
+	TE_WriteNum("g", color[1]) { throw new NotImplementedException(); }
+	TE_WriteNum("b", color[2]) { throw new NotImplementedException(); }
+	TE_WriteNum("a", color[3]) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nSize", Size) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nSprayModel", SprayModel) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nDropModel", BloodDropModel) { throw new NotImplementedException(); }
 }
 
 /**
@@ -275,25 +277,25 @@ stock void TE_SetupBloodSprite(const float pos[3], const float dir[3], const int
 stock void TE_SetupBeamRingPoint(const float center[3], float Start_Radius, float End_Radius, int ModelIndex, int HaloIndex, int StartFrame, 
 				int FrameRate, float Life, float Width, float Amplitude, const int Color[4], int Speed, int Flags)
 {
-	TE_Start("BeamRingPoint");
-	TE_WriteVector("m_vecCenter", center);
-	TE_WriteFloat("m_flStartRadius", Start_Radius);
-	TE_WriteFloat("m_flEndRadius", End_Radius);
-	TE_WriteNum("m_nModelIndex", ModelIndex);
-	TE_WriteNum("m_nHaloIndex", HaloIndex);
-	TE_WriteNum("m_nStartFrame", StartFrame);
-	TE_WriteNum("m_nFrameRate", FrameRate);
-	TE_WriteFloat("m_fLife", Life);
-	TE_WriteFloat("m_fWidth", Width);
-	TE_WriteFloat("m_fEndWidth", Width);
-	TE_WriteFloat("m_fAmplitude", Amplitude);
-	TE_WriteNum("r", Color[0]);
-	TE_WriteNum("g", Color[1]);
-	TE_WriteNum("b", Color[2]);
-	TE_WriteNum("a", Color[3]);
-	TE_WriteNum("m_nSpeed", Speed);
-	TE_WriteNum("m_nFlags", Flags);
-	TE_WriteNum("m_nFadeLength", 0);
+	TE_Start("BeamRingPoint") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecCenter", center) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_flStartRadius", Start_Radius) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_flEndRadius", End_Radius) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fEndWidth", Width) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fAmplitude", Amplitude) { throw new NotImplementedException(); }
+	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nSpeed", Speed) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFlags", Flags) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFadeLength", 0) { throw new NotImplementedException(); }
 }
 
 /**
@@ -316,23 +318,23 @@ stock void TE_SetupBeamRingPoint(const float center[3], float Start_Radius, floa
 stock void TE_SetupBeamPoints(const float start[3], const float end[3], int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, 
 				float Width, float EndWidth, int FadeLength, float Amplitude, const int Color[4], int Speed)
 {
-	TE_Start("BeamPoints");
-	TE_WriteVector("m_vecStartPoint", start);
-	TE_WriteVector("m_vecEndPoint", end);
-	TE_WriteNum("m_nModelIndex", ModelIndex);
-	TE_WriteNum("m_nHaloIndex", HaloIndex);
-	TE_WriteNum("m_nStartFrame", StartFrame);
-	TE_WriteNum("m_nFrameRate", FrameRate);
-	TE_WriteFloat("m_fLife", Life);
-	TE_WriteFloat("m_fWidth", Width);
-	TE_WriteFloat("m_fEndWidth", EndWidth);
-	TE_WriteFloat("m_fAmplitude", Amplitude);
-	TE_WriteNum("r", Color[0]);
-	TE_WriteNum("g", Color[1]);
-	TE_WriteNum("b", Color[2]);
-	TE_WriteNum("a", Color[3]);
-	TE_WriteNum("m_nSpeed", Speed);
-	TE_WriteNum("m_nFadeLength", FadeLength);
+	TE_Start("BeamPoints") { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecStartPoint", start) { throw new NotImplementedException(); }
+	TE_WriteVector("m_vecEndPoint", end) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fEndWidth", EndWidth) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fAmplitude", Amplitude) { throw new NotImplementedException(); }
+	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nSpeed", Speed) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
 }
 
 /**
@@ -355,23 +357,23 @@ stock void TE_SetupBeamPoints(const float start[3], const float end[3], int Mode
 stock void TE_SetupBeamLaser(int StartEntity, int EndEntity, int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, 
 				float Width, float EndWidth, int FadeLength, float Amplitude, const int Color[4], int Speed)
 {
-	TE_Start("BeamLaser");
-	TE_WriteEncodedEnt("m_nStartEntity", StartEntity);
-	TE_WriteEncodedEnt("m_nEndEntity", EndEntity);
-	TE_WriteNum("m_nModelIndex", ModelIndex);
-	TE_WriteNum("m_nHaloIndex", HaloIndex);
-	TE_WriteNum("m_nStartFrame", StartFrame);
-	TE_WriteNum("m_nFrameRate", FrameRate);
-	TE_WriteFloat("m_fLife", Life);
-	TE_WriteFloat("m_fWidth", Width);
-	TE_WriteFloat("m_fEndWidth", EndWidth);
-	TE_WriteFloat("m_fAmplitude", Amplitude);
-	TE_WriteNum("r", Color[0]);
-	TE_WriteNum("g", Color[1]);
-	TE_WriteNum("b", Color[2]);
-	TE_WriteNum("a", Color[3]);
-	TE_WriteNum("m_nSpeed", Speed);
-	TE_WriteNum("m_nFadeLength", FadeLength);
+	TE_Start("BeamLaser") { throw new NotImplementedException(); }
+	TE_WriteEncodedEnt("m_nStartEntity", StartEntity) { throw new NotImplementedException(); }
+	TE_WriteEncodedEnt("m_nEndEntity", EndEntity) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fEndWidth", EndWidth) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fAmplitude", Amplitude) { throw new NotImplementedException(); }
+	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nSpeed", Speed) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
 }
 
 /**
@@ -392,24 +394,24 @@ stock void TE_SetupBeamLaser(int StartEntity, int EndEntity, int ModelIndex, int
  */
 stock void TE_SetupBeamRing(int StartEntity, int EndEntity, int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, float Width, float Amplitude, const int Color[4], int Speed, int Flags)
 {
-	TE_Start("BeamRing");
-	TE_WriteEncodedEnt("m_nStartEntity", StartEntity);
-	TE_WriteEncodedEnt("m_nEndEntity", EndEntity);
-	TE_WriteNum("m_nModelIndex", ModelIndex);
-	TE_WriteNum("m_nHaloIndex", HaloIndex);
-	TE_WriteNum("m_nStartFrame", StartFrame);
-	TE_WriteNum("m_nFrameRate", FrameRate);
-	TE_WriteFloat("m_fLife", Life);
-	TE_WriteFloat("m_fWidth", Width);
-	TE_WriteFloat("m_fEndWidth", Width);
-	TE_WriteFloat("m_fAmplitude", Amplitude);
-	TE_WriteNum("r", Color[0]);
-	TE_WriteNum("g", Color[1]);
-	TE_WriteNum("b", Color[2]);
-	TE_WriteNum("a", Color[3]);
-	TE_WriteNum("m_nSpeed", Speed);
-	TE_WriteNum("m_nFadeLength", 0);
-	TE_WriteNum("m_nFlags", Flags);
+	TE_Start("BeamRing") { throw new NotImplementedException(); }
+	TE_WriteEncodedEnt("m_nStartEntity", StartEntity) { throw new NotImplementedException(); }
+	TE_WriteEncodedEnt("m_nEndEntity", EndEntity) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nStartFrame", StartFrame) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFrameRate", FrameRate) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fEndWidth", Width) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fAmplitude", Amplitude) { throw new NotImplementedException(); }
+	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nSpeed", Speed) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFadeLength", 0) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFlags", Flags) { throw new NotImplementedException(); }
 }
 
 /**
@@ -426,18 +428,20 @@ stock void TE_SetupBeamRing(int StartEntity, int EndEntity, int ModelIndex, int 
  */
 stock void TE_SetupBeamFollow(int EntIndex, int ModelIndex, int HaloIndex, float Life, float Width, float EndWidth, int FadeLength, const int Color[4])
 {
-	TE_Start("BeamFollow");
-	TE_WriteEncodedEnt("m_iEntIndex", EntIndex);
-	TE_WriteNum("m_nModelIndex", ModelIndex);
-	TE_WriteNum("m_nHaloIndex", HaloIndex);
-	TE_WriteNum("m_nStartFrame", 0);
-	TE_WriteNum("m_nFrameRate", 0);
-	TE_WriteFloat("m_fLife", Life);
-	TE_WriteFloat("m_fWidth", Width);
-	TE_WriteFloat("m_fEndWidth", EndWidth);
-	TE_WriteNum("m_nFadeLength", FadeLength);
-	TE_WriteNum("r", Color[0]);
-	TE_WriteNum("g", Color[1]);
-	TE_WriteNum("b", Color[2]);
-	TE_WriteNum("a", Color[3]);
+	TE_Start("BeamFollow") { throw new NotImplementedException(); }
+	TE_WriteEncodedEnt("m_iEntIndex", EntIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nModelIndex", ModelIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nHaloIndex", HaloIndex) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nStartFrame", 0) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFrameRate", 0) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fLife", Life) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fWidth", Width) { throw new NotImplementedException(); }
+	TE_WriteFloat("m_fEndWidth", EndWidth) { throw new NotImplementedException(); }
+	TE_WriteNum("m_nFadeLength", FadeLength) { throw new NotImplementedException(); }
+	TE_WriteNum("r", Color[0]) { throw new NotImplementedException(); }
+	TE_WriteNum("g", Color[1]) { throw new NotImplementedException(); }
+	TE_WriteNum("b", Color[2]) { throw new NotImplementedException(); }
+	TE_WriteNum("a", Color[3]) { throw new NotImplementedException(); }
+}
+	}
 }

@@ -30,12 +30,14 @@
  * Version: $Id$
  */
 
-#if defined _lang_included
- #endinput
-#endif
-#define _lang_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
-#define LANG_SERVER 0      /**< Translate using the server's language */
+public const object LANG_SERVER 0      /**< Translate using the server's language */
 
 /**
  * Loads a translation file for the plugin calling this native.
@@ -43,7 +45,7 @@
  *
  * @param file          Translation file.
  */
-native void LoadTranslations(const char[] file);
+public static void LoadTranslations(string file) { throw new NotImplementedException(); }
 
 /**
  * Sets the global language target.  This is useful for creating functions
@@ -53,7 +55,7 @@ native void LoadTranslations(const char[] file);
  *
  * @param client        Client index or LANG_SERVER.
  */
-native void SetGlobalTransTarget(int client);
+public static void SetGlobalTransTarget(int client) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the language number of a client.
@@ -62,21 +64,21 @@ native void SetGlobalTransTarget(int client);
  * @return              Language number client is using.
  * @error               Invalid client index or client not connected.
  */
-native int GetClientLanguage(int client);
+public static int GetClientLanguage(int client) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the server's language.
  *
  * @return              Language number server is using.
  */
-native int GetServerLanguage();
+public static int GetServerLanguage() { throw new NotImplementedException(); }
 
 /**
  * Returns the number of languages known in languages.cfg.
  *
  * @return              Language count.
  */
-native int GetLanguageCount();
+public static int GetLanguageCount() { throw new NotImplementedException(); }
 
 /**
  * Retrieves info about a given language number.
@@ -88,7 +90,7 @@ native int GetLanguageCount();
  * @param nameLen       Maximum length of the language name buffer.
  * @error               Invalid language number.
  */
-native void GetLanguageInfo(int language, char[] code="", int codeLen=0, char[] name="", int nameLen=0);
+public static void GetLanguageInfo(int language, string code="", int codeLen=0, string name="", int nameLen=0) { throw new NotImplementedException(); }
 
 /**
  * Sets the language number of a client.
@@ -97,7 +99,7 @@ native void GetLanguageInfo(int language, char[] code="", int codeLen=0, char[] 
  * @param language      Language number.
  * @error               Invalid client index or client not connected.
  */
-native void SetClientLanguage(int client, int language);
+public static void SetClientLanguage(int client, int language) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the language number from a language code.
@@ -105,7 +107,7 @@ native void SetClientLanguage(int client, int language);
  * @param code          Language code (2-3 characters usually).
  * @return              Language number. -1 if not found.
  */
-native int GetLanguageByCode(const char[] code);
+public static int GetLanguageByCode(string code) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the language number from a language name.
@@ -113,7 +115,7 @@ native int GetLanguageByCode(const char[] code);
  * @param name          Language name (case insensitive).
  * @return              Language number. -1 if not found.
  */
-native int GetLanguageByName(const char[] name);
+public static int GetLanguageByName(string name) { throw new NotImplementedException(); }
 
 /**
  * Determines if the specified phrase exists within the plugin's
@@ -122,7 +124,7 @@ native int GetLanguageByName(const char[] name);
  * @param phrase        Phrase to look for.
  * @return              True if phrase exists.
  */
-native bool TranslationPhraseExists(const char[] phrase);
+public static bool TranslationPhraseExists(string phrase) { throw new NotImplementedException(); }
 
 /**
  * Determines if there is a translation for the specified language.
@@ -131,4 +133,6 @@ native bool TranslationPhraseExists(const char[] phrase);
  * @param language      Language number.
  * @return              True if translation exists.
  */
-native bool IsTranslatedForLanguage(const char[] phrase, int language);
+public static bool IsTranslatedForLanguage(string phrase, int language) { throw new NotImplementedException(); }
+	}
+}

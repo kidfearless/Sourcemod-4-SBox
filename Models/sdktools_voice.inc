@@ -30,20 +30,22 @@
  * Version: $Id$
  */
 
-#if defined _sdktools_voice_included
- #endinput
-#endif
-#define _sdktools_voice_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * @section voice flags.
  */
-#define VOICE_NORMAL        0   /**< Allow the client to listen and speak normally. */
-#define VOICE_MUTED         1   /**< Mutes the client from speaking to everyone. */
-#define VOICE_SPEAKALL      2   /**< Allow the client to speak to everyone. */
-#define VOICE_LISTENALL     4   /**< Allow the client to listen to everyone. */
-#define VOICE_TEAM          8   /**< Allow the client to always speak to team, even when dead. */
-#define VOICE_LISTENTEAM    16  /**< Allow the client to always hear teammates, including dead ones. */
+public const object VOICE_NORMAL        0   /**< Allow the client to listen and speak normally. */
+public const object VOICE_MUTED         1   /**< Mutes the client from speaking to everyone. */
+public const object VOICE_SPEAKALL      2   /**< Allow the client to speak to everyone. */
+public const object VOICE_LISTENALL     4   /**< Allow the client to listen to everyone. */
+public const object VOICE_TEAM          8   /**< Allow the client to always speak to team, even when dead. */
+public const object VOICE_LISTENTEAM    16  /**< Allow the client to always hear teammates, including dead ones. */
 
 /**
  * @endsection
@@ -61,14 +63,14 @@ enum ListenOverride
  *
  * @param client        The client index
  */
-forward void OnClientSpeaking(int client);
+public static override void OnClientSpeaking(int client) { throw new NotImplementedException(); }
 
 /**
  * Called once a client speaking end.
  *
  * @param client        The client index
  */
-forward void OnClientSpeakingEnd(int client);
+public static override void OnClientSpeakingEnd(int client) { throw new NotImplementedException(); }
 
 /**
  * Set the client listening flags.
@@ -76,7 +78,7 @@ forward void OnClientSpeakingEnd(int client);
  * @param client        The client index
  * @param flags         The voice flags
  */
-native void SetClientListeningFlags(int client, int flags);
+public static void SetClientListeningFlags(int client, int flags) { throw new NotImplementedException(); }
 
 /**
  * Retrieve the client current listening flags.
@@ -84,7 +86,7 @@ native void SetClientListeningFlags(int client, int flags);
  * @param client        The client index
  * @return              The current voice flags
  */
-native int GetClientListeningFlags(int client);
+public static int GetClientListeningFlags(int client) { throw new NotImplementedException(); }
 
 /**
  * Set the receiver ability to listen to the sender.
@@ -96,7 +98,7 @@ native int GetClientListeningFlags(int client);
  * @deprecated          Use SetListenOverride() instead.
  */
 #pragma deprecated Use SetListenOverride() instead
-native bool SetClientListening(int iReceiver, int iSender, bool bListen);
+public static bool SetClientListening(int iReceiver, int iSender, bool bListen) { throw new NotImplementedException(); }
 
 /**
  * Retrieves if the receiver can listen to the sender.
@@ -107,7 +109,7 @@ native bool SetClientListening(int iReceiver, int iSender, bool bListen);
  * @deprecated          GetListenOverride() instead.
  */
 #pragma deprecated GetListenOverride() instead
-native bool GetClientListening(int iReceiver, int iSender);
+public static bool GetClientListening(int iReceiver, int iSender) { throw new NotImplementedException(); }
 
 /**
  * Override the receiver's ability to listen to the sender.
@@ -117,7 +119,7 @@ native bool GetClientListening(int iReceiver, int iSender);
  * @param override      The override of the receiver's ability to listen to the sender.
  * @return              True if successful otherwise false.
  */
-native bool SetListenOverride(int iReceiver, int iSender, ListenOverride override);
+public static bool SetListenOverride(int iReceiver, int iSender, ListenOverride override) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the override of the receiver's ability to listen to the sender.
@@ -126,7 +128,7 @@ native bool SetListenOverride(int iReceiver, int iSender, ListenOverride overrid
  * @param iSender       The sender index.
  * @return              The override value.
  */
-native ListenOverride GetListenOverride(int iReceiver, int iSender);
+public static ListenOverride GetListenOverride(int iReceiver, int iSender) { throw new NotImplementedException(); }
 
 /**
  * Retrieves if the muter has muted the mutee.
@@ -135,4 +137,6 @@ native ListenOverride GetListenOverride(int iReceiver, int iSender);
  * @param iMutee        The mutee index.
  * @return              True if muter has muted mutee, false otherwise.
  */
-native bool IsClientMuted(int iMuter, int iMutee);
+public static bool IsClientMuted(int iMuter, int iMutee) { throw new NotImplementedException(); }
+	}
+}

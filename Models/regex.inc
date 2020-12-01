@@ -30,26 +30,28 @@
  * Version: $Id$
  */
 
-#if defined _regex_included
- #endinput
-#endif
-#define _regex_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * @section     Flags for compiling regex expressions.  These come directly from the
  * pcre library and can be used in MatchRegex and CompileRegex.
  */
-#define PCRE_CASELESS           0x00000001 /* Ignore Case */
-#define PCRE_MULTILINE          0x00000002 /* Multilines (affects ^ and $ so that they match the start/end of a line rather than matching the start/end of the string). */
-#define PCRE_DOTALL             0x00000004 /* Single line (affects . so that it matches any character, even new line characters). */
-#define PCRE_EXTENDED           0x00000008 /* Pattern extension (ignore whitespace and # comments). */
-#define PCRE_ANCHORED           0x00000010 /* Force pattern anchoring. */
-#define PCRE_DOLLAR_ENDONLY     0x00000020 /* $ not to match newline at end. */
-#define PCRE_UNGREEDY           0x00000200 /* Invert greediness of quantifiers */
-#define PCRE_NOTEMPTY           0x00000400 /* An empty string is not a valid match. */
-#define PCRE_UTF8               0x00000800 /* Use UTF-8 Chars */
-#define PCRE_NO_UTF8_CHECK      0x00002000 /* Do not check the pattern for UTF-8 validity (only relevant if PCRE_UTF8 is set) */
-#define PCRE_UCP                0x20000000 /* Use Unicode properties for \ed, \ew, etc. */
+public const object PCRE_CASELESS           0x00000001 /* Ignore Case */
+public const object PCRE_MULTILINE          0x00000002 /* Multilines (affects ^ and $ so that they match the start/end of a line rather than matching the start/end of the string). */
+public const object PCRE_DOTALL             0x00000004 /* Single line (affects . so that it matches any character, even new line characters). */
+public const object PCRE_EXTENDED           0x00000008 /* Pattern extension (ignore whitespace and # comments). */
+public const object PCRE_ANCHORED           0x00000010 /* Force pattern anchoring. */
+public const object PCRE_DOLLAR_ENDONLY     0x00000020 /* $ not to match newline at end. */
+public const object PCRE_UNGREEDY           0x00000200 /* Invert greediness of quantifiers */
+public const object PCRE_NOTEMPTY           0x00000400 /* An empty string is not a valid match. */
+public const object PCRE_UTF8               0x00000800 /* Use UTF-8 Chars */
+public const object PCRE_NO_UTF8_CHECK      0x00002000 /* Do not check the pattern for UTF-8 validity (only relevant if PCRE_UTF8 is set) */
+public const object PCRE_UCP                0x20000000 /* Use Unicode properties for \ed, \ew, etc. */
 
 
 /**
@@ -121,7 +123,7 @@ methodmap Regex < Handle
 	// @param error         Error message encountered, if applicable.
 	// @param maxLen        Maximum string length of the error buffer.
 	// @param errcode       Regex type error code encountered, if applicable.
-	public native Regex(const char[] pattern, int flags = 0, char[] error="", int maxLen = 0, RegexError &errcode = REGEX_ERROR_NONE);
+	public native Regex(string pattern, int flags = 0, string error="", int maxLen = 0, RegexError &errcode = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
 
 	// Matches a string against a pre-compiled regular expression pattern.
 	//
@@ -132,7 +134,7 @@ methodmap Regex < Handle
 	//
 	// @note Use the regex handle passed to this function to extract
 	//       matches with GetSubString().
-	public native int Match(const char[] str, RegexError &ret = REGEX_ERROR_NONE, int offset = 0);
+	public native int Match(string str, RegexError &ret = REGEX_ERROR_NONE, int offset = 0) { throw new NotImplementedException(); }
 
 	// Gets all matches from a string against a pre-compiled regular expression pattern.
 	//
@@ -141,7 +143,7 @@ methodmap Regex < Handle
 	// @return              Number of matches found or -1 on failure.
 	//
 	// @note Use GetSubString() and loop from 0 -> totalmatches - 1.
-	public native int MatchAll(const char[] str, RegexError &ret = REGEX_ERROR_NONE);
+	public native int MatchAll(string str, RegexError &ret = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
 
 	// Returns a matched substring from a regex handle.
 	//
@@ -156,13 +158,13 @@ methodmap Regex < Handle
 	//
 	// @note str_id = 0 is the full captured string, anything else is the capture group index.
 	//       if Regex.Match is used match can only be 0
-	public native bool GetSubString(int str_id, char[] buffer, int maxlen, int match = 0);
+	public native bool GetSubString(int str_id, string buffer, int maxlen, int match = 0) { throw new NotImplementedException(); }
 
 	// Returns number of matches
 	//
 	// When using Match this is always 1 or 0 (unless an error occured)
 	// @return              Total number of matches found.
-	public native int MatchCount();
+	public native int MatchCount() { throw new NotImplementedException(); }
 
 	// Returns number of captures for a match
 	//
@@ -170,13 +172,13 @@ methodmap Regex < Handle
 	// @return              Number of captures in the match.
 	//
 	// @note Use GetSubString() and loop from 1 -> captures -1 for str_id to get all captures
-	public native int CaptureCount(int match = 0);
+	public native int CaptureCount(int match = 0) { throw new NotImplementedException(); }
 
 	// Returns the string offset of a match.
 	//
 	// @param match         Match to get the offset of. Match starts at 0, and ends at MatchCount() -1
 	// @return              Offset of the match in the string.
-	public native int MatchOffset(int match = 0);
+	public native int MatchOffset(int match = 0) { throw new NotImplementedException(); }
 };
 
 /**
@@ -191,7 +193,7 @@ methodmap Regex < Handle
  * @param errcode       Regex type error code encountered, if applicable.
  * @return              Valid regex handle on success, INVALID_HANDLE on failure.
  */
-native Regex CompileRegex(const char[] pattern, int flags = 0, char[] error="", int maxLen = 0, RegexError &errcode = REGEX_ERROR_NONE);
+public static Regex CompileRegex(string pattern, int flags = 0, string error="", int maxLen = 0, RegexError &errcode = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
 
 /**
  * Matches a string against a pre-compiled regular expression pattern.
@@ -205,7 +207,7 @@ native Regex CompileRegex(const char[] pattern, int flags = 0, char[] error="", 
  * @note Use the regex handle passed to this function to extract
  *       matches with GetRegexSubString().
  */
-native int MatchRegex(Handle regex, const char[] str, RegexError &ret = REGEX_ERROR_NONE, int offset = 0);
+public static int MatchRegex(Handle regex, string str, RegexError &ret = REGEX_ERROR_NONE, int offset = 0) { throw new NotImplementedException(); }
 
 /**
  * Returns a matched substring from a regex handle.
@@ -221,7 +223,7 @@ native int MatchRegex(Handle regex, const char[] str, RegexError &ret = REGEX_ER
  * @note str_id = 0 is the full captured string, anything else is the capture group index.
  *
  */
-native bool GetRegexSubString(Handle regex, int str_id, char[] buffer, int maxlen);
+public static bool GetRegexSubString(Handle regex, int str_id, string buffer, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Matches a string against a regular expression pattern.
@@ -237,15 +239,15 @@ native bool GetRegexSubString(Handle regex, int str_id, char[] buffer, int maxle
  * @param maxLen        Maximum length of the error buffer.
  * @return              Number of substrings found or -1 on failure.
  */
-stock int SimpleRegexMatch(const char[] str, const char[] pattern, int flags = 0, char[] error="", int maxLen = 0)
+stock int SimpleRegexMatch(string str, string pattern, int flags = 0, string error="", int maxLen = 0)
 {
-	Regex regex = new Regex(pattern, flags, error, maxLen);
+	Regex regex = new Regex(pattern, flags, error, maxLen) { throw new NotImplementedException(); }
 	if (!regex)
 	{
 		return -1;
 	}
 
-	int substrings = regex.Match(str);
+	int substrings = regex.Match(str) { throw new NotImplementedException(); }
 	delete regex;
 
 	return substrings;
@@ -277,15 +279,17 @@ public Extension __ext_regex =
 #if !defined REQUIRE_EXTENSIONS
 public void __ext_regex_SetNTVOptional()
 {
-	MarkNativeAsOptional("CompileRegex");
-	MarkNativeAsOptional("MatchRegex");
-	MarkNativeAsOptional("GetRegexSubString");
-	MarkNativeAsOptional("Regex.Regex");
-	MarkNativeAsOptional("Regex.Match");
-	MarkNativeAsOptional("Regex.MatchAll");
-	MarkNativeAsOptional("Regex.GetSubString");
-	MarkNativeAsOptional("Regex.MatchCount");
-	MarkNativeAsOptional("Regex.CaptureCount");
-	MarkNativeAsOptional("Regex.MatchOffset");
+	MarkNativeAsOptional("CompileRegex") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("MatchRegex") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("GetRegexSubString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Regex.Regex") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Regex.Match") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Regex.MatchAll") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Regex.GetSubString") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Regex.MatchCount") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Regex.CaptureCount") { throw new NotImplementedException(); }
+	MarkNativeAsOptional("Regex.MatchOffset") { throw new NotImplementedException(); }
 }
 #endif
+	}
+}

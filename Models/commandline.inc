@@ -33,7 +33,7 @@
 #if defined _commandline_included_
  #endinput
 #endif
-#define _commandline_included_
+public const object _commandline_included_
 
 /**
  * Gets the full command line the server was launched with.
@@ -43,7 +43,7 @@
  * @return              True if the command line is valid; otherwise, false.
  * @error               No command line available, or no mod support.
  */
-native bool GetCommandLine(char[] commandLine, int maxlen);
+public static bool GetCommandLine(string commandLine, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Gets the value of a command line parameter the server was launched with.
@@ -54,7 +54,7 @@ native bool GetCommandLine(char[] commandLine, int maxlen);
  * @param defValue      The default value to return if the parameter wasn't specified.
  * @error               No command line available, or no mod support.
  */
-native void GetCommandLineParam(const char[] param, char[] value, int maxlen, const char[] defValue="");
+public static void GetCommandLineParam(string param, string value, int maxlen, string defValue="") { throw new NotImplementedException(); }
 
 /**
  * Gets the value of a command line parameter the server was launched with.
@@ -64,7 +64,7 @@ native void GetCommandLineParam(const char[] param, char[] value, int maxlen, co
  * @return              The integer value of the command line parameter value.
  * @error               No command line available, or no mod support.
  */
-native int GetCommandLineParamInt(const char[] param, int defValue=0);
+public static int GetCommandLineParamInt(string param, int defValue=0) { throw new NotImplementedException(); }
 
 /**
  * Gets the value of a command line parameter the server was launched with.
@@ -74,7 +74,7 @@ native int GetCommandLineParamInt(const char[] param, int defValue=0);
  * @return              The floating point value of the command line parameter value.
  * @error               No command line available, or no mod support.
  */
-native float GetCommandLineParamFloat(const char[] param, float defValue=0.0);
+public static float GetCommandLineParamFloat(string param, float defValue=0.0) { throw new NotImplementedException(); }
 
 /**
  * Determines if a specific command line parameter is present.
@@ -83,4 +83,6 @@ native float GetCommandLineParamFloat(const char[] param, float defValue=0.0);
  * @return              True if the command line parameter is specified; otherwise, false.
  * @error               No command line available, or no mod support.
  */
-native bool FindCommandLineParam(const char[] param);
+public static bool FindCommandLineParam(string param) { throw new NotImplementedException(); }
+	}
+}

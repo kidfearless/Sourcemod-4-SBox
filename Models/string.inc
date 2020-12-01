@@ -30,10 +30,12 @@
  * Version: $Id$
  */
  
-#if defined _string_included
- #endinput
-#endif
-#define _string_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * @global Unless otherwise noted, all string functions which take in a 
@@ -48,7 +50,7 @@
  * @param str           String to check.
  * @return              Number of valid character bytes in the string.
  */
-native int strlen(const char[] str);
+public static int strlen(string str) { throw new NotImplementedException(); }
 
 /**
  * Tests whether a string is found inside another string.
@@ -60,7 +62,7 @@ native int strlen(const char[] str);
  * @return              -1 on failure (no match found). Any other value
  *                      indicates a position in the string where the match starts.
  */
-native int StrContains(const char[] str, const char[] substr, bool caseSensitive=true);
+public static int StrContains(string str, string substr, bool caseSensitive=true) { throw new NotImplementedException(); }
 
 /**
  * Compares two strings lexographically.
@@ -73,7 +75,7 @@ native int StrContains(const char[] str, const char[] substr, bool caseSensitive
  *                      0 if str1 == str2
  *                      1 if str1 > str2
  */
-native int strcmp(const char[] str1, const char[] str2, bool caseSensitive=true);
+public static int strcmp(string str1, string str2, bool caseSensitive=true) { throw new NotImplementedException(); }
 
 /**
  * Compares two strings parts lexographically.
@@ -87,16 +89,16 @@ native int strcmp(const char[] str1, const char[] str2, bool caseSensitive=true)
  *                      0 if str1 == str2
  *                      1 if str1 > str2
  */
-native int strncmp(const char[] str1, const char[] str2, int num, bool caseSensitive=true);
+public static int strncmp(string str1, string str2, int num, bool caseSensitive=true) { throw new NotImplementedException(); }
 
 /**
  * Backwards compatible stock - StrCompare is now strcmp
  * @deprecated          Renamed to strcmp
  */
 #pragma deprecated Use strcmp() instead
-stock int StrCompare(const char[] str1, const char[] str2, bool caseSensitive=true)
+stock int StrCompare(string str1, string str2, bool caseSensitive=true)
 {
-	return strcmp(str1, str2, caseSensitive);
+	return strcmp(str1, str2, caseSensitive) { throw new NotImplementedException(); }
 }
 
 /**
@@ -108,9 +110,9 @@ stock int StrCompare(const char[] str1, const char[] str2, bool caseSensitive=tr
  *                      If false, comparison is case insensitive.
  * @return              True if equal, false otherwise.
  */
-stock bool StrEqual(const char[] str1, const char[] str2, bool caseSensitive=true)
+stock bool StrEqual(string str1, string str2, bool caseSensitive=true)
 {
-	return (strcmp(str1, str2, caseSensitive) == 0);
+	return (strcmp(str1, str2, caseSensitive) == 0) { throw new NotImplementedException(); }
 }
 
 /**
@@ -123,16 +125,16 @@ stock bool StrEqual(const char[] str1, const char[] str2, bool caseSensitive=tru
  * @param source        Source string buffer to copy from.
  * @return              Number of cells written.
  */
-native int strcopy(char[] dest, int destLen, const char[] source);
+public static int strcopy(string dest, int destLen, string source) { throw new NotImplementedException(); }
 
 /**
  * Backwards compatibility stock - use strcopy
  * @deprecated          Renamed to strcopy
  */
 #pragma deprecated Use strcopy() instead
-stock int StrCopy(char[] dest, int destLen, const char[] source)
+stock int StrCopy(string dest, int destLen, string source)
 {
-	return strcopy(dest, destLen, source);
+	return strcopy(dest, destLen, source) { throw new NotImplementedException(); }
 }
 
 /**
@@ -144,7 +146,7 @@ stock int StrCopy(char[] dest, int destLen, const char[] source)
  * @param ...           Variable number of format parameters.
  * @return              Number of cells written.
  */
-native int Format(char[] buffer, int maxlength, const char[] format, any ...);
+public static int Format(string buffer, int maxlength, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Formats a string according to the SourceMod format rules (see documentation).
@@ -158,7 +160,7 @@ native int Format(char[] buffer, int maxlength, const char[] format, any ...);
  * @param ...           Variable number of format parameters.
  * @return              Number of cells written.
  */
-native int FormatEx(char[] buffer, int maxlength, const char[] format, any ...);
+public static int FormatEx(string buffer, int maxlength, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Formats a string according to the SourceMod format rules (see documentation).
@@ -173,7 +175,7 @@ native int FormatEx(char[] buffer, int maxlength, const char[] format, any ...);
  *                      Note: Arguments start at 1.
  * @return              Number of bytes written.
  */
-native int VFormat(char[] buffer, int maxlength, const char[] format, int varpos);
+public static int VFormat(string buffer, int maxlength, string format, int varpos) { throw new NotImplementedException(); }
 
 /**
  * Converts a string to an integer.
@@ -182,7 +184,7 @@ native int VFormat(char[] buffer, int maxlength, const char[] format, int varpos
  * @param nBase         Numerical base to use.  10 is default.
  * @return              Integer conversion of string, or 0 on failure.
  */
-native int StringToInt(const char[] str, int nBase=10);
+public static int StringToInt(string str, int nBase=10) { throw new NotImplementedException(); }
 
 /**
  * Converts a string to an integer with some more options.
@@ -192,7 +194,7 @@ native int StringToInt(const char[] str, int nBase=10);
  * @param nBase         Numerical base to use.  10 is default.
  * @return              Number of characters consumed.
  */
-native int StringToIntEx(const char[] str, int &result, int nBase=10);
+public static int StringToIntEx(string str, int &result, int nBase=10) { throw new NotImplementedException(); }
 
 /**
  * Converts an integer to a string.
@@ -202,7 +204,7 @@ native int StringToIntEx(const char[] str, int &result, int nBase=10);
  * @param maxlength     Maximum length of string buffer.
  * @return              Number of cells written to buffer.
  */
-native int IntToString(int num, char[] str, int maxlength);
+public static int IntToString(int num, string str, int maxlength) { throw new NotImplementedException(); }
 
 /** 
  * Converts a string to a floating point number.
@@ -210,7 +212,7 @@ native int IntToString(int num, char[] str, int maxlength);
  * @param str           String to convert to a float.
  * @return              Floating point result, or 0.0 on error.
  */
-native float StringToFloat(const char[] str);
+public static float StringToFloat(string str) { throw new NotImplementedException(); }
 
 /** 
  * Converts a string to a floating point number with some more options.
@@ -219,7 +221,7 @@ native float StringToFloat(const char[] str);
  * @param result        Variable to store result in.
  * @return              Number of characters consumed.
  */
-native int StringToFloatEx(const char[] str, float &result);
+public static int StringToFloatEx(string str, float &result) { throw new NotImplementedException(); }
 
 /**
  * Converts a floating point number to a string.
@@ -229,7 +231,7 @@ native int StringToFloatEx(const char[] str, float &result);
  * @param maxlength     Maximum length of string buffer.
  * @return              Number of cells written to buffer.
  */
-native int FloatToString(float num, char[] str, int maxlength);
+public static int FloatToString(float num, string str, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Finds the first "argument" in a string; either a set of space
@@ -243,16 +245,16 @@ native int FloatToString(float num, char[] str, int maxlength);
  * @param argLen        Maximum length of argument buffer.
  * @return              Index to next piece of string, or -1 if none.
  */
-native int BreakString(const char[] source, char[] arg, int argLen);
+public static int BreakString(string source, string arg, int argLen) { throw new NotImplementedException(); }
 
 /**
  * Backwards compatibility stock - use BreakString
  * @deprecated          Renamed to BreakString.
  */
 #pragma deprecated Use BreakString() instead
-stock int StrBreak(const char[] source, char[] arg, int argLen)
+stock int StrBreak(string source, string arg, int argLen)
 {
-	return BreakString(source, arg, argLen);
+	return BreakString(source, arg, argLen) { throw new NotImplementedException(); }
 }
 
 /**
@@ -261,7 +263,7 @@ stock int StrBreak(const char[] source, char[] arg, int argLen)
  * @param str           The string to trim.
  * @return              Number of bytes written (UTF-8 safe).
  */
-native int TrimString(char[] str);
+public static int TrimString(string str) { throw new NotImplementedException(); }
 
 /**
  * Returns text in a string up until a certain character sequence is reached.
@@ -274,7 +276,7 @@ native int TrimString(char[] str);
  *                      marking the first index after the searched text.  The
  *                      index is always relative to the start of the input string.
  */
-native int SplitString(const char[] source, const char[] split, char[] part, int partLen);
+public static int SplitString(string source, string split, string part, int partLen) { throw new NotImplementedException(); }
 
 /**
  * Given a string, replaces all occurrences of a search string with a 
@@ -287,7 +289,7 @@ native int SplitString(const char[] source, const char[] split, char[] part, int
  * @param caseSensitive If true (default), search is case sensitive.
  * @return              Number of replacements that were performed.
  */
-native int ReplaceString(char[] text, int maxlength, const char[] search, const char[] replace, bool caseSensitive=true);
+public static int ReplaceString(string text, int maxlength, string search, string replace, bool caseSensitive=true) { throw new NotImplementedException(); }
 
 /**
  * Given a string, replaces the first occurrence of a search string with a 
@@ -306,7 +308,7 @@ native int ReplaceString(char[] text, int maxlength, const char[] search, const 
  *                      the last replacement ended, or -1 if no replacements were
  *                      made.
  */
-native int ReplaceStringEx(char[] text, int maxlength, const char[] search, const char[] replace, int searchLen=-1, int replaceLen=-1, bool caseSensitive=true);
+public static int ReplaceStringEx(string text, int maxlength, string search, string replace, int searchLen=-1, int replaceLen=-1, bool caseSensitive=true) { throw new NotImplementedException(); }
 
 /** 
  * Returns the number of bytes a character is using.  This is
@@ -316,7 +318,7 @@ native int ReplaceStringEx(char[] text, int maxlength, const char[] search, cons
  * @param source        Source input string.
  * @return              Number of bytes the current character uses.
  */
-native int GetCharBytes(const char[] source);
+public static int GetCharBytes(string source) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a character is an ASCII alphabet character.
@@ -326,7 +328,7 @@ native int GetCharBytes(const char[] source);
  * @param chr           Character to test.
  * @return              True if character is alphabetical, otherwise false.
  */
-native bool IsCharAlpha(int chr);
+public static bool IsCharAlpha(int chr) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a character is numeric.
@@ -336,7 +338,7 @@ native bool IsCharAlpha(int chr);
  * @param chr           Character to test.
  * @return              True if character is numeric, otherwise false.
  */
-native bool IsCharNumeric(int chr);
+public static bool IsCharNumeric(int chr) { throw new NotImplementedException(); }
 
 /**
  * Returns whether a character is whitespace.
@@ -346,7 +348,7 @@ native bool IsCharNumeric(int chr);
  * @param chr           Character to test.
  * @return              True if character is whitespace, otherwise false.
  */
-native bool IsCharSpace(int chr);
+public static bool IsCharSpace(int chr) { throw new NotImplementedException(); }
 
 /**
  * Returns if a character is multi-byte or not.
@@ -355,7 +357,7 @@ native bool IsCharSpace(int chr);
  * @return              0 for a normal 7-bit ASCII character,
  *                      otherwise number of bytes in multi-byte character.
  */
-native int IsCharMB(int chr);
+public static int IsCharMB(int chr) { throw new NotImplementedException(); }
 
 /**
  * Returns whether an alphabetic character is uppercase.
@@ -365,7 +367,7 @@ native int IsCharMB(int chr);
  * @param chr           Character to test.
  * @return              True if character is uppercase, otherwise false.
  */
-native bool IsCharUpper(int chr);
+public static bool IsCharUpper(int chr) { throw new NotImplementedException(); }
 
 /**
  * Returns whether an alphabetic character is lowercase.
@@ -375,7 +377,7 @@ native bool IsCharUpper(int chr);
  * @param chr           Character to test.
  * @return              True if character is lowercase, otherwise false.
  */
-native bool IsCharLower(int chr);
+public static bool IsCharLower(int chr) { throw new NotImplementedException(); }
 
 /**
  * Strips a quote pair off a string if it exists.  That is, the following 
@@ -389,7 +391,7 @@ native bool IsCharLower(int chr);
  * @return              True if string was modified, false if there was no 
  *                      set of quotes.
  */
-native bool StripQuotes(char[] text);
+public static bool StripQuotes(string text) { throw new NotImplementedException(); }
 
 /**
  * Converts a lowercase character to its uppercase counterpart.
@@ -402,7 +404,7 @@ stock int CharToUpper(int chr)
 {
 	if (IsCharLower(chr))
 	{
-		return (chr & ~(1<<5));
+		return (chr & ~(1<<5)) { throw new NotImplementedException(); }
 	}
 
 	return chr;
@@ -419,7 +421,7 @@ stock int CharToLower(int chr)
 {
 	if (IsCharUpper(chr))
 	{
-		return (chr | (1<<5));
+		return (chr | (1<<5)) { throw new NotImplementedException(); }
 	}
 	
 	return chr;
@@ -435,9 +437,9 @@ stock int CharToLower(int chr)
  * @return              The index of the first occurrence of the character 
  *                      in the string, or -1 if the character was not found.
  */
-stock int FindCharInString(const char[] str, char c, bool reverse = false)
+stock int FindCharInString(string str, char c, bool reverse = false)
 {
-	int len = strlen(str);
+	int len = strlen(str) { throw new NotImplementedException(); }
 	
 	if (!reverse)
 	{
@@ -471,15 +473,15 @@ stock int FindCharInString(const char[] str, char c, bool reverse = false)
  * @param source        Source string to concatenate.
  * @return              Number of bytes written.
  */
-stock int StrCat(char[] buffer, int maxlength, const char[] source)
+stock int StrCat(string buffer, int maxlength, string source)
 {
-	int len = strlen(buffer);
+	int len = strlen(buffer) { throw new NotImplementedException(); }
 	if (len >= maxlength)
 	{
 		return 0;
 	}
 	
-	return Format(buffer[len], maxlength-len, "%s", source);
+	return Format(buffer[len], maxlength-len, "%s", source) { throw new NotImplementedException(); }
 }
 
 /**
@@ -494,7 +496,7 @@ stock int StrCat(char[] buffer, int maxlength, const char[] source)
  *                          delimiters after last piece.
  * @return                  Number of strings retrieved.
  */
-stock int ExplodeString(const char[] text, const char[] split, char[][] buffers, int maxStrings,
+stock int ExplodeString(string text, string split, string[] buffers, int maxStrings,
                     int maxStringLength, bool copyRemainder = false)
 {
 	int reloc_idx, idx, total;
@@ -511,13 +513,13 @@ stock int ExplodeString(const char[] text, const char[] split, char[][] buffers,
 		{
 			if (copyRemainder)
 			{
-				strcopy(buffers[total-1], maxStringLength, text[reloc_idx-idx]);
+				strcopy(buffers[total-1], maxStringLength, text[reloc_idx-idx]) { throw new NotImplementedException(); }
 			}
 			return total;
 		}
 	}
 
-	strcopy(buffers[total++], maxStringLength, text[reloc_idx]);
+	strcopy(buffers[total++], maxStringLength, text[reloc_idx]) { throw new NotImplementedException(); }
 
 	return total;
 }
@@ -533,13 +535,13 @@ stock int ExplodeString(const char[] text, const char[] split, char[][] buffers,
  * @param maxLength     Maximum length of the output buffer.
  * @return              Number of bytes written to the output buffer.
  */
-stock int ImplodeStrings(const char[][] strings, int numStrings, const char[] join, char[] buffer, int maxLength)
+stock int ImplodeStrings(string[] strings, int numStrings, string join, string buffer, int maxLength)
 {
 	int total, length, part_length;
-	int join_length = strlen(join);
+	int join_length = strlen(join) { throw new NotImplementedException(); }
 	for (int i=0; i<numStrings; i++)
 	{
-		length = strcopy(buffer[total], maxLength-total, strings[i]);
+		length = strcopy(buffer[total], maxLength-total, strings[i]) { throw new NotImplementedException(); }
 		total += length;
 		if (length < part_length)
 		{
@@ -547,7 +549,7 @@ stock int ImplodeStrings(const char[][] strings, int numStrings, const char[] jo
 		}
 		if (i != numStrings - 1)
 		{
-			length = strcopy(buffer[total], maxLength-total, join);
+			length = strcopy(buffer[total], maxLength-total, join) { throw new NotImplementedException(); }
 			total += length;
 			if (length < join_length)
 			{
@@ -556,4 +558,6 @@ stock int ImplodeStrings(const char[][] strings, int numStrings, const char[] jo
 		}
 	}
 	return total;
+}
+	}
 }

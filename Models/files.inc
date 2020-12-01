@@ -30,10 +30,12 @@
  * Version: $Id$
  */
 
-#if defined _files_included
- #endinput
-#endif
-#define _files_included
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
 
 /**
  * @global All paths in SourceMod natives are relative to the mod folder
@@ -72,11 +74,11 @@ enum FileTimeMode
 	FileTime_LastChange = 2     /* Last modification */
 };
 
-#define PLATFORM_MAX_PATH 256   /**< Maximum path length. */
+public const object PLATFORM_MAX_PATH 256   /**< Maximum path length. */
 
-#define SEEK_SET 0              /**< Seek from start. */
-#define SEEK_CUR 1              /**< Seek from current position. */
-#define SEEK_END 2              /**< Seek from end position. */
+public const object SEEK_SET 0              /**< Seek from start. */
+public const object SEEK_CUR 1              /**< Seek from current position. */
+public const object SEEK_END 2              /**< Seek from end position. */
 
 /**
  * Path types.
@@ -99,7 +101,7 @@ methodmap DirectoryListing < Handle
 	// @param maxlength       Maximum size of string buffer.
 	// @param type            Optional variable to store the file type.
 	// @return                True on success, false if there are no more files to read.
-	public native bool GetNext(char[] buffer, int maxlength, FileType &type=FileType_Unknown);
+	public native bool GetNext(string buffer, int maxlength, FileType &type=FileType_Unknown) { throw new NotImplementedException(); }
 };
 
 // A File object can be obtained by calling OpenFile(). File objects should be
@@ -109,7 +111,7 @@ methodmap File < Handle
 {
 	// Close the file handle. This is the same as using CloseHandle() or delete.
 	public void Close() {
-		CloseHandle(this);
+		CloseHandle(this) { throw new NotImplementedException(); }
 	}
 
 	// Reads a line of text from a file.
@@ -117,7 +119,7 @@ methodmap File < Handle
 	// @param buffer          String buffer to hold the line.
 	// @param maxlength       Maximum size of string buffer.
 	// @return                True on success, false otherwise.
-	public native bool ReadLine(char[] buffer, int maxlength);
+	public native bool ReadLine(string buffer, int maxlength) { throw new NotImplementedException(); }
 
 	// Reads binary data from a file.
 	//
@@ -126,7 +128,7 @@ methodmap File < Handle
 	// @param size            Size of each element, in bytes, to be read.
 	//                        Valid sizes are 1, 2, or 4.
 	// @return                Number of elements read, or -1 on error.
-	public native int Read(any[] items, int num_items, int size);
+	public native int Read(any[] items, int num_items, int size) { throw new NotImplementedException(); }
 
 	// Reads a UTF8 or ANSI string from a file.
 	//
@@ -140,7 +142,7 @@ methodmap File < Handle
 	// @return                Number of characters written to the buffer, or -1
 	//                        if an error was encountered.
 	// @error                 read_count > max_size.
-	public native int ReadString(char[] buffer, int max_size, int read_count=-1);
+	public native int ReadString(string buffer, int max_size, int read_count=-1) { throw new NotImplementedException(); }
 
 	// Writes binary data to a file.
 	//
@@ -152,14 +154,14 @@ methodmap File < Handle
 	// @param size            Size of each item in the array in bytes.
 	//                        Valid sizes are 1, 2, or 4.
 	// @return                True on success, false on error.
-	public native bool Write(const any[] items, int num_items, int size);
+	public native bool Write(const any[] items, int num_items, int size) { throw new NotImplementedException(); }
 
 	// Writes a binary string to a file.
 	//
 	// @param buffer          String to write.
 	// @param term            True to append NUL terminator, false otherwise.
 	// @return                True on success, false on error.
-	public native bool WriteString(const char[] buffer, bool term);
+	public native bool WriteString(string buffer, bool term) { throw new NotImplementedException(); }
 
 	// Writes a line of text to a text file.  A newline is automatically appended.
 	//
@@ -167,82 +169,82 @@ methodmap File < Handle
 	// @param format          Formatting rules.
 	// @param ...             Variable number of format parameters.
 	// @return                True on success, false otherwise.
-	public native bool WriteLine(const char[] format, any ...);
+	public native bool WriteLine(string format, any ...) { throw new NotImplementedException(); }
 
 	// Reads a single int8 (byte) from a file. The returned value is sign-
 	// extended to an int32.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadInt8(int &data);
+	public native bool ReadInt8(int &data) { throw new NotImplementedException(); }
 
 	// Reads a single uint8 (unsigned byte) from a file. The returned value is
 	// zero-extended to an int32.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadUint8(int &data);
+	public native bool ReadUint8(int &data) { throw new NotImplementedException(); }
 
 	// Reads a single int16 (short) from a file. The value is sign-extended to
 	// an int32.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadInt16(int &data);
+	public native bool ReadInt16(int &data) { throw new NotImplementedException(); }
 
 	// Reads a single unt16 (unsigned short) from a file. The value is zero-
 	// extended to an int32.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadUint16(int &data);
+	public native bool ReadUint16(int &data) { throw new NotImplementedException(); }
 
 	// Reads a single int32 (int/cell) from a file.
 	//
 	// @param data            Variable to store the data read.
 	// @return                True on success, false on failure.
-	public native bool ReadInt32(int &data);
+	public native bool ReadInt32(int &data) { throw new NotImplementedException(); }
 
 	// Writes a single int8 (byte) to a file.
 	//
 	// @param data            Data to write (truncated to an int8).
 	// @return                True on success, false on failure.
-	public native bool WriteInt8(int data);
+	public native bool WriteInt8(int data) { throw new NotImplementedException(); }
 
 	// Writes a single int16 (short) to a file.
 	//
 	// @param data            Data to write (truncated to an int16).
 	// @return                True on success, false on failure.
-	public native bool WriteInt16(int data);
+	public native bool WriteInt16(int data) { throw new NotImplementedException(); }
 
 	// Writes a single int32 (int/cell) to a file.
 	//
 	// @param data            Data to write.
 	// @return                True on success, false on failure.
-	public native bool WriteInt32(int data);
+	public native bool WriteInt32(int data) { throw new NotImplementedException(); }
 
 	// Tests if the end of file has been reached.
 	//
 	// @return                True if end of file has been reached, false otherwise.
-	public native bool EndOfFile();
+	public native bool EndOfFile() { throw new NotImplementedException(); }
 
 	// Sets the file position indicator.
 	//
 	// @param position        Position relative to what is specified in whence.
 	// @param where           SEEK_ constant value of where to see from.
 	// @return                True on success, false otherwise.
-	public native bool Seek(int position, int where);
+	public native bool Seek(int position, int where) { throw new NotImplementedException(); }
 
 	// Flushes a file's buffered output; any buffered output
 	// is immediately written to the file.
 	// 
 	// @return              True on success or use_valve_fs specified with OpenFile,
 	//                      otherwise false on failure.
-	public native bool Flush();
+	public native bool Flush() { throw new NotImplementedException(); }
 	
 	// Get the current position in the file; returns -1 on failure.
 	property int Position {
-		public native get();
+		public native get() { throw new NotImplementedException(); }
 	}
 }
 
@@ -258,7 +260,7 @@ methodmap File < Handle
  * @param ...           Format arguments.
  * @return              Number of bytes written to buffer (not including null terminator).
  */
-native int BuildPath(PathType type, char[] buffer, int maxlength, const char[] fmt, any ...);
+public static int BuildPath(PathType type, string buffer, int maxlength, string fmt, any ...) { throw new NotImplementedException(); }
 
 /**
  * Opens a directory/folder for contents enumeration.
@@ -275,7 +277,7 @@ native int BuildPath(PathType type, char[] buffer, int maxlength, const char[] f
  * @param valve_path_id If use_valve_fs, a search path from gameinfo or NULL_STRING for all search paths.
  * @return              A Handle to the directory, null on error.
  */
-native DirectoryListing OpenDirectory(const char[] path, bool use_valve_fs=false, const char[] valve_path_id="GAME");
+public static DirectoryListing OpenDirectory(string path, bool use_valve_fs=false, string valve_path_id="GAME") { throw new NotImplementedException(); }
 
 /**
  * Reads the current directory entry as a local filename, then moves to the next file.
@@ -290,7 +292,7 @@ native DirectoryListing OpenDirectory(const char[] path, bool use_valve_fs=false
  * @return              True on success, false if there are no more files to read.
  * @error               Invalid or corrupt Handle.
  */
-native bool ReadDirEntry(Handle dir, char[] buffer, int maxlength, FileType &type=FileType_Unknown);
+public static bool ReadDirEntry(Handle dir, string buffer, int maxlength, FileType &type=FileType_Unknown) { throw new NotImplementedException(); }
 
 /**
  * Opens or creates a file, returning a File handle on success. File handles
@@ -326,7 +328,7 @@ native bool ReadDirEntry(Handle dir, char[] buffer, int maxlength, FileType &typ
  * @param valve_path_id If use_valve_fs, a search path from gameinfo or NULL_STRING for all search paths.
  * @return              A File handle, or null if the file could not be opened.
  */
-native File OpenFile(const char[] file, const char[] mode, bool use_valve_fs=false, const char[] valve_path_id="GAME");
+public static File OpenFile(string file, string mode, bool use_valve_fs=false, string valve_path_id="GAME") { throw new NotImplementedException(); }
 
 /**
  * Deletes a file.
@@ -339,7 +341,7 @@ native File OpenFile(const char[] file, const char[] mode, bool use_valve_fs=fal
  * @param valve_path_id If use_valve_fs, a search path from gameinfo or NULL_STRING for all search paths.
  * @return              True on success, false on failure or if file not immediately removed.
  */
-native bool DeleteFile(const char[] path, bool use_valve_fs=false, const char[] valve_path_id="DEFAULT_WRITE_PATH");
+public static bool DeleteFile(string path, bool use_valve_fs=false, string valve_path_id="DEFAULT_WRITE_PATH") { throw new NotImplementedException(); }
 
 /**
  * Reads a line from a text file.
@@ -349,7 +351,7 @@ native bool DeleteFile(const char[] path, bool use_valve_fs=false, const char[] 
  * @param maxlength     Maximum size of string buffer.
  * @return              True on success, false otherwise.
  */
-native bool ReadFileLine(Handle hndl, char[] buffer, int maxlength);
+public static bool ReadFileLine(Handle hndl, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 /**
  * Reads binary data from a file.
@@ -361,7 +363,7 @@ native bool ReadFileLine(Handle hndl, char[] buffer, int maxlength);
  *                      Valid sizes are 1, 2, or 4.
  * @return              Number of elements read, or -1 on error.
  */
-native int ReadFile(Handle hndl, any[] items, int num_items, int size);
+public static int ReadFile(Handle hndl, any[] items, int num_items, int size) { throw new NotImplementedException(); }
 
 /**
  * Reads a UTF8 or ANSI string from a file.
@@ -378,7 +380,7 @@ native int ReadFile(Handle hndl, any[] items, int num_items, int size);
  *                      if an error was encountered.
  * @error               Invalid Handle, or read_count > max_size.
  */
-native int ReadFileString(Handle hndl, char[] buffer, int max_size, int read_count=-1);
+public static int ReadFileString(Handle hndl, string buffer, int max_size, int read_count=-1) { throw new NotImplementedException(); }
 
 /**
  * Writes binary data to a file.
@@ -394,7 +396,7 @@ native int ReadFileString(Handle hndl, char[] buffer, int max_size, int read_cou
  * @return              True on success, false on error.
  * @error               Invalid Handle.
  */
-native bool WriteFile(Handle hndl, const any[] items, int num_items, int size);
+public static bool WriteFile(Handle hndl, const any[] items, int num_items, int size) { throw new NotImplementedException(); }
 
 /**
  * Writes a binary string to a file.
@@ -405,7 +407,7 @@ native bool WriteFile(Handle hndl, const any[] items, int num_items, int size);
  * @return              True on success, false on error.
  * @error               Invalid Handle.
  */
-native bool WriteFileString(Handle hndl, const char[] buffer, bool term);
+public static bool WriteFileString(Handle hndl, string buffer, bool term) { throw new NotImplementedException(); }
 
 /**
  * Writes a line of text to a text file.  A newline is automatically appended.
@@ -416,7 +418,7 @@ native bool WriteFileString(Handle hndl, const char[] buffer, bool term);
  * @return              True on success, false otherwise.
  * @error               Invalid Handle.
  */
-native bool WriteFileLine(Handle hndl, const char[] format, any ...);
+public static bool WriteFileLine(Handle hndl, string format, any ...) { throw new NotImplementedException(); }
 
 /**
  * Reads a single binary cell from a file.
@@ -459,7 +461,7 @@ stock bool WriteFileCell(Handle hndl, int data, int size)
 	int array[1];
 	array[0] = data;
 
-	return WriteFile(hndl, array, 1, size);
+	return WriteFile(hndl, array, 1, size) { throw new NotImplementedException(); }
 }
 
 /**
@@ -469,7 +471,7 @@ stock bool WriteFileCell(Handle hndl, int data, int size)
  * @return              True if end of file has been reached, false otherwise.
  * @error               Invalid Handle.
  */
-native bool IsEndOfFile(Handle file);
+public static bool IsEndOfFile(Handle file) { throw new NotImplementedException(); }
 
 /**
  * Sets the file position indicator.
@@ -480,7 +482,7 @@ native bool IsEndOfFile(Handle file);
  * @return              True on success, false otherwise.
  * @error               Invalid Handle.
  */
-native bool FileSeek(Handle file, int position, int where);
+public static bool FileSeek(Handle file, int position, int where) { throw new NotImplementedException(); }
 
 /**
  * Get current position in the file.
@@ -489,7 +491,7 @@ native bool FileSeek(Handle file, int position, int where);
  * @return              Value for the file position indicator.
  * @error               Invalid Handle.
  */
-native int FilePosition(Handle file);
+public static int FilePosition(Handle file) { throw new NotImplementedException(); }
 
 /**
  * Checks if a file exists.
@@ -502,7 +504,7 @@ native int FilePosition(Handle file);
  * @param valve_path_id If use_valve_fs, a search path from gameinfo or NULL_STRING for all search paths.
  * @return              True if the file exists, false otherwise.
  */
-native bool FileExists(const char[] path, bool use_valve_fs=false, const char[] valve_path_id="GAME");
+public static bool FileExists(string path, bool use_valve_fs=false, string valve_path_id="GAME") { throw new NotImplementedException(); }
 
 /**
  * Renames a file.
@@ -515,7 +517,7 @@ native bool FileExists(const char[] path, bool use_valve_fs=false, const char[] 
  * @param valve_path_id If use_valve_fs, a search path from gameinfo or NULL_STRING for all search paths.
  * @return              True on success or use_valve_fs specified, false otherwise.
  */
-native bool RenameFile(const char[] newpath, const char[] oldpath, bool use_valve_fs=false, const char[] valve_path_id="DEFAULT_WRITE_PATH");
+public static bool RenameFile(string newpath, string oldpath, bool use_valve_fs=false, string valve_path_id="DEFAULT_WRITE_PATH") { throw new NotImplementedException(); }
 
 /**
  * Checks if a directory exists.
@@ -528,7 +530,7 @@ native bool RenameFile(const char[] newpath, const char[] oldpath, bool use_valv
  * @param valve_path_id If use_valve_fs, a search path from gameinfo or NULL_STRING for all search paths.
  * @return              True if the directory exists, false otherwise.
  */
-native bool DirExists(const char[] path, bool use_valve_fs=false, const char[] valve_path_id="GAME");
+public static bool DirExists(string path, bool use_valve_fs=false, string valve_path_id="GAME") { throw new NotImplementedException(); }
 
 /**
  * Get the file size in bytes.
@@ -541,7 +543,7 @@ native bool DirExists(const char[] path, bool use_valve_fs=false, const char[] v
  * @param valve_path_id If use_valve_fs, a search path from gameinfo or NULL_STRING for all search paths.
  * @return              File size in bytes, -1 if file not found.
  */
-native int FileSize(const char[] path, bool use_valve_fs=false, const char[] valve_path_id="GAME");
+public static int FileSize(string path, bool use_valve_fs=false, string valve_path_id="GAME") { throw new NotImplementedException(); }
 
 /**
  * Flushes a file's buffered output; any buffered output
@@ -551,7 +553,7 @@ native int FileSize(const char[] path, bool use_valve_fs=false, const char[] val
  * @return              True on success or use_valve_fs specified with OpenFile,
  *                      otherwise false on failure.
  */
-native bool FlushFile(Handle file);
+public static bool FlushFile(Handle file) { throw new NotImplementedException(); }
 
 /**
  * Removes a directory.
@@ -560,17 +562,17 @@ native bool FlushFile(Handle file);
  * @param path          Path to the directory.
  * @return              True on success, false otherwise.
  */
-native bool RemoveDir(const char[] path);
+public static bool RemoveDir(string path) { throw new NotImplementedException(); }
 
-#define FPERM_U_READ        0x0100  /* User can read. */
-#define FPERM_U_WRITE       0x0080  /* User can write. */
-#define FPERM_U_EXEC        0x0040  /* User can exec. */
-#define FPERM_G_READ        0x0020  /* Group can read. */
-#define FPERM_G_WRITE       0x0010  /* Group can write. */
-#define FPERM_G_EXEC        0x0008  /* Group can exec. */
-#define FPERM_O_READ        0x0004  /* Anyone can read. */
-#define FPERM_O_WRITE       0x0002  /* Anyone can write. */
-#define FPERM_O_EXEC        0x0001  /* Anyone can exec. */
+public const object FPERM_U_READ        0x0100  /* User can read. */
+public const object FPERM_U_WRITE       0x0080  /* User can write. */
+public const object FPERM_U_EXEC        0x0040  /* User can exec. */
+public const object FPERM_G_READ        0x0020  /* Group can read. */
+public const object FPERM_G_WRITE       0x0010  /* Group can write. */
+public const object FPERM_G_EXEC        0x0008  /* Group can exec. */
+public const object FPERM_O_READ        0x0004  /* Anyone can read. */
+public const object FPERM_O_WRITE       0x0002  /* Anyone can write. */
+public const object FPERM_O_EXEC        0x0001  /* Anyone can exec. */
 
 /**
  * Creates a directory.
@@ -585,7 +587,7 @@ native bool RemoveDir(const char[] path);
  *                      In this case, mode is ignored.
  * @return              True on success, false otherwise.
  */
-native bool CreateDirectory(const char[] path, int mode, bool use_valve_fs=false, const char[] valve_path_id="DEFAULT_WRITE_PATH");
+public static bool CreateDirectory(string path, int mode, bool use_valve_fs=false, string valve_path_id="DEFAULT_WRITE_PATH") { throw new NotImplementedException(); }
 
 /**
  * Changes a file or directories permissions.
@@ -594,7 +596,7 @@ native bool CreateDirectory(const char[] path, int mode, bool use_valve_fs=false
  * @param mode          Permissions to set.
  * @return              True on success, false otherwise.
  */
-native bool SetFilePermissions(const char[] path, int mode);
+public static bool SetFilePermissions(string path, int mode) { throw new NotImplementedException(); }
 
 /**
  * Returns a file timestamp as a unix timestamp.
@@ -603,7 +605,7 @@ native bool SetFilePermissions(const char[] path, int mode);
  * @param tmode         Time mode.
  * @return              Time value, or -1 on failure.
  */
-native int GetFileTime(const char[] file, FileTimeMode tmode);
+public static int GetFileTime(string file, FileTimeMode tmode) { throw new NotImplementedException(); }
 
 /**
  * Same as LogToFile(), except uses an open file Handle.  The file must
@@ -614,7 +616,7 @@ native int GetFileTime(const char[] file, FileTimeMode tmode);
  * @param ...           Message format parameters.
  * @error               Invalid Handle.
  */
-native void LogToOpenFile(Handle hndl, const char[] message, any ...);
+public static void LogToOpenFile(Handle hndl, string message, any ...) { throw new NotImplementedException(); }
 
 /**
  * Same as LogToFileEx(), except uses an open file Handle.  The file must
@@ -625,4 +627,6 @@ native void LogToOpenFile(Handle hndl, const char[] message, any ...);
  * @param ...           Message format parameters.
  * @error               Invalid Handle.
  */
-native void LogToOpenFileEx(Handle hndl, const char[] message, any ...);
+public static void LogToOpenFileEx(Handle hndl, string message, any ...) { throw new NotImplementedException(); }
+	}
+}

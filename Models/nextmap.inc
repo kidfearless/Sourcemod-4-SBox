@@ -33,7 +33,7 @@
 #if defined _nextmap_included_
  #endinput
 #endif
-#define _nextmap_included_
+public const object _nextmap_included_
 
 /**
  * Sets SourceMod's internal nextmap.
@@ -42,7 +42,7 @@
  * @param map           Next map to set.
  * @return              True if the nextmap was set, false if map was invalid.
  */
-native bool SetNextMap(const char[] map);
+public static bool SetNextMap(string map) { throw new NotImplementedException(); }
 
 /**
  * Returns SourceMod's internal nextmap.
@@ -51,7 +51,7 @@ native bool SetNextMap(const char[] map);
  * @param maxlen        Maximum length of the map buffer.
  * @return              True if a Map was found and copied, false if no nextmap is set (map will be unchanged).
  */
-native bool GetNextMap(char[] map, int maxlen);
+public static bool GetNextMap(string map, int maxlen) { throw new NotImplementedException(); }
 
 /**
  * Changes the current map and records the reason for the change with maphistory
@@ -59,14 +59,14 @@ native bool GetNextMap(char[] map, int maxlen);
  * @param map           Map to change to.
  * @param reason        Reason for change.
  */
-native void ForceChangeLevel(const char[] map, const char[] reason);
+public static void ForceChangeLevel(string map, string reason) { throw new NotImplementedException(); }
 
 /**
  * Gets the current number of maps in the map history
  *
  * @return              Number of maps.
  */
-native int GetMapHistorySize();
+public static int GetMapHistorySize() { throw new NotImplementedException(); }
 
 /**
  * Retrieves a map from the map history list.
@@ -79,4 +79,6 @@ native int GetMapHistorySize();
  * @param startTime     Time the map started.
  * @error               Invalid item number.
  */
-native void GetMapHistory(int item, char[] map, int mapLen, char[] reason, int reasonLen, int &startTime);
+public static void GetMapHistory(int item, string map, int mapLen, string reason, int reasonLen, int &startTime) { throw new NotImplementedException(); }
+	}
+}
