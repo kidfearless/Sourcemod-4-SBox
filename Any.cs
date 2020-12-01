@@ -42,4 +42,23 @@ namespace Sourcemod
 			public static implicit operator char(any value) => value.CharValue;
 		}
 	}
+
+	public class Test
+	{
+
+		public void B()
+		{
+			Call(T);
+		}
+
+		private void Call(Func<int> t)
+		{
+			throw new NotImplementedException();
+		}
+
+		public int T()
+		{
+
+		}
+	}
 }

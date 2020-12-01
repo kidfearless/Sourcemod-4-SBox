@@ -30,6 +30,8 @@
  * Version: $Id$
  */
 
+// due to the fact that c# doesn't have an all encompassing function pointer class, we are going to use dynamic and figure it out at runtime.
+
 using System;
 using System.Collections.ObjectModel;
 namespace Sourcemod
@@ -127,7 +129,9 @@ namespace Sourcemod
 			// @param ...               Variable number of parameter types (up to 32).
 			// @return                  Handle to new global forward.
 			// @error                   More than 32 parameter types passed.
-			public GlobalForward(string name, ExecType type, ParamType...) { throw new NotImplementedException(); }
+			public GlobalForward(string name, ExecType type, params ParamType[] args) { throw new NotImplementedException(); }
+
+			protected GlobalForward() { throw new NotImplementedException(); }
 
 			// Returns the number of functions in a global or private forward's call list.
 			public int FunctionCount
@@ -148,7 +152,7 @@ namespace Sourcemod
 			// @param ...           Variable number of parameter types (up to 32).
 			// @return              Handle to new private forward.
 			// @error               More than 32 parameter types passed.
-			public PrivateForward(ExecType type, ParamType...) { throw new NotImplementedException(); }
+			public PrivateForward(ExecType type, params ParamType[] args) { throw new NotImplementedException(); }
 
 			// Adds a function to a private forward's call list.
 			//
@@ -159,7 +163,10 @@ namespace Sourcemod
 			// @param func          Function to add to forward.
 			// @return              True on success, false otherwise.
 			// @error               Invalid or corrupt private Forward handle, invalid or corrupt plugin handle, or invalid function.
-			public bool AddFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
+			public bool AddFunction(Handle plugin, dynamic func)
+			{
+				throw new NotImplementedException();
+			}
 
 			// Removes a function from a private forward's call list.
 			//
@@ -171,7 +178,7 @@ namespace Sourcemod
 			// @param func          Function to remove from forward.
 			// @return              True on success, false otherwise.
 			// @error               Invalid or corrupt private Forward handle, invalid or corrupt plugin handle, or invalid function.
-			public bool RemoveFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
+			public bool RemoveFunction(Handle plugin, dynamic func) { throw new NotImplementedException(); }
 
 			// Removes all instances of a plugin from a private forward's call list.
 			//
@@ -193,7 +200,7 @@ namespace Sourcemod
 		 * @return              Function id or INVALID_FUNCTION if not found.
 		 * @error               Invalid or corrupt plugin handle.
 		 */
-		public static Function GetFunctionByName(Handle plugin, string name) { throw new NotImplementedException(); }
+		public static dynamic GetFunctionByName(Handle plugin, string name) { throw new NotImplementedException(); }
 
 		/**
 		 * Creates a global forward.
@@ -209,7 +216,7 @@ namespace Sourcemod
 		 * @return              Handle to new global forward.
 		 * @error               More than 32 parameter types passed.
 		 */
-		public static GlobalForward CreateGlobalForward(string name, ExecType type, ParamType...) { throw new NotImplementedException(); }
+		public static GlobalForward CreateGlobalForward(string name, ExecType type, params ParamType[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Creates a private forward.
@@ -223,7 +230,7 @@ namespace Sourcemod
 		 * @return              Handle to new private forward.
 		 * @error               More than 32 parameter types passed.
 		 */
-		public static PrivateForward CreateForward(ExecType type, ParamType...) { throw new NotImplementedException(); }
+		public static PrivateForward CreateForward(ExecType type, params ParamType[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns the number of functions in a global or private forward's call list.
@@ -246,7 +253,7 @@ namespace Sourcemod
 		 * @return              True on success, false otherwise.
 		 * @error               Invalid or corrupt private Forward handle, invalid or corrupt plugin handle, or invalid function.
 		 */
-		public static bool AddToForward(Handle fwd, Handle plugin, Function func) { throw new NotImplementedException(); }
+		public static bool AddToForward(Handle fwd, Handle plugin, dynamic func) { throw new NotImplementedException(); }
 
 		/**
 		 * Removes a function from a private forward's call list.
@@ -261,7 +268,7 @@ namespace Sourcemod
 		 * @return              True on success, false otherwise.
 		 * @error               Invalid or corrupt private Forward handle, invalid or corrupt plugin handle, or invalid function.
 		 */
-		public static bool RemoveFromForward(Handle fwd, Handle plugin, Function func) { throw new NotImplementedException(); }
+		public static bool RemoveFromForward(Handle fwd, Handle plugin, dynamic func) { throw new NotImplementedException(); }
 
 		/**
 		 * Removes all instances of a plugin from a private forward's call list.
@@ -296,7 +303,7 @@ namespace Sourcemod
 		 * @param func          Function to call.
 		 * @error               Invalid or corrupt plugin handle, invalid function, or called before another call has completed.
 		 */
-		public static void Call_StartFunction(Handle plugin, Function func) { throw new NotImplementedException(); }
+		public static void Call_StartFunction(Handle plugin, dynamic func) { throw new NotImplementedException(); }
 
 		/**
 		 * Pushes a cell onto the current call.
@@ -527,7 +534,8 @@ namespace Sourcemod
 		 * @return              SP_ERROR_NONE on success, any other integer on failure.
 		 * @error               Invalid parameter number or calling from a non-public static function.
 		 */
-		public static int SetNativeString(int param, string source, int maxlength, bool utf8 = true, out int bytes) { throw new NotImplementedException(); }
+		public static int SetNativeString(int param, string source, int maxlength, bool utf8, out int bytes) { throw new NotImplementedException(); }
+
 
 		/**
 		 * Sets a string in a public static parameter.
@@ -561,7 +569,7 @@ namespace Sourcemod
 		 * @return                  Function pointer at the given parameter number.
 		 * @error                   Invalid parameter number, or calling from a non-public static function.
 		 */
-		public static Function GetNativeFunction(int param) { throw new NotImplementedException(); }
+		public static dynamic GetNativeFunction(int param) { throw new NotImplementedException(); }
 
 		/**
 		 * Gets a cell from a public static parameter, by reference.
@@ -570,8 +578,7 @@ namespace Sourcemod
 		 * @return              Cell value at the parameter number.
 		 * @error               Invalid parameter number or calling from a non-public static function.
 		 */
-		public static
-		any GetNativeCellRef(int param)
+		public static any GetNativeCellRef(int param)
 		{ throw new NotImplementedException(); }
 
 		/**
@@ -710,6 +717,6 @@ namespace Sourcemod
 	 * @param Function      Function to call on the next frame.
 	 * @param data          Value to be passed on the invocation of the Function.
 	 */
-	public static void RequestFrame(RequestFrameCallback Function, any data = 0) { throw new NotImplementedException(); }
+	public static void RequestFrame(RequestFrameCallback Function, any? data = null) { throw new NotImplementedException(); }
 }
 }
