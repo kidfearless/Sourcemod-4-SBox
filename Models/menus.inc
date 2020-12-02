@@ -331,7 +331,7 @@ public class Menu : Handle
 	//
 	// @param fmt           Message string format
 	// @param ...           Message string arguments.
-	public void SetTitle(string fmt, any ...) { throw new NotImplementedException(); }
+	public void SetTitle(string fmt, params any[] args) { throw new NotImplementedException(); }
 
 	// Returns the text of a menu's title.
 	//
@@ -648,7 +648,7 @@ public static Handle GetMenuStyle(Handle menu) { throw new NotImplementedExcepti
  * @param ...           Message string arguments.
  * @error               Invalid Handle.
  */
-public static void SetMenuTitle(Handle menu, string fmt, any ...) { throw new NotImplementedException(); }
+public static void SetMenuTitle(Handle menu, string fmt, params any[] args) { throw new NotImplementedException(); }
 
 /**
  * Returns the text of a menu's title.

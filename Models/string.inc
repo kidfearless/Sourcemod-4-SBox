@@ -146,7 +146,7 @@ public static int StrCopy(string dest, int destLen, string source)
  * @param ...           Variable number of format parameters.
  * @return              Number of cells written.
  */
-public static int Format(string buffer, int maxlength, string format, any ...) { throw new NotImplementedException(); }
+public static int Format(string buffer, int maxlength, string format, params any[] args) { throw new NotImplementedException(); }
 
 /**
  * Formats a string according to the SourceMod format rules (see documentation).
@@ -160,7 +160,7 @@ public static int Format(string buffer, int maxlength, string format, any ...) {
  * @param ...           Variable number of format parameters.
  * @return              Number of cells written.
  */
-public static int FormatEx(string buffer, int maxlength, string format, any ...) { throw new NotImplementedException(); }
+public static int FormatEx(string buffer, int maxlength, string format, params any[] args) { throw new NotImplementedException(); }
 
 /**
  * Formats a string according to the SourceMod format rules (see documentation).
