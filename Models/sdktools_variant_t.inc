@@ -70,14 +70,14 @@ public static void SetVariantFloat(float val) { throw new NotImplementedExceptio
  *
  * @param vec           Input vector.
  */
-public static void SetVariantVector3D(ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
+public static void SetVariantVector3D(float[] vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets a 3D position vector in the global variant object.
  *
  * @param vec           Input position vector.
  */
-public static void SetVariantPosVector3D(ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
+public static void SetVariantPosVector3D(float[] vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets a color in the global variant object.

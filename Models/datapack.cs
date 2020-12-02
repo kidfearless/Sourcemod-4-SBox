@@ -78,7 +78,7 @@ namespace Sourcemod
 			// @param array         Array to add.
 			// @param count         Number of elements
 			// @param insert        Determines whether mid-pack writes will insert instead of overwrite.
-			public void WriteCellArray(ReadOnlyCollection<any> array, int count, bool insert = false)
+			public void WriteCellArray(any[] array, int count, bool insert = false)
 			{
 				throw new NotImplementedException();
 			}
@@ -88,7 +88,7 @@ namespace Sourcemod
 			// @param array         Array to add.
 			// @param count         Number of elements
 			// @param insert        Determines whether mid-pack writes will insert instead of overwrite.
-			public void WriteFloatArray(ReadOnlyCollection<float> array, int count, bool insert = false)
+			public void WriteFloatArray(float[] array, int count, bool insert = false)
 			{
 				throw new NotImplementedException();
 			}

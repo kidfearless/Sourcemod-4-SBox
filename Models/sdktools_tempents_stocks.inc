@@ -86,7 +86,7 @@ public const int FBEAM_HALOBEAM      0x00008000  /**< When drawing a beam with a
  * @param Magnitude     Sparks size.
  * @param TrailLength   Trail lenght of the sparks.
  */
-public static void TE_SetupSparks(ReadOnlyCollection<float> pos[3], ReadOnlyCollection<float> dir[3], int Magnitude, int TrailLength)
+public static void TE_SetupSparks(float[] pos[3], float[] dir[3], int Magnitude, int TrailLength)
 {
 	TE_Start("Sparks") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin[0]", pos) { throw new NotImplementedException(); }
@@ -103,7 +103,7 @@ public static void TE_SetupSparks(ReadOnlyCollection<float> pos[3], ReadOnlyColl
  * @param Scale         Scale of the smoke.
  * @param FrameRate     Frame rate of the smoke.
  */
-public static void TE_SetupSmoke(ReadOnlyCollection<float> pos[3], int Model, float Scale, int FrameRate)
+public static void TE_SetupSmoke(float[] pos[3], int Model, float Scale, int FrameRate)
 {
 	TE_Start("Smoke") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
@@ -120,7 +120,7 @@ public static void TE_SetupSmoke(ReadOnlyCollection<float> pos[3], int Model, fl
  * @param Size          Dust cloud size.
  * @param Speed         Dust cloud speed.
  */
-public static void TE_SetupDust(ReadOnlyCollection<float> pos[3], ReadOnlyCollection<float> dir[3], float Size, float Speed)
+public static void TE_SetupDust(float[] pos[3], float[] dir[3], float Size, float Speed)
 {
 	TE_Start("Dust") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin[0]", pos) { throw new NotImplementedException(); }
@@ -137,7 +137,7 @@ public static void TE_SetupDust(ReadOnlyCollection<float> pos[3], ReadOnlyCollec
  * @param Scale         Scale of the muzzle flash.
  * @param Type          Muzzle flash type to render (Mod specific).
  */
-public static void TE_SetupMuzzleFlash(ReadOnlyCollection<float> pos[3], ReadOnlyCollection<float> angles[3], float Scale, int Type)
+public static void TE_SetupMuzzleFlash(float[] pos[3], float[] angles[3], float Scale, int Type)
 {
 	TE_Start("MuzzleFlash") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
@@ -152,7 +152,7 @@ public static void TE_SetupMuzzleFlash(ReadOnlyCollection<float> pos[3], ReadOnl
  * @param pos           Position of the metal sparks.
  * @param dir           Direction of the metal sparks.
  */
-public static void TE_SetupMetalSparks(ReadOnlyCollection<float> pos[3], ReadOnlyCollection<float> dir[3])
+public static void TE_SetupMetalSparks(float[] pos[3], float[] dir[3])
 {
 	TE_Start("Metal Sparks") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecPos", pos) { throw new NotImplementedException(); }
@@ -166,7 +166,7 @@ public static void TE_SetupMetalSparks(ReadOnlyCollection<float> pos[3], ReadOnl
  * @param dir           Direction of the energy splash.
  * @param Explosive     Makes the effect explosive.
  */
-public static void TE_SetupEnergySplash(ReadOnlyCollection<float> pos[3], ReadOnlyCollection<float> dir[3], bool Explosive)
+public static void TE_SetupEnergySplash(float[] pos[3], float[] dir[3], bool Explosive)
 {
 	TE_Start("Energy Splash") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecPos", pos) { throw new NotImplementedException(); }
@@ -180,7 +180,7 @@ public static void TE_SetupEnergySplash(ReadOnlyCollection<float> pos[3], ReadOn
  * @param pos           Position of the armor ricochet.
  * @param dir           Direction of the armor ricochet.
  */
-public static void TE_SetupArmorRicochet(ReadOnlyCollection<float> pos[3], ReadOnlyCollection<float> dir[3])
+public static void TE_SetupArmorRicochet(float[] pos[3], float[] dir[3])
 {
 	TE_Start("Armor Ricochet") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecPos", pos) { throw new NotImplementedException(); }
@@ -196,7 +196,7 @@ public static void TE_SetupArmorRicochet(ReadOnlyCollection<float> pos[3], ReadO
  * @param Size          Sprite size.
  * @param Brightness    Sprite brightness.
  */
-public static void TE_SetupGlowSprite(ReadOnlyCollection<float> pos[3], int Model, float Life, float Size, int Brightness)
+public static void TE_SetupGlowSprite(float[] pos[3], int Model, float Life, float Size, int Brightness)
 {
 	TE_Start("GlowSprite") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
@@ -219,7 +219,7 @@ public static void TE_SetupGlowSprite(ReadOnlyCollection<float> pos[3], int Mode
  * @param normal        Normal vector to the explosion.
  * @param MaterialType  Exploded material type.
  */
-public static void TE_SetupExplosion(ReadOnlyCollection<float> pos[3], int Model, float Scale, int Framerate, int Flags, int Radius, int Magnitude, ReadOnlyCollection<float> normal[3]={0.0, 0.0, 1.0}, int MaterialType='C')
+public static void TE_SetupExplosion(float[] pos[3], int Model, float Scale, int Framerate, int Flags, int Radius, int Magnitude, float[] normal[3]={0.0, 0.0, 1.0}, int MaterialType='C')
 {
 	TE_Start("Explosion") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin[0]", pos) { throw new NotImplementedException(); }
@@ -243,7 +243,7 @@ public static void TE_SetupExplosion(ReadOnlyCollection<float> pos[3], int Model
  * @param SprayModel      Precached model index.
  * @param BloodDropModel  Precached model index.
  */
-public static void TE_SetupBloodSprite(ReadOnlyCollection<float> pos[3], ReadOnlyCollection<float> dir[3], const int color[4], int Size, int SprayModel, int BloodDropModel)
+public static void TE_SetupBloodSprite(float[] pos[3], float[] dir[3], const int color[4], int Size, int SprayModel, int BloodDropModel)
 {
 	TE_Start("Blood Sprite") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
@@ -274,7 +274,7 @@ public static void TE_SetupBloodSprite(ReadOnlyCollection<float> pos[3], ReadOnl
  * @param Speed         Speed of the beam.
  * @param Flags         Beam flags.
  */
-public static void TE_SetupBeamRingPoint(ReadOnlyCollection<float> center[3], float Start_Radius, float End_Radius, int ModelIndex, int HaloIndex, int StartFrame, 
+public static void TE_SetupBeamRingPoint(float[] center[3], float Start_Radius, float End_Radius, int ModelIndex, int HaloIndex, int StartFrame, 
 				int FrameRate, float Life, float Width, float Amplitude, const int Color[4], int Speed, int Flags)
 {
 	TE_Start("BeamRingPoint") { throw new NotImplementedException(); }
@@ -315,7 +315,7 @@ public static void TE_SetupBeamRingPoint(ReadOnlyCollection<float> center[3], fl
  * @param Color         Color array (r, g, b, a).
  * @param Speed         Speed of the beam.
  */
-public static void TE_SetupBeamPoints(ReadOnlyCollection<float> start[3], ReadOnlyCollection<float> end[3], int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, 
+public static void TE_SetupBeamPoints(float[] start[3], float[] end[3], int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, 
 				float Width, float EndWidth, int FadeLength, float Amplitude, const int Color[4], int Speed)
 {
 	TE_Start("BeamPoints") { throw new NotImplementedException(); }

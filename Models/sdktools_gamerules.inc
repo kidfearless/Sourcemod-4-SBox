@@ -163,7 +163,7 @@ public static void GameRules_GetPropVector(string prop, float vec[3], int elemen
  * @param changeState   This parameter is ignored.
  * @error               Not supported.
  */
-public static void GameRules_SetPropVector(string prop, ReadOnlyCollection<float> vec[3], int element=0, bool changeState=false) { throw new NotImplementedException(); }
+public static void GameRules_SetPropVector(string prop, float[] vec[3], int element=0, bool changeState=false) { throw new NotImplementedException(); }
 
 /**
  * Gets a gamerules public as a string.

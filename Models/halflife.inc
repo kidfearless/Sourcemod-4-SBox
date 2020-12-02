@@ -686,7 +686,7 @@ public enum ClientRangeType
  * @param size          Maximum size of clients array.
  * @return              Number of client indexes written to clients array.
  */
-public static int GetClientsInRange(ReadOnlyCollection<float> origin[3], ClientRangeType rangeType, int[] clients, int size) { throw new NotImplementedException(); }
+public static int GetClientsInRange(float[] origin[3], ClientRangeType rangeType, int[] clients, int size) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the server's authentication string (SteamID).

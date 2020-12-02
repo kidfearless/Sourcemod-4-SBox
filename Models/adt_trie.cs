@@ -76,7 +76,7 @@ namespace Sourcemod
 			// @param num_items  Number of items in the array.
 			// @param replace    If false, operation will fail if the key is already set.
 			// @return           True on success, false on failure.
-			public bool SetArray(string key, ReadOnlyCollection<any> array, int num_items, bool replace = true) { throw new NotImplementedException(); }
+			public bool SetArray(string key, any[] array, int num_items, bool replace = true) { throw new NotImplementedException(); }
 
 			// Sets a string value in a Map, either inserting a new entry or replacing an old one.
 			//
@@ -217,7 +217,7 @@ namespace Sourcemod
 		 * @return              True on success, false on failure.
 		 * @error               Invalid Handle.
 		 */
-		public static bool SetTrieArray(Handle map, string key, ReadOnlyCollection<any> array, int num_items, bool replace = true) { throw new NotImplementedException(); }
+		public static bool SetTrieArray(Handle map, string key, any[] array, int num_items, bool replace = true) { throw new NotImplementedException(); }
 
 		/**
 		 * Sets a string value in a Map, either inserting a new entry or replacing an old one.

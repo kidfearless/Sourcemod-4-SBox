@@ -55,7 +55,7 @@ namespace Sourcemod
 		* @param hndl      Handle to close.
 		* @error           Invalid handles will cause a run time error.
 		*/
-		public void CloseHandle(Handle hndl) { throw new NotImplementedException(); }
+		public static void CloseHandle(Handle hndl) { throw new NotImplementedException(); }
 		/**
 		 * Clones a Handle.  When passing handles in between plugins, caching handles
 		 * can result in accidental invalidation when one plugin releases the Handle, or is its owner
@@ -73,6 +73,6 @@ namespace Sourcemod
 		 * @return          Handle on success, INVALID_HANDLE if not cloneable.
 		 * @error           Invalid handles will cause a run time error.
 		 */
-		public Handle CloneHandle(Handle hndl, Handle plugin = INVALID_HANDLE) { throw new NotImplementedException(); }
+		public static Handle CloneHandle(Handle hndl, Handle plugin = INVALID_HANDLE) { throw new NotImplementedException(); }
 	}
 }

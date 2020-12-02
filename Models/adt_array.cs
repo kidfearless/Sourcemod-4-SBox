@@ -332,7 +332,7 @@ namespace Sourcemod
 	 * @return              Index of the new entry.
 	 * @error               Invalid Handle or out of memory.
 	 */
-	public int PushArrayArray(Handle array, ReadOnlyCollection<any> values, int size = -1) { throw new NotImplementedException(); }
+	public int PushArrayArray(Handle array, any[] values, int size = -1) { throw new NotImplementedException(); }
 
 	/**
 	 * Retrieves a cell value from an array.
@@ -407,7 +407,7 @@ namespace Sourcemod
 	 * @return              Number of cells copied.
 	 * @error               Invalid Handle or invalid index.
 	 */
-	public int SetArrayArray(Handle array, int index, ReadOnlyCollection<any> values, int size = -1) { throw new NotImplementedException(); }
+	public int SetArrayArray(Handle array, int index, any[] values, int size = -1) { throw new NotImplementedException(); }
 
 	/**
 	 * Shifts an array up.  All array contents after and including the given

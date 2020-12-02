@@ -355,7 +355,7 @@ namespace Sourcemod
 		 * @param size          Size of array.
 		 * @error               Called before a call has been started.
 		 */
-		public static void Call_PushArray(ReadOnlyCollection<any> value, int size) { throw new NotImplementedException(); }
+		public static void Call_PushArray(any[] value, int size) { throw new NotImplementedException(); }
 
 		/**
 		 * Pushes an array onto the current call.
@@ -610,7 +610,7 @@ namespace Sourcemod
 		 * @return              SP_ERROR_NONE on success, anything else on failure.
 		 * @error               Invalid parameter number or calling from a non-public static function.
 		 */
-		public static int SetNativeArray(int param, ReadOnlyCollection<any> local, int size) { throw new NotImplementedException();
+		public static int SetNativeArray(int param, any[] local, int size) { throw new NotImplementedException();
 	}
 
 	/**

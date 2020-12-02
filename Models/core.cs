@@ -149,7 +149,7 @@ namespace Sourcemod
 		 * @param vec     The vector to test.
 		 * @return        True if NULL_VECTOR, false otherwise.
 		 */
-		public static bool IsNullVector(ReadOnlyCollection<float> vec) { throw new NotImplementedException(); }
+		public static bool IsNullVector(float[] vec) { throw new NotImplementedException(); }
 
 		/**
 		 * Check if the given string is the NULL_STRING.

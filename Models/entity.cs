@@ -364,7 +364,7 @@ namespace Sourcemod
 		 * @param changeState   If true, change will be sent over the network.
 		 * @error               Invalid entity or offset out of reasonable bounds.
 		 */
-		public static void SetEntDataVector(int entity, int offset, ReadOnlyCollection<float> vec, bool changeState = false) { throw new NotImplementedException(); }
+		public static void SetEntDataVector(int entity, int offset, float[] vec, bool changeState = false) { throw new NotImplementedException(); }
 
 		/**
 		 * Peeks into an entity's object data and retrieves the string at
@@ -724,7 +724,7 @@ namespace Sourcemod
 		 * @error               Invalid entity, public not found, or public not
 		 *                      actually a vector data type.
 		 */
-		public static void SetEntPropVector(int entity, PropType type, string prop, ReadOnlyCollection<float> vec, int element = 0) { throw new NotImplementedException(); }
+		public static void SetEntPropVector(int entity, PropType type, string prop, float[] vec, int element = 0) { throw new NotImplementedException(); }
 
 		/**
 		 * Gets a network public as a string.
@@ -793,7 +793,7 @@ namespace Sourcemod
 		 * @param changeState   True to set the network state as changed; false otherwise.
 		 * @error               Invalid entity or offset out of reasonable bounds.
 		 */
-		public static void SetEntDataArray(int entity, int offset, ReadOnlyCollection<any> array, int arraySize, int dataSize = 4, bool changeState = false)
+		public static void SetEntDataArray(int entity, int offset, any[] array, int arraySize, int dataSize = 4, bool changeState = false)
 		{
 			for (int i = 0; i < arraySize; i++)
 			{

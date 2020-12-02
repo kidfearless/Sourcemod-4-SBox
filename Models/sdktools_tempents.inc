@@ -125,7 +125,7 @@ public static float TE_ReadFloat(string prop) { throw new NotImplementedExceptio
  * @param vector        Vector to set.
  * @error               public not found.
  */
-public static void TE_WriteVector(string prop, ReadOnlyCollection<float> vector[3]) { throw new NotImplementedException(); }
+public static void TE_WriteVector(string prop, float[] vector[3]) { throw new NotImplementedException(); }
 
 /**
  * Reads a vector in the current temp entity.
@@ -143,7 +143,7 @@ public static void TE_ReadVector(string prop, float vector[3]) { throw new NotIm
  * @param angles        Angles to set.
  * @error               public not found.
  */
-public static void TE_WriteAngles(string prop, ReadOnlyCollection<float> angles[3]) { throw new NotImplementedException(); }
+public static void TE_WriteAngles(string prop, float[] angles[3]) { throw new NotImplementedException(); }
 
 /**
  * Sets an array of floats in the current temp entity.
@@ -153,7 +153,7 @@ public static void TE_WriteAngles(string prop, ReadOnlyCollection<float> angles[
  * @param arraySize     Number of values to copy.
  * @error               public not found.
  */
-public static void TE_WriteFloatArray(string prop, ReadOnlyCollection<float>[] array, int arraySize) { throw new NotImplementedException(); }
+public static void TE_WriteFloatArray(string prop, float[][] array, int arraySize) { throw new NotImplementedException(); }
 
 /**
  * Sends the current temp entity to one or more clients.
@@ -226,7 +226,7 @@ public static void TE_SendToClient(int client, float delay=0.0)
  * @param rangeType     Range type to use for filtering clients.
  * @param delay         Delay in seconds to send the TE.
  */
-public static void TE_SendToAllInRange(ReadOnlyCollection<float> origin[3], ClientRangeType rangeType, float delay=0.0)
+public static void TE_SendToAllInRange(float[] origin[3], ClientRangeType rangeType, float delay=0.0)
 {
 	int[] clients = new int[MaxClients];
 	int total = GetClientsInRange(origin, rangeType, clients, MaxClients) { throw new NotImplementedException(); }

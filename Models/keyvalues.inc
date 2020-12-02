@@ -150,7 +150,7 @@ public class KeyValues : Handle
 	//
 	// @param key           Name of the key, or NULL_STRING.
 	// @param vec           Vector value.
-	public void SetVector(string key, ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
+	public void SetVector(string key, float[] vec[3]) { throw new NotImplementedException(); }
 
 	// Retrieves a string value from a KeyValues key.
 	//
@@ -208,7 +208,7 @@ public class KeyValues : Handle
 	// @param key           Name of the key, or NULL_STRING.
 	// @param vec           Destination vector to store the value in.
 	// @param defvalue      Optional default value to use if the key is not found.
-	public void GetVector(string key, float vec[3], ReadOnlyCollection<float> defvalue[3]={0.0, 0.0, 0.0}) { throw new NotImplementedException(); }
+	public void GetVector(string key, float vec[3], float[] defvalue[3]={0.0, 0.0, 0.0}) { throw new NotImplementedException(); }
 
 	// Sets the current position in the KeyValues tree to the given key.
 	//
@@ -406,7 +406,7 @@ public static void KvSetColor(Handle kv, string key, int r, int g, int b, int a=
  * @param vec           Vector value.
  * @error               Invalid Handle.
  */
-public static void KvSetVector(Handle kv, string key, ReadOnlyCollection<float> vec[3]) { throw new NotImplementedException(); }
+public static void KvSetVector(Handle kv, string key, float[] vec[3]) { throw new NotImplementedException(); }
 
 /**
  * Retrieves a string value from a KeyValues key.
@@ -475,7 +475,7 @@ public static void KvGetUInt64(Handle kv, string key, int value[2], int defvalue
  * @param defvalue      Optional default value to use if the key is not found.
  * @error               Invalid Handle.
  */
-public static void KvGetVector(Handle kv, string key, float vec[3], ReadOnlyCollection<float> defvalue[3]={0.0, 0.0, 0.0}) { throw new NotImplementedException(); }
+public static void KvGetVector(Handle kv, string key, float vec[3], float[] defvalue[3]={0.0, 0.0, 0.0}) { throw new NotImplementedException(); }
 
 /**
  * Sets the current position in the KeyValues tree to the given key.

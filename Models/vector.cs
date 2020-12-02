@@ -44,7 +44,7 @@ namespace Sourcemod
 		 * @param squared       If true, the result will be squared (for optimization).
 		 * @return              Vector length (magnitude).
 		 */
-		public static float GetVectorLength(ReadOnlyCollection<float> vec, bool squared = false)
+		public static float GetVectorLength(float[] vec, bool squared = false)
 		{
 			throw new NotImplementedException();
 		}
@@ -57,7 +57,7 @@ namespace Sourcemod
 		 * @param squared       If true, the result will be squared (for optimization).
 		 * @return              Vector distance.
 		 */
-		public static float GetVectorDistance(ReadOnlyCollection<float> vec1, ReadOnlyCollection<float> vec2, bool squared = false) { throw new NotImplementedException(); }
+		public static float GetVectorDistance(float[] vec1, float[] vec2, bool squared = false) { throw new NotImplementedException(); }
 
 		/**
 		 * Calculates the dot product of two vectors.
@@ -66,7 +66,7 @@ namespace Sourcemod
 		 * @param vec2          Second vector.
 		 * @return              Dot product of the two vectors.
 		 */
-		public static float GetVectorDotProduct(ReadOnlyCollection<float> vec1, ReadOnlyCollection<float> vec2) { throw new NotImplementedException(); }
+		public static float GetVectorDotProduct(float[] vec1, float[] vec2) { throw new NotImplementedException(); }
 
 		/**
 		 * Computes the cross product of two vectors.  Any input array can be the same
@@ -76,7 +76,7 @@ namespace Sourcemod
 		 * @param vec2          Second vector.
 		 * @param result        Resultant vector.
 		 */
-		public static void GetVectorCrossProduct(ReadOnlyCollection<float> vec1, ReadOnlyCollection<float> vec2, out float[] result) { throw new NotImplementedException(); }
+		public static void GetVectorCrossProduct(float[] vec1, float[] vec2, out float[] result) { throw new NotImplementedException(); }
 
 		/**
 		 * Normalizes a vector.  The input array can be the same as the output array.
@@ -85,7 +85,7 @@ namespace Sourcemod
 		 * @param result        Resultant vector.
 		 * @return              Vector length.
 		 */
-		public static float NormalizeVector(ReadOnlyCollection<float> vec, out float[] result) { throw new NotImplementedException(); }
+		public static float NormalizeVector(float[] vec, out float[] result) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns vectors in the direction of an angle.
@@ -95,7 +95,7 @@ namespace Sourcemod
 		 * @param right         Right vector buffer or NULL_VECTOR.
 		 * @param up            Up vector buffer or NULL_VECTOR.
 		 */
-		public static void GetAngleVectors(ReadOnlyCollection<float> angle, out float[] fwd, out float[] right, out float[] up) { throw new NotImplementedException(); }
+		public static void GetAngleVectors(float[] angle, out float[] fwd, out float[] right, out float[] up) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns angles from a vector.
@@ -103,7 +103,7 @@ namespace Sourcemod
 		 * @param vec           Vector.
 		 * @param angle         Angle buffer.
 		 */
-		public static void GetVectorAngles(ReadOnlyCollection<float> vec, out float[] angle) { throw new NotImplementedException(); }
+		public static void GetVectorAngles(float[] vec, out float[] angle) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns direction vectors from a vector.
@@ -112,7 +112,7 @@ namespace Sourcemod
 		 * @param right         Right vector buffer or NULL_VECTOR.
 		 * @param up            Up vector buffer or NULL_VECTOR.
 		 */
-		public static void GetVectorVectors(ReadOnlyCollection<float> vec, out float[] right, out float[] up) { throw new NotImplementedException(); }
+		public static void GetVectorVectors(float[] vec, out float[] right, out float[] up) { throw new NotImplementedException(); }
 
 		/**
 		 * Adds two vectors.  It is safe to use either input buffer as an output
@@ -122,7 +122,7 @@ namespace Sourcemod
 		 * @param vec2          Second vector.
 		 * @param result        Result buffer.
 		 */
-		public static void AddVectors(ReadOnlyCollection<float> vec1, ReadOnlyCollection<float> vec2, out float[] result)
+		public static void AddVectors(float[] vec1, float[] vec2, out float[] result)
 		{
 			result = new float[3];
 			result[0] = vec1[0] + vec2[0];
@@ -138,7 +138,7 @@ namespace Sourcemod
 		 * @param vec2          Second vector to subtract from first.
 		 * @param result        Result buffer.
 		 */
-		public static void SubtractVectors(ReadOnlyCollection<float> vec1, ReadOnlyCollection<float> vec2, out float[] result)
+		public static void SubtractVectors(float[] vec1, float[] vec2, out float[] result)
 		{
 			result = new float[3];
 			result[0] = vec1[0] - vec2[0];
@@ -178,7 +178,7 @@ namespace Sourcemod
 		 * @param pt2           Second point.
 		 * @param output        Output vector buffer.
 		 */
-		public static void MakeVectorFromPoints(ReadOnlyCollection<float> pt1, ReadOnlyCollection<float> pt2, out float[] output)
+		public static void MakeVectorFromPoints(float[] pt1, float[] pt2, out float[] output)
 		{
 			output = new float[3];
 			output[0] = pt2[0] - pt1[0];

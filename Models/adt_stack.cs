@@ -191,7 +191,7 @@ namespace Sourcemod
 	 *                      blocksize, the operation will be truncated.
 	 * @error               Invalid Handle or out of memory.
 	 */
-	public static void PushStackArray(Handle stack, ReadOnlyCollection<any> values, int size = -1) { throw new NotImplementedException(); }
+	public static void PushStackArray(Handle stack, any[] values, int size = -1) { throw new NotImplementedException(); }
 
 	/**
 	 * Pops a cell value from a stack.
