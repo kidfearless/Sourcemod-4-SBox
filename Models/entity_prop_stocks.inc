@@ -102,7 +102,7 @@ public enum RenderFx
 public const int IN_ATTACK                (1 << 0)
 public const int IN_JUMP                  (1 << 1)
 public const int IN_DUCK                  (1 << 2)
-public const int IN_public static virtual               (1 << 3)
+public const int IN_public virtual               (1 << 3)
 public const int IN_BACK                  (1 << 4)
 public const int IN_USE                   (1 << 5)
 public const int IN_CANCEL                (1 << 6)

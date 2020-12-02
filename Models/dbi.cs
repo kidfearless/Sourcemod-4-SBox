@@ -705,7 +705,7 @@ namespace Sourcemod
 		 * @param ...           Variable number of format parameters.
 		 * @return              Number of cells written.
 		 */
-		public static int SQL_FormatQuery(Handle database, string buffer, int maxlength, string format, any...) { throw new NotImplementedException(); }
+		public static int SQL_FormatQuery(Handle database, string buffer, int maxlength, string format, params any[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * This function is deprecated.  Use SQL_EscapeString instead.

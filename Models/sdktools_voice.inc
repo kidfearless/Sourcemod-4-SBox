@@ -63,14 +63,14 @@ public enum ListenOverride
  *
  * @param client        The client index
  */
-public static virtual void OnClientSpeaking(int client) { throw new NotImplementedException(); }
+public virtual void OnClientSpeaking(int client) { throw new NotImplementedException(); }
 
 /**
  * Called once a client speaking end.
  *
  * @param client        The client index
  */
-public static virtual void OnClientSpeakingEnd(int client) { throw new NotImplementedException(); }
+public virtual void OnClientSpeakingEnd(int client) { throw new NotImplementedException(); }
 
 /**
  * Set the client listening flags.

@@ -91,7 +91,7 @@ namespace Sourcemod
 		 * Returns vectors in the direction of an angle.
 		 *
 		 * @param angle         Angle.
-		 * @param fwd           public static virtual vector buffer or NULL_VECTOR.
+		 * @param fwd           public virtual vector buffer or NULL_VECTOR.
 		 * @param right         Right vector buffer or NULL_VECTOR.
 		 * @param up            Up vector buffer or NULL_VECTOR.
 		 */

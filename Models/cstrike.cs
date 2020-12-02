@@ -261,7 +261,7 @@ namespace Sourcemod
 		 * @param delay         Time (in seconds) to delay before new round starts
 		 * @param reason        Reason for the round ending
 		 * @param blockhook     Set to true to stop the corresponding CS_OnTerminateRound
-		 *                      public static virtual from being called.
+		 *                      public virtual from being called.
 		 */
 		public static void CS_TerminateRound(float delay, CSRoundEndReason reason, bool blockhook = false) { throw new NotImplementedException(); }
 

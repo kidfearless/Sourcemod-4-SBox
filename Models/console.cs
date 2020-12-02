@@ -794,7 +794,7 @@ public static bool AddCommandListener(CommandListener callback, string command =
 		 * @return              An Action value. Returning Plugin_Handled bypasses the game function call.
 		 *                      Returning Plugin_Stop bypasses the post hook as well as the game function.
 		 */
-		public static virtual Action OnClientSayCommand(int client, string command, string sArgs) { throw new NotImplementedException(); }
+		public virtual Action OnClientSayCommand(int client, string command, string sArgs) { throw new NotImplementedException(); }
 
 		/**
 		 * Global post listener for the chat commands.
@@ -803,6 +803,6 @@ public static bool AddCommandListener(CommandListener callback, string command =
 		 * @param command       Command name.
 		 * @param sArgs         Chat argument string.
 		 */
-		public static virtual void OnClientSayCommand_Post(int client, string command, string sArgs) { throw new NotImplementedException(); }
+		public virtual void OnClientSayCommand_Post(int client, string command, string sArgs) { throw new NotImplementedException(); }
 	}
 }

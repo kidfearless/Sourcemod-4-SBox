@@ -347,7 +347,7 @@ typeset SDKHookCB
  * @param entity        Entity index
  * @param classname     Class name
  */
-public static virtual void OnEntityCreated(int entity, string classname) { throw new NotImplementedException(); }
+public virtual void OnEntityCreated(int entity, string classname) { throw new NotImplementedException(); }
 
 /**
  * When an entity is spawned
@@ -357,14 +357,14 @@ public static virtual void OnEntityCreated(int entity, string classname) { throw
  *
  * @note Check for support at runtime using GetFeatureStatus on SDKHook_OnEntitySpawned capability.
  */
-public static virtual void OnEntitySpawned(int entity, string classname) { throw new NotImplementedException(); }
+public virtual void OnEntitySpawned(int entity, string classname) { throw new NotImplementedException(); }
 
 /**
  * When an entity is destroyed
  *
  * @param entity        Entity index or edict reference.
  */
-public static virtual void OnEntityDestroyed(int entity) { throw new NotImplementedException(); }
+public virtual void OnEntityDestroyed(int entity) { throw new NotImplementedException(); }
 
 /**
  * When the game description is retrieved
@@ -374,7 +374,7 @@ public static virtual void OnEntityDestroyed(int entity) { throw new NotImplemen
  * @param gameDesc      Game description
  * @return              Plugin_Changed if gameDesc has been edited, else no change.
  */
-public static virtual Action OnGetGameDescription(char gameDesc[64]) { throw new NotImplementedException(); }
+public virtual Action OnGetGameDescription(char gameDesc[64]) { throw new NotImplementedException(); }
 
 /**
  * When the level is initialized
@@ -383,7 +383,7 @@ public static virtual Action OnGetGameDescription(char gameDesc[64]) { throw new
  * @param mapEntities   Entities of the map
  * @return              Plugin_Changed if mapEntities has been edited, else no change.
  */
-public static virtual Action OnLevelInit(string mapName, char mapEntities[2097152]) { throw new NotImplementedException(); }
+public virtual Action OnLevelInit(string mapName, char mapEntities[2097152]) { throw new NotImplementedException(); }
 
 /**
  * Hooks an entity

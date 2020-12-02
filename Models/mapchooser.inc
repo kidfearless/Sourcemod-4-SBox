@@ -128,12 +128,12 @@ public static bool EndOfMapVoteEnabled() { throw new NotImplementedException(); 
  * Called when mapchooser removes a nomination from its list.
  * Nominations cleared on map start will not trigger this forward
  */
-public static virtual void OnNominationRemoved(string map, int owner) { throw new NotImplementedException(); }
+public virtual void OnNominationRemoved(string map, int owner) { throw new NotImplementedException(); }
 
 /**
  * Called when mapchooser starts a Map Vote.
  */
-public static virtual void OnMapVoteStarted() { throw new NotImplementedException(); }
+public virtual void OnMapVoteStarted() { throw new NotImplementedException(); }
 
 public SharedPlugin __pl_mapchooser =
 {

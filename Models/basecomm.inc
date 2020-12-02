@@ -43,7 +43,7 @@ namespace Sourcemod
  * @param   client      Client index
  * @param   muteState   True if client was muted, false otherwise
  */
-public static virtual void BaseComm_OnClientMute(int client, bool muteState) { throw new NotImplementedException(); }
+public virtual void BaseComm_OnClientMute(int client, bool muteState) { throw new NotImplementedException(); }
  
  /**
  * Called when a client is gagged or ungagged
@@ -51,7 +51,7 @@ public static virtual void BaseComm_OnClientMute(int client, bool muteState) { t
  * @param   client      Client index
  * @param   gagState    True if client was gaged, false otherwise
  */
-public static virtual void BaseComm_OnClientGag(int client, bool gagState) { throw new NotImplementedException(); }
+public virtual void BaseComm_OnClientGag(int client, bool gagState) { throw new NotImplementedException(); }
  
 /**
  * Returns whether or not a client is gagged

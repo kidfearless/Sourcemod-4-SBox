@@ -392,9 +392,9 @@ public static bool operator<=(int oper1, float oper2)
 /**
  * Forbidden operators.
  */
-public static virtual operator%(float oper1, float oper2) { throw new NotImplementedException(); }
-public static virtual operator%(float oper1, int oper2) { throw new NotImplementedException(); }
-public static virtual operator%(int oper1, float oper2) { throw new NotImplementedException(); }
+public virtual operator%(float oper1, float oper2) { throw new NotImplementedException(); }
+public virtual operator%(float oper1, int oper2) { throw new NotImplementedException(); }
+public virtual operator%(int oper1, float oper2) { throw new NotImplementedException(); }
 #endif // __sourcepawn2__
 
 public const int FLOAT_PI 3.1415926535897932384626433832795
