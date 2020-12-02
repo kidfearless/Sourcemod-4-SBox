@@ -30,10 +30,13 @@
  * Version: $Id$
  */
 
-#if defined _nextmap_included_
- #endinput
-#endif
-public const int _nextmap_included_
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
+{
+	public partial class SourceMod
+	{
+
 
 /**
  * Sets SourceMod's internal nextmap.

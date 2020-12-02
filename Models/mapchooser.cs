@@ -29,10 +29,6 @@
  *
  * Version: $Id$
  */
-#if defined _mapchooser_included_
- #endinput
-#endif
-public const int _mapchooser_included_
 
 public enum NominateResult
 {
