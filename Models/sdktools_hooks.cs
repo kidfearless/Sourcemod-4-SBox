@@ -57,7 +57,7 @@ public const int FEATURECAP_PLAYERRUNCMD_11PARAMS    "SDKTools PlayerRunCmd 11Pa
  *
  * @note To see if all 11 params are available, use FeatureType_Capability and FEATURECAP_PLAYERRUNCMD_11PARAMS.
  */
-public virtual Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon, int &subtype, int &cmdnum, int &tickcount, int &seed, int mouse[2]) { throw new NotImplementedException(); }
+public virtual Action OnPlayerRunCmd(int client, ref int buttons, ref int impulse, float[/* 3 */] vel, float[/* 3 */] angles, ref int weapon, ref int subtype, ref int cmdnum, ref int tickcount, ref int seed, int[/* 2 */] mouse) { throw new NotImplementedException(); }
 
 /**
  * Called after a clients movement buttons were processed.
@@ -74,7 +74,7 @@ public virtual Action OnPlayerRunCmd(int client, int &buttons, int &impulse, flo
  * @param seed          Random seed. Used to determine weapon recoil, spread, and other predicted elements.
  * @param mouse         Mouse direction (x, y).
  */
-public virtual void OnPlayerRunCmdPost(int client, int buttons, int impulse, float[] vel[3], float[] angles[3], int weapon, int subtype, int cmdnum, int tickcount, int seed, const int mouse[2]) { throw new NotImplementedException(); }
+public virtual void OnPlayerRunCmdPost(int client, int buttons, int impulse, float[] vel[3], float[] angles[3], int weapon, int subtype, int cmdnum, int tickcount, int seed, const int[/* 2 */] mouse) { throw new NotImplementedException(); }
 
 /**
  * Called when a client requests a file from the server.

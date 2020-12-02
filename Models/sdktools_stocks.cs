@@ -38,17 +38,42 @@ namespace Sourcemod
 	{
 
 /**
- * Sets the client to an inactive state waiting for a new map
+ * Given a partial team name, attempts to find a matching team.
  *
- * @param client        The client index
+ * The search is performed case insensitively and only against the 
+ * first N characters of the team names, where N is the number of 
+ * characters in the search pattern.
+ *
+ * @param name          Partial or full team name.  
+ * @return              A valid team index on success.
+ *                      -1 if no team matched.
+ *                      -2 if more than one team matched.
  */
-public static void InactivateClient(int client) { throw new NotImplementedException(); }
+public static int FindTeamByName(string name)
+{
+	int name_len = strlen(name) { throw new NotImplementedException(); }
+	int num_teams = GetTeamCount() { throw new NotImplementedException(); }
+	string team_name;
+	int found_team = -1;
 
-/**
- * Reconnect a client without dropping the netchannel
- *
- * @param client        The client index
- */
-public static void ReconnectClient(int client) { throw new NotImplementedException(); }
+	for (int i = 0; i < num_teams; i++)
+	{
+		GetTeamName(i, team_name, sizeof(team_name)) { throw new NotImplementedException(); }
+
+		if (strncmp(team_name, name, name_len, false) == 0)
+		{
+			if (found_team >= 0)
+			{
+				return -2;
+			}
+			else
+			{
+				found_team = i;
+			}
+		}
+	}
+
+	return found_team;
+}
 	}
 }

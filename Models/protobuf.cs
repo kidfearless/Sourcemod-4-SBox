@@ -37,211 +37,213 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const int PB_FIELD_NOT_REPEATED -1
+		public const int PB_FIELD_NOT_REPEATED -1
 
 public class Protobuf : Handle
-{
-	// Reads an int32, uint32, sint32, fixed32, sfixed32, or public enum value from a protobuf message.
-	//
-	// @param field      Field name.
-	// @param index      Index into repeated field.
-	// @return           Integer value read.
-	// @error            Non-existent field, or incorrect field type.
-	public int ReadInt(string field, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+		{
+			// Reads an int32, uint32, sint32, fixed32, sfixed32, or public enum value from a protobuf message.
+			//
+			// @param field      Field name.
+			// @param index      Index into repeated field.
+			// @return           Integer value read.
+			// @error            Non-existent field, or incorrect field type.
+			public int ReadInt(string field, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Reads an int64, uint64, sint64, fixed64, sfixed64 from a protobuf message.
-	//
-	// @param field      Field name.
-	// @param value      Array to represent the large integer (0=High bits, 1=Low bits).
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void ReadInt64(string field, int value[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Reads an int64, uint64, sint64, fixed64, sfixed64 from a protobuf message.
+			//
+			// @param field      Field name.
+			// @param value      Array to represent the large integer (0=High bits, 1=Low bits).
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void ReadInt64(string field, int[/* 2 */] value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Reads a float or downcasted double from a protobuf message.
-	//
-	// @param field      Field name.
-	// @param index      Index into repeated field.
-	// @return           Float value read.
-	// @error            Non-existent field, or incorrect field type.
-	public float ReadFloat(string field, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Reads a float or downcasted double from a protobuf message.
+			//
+			// @param field      Field name.
+			// @param index      Index into repeated field.
+			// @return           Float value read.
+			// @error            Non-existent field, or incorrect field type.
+			public float ReadFloat(string field, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Reads a bool from a protobuf message.
-	//
-	// @param field      Field name.
-	// @param index      Index into repeated field.
-	// @return           Boolean value read.
-	// @error            Non-existent field, or incorrect field type.
-	public bool ReadBool(string field, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Reads a bool from a protobuf message.
+			//
+			// @param field      Field name.
+			// @param index      Index into repeated field.
+			// @return           Boolean value read.
+			// @error            Non-existent field, or incorrect field type.
+			public bool ReadBool(string field, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Reads a string from a protobuf message.
-	//
-	// @param field      Field name.
-	// @param buffer     Destination string buffer.
-	// @param maxlength  Maximum length of output string buffer.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void ReadString(string field, string buffer, int maxlength, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Reads a string from a protobuf message.
+			//
+			// @param field      Field name.
+			// @param buffer     Destination string buffer.
+			// @param maxlength  Maximum length of output string buffer.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void ReadString(string field, string buffer, int maxlength, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Reads an RGBA color value from a protobuf message.
-	//
-	// @param field      Field name.
-	// @param buffer     Destination color buffer.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void ReadColor(string field, int buffer[4], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Reads an RGBA color value from a protobuf message.
+			//
+			// @param field      Field name.
+			// @param buffer     Destination color buffer.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void ReadColor(string field, int[/* 4 */] buffer, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Reads an XYZ angle value from a protobuf message.
-	//
-	// @param field      Field name.
-	// @param buffer     Destination angle buffer.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void ReadAngle(string field, float buffer[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Reads an XYZ angle value from a protobuf message.
+			//
+			// @param field      Field name.
+			// @param buffer     Destination angle buffer.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void ReadAngle(string field, float[/* 3 */] buffer, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Reads an XYZ vector value from a protobuf message.
-	//
-	// @param pb         protobuf handle.
-	// @param field      Field name.
-	// @param buffer     Destination vector buffer.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void ReadVector(string field, float buffer[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Reads an XYZ vector value from a protobuf message.
+			//
+			// @param pb         protobuf handle.
+			// @param field      Field name.
+			// @param buffer     Destination vector buffer.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void ReadVector(string field, float[/* 3 */] buffer, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Reads an XY vector value from a protobuf message.
-	//
-	// @param field      Field name.
-	// @param buffer     Destination vector buffer.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void ReadVector2D(string field, float buffer[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Reads an XY vector value from a protobuf message.
+			//
+			// @param field      Field name.
+			// @param buffer     Destination vector buffer.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void ReadVector2D(string field, float[/* 2 */] buffer, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Gets the number of elements in a repeated field of a protobuf message.
-	//
-	// @param field      Field name.
-	// @return           Number of elements in the field.
-	// @error            Non-existent field, or non-repeated field.
-	public int GetRepeatedFieldCount(string field) { throw new NotImplementedException(); }
+			// Gets the number of elements in a repeated field of a protobuf message.
+			//
+			// @param field      Field name.
+			// @return           Number of elements in the field.
+			// @error            Non-existent field, or non-repeated field.
+			public int GetRepeatedFieldCount(string field) { throw new NotImplementedException(); }
 
-	// Returns whether or not the named, non-repeated field has a value set.
-	//
-	// @param field      Field name.
-	// @return           True if value has been set, else false.
-	// @error            Non-existent field, or repeated field.
-	public bool HasField(string field) { throw new NotImplementedException(); }
+			// Returns whether or not the named, non-repeated field has a value set.
+			//
+			// @param field      Field name.
+			// @return           True if value has been set, else false.
+			// @error            Non-existent field, or repeated field.
+			public bool HasField(string field) { throw new NotImplementedException(); }
 
-	// Sets an int32, uint32, sint32, fixed32, sfixed32, or public enum value on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param value      Integer value to set.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetInt(string field, int value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Sets an int32, uint32, sint32, fixed32, sfixed32, or public enum value on a protobuf message.
+			//
+			// @param field      Field name.
+			// @param value      Integer value to set.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void SetInt(string field, int value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Sets an int64, uint64, sint64, fixed64, sfixed64 on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param value      Large integer value to set (0=High bits, 1=Low bits).
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetInt64(string field, int value[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Sets an int64, uint64, sint64, fixed64, sfixed64 on a protobuf message.
+			//
+			// @param field      Field name.
+			// @param value      Large integer value to set (0=High bits, 1=Low bits).
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void SetInt64(string field, int[/* 2 */] value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Sets a float or double on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param value      Float value to set.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetFloat(string field, float value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Sets a float or double on a protobuf message.
+			//
+			// @param field      Field name.
+			// @param value      Float value to set.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void SetFloat(string field, float value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Sets a bool on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param value      Boolean value to set.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetBool(string field, bool value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Sets a bool on a protobuf message.
+			//
+			// @param field      Field name.
+			// @param value      Boolean value to set.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void SetBool(string field, bool value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Sets a string on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param value      String value to set.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetString(string field, string value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Sets a string on a protobuf message.
+			//
+			// @param field      Field name.
+			// @param value      String value to set.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void SetString(string field, string value, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Sets an RGBA color on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param color      Color value to set.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetColor(string field, const int color[4], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+			// Sets an RGBA color on a protobuf message.
+			//
+			// @param field      Field name.
+			// @param color      Color value to set.
+			// @param index      Index into repeated field.
+			// @error            Non-existent field, or incorrect field type.
+			public void SetColor(string field, const int[/* 4 */] color, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException();
+		}
 
-	// Sets an XYZ angle on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param angle      Angle value to set.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetAngle(string field, float[] angle[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+		// Sets an XYZ angle on a protobuf message.
+		//
+		// @param field      Field name.
+		// @param angle      Angle value to set.
+		// @param index      Index into repeated field.
+		// @error            Non-existent field, or incorrect field type.
+		public void SetAngle(string field, float[] angle[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Sets an XYZ vector on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param vec        Vector value to set.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetVector(string field, float[] vec[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+		// Sets an XYZ vector on a protobuf message.
+		//
+		// @param field      Field name.
+		// @param vec        Vector value to set.
+		// @param index      Index into repeated field.
+		// @error            Non-existent field, or incorrect field type.
+		public void SetVector(string field, float[] vec[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Sets an XY vector on a protobuf message.
-	//
-	// @param field      Field name.
-	// @param vec        Vector value to set.
-	// @param index      Index into repeated field.
-	// @error            Non-existent field, or incorrect field type.
-	public void SetVector2D(string field, float[] vec[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+		// Sets an XY vector on a protobuf message.
+		//
+		// @param field      Field name.
+		// @param vec        Vector value to set.
+		// @param index      Index into repeated field.
+		// @error            Non-existent field, or incorrect field type.
+		public void SetVector2D(string field, float[] vec[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
-	// Add an int32, uint32, sint32, fixed32, sfixed32, or public enum value to a protobuf message repeated field.
-	//
-	// @param field      Field name.
-	// @param value      Integer value to add.
-	// @error            Non-existent field, or incorrect field type.
-	public void AddInt(string field, int value) { throw new NotImplementedException(); }
+		// Add an int32, uint32, sint32, fixed32, sfixed32, or public enum value to a protobuf message repeated field.
+		//
+		// @param field      Field name.
+		// @param value      Integer value to add.
+		// @error            Non-existent field, or incorrect field type.
+		public void AddInt(string field, int value) { throw new NotImplementedException(); }
 
-	// Add an int64, uint64, sint64, fixed64, sfixed64 to a protobuf message repeated field.
-	//
-	// @param field      Field name.
-	// @param value      Large integer value to add (0=High bits, 1=Low bits).
-	// @error            Non-existent field, or incorrect field type.
-	public void AddInt64(string field, int value[2]) { throw new NotImplementedException(); }
+		// Add an int64, uint64, sint64, fixed64, sfixed64 to a protobuf message repeated field.
+		//
+		// @param field      Field name.
+		// @param value      Large integer value to add (0=High bits, 1=Low bits).
+		// @error            Non-existent field, or incorrect field type.
+		public void AddInt64(string field, int[/* 2 */] value) { throw new NotImplementedException(); }
 
-	// Add a float or double to a protobuf message repeated field.
-	//
-	// @param field      Field name.
-	// @param value      Float value to add.
-	// @error            Non-existent field, or incorrect field type.
-	public void AddFloat(string field, float value) { throw new NotImplementedException(); }
+		// Add a float or double to a protobuf message repeated field.
+		//
+		// @param field      Field name.
+		// @param value      Float value to add.
+		// @error            Non-existent field, or incorrect field type.
+		public void AddFloat(string field, float value) { throw new NotImplementedException(); }
 
-	// Add a bool to a protobuf message repeated field.
-	//
-	// @param field      Field name.
-	// @param value      Boolean value to add.
-	// @error            Non-existent field, or incorrect field type.
-	public void AddBool(string field, bool value) { throw new NotImplementedException(); }
+		// Add a bool to a protobuf message repeated field.
+		//
+		// @param field      Field name.
+		// @param value      Boolean value to add.
+		// @error            Non-existent field, or incorrect field type.
+		public void AddBool(string field, bool value) { throw new NotImplementedException(); }
 
-	// Add a string to a protobuf message repeated field.
-	//
-	// @param field      Field name.
-	// @param value      String value to add.
-	// @error            Non-existent field, or incorrect field type.
-	public void AddString(string field, string value) { throw new NotImplementedException(); }
+		// Add a string to a protobuf message repeated field.
+		//
+		// @param field      Field name.
+		// @param value      String value to add.
+		// @error            Non-existent field, or incorrect field type.
+		public void AddString(string field, string value) { throw new NotImplementedException(); }
 
-	// Add an RGBA color to a protobuf message repeated field.
-	//
-	// @param field      Field name.
-	// @param color      Color value to add.
-	// @error            Non-existent field, or incorrect field type.
-	public void AddColor(string field, const int color[4]) { throw new NotImplementedException(); }
+		// Add an RGBA color to a protobuf message repeated field.
+		//
+		// @param field      Field name.
+		// @param color      Color value to add.
+		// @error            Non-existent field, or incorrect field type.
+		public void AddColor(string field, const int[/* 4 */] color) { throw new NotImplementedException();
+	}
 
 	// Add an XYZ angle to a protobuf message repeated field.
 	//
@@ -349,7 +351,7 @@ public static void PbReadString(Handle pb, string field, string buffer, int maxl
  * @param index         Index into repeated field.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbReadColor(Handle pb, string field, int buffer[4], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+public static void PbReadColor(Handle pb, string field, int[/* 4 */] buffer, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
  * Reads an XYZ angle value from a protobuf message.
@@ -360,7 +362,7 @@ public static void PbReadColor(Handle pb, string field, int buffer[4], int index
  * @param index         Index into repeated field.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbReadAngle(Handle pb, string field, float buffer[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+public static void PbReadAngle(Handle pb, string field, float[/* 3 */] buffer, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
  * Reads an XYZ vector value from a protobuf message.
@@ -371,7 +373,7 @@ public static void PbReadAngle(Handle pb, string field, float buffer[3], int ind
  * @param index         Index into repeated field.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbReadVector(Handle pb, string field, float buffer[3], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+public static void PbReadVector(Handle pb, string field, float[/* 3 */] buffer, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
  * Reads an XY vector value from a protobuf message.
@@ -382,7 +384,7 @@ public static void PbReadVector(Handle pb, string field, float buffer[3], int in
  * @param index         Index into repeated field.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbReadVector2D(Handle pb, string field, float buffer[2], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+public static void PbReadVector2D(Handle pb, string field, float[/* 2 */] buffer, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
  * Gets the number of elements in a repeated field of a protobuf message.
@@ -447,7 +449,7 @@ public static void PbSetString(Handle pb, string field, string value, int index 
  * @param index         Index into repeated field.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbSetColor(Handle pb, string field, const int color[4], int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
+public static void PbSetColor(Handle pb, string field, const int[/* 4 */] color, int index = PB_FIELD_NOT_REPEATED) { throw new NotImplementedException(); }
 
 /**
  * Sets an XYZ angle on a protobuf message.
@@ -530,7 +532,7 @@ public static void PbAddString(Handle pb, string field, string value) { throw ne
  * @param color         Color value to add.
  * @error               Invalid or incorrect Handle, non-existent field, or incorrect field type.
  */
-public static void PbAddColor(Handle pb, string field, const int color[4]) { throw new NotImplementedException(); }
+public static void PbAddColor(Handle pb, string field, const int[/* 4 */] color) { throw new NotImplementedException(); }
 
 /**
  * Add an XYZ angle to a protobuf message repeated field.

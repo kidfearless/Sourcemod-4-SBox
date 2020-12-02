@@ -152,7 +152,7 @@ public static void GameRules_SetPropEnt(string prop, int other, int element=0, b
  * @param element       Element # (starting from 0) if public is an array.
  * @error               Not supported.
  */
-public static void GameRules_GetPropVector(string prop, float vec[3], int element=0) { throw new NotImplementedException(); }
+public static void GameRules_GetPropVector(string prop, float[/* 3 */] vec, int element=0) { throw new NotImplementedException(); }
 
 /**
  * Sets a vector of floats in the gamerules entity, given a named network property.

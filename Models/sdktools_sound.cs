@@ -50,7 +50,7 @@ public const int SOUND_FROM_LOCAL_PLAYER -1
 /**
  * Sound is from the world.
  */
-public const int SOUND_FROM_WORLD        0
+public const int SOUND_FROM_WORLD = 0; 
 
 /**
  * Sound channels.
@@ -113,15 +113,15 @@ public enum
 	SNDLEVEL_ROCKET = 180       /**< Rocket launching (0.2 attn) */
 };
 
-public const int SNDVOL_NORMAL       1.0     /**< Normal volume */
-public const int SNDPITCH_NORMAL     100     /**< Normal pitch */
-public const int SNDPITCH_LOW        95      /**< A low pitch */
-public const int SNDPITCH_HIGH       120     /**< A high pitch */
-public const int SNDATTN_NONE        0.0     /**< No attenuation */
-public const int SNDATTN_NORMAL      0.8     /**< Normal attenuation */
-public const int SNDATTN_STATIC      1.25    /**< Static attenuation? */
-public const int SNDATTN_RICOCHET    1.5     /**< Ricochet effect */
-public const int SNDATTN_IDLE        2.0     /**< Idle attenuation? */
+public const int SNDVOL_NORMAL = 1; .0     /**< Normal volume */
+public const int SNDPITCH_NORMAL = 100;      /**< Normal pitch */
+public const int SNDPITCH_LOW = 95;       /**< A low pitch */
+public const int SNDPITCH_HIGH = 120;      /**< A high pitch */
+public const int SNDATTN_NONE = 0; .0     /**< No attenuation */
+public const int SNDATTN_NORMAL = 0; .8     /**< Normal attenuation */
+public const int SNDATTN_STATIC = 1; .25    /**< Static attenuation? */
+public const int SNDATTN_RICOCHET = 1; .5     /**< Ricochet effect */
+public const int SNDATTN_IDLE = 2; .0     /**< Idle attenuation? */
 
 /**
  * Prefetches a sound.
@@ -322,14 +322,14 @@ public static float GetDistGainFromSoundLevel(int soundlevel, float distance) { 
  *                      Plugin_Changed when any parameter has been modified.
  */
 typedef AmbientSHook = function Action (
-  char sample[PLATFORM_MAX_PATH],
-  int &entity,
-  float &volume,
-  int &level,
-  int &pitch,
-  float pos[3],
-  int &flags,
-  float &delay
+  ref string sample,;
+  ref int entity,
+  ref float volume,
+  ref int level,
+  ref int pitch,
+  float[/* 3 */] pos,
+  ref int flags,
+  ref float delay
 ) { throw new NotImplementedException(); }
 
 typeset NormalSHook
@@ -350,18 +350,18 @@ typeset NormalSHook
 	// @param seed          Sound seed. (Used in engines newer than Portal 2)
 	// @return              Plugin_Continue to allow the sound to be played, Plugin_Stop to block it,
 	//                      Plugin_Changed when any parameter has been modified.
-	function Action (int clients[MAXPLAYERS], int &numClients, char sample[PLATFORM_MAX_PATH],
-	  int &entity, int &channel, float &volume, int &level, int &pitch, int &flags,
-	  char soundEntry[PLATFORM_MAX_PATH], int &seed) { throw new NotImplementedException(); }
+	function Action (int[/* MAXPLAYERS */] clients, ref int numClients, ref string sample,;
+	  ref int entity, ref int channel, ref float volume, ref int level, ref int pitch, ref int flags,
+	  ref string soundEntry,; ref int seed) { throw new NotImplementedException(); }
 
 	// Deprecated. Use other prototype.
-	function Action (int clients[64], int &numClients, char sample[PLATFORM_MAX_PATH],
-	  int &entity, int &channel, float &volume, int &level, int &pitch, int &flags,
-	  char soundEntry[PLATFORM_MAX_PATH], int &seed) { throw new NotImplementedException(); }
+	function Action (int[/* 64 */] clients, ref int numClients, ref string sample,;
+	  ref int entity, ref int channel, ref float volume, ref int level, ref int pitch, ref int flags,
+	  ref string soundEntry,; ref int seed) { throw new NotImplementedException(); }
 
 	// Deprecated. Use other prototype.
-	function Action (int clients[64], int &numClients, char sample[PLATFORM_MAX_PATH],
-	  int &entity, int &channel, float &volume, int &level, int &pitch, int &flags) { throw new NotImplementedException(); }
+	function Action (int[/* 64 */] clients, ref int numClients, ref string sample,;
+	  ref int entity, ref int channel, ref float volume, ref int level, ref int pitch, ref int flags) { throw new NotImplementedException(); }
 };
 
 /**
@@ -428,7 +428,7 @@ public static void EmitSoundToClient(int client,
 				 bool updatePos = true,
 				 float soundtime = 0.0)
 {
-	int clients[1];
+	int[] clients = new int[1];
 	clients[0] = client;
 	/* Save some work for SDKTools and remove SOUND_FROM_PLAYER references */
 	entity = (entity == SOUND_FROM_PLAYER) ? client : entity;
@@ -523,10 +523,10 @@ public static int ATTN_TO_SNDLEVEL(float attn)
  *                      was not found
  */
 public static bool GetGameSoundParams(string gameSound,
-				int &channel,
-				int &soundLevel,
-				float &volume,
-				int &pitch,
+				ref int channel,
+				ref int soundLevel,
+				ref float volume,
+				ref int pitch,
 				string sample,
 				int maxlength,
 				int entity=SOUND_FROM_PLAYER) { throw new NotImplementedException(); }
@@ -568,7 +568,7 @@ public static bool EmitGameSound(const int[] clients,
 	int level;
 	float volume;
 	int pitch;
-	char sample[PLATFORM_MAX_PATH];
+	string sample;
 
 	if (GetGameSoundParams(gameSound, channel, level, volume, pitch, sample, sizeof(sample), entity))
 	{
@@ -604,7 +604,7 @@ public static bool EmitAmbientGameSound(string gameSound,
 	int level;
 	float volume;
 	int pitch;
-	char sample[PLATFORM_MAX_PATH];
+	string sample;
 
 	if (GetGameSoundParams(gameSound, channel, level, volume, pitch, sample, sizeof(sample), entity))
 	{
@@ -645,7 +645,7 @@ public static bool EmitGameSoundToClient(int client,
 				bool updatePos = true,
 				float soundtime = 0.0)
 {
-	int clients[1];
+	int[] clients = new int[1];
 	clients[0] = client;
 	/* Save some work for SDKTools and remove SOUND_FROM_PLAYER references */
 	entity = (entity == SOUND_FROM_PLAYER) ? client : entity;

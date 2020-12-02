@@ -251,7 +251,7 @@ public class TopMenu : Handle
 	// are cached to reduce overhead. If you need dynamic menu titles which
 	// change each time the menu is displayed to a user, set this to false.
 	public bool CacheTitles {
-		public set(bool value) { throw new NotImplementedException(); }
+		set { throw new NotImplementedException(); }
 	}
 };
 

@@ -50,7 +50,7 @@ namespace Sourcemod
  * @param ccode         Destination string buffer to store the code.
  * @return              True on success, false if no country found.
  */
-public static bool GeoipCode2(string ip, char ccode[3]) { throw new NotImplementedException(); }
+public static bool GeoipCode2(string ip, ref string ccode); { throw new NotImplementedException(); }
 
 /**
  * Gets the three character country code from an IP address. (USA, CAN, etc)
@@ -59,7 +59,7 @@ public static bool GeoipCode2(string ip, char ccode[3]) { throw new NotImplement
  * @param ccode         Destination string buffer to store the code.
  * @return              True on success, false if no country found.
  */
-public static bool GeoipCode3(string ip, char ccode[4]) { throw new NotImplementedException(); }
+public static bool GeoipCode3(string ip, ref string ccode); { throw new NotImplementedException(); }
 
 /**
  * Gets the full country name. (max length of output string is 45)

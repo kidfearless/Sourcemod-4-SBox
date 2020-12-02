@@ -39,10 +39,10 @@ namespace Sourcemod
 
 #include <datapack>
 
-public const int TIMER_REPEAT            (1<<0)      /**< Timer will repeat until it returns Plugin_Stop */
-public const int TIMER_FLAG_NO_MAPCHANGE (1<<1)      /**< Timer will not carry over mapchanges */
-public const int TIMER_HNDL_CLOSE        (1<<9)      /**< Deprecated define, replaced by below */
-public const int TIMER_DATA_HNDL_CLOSE   (1<<9)      /**< Timer will automatically call CloseHandle() on its data when finished */
+public const int TIMER_REPEAT = (1<<0);       /**< Timer will repeat until it returns Plugin_Stop */
+public const int TIMER_FLAG_NO_MAPCHANGE = (1<<1);       /**< Timer will not carry over mapchanges */
+public const int TIMER_HNDL_CLOSE = (1<<9);       /**< Deprecated define, replaced by below */
+public const int TIMER_DATA_HNDL_CLOSE = (1<<9);       /**< Timer will automatically call CloseHandle() on its data when finished */
 
 /**
  * Any of the following prototypes will work for a timed function.
@@ -132,7 +132,7 @@ public static float GetTickedTime() { throw new NotImplementedException(); }
  *                      value is less than 0, the time limit is infinite.
  * @return              True if the operation is supported, false otherwise.
  */
-public static bool GetMapTimeLeft(int &timeleft) { throw new NotImplementedException(); }
+public static bool GetMapTimeLeft(ref int timeleft) { throw new NotImplementedException(); }
 
 /**
  * Retrieves the current map time limit.  If the server has not processed any
@@ -143,7 +143,7 @@ public static bool GetMapTimeLeft(int &timeleft) { throw new NotImplementedExcep
  *                      limit, or 0 if there is no time limit set.
  * @return              True on success, false if operation is not supported.
  */
-public static bool GetMapTimeLimit(int &time) { throw new NotImplementedException(); }
+public static bool GetMapTimeLimit(ref int time) { throw new NotImplementedException(); }
 
 /**
  * Extends the map time limit in a way that will notify all plugins.
@@ -203,7 +203,7 @@ public static bool IsServerProcessing() { throw new NotImplementedException(); }
  * @param flags         Timer flags.
  * @return              Handle to the timer object.  You do not need to call CloseHandle().
  */
-public static Handle CreateDataTimer(float interval, Timer func, Handle &datapack, int flags=0)
+public static Handle CreateDataTimer(float interval, Timer func, ref Handle datapack, int flags=0)
 {
 	datapack = new DataPack() { throw new NotImplementedException(); }
 	flags |= TIMER_DATA_HNDL_CLOSE;

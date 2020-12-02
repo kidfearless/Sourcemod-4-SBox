@@ -46,7 +46,7 @@ namespace Sourcemod
  * @param delay         Delay in seconds to send the TE.
  * @return              Plugin_Continue to allow the transmission of the TE, Plugin_Stop to block it.
  */
-typedef TEHook = function Action (string te_name, const int[] Players, int numClients, float delay) { throw new NotImplementedException(); }
+public delegate Action TEHook(string te_name, const int[] Players, int numClients, float delay);
 
 /**
  * Hooks a temp entity.
@@ -134,7 +134,7 @@ public static void TE_WriteVector(string prop, float[] vector[3]) { throw new No
  * @param vector        Vector to read.
  * @error               public not found.
  */
-public static void TE_ReadVector(string prop, float vector[3]) { throw new NotImplementedException(); }
+public static void TE_ReadVector(string prop, float[/* 3 */] vector) { throw new NotImplementedException(); }
 
 /**
  * Sets a QAngle in the current temp entity.
@@ -209,7 +209,7 @@ public static void TE_SendToAll(float delay=0.0)
  */
 public static void TE_SendToClient(int client, float delay=0.0)
 {
-	int players[1];
+	int[] players = new int[1];
 
 	players[0] = client;
 

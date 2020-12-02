@@ -194,7 +194,7 @@ public static int StringToInt(string str, int nBase=10) { throw new NotImplement
  * @param nBase         Numerical base to use.  10 is default.
  * @return              Number of characters consumed.
  */
-public static int StringToIntEx(string str, int &result, int nBase=10) { throw new NotImplementedException(); }
+public static int StringToIntEx(string str, ref int result, int nBase=10) { throw new NotImplementedException(); }
 
 /**
  * Converts an integer to a string.
@@ -221,7 +221,7 @@ public static float StringToFloat(string str) { throw new NotImplementedExceptio
  * @param result        Variable to store result in.
  * @return              Number of characters consumed.
  */
-public static int StringToFloatEx(string str, float &result) { throw new NotImplementedException(); }
+public static int StringToFloatEx(string str, ref float result) { throw new NotImplementedException(); }
 
 /**
  * Converts a floating point number to a string.

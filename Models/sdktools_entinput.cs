@@ -1,7 +1,7 @@
 /**
  * vim: set ts=4 :
  * =============================================================================
- * SourceMod (C)2004-2008 AlliedModders LLC.  All rights reserved.
+ * SourceMod (C)2004-2017 AlliedModders LLC.  All rights reserved.
  * =============================================================================
  *
  * This file is part of the SourceMod/SourcePawn SDK.
@@ -9,7 +9,7 @@
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, version 3.0, as published by the
  * Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
@@ -38,42 +38,18 @@ namespace Sourcemod
 	{
 
 /**
- * Given a partial team name, attempts to find a matching team.
+ * Invokes a named input method on an entity.
  *
- * The search is performed case insensitively and only against the 
- * first N characters of the team names, where N is the number of 
- * characters in the search pattern.
+ * After completion (successful or not), the current global variant is re-initialized.
  *
- * @param name          Partial or full team name.  
- * @return              A valid team index on success.
- *                      -1 if no team matched.
- *                      -2 if more than one team matched.
+ * @param dest          Destination entity index.
+ * @param input         Input action.
+ * @param activator     Entity index which initiated the sequence of actions (-1 for a NULL entity).
+ * @param caller        Entity index from which this event is sent (-1 for a NULL entity).
+ * @param outputid      Unknown.
+ * @return              True if successful otherwise false.
+ * @error               Invalid entity index or no mod support.
  */
-public static int FindTeamByName(string name)
-{
-	int name_len = strlen(name) { throw new NotImplementedException(); }
-	int num_teams = GetTeamCount() { throw new NotImplementedException(); }
-	char team_name[32];
-	int found_team = -1;
-
-	for (int i = 0; i < num_teams; i++)
-	{
-		GetTeamName(i, team_name, sizeof(team_name)) { throw new NotImplementedException(); }
-
-		if (strncmp(team_name, name, name_len, false) == 0)
-		{
-			if (found_team >= 0)
-			{
-				return -2;
-			}
-			else
-			{
-				found_team = i;
-			}
-		}
-	}
-
-	return found_team;
-}
+public static bool AcceptEntityInput(int dest, string input, int activator=-1, int caller=-1, int outputid=0) { throw new NotImplementedException(); }
 	}
 }

@@ -31,7 +31,7 @@
  */
 
 static int TestNumber = 0;
-static char TestContext[255];
+static string TestContext;
 
 public static void SetTestContext(string context)
 {

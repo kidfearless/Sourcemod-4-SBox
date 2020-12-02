@@ -37,34 +37,18 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const int MAX_LIGHTSTYLES 64
+/**
+ * Sets the client to an inactive state waiting for a new map
+ *
+ * @param client        The client index
+ */
+public static void InactivateClient(int client) { throw new NotImplementedException(); }
 
 /**
- * Sets a client's "viewing entity."
+ * Reconnect a client without dropping the netchannel
  *
- * @param client        Client index.
- * @param entity        Entity index.
- * @error               Invalid client or entity, lack of mod support, or client not in 
- *                      game.
+ * @param client        The client index
  */
-public static void SetClientViewEntity(int client, int entity) { throw new NotImplementedException(); }
-
-/**
- * Sets a light style.
- *
- * @param style         Light style (from 0 to MAX_LIGHTSTYLES-1)
- * @param value         Light value string (see world.cpp/light.cpp in dlls)
- * @error               Light style index is out of range.
- */
-public static void SetLightStyle(int style, string value) { throw new NotImplementedException(); }
-
-/**
- * Returns the client's eye position.
- *
- * @param client        Player's index.
- * @param pos           Destination vector to store the client's eye position.
- * @error               Invalid client index, client not in game, or no mod support.
- */
-public static void GetClientEyePosition(int client, float pos[3]) { throw new NotImplementedException(); }
+public static void ReconnectClient(int client) { throw new NotImplementedException(); }
 	}
 }

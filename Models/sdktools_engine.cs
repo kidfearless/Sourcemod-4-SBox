@@ -1,7 +1,7 @@
 /**
  * vim: set ts=4 :
  * =============================================================================
- * SourceMod (C)2004-2017 AlliedModders LLC.  All rights reserved.
+ * SourceMod (C)2004-2008 AlliedModders LLC.  All rights reserved.
  * =============================================================================
  *
  * This file is part of the SourceMod/SourcePawn SDK.
@@ -9,7 +9,7 @@
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, version 3.0, as published by the
  * Free Software Foundation.
- *
+ * 
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
@@ -37,19 +37,34 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
+public const int MAX_LIGHTSTYLES = 64; 
+
 /**
- * Invokes a named input method on an entity.
+ * Sets a client's "viewing entity."
  *
- * After completion (successful or not), the current global variant is re-initialized.
- *
- * @param dest          Destination entity index.
- * @param input         Input action.
- * @param activator     Entity index which initiated the sequence of actions (-1 for a NULL entity).
- * @param caller        Entity index from which this event is sent (-1 for a NULL entity).
- * @param outputid      Unknown.
- * @return              True if successful otherwise false.
- * @error               Invalid entity index or no mod support.
+ * @param client        Client index.
+ * @param entity        Entity index.
+ * @error               Invalid client or entity, lack of mod support, or client not in 
+ *                      game.
  */
-public static bool AcceptEntityInput(int dest, string input, int activator=-1, int caller=-1, int outputid=0) { throw new NotImplementedException(); }
+public static void SetClientViewEntity(int client, int entity) { throw new NotImplementedException(); }
+
+/**
+ * Sets a light style.
+ *
+ * @param style         Light style (from 0 to MAX_LIGHTSTYLES-1)
+ * @param value         Light value string (see world.cpp/light.cpp in dlls)
+ * @error               Light style index is out of range.
+ */
+public static void SetLightStyle(int style, string value) { throw new NotImplementedException(); }
+
+/**
+ * Returns the client's eye position.
+ *
+ * @param client        Player's index.
+ * @param pos           Destination vector to store the client's eye position.
+ * @error               Invalid client index, client not in game, or no mod support.
+ */
+public static void GetClientEyePosition(int client, float[/* 3 */] pos) { throw new NotImplementedException(); }
 	}
 }

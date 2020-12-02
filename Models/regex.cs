@@ -41,17 +41,17 @@ namespace Sourcemod
  * @section     Flags for compiling regex expressions.  These come directly from the
  * pcre library and can be used in MatchRegex and CompileRegex.
  */
-public const int PCRE_CASELESS           0x00000001 /* Ignore Case */
-public const int PCRE_MULTILINE          0x00000002 /* Multilines (affects ^ and $ so that they match the start/end of a line rather than matching the start/end of the string). */
-public const int PCRE_DOTALL             0x00000004 /* Single line (affects . so that it matches any character, even new line characters). */
-public const int PCRE_EXTENDED           0x00000008 /* Pattern extension (ignore whitespace and # comments). */
-public const int PCRE_ANCHORED           0x00000010 /* Force pattern anchoring. */
-public const int PCRE_DOLLAR_ENDONLY     0x00000020 /* $ not to match newline at end. */
-public const int PCRE_UNGREEDY           0x00000200 /* Invert greediness of quantifiers */
-public const int PCRE_NOTEMPTY           0x00000400 /* An empty string is not a valid match. */
+public const int PCRE_CASELESS = 0x00000001;  /* Ignore Case */
+public const int PCRE_MULTILINE = 0x00000002;  /* Multilines (affects ^ and $ so that they match the start/end of a line rather than matching the start/end of the string). */
+public const int PCRE_DOTALL = 0x00000004;  /* Single line (affects . so that it matches any character, even new line characters). */
+public const int PCRE_EXTENDED = 0x00000008;  /* Pattern extension (ignore whitespace and # comments). */
+public const int PCRE_ANCHORED = 0x00000010;  /* Force pattern anchoring. */
+public const int PCRE_DOLLAR_ENDONLY = 0x00000020;  /* $ not to match newline at end. */
+public const int PCRE_UNGREEDY = 0x00000200;  /* Invert greediness of quantifiers */
+public const int PCRE_NOTEMPTY = 0x00000400;  /* An empty string is not a valid match. */
 public const int PCRE_UTF8               0x00000800 /* Use UTF-8 Chars */
 public const int PCRE_NO_UTF8_CHECK      0x00002000 /* Do not check the pattern for UTF-8 validity (only relevant if PCRE_UTF8 is set) */
-public const int PCRE_UCP                0x20000000 /* Use Unicode properties for \ed, \ew, etc. */
+public const int PCRE_UCP = 0x20000000;  /* Use Unicode properties for \ed, \ew, etc. */
 
 
 /**
@@ -123,7 +123,7 @@ public class Regex : Handle
 	// @param error         Error message encountered, if applicable.
 	// @param maxLen        Maximum string length of the error buffer.
 	// @param errcode       Regex type error code encountered, if applicable.
-	public Regex(string pattern, int flags = 0, string error="", int maxLen = 0, RegexError &errcode = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
+	public Regex(string pattern, int flags = 0, string error="", int maxLen = 0, ref RegexError errcode/* = REGEX_ERROR_NONE*/) { throw new NotImplementedException(); }
 
 	// Matches a string against a pre-compiled regular expression pattern.
 	//
@@ -134,7 +134,7 @@ public class Regex : Handle
 	//
 	// @note Use the regex handle passed to this function to extract
 	//       matches with GetSubString().
-	public int Match(string str, RegexError &ret = REGEX_ERROR_NONE, int offset = 0) { throw new NotImplementedException(); }
+	public int Match(string str, ref RegexError ret/* = REGEX_ERROR_NONE*/, int offset = 0) { throw new NotImplementedException(); }
 
 	// Gets all matches from a string against a pre-compiled regular expression pattern.
 	//
@@ -143,7 +143,7 @@ public class Regex : Handle
 	// @return              Number of matches found or -1 on failure.
 	//
 	// @note Use GetSubString() and loop from 0 -> totalmatches - 1.
-	public int MatchAll(string str, RegexError &ret = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
+	public int MatchAll(string str, ref RegexError ret/* = REGEX_ERROR_NONE*/) { throw new NotImplementedException(); }
 
 	// Returns a matched substring from a regex handle.
 	//
@@ -193,7 +193,7 @@ public class Regex : Handle
  * @param errcode       Regex type error code encountered, if applicable.
  * @return              Valid regex handle on success, INVALID_HANDLE on failure.
  */
-public static Regex CompileRegex(string pattern, int flags = 0, string error="", int maxLen = 0, RegexError &errcode = REGEX_ERROR_NONE) { throw new NotImplementedException(); }
+public static Regex CompileRegex(string pattern, int flags = 0, string error="", int maxLen = 0, ref RegexError errcode/* = REGEX_ERROR_NONE*/) { throw new NotImplementedException(); }
 
 /**
  * Matches a string against a pre-compiled regular expression pattern.
@@ -207,7 +207,7 @@ public static Regex CompileRegex(string pattern, int flags = 0, string error="",
  * @note Use the regex handle passed to this function to extract
  *       matches with GetRegexSubString().
  */
-public static int MatchRegex(Handle regex, string str, RegexError &ret = REGEX_ERROR_NONE, int offset = 0) { throw new NotImplementedException(); }
+public static int MatchRegex(Handle regex, string str, ref RegexError ret/* = REGEX_ERROR_NONE*/, int offset = 0) { throw new NotImplementedException(); }
 
 /**
  * Returns a matched substring from a regex handle.

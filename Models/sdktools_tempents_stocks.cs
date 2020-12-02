@@ -40,15 +40,15 @@ namespace Sourcemod
 /**
  * @section TE Explosion flags.
  */
-public const int TE_EXPLFLAG_NONE            0x0   /**< all flags clear makes default Half-Life explosion */
-public const int TE_EXPLFLAG_NOADDITIVE      0x1   /**< sprite will be drawn opaque (ensure that the sprite you send is a non-additive sprite) */
-public const int TE_EXPLFLAG_NODLIGHTS       0x2   /**< do not render dynamic lights */
-public const int TE_EXPLFLAG_NOSOUND         0x4   /**< do not play client explosion sound */
-public const int TE_EXPLFLAG_NOPARTICLES     0x8   /**< do not draw particles */
-public const int TE_EXPLFLAG_DRAWALPHA       0x10  /**< sprite will be drawn alpha */
-public const int TE_EXPLFLAG_ROTATE          0x20  /**< rotate the sprite randomly */
-public const int TE_EXPLFLAG_NOFIREBALL      0x40  /**< do not draw a fireball */
-public const int TE_EXPLFLAG_NOFIREBALLSMOKE 0x80  /**< do not draw smoke with the fireball */
+public const int TE_EXPLFLAG_NONE = 0x0;    /**< all flags clear makes default Half-Life explosion */
+public const int TE_EXPLFLAG_NOADDITIVE = 0x1;    /**< sprite will be drawn opaque (ensure that the sprite you send is a non-additive sprite) */
+public const int TE_EXPLFLAG_NODLIGHTS = 0x2;    /**< do not render dynamic lights */
+public const int TE_EXPLFLAG_NOSOUND = 0x4;    /**< do not play client explosion sound */
+public const int TE_EXPLFLAG_NOPARTICLES = 0x8;    /**< do not draw particles */
+public const int TE_EXPLFLAG_DRAWALPHA = 0x10;   /**< sprite will be drawn alpha */
+public const int TE_EXPLFLAG_ROTATE = 0x20;   /**< rotate the sprite randomly */
+public const int TE_EXPLFLAG_NOFIREBALL = 0x40;   /**< do not draw a fireball */
+public const int TE_EXPLFLAG_NOFIREBALLSMOKE = 0x80;   /**< do not draw smoke with the fireball */
 
 /**
  * @endsection
@@ -57,22 +57,22 @@ public const int TE_EXPLFLAG_NOFIREBALLSMOKE 0x80  /**< do not draw smoke with t
 /**
  * @section TE Beam flags.
  */
-public const int FBEAM_STARTENTITY   0x00000001
-public const int FBEAM_ENDENTITY     0x00000002
-public const int FBEAM_FADEIN        0x00000004
-public const int FBEAM_FADEOUT       0x00000008
-public const int FBEAM_SINENOISE     0x00000010
-public const int FBEAM_SOLID         0x00000020
-public const int FBEAM_SHADEIN       0x00000040
-public const int FBEAM_SHADEOUT      0x00000080
-public const int FBEAM_ONLYNOISEONCE 0x00000100  /**< Only calculate our noise once */
-public const int FBEAM_NOTILE        0x00000200
-public const int FBEAM_USE_HITBOXES  0x00000400  /**< Attachment indices represent hitbox indices instead when this is set. */
-public const int FBEAM_STARTVISIBLE  0x00000800  /**< Has this client actually seen this beam's start entity yet? */
-public const int FBEAM_ENDVISIBLE    0x00001000  /**< Has this client actually seen this beam's end entity yet? */
-public const int FBEAM_ISACTIVE      0x00002000
-public const int FBEAM_FOREVER       0x00004000
-public const int FBEAM_HALOBEAM      0x00008000  /**< When drawing a beam with a halo, don't ignore the segments and endwidth */
+public const int FBEAM_STARTENTITY = 0x00000001; 
+public const int FBEAM_ENDENTITY = 0x00000002; 
+public const int FBEAM_FADEIN = 0x00000004; 
+public const int FBEAM_FADEOUT = 0x00000008; 
+public const int FBEAM_SINENOISE = 0x00000010; 
+public const int FBEAM_SOLID = 0x00000020; 
+public const int FBEAM_SHADEIN = 0x00000040; 
+public const int FBEAM_SHADEOUT = 0x00000080; 
+public const int FBEAM_ONLYNOISEONCE = 0x00000100;   /**< Only calculate our noise once */
+public const int FBEAM_NOTILE = 0x00000200; 
+public const int FBEAM_USE_HITBOXES = 0x00000400;   /**< Attachment indices represent hitbox indices instead when this is set. */
+public const int FBEAM_STARTVISIBLE = 0x00000800;   /**< Has this client actually seen this beam's start entity yet? */
+public const int FBEAM_ENDVISIBLE = 0x00001000;   /**< Has this client actually seen this beam's end entity yet? */
+public const int FBEAM_ISACTIVE = 0x00002000; 
+public const int FBEAM_FOREVER = 0x00004000; 
+public const int FBEAM_HALOBEAM = 0x00008000;   /**< When drawing a beam with a halo, don't ignore the segments and endwidth */
 
 /**
  * @endsection
@@ -243,7 +243,7 @@ public static void TE_SetupExplosion(float[] pos[3], int Model, float Scale, int
  * @param SprayModel      Precached model index.
  * @param BloodDropModel  Precached model index.
  */
-public static void TE_SetupBloodSprite(float[] pos[3], float[] dir[3], const int color[4], int Size, int SprayModel, int BloodDropModel)
+public static void TE_SetupBloodSprite(float[] pos[3], float[] dir[3], const int[/* 4 */] color, int Size, int SprayModel, int BloodDropModel)
 {
 	TE_Start("Blood Sprite") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecOrigin", pos) { throw new NotImplementedException(); }
@@ -275,7 +275,7 @@ public static void TE_SetupBloodSprite(float[] pos[3], float[] dir[3], const int
  * @param Flags         Beam flags.
  */
 public static void TE_SetupBeamRingPoint(float[] center[3], float Start_Radius, float End_Radius, int ModelIndex, int HaloIndex, int StartFrame, 
-				int FrameRate, float Life, float Width, float Amplitude, const int Color[4], int Speed, int Flags)
+				int FrameRate, float Life, float Width, float Amplitude, const int[/* 4 */] Color, int Speed, int Flags)
 {
 	TE_Start("BeamRingPoint") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecCenter", center) { throw new NotImplementedException(); }
@@ -316,7 +316,7 @@ public static void TE_SetupBeamRingPoint(float[] center[3], float Start_Radius, 
  * @param Speed         Speed of the beam.
  */
 public static void TE_SetupBeamPoints(float[] start[3], float[] end[3], int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, 
-				float Width, float EndWidth, int FadeLength, float Amplitude, const int Color[4], int Speed)
+				float Width, float EndWidth, int FadeLength, float Amplitude, const int[/* 4 */] Color, int Speed)
 {
 	TE_Start("BeamPoints") { throw new NotImplementedException(); }
 	TE_WriteVector("m_vecStartPoint", start) { throw new NotImplementedException(); }
@@ -355,7 +355,7 @@ public static void TE_SetupBeamPoints(float[] start[3], float[] end[3], int Mode
  * @param Speed         Speed of the beam.
  */
 public static void TE_SetupBeamLaser(int StartEntity, int EndEntity, int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, 
-				float Width, float EndWidth, int FadeLength, float Amplitude, const int Color[4], int Speed)
+				float Width, float EndWidth, int FadeLength, float Amplitude, const int[/* 4 */] Color, int Speed)
 {
 	TE_Start("BeamLaser") { throw new NotImplementedException(); }
 	TE_WriteEncodedEnt("m_nStartEntity", StartEntity) { throw new NotImplementedException(); }
@@ -392,7 +392,7 @@ public static void TE_SetupBeamLaser(int StartEntity, int EndEntity, int ModelIn
  * @param Speed         Speed of the beam.
  * @param Flags         Beam flags.
  */
-public static void TE_SetupBeamRing(int StartEntity, int EndEntity, int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, float Width, float Amplitude, const int Color[4], int Speed, int Flags)
+public static void TE_SetupBeamRing(int StartEntity, int EndEntity, int ModelIndex, int HaloIndex, int StartFrame, int FrameRate, float Life, float Width, float Amplitude, const int[/* 4 */] Color, int Speed, int Flags)
 {
 	TE_Start("BeamRing") { throw new NotImplementedException(); }
 	TE_WriteEncodedEnt("m_nStartEntity", StartEntity) { throw new NotImplementedException(); }
@@ -426,7 +426,7 @@ public static void TE_SetupBeamRing(int StartEntity, int EndEntity, int ModelInd
  * @param FadeLength    Beam fade time duration.
  * @param Color         Color array (r, g, b, a).
  */
-public static void TE_SetupBeamFollow(int EntIndex, int ModelIndex, int HaloIndex, float Life, float Width, float EndWidth, int FadeLength, const int Color[4])
+public static void TE_SetupBeamFollow(int EntIndex, int ModelIndex, int HaloIndex, float Life, float Width, float EndWidth, int FadeLength, const int[/* 4 */] Color)
 {
 	TE_Start("BeamFollow") { throw new NotImplementedException(); }
 	TE_WriteEncodedEnt("m_iEntIndex", EntIndex) { throw new NotImplementedException(); }

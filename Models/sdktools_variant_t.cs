@@ -84,7 +84,7 @@ public static void SetVariantPosVector3D(float[] vec[3]) { throw new NotImplemen
  *
  * @param color         Input color.
  */
-public static void SetVariantColor(const int color[4]) { throw new NotImplementedException(); }
+public static void SetVariantColor(const int[/* 4 */] color) { throw new NotImplementedException(); }
 
 /**
  * Sets an entity in the global variant object.

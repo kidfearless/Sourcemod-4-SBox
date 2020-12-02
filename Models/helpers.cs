@@ -61,7 +61,7 @@ public static void FormatUserLogText(int client, string buffer, int maxlength)
  */
 public static Handle FindPluginByFile(string filename)
 {
-	char buffer[256];
+	string buffer;
 	
 	Handle iter = GetPluginIterator() { throw new NotImplementedException(); }
 	Handle pl;
@@ -100,7 +100,7 @@ public static int SearchForClients(string pattern, int[] clients, int maxClients
 	{
 		int input = StringToInt(pattern[1]) { throw new NotImplementedException(); }
 		if (!input) {
-			char name[MAX_NAME_LENGTH];
+			string name;
 			for (int i=1; i<=MaxClients; i++)
 			{
 				if (!IsClientInGame(i))
@@ -126,7 +126,7 @@ public static int SearchForClients(string pattern, int[] clients, int maxClients
 		}
 	}
 	
-	char name[MAX_NAME_LENGTH];
+	string name;
 	for (int i=1; i<=MaxClients; i++)
 	{
 		if (!IsClientInGame(i))
@@ -164,8 +164,8 @@ public static int SearchForClients(string pattern, int[] clients, int maxClients
  */
 public static int FindTarget(int client, string target, bool nobots = false, bool immunity = true)
 {
-	char target_name[MAX_TARGET_LENGTH];
-	int target_list[1], target_count;
+	string target_name;
+	int[/* 1 */] target_list, target_count;
 	bool tn_is_ml;
 	
 	int flags = COMMAND_FILTER_NO_MULTI;
@@ -189,7 +189,7 @@ public static int FindTarget(int client, string target, bool nobots = false, boo
 			sizeof(target_name),
 			tn_is_ml)) > 0)
 	{
-		return target_list[0];
+		return[] target_list = new return[0];
 	}
 
 	ReplyToTargetError(client, target_count) { throw new NotImplementedException(); }
@@ -213,9 +213,9 @@ public static int FindTarget(int client, string target, bool nobots = false, boo
  * @deprecated          Use ReadMapList() instead.
  */
 #pragma deprecated Use ReadMapList() instead. 
-public static int LoadMaps(Handle array, int &fileTime = 0, Handle fileCvar = INVALID_HANDLE)
+public static int LoadMaps(Handle array, ref int fileTime/* = 0*/, Handle fileCvar = INVALID_HANDLE)
 { 
-	char mapPath[256], mapFile[64];
+	ref string mapPath,; mapFile[64];
 	bool fileFound = false;
 	
 	if (fileCvar != INVALID_HANDLE)
@@ -261,7 +261,7 @@ public static int LoadMaps(Handle array, int &fileTime = 0, Handle fileCvar = IN
 	LogMessage("Loading maps from file: %s", mapPath) { throw new NotImplementedException(); }
 	
 	int len;
-	char buffer[64];
+	string buffer;
 	while (!file.EndOfFile() && file.ReadLine(buffer, sizeof(buffer)))
 	{
 		TrimString(buffer) { throw new NotImplementedException(); }

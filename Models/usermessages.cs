@@ -57,9 +57,9 @@ public enum UserMessageType
 /**
  * @section Message Flags.
  */
-public const int USERMSG_RELIABLE        (1<<2)    /**< Message will be set on the reliable stream */
-public const int USERMSG_INITMSG         (1<<3)    /**< Message will be considered to be an initmsg */
-public const int USERMSG_BLOCKHOOKS      (1<<7)    /**< Prevents the message from triggering SourceMod and Metamod hooks */
+public const int USERMSG_RELIABLE = (1<<2);     /**< Message will be set on the reliable stream */
+public const int USERMSG_INITMSG = (1<<3);     /**< Message will be considered to be an initmsg */
+public const int USERMSG_BLOCKHOOKS = (1<<7);     /**< Prevents the message from triggering SourceMod and Metamod hooks */
 
 /**
  * @endsection
@@ -202,7 +202,7 @@ typeset MsgHook
  * @param msg_id        Message index.
  * @param sent          True if message was sent, false if blocked.
  */
-typedef MsgPostHook = function void (UserMsg msg_id, bool sent) { throw new NotImplementedException(); }
+public delegate void MsgPostHook(UserMsg msg_id, bool sent);
 
 /**
  * Hooks a user message.
@@ -265,7 +265,7 @@ public static Handle StartMessageAll(string msgname, int flags=0)
  */
 public static Handle StartMessageOne(string msgname, int client, int flags=0)
 {
-	int players[1];
+	int[] players = new int[1];
 	players[0] = client;
 
 	return StartMessage(msgname, players, 1, flags) { throw new NotImplementedException(); }

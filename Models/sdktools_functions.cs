@@ -137,7 +137,7 @@ public static int FindEntityByClassname(int startEnt, string classname) { throw 
  * @return              True on success, false on failure.
  * @error               Invalid client index, client not in game, or no mod support.
  */
-public static bool GetClientEyeAngles(int client, float ang[3]) { throw new NotImplementedException(); }
+public static bool GetClientEyeAngles(int client, float[/* 3 */] ang) { throw new NotImplementedException(); }
 
 /**
  * Creates an entity by string name, but does not spawn it (see DispatchSpawn).
@@ -300,7 +300,7 @@ public static bool GetPlayerJingleFile(int client, string hex, int maxlength) { 
  * @param in            Buffer to store the input traffic velocity.
  * @param out           Buffer to store the output traffic velocity.
  */
-public static void GetServerNetStats(float &inAmount, float &outAmout) { throw new NotImplementedException(); }
+public static void GetServerNetStats(ref float inAmount, ref float outAmout) { throw new NotImplementedException(); }
 
 /**
  * Equip's a player's weapon.
