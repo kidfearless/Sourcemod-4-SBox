@@ -40,7 +40,7 @@ namespace Sourcemod
 		/**
 		 * Plugin public information.
 		 */
-		struct Plugin
+		public struct Plugin
 		{
 			public string name;        /**< Plugin Name */
 			public string description; /**< Plugin Description */

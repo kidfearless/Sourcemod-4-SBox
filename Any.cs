@@ -9,7 +9,10 @@ namespace Sourcemod
 {
 	public partial class SourceMod
 	{
+		public SourceMod()
+		{
 
+		}
 		/// <summary>
 		/// C# implementation of the cell_t struct in pawn
 		/// </summary>
@@ -40,25 +43,6 @@ namespace Sourcemod
 			public static implicit operator float(any value) => value.FloatValue;
 			public static implicit operator bool(any value) => value.BoolValue;
 			public static implicit operator char(any value) => value.CharValue;
-		}
-	}
-
-	public class Test
-	{
-
-		public void B()
-		{
-			Call(T);
-		}
-
-		private void Call(Func<int> t)
-		{
-			throw new NotImplementedException();
-		}
-
-		public int T()
-		{
-
 		}
 	}
 }

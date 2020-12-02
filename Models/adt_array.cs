@@ -316,7 +316,7 @@ namespace Sourcemod
 		 * @return              Index of the new entry.
 		 * @error               Invalid Handle or out of memory.
 		 */
-		public int PushArrayString(Handle array, const char[] value){throw new NotImplementedException();
+		public int PushArrayString(Handle array, string value){throw new NotImplementedException();
 	}
 
 	/**
@@ -394,7 +394,7 @@ namespace Sourcemod
 	 * @return              Number of characters copied.
 	 * @error               Invalid Handle or invalid index.
 	 */
-	public int SetArrayString(Handle array, int index, const char[] value) { throw new NotImplementedException(); }
+	public int SetArrayString(Handle array, int index, string value) { throw new NotImplementedException(); }
 
 	/**
 	 * Sets an array of cells in an array.
@@ -450,7 +450,7 @@ namespace Sourcemod
 	 * @return              Array index, or -1 on failure
 	 * @error               Invalid Handle
 	 */
-	public int FindStringInArray(Handle array, const char[] item) { throw new NotImplementedException(); }
+	public int FindStringInArray(Handle array, string item) { throw new NotImplementedException(); }
 
 	/**
 	 * Returns the index for the first occurrence of the provided value. If the value
