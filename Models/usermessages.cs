@@ -79,7 +79,7 @@ namespace Sourcemod
 				return null;
 			}
 
-			return (Protobuf)(msg) { throw new NotImplementedException(); }
+			return (Protobuf)(msg);
 		}
 
 		// Make sure to only call this on writable buffers (eg from StartMessage).
@@ -90,7 +90,7 @@ namespace Sourcemod
 				return null;
 			}
 
-			return (BfWrite)(msg) { throw new NotImplementedException(); }
+			return (BfWrite)(msg);
 		}
 
 		// Make sure to only call this on readable buffers (eg from a message hook).
@@ -101,7 +101,7 @@ namespace Sourcemod
 				return null;
 			}
 
-			return (BfRead)(msg) { throw new NotImplementedException(); }
+			return (BfRead)(msg);
 		}
 
 		/**

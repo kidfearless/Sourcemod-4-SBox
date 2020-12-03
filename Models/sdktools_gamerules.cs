@@ -7,7 +7,7 @@
  * This file is part of the SourceMod/SourcePawn SDK.
  *
  * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, version 3.0, as published by the
+ * the terms of the GNU General Public License, version 3.0f, as published by the
  * Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
@@ -164,7 +164,7 @@ namespace Sourcemod
 		 * @param changeState   This parameter is ignored.
 		 * @error               Not supported.
 		 */
-		public static void GameRules_SetPropVector(string prop, float[] vec[3], int element = 0, bool changeState = false) { throw new NotImplementedException(); }
+		public static void GameRules_SetPropVector(string prop, float[/*3*/] vec, int element = 0, bool changeState = false) { throw new NotImplementedException(); }
 
 		/**
 		 * Gets a gamerules public as a string.

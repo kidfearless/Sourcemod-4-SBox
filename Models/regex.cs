@@ -312,7 +312,7 @@ namespace Sourcemod
 		public static int SimpleRegexMatch(string str, string pattern, int flags = 0, string error = "", int maxLen = 0)
 		{
 			throw new NotImplementedException();
-			Regex regex = new Regex(pattern, flags, error, maxLen);
+			/*Regex regex = new Regex(pattern, flags, error, maxLen);
 			if (regex == null)
 			{
 				return -1;
@@ -321,7 +321,7 @@ namespace Sourcemod
 			int substrings = regex.Match(str);
 			//delete regex;
 
-			return substrings;
+			return substrings;*/
 		}
 
 		/**

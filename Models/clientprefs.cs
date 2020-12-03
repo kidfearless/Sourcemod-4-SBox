@@ -255,7 +255,7 @@ namespace Sourcemod
 		 * @param info          Info data to pass to the callback.
 		 * @error               Invalid cookie handle.
 		 */
-		public static void SetCookiePrefabMenu(Handle cookie, CookieMenu type, string display, CookieMenuHandler handler = INVALID_FUNCTION, any info = 0) { throw new NotImplementedException(); }
+		public static void SetCookiePrefabMenu(Handle cookie, CookieMenu type, string display, CookieMenuHandler handler = INVALID_FUNCTION, any? info = null) { throw new NotImplementedException(); }
 
 		/**
 		 * Adds a new item to the client cookie settings menu.

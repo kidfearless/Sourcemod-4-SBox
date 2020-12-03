@@ -80,13 +80,7 @@ namespace Sourcemod
 		 * @return              A handle to the newly created convar. If the convar already exists, a handle to it will still be returned.
 		 * @error               Convar name is blank or is the same as an existing console command.
 		 */
-		public static ConVar CreateConVar(
-			string name,
-			string defaultValue,
-			string description = "",
-			int flags = 0,
-			bool hasMin = false, float min = 0.0f,
-			bool hasMax = false, float max = 0.0f)
+		public static ConVar CreateConVar(string name,	string defaultValue,string description = "",int flags = 0,bool hasMin = false, float min = 0.0f,bool hasMax = false, float max = 0.0f)
 		{ throw new NotImplementedException(); }
 
 		/**

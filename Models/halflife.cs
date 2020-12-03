@@ -364,7 +364,7 @@ namespace Sourcemod
 				if (IsClientInGame(i))
 				{
 					SetGlobalTransTarget(i);
-					VFormat(ref buffer, buffer.Length, format, 2);
+					VFormat(out buffer, buffer.Length, format, 2);
 					PrintToChat(i, "%s", buffer);
 				}
 			}
@@ -394,9 +394,9 @@ namespace Sourcemod
 			{
 				if (IsClientInGame(i))
 				{
-					SetGlobalTransTarget(i) { throw new NotImplementedException(); }
-					VFormat(buffer, buffer.Length, format, 2) { throw new NotImplementedException(); }
-					PrintCenterText(i, "%s", buffer) { throw new NotImplementedException(); }
+					SetGlobalTransTarget(i);
+					VFormat(out buffer, -1, format, 2);
+					PrintCenterText(i, "%s", buffer);
 				}
 			}
 		}
@@ -425,9 +425,9 @@ namespace Sourcemod
 			{
 				if (IsClientInGame(i))
 				{
-					SetGlobalTransTarget(i) { throw new NotImplementedException(); }
-					VFormat(buffer, buffer.Length, format, 2) { throw new NotImplementedException(); }
-					PrintHintText(i, "%s", buffer) { throw new NotImplementedException(); }
+					SetGlobalTransTarget(i);
+					VFormat(out buffer, -1, format, 2);
+					PrintHintText(i, "%s", buffer);
 				}
 			}
 		}

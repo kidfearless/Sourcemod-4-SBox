@@ -53,7 +53,7 @@ namespace Sourcemod
 			{
 				pl = ReadPlugin(iter);
 
-				GetPluginFilename(pl, out buffer, buffer.Length);
+				GetPluginFilename(pl, out buffer, -1);
 				if (strcmp(buffer, filename, false) == 0)
 				{
 					CloseHandle(iter);

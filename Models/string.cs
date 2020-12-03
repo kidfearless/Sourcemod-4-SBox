@@ -155,7 +155,7 @@ namespace Sourcemod
 		 *                      Note: Arguments start at 1.
 		 * @return              Number of bytes written.
 		 */
-		public static int VFormat(ref string buffer, int maxlength, string format, int varpos) { throw new NotImplementedException(); }
+		public static int VFormat(out string buffer, int maxlength, string format, int varpos) { throw new NotImplementedException(); }
 
 		/**
 		 * Converts a string to an integer.
@@ -508,28 +508,8 @@ namespace Sourcemod
 		 */
 		public static int ImplodeStrings(string[] strings, int numStrings, string join, out string buffer, int maxLength)
 		{
-			int total = 0, length = 0, part_length = 0;
-			buffer = "";
-			int join_length = strlen(join);
-			for (int i = 0; i < numStrings; i++)
-			{
-				length = strcopy(out buffer[total], maxLength - total, strings[i]);
-				total += length;
-				if (length < part_length)
-				{
-					break;
-				}
-				if (i != numStrings - 1)
-				{
-					length = strcopy(out buffer[total], maxLength - total, join);
-					total += length;
-					if (length < join_length)
-					{
-						break;
-					}
-				}
-			}
-			return total;
+			buffer = string.Join(join, strings);
+			return buffer.Length;
 		}
 	}
 }
