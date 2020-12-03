@@ -140,8 +140,8 @@ namespace Sourcemod
 			public bool required;       /**< Whether or not to require */
 		};
 
-		public static readonly float[] NULL_VECTOR = new float[3];        /**< Pass this into certain functions to act as a C++ NULL */
-		public static readonly string NULL_STRING = string.Empty;   /**< pass this into certain functions to act as a C++ NULL */
+		public const float[] NULL_VECTOR = null;        /**< Pass this into certain functions to act as a C++ NULL */
+		public const string NULL_STRING = null;   /**< pass this into certain functions to act as a C++ NULL */
 
 		/**
 		 * Check if the given vector is the NULL_VECTOR.

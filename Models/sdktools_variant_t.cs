@@ -7,7 +7,7 @@
  * This file is part of the SourceMod/SourcePawn SDK.
  *
  * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, version 3.0, as published by the
+ * the terms of the GNU General Public License, version 3.0f, as published by the
  * Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
@@ -37,61 +37,61 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-/**
- * Sets a bool value in the global variant object.
- *
- * @param val           Input value.
- */
-public static void SetVariantBool(bool val) { throw new NotImplementedException(); }
+		/**
+		 * Sets a bool value in the global variant object.
+		 *
+		 * @param val           Input value.
+		 */
+		public static void SetVariantBool(bool val) { throw new NotImplementedException(); }
 
-/**
- * Sets a string in the global variant object.
- *
- * @param str           Input string.
- */
-public static void SetVariantString(string str) { throw new NotImplementedException(); }
+		/**
+		 * Sets a string in the global variant object.
+		 *
+		 * @param str           Input string.
+		 */
+		public static void SetVariantString(string str) { throw new NotImplementedException(); }
 
-/**
- * Sets an integer value in the global variant object.
- *
- * @param val           Input value.
- */
-public static void SetVariantInt(int val) { throw new NotImplementedException(); }
+		/**
+		 * Sets an integer value in the global variant object.
+		 *
+		 * @param val           Input value.
+		 */
+		public static void SetVariantInt(int val) { throw new NotImplementedException(); }
 
-/**
- * Sets a floating point value in the global variant object.
- *
- * @param val           Input value.
- */
-public static void SetVariantFloat(float val) { throw new NotImplementedException(); }
+		/**
+		 * Sets a floating point value in the global variant object.
+		 *
+		 * @param val           Input value.
+		 */
+		public static void SetVariantFloat(float val) { throw new NotImplementedException(); }
 
-/**
- * Sets a 3D vector in the global variant object.
- *
- * @param vec           Input vector.
- */
-public static void SetVariantVector3D(float[] vec[3]) { throw new NotImplementedException(); }
+		/**
+		 * Sets a 3D vector in the global variant object.
+		 *
+		 * @param vec           Input vector.
+		 */
+		public static void SetVariantVector3D(float[/*3*/] vec) { throw new NotImplementedException(); }
 
-/**
- * Sets a 3D position vector in the global variant object.
- *
- * @param vec           Input position vector.
- */
-public static void SetVariantPosVector3D(float[] vec[3]) { throw new NotImplementedException(); }
+		/**
+		 * Sets a 3D position vector in the global variant object.
+		 *
+		 * @param vec           Input position vector.
+		 */
+		public static void SetVariantPosVector3D(float[/*3*/] vec) { throw new NotImplementedException(); }
 
-/**
- * Sets a color in the global variant object.
- *
- * @param color         Input color.
- */
-public static void SetVariantColor(const int[/* 4 */] color) { throw new NotImplementedException(); }
+		/**
+		 * Sets a color in the global variant object.
+		 *
+		 * @param color         Input color.
+		 */
+		public static void SetVariantColor(/*const*/ int[/* 4 */] color) { throw new NotImplementedException(); }
 
-/**
- * Sets an entity in the global variant object.
- *
- * @param entity        Entity index.
- * @error               Invalid entity index.
- */
-public static void SetVariantEntity(int entity) { throw new NotImplementedException(); }
+		/**
+		 * Sets an entity in the global variant object.
+		 *
+		 * @param entity        Entity index.
+		 * @error               Invalid entity index.
+		 */
+		public static void SetVariantEntity(int entity) { throw new NotImplementedException(); }
 	}
 }

@@ -37,43 +37,43 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-/**
- * Given a partial team name, attempts to find a matching team.
- *
- * The search is performed case insensitively and only against the 
- * first N characters of the team names, where N is the number of 
- * characters in the search pattern.
- *
- * @param name          Partial or full team name.  
- * @return              A valid team index on success.
- *                      -1 if no team matched.
- *                      -2 if more than one team matched.
- */
-public static int FindTeamByName(string name)
-{
-	int name_len = strlen(name) { throw new NotImplementedException(); }
-	int num_teams = GetTeamCount() { throw new NotImplementedException(); }
-	string team_name;
-	int found_team = -1;
-
-	for (int i = 0; i < num_teams; i++)
-	{
-		GetTeamName(i, team_name, sizeof(team_name)) { throw new NotImplementedException(); }
-
-		if (strncmp(team_name, name, name_len, false) == 0)
+		/**
+		 * Given a partial team name, attempts to find a matching team.
+		 *
+		 * The search is performed case insensitively and only against the 
+		 * first N characters of the team names, where N is the number of 
+		 * characters in the search pattern.
+		 *
+		 * @param name          Partial or full team name.  
+		 * @return              A valid team index on success.
+		 *                      -1 if no team matched.
+		 *                      -2 if more than one team matched.
+		 */
+		public static int FindTeamByName(string name)
 		{
-			if (found_team >= 0)
-			{
-				return -2;
-			}
-			else
-			{
-				found_team = i;
-			}
-		}
-	}
+			int name_len = strlen(name);
+			int num_teams = GetTeamCount();
+			string team_name;
+			int found_team = -1;
 
-	return found_team;
-}
+			for (int i = 0; i < num_teams; i++)
+			{
+				GetTeamName(i, out team_name, -1);
+
+				if (strncmp(team_name, name, name_len, false) == 0)
+				{
+					if (found_team >= 0)
+					{
+						return -2;
+					}
+					else
+					{
+						found_team = i;
+					}
+				}
+			}
+
+			return found_team;
+		}
 	}
 }

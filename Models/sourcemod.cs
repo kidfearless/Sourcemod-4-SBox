@@ -7,7 +7,7 @@
  * This file is part of the SourceMod/SourcePawn SDK.
  *
  * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, version 3.0, as published by the
+ * the terms of the GNU General Public License, version 3.0f, as published by the
  * Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
@@ -515,7 +515,7 @@ namespace Sourcemod
 		 *                      least one item.  The serial number is updated to a positive number.
 		 * @error               Invalid array Handle that is not INVALID_HANDLE.
 		 */
-		public static Handle ReadMapList(Handle array = INVALID_HANDLE, int &serial= -1, string str = "default", int flags = MAPLIST_FLAG_CLEARARRAY) { throw new NotImplementedException(); }
+		public static Handle ReadMapList(Handle array, out int serial, string str = "default", int flags = MAPLIST_FLAG_CLEARARRAY) { throw new NotImplementedException(); }
 
 		/**
 		 * Makes a compatibility binding for map lists.  For example, if a function previously used

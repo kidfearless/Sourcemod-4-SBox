@@ -37,18 +37,18 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-/**
- * Sets the client to an inactive state waiting for a new map
- *
- * @param client        The client index
- */
-public static void InactivateClient(int client) { throw new NotImplementedException(); }
+		/**
+		 * Sets the client to an inactive state waiting for a new map
+		 *
+		 * @param client        The client index
+		 */
+		public static void InactivateClient(int client) { throw new NotImplementedException(); }
 
-/**
- * Reconnect a client without dropping the netchannel
- *
- * @param client        The client index
- */
-public static void ReconnectClient(int client) { throw new NotImplementedException(); }
+		/**
+		 * Reconnect a client without dropping the netchannel
+		 *
+		 * @param client        The client index
+		 */
+		public static void ReconnectClient(int client) { throw new NotImplementedException(); }
 	}
 }

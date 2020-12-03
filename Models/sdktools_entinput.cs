@@ -37,19 +37,19 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-/**
- * Invokes a named input method on an entity.
- *
- * After completion (successful or not), the current global variant is re-initialized.
- *
- * @param dest          Destination entity index.
- * @param input         Input action.
- * @param activator     Entity index which initiated the sequence of actions (-1 for a NULL entity).
- * @param caller        Entity index from which this event is sent (-1 for a NULL entity).
- * @param outputid      Unknown.
- * @return              True if successful otherwise false.
- * @error               Invalid entity index or no mod support.
- */
-public static bool AcceptEntityInput(int dest, string input, int activator=-1, int caller=-1, int outputid=0) { throw new NotImplementedException(); }
+		/**
+		 * Invokes a named input method on an entity.
+		 *
+		 * After completion (successful or not), the current global variant is re-initialized.
+		 *
+		 * @param dest          Destination entity index.
+		 * @param input         Input action.
+		 * @param activator     Entity index which initiated the sequence of actions (-1 for a NULL entity).
+		 * @param caller        Entity index from which this event is sent (-1 for a NULL entity).
+		 * @param outputid      Unknown.
+		 * @return              True if successful otherwise false.
+		 * @error               Invalid entity index or no mod support.
+		 */
+		public static bool AcceptEntityInput(int dest, string input, int activator = -1, int caller = -1, int outputid = 0) { throw new NotImplementedException(); }
 	}
 }

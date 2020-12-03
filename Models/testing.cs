@@ -7,7 +7,7 @@
  * This file is part of the SourceMod/SourcePawn SDK.
  *
  * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, version 3.0, as published by the
+ * the terms of the GNU General Public License, version 3.0f, as published by the
  * Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
@@ -29,69 +29,74 @@
  *
  * Version: $Id$
  */
-
-static int TestNumber = 0;
-static string TestContext;
-
-public static void SetTestContext(string context)
+using System;
+using System.Collections.ObjectModel;
+namespace Sourcemod
 {
-	strcopy(TestContext, sizeof(TestContext), context) { throw new NotImplementedException(); }
-}
+	public partial class SourceMod
+	{
+		static int TestNumber = 0;
+		static string TestContext;
 
-public static void AssertEq(string text, int cell1, int cell2)
-{
-	TestNumber++;
-	if (cell1 == cell2)
-	{
-		PrintToServer("[%d] %s: %s == %d OK", TestNumber, TestContext, text, cell2) { throw new NotImplementedException(); }
-	}
-	else
-	{
-		PrintToServer("[%d] %s FAIL: %s should be %d, got %d", TestNumber, TestContext, text, cell2, cell1) { throw new NotImplementedException(); }
-		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext) { throw new NotImplementedException(); }
-	}
-}
+		public static void SetTestContext(string context)
+		{
+			strcopy(out TestContext, -1, context);
+		}
 
-public static void AssertFalse(string text, bool value)
-{
-	TestNumber++;
-	if (!value)
-	{
-		PrintToServer("[%d] %s: %s == false OK", TestNumber, TestContext, text, value) { throw new NotImplementedException(); }
-	}
-	else
-	{
-		PrintToServer("[%d] %s FAIL: %s should be false, got true", TestNumber, TestContext, text) { throw new NotImplementedException(); }
-		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext) { throw new NotImplementedException(); }
-	}
-}
+		public static void AssertEq(string text, int cell1, int cell2)
+		{
+			TestNumber++;
+			if (cell1 == cell2)
+			{
+				PrintToServer("[%d] %s: %s == %d OK", TestNumber, TestContext, text, cell2);
+			}
+			else
+			{
+				PrintToServer("[%d] %s FAIL: %s should be %d, got %d", TestNumber, TestContext, text, cell2, cell1);
+				ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext);
+			}
+		}
 
-public static void AssertTrue(string text, bool value)
-{
-	TestNumber++;
-	if (value)
-	{
-		PrintToServer("[%d] %s: %s == true OK", TestNumber, TestContext, text, value) { throw new NotImplementedException(); }
-	}
-	else
-	{
-		PrintToServer("[%d] %s FAIL: %s should be true, got false", TestNumber, TestContext, text) { throw new NotImplementedException(); }
-		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext) { throw new NotImplementedException(); }
-	}
-}
+		public static void AssertFalse(string text, bool value)
+		{
+			TestNumber++;
+			if (!value)
+			{
+				PrintToServer("[%d] %s: %s == false OK", TestNumber, TestContext, text, value);
+			}
+			else
+			{
+				PrintToServer("[%d] %s FAIL: %s should be false, got true", TestNumber, TestContext, text);
+				ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext);
+			}
+		}
 
-public static void AssertStrEq(string text, string value, string expected)
-{
-	TestNumber++;
-	if (StrEqual(value, expected))
-	{
-		PrintToServer("[%d] %s: '%s' == '%s' OK", TestNumber, TestContext, text, expected) { throw new NotImplementedException(); }
-	}
-	else
-	{
-		PrintToServer("[%d] %s FAIL: %s should be '%s', got '%s'", TestNumber, TestContext, text, expected, value) { throw new NotImplementedException(); }
-		ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext) { throw new NotImplementedException(); }
-	}
-}
+		public static void AssertTrue(string text, bool value)
+		{
+			TestNumber++;
+			if (value)
+			{
+				PrintToServer("[%d] %s: %s == true OK", TestNumber, TestContext, text, value);
+			}
+			else
+			{
+				PrintToServer("[%d] %s FAIL: %s should be true, got false", TestNumber, TestContext, text);
+				ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext);
+			}
+		}
+
+		public static void AssertStrEq(string text, string value, string expected)
+		{
+			TestNumber++;
+			if (StrEqual(value, expected))
+			{
+				PrintToServer("[%d] %s: '%s' == '%s' OK", TestNumber, TestContext, text, expected);
+			}
+			else
+			{
+				PrintToServer("[%d] %s FAIL: %s should be '%s', got '%s'", TestNumber, TestContext, text, expected, value);
+				ThrowError("test %d (%s in %s) failed", TestNumber, text, TestContext);
+			}
+		}
 	}
 }

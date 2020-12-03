@@ -37,34 +37,34 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-public const int MAX_LIGHTSTYLES = 64; 
+		public const int MAX_LIGHTSTYLES = 64;
 
-/**
- * Sets a client's "viewing entity."
- *
- * @param client        Client index.
- * @param entity        Entity index.
- * @error               Invalid client or entity, lack of mod support, or client not in 
- *                      game.
- */
-public static void SetClientViewEntity(int client, int entity) { throw new NotImplementedException(); }
+		/**
+		 * Sets a client's "viewing entity."
+		 *
+		 * @param client        Client index.
+		 * @param entity        Entity index.
+		 * @error               Invalid client or entity, lack of mod support, or client not in 
+		 *                      game.
+		 */
+		public static void SetClientViewEntity(int client, int entity) { throw new NotImplementedException(); }
 
-/**
- * Sets a light style.
- *
- * @param style         Light style (from 0 to MAX_LIGHTSTYLES-1)
- * @param value         Light value string (see world.cpp/light.cpp in dlls)
- * @error               Light style index is out of range.
- */
-public static void SetLightStyle(int style, string value) { throw new NotImplementedException(); }
+		/**
+		 * Sets a light style.
+		 *
+		 * @param style         Light style (from 0 to MAX_LIGHTSTYLES-1)
+		 * @param value         Light value string (see world.cpp/light.cpp in dlls)
+		 * @error               Light style index is out of range.
+		 */
+		public static void SetLightStyle(int style, string value) { throw new NotImplementedException(); }
 
-/**
- * Returns the client's eye position.
- *
- * @param client        Player's index.
- * @param pos           Destination vector to store the client's eye position.
- * @error               Invalid client index, client not in game, or no mod support.
- */
-public static void GetClientEyePosition(int client, float[/* 3 */] pos) { throw new NotImplementedException(); }
+		/**
+		 * Returns the client's eye position.
+		 *
+		 * @param client        Player's index.
+		 * @param pos           Destination vector to store the client's eye position.
+		 * @error               Invalid client index, client not in game, or no mod support.
+		 */
+		public static void GetClientEyePosition(int client, float[/* 3 */] pos) { throw new NotImplementedException(); }
 	}
 }
