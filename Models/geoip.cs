@@ -37,70 +37,44 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-#include <core>
+		/**
+		 * @section IP addresses can contain ports, the ports will be stripped out.
+		 */
 
-/**
- * @section IP addresses can contain ports, the ports will be stripped out.
- */
+		/**
+		 * Gets the two character country code from an IP address. (US, CA, etc)
+		 *
+		 * @param ip            Ip to determine the country code.
+		 * @param ccode         Destination string buffer to store the code.
+		 * @return              True on success, false if no country found.
+		 */
+		public static bool GeoipCode2(string ip, ref string ccode) { throw new NotImplementedException(); }
 
-/**
- * Gets the two character country code from an IP address. (US, CA, etc)
- *
- * @param ip            Ip to determine the country code.
- * @param ccode         Destination string buffer to store the code.
- * @return              True on success, false if no country found.
- */
-public static bool GeoipCode2(string ip, ref string ccode); { throw new NotImplementedException(); }
+		/**
+		 * Gets the three character country code from an IP address. (USA, CAN, etc)
+		 *
+		 * @param ip            Ip to determine the country code.
+		 * @param ccode         Destination string buffer to store the code.
+		 * @return              True on success, false if no country found.
+		 */
+		public static bool GeoipCode3(string ip, ref string ccode)
+		{
+			throw new NotImplementedException();
+		}
 
-/**
- * Gets the three character country code from an IP address. (USA, CAN, etc)
- *
- * @param ip            Ip to determine the country code.
- * @param ccode         Destination string buffer to store the code.
- * @return              True on success, false if no country found.
- */
-public static bool GeoipCode3(string ip, ref string ccode); { throw new NotImplementedException(); }
+		/**
+		 * Gets the full country name. (max length of output string is 45)
+		 *
+		 * @param ip            Ip to determine the country code.
+		 * @param name          Destination string buffer to store the country name.
+		 * @param maxlength     Maximum length of output string buffer.
+		 * @return              True on success, false if no country found.
+		 */
+		public static bool GeoipCountry(string ip, string name, int maxlength) { throw new NotImplementedException(); }
 
-/**
- * Gets the full country name. (max length of output string is 45)
- *
- * @param ip            Ip to determine the country code.
- * @param name          Destination string buffer to store the country name.
- * @param maxlength     Maximum length of output string buffer.
- * @return              True on success, false if no country found.
- */
-public static bool GeoipCountry(string ip, string name, int maxlength) { throw new NotImplementedException(); }
+		/**
+		 * @endsection
+		 */
 
-/**
- * @endsection
- */
-
-/**
- * Do not edit below this line!
- */
-public Extension __ext_geoip = 
-{
-	name = "GeoIP",
-	file = "geoip.ext",
-#if defined AUTOLOAD_EXTENSIONS
-	autoload = 1,
-#else
-	autoload = 0,
-#endif
-#if defined REQUIRE_EXTENSIONS
-	required = 1,
-#else
-	required = 0,
-#endif
-};
-
-#if !defined REQUIRE_EXTENSIONS
-public void __ext_geoip_SetNTVOptional()
-{
-	MarkNativeAsOptional("GeoipCode2") { throw new NotImplementedException(); }
-	MarkNativeAsOptional("GeoipCode3") { throw new NotImplementedException(); }
-	MarkNativeAsOptional("GeoipCountry") { throw new NotImplementedException(); }
-}
-#endif
 	}
 }

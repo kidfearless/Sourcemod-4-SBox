@@ -77,7 +77,7 @@ namespace Sourcemod
 		 *                      if one valid client is found.  Otherwise, a COMMAND_TARGET reason 
 		 *                      for failure is returned.
 		 */
-		public static int ProcessTargetString(string pattern, int admin, int[] targets, int max_targets, int filter_flags, string target_name, int tn_maxlength, out bool tn_is_ml)
+		public static int ProcessTargetString(string pattern, int admin, out int[] targets, int max_targets, int filter_flags, out string target_name, int tn_maxlength, out bool tn_is_ml)
 		{ throw new NotImplementedException(); }
 
 		/**

@@ -610,42 +610,44 @@ namespace Sourcemod
 		 * @return              SP_ERROR_NONE on success, anything else on failure.
 		 * @error               Invalid parameter number or calling from a non-public static function.
 		 */
-		public static int SetNativeArray(int param, any[] local, int size) { throw new NotImplementedException();
-	}
+		public static int SetNativeArray(int param, any[] local, int size)
+		{
+			throw new NotImplementedException();
+		}
 
-	/**
-	 * Check if the public static parameter is the NULL_VECTOR.
-	 *
-	 * @param param         Parameter number, starting from 1.
-	 * @return              True if NULL_VECTOR, false otherwise.
-	 */
-	public static bool IsNativeParamNullVector(int param) { throw new NotImplementedException(); }
+		/**
+		 * Check if the public static parameter is the NULL_VECTOR.
+		 *
+		 * @param param         Parameter number, starting from 1.
+		 * @return              True if NULL_VECTOR, false otherwise.
+		 */
+		public static bool IsNativeParamNullVector(int param) { throw new NotImplementedException(); }
 
-	/**
-	 * Check if the public static parameter is the NULL_STRING.
-	 *
-	 * @param param         Parameter number, starting from 1.
-	 * @return              True if NULL_STRING, false otherwise.
-	 */
-	public static bool IsNativeParamNullString(int param) { throw new NotImplementedException(); }
+		/**
+		 * Check if the public static parameter is the NULL_STRING.
+		 *
+		 * @param param         Parameter number, starting from 1.
+		 * @return              True if NULL_STRING, false otherwise.
+		 */
+		public static bool IsNativeParamNullString(int param) { throw new NotImplementedException(); }
 
-	/**
-	 * Formats a string using parameters from a native.
-	 *
-	 * @note All parameter indexes start at 1.
-	 * @note If the input and output buffers overlap, the contents
-	 *       of the output buffer at the end is undefined.
-	 *
-	 * @param out_param     Output parameter number to write to.  If 0, out_string is used.
-	 * @param fmt_param     Format parameter number.  If 0, fmt_string is used.
-	 * @param vararg_param  First variable parameter number.
-	 * @param out_len       Output string buffer maximum length (always required).
-	 * @param written       Optionally stores the number of bytes written.
-	 * @param out_string    Output string buffer to use if out_param is not used.
-	 * @param fmt_string    Format string to use if fmt_param is not used.
-	 * @return              SP_ERROR_NONE on success, anything else on failure.
-	 */
-	public static int FormatNativeString(int out_param, int fmt_param, int vararg_param, int out_len, out int written, out string out_string, out string fmt_string)
+		/**
+		 * Formats a string using parameters from a native.
+		 *
+		 * @note All parameter indexes start at 1.
+		 * @note If the input and output buffers overlap, the contents
+		 *       of the output buffer at the end is undefined.
+		 *
+		 * @param out_param     Output parameter number to write to.  If 0, out_string is used.
+		 * @param fmt_param     Format parameter number.  If 0, fmt_string is used.
+		 * @param vararg_param  First variable parameter number.
+		 * @param out_len       Output string buffer maximum length (always required).
+		 * @param written       Optionally stores the number of bytes written.
+		 * @param out_string    Output string buffer to use if out_param is not used.
+		 * @param fmt_string    Format string to use if fmt_param is not used.
+		 * @return              SP_ERROR_NONE on success, anything else on failure.
+		 */
+		public static int FormatNativeString(int out_param, int fmt_param, int vararg_param, int out_len, out int written, out string out_string, out string fmt_string)
 		{ throw new NotImplementedException(); }
 
 		/**
@@ -711,12 +713,12 @@ namespace Sourcemod
 		 */
 		public delegate void RequestFrameCallback(any data);
 
-	/**
-	 * Creates a single use Next Frame hook.
-	 *
-	 * @param Function      Function to call on the next frame.
-	 * @param data          Value to be passed on the invocation of the Function.
-	 */
-	public static void RequestFrame(RequestFrameCallback Function, any? data = null) { throw new NotImplementedException(); }
-}
+		/**
+		 * Creates a single use Next Frame hook.
+		 *
+		 * @param Function      Function to call on the next frame.
+		 * @param data          Value to be passed on the invocation of the Function.
+		 */
+		public static void RequestFrame(RequestFrameCallback Function, any? data = null) { throw new NotImplementedException(); }
+	}
 }

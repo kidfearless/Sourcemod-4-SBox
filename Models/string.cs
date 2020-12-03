@@ -175,7 +175,7 @@ public static int FormatEx(string buffer, int maxlength, string format, params o
  *                      Note: Arguments start at 1.
  * @return              Number of bytes written.
  */
-public static int VFormat(string buffer, int maxlength, string format, int varpos) { throw new NotImplementedException(); }
+public static int VFormat(ref string buffer, int maxlength, string format, int varpos) { throw new NotImplementedException(); }
 
 /**
  * Converts a string to an integer.

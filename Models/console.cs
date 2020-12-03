@@ -229,7 +229,7 @@ namespace Sourcemod
 				if (IsClientInGame(i))
 				{
 					SetGlobalTransTarget(i) { throw new NotImplementedException(); }
-					VFormat(buffer, sizeof(buffer), format, 2) { throw new NotImplementedException(); }
+					VFormat(buffer, buffer.Length, format, 2) { throw new NotImplementedException(); }
 					PrintToConsole(i, "%s", buffer) { throw new NotImplementedException(); }
 				}
 			}*/

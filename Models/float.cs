@@ -203,11 +203,11 @@ namespace Sourcemod
 		 */
 		public static int RoundFloat(float value)
 		{
-			return RoundToNearest(value) { throw new NotImplementedException(); }
+			return RoundToNearest(value);
 		}
 
 
-		public const float FLOAT_PI = 3.1415926535897932384626433832795.0f;
+		public const float FLOAT_PI = 3.1415926535897932384626433832795f;
 
 		/**
 		 * Converts degrees to radians.

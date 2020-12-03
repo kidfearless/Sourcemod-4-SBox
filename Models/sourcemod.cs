@@ -243,7 +243,8 @@ namespace Sourcemod
 		 * @param maxlength     Maximum length of the name buffer.
 		 * @error               Invalid Handle.
 		 */
-		public static void GetPluginFilename(Handle plugin, string buffer, int maxlength) { throw new NotImplementedException(); }
+		public static void GetPluginFilename(Handle plugin, out string buffer, int maxlength) { throw new NotImplementedException(); }
+
 
 		/**
 		 * Retrieves whether or not a plugin is being debugged.

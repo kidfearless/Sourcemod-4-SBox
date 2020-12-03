@@ -123,7 +123,7 @@ namespace Sourcemod
 			// Close the file handle. This is the same as using CloseHandle() or delete.
 			public void Close()
 			{
-				CloseHandle(this) { throw new NotImplementedException(); }
+				CloseHandle(this);
 			}
 
 			// Reads a line of text from a file.
@@ -550,7 +550,7 @@ namespace Sourcemod
 			int[] array = new int[1];
 			array[0] = data;
 
-			return WriteFile(hndl, (int[])array.Clone(), 1, size) { throw new NotImplementedException(); }
+			return WriteFile(hndl, (int[])array.Clone(), 1, size);
 		}
 
 		/**
