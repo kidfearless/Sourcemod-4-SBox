@@ -175,7 +175,7 @@ namespace Sourcemod
 			// @param color      Color value to set.
 			// @param index      Index into repeated field.
 			// @error            Non-existent field, or incorrect field type.
-			public void SetColor(string field, /*/*const*/*/ int[/* 4 */] color, int index = PB_FIELD_NOT_REPEATED)
+			public void SetColor(string field, /*const*/ int[/* 4 */] color, int index = PB_FIELD_NOT_REPEATED)
 			{
 				throw new NotImplementedException();
 			}
@@ -244,7 +244,7 @@ namespace Sourcemod
 			// @param field      Field name.
 			// @param color      Color value to add.
 			// @error            Non-existent field, or incorrect field type.
-			public void AddColor(string field, /*/*const*/*/ int[/* 4 */] color)
+			public void AddColor(string field, /*const*/ int[/* 4 */] color)
 			{
 				throw new NotImplementedException();
 			}

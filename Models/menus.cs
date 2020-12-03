@@ -390,7 +390,7 @@ namespace Sourcemod
 					}
 					players[total++] = i;
 				}
-				return this.DisplayVote(players, total, time, flags) { throw new NotImplementedException(); }
+				return this.DisplayVote(players, total, time, flags);
 			}
 
 			// Get or set the menu's pagination.
@@ -534,12 +534,7 @@ namespace Sourcemod
 		 * @return              True on success, false on failure.
 		 * @error               Invalid Handle or menu position.
 		 */
-		public static bool InsertMenuItem(Handle menu,
-								position,
-								string info,
-								string display,
-								int style = ITEMDRAW_DEFAULT)
-		{ throw new NotImplementedException(); }
+		public static bool InsertMenuItem(Handle menu, int position, string info, string display, int style = ITEMDRAW_DEFAULT) { throw new NotImplementedException(); }
 
 		/**
 		 * Removes an item from the menu.
@@ -836,7 +831,7 @@ namespace Sourcemod
 		 */
 		public static bool VoteMenuToAll(Handle menu, int time, int flags = 0)
 		{
-			int total;
+			int total = 0;
 			int[] players = new int[MaxClients];
 
 			for (int i = 1; i <= MaxClients; i++)
@@ -848,7 +843,7 @@ namespace Sourcemod
 				players[total++] = i;
 			}
 
-			return VoteMenu(menu, players, total, time, flags) { throw new NotImplementedException(); }
+			return VoteMenu(menu, players, total, time, flags);
 		}
 
 		/**
@@ -939,7 +934,7 @@ namespace Sourcemod
 		 * @return              A new menu Handle.
 		 * @error               Invalid Handle other than INVALID_HANDLE.
 		 */
-		public static Menu CreateMenuEx(Handle hStyle = INVALID_HANDLE, MenuHandler handler, MenuAction actions = MENU_ACTIONS_DEFAULT) { throw new NotImplementedException(); }
+		public static Menu CreateMenuEx(Handle hStyle = INVALID_HANDLE, MenuHandler handler = null, MenuAction actions = MENU_ACTIONS_DEFAULT) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns whether a client is viewing a menu.

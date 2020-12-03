@@ -248,7 +248,7 @@ namespace Sourcemod
 		 * @param maxlength     Maximum length of buffer.
 		 * @return              Number of bytes written (UTF-8 safe).
 		 */
-		public static int GetCurrentMap(string buffer, int maxlength) { throw new NotImplementedException(); }
+		public static int GetCurrentMap(out string buffer, int maxlength) { throw new NotImplementedException(); }
 
 		/**
 		 * Precaches a given model.

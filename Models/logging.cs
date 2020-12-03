@@ -101,12 +101,7 @@ namespace Sourcemod
 		 *                      Plugin_Stop is the same as Handled, but prevents any other
 		 *                      plugins from handling the message.
 		 */
-		public virtual Action OnLogAction(Handle source,
-								   Identity ident,
-								   int client,
-								   int target,
-								   string message)
-		{ throw new NotImplementedException(); }
+		public virtual Action OnLogAction(Handle source, Identity ident, int client, int target, string message) { throw new NotImplementedException(); }
 
 		/**
 		 * Called when a game log message is received.

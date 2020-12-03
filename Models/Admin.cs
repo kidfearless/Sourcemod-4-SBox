@@ -71,6 +71,10 @@ namespace Sourcemod
 			public const int Total = 21;        /**< Total number of admin flags */
 			#endregion
 
+			public static implicit operator AdminFlag(int value) => new AdminFlag(value);
+
+			public static implicit operator int(AdminFlag value) => value._value;
+		}
 			#region Bitwise values definitions for admin flags.
 			public const int ADMFLAG_RESERVATION = (1 << 0);      /**< Convenience macro for Admin_Reservation as a FlagBit */
 			public const int ADMFLAG_GENERIC = (1 << 1);      /**< Convenience macro for Admin_Generic as a FlagBit */
@@ -94,10 +98,6 @@ namespace Sourcemod
 			public const int ADMFLAG_CUSTOM5 = (1 << 19);     /**< Convenience macro for Admin_Custom5 as a FlagBit */
 			public const int ADMFLAG_CUSTOM6 = (1 << 20);     /**< Convenience macro for Admin_Custom6 as a FlagBit */
 			#endregion
-			public static implicit operator AdminFlag(int value) => new AdminFlag(value);
-
-			public static implicit operator int(AdminFlag value) => value._value;
-		}
 
 
 		/**
@@ -142,6 +142,7 @@ namespace Sourcemod
 		public const string AUTHMETHOD_IP = "ip";           /**< IP based authentication */
 		public const string AUTHMETHOD_NAME = "name";       /**< Name based authentication */
 		#endregion
+		public readonly AdminId INVALID_ADMIN_ID = -1;
 		public class AdminId
 		{
 			int _value;
@@ -151,7 +152,6 @@ namespace Sourcemod
 			/**
 			 * Identifies a unique entry in the admin permissions cache.  These are not Handles.
 			 */
-			public readonly AdminId INVALID_ADMIN_ID = -1;
 
 			public AdminId(int value) => _value = value;
 
