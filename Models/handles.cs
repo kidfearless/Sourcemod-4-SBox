@@ -40,7 +40,7 @@ namespace Sourcemod
 		/**
 		* Preset Handle values.
 		*/
-		public interface Handle // Tag disables introducing "Handle" as a symbol.
+		public class Handle // Tag disables introducing "Handle" as a symbol.
 		{
 		};
 		public const Handle INVALID_HANDLE = null;

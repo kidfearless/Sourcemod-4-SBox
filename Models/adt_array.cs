@@ -30,9 +30,7 @@
 * Version: $Id$
 */
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace Sourcemod
 {
@@ -55,7 +53,7 @@ namespace Sourcemod
 			return (size + 3) / 4;
 		}
 
-		public class ArrayList : List<dynamic>, Handle
+		public class ArrayList : Handle
 		{
 			// Creates a dynamic global cell array.  While slower than a normal array,
 			// it can be used globally AND dynamically, which is otherwise impossible.
@@ -71,39 +69,10 @@ namespace Sourcemod
 			// @param startsize     Initial size of the array.  Note that data will
 			//                      NOT be auto-initialized.
 			// @return              New Handle to the array object.
-			public ArrayList(int blocksize = 1, int startsize = 0) : base(startsize) { }
-
-			//
-			// Summary:
-			//     Initializes a new instance of the System.Collections.Generic.List`1 class that
-			//     contains elements copied from the specified collection and has sufficient capacity
-			//     to accommodate the number of elements copied.
-			//
-			// Parameters:
-			//   collection:
-			//     The collection whose elements are copied to the new list.
-			//
-			// Exceptions:
-			//   T:System.ArgumentNullException:
-			//     collection is null.
-			public ArrayList(IEnumerable<dynamic> collection) : base(collection) { }
-
-			//
-			// Summary:
-			//     Initializes a new instance of the System.Collections.Generic.List`1 class that
-			//     is empty and has the specified initial capacity.
-			//
-			// Parameters:
-			//   capacity:
-			//     The number of elements that the new list can initially store.
-			//
-			// Exceptions:
-			//   T:System.ArgumentOutOfRangeException:
-			//     capacity is less than 0.
-			public ArrayList(int capacity) : base(capacity) { }
+			public ArrayList(int blocksize = 1, int startsize = 0) { throw new NotImplementedException(); }
 
 			// Clears an array of all entries.  This is the same as Resize(0).
-			public new void Clear() => base.Clear();
+			public void Clear() { throw new NotImplementedException(); }
 
 			// Clones an array, returning a new handle with the same size and data.
 			// This should NOT be confused with CloneHandle. This is a completely new
@@ -111,27 +80,14 @@ namespace Sourcemod
 			// closed when no longer needed.
 			//
 			// @return              New handle to the cloned array object
-			public ArrayList Clone() => new ArrayList(this);
+			public ArrayList Clone() { throw new NotImplementedException(); }
 
 			// Resizes an array.  If the size is smaller than the current size, the
 			// array is truncated.  If the size is larger than the current size,
 			// the data at the additional indexes will not be initialized.
 			//
 			// @param newsize       New size.
-			public void Resize(int newsize)
-			{
-				if(newsize < this.Length)
-				{
-					int len = this.Length - newsize;
-					base.RemoveRange(newsize, len);
-				}
-				else
-				{
-					this.Capacity = newsize;
-				}
-				Debug.Assert(newsize == this.Length);
-				throw new NotImplementedException();
-			}
+			public void Resize(int newsize) { throw new NotImplementedException(); }
 
 			// Pushes a value onto the end of an array, adding a new index.
 			//
@@ -141,21 +97,13 @@ namespace Sourcemod
 			// @param value         Value to push.
 			// @return              Index of the new entry.
 			// @error               Invalid Handle or out of memory.
-			public int Push(any value)
-			{
-				base.Add(value);
-				return this.Length - 1;
-			}
+			public int Push(any value) { throw new NotImplementedException(); }
 
 			// Pushes a string onto the end of an array, truncating it if it is too big.
 			//
 			// @param value         String to push.
 			// @return              Index of the new entry.
-			public int PushString(string value)
-			{
-				base.Add(value);
-				return this.Length - 1;
-			}
+			public int PushString(string value) { throw new NotImplementedException(); }
 
 			// Pushes an array of cells onto the end of an array.  The cells
 			// are pushed as a block (i.e. the entire array sits at the index),
@@ -166,12 +114,7 @@ namespace Sourcemod
 			//                      will be equal to the blocksize.  If set higher than the
 			//                      blocksize, the operation will be truncated.
 			// @return              Index of the new entry.
-			public int PushArray(/*const*/ any[]values, int size = -1)
-			{
-				// TODO: handle size limits to match original behavior
-				base.Add(values);
-				return this.Length - 1;
-			}
+			public int PushArray(/*const*/ any[]values, int size = -1) { throw new NotImplementedException(); }
 
 			// Retrieves a cell value from an array.
 			//
@@ -181,15 +124,7 @@ namespace Sourcemod
 			// @param asChar        Optionally read as a byte instead of a cell.
 			// @return              Value read.
 			// @error               Invalid index.
-			public any Get(int index, int block = 0, bool asChar = false)
-			{
-				dynamic obj = base[index];
-				if (obj is Array arr)
-				{
-					return (any)arr.GetValue(block);
-				}
-				return obj;
-			}
+			public any Get(int index, int block = 0, bool asChar = false) { throw new NotImplementedException(); }
 
 			// Retrieves a string value from an array.
 			//
@@ -198,16 +133,7 @@ namespace Sourcemod
 			// @param maxlength     Maximum size of the buffer.
 			// @return              Number of characters copied.
 			// @error               Invalid index.
-			public int GetString(int index, out string buffer, int? maxlength = null)
-			{
-				buffer = base[index];
-				if(maxlength is not null)
-				{
-					buffer = buffer.Substring()
-				}
-
-					return buffer.Length;
-			}
+			public int GetString(int index, string buffer, int maxlength) { throw new NotImplementedException(); }
 
 			// Retrieves an array of cells from an array.
 			//
