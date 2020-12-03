@@ -151,7 +151,7 @@ namespace Sourcemod
 			// @param handler       Optional handler callback for translations and output on selection
 			// @param info          Info data to pass to the callback.
 			// @error               Invalid cookie handle.
-			public void SetPrefabMenu(CookieMenu type, string display, CookieMenuHandler handler = INVALID_FUNCTION, any info = 0) { throw new NotImplementedException(); }
+			public void SetPrefabMenu(CookieMenu type, string display, CookieMenuHandler handler = INVALID_FUNCTION, any? info = null) { throw new NotImplementedException(); }
 
 			// Returns the last updated timestamp for a client cookie
 			//
@@ -241,7 +241,7 @@ namespace Sourcemod
 		 *
 		 * @param client        Client index.
 		 */
-		public static override void OnClientCookiesCached(int client) { throw new NotImplementedException(); }
+		public virtual void OnClientCookiesCached(int client) { throw new NotImplementedException(); }
 
 		/**
 		 * Add a new prefab item to the client cookie settings menu.

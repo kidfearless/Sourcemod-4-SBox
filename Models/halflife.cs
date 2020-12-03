@@ -121,7 +121,7 @@ namespace Sourcemod
 		 * @param format        String format.
 		 * @param ...           Format arguments.
 		 */
-		public static void LogToGame(string format, params any[] args) { throw new NotImplementedException(); }
+		public static void LogToGame(string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Sets the seed value for the global Half-Life 2 Random Stream.
@@ -347,7 +347,7 @@ namespace Sourcemod
 		 * @param ...           Variable number of format parameters.
 		 * @error               If the client is not connected an error will be thrown.
 		 */
-		public static void PrintToChat(int client, string format, params any[] args) { throw new NotImplementedException(); }
+		public static void PrintToChat(int client, string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Prints a message to all clients in the chat area.
@@ -355,7 +355,7 @@ namespace Sourcemod
 		 * @param format        Formatting rules.
 		 * @param ...           Variable number of format parameters.
 		 */
-		public static void PrintToChatAll(string format, params any[] args)
+		public static void PrintToChatAll(string format, params object[] args)
 		{
 			string buffer;
 
@@ -378,7 +378,7 @@ namespace Sourcemod
 		 * @param ...           Variable number of format parameters.
 		 * @error               If the client is not connected an error will be thrown.
 		 */
-		public static void PrintCenterText(int client, string format, params any[] args) { throw new NotImplementedException(); }
+		public static void PrintCenterText(int client, string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Prints a message to all clients in the center of the screen.
@@ -386,7 +386,7 @@ namespace Sourcemod
 		 * @param format        Formatting rules.
 		 * @param ...           Variable number of format parameters.
 		 */
-		public static void PrintCenterTextAll(string format, params any[] args)
+		public static void PrintCenterTextAll(string format, params object[] args)
 		{
 			string buffer;
 
@@ -409,7 +409,7 @@ namespace Sourcemod
 		 * @param ...           Variable number of format parameters.
 		 * @error               If the client is not connected an error will be thrown.
 		 */
-		public static void PrintHintText(int client, string format, params any[] args) { throw new NotImplementedException(); }
+		public static void PrintHintText(int client, string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Prints a message to all clients with a hint box.
@@ -417,7 +417,7 @@ namespace Sourcemod
 		 * @param format        Formatting rules.
 		 * @param ...           Variable number of format parameters.
 		 */
-		public static void PrintHintTextToAll(string format, params any[] args)
+		public static void PrintHintTextToAll(string format, params object[] args)
 		{
 			string buffer;
 
@@ -550,7 +550,7 @@ namespace Sourcemod
 		 *                      This function fails if the mod does not support it.
 		 * @error               Client not in-game, or sync object not valid.
 		 */
-		public static int ShowSyncHudText(int client, Handle sync, string message, params any[] args) { throw new NotImplementedException(); }
+		public static int ShowSyncHudText(int client, Handle sync, string message, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Clears the text on a synchronized HUD channel.
@@ -587,7 +587,7 @@ namespace Sourcemod
 		 *                      Any other return value is the channel number that was
 		 *                      used to render the text.
 		 */
-		public static int ShowHudText(int client, int channel, string message, params any[] args) { throw new NotImplementedException(); }
+		public static int ShowHudText(int client, int channel, string message, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Shows a MOTD panel to a specific client.

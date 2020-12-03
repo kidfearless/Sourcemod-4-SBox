@@ -488,7 +488,7 @@ namespace Sourcemod
 		 * @return              A cookie that uniquely identifies the query. 
 		 *                      Returns QUERYCOOKIE_FAILED on failure, such as when used on a bot.
 		 */
-		public static QueryCookie QueryClientConVar(int client, string cvarName, ConVarQueryFinished callback, any value = 0) { throw new NotImplementedException(); }
+		public static QueryCookie QueryClientConVar(int client, string cvarName, ConVarQueryFinished callback, any? value = null) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns true if the supplied character is valid in a ConVar name.
@@ -498,7 +498,7 @@ namespace Sourcemod
 		 */
 		public static bool IsValidConVarChar(int c)
 		{
-			return (c == '_' || IsCharAlpha(c) || IsCharNumeric(c)) { throw new NotImplementedException(); }
+			return (c == '_' || IsCharAlpha(c) || IsCharNumeric(c));
 		}
 	}
 }

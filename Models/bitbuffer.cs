@@ -67,7 +67,7 @@ namespace Sourcemod
 			// Writes a normal integer to a writable bitbuffer (bf_write).
 			//
 			// @param num       Integer to write (value will be written as 32bit).
-			public void Writpublic enum(int num) { throw new NotImplementedException(); }
+			public void WriteNum(int num) { throw new NotImplementedException(); }
 
 			// Writes a floating point number to a writable bitbuffer (bf_write).
 			//
@@ -109,7 +109,7 @@ namespace Sourcemod
 			//
 			// @param angles    Angle vector to write.
 			public void WriteAngles(float[] angles) { throw new NotImplementedException(); }
-		};
+		}
 
 		public class BfRead : Handle
 		{
@@ -252,7 +252,7 @@ namespace Sourcemod
 		 * @param num           Integer to write (value will be written as 32bit).
 		 * @error               Invalid or incorrect Handle.
 		 */
-		public static void BfWritpublic enum(Handle bf, int num) { throw new NotImplementedException(); }
+		public static void BfWriteNum(Handle bf, int num) { throw new NotImplementedException(); }
 
 		/**
 		 * Writes a floating point number to a writable bitbuffer (bf_write).

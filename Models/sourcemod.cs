@@ -295,7 +295,7 @@ namespace Sourcemod
 		 * @param ...           Formatting arguments.
 		 * @error               Always throws SP_ERROR_ABORT.
 		 */
-		public static void SetFailState(string String, params any[] args) { throw new NotImplementedException(); }
+		public static void SetFailState(string String, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Aborts the current callback and throws an error.  This function
@@ -305,7 +305,7 @@ namespace Sourcemod
 		 * @param ...           Format arguments.
 		 * @error               Always!
 		 */
-		public static void ThrowError(string fmt, params any[] args) { throw new NotImplementedException(); }
+		public static void ThrowError(string fmt, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Logs a stack trace from the current function call. Code
@@ -315,7 +315,7 @@ namespace Sourcemod
 		 * @param ...           Format arguments.
 		 * @error               Always logs a stack trace.
 		 */
-		public static void LogStackTrace(string fmt, params any[] args) { throw new NotImplementedException(); }
+		public static void LogStackTrace(string fmt, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Gets the system time as a unix timestamp.
@@ -622,7 +622,7 @@ namespace Sourcemod
 		 * @param fmt           Message format string, or empty to use default.
 		 * @param ...           Message format parameters, if any.
 		 */
-		public static void RequireFeature(FeatureType type, string name, string fmt = "", params any[] args) { throw new NotImplementedException(); }
+		public static void RequireFeature(FeatureType type, string name, string fmt = "", params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Represents how many bytes we can read from an address with one load

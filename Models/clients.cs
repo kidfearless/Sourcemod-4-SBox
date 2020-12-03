@@ -74,7 +74,7 @@ namespace Sourcemod
 		public const int MAXPLAYERS = 65;  /**< Maximum number of players SourceMod supports */
 		public const int MAX_NAME_LENGTH = 128; /**< Maximum buffer required to store a client name */
 
-public static int MaxClients => GetMaxClients();   /**< Maximum number of players the server supports (dynamic) */
+		public static int MaxClients => GetMaxClients();   /**< Maximum number of players the server supports (dynamic) */
 
 		/**
 		 * Called on client connection.  If you return true, the client will be allowed in the server.
@@ -286,7 +286,7 @@ public static int MaxClients => GetMaxClients();   /**< Maximum number of player
 		 * @return              True on success, false otherwise.
 		 * @error               If the client is not connected or the index is invalid.
 		 */
-		public static bool GetClientIP(int client, string ip, int maxlen, bool remport = true) { throw new NotImplementedException(); } 
+		public static bool GetClientIP(int client, string ip, int maxlen, bool remport = true) { throw new NotImplementedException(); }
 
 		/**
 		 * Retrieves a client's authentication string (SteamID).
@@ -742,7 +742,7 @@ public static int MaxClients => GetMaxClients();   /**< Maximum number of player
 		 * @param ...           Variable number of format parameters.
 		 * @error               Invalid client index, or client not connected.
 		 */
-		public static void KickClient(int client, string format = "", params any[] args) { throw new NotImplementedException(); }
+		public static void KickClient(int client, string format = "", params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Immediately disconnects a client from the server.
@@ -757,7 +757,7 @@ public static int MaxClients => GetMaxClients();   /**< Maximum number of player
 		 * @param ...           Variable number of format parameters.
 		 * @error               Invalid client index, or client not connected.
 		 */
-		public static void KickClientEx(int client, string format = "", params any[] args) { throw new NotImplementedException(); }
+		public static void KickClientEx(int client, string format = "", params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Changes a client's team through the mod's generic team changing function.

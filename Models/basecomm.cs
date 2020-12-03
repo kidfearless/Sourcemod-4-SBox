@@ -29,7 +29,7 @@
  *
  * Version: $Id$
  */
- 
+
 using System;
 using System.Collections.ObjectModel;
 namespace Sourcemod
@@ -37,52 +37,54 @@ namespace Sourcemod
 	public partial class SourceMod
 	{
 
-/**
- * Called when a client is muted or unmuted
- * 
- * @param   client      Client index
- * @param   muteState   True if client was muted, false otherwise
- */
-public virtual void BaseComm_OnClientMute(int client, bool muteState) { throw new NotImplementedException(); }
- 
- /**
- * Called when a client is gagged or ungagged
- * 
- * @param   client      Client index
- * @param   gagState    True if client was gaged, false otherwise
- */
-public virtual void BaseComm_OnClientGag(int client, bool gagState) { throw new NotImplementedException(); }
- 
-/**
- * Returns whether or not a client is gagged
- *
- * @param client        Client index.
- * @return              True if client is gagged, false otherwise.
- */
-public static bool BaseComm_IsClientGagged(int client) { throw new NotImplementedException(); }
+		/**
+		 * Called when a client is muted or unmuted
+		 * 
+		 * @param   client      Client index
+		 * @param   muteState   True if client was muted, false otherwise
+		 */
+		public virtual void BaseComm_OnClientMute(int client, bool muteState) { throw new NotImplementedException(); }
 
-/**
- * Returns whether or not a client is muted
- *
- * @param client        Client index.
- * @return              True if client is muted, false otherwise.
- */
-public static bool BaseComm_IsClientMuted(int client) { throw new NotImplementedException(); }
+		/**
+		* Called when a client is gagged or ungagged
+		* 
+		* @param   client      Client index
+		* @param   gagState    True if client was gaged, false otherwise
+		*/
+		public virtual void BaseComm_OnClientGag(int client, bool gagState) { throw new NotImplementedException(); }
 
-/**
- * Sets a client's gag state
- *
- * @param client        Client index.
- * @param gagState      True to gag client, false to ungag.
- * @return              True if this caused a change in gag state, false otherwise.
- */
-public static bool BaseComm_SetClientGag(int client, bool gagState) { throw new NotImplementedException(); }
+		/**
+		 * Returns whether or not a client is gagged
+		 *
+		 * @param client        Client index.
+		 * @return              True if client is gagged, false otherwise.
+		 */
+		public static bool BaseComm_IsClientGagged(int client) { throw new NotImplementedException(); }
 
-/**
- * Sets a client's mute state
- *
- * @param client        Client index.
- * @param muteState     True to mute client, false to unmute.
- * @return              True if this caused a change in mute state, false otherwise.
- */
-public static bool BaseComm_SetClientMute(int client, bool muteState) { throw new NotImplementedException(); }
+		/**
+		 * Returns whether or not a client is muted
+		 *
+		 * @param client        Client index.
+		 * @return              True if client is muted, false otherwise.
+		 */
+		public static bool BaseComm_IsClientMuted(int client) { throw new NotImplementedException(); }
+
+		/**
+		 * Sets a client's gag state
+		 *
+		 * @param client        Client index.
+		 * @param gagState      True to gag client, false to ungag.
+		 * @return              True if this caused a change in gag state, false otherwise.
+		 */
+		public static bool BaseComm_SetClientGag(int client, bool gagState) { throw new NotImplementedException(); }
+
+		/**
+		 * Sets a client's mute state
+		 *
+		 * @param client        Client index.
+		 * @param muteState     True to mute client, false to unmute.
+		 * @return              True if this caused a change in mute state, false otherwise.
+		 */
+		public static bool BaseComm_SetClientMute(int client, bool muteState) { throw new NotImplementedException(); }
+	}
+}

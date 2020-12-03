@@ -778,7 +778,7 @@ namespace Sourcemod
 		{
 			for (int i = 0; i < arraySize; i++)
 			{
-				array[i] = GetEntData(entity, offset + i * dataSize, dataSize) { throw new NotImplementedException(); }
+				array[i] = GetEntData(entity, offset + i * dataSize, dataSize);
 			}
 		}
 
@@ -810,19 +810,19 @@ namespace Sourcemod
 		 */
 		public static Address GetEntityAddress(int entity) { throw new NotImplementedException(); }
 
-/**
- * Retrieves the classname of an entity.
- * This is like GetEdictClassname(), except it works for ALL
- * entities, not just edicts.
- *
- * @param entity        Index of the entity.
- * @param clsname       Buffer to store the classname.
- * @param maxlength     Maximum length of the buffer.
- * @return              True on success, false if there is no classname set.
- */
-public static bool GetEntityClassname(int entity, string clsname, int maxlength)
-{
-	return !!GetEntPropString(entity, Prop_Data, "m_iClassname", clsname, maxlength) { throw new NotImplementedException(); }
-}
+		/**
+		 * Retrieves the classname of an entity.
+		 * This is like GetEdictClassname(), except it works for ALL
+		 * entities, not just edicts.
+		 *
+		 * @param entity        Index of the entity.
+		 * @param clsname       Buffer to store the classname.
+		 * @param maxlength     Maximum length of the buffer.
+		 * @return              True on success, false if there is no classname set.
+		 */
+		public static bool GetEntityClassname(int entity, string clsname, int maxlength)
+		{
+			return GetEntPropString(entity, PropType.Prop_Data, "m_iClassname", clsname, maxlength) != 0;
+		}
 	}
 }

@@ -7,7 +7,7 @@
  * This file is part of the SourceMod/SourcePawn SDK.
  *
  * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, version 3.0, as published by the
+ * the terms of the GNU General Public License, version 3.0f, as published by the
  * Free Software Foundation.
  * 
  * This program is distributed in the hope that it will be useful, but WITHOUT
@@ -218,7 +218,7 @@ namespace Sourcemod
 
 
 			// Fetches a float from a field in the current row of a result set.  
-			// If the result is NULL, a value of 0.0 will be returned.  A NULL 
+			// If the result is NULL, a value of 0.0f will be returned.  A NULL 
 			// check can be done with the result parameter, or SQL_IsFieldNull().
 			// 
 			// @param field        The field index (starting from 0).
@@ -229,7 +229,7 @@ namespace Sourcemod
 			public float FetchFloat(int field, out DBResult result) { throw new NotImplementedException(); }
 
 			// Fetches a float from a field in the current row of a result set.  
-			// If the result is NULL, a value of 0.0 will be returned.  A NULL 
+			// If the result is NULL, a value of 0.0f will be returned.  A NULL 
 			// check can be done with the result parameter, or SQL_IsFieldNull().
 			// 
 			// @param field        The field index (starting from 0).
@@ -451,7 +451,7 @@ namespace Sourcemod
 			// @param format        Formatting rules.
 			// @param ...           Variable number of format parameters.
 			// @return              Number of cells written.
-			public int Format(string buffer, int maxlength, string format, params any[] args) { throw new NotImplementedException(); }
+			public int Format(string buffer, int maxlength, string format, params object[] args) { throw new NotImplementedException(); }
 
 			// Returns whether a database is the same connection as another database.
 			public bool IsSameConnection(Database other) { throw new NotImplementedException(); }
@@ -516,7 +516,7 @@ namespace Sourcemod
 		 */
 		public static Database SQL_DefConnect(string error, int maxlength, bool persistent = true)
 		{
-			return SQL_Connect("default", persistent, error, maxlength) { throw new NotImplementedException(); }
+			return SQL_Connect("default", persistent, error, maxlength);
 		}
 
 		/**
@@ -692,8 +692,32 @@ namespace Sourcemod
 		 *                      The buffer must be at least 2*strlen(string)+1.
 		 * @error               Invalid database or statement Handle.
 		 */
-		public static bool SQL_EscapeString(Handle database, string String, string buffer, int maxlength, int &written= 0) { throw new NotImplementedException(); }
+		public static bool SQL_EscapeString(Handle database, string String, string buffer, int maxlength, out int written) { throw new NotImplementedException(); }
 
+		/**
+		 * Escapes a database string for literal insertion.  This is not needed
+		 * for binding strings in prepared statements.  
+		 *
+		 * Generally, database strings are inserted into queries enclosed in 
+		 * single quotes (').  If user input has a single quote in it, the 
+		 * quote needs to be escaped.  This function ensures that any unsafe 
+		 * characters are safely escaped according to the database engine and 
+		 * the database's character set.
+		 *
+		 * NOTE: SourceMod only guarantees properly escaped strings when the query
+		 * encloses the string in ''. While drivers tend to allow " instead, the string
+		 * may be not be escaped (for example, on SQLite)!
+		 *
+		 * @param database      A database Handle.
+		 * @param string        String to quote.
+		 * @param buffer        Buffer to store quoted string in.
+		 * @param maxlength     Maximum length of the buffer.
+		 * @param written       Optionally returns the number of bytes written.
+		 * @return              True on success, false if buffer is not big enough.
+		 *                      The buffer must be at least 2*strlen(string)+1.
+		 * @error               Invalid database or statement Handle.
+		 */
+		public static bool SQL_EscapeString(Handle database, string String, string buffer, int maxlength) { throw new NotImplementedException(); }
 		/**
 		 * Formats a string according to the SourceMod format rules (see documentation).
 		 * All format specifiers are escaped (see SQL_EscapeString) unless the '!' flag is used.
@@ -705,21 +729,8 @@ namespace Sourcemod
 		 * @param ...           Variable number of format parameters.
 		 * @return              Number of cells written.
 		 */
-		public static int SQL_FormatQuery(Handle database, string buffer, int maxlength, string format, params any[] args) { throw new NotImplementedException(); }
+		public static int SQL_FormatQuery(Handle database, string buffer, int maxlength, string format, params object[] args) { throw new NotImplementedException(); }
 
-		/**
-		 * This function is deprecated.  Use SQL_EscapeString instead.
-		 * @deprecated
-		 */
-#pragma deprecated Use SQL_EscapeString instead.
-		public static bool SQL_QuoteString(Handle database,
-								   string string,
-								   string buffer,
-								   int maxlength,
-								   int &written= 0)
-		{
-			return SQL_EscapeString(database, string, buffer, maxlength, written) { throw new NotImplementedException(); }
-		}
 
 		/**
 		 * Executes a query and ignores the result set.
@@ -832,7 +843,7 @@ namespace Sourcemod
 		 * @return              True if found, false if not found.
 		 * @error               Invalid query Handle or no current result set.
 		 */
-		public static bool SQL_FieldNameToNum(Handle query, string name, int &field) { throw new NotImplementedException(); }
+		public static bool SQL_FieldNameToNum(Handle query, string name, out int field) { throw new NotImplementedException(); }
 
 		/**
 		 * Fetches a row from the current result set.  This must be 
@@ -901,7 +912,7 @@ namespace Sourcemod
 
 		/**
 		 * Fetches a float from a field in the current row of a result set.  
-		 * If the result is NULL, a value of 0.0 will be returned.  A NULL 
+		 * If the result is NULL, a value of 0.0f will be returned.  A NULL 
 		 * check can be done with the result parameter, or SQL_IsFieldNull().
 		 * 
 		 * @param query         A query (or statement) Handle.
@@ -917,7 +928,7 @@ namespace Sourcemod
 
 		/**
 		 * Fetches a float from a field in the current row of a result set.  
-		 * If the result is NULL, a value of 0.0 will be returned.  A NULL 
+		 * If the result is NULL, a value of 0.0f will be returned.  A NULL 
 		 * check can be done with the result parameter, or SQL_IsFieldNull().
 		 * 
 		 * @param query         A query (or statement) Handle.
@@ -1073,89 +1084,89 @@ namespace Sourcemod
 		 */
 		public delegate void SQLTCallback(Handle owner, Handle hndl, string error, any data);
 
-	/**
-	 * Tells whether two database handles both point to the same database 
-	 * connection.
-	 *
-	 * @param hndl1         First database Handle.
-	 * @param hndl2         Second database Handle.
-	 * @return              True if the Handles point to the same 
-	 *                      connection, false otherwise.
-	 * @error               Invalid Handle.
-	 */
-	public static bool SQL_IsSameConnection(Handle hndl1, Handle hndl2) { throw new NotImplementedException(); }
+		/**
+		 * Tells whether two database handles both point to the same database 
+		 * connection.
+		 *
+		 * @param hndl1         First database Handle.
+		 * @param hndl2         Second database Handle.
+		 * @return              True if the Handles point to the same 
+		 *                      connection, false otherwise.
+		 * @error               Invalid Handle.
+		 */
+		public static bool SQL_IsSameConnection(Handle hndl1, Handle hndl2) { throw new NotImplementedException(); }
 
-	/**
-	 * Connects to a database via a thread.  This can be used instead of
-	 * SQL_Connect() if you wish for non-blocking functionality.
-	 *
-	 * It is not necessary to use this to use threaded queries.  However, if you 
-	 * don't (or you mix threaded/non-threaded queries), you should see 
-	 * SQL_LockDatabase().
-	 *
-	 * @param callback      Callback; new Handle will be in hndl, owner is the driver.
-	 *                      If no driver was found, the owner is INVALID_HANDLE.
-	 * @param name          Database name.
-	 * @param data          Extra data value to pass to the callback.
-	 */
-	public static void SQL_TConnect(SQLTCallback callback, string name = "default", any? data = null) { throw new NotImplementedException(); }
+		/**
+		 * Connects to a database via a thread.  This can be used instead of
+		 * SQL_Connect() if you wish for non-blocking functionality.
+		 *
+		 * It is not necessary to use this to use threaded queries.  However, if you 
+		 * don't (or you mix threaded/non-threaded queries), you should see 
+		 * SQL_LockDatabase().
+		 *
+		 * @param callback      Callback; new Handle will be in hndl, owner is the driver.
+		 *                      If no driver was found, the owner is INVALID_HANDLE.
+		 * @param name          Database name.
+		 * @param data          Extra data value to pass to the callback.
+		 */
+		public static void SQL_TConnect(SQLTCallback callback, string name = "default", any? data = null) { throw new NotImplementedException(); }
 
-	/**
-	 * Executes a simple query via a thread.  The query Handle is passed through
-	 * the callback.
-	 *
-	 * The database Handle returned through the callback is always a new Handle,
-	 * and if necessary, SQL_IsSameConnection() should be used to test against
-	 * other connections.
-	 *
-	 * The query Handle returned through the callback is temporary and destroyed 
-	 * at the end of the callback.  If you need to hold onto it, use CloneHandle().
-	 *
-	 * @param database      A database Handle.
-	 * @param callback      Callback; database is in "owner" and the query Handle
-	 *                      is passed in "hndl".
-	 * @param query         Query string.
-	 * @param data          Extra data value to pass to the callback.
-	 * @param prio          Priority queue to use.
-	 * @error               Invalid database Handle.
-	 */
-	public static void SQL_TQuery(Handle database, SQLTCallback callback, string query, any? data = null, DBPriority prio = DBPriority.DBPrio_Normal) { throw new NotImplementedException(); }
+		/**
+		 * Executes a simple query via a thread.  The query Handle is passed through
+		 * the callback.
+		 *
+		 * The database Handle returned through the callback is always a new Handle,
+		 * and if necessary, SQL_IsSameConnection() should be used to test against
+		 * other connections.
+		 *
+		 * The query Handle returned through the callback is temporary and destroyed 
+		 * at the end of the callback.  If you need to hold onto it, use CloneHandle().
+		 *
+		 * @param database      A database Handle.
+		 * @param callback      Callback; database is in "owner" and the query Handle
+		 *                      is passed in "hndl".
+		 * @param query         Query string.
+		 * @param data          Extra data value to pass to the callback.
+		 * @param prio          Priority queue to use.
+		 * @error               Invalid database Handle.
+		 */
+		public static void SQL_TQuery(Handle database, SQLTCallback callback, string query, any? data = null, DBPriority prio = DBPriority.DBPrio_Normal) { throw new NotImplementedException(); }
 
 
-	/**
-	 * Creates a new transaction object. A transaction object is a list of queries
-	 * that can be sent to the database thread and executed as a single transaction.
-	 *
-	 * @return              A transaction handle.
-	 */
-	public static Transaction SQL_CreateTransaction() { throw new NotImplementedException(); }
+		/**
+		 * Creates a new transaction object. A transaction object is a list of queries
+		 * that can be sent to the database thread and executed as a single transaction.
+		 *
+		 * @return              A transaction handle.
+		 */
+		public static Transaction SQL_CreateTransaction() { throw new NotImplementedException(); }
 
-	/**
-	 * Adds a query to a transaction object.
-	 *
-	 * @param txn           A transaction handle.
-	 * @param query         Query string.
-	 * @param data          Extra data value to pass to the final callback.
-	 * @return              The index of the query in the transaction's query list.
-	 * @error               Invalid transaction handle.
-	 */
-	public static int SQL_AddQuery(Transaction txn, string query, any? data = null) { throw new NotImplementedException(); }
+		/**
+		 * Adds a query to a transaction object.
+		 *
+		 * @param txn           A transaction handle.
+		 * @param query         Query string.
+		 * @param data          Extra data value to pass to the final callback.
+		 * @return              The index of the query in the transaction's query list.
+		 * @error               Invalid transaction handle.
+		 */
+		public static int SQL_AddQuery(Transaction txn, string query, any? data = null) { throw new NotImplementedException(); }
 
-	/**
-	 * Sends a transaction to the database thread. The transaction handle is
-	 * automatically closed. When the transaction completes, the optional
-	 * callback is invoked.
-	 *
-	 * @param db            A database handle.
-	 * @param txn           A transaction handle.
-	 * @param onSuccess     An optional callback to receive a successful transaction.
-	 * @param onError       An optional callback to receive an error message.
-	 * @param data          An optional value to pass to callbacks.
-	 * @param prio          Priority queue to use.
-	 * @error               An invalid handle.
-	 */
-	public static void SQL_ExecuteTransaction(Handle db, Transaction txn, SQLTxnSuccess onSuccess = INVALID_FUNCTION,
-			SQLTxnFailure onError = INVALID_FUNCTION, any? data = null, DBPriority priority = DBPriority.DBPrio_Normal)
-	{ throw new NotImplementedException(); }
-}
+		/**
+		 * Sends a transaction to the database thread. The transaction handle is
+		 * automatically closed. When the transaction completes, the optional
+		 * callback is invoked.
+		 *
+		 * @param db            A database handle.
+		 * @param txn           A transaction handle.
+		 * @param onSuccess     An optional callback to receive a successful transaction.
+		 * @param onError       An optional callback to receive an error message.
+		 * @param data          An optional value to pass to callbacks.
+		 * @param prio          Priority queue to use.
+		 * @error               An invalid handle.
+		 */
+		public static void SQL_ExecuteTransaction(Handle db, Transaction txn, SQLTxnSuccess onSuccess = INVALID_FUNCTION,
+				SQLTxnFailure onError = INVALID_FUNCTION, any? data = null, DBPriority priority = DBPriority.DBPrio_Normal)
+		{ throw new NotImplementedException(); }
+	}
 }

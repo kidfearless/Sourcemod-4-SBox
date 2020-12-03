@@ -217,7 +217,7 @@ public static void EmitSound(const int[] clients,
 				 float[] dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
-				 params any[] args) { throw new NotImplementedException(); }
+				 params object[] args) { throw new NotImplementedException(); }
 
 /**
  * Emits a sound or game sound to a list of clients using the latest version of the engine sound interface.
@@ -258,7 +258,7 @@ public static void EmitSoundEntry(const int[] clients,
 				 float[] dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
-				 params any[] args) { throw new NotImplementedException(); }
+				 params object[] args) { throw new NotImplementedException(); }
 
 /**
  * Emits a sentence to a list of clients.
@@ -294,7 +294,7 @@ public static void EmitSentence(const int[] clients,
 				 float[] dir[3] = NULL_VECTOR,
 				 bool updatePos = true,
 				 float soundtime = 0.0,
-				 params any[] args) { throw new NotImplementedException(); }
+				 params object[] args) { throw new NotImplementedException(); }
 
 /**
  * Calculates gain of sound on given distance with given sound level in decibel

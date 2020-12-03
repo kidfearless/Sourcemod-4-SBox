@@ -44,7 +44,7 @@ namespace Sourcemod
 		 * @param format        String format.
 		 * @param ...           Format arguments.
 		 */
-		public static void LogMessage(string format, params any[] args) { throw new NotImplementedException(); }
+		public static void LogMessage(string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Logs a message to any file.  The log message will be in the normal
@@ -55,7 +55,7 @@ namespace Sourcemod
 		 * @param ...           Format arguments.
 		 * @error               File could not be opened/written.
 		 */
-		public static void LogToFile(string file, string format, params any[] args) { throw new NotImplementedException(); }
+		public static void LogToFile(string file, string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Same as LogToFile(), except no plugin logtag is prepended.
@@ -65,7 +65,7 @@ namespace Sourcemod
 		 * @param ...           Format arguments.
 		 * @error               File could not be opened/written.
 		 */
-		public static void LogToFileEx(string file, string format, params any[] args) { throw new NotImplementedException(); }
+		public static void LogToFileEx(string file, string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Logs an action from a command or event whereby interception and routing may
@@ -77,7 +77,7 @@ namespace Sourcemod
 		 * @param message       Message format.
 		 * @param ...           Message formatting parameters.
 		 */
-		public static void LogAction(int client, int target, string message, params any[] args) { throw new NotImplementedException(); }
+		public static void LogAction(int client, int target, string message, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Logs a plugin error message to the SourceMod logs.
@@ -85,7 +85,7 @@ namespace Sourcemod
 		 * @param format        String format.
 		 * @param ...           Format arguments.
 		 */
-		public static void LogError(string format, params any[] args) { throw new NotImplementedException(); }
+		public static void LogError(string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Called when an action is going to be logged.

@@ -87,7 +87,7 @@ namespace Sourcemod
 			// @param size         If not set, the number of elements copied from the array
 			//                     will be equal to the blocksize.  If set higher than the 
 			//                     blocksize, the operation will be truncated.
-			public void PushArray(ReadOnlyCollection<any[]> values, int size = -1) { throw new NotImplementedException(); }
+			public void PushArray(/*const*/ any[] values, int size = -1) { throw new NotImplementedException(); }
 
 			// Pops a cell value from a stack.
 			//

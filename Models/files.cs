@@ -184,7 +184,7 @@ namespace Sourcemod
 			// @param format          Formatting rules.
 			// @param ...             Variable number of format parameters.
 			// @return                True on success, false otherwise.
-			public bool WriteLine(string format, params any[] args) { throw new NotImplementedException(); }
+			public bool WriteLine(string format, params object[] args) { throw new NotImplementedException(); }
 
 			// Reads a single int8 (byte) from a file. The returned value is sign-
 			// extended to an int32.
@@ -276,7 +276,7 @@ namespace Sourcemod
 		 * @param ...           Format arguments.
 		 * @return              Number of bytes written to buffer (not including null terminator).
 		 */
-		public static int BuildPath(PathType type, string buffer, int maxlength, string fmt, params any[] args) { throw new NotImplementedException(); }
+		public static int BuildPath(PathType type, string buffer, int maxlength, string fmt, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Opens a directory/folder for contents public enumeration.
@@ -507,7 +507,7 @@ namespace Sourcemod
 		 * @return              True on success, false otherwise.
 		 * @error               Invalid Handle.
 		 */
-		public static bool WriteFileLine(Handle hndl, string format, params any[] args) { throw new NotImplementedException(); }
+		public static bool WriteFileLine(Handle hndl, string format, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Reads a single binary cell from a file.
@@ -705,7 +705,7 @@ namespace Sourcemod
 		 * @param ...           Message format parameters.
 		 * @error               Invalid Handle.
 		 */
-		public static void LogToOpenFile(Handle hndl, string message, params any[] args) { throw new NotImplementedException(); }
+		public static void LogToOpenFile(Handle hndl, string message, params object[] args) { throw new NotImplementedException(); }
 
 		/**
 		 * Same as LogToFileEx(), except uses an open file Handle.  The file must
@@ -716,6 +716,6 @@ namespace Sourcemod
 		 * @param ...           Message format parameters.
 		 * @error               Invalid Handle.
 		 */
-		public static void LogToOpenFileEx(Handle hndl, string message, params any[] args) { throw new NotImplementedException(); }
+		public static void LogToOpenFileEx(Handle hndl, string message, params object[] args) { throw new NotImplementedException(); }
 	}
 }

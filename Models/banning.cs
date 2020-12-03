@@ -29,6 +29,7 @@
 *
 * Version: $Id$
 */
+using System;
 namespace Sourcemod
 {
 	public partial class SourceMod
@@ -55,19 +56,18 @@ namespace Sourcemod
 		 */
 public virtual Action OnBanClient(int client, int time, int flags, string reason, string kick_message, string command, any source) { throw new NotImplementedException(); }
 
-	/**
-	 * Called for calls to BanIdentity() with a non-empty command.
-	 *
-	 * @param identity      Identity string being banned (authstring or ip).
-	 * @param time          Time the client is being banned for (0 = permanent).
-	 * @param flags         Ban flags (only IP or AUTHID are valid here).
-	 * @param reason        Reason passed via BanIdentity().
-	 * @param command       Command string to identify the ban source.
-	 * @param source        Source value passed via BanIdentity().
-	 * @return              Plugin_Handled to block the actual server banning.
-	 */
-	public virtual Action OnBanIdentity(string identity, int time, int flags, string reason, string command, any source)
-	{ throw new NotImplementedException(); }
+		/**
+		 * Called for calls to BanIdentity() with a non-empty command.
+		 *
+		 * @param identity      Identity string being banned (authstring or ip).
+		 * @param time          Time the client is being banned for (0 = permanent).
+		 * @param flags         Ban flags (only IP or AUTHID are valid here).
+		 * @param reason        Reason passed via BanIdentity().
+		 * @param command       Command string to identify the ban source.
+		 * @param source        Source value passed via BanIdentity().
+		 * @return              Plugin_Handled to block the actual server banning.
+		 */
+		public virtual Action OnBanIdentity(string identity, int time, int flags, string reason, string command, any source) { throw new NotImplementedException(); }
 
 	/**
 	 * Called for calls to RemoveBan() with a non-empty command.
@@ -98,7 +98,7 @@ public virtual Action OnBanClient(int client, int time, int flags, string reason
 	 * @return              True on success, false on failure.
 	 * @error               Invalid client index or client not in game.
 	 */
-	public static bool BanClient(int client, int time, int flags, string reason, string kick_message = "", string command = "", any source = 0)
+	public static bool BanClient(int client, int time, int flags, string reason, string kick_message = "", string command = "", any? source = null)
 	{ throw new NotImplementedException(); }
 
 	/**
@@ -114,7 +114,7 @@ public virtual Action OnBanClient(int client, int time, int flags, string reason
 	 *                      index of any sort (not actually checked by Core).
 	 * @return              True on success, false on failure.
 	 */
-	public static bool BanIdentity(string identity, int time, int flags, string reason, string command = "", any source = 0)
+	public static bool BanIdentity(string identity, int time, int flags, string reason, string command = "", any? source = null)
 	{ throw new NotImplementedException(); }
 
 	/**
@@ -128,7 +128,7 @@ public virtual Action OnBanClient(int client, int time, int flags, string reason
 	 *                      index of any sort (not actually checked by Core).
 	 * @return              True on success, false on failure.
 	 */
-	public static bool RemoveBan(string identity, int flags, string command = "", any source = 0)
+	public static bool RemoveBan(string identity, int flags, string command = "", any? source = null)
 	{ throw new NotImplementedException(); }
 }
 }

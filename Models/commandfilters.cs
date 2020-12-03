@@ -116,6 +116,7 @@ namespace Sourcemod
 					break;
 				case COMMAND_TARGET_AMBIGUOUS:
 					ReplyToCommand(client, "[SM] %t", "More than one client matched");
+					break;
 			}
 		}
 

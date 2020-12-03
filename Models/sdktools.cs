@@ -200,7 +200,7 @@ public static Handle EndPrepSDKCall() { throw new NotImplementedException(); }
  * @return              Simple return value, if any.
  * @error               Invalid Handle or internal decoding error.
  */
-public static any SDKCall(Handle call, params any[] args) { throw new NotImplementedException(); }
+public static any SDKCall(Handle call, params object[] args) { throw new NotImplementedException(); }
 
 /**
  * Returns the entity index of the player resource/manager entity.
