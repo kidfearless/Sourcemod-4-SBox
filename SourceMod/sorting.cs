@@ -155,7 +155,7 @@ namespace Sourcemod
 		 *                      0 if first is equal to second
 		 *                      1 if first should go after second
 		 */
-		public delegate int SortFuncADTArray(int index1, int index2, object array, object hndl);
+		public delegate int SortFuncADTArray(int index1, int index2, Handle array, object hndl);
 
 		/**
 		 * Custom sorts an ADT Array. You must pass in a comparison function.

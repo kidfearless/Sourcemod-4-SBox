@@ -30,7 +30,9 @@
 * Version: $Id$
 */
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace Sourcemod
 {
@@ -53,7 +55,7 @@ namespace Sourcemod
 			return (size + 3) / 4;
 		}
 
-		public class ArrayList : Handle
+		public class ArrayList : List<dynamic>, Handle
 		{
 			// Creates a dynamic global cell array.  While slower than a normal array,
 			// it can be used globally AND dynamically, which is otherwise impossible.
@@ -69,10 +71,39 @@ namespace Sourcemod
 			// @param startsize     Initial size of the array.  Note that data will
 			//                      NOT be auto-initialized.
 			// @return              New Handle to the array object.
-			public ArrayList(int blocksize = 1, int startsize = 0) { throw new NotImplementedException(); }
+			public ArrayList(int blocksize = 1, int startsize = 0) : base(startsize) { }
+
+			//
+			// Summary:
+			//     Initializes a new instance of the System.Collections.Generic.List`1 class that
+			//     contains elements copied from the specified collection and has sufficient capacity
+			//     to accommodate the number of elements copied.
+			//
+			// Parameters:
+			//   collection:
+			//     The collection whose elements are copied to the new list.
+			//
+			// Exceptions:
+			//   T:System.ArgumentNullException:
+			//     collection is null.
+			public ArrayList(IEnumerable<dynamic> collection) : base(collection) { }
+
+			//
+			// Summary:
+			//     Initializes a new instance of the System.Collections.Generic.List`1 class that
+			//     is empty and has the specified initial capacity.
+			//
+			// Parameters:
+			//   capacity:
+			//     The number of elements that the new list can initially store.
+			//
+			// Exceptions:
+			//   T:System.ArgumentOutOfRangeException:
+			//     capacity is less than 0.
+			public ArrayList(int capacity) : base(capacity) { }
 
 			// Clears an array of all entries.  This is the same as Resize(0).
-			public void Clear() { throw new NotImplementedException(); }
+			public new void Clear() => base.Clear();
 
 			// Clones an array, returning a new handle with the same size and data.
 			// This should NOT be confused with CloneHandle. This is a completely new
@@ -80,14 +111,27 @@ namespace Sourcemod
 			// closed when no longer needed.
 			//
 			// @return              New handle to the cloned array object
-			public ArrayList Clone() { throw new NotImplementedException(); }
+			public ArrayList Clone() => new ArrayList(this);
 
 			// Resizes an array.  If the size is smaller than the current size, the
 			// array is truncated.  If the size is larger than the current size,
 			// the data at the additional indexes will not be initialized.
 			//
 			// @param newsize       New size.
-			public void Resize(int newsize) { throw new NotImplementedException(); }
+			public void Resize(int newsize)
+			{
+				if (newsize < this.Length)
+				{
+					int len = this.Length - newsize;
+					base.RemoveRange(newsize, len);
+				}
+				else
+				{
+					this.Capacity = newsize;
+				}
+				Debug.Assert(newsize == this.Length);
+				throw new NotImplementedException();
+			}
 
 			// Pushes a value onto the end of an array, adding a new index.
 			//
@@ -97,13 +141,21 @@ namespace Sourcemod
 			// @param value         Value to push.
 			// @return              Index of the new entry.
 			// @error               Invalid Handle or out of memory.
-			public int Push(any value) { throw new NotImplementedException(); }
+			public int Push(any value)
+			{
+				base.Add(value);
+				return this.Length - 1;
+			}
 
 			// Pushes a string onto the end of an array, truncating it if it is too big.
 			//
 			// @param value         String to push.
 			// @return              Index of the new entry.
-			public int PushString(string value) { throw new NotImplementedException(); }
+			public int PushString(string value)
+			{
+				base.Add(value);
+				return this.Length - 1;
+			}
 
 			// Pushes an array of cells onto the end of an array.  The cells
 			// are pushed as a block (i.e. the entire array sits at the index),
@@ -114,7 +166,12 @@ namespace Sourcemod
 			//                      will be equal to the blocksize.  If set higher than the
 			//                      blocksize, the operation will be truncated.
 			// @return              Index of the new entry.
-			public int PushArray(/*const*/ any[]values, int size = -1) { throw new NotImplementedException(); }
+			public int PushArray(/*const*/ any[] values, int size = -1)
+			{
+				// TODO: handle size limits to match original behavior
+				base.Add(values);
+				return this.Length - 1;
+			}
 
 			// Retrieves a cell value from an array.
 			//
@@ -124,7 +181,15 @@ namespace Sourcemod
 			// @param asChar        Optionally read as a byte instead of a cell.
 			// @return              Value read.
 			// @error               Invalid index.
-			public any Get(int index, int block = 0, bool asChar = false) { throw new NotImplementedException(); }
+			public any Get(int index, int block = 0, bool asChar = false)
+			{
+				dynamic obj = base[index];
+				if (obj is Array arr)
+				{
+					return (any)arr.GetValue(block);
+				}
+				return obj;
+			}
 
 			// Retrieves a string value from an array.
 			//
@@ -133,7 +198,17 @@ namespace Sourcemod
 			// @param maxlength     Maximum size of the buffer.
 			// @return              Number of characters copied.
 			// @error               Invalid index.
-			public int GetString(int index, string buffer, int maxlength) { throw new NotImplementedException(); }
+			public int GetString(int index, out string buffer, int? maxlength = null)
+			{
+				buffer = base[index];
+				if (maxlength is not null)
+				{
+					buffer = buffer.SubStr(0, (int)(maxlength));
+					Debug.Assert(buffer.Length <= (int)(maxlength));
+				}
+
+				return buffer.Length;
+			}
 
 			// Retrieves an array of cells from an array.
 			//
@@ -143,7 +218,13 @@ namespace Sourcemod
 			//                      blocksize.  Otherwise, the size passed is used.
 			// @return              Number of cells copied.
 			// @error               Invalid index.
-			public int GetArray(int index, any[] buffer, int size = -1) { throw new NotImplementedException(); }
+			public int GetArray(int index, any[] buffer, int? size = null)
+			{
+				any[] arr = base[index];
+				size ??= arr.Length;
+				Array.Copy(arr, buffer, (int)size);
+				return arr.Length;
+			}
 
 			// Sets a cell value in an array.
 			//
@@ -153,7 +234,10 @@ namespace Sourcemod
 			//                      (useful if the blocksize > 0).
 			// @param asChar        Optionally set as a byte instead of a cell.
 			// @error               Invalid index, or invalid block.
-			public void Set(int index, any value, int block = 0, bool asChar = false) { throw new NotImplementedException(); }
+			public void Set(int index, any value, int block = 0, bool asChar = false)
+			{
+				base[index] = value;
+			}
 
 			// Sets a string value in an array.
 			//
@@ -161,7 +245,11 @@ namespace Sourcemod
 			// @param value         String value to set.
 			// @return              Number of characters copied.
 			// @error               Invalid index.
-			public void SetString(int index, string value) { throw new NotImplementedException(); }
+			public int SetString(int index, string value)
+			{
+				base[index] = value;
+				return value.Length;
+			}
 
 			// Sets an array of cells in an array.
 			//
@@ -171,7 +259,11 @@ namespace Sourcemod
 			//                      blocksize.  Otherwise, the size passed is used.
 			// @return              Number of cells copied.
 			// @error               Invalid index.
-			public void SetArray(int index, /*const*/ any[]values, int size = -1) { throw new NotImplementedException(); }
+			public int SetArray(int index, /*const*/ any[] values, int size = -1)
+			{
+				base[index] = values;
+				return values.Length;
+			}
 
 			// Shifts an array up.  All array contents after and including the given
 			// index are shifted up by one, and the given index is then "free."
@@ -179,7 +271,10 @@ namespace Sourcemod
 			//
 			// @param index         Index in the array to shift up from.
 			// @error               Invalid index.
-			public void ShiftUp(int index) { throw new NotImplementedException(); }
+			public void ShiftUp(int index)
+			{
+				base.Insert(index, null);
+			}
 
 			// Removes an array index, shifting the entire array down from that position
 			// on.  For example, if item 8 of 10 is removed, the last 3 items will then be
@@ -187,21 +282,33 @@ namespace Sourcemod
 			//
 			// @param index         Index in the array to remove at.
 			// @error               Invalid index.
-			public void Erase(int index) { throw new NotImplementedException(); }
+			public void Erase(int index)
+			{
+				base.RemoveAt(index);
+			}
 
 			// Swaps two items in the array.
 			//
 			// @param index1        First index.
 			// @param index2        Second index.
 			// @error               Invalid index.
-			public void SwapAt(int index1, int index2) { throw new NotImplementedException(); }
+			public void SwapAt(int index1, int index2)
+			{
+				dynamic first = base[index1];
+				dynamic second = base[index2];
+				base[index1] = second;
+				base[index2] = first;
+			}
 
 			// Returns the index for the first occurrence of the provided string. If
 			// the string cannot be located, -1 will be returned.
 			//
 			// @param item          String to search for
 			// @return              Array index, or -1 on failure
-			public int FindString(string item) { throw new NotImplementedException(); }
+			public int FindString(string item)
+			{
+				return base.IndexOf(item);
+			}
 
 			// Returns the index for the first occurrence of the provided value. If the
 			// value cannot be located, -1 will be returned.
@@ -210,30 +317,61 @@ namespace Sourcemod
 			// @param block         Optionally which block to search in
 			// @return              Array index, or -1 on failure
 			// @error               Invalid block index
-			public int FindValue(any item, int block = 0) { throw new NotImplementedException(); }
-
+			public int FindValue(any item, int block = 0)
+			{
+				return base.IndexOf(item);
+			}
 			// Sort an ADT Array. Specify the type as Integer, Float, or String.
 			//
 			// @param order         Sort order to use, same as other sorts.
 			// @param type          Data type stored in the ADT Array
-			public void Sort(SortOrder order, SortType type) { throw new NotImplementedException(); }
-
+			public void Sort(SortOrder order, SortType type)
+			{
+				switch (order)
+				{
+					case SortOrder.Sort_Ascending:
+						base.Sort();
+						break;
+					case SortOrder.Sort_Descending:
+						base.Sort((dynamic x, dynamic y) =>
+						{
+							return x > y;
+						});
+						break;
+					case SortOrder.Sort_Random:
+						{
+							base.Sort((dynamic x, dynamic y) =>
+							{
+								return new Random().Next(0, 2);
+							});
+						}
+						break;
+					default:
+						break;
+				}
+			}
 			// Custom sorts an ADT Array. You must pass in a comparison function.
 			//
 			// @param sortfunc      Sort comparison function to use
 			// @param hndl          Optional Handle to pass through the comparison calls.
-			public void SortCustom(SortFuncADTArray sortfunc, Handle hndl = INVALID_HANDLE) { throw new NotImplementedException(); }
-
+			[Obsolete("Cannot gurantee accuracy of indices, use the other sort method")]
+			public void SortCustom(SortFuncADTArray sortfunc, Handle hndl = INVALID_HANDLE)
+			{
+				this.Sort((dynamic x, dynamic y) =>
+				{
+					return sortfunc.Invoke(this.IndexOf(x), this.IndexOf(y), this, hndl);
+				});
+			}
 			// Retrieve the size of the array.
 			public int Length
 			{
-				get { throw new NotImplementedException(); }
+				get => this.Count;
 			}
 
 			// Retrieve the blocksize the array was created with.
 			public int BlockSize
 			{
-				get { throw new NotImplementedException(); }
+				get => int.MaxValue;
 			}
 		}
 
@@ -253,7 +391,7 @@ namespace Sourcemod
 		 *                      NOT be auto-initialized.
 		 * @return              New Handle to the array object.
 		 */
-		public ArrayList CreateArray(int blocksize = 1, int startsize = 0) { throw new NotImplementedException(); }
+		public ArrayList CreateArray(int blocksize = 1, int startsize = 0) => new ArrayList(blocksize, startsize);
 
 		/**
 		 * Clears an array of all entries.  This is the same as ResizeArray(0).
@@ -261,7 +399,7 @@ namespace Sourcemod
 		 * @param array         Array Handle.
 		 * @error               Invalid Handle.
 		 */
-		public void ClearArray(Handle array) { throw new NotImplementedException(); }
+		public void ClearArray(Handle array) => ((ArrayList)array).Clear(Handle array)
 
 		/**
 		 * Clones an array, returning a new handle with the same size and data. This should NOT
@@ -272,7 +410,7 @@ namespace Sourcemod
 		 * @return              New handle to the cloned array object
 		 * @error               Invalid Handle
 		 */
-		public Handle CloneArray(Handle array) { throw new NotImplementedException(); }
+		public Handle CloneArray(Handle array) => ((ArrayList)array).Clone();
 
 		/**
 		 * Resizes an array.  If the size is smaller than the current size,
@@ -283,7 +421,7 @@ namespace Sourcemod
 		 * @param newsize       New size.
 		 * @error               Invalid Handle or out of memory.
 		 */
-		public void ResizeArray(Handle array, int newsize) { throw new NotImplementedException(); }
+		public void ResizeArray(Handle array, int newsize) => ((ArrayList)array).Resize(newsize);
 
 		/**
 		 * Returns the array size.
@@ -292,7 +430,7 @@ namespace Sourcemod
 		 * @return              Number of elements in the array.
 		 * @error               Invalid Handle.
 		 */
-		public int GetArraySize(Handle array) { throw new NotImplementedException(); }
+		public int GetArraySize(Handle array) => ((ArrayList)array).Length;
 
 		/**
 		 * Pushes a value onto the end of an array, adding a new index.
@@ -305,7 +443,7 @@ namespace Sourcemod
 		 * @return              Index of the new entry.
 		 * @error               Invalid Handle or out of memory.
 		 */
-		public int PushArrayCell(Handle array, any value) { throw new NotImplementedException(); }
+		public int PushArrayCell(Handle array, any value) => ((ArrayList)array).Push(value);
 
 		/**
 		 * Pushes a string onto the end of an array, truncating it
@@ -316,10 +454,7 @@ namespace Sourcemod
 		 * @return              Index of the new entry.
 		 * @error               Invalid Handle or out of memory.
 		 */
-		public int PushArrayString(Handle array, string value)
-		{
-			throw new NotImplementedException();
-		}
+		public int PushArrayString(Handle array, string value) => ((ArrayList)array).PushString(value);
 
 		/**
 		 * Pushes an array of cells onto the end of an array.  The cells
@@ -334,7 +469,7 @@ namespace Sourcemod
 		 * @return              Index of the new entry.
 		 * @error               Invalid Handle or out of memory.
 		 */
-		public int PushArrayArray(Handle array, any[] values, int size = -1) { throw new NotImplementedException(); }
+		public int PushArrayArray(Handle array, any[] values, int size = -1) => ((ArrayList)array).PushArray(values, size);
 
 		/**
 		 * Retrieves a cell value from an array.
@@ -347,7 +482,7 @@ namespace Sourcemod
 		 * @return              Value read.
 		 * @error               Invalid Handle, invalid index, or invalid block.
 		 */
-		public any GetArrayCell(Handle array, int index, int block = 0, bool asChar = false) { throw new NotImplementedException(); }
+		public any GetArrayCell(Handle array, int index, int block = 0, bool asChar = false) => ((ArrayList)array).Get(index, block, asChar);
 
 		/**
 		 * Retrieves a string value from an array.
@@ -359,7 +494,7 @@ namespace Sourcemod
 		 * @return              Number of characters copied.
 		 * @error               Invalid Handle or invalid index.
 		 */
-		public int GetArrayString(Handle array, int index, char[] buffer, int maxlength) { throw new NotImplementedException(); }
+		public int GetArrayString(Handle array, int index, out string buffer, int maxlength) => ((ArrayList)array).GetString(index, out buffer, maxlength);
 
 		/**
 		 * Retrieves an array of cells from an array.
@@ -372,7 +507,7 @@ namespace Sourcemod
 		 * @return              Number of cells copied.
 		 * @error               Invalid Handle or invalid index.
 		 */
-		public int GetArrayArray(Handle array, int index, any[] buffer, int size = -1) { throw new NotImplementedException(); }
+		public int GetArrayArray(Handle array, int index, any[] buffer, int size = -1) => ((ArrayList)array).GetArray(index, buffer, size);
 
 		/**
 		 * Sets a cell value in an array.
@@ -385,7 +520,7 @@ namespace Sourcemod
 		 * @param asChar        Optionally set as a byte instead of a cell.
 		 * @error               Invalid Handle, invalid index, or invalid block.
 		 */
-		public void SetArrayCell(Handle array, int index, any value, int block = 0, bool asChar = false) { throw new NotImplementedException(); }
+		public void SetArrayCell(Handle array, int index, any value, int block = 0, bool asChar = false) => ((ArrayList)array).Set(index, value, block, asChar);
 
 		/**
 		 * Sets a string value in an array.
@@ -396,7 +531,7 @@ namespace Sourcemod
 		 * @return              Number of characters copied.
 		 * @error               Invalid Handle or invalid index.
 		 */
-		public int SetArrayString(Handle array, int index, string value) { throw new NotImplementedException(); }
+		public int SetArrayString(Handle array, int index, string value) => ((ArrayList)array).SetString(index, value);
 
 		/**
 		 * Sets an array of cells in an array.
@@ -409,7 +544,7 @@ namespace Sourcemod
 		 * @return              Number of cells copied.
 		 * @error               Invalid Handle or invalid index.
 		 */
-		public int SetArrayArray(Handle array, int index, any[] values, int size = -1) { throw new NotImplementedException(); }
+		public int SetArrayArray(Handle array, int index, any[] values, int size = -1) => ((ArrayList)array).SetArray(index, values, size);
 
 		/**
 		 * Shifts an array up.  All array contents after and including the given
@@ -420,7 +555,7 @@ namespace Sourcemod
 		 * @param index         Index in the array to shift up from.
 		 * @error               Invalid Handle or invalid index.
 		 */
-		public void ShiftArrayUp(Handle array, int index) { throw new NotImplementedException(); }
+		public void ShiftArrayUp(Handle array, int index) => ((ArrayList)array).ShiftUp(index);
 
 		/**
 		 * Removes an array index, shifting the entire array down from that position
@@ -431,7 +566,7 @@ namespace Sourcemod
 		 * @param index         Index in the array to remove at.
 		 * @error               Invalid Handle or invalid index.
 		 */
-		public void RemoveFromArray(Handle array, int index) { throw new NotImplementedException(); }
+		public void RemoveFromArray(Handle array, int index) => ((ArrayList)array).Remove(index);
 
 		/**
 		 * Swaps two items in the array.
@@ -441,7 +576,7 @@ namespace Sourcemod
 		 * @param index2        Second index.
 		 * @error               Invalid Handle or invalid index.
 		 */
-		public void SwapArrayItems(Handle array, int index1, int index2) { throw new NotImplementedException(); }
+		public void SwapArrayItems(Handle array, int index1, int index2) => ((ArrayList)array).SwapAt(index1, index2);
 
 		/**
 		 * Returns the index for the first occurrence of the provided string. If the string
@@ -452,7 +587,7 @@ namespace Sourcemod
 		 * @return              Array index, or -1 on failure
 		 * @error               Invalid Handle
 		 */
-		public int FindStringInArray(Handle array, string item) { throw new NotImplementedException(); }
+		public int FindStringInArray(Handle array, string item) => ((ArrayList)array).FindString(item);
 
 		/**
 		 * Returns the index for the first occurrence of the provided value. If the value
@@ -464,7 +599,7 @@ namespace Sourcemod
 		 * @return              Array index, or -1 on failure
 		 * @error               Invalid Handle or invalid block
 		 */
-		public int FindValueInArray(Handle array, any item, int block = 0) { throw new NotImplementedException(); }
+		public int FindValueInArray(Handle array, any item, int block = 0) => ((ArrayList)array).FindValue(item, block);
 
 		/**
 		 * Returns the blocksize the array was created with.
@@ -473,6 +608,6 @@ namespace Sourcemod
 		 * @return              The blocksize of the array.
 		 * @error               Invalid Handle
 		 */
-		public int GetArrayBlockSize(Handle array) { throw new NotImplementedException(); }
+		public int GetArrayBlockSize(Handle array) => ((ArrayList)array).BlockSize;
 	}
 }
