@@ -75,8 +75,31 @@ namespace Sourcemod
 			CSRoundEnd_TerroristsSurrender= 16,        /**< Terrorists Surrender */
 			CSRoundEnd_CTSurrender= 17,                /**< CTs Surrender */
 			CSRoundEnd_TerroristsPlanted= 18,          /**< Terrorists Planted the bomb */
-			CSRoundEnd_CTsReachedHostage= 19;           /**< CTs Reached the hostage */
+			CSRoundEnd_CTsReachedHostage= 19           /**< CTs Reached the hostage */
 		};
+		public const int
+		CSRoundEnd_TargetBombed = 0,           /**< Target Successfully Bombed! */
+			CSRoundEnd_VIPEscaped = 1,                 /**< The VIP has escaped! - Doesn't exist on CS:GO */
+			CSRoundEnd_VIPKilled = 2,                  /**< VIP has been assassinated! - Doesn't exist on CS:GO */
+			CSRoundEnd_TerroristsEscaped = 3,          /**< The terrorists have escaped! */
+			CSRoundEnd_CTStoppedEscape = 4,            /**< The CTs have prevented most of the terrorists from escaping! */
+			CSRoundEnd_TerroristsStopped = 5,          /**< Escaping terrorists have all been neutralized! */
+			CSRoundEnd_BombDefused = 6,                /**< The bomb has been defused! */
+			CSRoundEnd_CTWin = 7,                      /**< Counter-Terrorists Win! */
+			CSRoundEnd_TerroristWin = 8,               /**< Terrorists Win! */
+			CSRoundEnd_Draw = 9,                       /**< Round Draw! */
+			CSRoundEnd_HostagesRescued = 10,            /**< All Hostages have been rescued! */
+			CSRoundEnd_TargetSaved = 11,                /**< Target has been saved! */
+			CSRoundEnd_HostagesNotRescued = 12,         /**< Hostages have not been rescued! */
+			CSRoundEnd_TerroristsNotEscaped = 13,       /**< Terrorists have not escaped! */
+			CSRoundEnd_VIPNotEscaped = 14,              /**< VIP has not escaped! - Doesn't exist on CS:GO */
+			CSRoundEnd_GameStart = 15,                  /**< Game Commencing! */
+
+			// The below only exist on CS:GO
+			CSRoundEnd_TerroristsSurrender= 16,        /**< Terrorists Surrender */
+			CSRoundEnd_CTSurrender= 17,                /**< CTs Surrender */
+			CSRoundEnd_TerroristsPlanted= 18,          /**< Terrorists Planted the bomb */
+			CSRoundEnd_CTsReachedHostage= 19;           /**< CTs Reached the hostage */
 
 		public enum CSWeaponID
 		{

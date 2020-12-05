@@ -87,6 +87,7 @@ namespace Sourcemod
 		{
 			Path_SM,                    /**< SourceMod root folder */
 		};
+		public const int Path_SM = 0;                    /**< SourceMod root folder */
 
 		// A DirectoryListing iterates over the contents of a directory. To obtain a
 		// DirectoryListing handle, call OpenDirectory().

@@ -48,6 +48,12 @@ namespace Sourcemod
 			DBVal_Data = 3          /**< Field has data */
 		};
 
+		public const int
+			DBVal_Error = 0,        /**< Column number/field is invalid. */
+			DBVal_TypeMismatch = 1, /**< You cannot retrieve this data with this type. */
+			DBVal_Null = 2,         /**< Field has no data (NULL) */
+			DBVal_Data = 3;          /**< Field has data */
+
 		/**
 		 * Describes binding types.
 		 */
@@ -57,6 +63,10 @@ namespace Sourcemod
 			DBBind_Float = 1,       /**< Bind a float. */
 			DBBind_String = 2       /**< Bind a string. */
 		};
+		public const int
+			DBBind_Int = 0,         /**< Bind an integer. */
+			DBBind_Float = 1,       /**< Bind a float. */
+			DBBind_String = 2;       /**< Bind a string. */
 
 		/**
 		 * Threading priority level.
@@ -67,6 +77,10 @@ namespace Sourcemod
 			DBPrio_Normal = 1,      /**< Normal priority. */
 			DBPrio_Low = 2          /**< Low priority. */
 		};
+		public const int
+			DBPrio_High = 0,        /**< High priority. */
+			DBPrio_Normal = 1,      /**< Normal priority. */
+			DBPrio_Low = 2;          /**< Low priority. */
 
 		// A Driver represents a database backend, currently MySQL or SQLite.
 		//

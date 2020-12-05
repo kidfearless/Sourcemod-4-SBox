@@ -76,6 +76,19 @@ namespace Sourcemod
 			PropField_Variant           /**< Valid for Data fields only Type is not known at the field level,
                                      (for this call), but dependent on current field value. */
 		};
+		public const int 
+			PropField_Unsupported = 0,      /**< The type is unsupported. */
+			PropField_Integer = 1,          /**< Valid for SendProp and Data fields */
+			PropField_Float = 2,            /**< Valid for SendProp and Data fields */
+			PropField_Entity = 3,           /**< Valid for Data fields only (SendProp shows as int) */
+			PropField_Vector = 4,           /**< Valid for SendProp and Data fields */
+			PropField_String = 5,           /**< Valid for SendProp and Data fields */
+			PropField_String_T = 6,         /**< Valid for Data fields.  Read only.
+	                                 Note that the size of a string_t is dynamic, and
+	                                 thus FindDataMapOffs() will return the constant size
+	                                 of the string_t container (which is 32 bits right now). */
+			PropField_Variant = 7;           /**< Valid for Data fields only Type is not known at the field level,
+                                     (for this call), but dependent on current field value. */
 
 		/**
 		 * @endsection

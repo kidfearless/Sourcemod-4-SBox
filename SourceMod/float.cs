@@ -36,6 +36,7 @@ namespace Sourcemod
 {
 	public partial class SourceMod
 	{
+		private static Random random = new Random();
 
 		/**
 		 * Converts an integer into a floating point value.
@@ -43,7 +44,7 @@ namespace Sourcemod
 		 * @param value         Integer to convert.
 		 * @return              Floating point value.
 		 */
-		public static float Float(int value) { throw new NotImplementedException(); }
+		public static float Float(int value) => (float)value;
 
 		/**
 		 * Returns the decimal part of a float.
@@ -51,7 +52,10 @@ namespace Sourcemod
 		 * @param value         Input value.
 		 * @return              Decimal part.
 		 */
-		public static float FloatFraction(float value) { throw new NotImplementedException(); }
+		public static float FloatFraction(float value)
+		{
+			return value - (float)Math.Floor(value);
+		}
 
 		/**
 		 * Rounds a float to the closest integer to zero.
@@ -59,7 +63,7 @@ namespace Sourcemod
 		 * @param value         Input value to be rounded.
 		 * @return              Rounded value.
 		 */
-		public static int RoundToZero(float value) { throw new NotImplementedException(); }
+		public static int RoundToZero(float value) => (int)Math.Round(value, MidpointRounding.ToZero);
 
 		/**
 		 * Rounds a float to the next highest integer value.
@@ -67,7 +71,7 @@ namespace Sourcemod
 		 * @param value         Input value to be rounded.
 		 * @return              Rounded value.
 		 */
-		public static int RoundToCeil(float value) { throw new NotImplementedException(); }
+		public static int RoundToCeil(float value) => (int)Math.Round(value, MidpointRounding.ToPositiveInfinity);
 
 		/**
 		 * Rounds a float to the next lowest integer value.
@@ -75,7 +79,7 @@ namespace Sourcemod
 		 * @param value         Input value to be rounded.
 		 * @return              Rounded value.
 		 */
-		public static int RoundToFloor(float value) { throw new NotImplementedException(); }
+		public static int RoundToFloor(float value) => (int)Math.Round(value, MidpointRounding.ToNegativeInfinity);
 
 		/**
 		 * Standard IEEE rounding.
@@ -83,7 +87,7 @@ namespace Sourcemod
 		 * @param value         Input value to be rounded.
 		 * @return              Rounded value.
 		 */
-		public static int RoundToNearest(float value) { throw new NotImplementedException(); }
+		public static int RoundToNearest(float value) => (int)Math.Round(value);
 
 		/**
 		 * Compares two floats.
@@ -94,7 +98,10 @@ namespace Sourcemod
 		 *                      Returns -1 if the first argument is smaller than the second argument.
 		 *                      Returns 0 if both arguments are equal.
 		 */
-		public static int FloatCompare(float fOne, float fTwo) { throw new NotImplementedException(); }
+		public static int FloatCompare(float fOne, float fTwo)
+		{
+			return Math.Sign(fOne - fTwo);
+		}
 
 		/**
 		 * Returns the square root of the input value, equivalent to floatpower(value, 0.5).
@@ -102,7 +109,7 @@ namespace Sourcemod
 		 * @param value         Input value.
 		 * @return              Square root of the value.
 		 */
-		public static float SquareRoot(float value) { throw new NotImplementedException(); }
+		public static float SquareRoot(float value) => (float)Math.Sqrt(value);
 
 		/**
 		 * Returns the value raised to the power of the exponent.
@@ -111,7 +118,7 @@ namespace Sourcemod
 		 * @param exponent      Value to raise the base.
 		 * @return              value^exponent.
 		 */
-		public static float Pow(float value, float exponent) { throw new NotImplementedException(); }
+		public static float Pow(float value, float exponent) => (float)Math.Pow(value, exponent);
 
 		/**
 		 * Returns the value of raising the input by e.
@@ -119,7 +126,7 @@ namespace Sourcemod
 		 * @param value         Input value.
 		 * @return              exp(value).
 		 */
-		public static float Exponential(float value) { throw new NotImplementedException(); }
+		public static float Exponential(float value) => (float)Math.Pow(value, Math.E);
 
 		/**
 		 * Returns the logarithm of any base specified.
@@ -128,7 +135,7 @@ namespace Sourcemod
 		 * @param base          Logarithm base to use, default is 10.
 		 * @return              log(value)/log(base).
 		 */
-		public static float Logarithm(float value, float Base = 10.0f) { throw new NotImplementedException(); }
+		public static float Logarithm(float value, float Base = 10.0f) => (float)Math.Log(value, Base);
 
 		/**
 		 * Returns the sine of the argument.
@@ -136,7 +143,7 @@ namespace Sourcemod
 		 * @param value         Input value in radians.
 		 * @return              sin(value).
 		 */
-		public static float Sine(float value) { throw new NotImplementedException(); }
+		public static float Sine(float value) => (float)Math.Sin(value) ;
 
 		/**
 		 * Returns the cosine of the argument.
@@ -144,7 +151,7 @@ namespace Sourcemod
 		 * @param value         Input value in radians.
 		 * @return              cos(value).
 		 */
-		public static float Cosine(float value) { throw new NotImplementedException(); }
+		public static float Cosine(float value) => (float)Math.Cos(value) ;
 
 		/**
 		 * Returns the tangent of the argument.
@@ -152,7 +159,7 @@ namespace Sourcemod
 		 * @param value         Input value in radians.
 		 * @return              tan(value).
 		 */
-		public static float Tangent(float value) { throw new NotImplementedException(); }
+		public static float Tangent(float value) => (float)Math.Tan(value);
 
 		/**
 		 * Returns an absolute value.
@@ -160,7 +167,7 @@ namespace Sourcemod
 		 * @param value         Input value.
 		 * @return              Absolute value of the input.
 		 */
-		public static float FloatAbs(float value) { throw new NotImplementedException(); }
+		public static float FloatAbs(float value) => (float)Math.Abs(value);
 
 		/**
 		 * Returns the arctangent of the input value.
@@ -168,7 +175,7 @@ namespace Sourcemod
 		 * @param angle         Input value.
 		 * @return              atan(value) in radians.
 		 */
-		public static float ArcTangent(float angle) { throw new NotImplementedException(); }
+		public static float ArcTangent(float angle) => (float)Math.Atan(angle) ;
 
 		/**
 		 * Returns the arccosine of the input value.
@@ -176,7 +183,7 @@ namespace Sourcemod
 		 * @param angle         Input value.
 		 * @return              acos(value) in radians.
 		 */
-		public static float ArcCosine(float angle) { throw new NotImplementedException(); }
+		public static float ArcCosine(float angle) => (float)Math.Acos(angle);
 
 		/**
 		 * Returns the arcsine of the input value.
@@ -184,7 +191,7 @@ namespace Sourcemod
 		 * @param angle         Input value.
 		 * @return              asin(value) in radians.
 		 */
-		public static float ArcSine(float angle) { throw new NotImplementedException(); }
+		public static float ArcSine(float angle) => (float)Math.Asin(angle);
 
 		/**
 		 * Returns the arctangent2 of the input values.
@@ -193,7 +200,7 @@ namespace Sourcemod
 		 * @param y             Vertical value.
 		 * @return              atan2(value) in radians.
 		 */
-		public static float ArcTangent2(float x, float y) { throw new NotImplementedException(); }
+		public static float ArcTangent2(float x, float y) => (float)Math.Atan2(x, y);
 
 		/**
 		 * Rounds a floating point number using the "round to nearest" algorithm.
@@ -238,7 +245,7 @@ namespace Sourcemod
 		 *
 		 * @return              Random integer.
 		 */
-		public static int GetURandomInt() { throw new NotImplementedException(); }
+		public static int GetURandomInt() => random.Next(0, int.MaxValue);
 
 		/**
 		 * Returns a uniform random float in the range [0, 1).
@@ -247,7 +254,7 @@ namespace Sourcemod
 		 *
 		 * @return              Uniform random floating-point number.
 		 */
-		public static float GetURandomFloat() { throw new NotImplementedException(); }
+		public static float GetURandomFloat() => (float)random.NextDouble();
 
 		/**
 		 * Seeds a plugin's uniform random number stream. This is done automatically,
@@ -256,13 +263,16 @@ namespace Sourcemod
 		 * @param seeds         Array of numbers to use as seeding data.
 		 * @param numSeeds      Number of seeds in the seeds array.
 		 */
-		public static void SetURandomSeed(int[] seeds, int numSeeds) { throw new NotImplementedException(); }
+		public static void SetURandomSeed(int[] seeds, int numSeeds) =>  random = new Random(seeds[0]);
 
 		/**
 		 * Seeds a plugin's uniform random number stream. This is done automatically,
 		 * so normally it is totally unnecessary to call this.
 		 *
-		 * @param seed      Single seed value.
+		 * @param
+		{
+		
+		}seed value.
 		 */
 		public static void SetURandomSeedSimple(int seed)
 		{
