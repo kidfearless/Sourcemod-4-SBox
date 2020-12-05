@@ -32,10 +32,20 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Numerics;
+
 namespace Sourcemod
 {
 	public partial class SourceMod
 	{
+		private static double RadiansToDegree(double rad) => rad * (180 / Math.PI);
+		private static double DegreeToRadians(double deg) => deg * (Math.PI / 180);
+
+		private static Vector3 CreateVector3(float[] vec)
+		{
+			return new Vector3(vec[0], vec[1], vec[2]);
+		}
+
 
 		/**
 		 * Calculates a vector's length.
@@ -46,7 +56,12 @@ namespace Sourcemod
 		 */
 		public static float GetVectorLength(float[] vec, bool squared = false)
 		{
-			throw new NotImplementedException();
+			var v = CreateVector3(vec);
+			if(squared)
+			{
+				return v.LengthSquared();
+			}
+			return v.Length();
 		}
 
 		/**
@@ -57,7 +72,16 @@ namespace Sourcemod
 		 * @param squared       If true, the result will be squared (for optimization).
 		 * @return              Vector distance.
 		 */
-		public static float GetVectorDistance(float[] vec1, float[] vec2, bool squared = false) { throw new NotImplementedException(); }
+		public static float GetVectorDistance(float[] vec1, float[] vec2, bool squared = false)
+		{
+			var v = CreateVector3(vec1);
+			var v2 = CreateVector3(vec2);
+			if (squared)
+			{
+				return Vector3.DistanceSquared(v, v2);
+			}
+			return Vector3.Distance(v, v2);
+		}
 
 		/**
 		 * Calculates the dot product of two vectors.
@@ -66,7 +90,12 @@ namespace Sourcemod
 		 * @param vec2          Second vector.
 		 * @return              Dot product of the two vectors.
 		 */
-		public static float GetVectorDotProduct(float[] vec1, float[] vec2) { throw new NotImplementedException(); }
+		public static float GetVectorDotProduct(float[] vec1, float[] vec2)
+		{
+			var v = CreateVector3(vec1);
+			var v2 = CreateVector3(vec2);
+			return Vector3.Dot(v, v2);
+		}
 
 		/**
 		 * Computes the cross product of two vectors.  Any input array can be the same
@@ -76,7 +105,19 @@ namespace Sourcemod
 		 * @param vec2          Second vector.
 		 * @param result        Resultant vector.
 		 */
-		public static void GetVectorCrossProduct(float[] vec1, float[] vec2, out float[] result) { throw new NotImplementedException(); }
+		public static void GetVectorCrossProduct(float[] vec1, float[] vec2, out float[] result)
+		{
+			var v = CreateVector3(vec1);
+			var v2 = CreateVector3(vec2);
+			
+			var v3 = Vector3.Cross(v, v2);
+			result = new float[3]
+			{
+				v3.X,
+				v3.Y,
+				v3.Z
+			};
+		}
 
 		/**
 		 * Normalizes a vector.  The input array can be the same as the output array.
@@ -85,7 +126,18 @@ namespace Sourcemod
 		 * @param result        Resultant vector.
 		 * @return              Vector length.
 		 */
-		public static float NormalizeVector(float[] vec, out float[] result) { throw new NotImplementedException(); }
+		public static float NormalizeVector(float[] vec, out float[] result)
+		{
+			var v = CreateVector3(vec);
+			var v3 = Vector3.Normalize(v);
+			result = new float[3]
+			{
+				v3.X,
+				v3.Y,
+				v3.Z
+			};
+			return v.Length();
+		}
 
 		/**
 		 * Returns vectors in the direction of an angle.
@@ -95,7 +147,40 @@ namespace Sourcemod
 		 * @param right         Right vector buffer or NULL_VECTOR.
 		 * @param up            Up vector buffer or NULL_VECTOR.
 		 */
-		public static void GetAngleVectors(float[] angle, out float[] fwd, out float[] right, out float[] up) { throw new NotImplementedException(); }
+		public static void GetAngleVectors(float[] angle, out float[] fwd, out float[] right, out float[] up)
+		{
+			SinCos((float)DegreeToRadians(angle[1]), out float sy, out float cy);
+			SinCos((float)DegreeToRadians(angle[0]), out float sp, out float cp);
+			SinCos((float)DegreeToRadians(angle[2]), out float sr, out float cr);
+
+
+			fwd = new float[3]
+			{
+				cp * cy,
+				cp * sy,
+				-sp
+			};
+
+			right = new float[3]
+			{
+				(-1 * sr * sp * cy + -1 * cr * -sy),
+				(-1 * sr * sp * sy + -1 * cr * cy),
+				-1 * sr * cp
+			};
+
+			up = new float[3]
+			{
+				(cr * sp * cy + -sr * -sy),
+				(cr * sp * sy + -sr * cy),
+				cr * cp
+			};
+		}
+
+		private static void SinCos(float radians, out float sine, out float cosine )
+		{
+			sine = (float)Math.Sin(radians);
+			cosine = (float)Math.Cos(radians);
+		}
 
 		/**
 		 * Returns angles from a vector.
@@ -103,7 +188,36 @@ namespace Sourcemod
 		 * @param vec           Vector.
 		 * @param angle         Angle buffer.
 		 */
-		public static void GetVectorAngles(float[] vec, out float[] angle) { throw new NotImplementedException(); }
+		public static void GetVectorAngles(float[] vec, out float[] angle)
+		{
+			float tmp, yaw, pitch;
+
+			if (vec[1] == 0 && vec[0] == 0)
+			{
+				yaw = 0;
+				if (vec[2] > 0)
+					pitch = 270;
+				else
+					pitch = 90;
+			}
+			else
+			{
+				yaw = ((float)(Math.Atan2(vec[1], vec[0]) * 180 / Math.PI));
+				if (yaw < 0)
+					yaw += 360;
+
+				tmp = (float)Math.Sqrt(vec[0] * vec[0] + vec[1] * vec[1]);
+				pitch = ((float)(Math.Atan2(-vec[2], tmp) * 180 / Math.PI));
+				if (pitch < 0)
+					pitch += 360;
+			}
+			angle = new float[3]
+			{
+				pitch,
+				yaw,
+				0
+			};
+		}
 
 		/**
 		 * Returns direction vectors from a vector.
@@ -112,7 +226,36 @@ namespace Sourcemod
 		 * @param right         Right vector buffer or NULL_VECTOR.
 		 * @param up            Up vector buffer or NULL_VECTOR.
 		 */
-		public static void GetVectorVectors(float[] vec, out float[] right, out float[] up) { throw new NotImplementedException(); }
+		public static void GetVectorVectors(float[] vec, out float[] right, out float[] up)
+		{
+			right = new float[3];
+			up = new float[3];
+			if (Math.Abs(vec[0]) < 1e-6 && Math.Abs(vec[1]) < 1e-6)
+			{
+				// pitch 90 degrees up/down from identity
+				right[0] = 0;
+				right[1] = -1;
+				right[2] = 0;
+				up[0] = -vec[2];
+				up[1] = 0;
+				up[2] = 0;
+			}
+			else
+			{
+				float[] tmp = new float[3];
+				tmp[0] = 0; tmp[1] = 0; tmp[2] = 1.0f;
+				var r = Vector3.Cross(CreateVector3(vec), CreateVector3(tmp));
+				VectorNormalize(right);
+				right = new float[3]
+				{
+					r.X,
+					r.Y,
+					r.Z
+				};
+				CrossProduct(right, vec, up);
+				VectorNormalize(up);
+			}
+		}
 
 		/**
 		 * Adds two vectors.  It is safe to use either input buffer as an output

@@ -66,6 +66,8 @@ namespace Sourcemod
 		 */
 		public static Handle CreateTimer(float interval, Timer func, any? data = null, int flags = 0) { throw new NotImplementedException(); }
 
+
+
 		/**
 		 * Kills a timer.  Use this instead of CloseHandle() if you need more options.
 		 *
@@ -182,7 +184,7 @@ namespace Sourcemod
 		{
 			datapack = new DataPack();
 			flags |= TIMER_DATA_HNDL_CLOSE;
-			return CreateTimer(interval, func, datapack, flags);
+			return CreateTimer(interval, func, (Handle)datapack, flags);
 		}
 	}
 }

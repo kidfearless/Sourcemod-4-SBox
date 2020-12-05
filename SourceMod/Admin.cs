@@ -44,7 +44,7 @@ namespace Sourcemod
 	{
 		public struct AdminFlag
 		{
-			int _value;
+			public static int _value;
 			public AdminFlag(int value) => _value = value;
 			#region Access levels (flags) for admins.
 			public const int Reservation = 0;   /**< Reserved slot */
@@ -145,7 +145,7 @@ namespace Sourcemod
 		public readonly AdminId INVALID_ADMIN_ID = -1;
 		public class AdminId
 		{
-			int _value;
+			public static int _value;
 			public static implicit operator AdminId(int value) => new AdminId(value);
 			public static implicit operator int(AdminId value) => value._value;
 
@@ -269,7 +269,7 @@ namespace Sourcemod
 
 		public class GroupId
 		{
-			int _value;
+			public static int _value;
 			public static implicit operator GroupId(int value) => new GroupId(value);
 			public static implicit operator int(GroupId value) => value._value;
 
@@ -373,7 +373,7 @@ namespace Sourcemod
 		* @param flags         By-reference cell to store the flag (undefined if not found).
 		* @return              True if there is an override, false otherwise.
 		*/
-		bool GetCommandOverride(string cmd, OverrideType type, out int flags) { throw new NotImplementedException(); }
+		public static bool GetCommandOverride(string cmd, OverrideType type, out int flags) { throw new NotImplementedException(); }
 
 		/**
 		 * Unsets a command override.
@@ -381,7 +381,7 @@ namespace Sourcemod
 		 * @param cmd           String containing command name (case sensitive).
 		 * @param type          Override type (specific command or group).
 		 */
-		void UnsetCommandOverride(string cmd, OverrideType type) { throw new NotImplementedException(); }
+		public static void UnsetCommandOverride(string cmd, OverrideType type) { throw new NotImplementedException(); }
 
 		/**
 		 * Adds a new group.  Name must be unique.
@@ -389,7 +389,7 @@ namespace Sourcemod
 		 * @param group_name    String containing the group name.
 		 * @return              A new group id, INVALID_GROUP_ID if it already exists.
 		 */
-		GroupId CreateAdmGroup(string group_name) { throw new NotImplementedException(); }
+		public static GroupId CreateAdmGroup(string group_name) { throw new NotImplementedException(); }
 
 		/**
 		 * Finds a group by name.
@@ -397,7 +397,7 @@ namespace Sourcemod
 		 * @param group_name    String containing the group name.
 		 * @return              A group id, or INVALID_GROUP_ID if not found.
 		 */
-		GroupId FindAdmGroup(string group_name) { throw new NotImplementedException(); }
+		public static GroupId FindAdmGroup(string group_name) { throw new NotImplementedException(); }
 
 		/**
 		 * Adds or removes a flag from a group's flag set.
@@ -407,7 +407,7 @@ namespace Sourcemod
 		 * @param flag          Admin flag to toggle.
 		 * @param enabled       True to set the flag, false to unset/disable.
 		 */
-		void SetAdmGroupAddFlag(GroupId id, AdminFlag flag, bool enabled) { throw new NotImplementedException(); }
+		public static void SetAdmGroupAddFlag(GroupId id, AdminFlag flag, bool enabled) { throw new NotImplementedException(); }
 
 		/**
 		 * Gets the set value of an add flag on a group's flag set.
@@ -417,7 +417,7 @@ namespace Sourcemod
 		 * @param flag          Admin flag to retrieve.
 		 * @return              True if enabled, false otherwise,
 		 */
-		bool GetAdmGroupAddFlag(GroupId id, AdminFlag flag) { throw new NotImplementedException(); }
+		public static bool GetAdmGroupAddFlag(GroupId id, AdminFlag flag) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns the flag set that is added to a user from their group.
@@ -426,7 +426,7 @@ namespace Sourcemod
 		 * @param id            GroupId of the group.
 		 * @return              Bitstring containing the flags enabled.
 		 */
-		int GetAdmGroupAddFlags(GroupId id) { throw new NotImplementedException(); }
+		public static int GetAdmGroupAddFlags(GroupId id) { throw new NotImplementedException(); }
 
 
 		/**
@@ -435,7 +435,7 @@ namespace Sourcemod
 		 * @param id            Group id.
 		 * @param other_id      Group id to receive immunity to.
 		 */
-		void SetAdmGroupImmuneFrom(GroupId id, GroupId other_id) { throw new NotImplementedException(); }
+		public static void SetAdmGroupImmuneFrom(GroupId id, GroupId other_id) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns the number of specific group immunities.
@@ -443,7 +443,7 @@ namespace Sourcemod
 		 * @param id            Group id.
 		 * @return              Number of group immunities.
 		 */
-		int GetAdmGroupImmuneCount(GroupId id) { throw new NotImplementedException(); }
+		public static int GetAdmGroupImmuneCount(GroupId id) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns a group that this group is immune to given an index.
@@ -452,7 +452,7 @@ namespace Sourcemod
 		 * @param number        Index from 0 to N-1, from GetAdmGroupImmuneCount().
 		 * @return              GroupId that this group is immune to, or INVALID_GROUP_ID on failure.
 		 */
-		GroupId GetAdmGroupImmuneFrom(GroupId id, int number) { throw new NotImplementedException(); }
+		public static GroupId GetAdmGroupImmuneFrom(GroupId id, int number) { throw new NotImplementedException(); }
 
 		/**
 		 * Adds a group-specific override type.
@@ -462,7 +462,7 @@ namespace Sourcemod
 		 * @param type          Override type (specific command or group).
 		 * @param rule          Override allow/deny setting.
 		 */
-		void AddAdmGroupCmdOverride(GroupId id, string name, OverrideType type, OverrideRule rule) { throw new NotImplementedException(); }
+		public static void AddAdmGroupCmdOverride(GroupId id, string name, OverrideType type, OverrideRule rule) { throw new NotImplementedException(); }
 
 		/**
 		 * Retrieves a group-specific command override.
@@ -473,7 +473,7 @@ namespace Sourcemod
 		 * @param rule          Optional pointer to store allow/deny setting.
 		 * @return              True if an override exists, false otherwise.
 		 */
-		bool GetAdmGroupCmdOverride(GroupId id, string name, OverrideType type, out OverrideRule rule) { throw new NotImplementedException(); }
+		public static bool GetAdmGroupCmdOverride(GroupId id, string name, OverrideType type, out OverrideRule rule) { throw new NotImplementedException(); }
 
 		/**
 		 * Registers an authentication identity type.  You normally never need to call this except for
@@ -481,7 +481,7 @@ namespace Sourcemod
 		 *
 		 * @param name          Codename to use for your authentication type.
 		 */
-		void RegisterAuthIdentType(string name) { throw new NotImplementedException(); }
+		public static void RegisterAuthIdentType(string name) { throw new NotImplementedException(); }
 
 		/**
 		 * Creates a new admin entry in the permissions cache and returns the generated AdminId index.
@@ -490,7 +490,7 @@ namespace Sourcemod
 		 *                      Specify an empty string for an anonymous admin.
 		 * @return              New AdminId index or INVALID_ADMIN_ID if name is empty
 		 */
-		AdminId CreateAdmin(string name = "") { throw new NotImplementedException(); }
+		public static AdminId CreateAdmin(string name = "") { throw new NotImplementedException(); }
 
 		/**
 		 * Retrieves an admin's user name as made with CreateAdmin().
@@ -502,7 +502,7 @@ namespace Sourcemod
 		 * @param maxlength     Maximum size of string buffer.
 		 * @return              Number of bytes written.
 		 */
-		int GetAdminUsername(AdminId id, string name, int maxlength) { throw new NotImplementedException(); }
+		public static int GetAdminUsername(AdminId id, string name, int maxlength) { throw new NotImplementedException(); }
 
 		/**
 		 * Binds an admin to an identity for fast lookup later on.  The bind must be unique.
@@ -513,7 +513,7 @@ namespace Sourcemod
 		 * @return              True on success, false if the auth method was not found,
 		 *                      ident was already taken, or ident invalid for auth method.
 		 */
-		bool BindAdminIdentity(AdminId id, string auth, string ident) { throw new NotImplementedException(); }
+		public static bool BindAdminIdentity(AdminId id, string auth, string ident) { throw new NotImplementedException(); }
 
 		/**
 		* Sets whether or not a flag is enabled on an admin.
@@ -522,7 +522,7 @@ namespace Sourcemod
 		* @param flag          Admin flag to use.
 		* @param enabled       True to enable, false to disable.
 		*/
-		void SetAdminFlag(AdminId id, AdminFlag flag, bool enabled) { throw new NotImplementedException(); }
+		public static void SetAdminFlag(AdminId id, AdminFlag flag, bool enabled) { throw new NotImplementedException(); }
 
 		/**
 		* Returns whether or not a flag is enabled on an admin.
@@ -532,7 +532,7 @@ namespace Sourcemod
 		* @param mode          Access mode to check.
 		* @return              True if enabled, false otherwise.
 		*/
-		bool GetAdminFlag(AdminId id, AdminFlag flag, AdmAccessMode mode = AdmAccessMode.Access_Effective) { throw new NotImplementedException(); }
+		public static bool GetAdminFlag(AdminId id, AdminFlag flag, AdmAccessMode mode = AdmAccessMode.Access_Effective) { throw new NotImplementedException(); }
 
 		/**
 		* Returns the bitstring of access flags on an admin.
@@ -541,7 +541,7 @@ namespace Sourcemod
 		* @param mode          Access mode to use.
 		* @return              A bitstring containing which flags are enabled.
 		*/
-		int GetAdminFlags(AdminId id, AdmAccessMode mode) { throw new NotImplementedException(); }
+		public static int GetAdminFlags(AdminId id, AdmAccessMode mode) { throw new NotImplementedException(); }
 
 		/**
 		* Adds a group to an admin's inherited group list.  Any flags the group has
@@ -551,7 +551,7 @@ namespace Sourcemod
 		* @param gid           GroupId index of the group.
 		* @return              True on success, false on invalid input or duplicate membership.
 		*/
-		bool AdminInheritGroup(AdminId id, GroupId gid) { throw new NotImplementedException(); }
+		public static bool AdminInheritGroup(AdminId id, GroupId gid) { throw new NotImplementedException(); }
 
 		/**
 		* Returns the number of groups this admin is a member of.
@@ -559,7 +559,7 @@ namespace Sourcemod
 		* @param id            AdminId index of the admin.
 		* @return              Number of groups this admin is a member of.
 		*/
-		int GetAdminGroupCount(AdminId id) { throw new NotImplementedException(); }
+		public static int GetAdminGroupCount(AdminId id) { throw new NotImplementedException(); }
 
 		/**
 		* Returns group information from an admin.
@@ -573,7 +573,7 @@ namespace Sourcemod
 		* @return              A GroupId index and a name pointer, or
 		*                      INVALID_GROUP_ID and NULL if an error occurred.
 		*/
-		GroupId GetAdminGroup(AdminId id, int index, char[] name, int maxlength) { throw new NotImplementedException(); }
+		public static GroupId GetAdminGroup(AdminId id, int index, char[] name, int maxlength) { throw new NotImplementedException(); }
 
 		/**
 		* Sets a password on an admin.
@@ -581,7 +581,7 @@ namespace Sourcemod
 		* @param id            AdminId index of the admin.
 		* @param password      String containing the password.
 		*/
-		void SetAdminPassword(AdminId id, string password) { throw new NotImplementedException(); }
+		public static void SetAdminPassword(AdminId id, string password) { throw new NotImplementedException(); }
 
 		/**
 		* Gets an admin's password.
@@ -592,7 +592,7 @@ namespace Sourcemod
 		*                      Note: This will safely chop UTF-8 strings.
 		* @return              True if there was a password set, false otherwise.
 		*/
-		bool GetAdminPassword(AdminId id, string buffer = "", int maxlength = 0) { throw new NotImplementedException(); }
+		public static bool GetAdminPassword(AdminId id, string buffer = "", int maxlength = 0) { throw new NotImplementedException(); }
 
 		/**
 		* Attempts to find an admin by an auth method and an identity.
@@ -601,7 +601,7 @@ namespace Sourcemod
 		* @param identity      Identity string to look up.
 		* @return              An AdminId index if found, INVALID_ADMIN_ID otherwise.
 		*/
-		AdminId FindAdminByIdentity(string auth, string identity) { throw new NotImplementedException(); }
+		public static AdminId FindAdminByIdentity(string auth, string identity) { throw new NotImplementedException(); }
 
 		/**
 		* Removes an admin entry from the cache.
@@ -611,7 +611,7 @@ namespace Sourcemod
 		* @param id            AdminId index to remove/invalidate.
 		* @return              True on success, false otherwise.
 		*/
-		bool RemoveAdmin(AdminId id) { throw new NotImplementedException(); }
+		public static bool RemoveAdmin(AdminId id) { throw new NotImplementedException(); }
 
 		/**
 		* Converts a flag bit string to a bit array.
@@ -621,7 +621,7 @@ namespace Sourcemod
 		* @param maxSize       Maximum number of flags the array can store.
 		* @return              Number of flags written.
 		*/
-		int FlagBitsToBitArray(int bits, bool[] array, int maxSize) { throw new NotImplementedException(); }
+		public static int FlagBitsToBitArray(int bits, bool[] array, int maxSize) { throw new NotImplementedException(); }
 
 		/**
 		* Converts a flag array to a bit string.
@@ -630,7 +630,7 @@ namespace Sourcemod
 		* @param maxSize       Maximum size of the flag array.
 		* @return              A bit string composed of the array bits.
 		*/
-		int FlagBitArrayToBits(ReadOnlyCollection<bool[]> array, int maxSize) { throw new NotImplementedException(); }
+		public static int FlagBitArrayToBits(ReadOnlyCollection<bool[]> array, int maxSize) { throw new NotImplementedException(); }
 
 		/**
 		* Converts an array of flags to bits.
@@ -639,7 +639,7 @@ namespace Sourcemod
 		* @param numFlags      Number of flags in the array.
 		* @return              A bit string composed of the array flags.
 		*/
-		int FlagArrayToBits(ReadOnlyCollection<AdminFlag[]> array, int numFlags) { throw new NotImplementedException(); }
+		public static int FlagArrayToBits(ReadOnlyCollection<AdminFlag[]> array, int numFlags) { throw new NotImplementedException(); }
 
 		/**
 		* Converts a bit string to an array of flags.
@@ -649,7 +649,7 @@ namespace Sourcemod
 		* @param maxSize       Maximum size of the flag array.
 		* @return              Number of flags written.
 		*/
-		int FlagBitsToArray(int bits, AdminFlag[] array, int maxSize) { throw new NotImplementedException(); }
+		public static int FlagBitsToArray(int bits, AdminFlag[] array, int maxSize) { throw new NotImplementedException(); }
 
 		/**
 		* Finds a flag by its string name.
@@ -658,7 +658,7 @@ namespace Sourcemod
 		* @param flag          Variable to store flag in.
 		* @return              True on success, false if not found.
 		*/
-		bool FindFlagByName(string name, out AdminFlag flag) { throw new NotImplementedException(); }
+		public static bool FindFlagByName(string name, out AdminFlag flag) { throw new NotImplementedException(); }
 
 		/**
 		* Finds a flag by a given character.
@@ -667,7 +667,7 @@ namespace Sourcemod
 		* @param flag          Variable to store flag in.
 		* @return              True on success, false if not found.
 		*/
-		bool FindFlagByChar(int c, out AdminFlag flag) { throw new NotImplementedException(); }
+		public static bool FindFlagByChar(int c, out AdminFlag flag) { throw new NotImplementedException(); }
 
 		/**
 		* Finds the flag char for a given admin flag.
@@ -676,7 +676,7 @@ namespace Sourcemod
 		* @param c             Variable to store flag char.
 		* @return              True on success, false if not found.
 		*/
-		bool FindFlagChar(AdminFlag flag, out int c) { throw new NotImplementedException(); }
+		public static bool FindFlagChar(AdminFlag flag, out int c) { throw new NotImplementedException(); }
 
 		/**
 		* Converts a string of flag characters to a bit string.
@@ -685,7 +685,7 @@ namespace Sourcemod
 		* @param numchars      Optional variable to store the number of bytes read.
 		* @return              Bit string of ADMFLAG values.
 		*/
-		int ReadFlagString(string flags) { throw new NotImplementedException(); }
+		public static int ReadFlagString(string flags) { throw new NotImplementedException(); }
 
 
 		/**
@@ -695,28 +695,28 @@ namespace Sourcemod
 		* @param numchars      Optional variable to store the number of bytes read.
 		* @return              Bit string of ADMFLAG values.
 		*/
-		int ReadFlagString(string flags, out int numchars) { throw new NotImplementedException(); }
+		public static int ReadFlagString(string flags, out int numchars) { throw new NotImplementedException(); }
 
-	/**
-	* Tests whether one admin can target another.
-	*
-	* The heuristics for this check are as follows:
-	* 0. If the targeting AdminId is INVALID_ADMIN_ID, targeting fails.
-	* 1. If the targeted AdminId is INVALID_ADMIN_ID, targeting succeeds.
-	* 2. If the targeted AdminId is the same as the targeting AdminId,
-	*    (self) targeting succeeds.
-	* 3. If the targeting admin is root, targeting succeeds.
-	* 4. If the targeted admin has access higher (as interpreted by
-	*    (sm_immunity_mode) than the targeting admin, then targeting fails.
-	* 5. If the targeted admin has specific immunity from the
-	*    targeting admin via group immunities, targeting fails.
-	* 6. Targeting succeeds.
-	*
-	* @param admin         Admin doing the targetting (may be INVALID_ADMIN_ID).
-	* @param target        Target admin (may be INVALID_ADMIN_ID).
-	* @return              True if targetable, false if immune.
-	*/
-	bool CanAdminTarget(AdminId admin, AdminId target) { throw new NotImplementedException(); }
+		/**
+		* Tests whether one admin can target another.
+		*
+		* The heuristics for this check are as follows:
+		* 0. If the targeting AdminId is INVALID_ADMIN_ID, targeting fails.
+		* 1. If the targeted AdminId is INVALID_ADMIN_ID, targeting succeeds.
+		* 2. If the targeted AdminId is the same as the targeting AdminId,
+		*    (self) targeting succeeds.
+		* 3. If the targeting admin is root, targeting succeeds.
+		* 4. If the targeted admin has access higher (as interpreted by
+		*    (sm_immunity_mode) than the targeting admin, then targeting fails.
+		* 5. If the targeted admin has specific immunity from the
+		*    targeting admin via group immunities, targeting fails.
+		* 6. Targeting succeeds.
+		*
+		* @param admin         Admin doing the targetting (may be INVALID_ADMIN_ID).
+		* @param target        Target admin (may be INVALID_ADMIN_ID).
+		* @return              True if targetable, false if immune.
+		*/
+		public static bool CanAdminTarget(AdminId admin, AdminId target) { throw new NotImplementedException(); }
 
 		/**
 		* Creates an admin auth method.  This does not need to be called more than once
@@ -725,7 +725,7 @@ namespace Sourcemod
 		* @param method        Name of the authentication method.
 		* @return              True on success, false on failure.
 		*/
-		bool CreateAuthMethod(string method) { throw new NotImplementedException(); }
+		public static bool CreateAuthMethod(string method) { throw new NotImplementedException(); }
 
 		/**
 		* Sets a group's immunity level.
@@ -734,7 +734,7 @@ namespace Sourcemod
 		* @param level         Immunity level value.
 		* @return              Old immunity level value.
 		*/
-		int SetAdmGroupImmunityLevel(GroupId gid, int level) { throw new NotImplementedException(); }
+		public static int SetAdmGroupImmunityLevel(GroupId gid, int level) { throw new NotImplementedException(); }
 
 		/**
 		* Gets a group's immunity level (defaults to 0).
@@ -742,7 +742,7 @@ namespace Sourcemod
 		* @param gid           Group Id.
 		* @return              Immunity level value.
 		*/
-		int GetAdmGroupImmunityLevel(GroupId gid) { throw new NotImplementedException(); }
+		public static int GetAdmGroupImmunityLevel(GroupId gid) { throw new NotImplementedException(); }
 
 		/**
 		* Sets an admin's immunity level.
@@ -751,7 +751,7 @@ namespace Sourcemod
 		* @param level         Immunity level value.
 		* @return              Old immunity level value.
 		*/
-		int SetAdminImmunityLevel(AdminId id, int level) { throw new NotImplementedException(); }
+		public static int SetAdminImmunityLevel(AdminId id, int level) { throw new NotImplementedException(); }
 
 		/**
 		* Gets an admin's immunity level.
@@ -759,7 +759,7 @@ namespace Sourcemod
 		* @param id            Admin Id.
 		* @return              Immunity level value.
 		*/
-		int GetAdminImmunityLevel(AdminId id) { throw new NotImplementedException(); }
+		public static int GetAdminImmunityLevel(AdminId id) { throw new NotImplementedException(); }
 
 		/**
 		* Converts a flag to its single bit.
@@ -767,7 +767,7 @@ namespace Sourcemod
 		* @param flag          Flag to convert.
 		* @return              Bit representation of the flag.
 		*/
-		int FlagToBit(AdminFlag flag)
+		public static int FlagToBit(AdminFlag flag)
 		{
 			return (1 << flag);
 		}
@@ -779,7 +779,7 @@ namespace Sourcemod
 		* @param flag          Stores the converted flag by reference.
 		* @return              True on success, false otherwise.
 		*/
-		bool BitToFlag(int bit, out AdminFlag flag)
+		public static bool BitToFlag(int bit, out AdminFlag flag)
 		{
 			AdminFlag[] array = new AdminFlag[1];
 

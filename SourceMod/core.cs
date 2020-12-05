@@ -159,17 +159,6 @@ namespace Sourcemod
 		 */
 		public static bool IsNullString(string str) { throw new NotImplementedException(); }
 
-		/**
-		 * Horrible compatibility shim.
-		 */
-		public Extension __ext_core = new()
-		{
-			name = "Core",
-			file = "core",
-			autoload = false,
-			required = false,
-		};
-
 		public static int VerifyCoreVersion() { throw new NotImplementedException(); }
 
 		/**
