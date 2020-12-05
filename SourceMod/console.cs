@@ -46,6 +46,7 @@ namespace Sourcemod
 		{
 			QUERYCOOKIE_FAILED = 0
 		};
+		public const int QUERYCOOKIE_FAILED = 0;
 
 		/**
 		 * Reply sources for commands.
@@ -55,6 +56,9 @@ namespace Sourcemod
 			SM_REPLY_TO_CONSOLE = 0,
 			SM_REPLY_TO_CHAT = 1
 		};
+		public const int
+			SM_REPLY_TO_CONSOLE = 0,
+			SM_REPLY_TO_CHAT = 1;
 
 		/**
 		 * @section Flags for console commands and console variables.  The descriptions 

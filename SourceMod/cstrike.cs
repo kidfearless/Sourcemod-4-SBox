@@ -55,27 +55,27 @@ namespace Sourcemod
 		public enum CSRoundEndReason
 		{
 			CSRoundEnd_TargetBombed = 0,           /**< Target Successfully Bombed! */
-			CSRoundEnd_VIPEscaped,                 /**< The VIP has escaped! - Doesn't exist on CS:GO */
-			CSRoundEnd_VIPKilled,                  /**< VIP has been assassinated! - Doesn't exist on CS:GO */
-			CSRoundEnd_TerroristsEscaped,          /**< The terrorists have escaped! */
-			CSRoundEnd_CTStoppedEscape,            /**< The CTs have prevented most of the terrorists from escaping! */
-			CSRoundEnd_TerroristsStopped,          /**< Escaping terrorists have all been neutralized! */
-			CSRoundEnd_BombDefused,                /**< The bomb has been defused! */
-			CSRoundEnd_CTWin,                      /**< Counter-Terrorists Win! */
-			CSRoundEnd_TerroristWin,               /**< Terrorists Win! */
-			CSRoundEnd_Draw,                       /**< Round Draw! */
-			CSRoundEnd_HostagesRescued,            /**< All Hostages have been rescued! */
-			CSRoundEnd_TargetSaved,                /**< Target has been saved! */
-			CSRoundEnd_HostagesNotRescued,         /**< Hostages have not been rescued! */
-			CSRoundEnd_TerroristsNotEscaped,       /**< Terrorists have not escaped! */
-			CSRoundEnd_VIPNotEscaped,              /**< VIP has not escaped! - Doesn't exist on CS:GO */
-			CSRoundEnd_GameStart,                  /**< Game Commencing! */
+			CSRoundEnd_VIPEscaped = 1,                 /**< The VIP has escaped! - Doesn't exist on CS:GO */
+			CSRoundEnd_VIPKilled = 2,                  /**< VIP has been assassinated! - Doesn't exist on CS:GO */
+			CSRoundEnd_TerroristsEscaped = 3,          /**< The terrorists have escaped! */
+			CSRoundEnd_CTStoppedEscape = 4,            /**< The CTs have prevented most of the terrorists from escaping! */
+			CSRoundEnd_TerroristsStopped = 5,          /**< Escaping terrorists have all been neutralized! */
+			CSRoundEnd_BombDefused = 6,                /**< The bomb has been defused! */
+			CSRoundEnd_CTWin = 7,                      /**< Counter-Terrorists Win! */
+			CSRoundEnd_TerroristWin = 8,               /**< Terrorists Win! */
+			CSRoundEnd_Draw = 9,                       /**< Round Draw! */
+			CSRoundEnd_HostagesRescued = 10,            /**< All Hostages have been rescued! */
+			CSRoundEnd_TargetSaved = 11,                /**< Target has been saved! */
+			CSRoundEnd_HostagesNotRescued = 12,         /**< Hostages have not been rescued! */
+			CSRoundEnd_TerroristsNotEscaped = 13,       /**< Terrorists have not escaped! */
+			CSRoundEnd_VIPNotEscaped = 14,              /**< VIP has not escaped! - Doesn't exist on CS:GO */
+			CSRoundEnd_GameStart = 15,                  /**< Game Commencing! */
 
 			// The below only exist on CS:GO
-			CSRoundEnd_TerroristsSurrender,        /**< Terrorists Surrender */
-			CSRoundEnd_CTSurrender,                /**< CTs Surrender */
-			CSRoundEnd_TerroristsPlanted,          /**< Terrorists Planted the bomb */
-			CSRoundEnd_CTsReachedHostage           /**< CTs Reached the hostage */
+			CSRoundEnd_TerroristsSurrender= 16,        /**< Terrorists Surrender */
+			CSRoundEnd_CTSurrender= 17,                /**< CTs Surrender */
+			CSRoundEnd_TerroristsPlanted= 18,          /**< Terrorists Planted the bomb */
+			CSRoundEnd_CTsReachedHostage= 19;           /**< CTs Reached the hostage */
 		};
 
 		public enum CSWeaponID
@@ -180,6 +180,106 @@ namespace Sourcemod
 			CSWeapon_KNIFE_SKELETON = 525,
 			CSWeapon_MAX_WEAPONS //THIS MUST BE LAST, EASY WAY TO CREATE LOOPS. When looping, do CS_IsValidWeaponID(i), to check.
 		};
+		public const int 
+			CSWeapon_NONE = 0,
+			CSWeapon_P228 = 1,
+			CSWeapon_GLOCK = 2,
+			CSWeapon_SCOUT = 3,
+			CSWeapon_HEGRENADE = 4,
+			CSWeapon_XM1014 = 5,
+			CSWeapon_C4 = 6,
+			CSWeapon_MAC10 = 7,
+			CSWeapon_AUG = 8,
+			CSWeapon_SMOKEGRENADE = 9,
+			CSWeapon_ELITE = 10,
+			CSWeapon_FIVESEVEN = 11,
+			CSWeapon_UMP45 = 12,
+			CSWeapon_SG550 = 13,
+			CSWeapon_GALIL = 14,
+			CSWeapon_FAMAS = 15,
+			CSWeapon_USP = 16,
+			CSWeapon_AWP = 17,
+			CSWeapon_MP5NAVY = 18,
+			CSWeapon_M249 = 19,
+			CSWeapon_M3 = 20,
+			CSWeapon_M4A1 = 21,
+			CSWeapon_TMP = 22,
+			CSWeapon_G3SG1 = 23,
+			CSWeapon_FLASHBANG = 24,
+			CSWeapon_DEAGLE = 25,
+			CSWeapon_SG552 = 26,
+			CSWeapon_AK47 = 27,
+			CSWeapon_KNIFE = 28,
+			CSWeapon_P90 = 29,
+			CSWeapon_SHIELD = 30,
+			CSWeapon_KEVLAR = 31,
+			CSWeapon_ASSAULTSUIT = 32,
+			CSWeapon_NIGHTVISION = 33, //Anything below is CS:GO ONLY
+			CSWeapon_GALILAR = 34,
+			CSWeapon_BIZON = 35,
+			CSWeapon_MAG7 = 36,
+			CSWeapon_NEGEV = 37,
+			CSWeapon_SAWEDOFF = 38,
+			CSWeapon_TEC9 = 39,
+			CSWeapon_TASER = 40,
+			CSWeapon_HKP2000 = 41,
+			CSWeapon_MP7 = 42,
+			CSWeapon_MP9 = 43,
+			CSWeapon_NOVA = 44,
+			CSWeapon_P250 = 45,
+			CSWeapon_SCAR17 = 46,
+			CSWeapon_SCAR20 = 47,
+			CSWeapon_SG556 = 48,
+			CSWeapon_SSG08 = 49,
+			CSWeapon_KNIFE_GG = 50,
+			CSWeapon_MOLOTOV = 51,
+			CSWeapon_DECOY = 52,
+			CSWeapon_INCGRENADE = 53,
+			CSWeapon_DEFUSER = 54,
+			CSWeapon_HEAVYASSAULTSUIT = 55,
+			//The rest are actual item definition indexes for CS:GO
+			CSWeapon_CUTTERS = 56,
+			CSWeapon_HEALTHSHOT = 57,
+			CSWeapon_KNIFE_T = 59,
+			CSWeapon_M4A1_SILENCER = 60,
+			CSWeapon_USP_SILENCER = 61,
+			CSWeapon_CZ75A = 63,
+			CSWeapon_REVOLVER = 64,
+			CSWeapon_TAGGRENADE = 68,
+			CSWeapon_FISTS = 69,
+			CSWeapon_BREACHCHARGE = 70,
+			CSWeapon_TABLET = 72,
+			CSWeapon_MELEE = 74,
+			CSWeapon_AXE = 75,
+			CSWeapon_HAMMER = 76,
+			CSWeapon_SPANNER = 78,
+			CSWeapon_KNIFE_GHOST = 80,
+			CSWeapon_FIREBOMB = 81,
+			CSWeapon_DIVERSION = 82,
+			CSWeapon_FRAGGRENADE = 83,
+			CSWeapon_SNOWBALL = 84,
+			CSWeapon_BUMPMINE = 85,
+			CSWeapon_MAX_WEAPONS_NO_KNIFES = 86, // Max without the knife item defs, useful when treating all knives as a regular knife.
+			CSWeapon_BAYONET = 500,
+			CSWeapon_KNIFE_CLASSIC = 503,
+			CSWeapon_KNIFE_FLIP = 505,
+			CSWeapon_KNIFE_GUT = 506,
+			CSWeapon_KNIFE_KARAMBIT = 507,
+			CSWeapon_KNIFE_M9_BAYONET = 508,
+			CSWeapon_KNIFE_TATICAL = 509,
+			CSWeapon_KNIFE_FALCHION = 512,
+			CSWeapon_KNIFE_SURVIVAL_BOWIE = 514,
+			CSWeapon_KNIFE_BUTTERFLY = 515,
+			CSWeapon_KNIFE_PUSH = 516,
+			CSWeapon_KNIFE_CORD = 517,
+			CSWeapon_KNIFE_CANIS = 518,
+			CSWeapon_KNIFE_URSUS = 519,
+			CSWeapon_KNIFE_GYPSY_JACKKNIFE = 520,
+			CSWeapon_KNIFE_OUTDOOR = 521,
+			CSWeapon_KNIFE_STILETTO = 522,
+			CSWeapon_KNIFE_WIDOWMAKER = 523,
+			CSWeapon_KNIFE_SKELETON = 525,
+			CSWeapon_MAX_WEAPONS = 526; //THIS MUST BE LAST, EASY WAY TO CREATE LOOPS. When looping, do CS_IsValidWeaponID(i), to check.
 
 		/**
 		 * Called when a player attempts to purchase an item.

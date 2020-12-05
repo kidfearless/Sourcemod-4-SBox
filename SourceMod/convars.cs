@@ -45,6 +45,9 @@ namespace Sourcemod
 			ConVarBound_Upper = 0,
 			ConVarBound_Lower
 		};
+		public const int
+			ConVarBound_Upper = 0,
+			ConVarBound_Lower = 1;
 
 		/**
 		 * Console variable query result values.
@@ -56,6 +59,11 @@ namespace Sourcemod
 			ConVarQuery_NotValid,               //< A console command with the same name was found, but there is no convar. */
 			ConVarQuery_Protected               //< Client convar was found, but it is protected. The server cannot retrieve its value. */
 		};
+		public const int
+			ConVarQuery_Okay = 0,               //< Retrieval of client convar value was successful. */
+			ConVarQuery_NotFound = 1,               //< Client convar was not found. */
+			ConVarQuery_NotValid = 2,               //< A console command with the same name was found, but there is no convar. */
+			ConVarQuery_Protected = 3;               //< Client convar was found, but it is protected. The server cannot retrieve its value. */
 
 		/**
 		 * Called when a console variable's value is changed.

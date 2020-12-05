@@ -209,116 +209,113 @@ namespace Sourcemod
 			Use_Toggle
 		};
 
-		public delegate Action SDKHookCB(int victim, int attacker, int inflictor, float damage, int damagetype, int weapon, float[] damageForce, float[] damagePosition);
+		// PreThink/Post
+		// PostThink/Post
+		public delegate void SDKHook_PreThink(int client);
+		public delegate void SDKHook_PostThink(int client);
 
-		/*		typeset SDKHookCB
-				{
-					// PreThink/Post
-					// PostThink/Post
-					function void (int client);
+		// Spawn
+		public delegate Action SDKHook_Spawn(int client);
 
-					// Spawn
-					function Action (int entity);
+		// GroundEntChanged
+		// SpawnPost
+		// Think/Post
+		// VPhysicsUpdate/Post
+		public delegate Action SDKHook_GroundEntChanged(int entity);
+		public delegate Action SDKHook_SpawnPost(int entity);
+		public delegate Action SDKHook_Think(int entity);
+		public delegate Action SDKHook_VPhysicsUpdate(int entity);
 
-					// GroundEntChanged
-					// SpawnPost
-					// Think/Post
-					// VPhysicsUpdate/Post
-					function void (int entity);
+		// EndTouch
+		// StartTouch
+		// Touch
+		// Blocked
+		public delegate Action SDKHook_EndTouch(int entity, int other);
+		public delegate Action SDKHook_StartTouch(int entity, int other);
+		public delegate Action SDKHook_Touch(int entity, int other);
+		public delegate Action SDKHook_Blocked(int entity, int other);
 
-					// EndTouch
-					// StartTouch
-					// Touch
-					// Blocked
-					function Action (int entity, int other);
 
-					// EndTouchPost
-					// StartTouchPost
-					// TouchPost
-					function void (int entity, int other);
+		// EndTouchPost
+		// StartTouchPost
+		// TouchPost
+		public delegate void SDKHook_EndTouchPost(int entity, int other);
+		public delegate void SDKHook_StartTouchPost(int entity, int other);
+		public delegate void SDKHook_TouchPost(int entity, int other);
 
-					// SetTransmit
-					function Action (int entity, int client);
+		// SetTransmit
+		public delegate Action SDKHook_SetTransmit(int entity, int client);
 
-					// WeaponCanSwitchTo
-					// WeaponCanUse
-					// WeaponDrop
-					// WeaponEquip
-					// WeaponSwitch
-					function Action (int client, int weapon);
+		// WeaponCanSwitchTo
+		// WeaponCanUse
+		// WeaponDrop
+		// WeaponEquip
+		// WeaponSwitch
+		public delegate Action SDKHook_WeaponCanSwitchTo(int entity, int weapon);
+		public delegate Action SDKHook_WeaponCanUse(int entity, int weapon);
+		public delegate Action SDKHook_WeaponDrop(int entity, int weapon);
+		public delegate Action SDKHook_WeaponEquip(int entity, int weapon);
+		public delegate Action SDKHook_WeaponSwitch(int entity, int weapon);
 
-					// WeaponCanSwitchToPost
-					// WeaponCanUsePost
-					// WeaponDropPost
-					// WeaponEquipPost
-					// WeaponSwitchPost
-					function void (int client, int weapon);
+		// WeaponCanSwitchToPost
+		// WeaponCanUsePost
+		// WeaponDropPost
+		// WeaponEquipPost
+		// WeaponSwitchPost
+		public delegate void SDKHook_WeaponCanSwitchToPost(int client, int weapon);
+		public delegate void SDKHook_WeaponCanUsePost(int client, int weapon);
+		public delegate void SDKHook_WeaponDropPost(int client, int weapon);
+		public delegate void SDKHook_WeaponEquipPost(int client, int weapon);
+		public delegate void SDKHook_WeaponSwitchPost(int client, int weapon);
 
-					// GetMaxHealth (ep2v and later)
-					function Action (int entity, int &maxhealth);
+		// GetMaxHealth (ep2v and later)
+		public delegate Action SDKHook_GetMaxHealth(int client, ref int maxhealth);
 
-					// OnTakeDamage
-					// OnTakeDamageAlive
-					// SDKHooks 1.0+
-					function Action (int victim, int &attacker, int &inflictor, float &damage, int &damagetype);
 
-					// OnTakeDamage
-					// OnTakeDamageAlive
-					// Note: The weapon parameter is not used by all games and damage sources.
-					// Note: Force application is dependent on game and damage type(s)
-					// SDKHooks 2.0+
-					function Action (int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3]);
+		// OnTakeDamage
+		// OnTakeDamageAlive
+		// SDKHooks 1.0+
+		public delegate Action SDKHook_OnTakeDamage(int victim, ref int attacker, ref int inflictor, ref float damage, ref int damagetype);
 
-					// OnTakeDamage
-					// OnTakeDamageAlive
-					// Note: The weapon parameter is not used by all games and damage sources.
-					// Note: Force application is dependent on game and damage type(s)
-					// SDKHooks 2.1+  (can check for support at runtime using GetFeatureStatus on SDKHook_DmgCustomInOTD capability.
-					// DON'T attempt to access 'damagecustom' var if feature status != available
-					function Action (int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon,
-						float damageForce[3], float damagePosition[3], int damagecustom);
+		// OnTakeDamage
+		// OnTakeDamageAlive
+		// Note: The weapon parameter is not used by all games and damage sources.
+		// Note: Force application is dependent on game and damage type(s)
+		// SDKHooks 2.1+  (can check for support at runtime using GetFeatureStatus on SDKHook_DmgCustomInOTD capability.
+		// DON'T attempt to access 'damagecustom' var if feature status != available
+		public delegate Action SDKHook_OnTakeDamage2(int victim, ref int attacker, ref int inflictor, ref float damage, ref int damagetype, ref int weapon, ref float[/*3*/] damageForce, ref float[/*3*/] damagePosition);
 
-					// OnTakeDamagePost
-					// OnTakeDamageAlivePost
-					function void (int victim, int attacker, int inflictor, float damage, int damagetype);
+		// OnTakeDamagePost
+		// OnTakeDamageAlivePost
+		public delegate void SDKHook_OnTakeDamagePost(int victim, int attacker, int inflictor, float damage, int damagetype, float[/*3*/]? damageForce, float[/*3*/]? damagePosition, int? damagecustom);;
+		public delegate void SDKHook_OnTakeDamageAlivePost(int victim, int attacker, int inflictor, float damage, int damagetype, float[/*3*/]? damageForce, float[/*3*/]? damagePosition, int? damagecustom);
 
-					// OnTakeDamagePost
-					// OnTakeDamageAlivePost
-					function void (int victim, int attacker, int inflictor, float damage, int damagetype, int weapon, const float damageForce[3], const float damagePosition[3]);
+		// FireBulletsPost
+		public delegate void SDKHook_FireBulletsPost(int client, int shots, string weaponname);
 
-					// OnTakeDamagePost
-					// OnTakeDamageAlivePost
-					function void (int victim, int attacker, int inflictor, float damage, int damagetype, int weapon,
-						const float damageForce[3], const float damagePosition[3], int damagecustom);
+		// TraceAttack
+		public delegate Action SDKHookTraceAttack(int victim, ref int attacker, ref int inflictor, ref float damage, ref int damagetype, ref int ammotype, int hitbox, int hitgroup);
 
-					// FireBulletsPost
-					function void (int client, int shots, const char[] weaponname);
+		// TraceAttackPost
+		public delegate void SDKHook_TraceAttackPost(int victim, int attacker, int inflictor, float damage, int damagetype, int ammotype, int hitbox, int hitgroup);
 
-					// TraceAttack
-					function Action (int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &ammotype, int hitbox, int hitgroup);
+		// ShouldCollide
+		public delegate bool SDKHook_ShouldCollide(int entity, int collisiongroup, int contentsmask, bool originalResult);
 
-					// TraceAttackPost
-					function void (int victim, int attacker, int inflictor, float damage, int damagetype, int ammotype, int hitbox, int hitgroup);
+		// Use
+		public delegate Action SDKHook_Use(int entity, int activator, int caller, UseType type, float value);
 
-					// ShouldCollide
-					function bool (int entity, int collisiongroup, int contentsmask, bool originalResult);
+		// UsePost
+		public delegate void SDKHook_UsePost(int entity, int activator, int caller, UseType type, float value);
 
-					// Use
-					function Action (int entity, int activator, int caller, UseType type, float value);
+		// Reload
+		public delegate Action SDKHook_Reload(int weapon);
 
-					// UsePost
-					function void (int entity, int activator, int caller, UseType type, float value);
+		// Reload post
+		public delegate void SDKHook_ReloadPost(int weapon, bool bSuccessful);
 
-					// Reload
-					function Action (int weapon);
-
-					// Reload post
-					function void (int weapon, bool bSuccessful);
-
-					// CanBeAutobalanced
-					function bool (int client, bool origRet);
-				};*/
-
+		// CanBeAutobalanced
+		public delegate bool SDKHook_CanBeAutobalanced(int client, bool origRet);
 
 		/**
 		 * When an entity is created
@@ -372,7 +369,45 @@ namespace Sourcemod
 		 * @param type          Type of function to hook
 		 * @param callback      Function to call when hook is called
 		 */
-		public static void SDKHook(int entity, SDKHookType type, SDKHookCB callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_PreThink callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_PostThink callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_Spawn callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_GroundEntChanged callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_SpawnPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_Think callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_VPhysicsUpdate callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_EndTouch callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_StartTouch callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_Touch callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_Blocked callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_EndTouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_StartTouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_TouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_SetTransmit callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponCanSwitchTo callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponCanUse callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponDrop callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponEquip callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponSwitch callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponCanSwitchToPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponCanUsePost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponDropPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponEquipPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_WeaponSwitchPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_GetMaxHealth callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_OnTakeDamage callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_OnTakeDamage2 callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_OnTakeDamagePost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_OnTakeDamageAlivePost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_FireBulletsPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHookTraceAttack callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_TraceAttackPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_ShouldCollide callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_Use callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_UsePost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_Reload callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_ReloadPost callback) { throw new NotImplementedException(); }
+		public static void SDKHook(int entity, SDKHookType type, SDKHook_CanBeAutobalanced callback) { throw new NotImplementedException(); }
 
 		/**
 		 * Hooks an entity
@@ -382,8 +417,52 @@ namespace Sourcemod
 		 * @param callback      Function to call when hook is called
 		 * @return              Hook Successful
 		 */
-		public static bool SDKHookEx(int entity, SDKHookType type, SDKHookCB callback)
-		{ throw new NotImplementedException(); }
+				/**
+		 * Hooks an entity
+		 *
+		 * @param entity        Entity index
+		 * @param type          Type of function to hook
+		 * @param callback      Function to call when hook is called
+		 */
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_PreThink callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_PostThink callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_Spawn callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_GroundEntChanged callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_SpawnPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_Think callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_VPhysicsUpdate callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_EndTouch callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_StartTouch callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_Touch callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_Blocked callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_EndTouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_StartTouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_TouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_SetTransmit callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponCanSwitchTo callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponCanUse callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponDrop callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponEquip callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponSwitch callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponCanSwitchToPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponCanUsePost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponDropPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponEquipPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_WeaponSwitchPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_GetMaxHealth callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_OnTakeDamage callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_OnTakeDamage2 callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_OnTakeDamagePost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_OnTakeDamageAlivePost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_FireBulletsPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHookTraceAttack callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_TraceAttackPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_ShouldCollide callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_Use callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_UsePost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_Reload callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_ReloadPost callback) { throw new NotImplementedException(); }
+		public static void SDKHookEx(int entity, SDKHookType type, SDKHook_CanBeAutobalanced callback) { throw new NotImplementedException(); }
 
 		/**
 		 * Unhooks an entity
@@ -392,8 +471,45 @@ namespace Sourcemod
 		 * @param type     Type of function to unhook
 		 * @param callback Callback function to unhook
 		 */
-		public static void SDKUnhook(int entity, SDKHookType type, SDKHookCB callback)
-		{ throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_PreThink callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_PostThink callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_Spawn callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_GroundEntChanged callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_SpawnPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_Think callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_VPhysicsUpdate callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_EndTouch callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_StartTouch callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_Touch callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_Blocked callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_EndTouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_StartTouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_TouchPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_SetTransmit callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponCanSwitchTo callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponCanUse callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponDrop callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponEquip callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponSwitch callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponCanSwitchToPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponCanUsePost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponDropPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponEquipPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_WeaponSwitchPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_GetMaxHealth callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_OnTakeDamage callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_OnTakeDamage2 callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_OnTakeDamagePost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_OnTakeDamageAlivePost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_FireBulletsPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHookTraceAttack callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_TraceAttackPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_ShouldCollide callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_Use callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_UsePost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_Reload callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_ReloadPost callback) { throw new NotImplementedException(); }
+		public static void SDKUnhook(int entity, SDKHookType type, SDKHook_CanBeAutobalanced callback) { throw new NotImplementedException(); }
 
 		/**
 		 * Applies damage to an entity
@@ -409,9 +525,7 @@ namespace Sourcemod
 		 * @param damageForce    Velocity of damage force
 		 * @param damagePosition Origin of damage
 		 */
-		public static void SDKHooks_TakeDamage(int entity, int inflictor, int attacker,
-				float damage, int damageType = DMG_GENERIC, int weapon = -1,
-				float[/*3*/] damageForce = NULL_VECTOR, float[/*3*/] damagePosition = NULL_VECTOR)
+		public static void SDKHooks_TakeDamage(int entity, int inflictor, int attacker, float damage, int damageType = DMG_GENERIC, int weapon = -1, float[/*3*/] damageForce = NULL_VECTOR, float[/*3*/] damagePosition = NULL_VECTOR)
 		{ throw new NotImplementedException(); }
 
 		/**

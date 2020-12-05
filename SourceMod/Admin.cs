@@ -44,7 +44,7 @@ namespace Sourcemod
 	{
 		public struct AdminFlag
 		{
-			public static int _value;
+			public int _value;
 			public AdminFlag(int value) => _value = value;
 			#region Access levels (flags) for admins.
 			public const int Reservation = 0;   /**< Reserved slot */
@@ -75,29 +75,29 @@ namespace Sourcemod
 
 			public static implicit operator int(AdminFlag value) => value._value;
 		}
-			#region Bitwise values definitions for admin flags.
-			public const int ADMFLAG_RESERVATION = (1 << 0);      /**< Convenience macro for Admin_Reservation as a FlagBit */
-			public const int ADMFLAG_GENERIC = (1 << 1);      /**< Convenience macro for Admin_Generic as a FlagBit */
-			public const int ADMFLAG_KICK = (1 << 2);      /**< Convenience macro for Admin_Kick as a FlagBit */
-			public const int ADMFLAG_BAN = (1 << 3);      /**< Convenience macro for Admin_Ban as a FlagBit */
-			public const int ADMFLAG_UNBAN = (1 << 4);      /**< Convenience macro for Admin_Unban as a FlagBit */
-			public const int ADMFLAG_SLAY = (1 << 5);      /**< Convenience macro for Admin_Slay as a FlagBit */
-			public const int ADMFLAG_CHANGEMAP = (1 << 6);      /**< Convenience macro for Admin_Changemap as a FlagBit */
-			public const int ADMFLAG_CONVARS = (1 << 7);      /**< Convenience macro for Admin_Convars as a FlagBit */
-			public const int ADMFLAG_CONFIG = (1 << 8);      /**< Convenience macro for Admin_Config as a FlagBit */
-			public const int ADMFLAG_CHAT = (1 << 9);      /**< Convenience macro for Admin_Chat as a FlagBit */
-			public const int ADMFLAG_VOTE = (1 << 10);     /**< Convenience macro for Admin_Vote as a FlagBit */
-			public const int ADMFLAG_PASSWORD = (1 << 11);     /**< Convenience macro for Admin_Password as a FlagBit */
-			public const int ADMFLAG_RCON = (1 << 12);     /**< Convenience macro for Admin_RCON as a FlagBit */
-			public const int ADMFLAG_CHEATS = (1 << 13);     /**< Convenience macro for Admin_Cheats as a FlagBit */
-			public const int ADMFLAG_ROOT = (1 << 14);     /**< Convenience macro for Admin_Root as a FlagBit */
-			public const int ADMFLAG_CUSTOM1 = (1 << 15);     /**< Convenience macro for Admin_Custom1 as a FlagBit */
-			public const int ADMFLAG_CUSTOM2 = (1 << 16);     /**< Convenience macro for Admin_Custom2 as a FlagBit */
-			public const int ADMFLAG_CUSTOM3 = (1 << 17);     /**< Convenience macro for Admin_Custom3 as a FlagBit */
-			public const int ADMFLAG_CUSTOM4 = (1 << 18);     /**< Convenience macro for Admin_Custom4 as a FlagBit */
-			public const int ADMFLAG_CUSTOM5 = (1 << 19);     /**< Convenience macro for Admin_Custom5 as a FlagBit */
-			public const int ADMFLAG_CUSTOM6 = (1 << 20);     /**< Convenience macro for Admin_Custom6 as a FlagBit */
-			#endregion
+		#region Bitwise values definitions for admin flags.
+		public const int ADMFLAG_RESERVATION = (1 << 0);      /**< Convenience macro for Admin_Reservation as a FlagBit */
+		public const int ADMFLAG_GENERIC = (1 << 1);      /**< Convenience macro for Admin_Generic as a FlagBit */
+		public const int ADMFLAG_KICK = (1 << 2);      /**< Convenience macro for Admin_Kick as a FlagBit */
+		public const int ADMFLAG_BAN = (1 << 3);      /**< Convenience macro for Admin_Ban as a FlagBit */
+		public const int ADMFLAG_UNBAN = (1 << 4);      /**< Convenience macro for Admin_Unban as a FlagBit */
+		public const int ADMFLAG_SLAY = (1 << 5);      /**< Convenience macro for Admin_Slay as a FlagBit */
+		public const int ADMFLAG_CHANGEMAP = (1 << 6);      /**< Convenience macro for Admin_Changemap as a FlagBit */
+		public const int ADMFLAG_CONVARS = (1 << 7);      /**< Convenience macro for Admin_Convars as a FlagBit */
+		public const int ADMFLAG_CONFIG = (1 << 8);      /**< Convenience macro for Admin_Config as a FlagBit */
+		public const int ADMFLAG_CHAT = (1 << 9);      /**< Convenience macro for Admin_Chat as a FlagBit */
+		public const int ADMFLAG_VOTE = (1 << 10);     /**< Convenience macro for Admin_Vote as a FlagBit */
+		public const int ADMFLAG_PASSWORD = (1 << 11);     /**< Convenience macro for Admin_Password as a FlagBit */
+		public const int ADMFLAG_RCON = (1 << 12);     /**< Convenience macro for Admin_RCON as a FlagBit */
+		public const int ADMFLAG_CHEATS = (1 << 13);     /**< Convenience macro for Admin_Cheats as a FlagBit */
+		public const int ADMFLAG_ROOT = (1 << 14);     /**< Convenience macro for Admin_Root as a FlagBit */
+		public const int ADMFLAG_CUSTOM1 = (1 << 15);     /**< Convenience macro for Admin_Custom1 as a FlagBit */
+		public const int ADMFLAG_CUSTOM2 = (1 << 16);     /**< Convenience macro for Admin_Custom2 as a FlagBit */
+		public const int ADMFLAG_CUSTOM3 = (1 << 17);     /**< Convenience macro for Admin_Custom3 as a FlagBit */
+		public const int ADMFLAG_CUSTOM4 = (1 << 18);     /**< Convenience macro for Admin_Custom4 as a FlagBit */
+		public const int ADMFLAG_CUSTOM5 = (1 << 19);     /**< Convenience macro for Admin_Custom5 as a FlagBit */
+		public const int ADMFLAG_CUSTOM6 = (1 << 20);     /**< Convenience macro for Admin_Custom6 as a FlagBit */
+		#endregion
 
 
 		/**
@@ -109,6 +109,10 @@ namespace Sourcemod
 			Override_CommandGroup   /**< Command group */
 		};
 
+		public const int
+			Override_Command = 1,   /**< Command */
+			Override_CommandGroup = 2;   /**< Command group */
+
 		/**
 		 * Access override rules.
 		 */
@@ -118,6 +122,9 @@ namespace Sourcemod
 			Command_Allow = 1
 		};
 
+		public const int
+			Command_Deny = 0,
+			Command_Allow = 1;
 		/**
 		 * Methods of computing access permissions.
 		 */
@@ -126,6 +133,9 @@ namespace Sourcemod
 			Access_Real,        /**< Access the user has inherently */
 			Access_Effective    /**< Access the user has from their groups */
 		};
+		public const int
+			Access_Real = 0,        /**< Access the user has inherently */
+			Access_Effective = 1;    /**< Access the user has from their groups */
 
 		/**
 		 * Represents the various cache regions.
@@ -137,6 +147,11 @@ namespace Sourcemod
 			AdminCache_Admins = 2           /**< All admins */
 		};
 
+		public const int
+		AdminCache_Overrides = 0,       /**< Global overrides */
+		AdminCache_Groups = 1,          /**< All groups (automatically invalidates admins too) */
+		AdminCache_Admins = 2;           /**< All admins */
+
 		#region Hardcoded authentication methods
 		public const string AUTHMETHOD_STEAM = "steam";     /**< SteamID based authentication */
 		public const string AUTHMETHOD_IP = "ip";           /**< IP based authentication */
@@ -145,7 +160,7 @@ namespace Sourcemod
 		public readonly AdminId INVALID_ADMIN_ID = -1;
 		public class AdminId
 		{
-			public static int _value;
+			public int _value;
 			public static implicit operator AdminId(int value) => new AdminId(value);
 			public static implicit operator int(AdminId value) => value._value;
 

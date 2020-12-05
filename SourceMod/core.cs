@@ -58,6 +58,11 @@ namespace Sourcemod
 			Plugin_Handled = 3,     /**< Handle the action at the end (don't call it) */
 			Plugin_Stop = 4         /**< Immediately stop the hook chain and handle the original */
 		};
+		public const int
+			Plugin_Continue = 0,    /**< Continue with the original action */
+			Plugin_Changed = 1,     /**< Inputs or outputs have been overridden with new values */
+			Plugin_Handled = 3,     /**< Handle the action at the end (don't call it) */
+			Plugin_Stop = 4;         /**< Immediately stop the hook chain and handle the original */
 
 		/**
 		 * Specifies identity types.
@@ -68,6 +73,10 @@ namespace Sourcemod
 			Identity_Extension = 1,
 			Identity_Plugin = 2
 		};
+		public const int
+			Identity_Core = 0,
+			Identity_Extension = 1,
+			Identity_Plugin = 2;
 
 		public PlVers __version = new PlVers()
 		{
@@ -94,6 +103,18 @@ namespace Sourcemod
 			Plugin_BadLoad,         /**< Plugin failed to load */
 			Plugin_Evicted          /**< Plugin was unloaded due to an error */
 		};
+		public const int 
+			Plugin_Running = 0,       /**< Plugin is running */
+			/* All states below are "temporarily" unexecutable */
+			Plugin_Paused = 1,          /**< Plugin is loaded but paused */
+			Plugin_Error = 2,           /**< Plugin is loaded but errored/locked */
+			/* All states below do not have all natives */
+			Plugin_Loaded = 3,          /**< Plugin has passed loading and can be finalized */
+			Plugin_Failed = 4,          /**< Plugin has a fatal failure */
+			Plugin_Created = 5,         /**< Plugin is created but not initialized */
+			Plugin_Uncompiled = 6,      /**< Plugin is not yet compiled by the JIT */
+			Plugin_BadLoad = 7,         /**< Plugin failed to load */
+			Plugin_Evicted = 8;          /**< Plugin was unloaded due to an error */
 
 		/**
 		 * Plugin information properties. Plugins can declare a global variable with
@@ -118,6 +139,12 @@ namespace Sourcemod
 			PlInfo_Version,         /**< Plugin version */
 			PlInfo_URL              /**< Plugin URL */
 		};
+		public const int
+			PlInfo_Name = 0,            /**< Plugin name */
+			PlInfo_Author = 1,          /**< Plugin author */
+			PlInfo_Description = 2,     /**< Plugin description */
+			PlInfo_Version = 3,         /**< Plugin version */
+			PlInfo_URL = 4;              /**< Plugin URL */
 
 		/**
 		 * Defines how an extension must expose itself for autoloading.
@@ -149,7 +176,10 @@ namespace Sourcemod
 		 * @param vec     The vector to test.
 		 * @return        True if NULL_VECTOR, false otherwise.
 		 */
-		public static bool IsNullVector(float[] vec) { throw new NotImplementedException(); }
+		public static bool IsNullVector(float[] vec)
+		{
+			return vec == NULL_VECTOR;
+		}
 
 		/**
 		 * Check if the given string is the NULL_STRING.
@@ -157,7 +187,10 @@ namespace Sourcemod
 		 * @param str     The string to test.
 		 * @return        True if NULL_STRING, false otherwise.
 		 */
-		public static bool IsNullString(string str) { throw new NotImplementedException(); }
+		public static bool IsNullString(string str)
+		{
+			return str == NULL_STRING;
+		}
 
 		public static int VerifyCoreVersion() { throw new NotImplementedException(); }
 
