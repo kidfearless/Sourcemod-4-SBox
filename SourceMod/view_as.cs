@@ -8,10 +8,10 @@ namespace Sourcemod
 {
 	public partial class SourceMod
 	{
-		public T view_as<T>(object param)
+		public T view_as<T>(any param)
 		{
-			dynamic result = (any)param;
-			return result;
+			dynamic result = param;
+			return (T)result;
 		}
 	}
 }
