@@ -43,6 +43,12 @@ namespace Sourcemod
 			Nominate_InvalidMap,    /** Mapname specified wasn't a valid map */
 			Nominate_VoteFull       /** This will only occur if force was set to false */
 		};
+		public const int
+			Nominate_Added = 0,         /** The map was added to the nominate list */
+			Nominate_Replaced = 1,      /** A clients existing nomination was replaced */
+			Nominate_AlreadyInVote = 2, /** Specified map was already in the vote */
+			Nominate_InvalidMap = 3,    /** Mapname specified wasn't a valid map */
+			Nominate_VoteFull = 4;       /** This will only occur if force was set to false */
 
 		public enum MapChange
 		{
@@ -50,6 +56,10 @@ namespace Sourcemod
 			MapChange_RoundEnd,     /** Change map at the end of the round */
 			MapChange_MapEnd        /** Change the sm_nextmap cvar */
 		};
+		public const int
+			MapChange_Instant = 0,      /** Change map as soon as the voting results have come in */
+			MapChange_RoundEnd = 1,     /** Change map at the end of the round */
+			MapChange_MapEnd = 2;        /** Change the sm_nextmap cvar */
 
 		/**
 		 * Attempt to add a map to the mapchooser map list.

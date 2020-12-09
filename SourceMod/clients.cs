@@ -46,6 +46,10 @@ namespace Sourcemod
 			NetFlow_Incoming,       /**< Incoming traffic */
 			NetFlow_Both            /**< Both values added together */
 		};
+		public const int
+			NetFlow_Outgoing = 0,   /**< Outgoing traffic */
+			NetFlow_Incoming = 1,       /**< Incoming traffic */
+			NetFlow_Both = 2;            /**< Both values added together */
 
 		/**
 		 * Auth string types.
@@ -65,6 +69,13 @@ namespace Sourcemod
 			AuthId_Steam3,         /**< Steam3 rendered format, ex "[U:1:8307981]" */
 			AuthId_SteamID64       /**< A SteamID64 (uint64) as a String, ex "76561197968573709" */
 		};
+		public const int
+			AuthId_Engine = 0,     /**< The game-specific auth string as returned from the engine */
+
+			// The following are only available on games that support Steam authentication.
+			AuthId_Steam2 = 1,         /**< Steam2 rendered format, ex "STEAM_1:1:4153990" */
+			AuthId_Steam3 = 2,         /**< Steam3 rendered format, ex "[U:1:8307981]" */
+			AuthId_SteamID64 = 3;       /**< A SteamID64 (uint64) as a String, ex "76561197968573709" */
 
 		/**
 		 * MAXPLAYERS is not the same as MaxClients.

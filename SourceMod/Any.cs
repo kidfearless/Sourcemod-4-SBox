@@ -16,26 +16,46 @@ namespace Sourcemod
 		/// <summary>
 		/// C# implementation of the cell_t struct in pawn
 		/// </summary>
-		[StructLayout(LayoutKind.Explicit, Size = 4)]
+		[StructLayout(LayoutKind.Explicit)]
 		public struct any
 		{
 			[FieldOffset(0)]
 			public float FloatValue;
+
 			[FieldOffset(0)]
 			public int IntValue;
+
 			[FieldOffset(0)]
 			public bool BoolValue;
 
 			[FieldOffset(0)]
 			public char CharValue;
 
-			[FieldOffset(4)]
+						// Have to store the Handle at a different offset in order to compile
+			[FieldOffset(8)]
 			private Handle Handle;
 
-			public any(bool value) : this() => BoolValue = value;
-			public any(float value) : this() => FloatValue = value;
-			public any(int value) : this() => IntValue = value;
-			public any(char value) : this() => CharValue = value;
+
+			public any(bool value) : this()
+			{
+				BoolValue = value;
+				Handle = Handle.GetHandle(IntValue);
+			}
+			public any(float value) : this()
+			{
+				FloatValue = value;
+				Handle = Handle.GetHandle(IntValue);
+			}
+			public any(int value) : this()
+			{
+				IntValue = value;
+				Handle = Handle.GetHandle(IntValue);
+			}
+			public any(char value) : this()
+			{
+				CharValue = value;
+				Handle = Handle.GetHandle(IntValue);
+			}
 			public any(Handle value) : this()
 			{
 				Handle = value;

@@ -44,6 +44,8 @@ namespace Sourcemod
 		{
 			INVALID_MESSAGE_ID = -1
 		};
+		public const int
+			INVALID_MESSAGE_ID = -1;
 
 		/**
 		 * UserMsg message serialization formats
@@ -53,7 +55,9 @@ namespace Sourcemod
 			UM_BitBuf = 0,
 			UM_Protobuf
 		};
-
+		public const int
+			UM_BitBuf = 0,
+			UM_Protobuf = 1;
 		/**
 		 * @section Message Flags.
 		 */

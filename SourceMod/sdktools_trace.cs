@@ -165,6 +165,9 @@ public const int CONTENTS_TESTFOGVOLUME = 0x100;
 			RayType_EndPoint,   /**< The trace ray will go from the start position to the end position. */
 			RayType_Infinite    /**< The trace ray will go from the start position to infinity using a direction vector. */
 		};
+		public const int
+			RayType_EndPoint = 0,   /**< The trace ray will go from the start position to the end position. */
+			RayType_Infinite = 1;    /**< The trace ray will go from the start position to infinity using a direction vector. */
 
 
 

@@ -46,6 +46,10 @@ namespace Sourcemod
 			EventHookMode_Post,                 //< Hook callback fired after event is fired */
 			EventHookMode_PostNoCopy            //< Hook callback fired after event is fired, but event data won't be copied */
 		};
+		public const int
+			EventHookMode_Pre = 0,                  //< Hook callback fired before event is fired */
+			EventHookMode_Post = 1,                 //< Hook callback fired after event is fired */
+			EventHookMode_PostNoCopy = 2;            //< Hook callback fired after event is fired, but event data won't be copied */
 
 		/**
 		 * Hook function types for events.

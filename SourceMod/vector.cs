@@ -245,15 +245,15 @@ namespace Sourcemod
 				float[] tmp = new float[3];
 				tmp[0] = 0; tmp[1] = 0; tmp[2] = 1.0f;
 				var r = Vector3.Cross(CreateVector3(vec), CreateVector3(tmp));
-				VectorNormalize(right);
+				NormalizeVector(right, out right);
 				right = new float[3]
 				{
 					r.X,
 					r.Y,
 					r.Z
 				};
-				CrossProduct(right, vec, up);
-				VectorNormalize(up);
+				GetVectorCrossProduct(right, vec, out up);
+				NormalizeVector(up, out up);
 			}
 		}
 

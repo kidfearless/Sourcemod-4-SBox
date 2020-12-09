@@ -38,7 +38,7 @@ namespace Sourcemod
 	{
 
 		public const int INVALID_STRING_TABLE = -1     ; /**< An invalid string table index */
-public const int INVALID_STRING_INDEX = -1     ; /**< An invalid string index in a table */
+		public const int INVALID_STRING_INDEX = -1     ; /**< An invalid string index in a table */
 
 		/**
 		 * Searches for a string table.
@@ -46,7 +46,7 @@ public const int INVALID_STRING_INDEX = -1     ; /**< An invalid string index in
 		 * @param name          Name of string table to find.
 		 * @return              A string table index number if found, INVALID_STRING_TABLE otherwise.
 		 */
-public static int FindStringTable(string name) { throw new NotImplementedException(); }
+		public static int FindStringTable(string name) { throw new NotImplementedException(); }
 
 		/**
 		 * Returns the number of string tables that currently exist.

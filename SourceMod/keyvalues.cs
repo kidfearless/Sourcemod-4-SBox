@@ -53,6 +53,17 @@ namespace Sourcemod
 			/* --- */
 			KvData_NUMTYPES
 		};
+		public const int
+			KvData_None = 0,    /**< Type could not be identified, or no type */
+			KvData_String = 1,      /**< String value */
+			KvData_Int = 2,         /**< Integer value */
+			KvData_Float = 3,       /**< Floating point value */
+			KvData_Ptr = 4,         /**< Pointer value (sometimes called "long") */
+			KvData_WString = 5,     /**< Wide string value */
+			KvData_Color = 6,       /**< Color value */
+			KvData_UInt64 = 7,      /**< Large integer value */
+			/* --- */
+			KvData_NUMTYPES = 8;
 
 		public class KeyValues : Handle
 		{

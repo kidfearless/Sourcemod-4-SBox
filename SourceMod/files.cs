@@ -63,6 +63,10 @@ namespace Sourcemod
 			FileType_Directory = 1, /* File is a directory */
 			FileType_File = 2       /* File is a file */
 		};
+		public const int
+			FileType_Unknown = 0,   /* Unknown file type (device/socket) */
+			FileType_Directory = 1, /* File is a directory */
+			FileType_File = 2;       /* File is a file */
 
 		/**
 		 * File time modes.
@@ -73,6 +77,10 @@ namespace Sourcemod
 			FileTime_Created = 1,       /* Creation (does not work on FAT) */
 			FileTime_LastChange = 2     /* Last modification */
 		};
+		public const int
+			FileTime_LastAccess = 0,    /* Last access (does not work on FAT) */
+			FileTime_Created = 1,       /* Creation (does not work on FAT) */
+			FileTime_LastChange = 2;     /* Last modification */
 
 		public const int PLATFORM_MAX_PATH = 256;   /**< Maximum path length. */
 

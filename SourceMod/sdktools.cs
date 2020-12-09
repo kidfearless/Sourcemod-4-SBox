@@ -45,19 +45,32 @@ namespace Sourcemod
 			SDKCall_EntityList,     /**< CGlobalEntityList call */
 			SDKCall_Raw             /**< |this| pointer with an arbitrary address */
 		};
+		public const int
+			SDKCall_Static = 0,         /**< Static call */
+			SDKCall_Entity = 1,         /**< CBaseEntity call */
+			SDKCall_Player = 2,         /**< CBasePlayer call */
+			SDKCall_GameRules = 3,      /**< CGameRules call */
+			SDKCall_EntityList = 4,     /**< CGlobalEntityList call */
+			SDKCall_Raw = 5;             /**< |this| pointer with an arbitrary address */
 
 		public enum SDKLibrary
 		{
 			SDKLibrary_Server,      /**< server.dll/server_i486.so */
 			SDKLibrary_Engine       /**< engine.dll/engine_*.so */
 		};
-
+		public const int
+			SDKLibrary_Server = 0,      /**< server.dll/server_i486.so */
+			SDKLibrary_Engine = 1;       /**< engine.dll/engine_*.so */
 		public enum SDKFuncConfSource
 		{
 			SDKConf_Virtual = 0,    /**< Read a virtual index from the Offsets section */
 			SDKConf_Signature = 1,  /**< Read a signature from the Signatures section */
 			SDKConf_Address = 2     /**< Read an address from the Addresses section */
 		};
+		public const int
+			SDKConf_Virtual = 0,    /**< Read a virtual index from the Offsets section */
+			SDKConf_Signature = 1,  /**< Read a signature from the Signatures section */
+			SDKConf_Address = 2;     /**< Read an address from the Addresses section */
 
 		public enum SDKType
 		{
@@ -71,6 +84,16 @@ namespace Sourcemod
 			SDKType_String,         /**< NULL-terminated string (always as pointer) */
 			SDKType_Bool            /**< Boolean (any) */
 		};
+		public const int
+			SDKType_CBaseEntity = 0,    /**< CBaseEntity (always as pointer) */
+			SDKType_CBasePlayer = 1,    /**< CBasePlayer (always as pointer) */
+			SDKType_Vector = 2,         /**< Vector (pointer, byval, or byref) */
+			SDKType_QAngle = 3,         /**< QAngles (pointer, byval, or byref) */
+			SDKType_PlainOldData = 4,   /**< Integer/generic data <=32bit (any) */
+			SDKType_Float = 5,          /**< Float (any) */
+			SDKType_Edict = 6,          /**< edict_t (always as pointer) */
+			SDKType_String = 7,         /**< NULL-terminated string (always as pointer) */
+			SDKType_Bool = 8;            /**< Boolean (any) */
 
 		public enum SDKPassMethod
 		{
@@ -79,7 +102,11 @@ namespace Sourcemod
 			SDKPass_ByValue,        /**< Pass an object by value */
 			SDKPass_ByRef           /**< Pass an object by reference */
 		};
-
+		public const int
+			SDKPass_Pointer = 0,        /**< Pass as a pointer */
+			SDKPass_Plain = 1,          /**< Pass as plain data */
+			SDKPass_ByValue = 2,        /**< Pass an object by value */
+			SDKPass_ByRef = 3;           /**< Pass an object by reference */
 		public const int VDECODE_FLAG_ALLOWNULL = (1 << 0);     /**< Allow NULL for pointers */
 		public const int VDECODE_FLAG_ALLOWNOTINGAME = (1 << 1);     /**< Allow players not in game */
 		public const int VDECODE_FLAG_ALLOWWORLD = (1 << 2);     /**< Allow World entity */

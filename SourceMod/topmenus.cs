@@ -91,6 +91,53 @@ namespace Sourcemod
 			TopMenuAction_RemoveObject = 4
 		};
 
+
+		/**
+			* An option is being drawn for a menu (or for sorting purposes).
+			*
+			* INPUT : TopMenu Handle, topobj ID, client index.
+			* OUTPUT: Buffer for rendering, maxlength of buffer.
+			*/
+		public const int TopMenuAction_DisplayOption = 0;
+
+		/**
+			* The title of a menu is being drawn for a given topobj.
+			*
+			* Note: The Object ID will be INVALID_TOPMENUOBJECT if drawing the
+			* root title.  Otherwise, the Object ID is a category.
+			*
+			* INPUT : TopMenu Handle, topobj ID, client index.
+			* OUTPUT: Buffer for rendering, maxlength of buffer.
+			*/
+		public const int TopMenuAction_DisplayTitle = 1;
+
+		/**
+			* A menu option has been selected.
+			*
+			* The Object ID will always be an item (not a category).
+			*
+			* INPUT : TopMenu Handle, topobj ID, client index.
+			*/
+		public const int TopMenuAction_SelectOption = 2;
+
+		/**
+			* A menu option is being drawn and its flags can be overridden.
+			*
+			* INPUT : TopMenu Handle, topobj ID, client index.
+			* OUTPUT: The first byte of the 'buffer' string should be set
+			*                      to the desired flags.  By default, it will contain
+			*                      ITEMDRAW_DEFAULT.
+			*/
+		public const int TopMenuAction_DrawOption = 3;
+
+		/**
+			* Called when an topobj is being removed from the menu.
+			* This can be used to clean up data stored in the info string.
+			*
+			* INPUT : TopMenu Handle, topobj ID.
+			*/
+		public const int TopMenuAction_RemoveObject = 4;
+
 		/**
 		 * Top menu topobj types.
 		 */
@@ -99,6 +146,10 @@ namespace Sourcemod
 			TopMenuObject_Category = 0,         /**< Category (sub-menu branching from root) */
 			TopMenuObject_Item = 1              /**< Item on a sub-menu */
 		};
+
+		public const int
+			TopMenuObject_Category = 0,          /**< Category (sub-menu branching from root) */
+			TopMenuObject_Item = 1;              /**< Item on a sub-menu */
 
 		/**
 		 * Top menu starting positions for display.
@@ -110,6 +161,11 @@ namespace Sourcemod
 			TopMenuPosition_LastCategory = 3    /**< Last position in their last category */
 		};
 
+		public const int
+			TopMenuPosition_Start = 0,          /**< Start/root of the menu */
+			TopMenuPosition_LastRoot = 1,       /**< Last position in the root menu */
+			TopMenuPosition_LastCategory = 3;    /**< Last position in their last category */
+
 		/**
 		 * Top menu topobj tag for type checking.
 		 */
@@ -117,6 +173,8 @@ namespace Sourcemod
 		{
 			INVALID_TOPMENUOBJECT = 0
 		};
+
+		public const TopMenu INVALID_TOPMENUOBJECT = null;
 
 		/**
 		 * TopMenu callback prototype.

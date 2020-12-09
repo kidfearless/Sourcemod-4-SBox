@@ -57,6 +57,10 @@ namespace Sourcemod
 			Listen_No,          /**< Can't hear */
 			Listen_Yes          /**< Can hear */
 		};
+		public const int
+			Listen_Default = 0, /**< Leave it up to the game */
+			Listen_No = 1,          /**< Can't hear */
+			Listen_Yes = 2;          /**< Can hear */
 
 		/**
 		 * Called when a client is speaking.

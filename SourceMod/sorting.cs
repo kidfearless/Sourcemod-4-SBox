@@ -47,6 +47,10 @@ namespace Sourcemod
 			Sort_Descending = 1,    /**< Descending order */
 			Sort_Random = 2         /**< Random order */
 		};
+		public const int 
+			Sort_Ascending = 0,     /**< Ascending order */
+			Sort_Descending = 1,    /**< Descending order */
+			Sort_Random = 2;         /**< Random order */
 
 		/**
 		 * Data types for ADT Array Sorts
@@ -57,6 +61,10 @@ namespace Sourcemod
 			Sort_Float,
 			Sort_String
 		};
+		public const int 
+			Sort_Integer = 0,
+			Sort_Float = 1,
+			Sort_String = 2;
 
 		/**
 		 * Sorts an array of integers.
@@ -65,7 +73,7 @@ namespace Sourcemod
 		 * @param array_size    Size of the array.
 		 * @param order         Sorting order to use.
 		 */
-		public void SortIntegers(int[] array, int array_size, SortOrder order = SortOrder.Sort_Ascending) { throw new NotImplementedException(); }
+		public static void SortIntegers(int[] array, int array_size, SortOrder order = SortOrder.Sort_Ascending) { throw new NotImplementedException(); }
 
 		/**
 		 * Sorts an array of float point numbers.
@@ -74,7 +82,7 @@ namespace Sourcemod
 		 * @param array_size    Size of the array.
 		 * @param order         Sorting order to use.
 		 */
-		public void SortFloats(float[] array, int array_size, SortOrder order = SortOrder.Sort_Ascending) { throw new NotImplementedException(); }
+		public static void SortFloats(float[] array, int array_size, SortOrder order = SortOrder.Sort_Ascending) { throw new NotImplementedException(); }
 
 		/**
 		 * Sorts an array of strings.
@@ -83,7 +91,7 @@ namespace Sourcemod
 		 * @param array_size    Size of the array.
 		 * @param order         Sorting order to use.
 		 */
-		public void SortStrings(char[][] array, int array_size, SortOrder order = SortOrder.Sort_Ascending) { throw new NotImplementedException(); }
+		public static void SortStrings(string[] array, int array_size, SortOrder order = SortOrder.Sort_Ascending) { throw new NotImplementedException(); }
 
 		/**
 		 * Sort comparison function for 1D array elements.
@@ -97,7 +105,7 @@ namespace Sourcemod
 		 *                      0 if first is equal to second
 		 *                      1 if first should go after second
 		 */
-		public delegate int SortFunc1D(int elem1, int elem2, ReadOnlyCollection<int[]> array, object hndl);
+		public delegate int SortFunc1D(int elem1, int elem2, int[] array, object hndl);
 
 		/**
 		 * Sorts a custom 1D array.  You must pass in a comparison function.
@@ -121,7 +129,7 @@ namespace Sourcemod
 		 *                      0 if first is equal to second
 		 *                      1 if first should go after second
 		 */
-		public delegate int SortFunc2D(any[] elem1, any[] elem2, ReadOnlyCollection<char[][]> array, object hndl);
+		public delegate int SortFunc2D(any[] elem1, any[] elem2, string[] array, object hndl);
 
 		/**
 		 * Sorts a custom 2D array.  You must pass in a comparison function.
@@ -140,7 +148,7 @@ namespace Sourcemod
 		 * @param order         Sort order to use, same as other sorts.
 		 * @param type          Data type stored in the ADT Array
 		 */
-		public void SortADTArray(Handle array, SortOrder order, SortType type) { throw new NotImplementedException(); }
+		public static void SortADTArray(Handle array, SortOrder order, SortType type) { throw new NotImplementedException(); }
 
 		/**
 		 * Sort comparison function for ADT Array elements. Function provides you with
@@ -164,6 +172,6 @@ namespace Sourcemod
 		 * @param sortfunc      Sort comparison function to use
 		 * @param hndl          Optional Handle to pass through the comparison calls.
 		 */
-		public void SortADTArrayCustom(object array, SortFuncADTArray sortfunc, object hndl = null) { throw new NotImplementedException(); }
+		public static void SortADTArrayCustom(object array, SortFuncADTArray sortfunc, object hndl = null) { throw new NotImplementedException(); }
 	}
 }

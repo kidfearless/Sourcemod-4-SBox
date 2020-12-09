@@ -56,7 +56,10 @@ namespace Sourcemod
 			APLRes_Failure,         /**< Plugin shouldn't load and should display an error */
 			APLRes_SilentFailure    /**< Plugin shouldn't load but do so silently */
 		};
-
+		public const int
+			APLRes_Success = 0,     /**< Plugin should load */
+			APLRes_Failure = 1,         /**< Plugin shouldn't load and should display an error */
+			APLRes_SilentFailure = 2;   /**< Plugin shouldn't load but do so silently */
 		public class GameData : Handle
 		{
 			// Loads a game config file.
@@ -571,6 +574,20 @@ namespace Sourcemod
 			 */
 			FeatureType_Capability
 		};
+		public const int 
+			/**
+			 * A public static function call.
+			 */
+			FeatureType_Native = 0,
+
+			/**
+			 * A named capability. This is distinctly different from checking for a
+			 * native, because the underlying functionality could be enabled on-demand
+			 * to improve loading time. Thus a public static may appear to exist, but it might
+			 * be part of a set of features that are not compatible with the current game
+			 * or version of SourceMod.
+			 */
+			FeatureType_Capability = 1;
 
 		/**
 		 * Feature statuses.
@@ -592,6 +609,22 @@ namespace Sourcemod
 			 */
 			FeatureStatus_Unknown
 		};
+
+		public const int 
+			/**
+			 * Feature is available for use.
+			 */
+			FeatureStatus_Available = 0,
+
+			/**
+			 * Feature is not available.
+			 */
+			FeatureStatus_Unavailable = 1,
+
+			/**
+			 * Feature is not known at all.
+			 */
+			FeatureStatus_Unknown = 2;
 
 		/**
 		 * Returns whether "GetFeatureStatus" will work. Using this native
@@ -634,11 +667,17 @@ namespace Sourcemod
 			NumberType_Int16,
 			NumberType_Int32
 		};
+		public const int  
+			NumberType_Int8 = 0,
+			NumberType_Int16 = 1,
+			NumberType_Int32 = 2;
 
 		public enum Address
 		{
 			Address_Null = 0               // a typical invalid result when an address lookup fails
 		};
+		public const int
+			Address_Null = 0;               // a typical invalid result when an address lookup fails
 
 		/**
 		 * Load up to 4 bytes from a memory address.

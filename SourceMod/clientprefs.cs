@@ -46,6 +46,10 @@ namespace Sourcemod
 			CookieAccess_Protected,         /**< Read only to users */
 			CookieAccess_Private            /**< Completely hidden cookie */
 		};
+		public const int
+			CookieAccess_Public = 0,            /**< Visible and Changeable by users */
+			CookieAccess_Protected = 1,         /**< Read only to users */
+			CookieAccess_Private = 2;            /**< Completely hidden cookie */
 
 		/**
 		 * Cookie Prefab menu types
@@ -57,6 +61,11 @@ namespace Sourcemod
 			CookieMenu_OnOff,           /**< On/Off menu with "on"/"off" results saved into the cookie */
 			CookieMenu_OnOff_Int        /**< On/Off menu with 1/0 saved into the cookie */
 		};
+		public const int
+			CookieMenu_YesNo = 0,           /**< Yes/No menu with "yes"/"no" results saved into the cookie */
+			CookieMenu_YesNo_Int = 1,       /**< Yes/No menu with 1/0 saved into the cookie */
+			CookieMenu_OnOff = 2,           /**< On/Off menu with "on"/"off" results saved into the cookie */
+			CookieMenu_OnOff_Int = 3;        /**< On/Off menu with 1/0 saved into the cookie */
 
 		public enum CookieMenuAction
 		{

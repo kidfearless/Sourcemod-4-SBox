@@ -287,7 +287,7 @@ namespace Sourcemod
 
 		// OnTakeDamagePost
 		// OnTakeDamageAlivePost
-		public delegate void SDKHook_OnTakeDamagePost(int victim, int attacker, int inflictor, float damage, int damagetype, float[/*3*/]? damageForce, float[/*3*/]? damagePosition, int? damagecustom);;
+		public delegate void SDKHook_OnTakeDamagePost(int victim, int attacker, int inflictor, float damage, int damagetype, float[/*3*/]? damageForce, float[/*3*/]? damagePosition, int? damagecustom);
 		public delegate void SDKHook_OnTakeDamageAlivePost(int victim, int attacker, int inflictor, float damage, int damagetype, float[/*3*/]? damageForce, float[/*3*/]? damagePosition, int? damagecustom);
 
 		// FireBulletsPost

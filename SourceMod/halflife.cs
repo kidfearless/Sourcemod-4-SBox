@@ -65,6 +65,12 @@ namespace Sourcemod
 			DialogType_Entry,       /**< an entry box */
 			DialogType_AskConnect   /**< ask the client to connect to a specified IP */
 		};
+		public const int
+			DialogType_Msg = 0,     /**< just an on screen message */
+			DialogType_Menu = 1,        /**< an options menu */
+			DialogType_Text = 2,        /**< a richtext dialog */
+			DialogType_Entry = 3,       /**< an entry box */
+			DialogType_AskConnect = 4;   /**< ask the client to connect to a specified IP */
 
 		public enum EngineVersion
 		{
@@ -93,6 +99,31 @@ namespace Sourcemod
 			Engine_BlackMesa,           /**< Black Mesa Multiplayer */
 			Engine_DOI                  /**< Day of Infamy */
 		};
+		public const int
+			Engine_Unknown = 0,             /**< Could not determine the engine version */
+			Engine_Original = 1,            /**< Original Source Engine (used by The Ship) */
+			Engine_SourceSDK2006 = 2,       /**< Episode 1 Source Engine (second major SDK) */
+			Engine_SourceSDK2007 = 3,       /**< Orange Box Source Engine (third major SDK) */
+			Engine_Left4Dead = 4,           /**< Left 4 Dead */
+			Engine_DarkMessiah = 5,         /**< Dark Messiah Multiplayer (based on original engine) */
+			Engine_Left4Dead2 = 7,      /**< Left 4 Dead 2 */
+			Engine_AlienSwarm = 8,          /**< Alien Swarm (and Alien Swarm SDK) */
+			Engine_BloodyGoodTime = 9,      /**< Bloody Good Time */
+			Engine_EYE = 10,                 /**< E.Y.E Divine Cybermancy */
+			Engine_Portal2 = 11,             /**< Portal 2 */
+			Engine_CSGO = 12,                /**< Counter-Strike: Global Offensive */
+			Engine_CSS = 13,                 /**< Counter-Strike: Source */
+			Engine_DOTA = 14,                /**< Dota 2 */
+			Engine_HL2DM = 15,               /**< Half-Life 2 Deathmatch */
+			Engine_DODS = 16,                /**< Day of Defeat: Source */
+			Engine_TF2 = 17,                 /**< Team Fortress 2 */
+			Engine_NuclearDawn = 18,         /**< Nuclear Dawn */
+			Engine_SDK2013 = 19,             /**< Source SDK 2013 */
+			Engine_Blade = 20,               /**< Blade Symphony */
+			Engine_Insurgency = 21,          /**< Insurgency (2013 Retail version)*/
+			Engine_Contagion = 22,           /**< Contagion */
+			Engine_BlackMesa = 23,           /**< Black Mesa Multiplayer */
+			Engine_DOI = 24;                  /**< Day of Infamy */
 
 		public enum FindMapResult
 		{
@@ -112,6 +143,22 @@ namespace Sourcemod
 			// Only supported on "Orangebox" games with workshop support.
 			FindMap_PossiblyAvailable
 		};
+		public const int
+			// A direct match for this name was found
+			FindMap_Found = 0,
+			// No match for this map name could be found.
+			FindMap_NotFound = 1,
+			// A fuzzy match for this map name was found.
+			// Ex: cp_dust -> cp_dustbowl, c1m1 -> c1m1_hotel
+			// Only supported for maps that the engine knows about. (This excludes workshop maps on Orangebox).
+			FindMap_FuzzyMatch = 2,
+			// A non-canonical match for this map name was found.
+			// Ex: workshop/1234 -> workshop/cp_qualified_name.ugc1234
+			// Only supported on "Orangebox" games with workshop support.
+			FindMap_NonCanonical = 3,
+			// No currently available match for this map name could be found, but it may be possible to load
+			// Only supported on "Orangebox" games with workshop support.
+			FindMap_PossiblyAvailable = 4;
 
 		public const uint INVALID_ENT_REFERENCE = 0xFFFFFFFF;
 

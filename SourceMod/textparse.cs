@@ -53,6 +53,10 @@ namespace Sourcemod
 			SMCParse_Halt,              /**< Stop parsing here */
 			SMCParse_HaltFail           /**< Stop parsing and return failure */
 		};
+		public const int 
+			SMCParse_Continue = 0,          /**< Continue parsing */
+			SMCParse_Halt = 1,              /**< Stop parsing here */
+			SMCParse_HaltFail = 2;           /**< Stop parsing and return failure */
 
 		/**
 		 * Parse error codes.
@@ -60,19 +64,31 @@ namespace Sourcemod
 		public enum SMCError
 		{
 			SMCError_Okay = 0,          /**< No error */
-			SMCError_StreamOpen,        /**< Stream failed to open */
-			SMCError_StreamError,       /**< The stream died... somehow */
-			SMCError_Custom,            /**< A custom handler threw an error */
-			SMCError_InvalidSection1,   /**< A section was declared without quotes, and had extra tokens */
-			SMCError_InvalidSection2,   /**< A section was declared without any header */
-			SMCError_InvalidSection3,   /**< A section ending was declared with too many unknown tokens */
-			SMCError_InvalidSection4,   /**< A section ending has no matching beginning */
-			SMCError_InvalidSection5,   /**< A section beginning has no matching ending */
-			SMCError_InvalidTokens,     /**< There were too many unidentifiable strings on one line */
-			SMCError_TokenOverflow,     /**< The token buffer overflowed */
-			SMCError_InvalidProperty1   /**< A public was declared outside of any section */
+			SMCError_StreamOpen = 1,        /**< Stream failed to open */
+			SMCError_StreamError = 2,       /**< The stream died... somehow */
+			SMCError_Custom = 3,            /**< A custom handler threw an error */
+			SMCError_InvalidSection1 = 4,   /**< A section was declared without quotes, and had extra tokens */
+			SMCError_InvalidSection2 = 5,   /**< A section was declared without any header */
+			SMCError_InvalidSection3 = 6,   /**< A section ending was declared with too many unknown tokens */
+			SMCError_InvalidSection4 = 7,   /**< A section ending has no matching beginning */
+			SMCError_InvalidSection5 = 8,   /**< A section beginning has no matching ending */
+			SMCError_InvalidTokens = 9,     /**< There were too many unidentifiable strings on one line */
+			SMCError_TokenOverflow = 10,     /**< The token buffer overflowed */
+			SMCError_InvalidProperty1 = 11   /**< A public was declared outside of any section */
 		};
-
+		public const int
+			SMCError_Okay = 0,          /**< No error */
+			SMCError_StreamOpen = 1,        /**< Stream failed to open */
+			SMCError_StreamError = 2,       /**< The stream died... somehow */
+			SMCError_Custom = 3,            /**< A custom handler threw an error */
+			SMCError_InvalidSection1 = 4,   /**< A section was declared without quotes, and had extra tokens */
+			SMCError_InvalidSection2 = 5,   /**< A section was declared without any header */
+			SMCError_InvalidSection3 = 6,   /**< A section ending was declared with too many unknown tokens */
+			SMCError_InvalidSection4 = 7,   /**< A section ending has no matching beginning */
+			SMCError_InvalidSection5 = 8,   /**< A section beginning has no matching ending */
+			SMCError_InvalidTokens = 9,     /**< There were too many unidentifiable strings on one line */
+			SMCError_TokenOverflow = 10,     /**< The token buffer overflowed */
+			SMCError_InvalidProperty1 = 11;   /**< A public was declared outside of any section */
 		/**
 		 * Called when parsing is started.
 		 *

@@ -284,7 +284,7 @@ namespace Sourcemod
 
 		public class GroupId
 		{
-			public static int _value;
+			public int _value;
 			public static implicit operator GroupId(int value) => new GroupId(value);
 			public static implicit operator int(GroupId value) => value._value;
 

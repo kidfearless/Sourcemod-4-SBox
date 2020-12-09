@@ -184,7 +184,7 @@ namespace Sourcemod
 		{
 			datapack = new DataPack();
 			flags |= TIMER_DATA_HNDL_CLOSE;
-			return CreateTimer(interval, func, (Handle)datapack, flags);
+			return CreateTimer(interval, func, datapack, flags);
 		}
 	}
 }

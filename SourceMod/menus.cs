@@ -46,7 +46,10 @@ namespace Sourcemod
 			MenuStyle_Valve = 1,        /**< The Valve provided menu style (Used on HL2DM) */
 			MenuStyle_Radio = 2         /**< The simpler menu style commonly used on CS:S */
 		};
-
+		public const int
+			MenuStyle_Default = 0,      /**< The "default" menu style for the mod */
+			MenuStyle_Valve = 1,        /**< The Valve provided menu style (Used on HL2DM) */
+			MenuStyle_Radio = 2;         /**< The simpler menu style commonly used on CS:S */
 		/**
 		 * Different actions for the menu "pump" callback
 		 */
@@ -64,15 +67,32 @@ namespace Sourcemod
 			MenuAction_VoteStart = (1 << 6),  /**< (VOTE ONLY): A vote sequence has started (nothing passed) */
 			MenuAction_VoteCancel = (1 << 7), /**< (VOTE ONLY): A vote sequence has been cancelled (param1=reason) */
 			MenuAction_DrawItem = (1 << 8),   /**< An item is being drawn; return the new style (param1=client, param2=item) */
-			MenuAction_DisplayItem = (1 << 9) /**< Item text is being drawn to the display (param1=client, param2=item)
+			MenuAction_DisplayItem = (1 << 9), /**< Item text is being drawn to the display (param1=client, param2=item)
                                          To change the text, use RedrawMenuItem().
                                          If you do so, return its return value.  Otherwise, return 0. */
+			MENU_ACTIONS_ALL = 0xFFFFFFFF
 		};
+		public const int
+			MenuAction_Start = (1 << 0),      /**< A menu has been started (nothing passed) */
+			MenuAction_Display = (1 << 1),    /**< A menu is about to be displayed (param1=client, param2=MenuPanel Handle) */
+			MenuAction_Select = (1 << 2),     /**< An item was selected (param1=client, param2=item) */
+			MenuAction_Cancel = (1 << 3),     /**< The menu was cancelled (param1=client, param2=reason) */
+			MenuAction_End = (1 << 4),        /**< A menu display has fully ended.
+                                         param1 is the MenuEnd reason, and if it's MenuEnd_Cancelled, then
+                                         param2 is the MenuCancel reason from MenuAction_Cancel. */
+			MenuAction_VoteEnd = (1 << 5),    /**< (VOTE ONLY): A vote sequence has succeeded (param1=chosen item)
+                                         This is not called if SetVoteResultCallback has been used on the menu. */
+			MenuAction_VoteStart = (1 << 6),  /**< (VOTE ONLY): A vote sequence has started (nothing passed) */
+			MenuAction_VoteCancel = (1 << 7), /**< (VOTE ONLY): A vote sequence has been cancelled (param1=reason) */
+			MenuAction_DrawItem = (1 << 8),   /**< An item is being drawn; return the new style (param1=client, param2=item) */
+			MenuAction_DisplayItem = (1 << 9); /**< Item text is being drawn to the display (param1=client, param2=item)
+                                         To change the text, use RedrawMenuItem().
+                                         If you do so, return its return value.  Otherwise, return 0. */
 
 		/** Default menu actions */
 		public const MenuAction MENU_ACTIONS_DEFAULT = MenuAction.MenuAction_Select | MenuAction.MenuAction_Cancel | MenuAction.MenuAction_End;
 		/** All menu actions */
-		public readonly MenuAction MENU_ACTIONS_ALL = (MenuAction)0xFFFFFFFF;
+		public const uint MENU_ACTIONS_ALL = 0xFFFFFFFF;
 
 		public const int MENU_NO_PAGINATION = 0;            /**< Menu should not be paginated (10 items max) */
 		public const int MENU_TIME_FOREVER = 0;            /**< Menu should be displayed as long as possible */
@@ -136,6 +156,11 @@ namespace Sourcemod
 			MenuSource_Normal = 2,          /**< A basic menu is being displayed */
 			MenuSource_RawPanel = 3         /**< A display is active, but it is not tied to a menu */
 		};
+		public const int
+			MenuSource_None = 0,            /**< No menu is being displayed */
+			MenuSource_External = 1,        /**< External menu */
+			MenuSource_Normal = 2,          /**< A basic menu is being displayed */
+			MenuSource_RawPanel = 3;         /**< A display is active, but it is not tied to a menu */
 
 		/**
 		 * Called when a menu action is completed.

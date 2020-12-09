@@ -1,6 +1,7 @@
 
 
 using System;
+using System.Collections.Generic;
 /**
 * vim: set ts=4 :
 * =============================================================================
@@ -42,7 +43,24 @@ namespace Sourcemod
 		*/
 		public class Handle // Tag disables introducing "Handle" as a symbol.
 		{
-		};
+			private static readonly Dictionary<int, Handle> Handles = new Dictionary<int, Handle>();
+
+			public static Handle GetHandle(int hashcode)
+			{
+				Handles.TryGetValue(hashcode, out Handle result);
+				return result;
+			}
+
+			public Handle()
+			{
+				Handles[this.GetHashCode()] = this;
+			}
+
+			public void Close()
+			{
+				Handles.Remove(this.GetHashCode());
+			}
+		}
 
 		public const Handle INVALID_HANDLE = null;
 		

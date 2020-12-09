@@ -112,6 +112,59 @@ namespace Sourcemod
 			REGEX_ERROR_BADLENGTH = -32
 		};
 
+		public const int
+			REGEX_ERROR_NONE = 0,               /* No error */
+
+			REGEX_ERROR_ASSERT = 1,             /* internal error ? */
+			REGEX_ERROR_BADBR = 2,                  /* invalid repeat counts in {} */
+			REGEX_ERROR_BADPAT = 3,                 /* pattern error */
+			REGEX_ERROR_BADRPT = 4,                 /* ? * + invalid */
+			REGEX_ERROR_EBRACE = 5,                 /* unbalanced {} */
+			REGEX_ERROR_EBRACK = 6,                 /* unbalanced [] */
+			REGEX_ERROR_ECOLLATE = 7,               /* collation error - not relevant */
+			REGEX_ERROR_ECTYPE = 8,                 /* bad class */
+			REGEX_ERROR_EESCAPE = 9,                /* bad escape sequence */
+			REGEX_ERROR_EMPTY = 10,                  /* empty expression */
+			REGEX_ERROR_EPAREN = 11,                 /* unbalanced () */
+			REGEX_ERROR_ERANGE = 12,                 /* bad range inside [] */
+			REGEX_ERROR_ESIZE = 13,                  /* expression too big */
+			REGEX_ERROR_ESPACE = 14,                 /* failed to get memory */
+			REGEX_ERROR_ESUBREG = 15,                /* bad back reference */
+			REGEX_ERROR_INVARG = 16,                 /* bad argument */
+
+			REGEX_ERROR_NOMATCH = -1,           /* No match was found */
+			REGEX_ERROR_NULL = -2,
+			REGEX_ERROR_BADOPTION = -3,
+			REGEX_ERROR_BADMAGIC = -4,
+			REGEX_ERROR_UNKNOWN_OPCODE = -5,
+			REGEX_ERROR_NOMEMORY = -6,
+			REGEX_ERROR_NOSUBSTRING = -7,
+			REGEX_ERROR_MATCHLIMIT = -8,
+			REGEX_ERROR_CALLOUT = -9,           /* Never used by PCRE itself */
+			REGEX_ERROR_BADUTF8 = -10,
+			REGEX_ERROR_BADUTF8_OFFSET = -11,
+			REGEX_ERROR_PARTIAL = -12,
+			REGEX_ERROR_BADPARTIAL = -13,
+			REGEX_ERROR_INTERNAL = -14,
+			REGEX_ERROR_BADCOUNT = -15,
+			REGEX_ERROR_DFA_UITEM = -16,
+			REGEX_ERROR_DFA_UCOND = -17,
+			REGEX_ERROR_DFA_UMLIMIT = -18,
+			REGEX_ERROR_DFA_WSSIZE = -19,
+			REGEX_ERROR_DFA_RECURSE = -20,
+			REGEX_ERROR_RECURSIONLIMIT = -21,
+			REGEX_ERROR_NULLWSLIMIT = -22,      /* No longer actually used */
+			REGEX_ERROR_BADNEWLINE = -23,
+			REGEX_ERROR_BADOFFSET = -24,
+			REGEX_ERROR_SHORTUTF8 = -25,
+			REGEX_ERROR_RECURSELOOP = -26,
+			REGEX_ERROR_JIT_STACKLIMIT = -27,
+			REGEX_ERROR_BADMODE = -28,
+			REGEX_ERROR_BADENDIANNESS = -29,
+			REGEX_ERROR_DFA_BADRESTART = -30,
+			REGEX_ERROR_JIT_BADOPTION = -31,
+			REGEX_ERROR_BADLENGTH = -32;
+
 		// Regular expression objects are used to match or decompose strings based on
 		// patterns.
 		public class Regex : Handle
@@ -123,7 +176,7 @@ namespace Sourcemod
 			// @param error         Error message encountered, if applicable.
 			// @param maxLen        Maximum string length of the error buffer.
 			// @param errcode       Regex type error code encountered, if applicable.
-			public Regex(string pattern, int flags, string error, int maxLen, ref RegexError errcode/* = REGEX_ERROR_NONE*/) { throw new NotImplementedException(); }
+			public Regex(string pattern, int flags, string error, int maxLen, out RegexError errcode/* = REGEX_ERROR_NONE*/) { throw new NotImplementedException(); }
 			// Compile a regular expression.
 			//
 			// @param pattern       The regular expression pattern.
@@ -166,7 +219,18 @@ namespace Sourcemod
 			//
 			// @note Use the regex handle passed to this function to extract
 			//       matches with GetSubString().
-			public int Match(string str, ref RegexError ret/* = REGEX_ERROR_NONE*/, int offset = 0) { throw new NotImplementedException(); }
+			public int Match(string str, out RegexError ret/* = REGEX_ERROR_NONE*/, int offset = 0) { throw new NotImplementedException(); }
+
+			// Matches a string against a pre-compiled regular expression pattern.
+			//
+			// @param str           The string to check.
+			// @param ret           Error code, if applicable.
+			// @param offset        Offset in the string to start searching from. MatchOffset returns the offset of the match.
+			// @return              Number of captures found or -1 on failure.
+			//
+			// @note Use the regex handle passed to this function to extract
+			//       matches with GetSubString().
+			public int Match(string str, out RegexError ret/* = REGEX_ERROR_NONE*/) { throw new NotImplementedException(); }
 
 
 			// Matches a string against a pre-compiled regular expression pattern.

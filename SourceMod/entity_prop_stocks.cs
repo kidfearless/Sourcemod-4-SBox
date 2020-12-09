@@ -52,6 +52,19 @@ namespace Sourcemod
 			MOVETYPE_OBSERVER,          /**< Observer movement, depends on player's observer mode */
 			MOVETYPE_CUSTOM             /**< Allows the entity to describe its own physics */
 		};
+		public const int
+			MOVETYPE_NONE = 0,          /**< never moves */
+			MOVETYPE_ISOMETRIC = 1,         /**< For players */
+			MOVETYPE_WALK = 2,              /**< Player only - moving on the ground */
+			MOVETYPE_STEP = 3,              /**< gravity, special edge handling -- monsters use this */
+			MOVETYPE_FLY = 4,               /**< No gravity, but still collides with stuff */
+			MOVETYPE_FLYGRAVITY = 5,        /**< flies through the air + is affected by gravity */
+			MOVETYPE_VPHYSICS = 6,          /**< uses VPHYSICS for simulation */
+			MOVETYPE_PUSH = 7,              /**< no clip to world, push and crush */
+			MOVETYPE_NOCLIP = 8,            /**< No gravity, no collisions, still do velocity/avelocity */
+			MOVETYPE_LADDER = 9,            /**< Used by players only when going onto a ladder */
+			MOVETYPE_OBSERVER = 10,          /**< Observer movement, depends on player's observer mode */
+			MOVETYPE_CUSTOM = 11;             /**< Allows the entity to describe its own physics */
 
 		public enum RenderMode
 		{
@@ -67,6 +80,19 @@ namespace Sourcemod
 			RENDER_WORLDGLOW,           /**< Same as kRenderGlow but not fixed size in screen space */
 			RENDER_NONE                 /**< Don't render. */
 		};
+
+		public const int
+			RENDER_NORMAL = 0,              /**< src */
+			RENDER_TRANSCOLOR = 1,          /**< c*a+dest*(1-a) */
+			RENDER_TRANSTEXTURE = 2,        /**< src*a+dest*(1-a) */
+			RENDER_GLOW = 3,                /**< src*a+dest -- No Z buffer checks -- Fixed size in screen space */
+			RENDER_TRANSALPHA = 4,          /**< src*srca+dest*(1-srca) */
+			RENDER_TRANSADD = 5,            /**< src*a+dest */
+			RENDER_ENVIRONMENTAL = 6,       /**< not drawn, used for environmental effects */
+			RENDER_TRANSADDFRAMEBLEND = 7,  /**< use a fractional frame value to blend between animation frames */
+			RENDER_TRANSALPHAADD = 8,       /**< src + dest*(1-a) */
+			RENDER_WORLDGLOW = 9,           /**< Same as kRenderGlow but not fixed size in screen space */
+			RENDER_NONE = 10;                 /**< Don't render. */
 
 		public enum RenderFx
 		{
@@ -97,6 +123,33 @@ namespace Sourcemod
 			RENDERFX_PULSE_FAST_WIDER,
 			RENDERFX_MAX
 		};
+		public const int
+			RENDERFX_NONE = 0,
+			RENDERFX_PULSE_SLOW = 1,
+			RENDERFX_PULSE_FAST = 2,
+			RENDERFX_PULSE_SLOW_WIDE = 3,
+			RENDERFX_PULSE_FAST_WIDE = 4,
+			RENDERFX_FADE_SLOW = 5,
+			RENDERFX_FADE_FAST = 6,
+			RENDERFX_SOLID_SLOW = 7,
+			RENDERFX_SOLID_FAST = 8,
+			RENDERFX_STROBE_SLOW = 9,
+			RENDERFX_STROBE_FAST = 10,
+			RENDERFX_STROBE_FASTER = 11,
+			RENDERFX_FLICKER_SLOW = 12,
+			RENDERFX_FLICKER_FAST = 13,
+			RENDERFX_NO_DISSIPATION = 14,
+			RENDERFX_DISTORT = 15,           /**< Distort/scale/translate flicker */
+			RENDERFX_HOLOGRAM = 16,          /**< kRenderFxDistort + distance fade */
+			RENDERFX_EXPLODE = 17,           /**< Scale up really big! */
+			RENDERFX_GLOWSHELL = 18,         /**< Glowing Shell */
+			RENDERFX_CLAMP_MIN_SCALE = 19,   /**< Keep this sprite from getting very small (SPRITES only!) */
+			RENDERFX_ENV_RAIN = 20,          /**< for environmental rendermode, make rain */
+			RENDERFX_ENV_SNOW = 21,          /**<  "        "            "    , make snow */
+			RENDERFX_SPOTLIGHT = 22,         /**< TEST CODE for experimental spotlight */
+			RENDERFX_RAGDOLL = 23,           /**< HACKHACK: TEST CODE for signalling death of a ragdoll character */
+			RENDERFX_PULSE_FAST_WIDER = 24,
+			RENDERFX_MAX = 25;
 
 		// These defines are for client button presses.
 		public const int IN_ATTACK = (1 << 0);

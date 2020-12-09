@@ -229,17 +229,6 @@ namespace Sourcemod
 		 * @return              Round state.
 		 * @error               Game doesn't support round state.
 		 */
-		public static RoundState GameRules_GetRoundState()
-		{
-			return (RoundState)(GameRules_GetProp("m_iRoundState"));
-		}
-
-				/**
-		 * Gets the current round state.
-		 *
-		 * @return              Round state.
-		 * @error               Game doesn't support round state.
-		 */
 		public static int GameRules_GetRoundState()
 		{
 			return (GameRules_GetProp("m_iRoundState"));

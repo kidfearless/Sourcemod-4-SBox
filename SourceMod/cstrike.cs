@@ -78,7 +78,7 @@ namespace Sourcemod
 			CSRoundEnd_CTsReachedHostage= 19           /**< CTs Reached the hostage */
 		};
 		public const int
-		CSRoundEnd_TargetBombed = 0,           /**< Target Successfully Bombed! */
+			CSRoundEnd_TargetBombed = 0,           /**< Target Successfully Bombed! */
 			CSRoundEnd_VIPEscaped = 1,                 /**< The VIP has escaped! - Doesn't exist on CS:GO */
 			CSRoundEnd_VIPKilled = 2,                  /**< VIP has been assassinated! - Doesn't exist on CS:GO */
 			CSRoundEnd_TerroristsEscaped = 3,          /**< The terrorists have escaped! */
