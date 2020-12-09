@@ -74,6 +74,41 @@ namespace Sourcemod
 			RoundState_BetweenRounds
 		};
 
+		public const int 
+			// initialize the game, create teams
+			RoundState_Init = 0,
+
+			//Before players have joined the game. Periodically checks to see if enough players are ready
+			//to start a game. Also reverts to this when there are no active players
+			RoundState_Pregame = 1,
+
+			//The game is about to start, wait a bit and spawn everyone
+			RoundState_StartGame = 2,
+
+			//All players are respawned, frozen in place
+			RoundState_Preround = 3,
+
+			//Round is on, playing normally
+			RoundState_RoundRunning = 4,
+
+			//Someone has won the round
+			RoundState_TeamWin = 5,
+
+			//Noone has won, manually restart the game, reset scores
+			RoundState_Restart = 6,
+
+			//Noone has won, restart the game
+			RoundState_Stalemate = 7,
+
+			//Game is over, showing the scoreboard etc
+			RoundState_GameOver = 8,
+
+			//Game is over, doing bonus round stuff
+			RoundState_Bonus = 9,
+
+			//Between rounds
+			RoundState_BetweenRounds = 10;
+
 		/**
 		 * Retrieves an integer value from a public of the gamerules entity.
 		 *
@@ -197,6 +232,17 @@ namespace Sourcemod
 		public static RoundState GameRules_GetRoundState()
 		{
 			return (RoundState)(GameRules_GetProp("m_iRoundState"));
+		}
+
+				/**
+		 * Gets the current round state.
+		 *
+		 * @return              Round state.
+		 * @error               Game doesn't support round state.
+		 */
+		public static int GameRules_GetRoundState()
+		{
+			return (GameRules_GetProp("m_iRoundState"));
 		}
 	}
 }

@@ -29,14 +29,18 @@ namespace Sourcemod
 			[FieldOffset(0)]
 			public char CharValue;
 
-			[FieldOffset(0)]
+			[FieldOffset(4)]
 			private Handle Handle;
 
 			public any(bool value) : this() => BoolValue = value;
 			public any(float value) : this() => FloatValue = value;
 			public any(int value) : this() => IntValue = value;
 			public any(char value) : this() => CharValue = value;
-			public any(Handle value) : this() => Handle = value;
+			public any(Handle value) : this()
+			{
+				Handle = value;
+				IntValue = Handle.GetHashCode();
+			}
 
 			public static implicit operator any(int value) => new any(value);
 			public static implicit operator any(bool value) => new any(value);

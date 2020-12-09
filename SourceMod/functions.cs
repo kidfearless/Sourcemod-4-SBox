@@ -55,6 +55,15 @@ namespace Sourcemod
 			Param_CellByRef = (1 << 1) | SP_PARAMFLAG_BYREF,    /**< Only a cell by reference can be pushed */
 			Param_FloatByRef = (2 << 1) | SP_PARAMFLAG_BYREF     /**< Only a float by reference can be pushed */
 		};
+		public const int 
+			Param_Any = 0,                            /**< Any data type can be pushed */
+			Param_Cell = (1 << 1),                       /**< Only basic cells can be pushed */
+			Param_Float = (2 << 1),                       /**< Only floats can be pushed */
+			Param_String = (3 << 1) | SP_PARAMFLAG_BYREF,    /**< Only strings can be pushed */
+			Param_Array = (4 << 1) | SP_PARAMFLAG_BYREF,    /**< Only arrays can be pushed */
+			Param_VarArgs = (5 << 1),                       /**< Same as "..." in plugins, anything can be pushed, but it will always be byref */
+			Param_CellByRef = (1 << 1) | SP_PARAMFLAG_BYREF,    /**< Only a cell by reference can be pushed */
+			Param_FloatByRef = (2 << 1) | SP_PARAMFLAG_BYREF;     /**< Only a float by reference can be pushed */
 
 		/**
 		 * Defines how a Forward iterates through plugin functions.
@@ -66,6 +75,11 @@ namespace Sourcemod
 			ET_Event = 2,    /**< Acts as an event with the Actions defined in core.inc, no mid-Stops allowed, returns highest */
 			ET_Hook = 3     /**< Acts as a hook with the Actions defined in core.inc, mid-Stops allowed, returns highest */
 		};
+		public const int 
+			ET_Ignore = 0,    /**< Ignore all return values, return 0 */
+			ET_Single = 1,    /**< Only return the last exec, ignore all others */
+			ET_Event = 2,    /**< Acts as an event with the Actions defined in core.inc, no mid-Stops allowed, returns highest */
+			ET_Hook = 3;     /**< Acts as a hook with the Actions defined in core.inc, mid-Stops allowed, returns highest */
 
 		/**
 		 * @section Flags that are used with Call_PushArrayEx() and Call_PushStringEx()

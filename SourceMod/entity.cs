@@ -45,6 +45,9 @@ namespace Sourcemod
 			Prop_Send = 0,  /**< This public is networked. */
 			Prop_Data = 1   /**< This public is for save game data fields. */
 		};
+		public const int 
+			Prop_Send = 0,  /**< This public is networked. */
+			Prop_Data = 1;   /**< This public is for save game data fields. */
 
 		/**
 		 * @section For more information on these, see the HL2SDK (public/edict.h)
