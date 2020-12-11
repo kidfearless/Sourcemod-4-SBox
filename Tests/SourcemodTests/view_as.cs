@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static Sourcemod.SourceMod;
 
-namespace SourcemodTests
+namespace Sourcemod
 {
 	[TestClass]
 	public class ViewAsTest
@@ -9,6 +9,7 @@ namespace SourcemodTests
 		[TestMethod]
 		public void CharToInt()
 		{
+			Sourcemod.SourceMod x = new();
 			Assert.AreEqual(view_as<int>('@'), 64);
 		}
 

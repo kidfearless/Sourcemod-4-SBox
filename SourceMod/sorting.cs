@@ -115,7 +115,7 @@ namespace Sourcemod
 		 * @param sortfunc      Sort function.
 		 * @param hndl          Optional Handle to pass through the comparison calls.
 		 */
-		public void SortCustom1D(int[] array, int array_size, SortFunc1D sortfunc, object hndl = null) { throw new NotImplementedException(); }
+		public static void SortCustom1D(int[] array, int array_size, SortFunc1D sortfunc, object hndl = null) { throw new NotImplementedException(); }
 
 		/**
 		 * Sort comparison function for 2D array elements (sub-arrays).
@@ -139,7 +139,7 @@ namespace Sourcemod
 		 * @param sortfunc      Sort comparison function to use.
 		 * @param hndl          Optional Handle to pass through the comparison calls.
 		 */
-		public void SortCustom2D(any[][] array, int array_size, SortFunc2D sortfunc, object hndl = null) { throw new NotImplementedException(); }
+		public static void SortCustom2D(any[][] array, int array_size, SortFunc2D sortfunc, object hndl = null) { throw new NotImplementedException(); }
 
 		/**
 		 * Sort an ADT Array. Specify the type as Integer, Float, or String.

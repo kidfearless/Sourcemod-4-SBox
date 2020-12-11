@@ -9,10 +9,6 @@ namespace Sourcemod
 {
 	public partial class SourceMod
 	{
-		public SourceMod()
-		{
-
-		}
 		/// <summary>
 		/// C# implementation of the cell_t struct in pawn
 		/// </summary>
@@ -31,7 +27,7 @@ namespace Sourcemod
 			[FieldOffset(0)]
 			public char CharValue;
 
-						// Have to store the Handle at a different offset in order to compile
+			// Have to store the Handle at a different offset in order to compile
 			[FieldOffset(8)]
 			private Handle Handle;
 
@@ -59,7 +55,10 @@ namespace Sourcemod
 			public any(Handle value) : this()
 			{
 				Handle = value;
-				IntValue = Handle.GetHashCode();
+				if(Handle != null)
+				{
+					IntValue = Handle.GetHashCode();
+				}
 			}
 
 			public static implicit operator any(int value) => new any(value);

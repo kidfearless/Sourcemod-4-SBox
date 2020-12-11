@@ -36,6 +36,10 @@ namespace Sourcemod
 {
 	public partial class SourceMod
 	{
+		public SourceMod()
+		{
+
+		}
 
 		/**
 		 * Plugin public information.

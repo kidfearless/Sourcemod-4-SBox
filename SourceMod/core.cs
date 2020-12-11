@@ -78,7 +78,7 @@ namespace Sourcemod
 			Identity_Extension = 1,
 			Identity_Plugin = 2;
 
-		public PlVers __version = new PlVers()
+		protected PlVers __version = new PlVers()
 		{
 			version = SOURCEMOD_PLUGINAPI_VERSION,
 			filevers = SOURCEMOD_VERSION,

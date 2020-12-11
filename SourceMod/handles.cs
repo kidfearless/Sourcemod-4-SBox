@@ -41,7 +41,7 @@ namespace Sourcemod
 		/**
 		* Preset Handle values.
 		*/
-		public class Handle // Tag disables introducing "Handle" as a symbol.
+		public class Handle : IDisposable // Tag disables introducing "Handle" as a symbol.
 		{
 			private static readonly Dictionary<int, Handle> Handles = new Dictionary<int, Handle>();
 
@@ -56,14 +56,28 @@ namespace Sourcemod
 				Handles[this.GetHashCode()] = this;
 			}
 
-			public void Close()
+			public virtual void Close()
 			{
 				Handles.Remove(this.GetHashCode());
+			}
+
+			public virtual void Dispose()
+			{
+				Handles.Remove(this.GetHashCode());
+			}
+
+			internal bool IsValid => IsValidHandle(this);
+
+			internal static bool IsValidHandle(Handle handle)
+			{
+				return Handles.ContainsKey(handle.GetHashCode());
 			}
 		}
 
 		public const Handle INVALID_HANDLE = null;
-		
+
+		public static bool IsValidHandle(Handle handle) => Handle.IsValidHandle(handle);
+
 		/**
 		* Closes a Handle.  If the handle has multiple copies open,
 		* it is not destroyed unless all copies are closed.
@@ -74,7 +88,9 @@ namespace Sourcemod
 		* @param hndl      Handle to close.
 		* @error           Invalid handles will cause a run time error.
 		*/
-		public static void CloseHandle(Handle hndl) { throw new NotImplementedException(); }
+		public static void CloseHandle(Handle hndl) => hndl.Close();
+
+
 		/**
 		 * Clones a Handle.  When passing handles in between plugins, caching handles
 		 * can result in accidental invalidation when one plugin releases the Handle, or is its owner
@@ -92,6 +108,14 @@ namespace Sourcemod
 		 * @return          Handle on success, INVALID_HANDLE if not cloneable.
 		 * @error           Invalid handles will cause a run time error.
 		 */
-		public static Handle CloneHandle(Handle hndl, Handle plugin = INVALID_HANDLE) { throw new NotImplementedException(); }
+		public static Handle CloneHandle(Handle hndl, Handle plugin = INVALID_HANDLE)
+		{
+			// I honestly found the whole handle system silly.
+			// That we would have to create a new reference to the handle that would only work for that plugin.
+			// Since i'm pretty sure no one ever used the CloneHandle system to take advantage of
+			// "If the handle has multiple copies open, it is not destroyed unless all copies are closed."
+			// So this will be implemented as a dummy function which returns itself.
+			return hndl;
+		}
 	}
 }

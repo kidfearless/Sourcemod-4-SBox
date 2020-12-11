@@ -208,7 +208,7 @@ namespace Sourcemod
 			// Returns a TopMenu handle from a generic handle. If the given handle is
 			// a TopMenu, the handle is simply casted back. Otherwise, an error is
 			// raised.
-			public static TopMenu FromHandle(Handle handle) { throw new NotImplementedException(); }
+			public static TopMenu FromHandle(Handle handle) => handle as TopMenu;
 
 			// Re-sorts the items in a TopMenu via a configuration file.
 			//

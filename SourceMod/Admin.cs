@@ -368,7 +368,7 @@ namespace Sourcemod
 		 * @param part          Part of the cache to dump.  Specifying groups also dumps admins.
 		 * @param rebuild       If true, the rebuild forwards will fire.
 		 */
-		public virtual void DumpAdminCache(AdminCachePart part, bool rebuild) { throw new NotImplementedException(); }
+		public static void DumpAdminCache(AdminCachePart part, bool rebuild) { throw new NotImplementedException(); }
 
 		/**
 		 * Adds a global command flag override.  Any command registered with this name
@@ -378,7 +378,7 @@ namespace Sourcemod
 		 * @param type          Override type (specific command or group).
 		 * @param flags         New admin flag.
 		 */
-		public virtual void AddCommandOverride(string cmd, OverrideType type, int flags) { throw new NotImplementedException(); }
+		public static void AddCommandOverride(string cmd, OverrideType type, int flags) { throw new NotImplementedException(); }
 
 		/**
 		* Returns a command override.

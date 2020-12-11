@@ -32,16 +32,133 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading;
+using System.Timers;
 namespace Sourcemod
 {
 	public partial class SourceMod
 	{
-
-
 		public const int TIMER_REPEAT = (1 << 0);       /**< Timer will repeat until it returns Plugin_Stop */
 		public const int TIMER_FLAG_NO_MAPCHANGE = (1 << 1);       /**< Timer will not carry over mapchanges */
 		public const int TIMER_HNDL_CLOSE = (1 << 9);       /**< Deprecated define, replaced by below */
 		public const int TIMER_DATA_HNDL_CLOSE = (1 << 9);       /**< Timer will automatically call CloseHandle() on its data when finished */
+
+
+		// System.Timers.Timer is too innaccurate to replace sourcemod timers
+		// System.Threading.Timer lacks too much functionality.
+		// So we're just going to create a thread and manage it myself
+		public class TickedTimer : Handle, IDisposable
+		{
+			private any? Data;
+			private Timer Func;
+			private Stopwatch StopWatch;
+			private bool IsRepeating = false;
+			private bool NoMapChange = false;
+			private bool AutoClose = false;
+			private bool ShouldRun = true;
+			private bool IsExecuting = false;
+
+			private readonly TimeSpan Interval;
+
+			public long ElapsedMilliseconds { get => StopWatch.ElapsedMilliseconds; }
+			public long ElapsedSeconds { get => (long)StopWatch.Elapsed.TotalSeconds; }
+			public long ElapsedTicks { get => StopWatch.ElapsedTicks; }
+			public long TickInterval { get => Interval.Ticks; }
+			public double MillisecondInterval { get => Interval.TotalMilliseconds; }
+			public double SecondInterval { get => Interval.TotalSeconds; }
+
+
+
+			public TickedTimer(float interval, Timer func, any? data = null, int flags = 0)
+			{
+				Data = data;
+				StopWatch = new Stopwatch();
+
+				IsRepeating = (flags & TIMER_REPEAT) != 0;
+				AutoClose = (flags & TIMER_DATA_HNDL_CLOSE) != 0;
+				NoMapChange = (flags & TIMER_FLAG_NO_MAPCHANGE) != 0;
+				Interval = TimeSpan.FromSeconds(interval);
+				Func = func;
+				new Thread(Thread_Callback).Start();
+			}
+
+			private void Thread_Callback(object obj)
+			{
+				Thread.CurrentThread.IsBackground = true;
+				StopWatch.Start();
+
+				while (ShouldRun)
+				{
+					if (StopWatch.Elapsed < Interval)
+					{
+						continue;
+					}
+
+					StopWatch.Stop();
+
+					IsExecuting = true;
+					Func(this, Data);
+					IsExecuting = false;
+
+					if (IsRepeating)
+					{
+						StopWatch.Restart();
+					}
+					else
+					{
+						ShouldRun = false;
+					}
+				}
+
+				CloseHandle(this);
+
+				if(AutoClose)
+				{
+					CloseHandle(Data);
+				}
+			}
+
+			public override void Dispose()
+			{
+				base.Dispose();
+			}
+
+			public override void Close()
+			{
+				this.Dispose();
+				base.Close();
+			}
+
+			public void Trigger(bool reset = false)
+			{
+				if(IsExecuting)
+				{
+					return;
+				}
+
+				if(!IsValid)
+				{
+					return;
+					//throw new NullReferenceException($"Exception reported: Invalid timer handle {this.GetHashCode():X}");
+				}
+
+				Func(this, Data);
+				if(reset)
+				{
+					StopWatch.Restart();
+				}
+			}
+
+			public void Kill(bool autoClose = false)
+			{
+				this.Close();
+				if(autoClose)
+				{
+					CloseHandle(Data);
+				}
+			}
+		}
 
 
 		/**
@@ -55,6 +172,16 @@ namespace Sourcemod
 		public delegate Action Timer(Handle timer, any? data);
 
 		/**
+		 * Called when the timer interval has elapsed.
+		 *
+		 * @param timer         Handle to the timer object.
+		 * @param data          Data passed to CreateTimer() when timer was created.
+		 * @return              Plugin_Stop to stop a repeating timer, any other value for
+		 *                      default behavior.
+		 */
+		public delegate Action TimerCallback(TickedTimer timer, any? data);
+
+		/**
 		 * Creates a basic timer.  Calling CloseHandle() on a timer will end the timer.
 		 *
 		 * @param interval      Interval from the current game time to execute the given function.
@@ -64,9 +191,18 @@ namespace Sourcemod
 		 * @return              Handle to the timer object.  You do not need to call CloseHandle().
 		 *                      If the timer could not be created, INVALID_HANDLE will be returned.
 		 */
-		public static Handle CreateTimer(float interval, Timer func, any? data = null, int flags = 0) { throw new NotImplementedException(); }
+		public static Handle CreateTimer(float interval, Timer func, any? data = null, int flags = 0) => new TickedTimer(interval, func, data, flags);
 
-
+		
+		/**
+		 * Kills a timer.  Use this instead of CloseHandle() if you need more options.
+		 *
+		 * @param timer         Timer Handle to kill.
+		 * @param autoClose     If autoClose is true, the data that was passed to CreateTimer() will
+		 *                      be closed as a handle if TIMER_DATA_HNDL_CLOSE was not specified.
+		 * @error               Invalid handles will cause a run time error.
+		 */
+		public static void KillTimer(Handle timer, bool autoClose = false) => ((TickedTimer)timer).Kill(autoClose);
 
 		/**
 		 * Kills a timer.  Use this instead of CloseHandle() if you need more options.
@@ -76,7 +212,7 @@ namespace Sourcemod
 		 *                      be closed as a handle if TIMER_DATA_HNDL_CLOSE was not specified.
 		 * @error               Invalid handles will cause a run time error.
 		 */
-		public static void KillTimer(Handle timer, bool autoClose = false) { throw new NotImplementedException(); }
+		public static void KillTimer(TickedTimer timer, bool autoClose = false) => timer.Kill(autoClose);
 
 		/**
 		 * Manually triggers a timer so its function will be called.
@@ -85,7 +221,15 @@ namespace Sourcemod
 		 * @param reset         If reset is true, the elapsed time counter is reset
 		 *                      so the full interval must pass again.
 		 */
-		public static void TriggerTimer(Handle timer, bool reset = false) { throw new NotImplementedException(); }
+		public static void TriggerTimer(Handle timer, bool reset = false) => ((TickedTimer)timer).Trigger(reset);
+		/**
+		 * Manually triggers a timer so its function will be called.
+		 *
+		 * @param timer         Timer Handle to trigger.
+		 * @param reset         If reset is true, the elapsed time counter is reset
+		 *                      so the full interval must pass again.
+		 */
+		public static void TriggerTimer(TickedTimer timer, bool reset = false) => timer.Trigger(reset);
 
 		/**
 		 * Returns the simulated game time.
@@ -109,7 +253,7 @@ namespace Sourcemod
 		 *                      value is less than 0, the time limit is infinite.
 		 * @return              True if the operation is supported, false otherwise.
 		 */
-		public static bool GetMapTimeLeft(ref int timeleft) { throw new NotImplementedException(); }
+		public static bool GetMapTimeLeft(out int timeleft) { throw new NotImplementedException(); }
 
 		/**
 		 * Retrieves the current map time limit.  If the server has not processed any
