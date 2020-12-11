@@ -338,5 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-Build/net5.0/ref/Sourcemod.dll
-Build/net5.0/Sourcemod.dll
+Build/
